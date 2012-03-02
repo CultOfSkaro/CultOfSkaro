@@ -1,0 +1,4 @@
+#Ignored Files
+bin/
+obj/
+Debug/
