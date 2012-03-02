@@ -18,7 +18,7 @@ namespace CameraViewer
     {
         private usbReader usb;
         private bool captureLoop = false;
-        private bool quit = true;
+        private bool quit = false;
 
         public Form1()
         {
