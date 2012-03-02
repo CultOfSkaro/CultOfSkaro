@@ -20,16 +20,15 @@
 #include "FrameTable.h"
 /************************** Constant Definitions ***************************/
 
-#define PLB_VISION_SELFTEST_BUFSIZE  512 /* Size of buffer (for transfer test) in bytes */
+//#define PLB_VISION_SELFTEST_BUFSIZE  512 /* Size of buffer (for transfer test) in bytes */
 
 /************************** Variable Definitions ****************************/
+int frameCount = 0;
 
-static Xuint8 __attribute__((aligned (128))) SrcBuffer[PLB_VISION_SELFTEST_BUFSIZE];   /* Source buffer      */
-static Xuint8 __attribute__((aligned (128))) DstBuffer[PLB_VISION_SELFTEST_BUFSIZE];   /* Destination buffer */
+//static Xuint8 __attribute__((aligned (128))) SrcBuffer[PLB_VISION_SELFTEST_BUFSIZE];   /* Source buffer      */
+//static Xuint8 __attribute__((aligned (128))) DstBuffer[PLB_VISION_SELFTEST_BUFSIZE];   /* Destination buffer */
 
 /************************** Function Definitions ***************************/
-int gotInt = 0;
-int frameCount = 0;
 /* Camera ISR */
 typedef Xuint32 CPU_MSR;
 #define DISABLE_INTERRUPTS() ({ Xuint32 msr; \
@@ -40,6 +39,8 @@ typedef Xuint32 CPU_MSR;
 
 #define MEMORY_ADDRESS 0x81d00000//0x007A2558 //XPAR_MPMC_0_MPMC_BASEADDR
 #define MEMORY_ADDRESS2 0x00838558
+
+/*
 typedef struct {
 	Xuint8 magic; //0x00BE
 	Xuint8 type;
@@ -49,6 +50,7 @@ typedef struct {
 	Xuint16 packed;
 } __attribute__((__packed__)) HeliosCommHeader;
 	char buffer[10];	
+
 
 unsigned x = 0;
 unsigned y = 0;
@@ -92,11 +94,12 @@ void IntToStr(Xuint8 * integer, Xuint8 len)
 		buf[0] = (char) (temp/1000000000 + 0x30);
 	}
 }
+*/
 
 void CameraISR()
 {
 	//Get IntC Status Register
-	Xuint32 status = XIntc_GetIntrStatus(XPAR_INTC_SINGLE_BASEADDR);
+	//Xuint32 status = XIntc_GetIntrStatus(XPAR_INTC_SINGLE_BASEADDR);
 	//confirm that this is the Camera Interrupt
 	/*
 	if((status & XPAR_PLB_VISION_0_INTERRUPT_MASK) != XPAR_PLB_VISION_0_INTERRUPT_MASK){
@@ -134,126 +137,77 @@ void CameraISR()
 
 int main()
 {
-	Xuint32 data = 0;
-	int i = 0;
-	gotInt = 0;
-	Xuint32 stat;
-	volatile int a;
-	xil_printf("----Camera Test App----\r\n");
+	print("----Camera Stream App----\r\n");
 	USB_init();
-	xil_printf("Testing status of USB\r\n");
+	print("Waiting for USB...");
 	while (!USB_writeReady());
-	xil_printf("TEST write ready : PASSED\r\n\r\n");
-	Xuint16 t = 56526;
-	IntToStr((Xuint8*)&t, 2);
-	xil_printf("56526 to string: %s\n", buf);
-	xil_printf("Welcome to Helios\r\n");
-	xil_printf("Setting up interrupts\r\n");
-	XExc_Init();
+	print("ready\r\n");
+
+	print("Setting up interrupts\r\n");
 	//Enable exceptions
+	XExc_Init();
 	XExc_RegisterHandler( XEXC_ID_NON_CRITICAL_INT, (XExceptionHandler)XIntc_DeviceInterruptHandler, (void*)XPAR_XPS_INTC_0_DEVICE_ID);
 	XExc_mEnableExceptions(XEXC_NON_CRITICAL);
 	XIntc_RegisterHandler( XPAR_XPS_INTC_0_BASEADDR, XPAR_XPS_INTC_0_PLB_VISION_0_INTERRUPT_INTR, (XInterruptHandler)CameraISR, (void*)NULL);
 	XIntc_EnableIntr( XPAR_XPS_INTC_0_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
 	XIntc_MasterEnable( XPAR_XPS_INTC_0_BASEADDR );
-	xil_printf("Done!\r\n");
-	xil_printf("Calibrating SDRAM...\r\n");
+	print("Done!\r\n");
+	print("Calibrating SDRAM...\r\n");
 	
-   XCache_DisableDCache();
-   XCache_DisableICache();	
+	XCache_DisableDCache();
+	XCache_DisableICache();
 	MpmcCalibrationExample(XPAR_MPMC_0_DEVICE_ID);
-   XCache_EnableICache(0x80000000);
-   XCache_EnableDCache(0x80000000);
-	
-	xil_printf("Testing camera serial interface\r\n");
+	XCache_EnableICache(0x80000000);
+	XCache_EnableDCache(0x80000000);
+
 	
 	/* SET UP CAMERA */
 	Init_Camera();
 	ResetCameraSensor();
-//	xil_printf("Selecting Core register set\r\n");
-//	SelectSensorRegisterBank();
+	print("Testing camera serial interface\r\n");
+	Xuint32 data = 0;
 	data = ReadCameraRegister(0xFF);
 	xil_printf("Camera version: %0x\r\n", data);
-
 	data = ReadCameraRegister(0x04);
 	xil_printf("Window width: %0d\r\n", data);
 	data = ReadCameraRegister(0x03);
 	xil_printf("Window height: %0d\r\n", data);
-//	SelectIPFRegisterBank();
-//	xil_printf("Output Register1: %x", ReadCameraRegister(0x08));
-//	xil_printf("Output Register2: %x", ReadCameraRegister(0x3A));
-//	WriteCameraRegister(0x08,0xD800); //set output to RGB
-//	WriteCameraRegister(0x3A,0x00);  //set output to RGB565
-//	xil_printf("Output Register1: %x", ReadCameraRegister(0x08));
-//	xil_printf("Output Register2: %x", ReadCameraRegister(0x3A));
-	
-	//DisplayTestPattern(XPAR_PLB_VISION_0_BASEADDR);
-	//DisableTestPattern(XPAR_PLB_VISION_0_BASEADDR);
-	/****************/
-	xil_printf("Done!\r\n");
-	xil_printf("Testing camera PLB interface\r\n");
-	xil_printf("Saving images to SRAM\r\n");
-	xil_printf("Erasing SRAM\r\n");
-	int Status;
-	u32 Index;
-	u32 result = 0;
+	print("Done!\r\n");
+	print("Erasing SRAM\r\n");
+	int i = 0;
 	for(i = 0; i < (640*480)/2; i++)
 	{
-		XIo_Out32((Xuint32*)MEMORY_ADDRESS + i, 0x0);
+		XIo_Out32(MEMORY_ADDRESS + i, 0x0);
 	}
-	/*xil_printf("Current contents of memory location 0x00000000:\r\n");	
-	for(i=0; i < 128; i++)
-	{
-		result = XIo_In32(XPAR_XPS_MCH_EMC_SRAM_MEM0_BASEADDR + i);
-		xil_printf("0x%x 0x%x 0x%x 0x%x ", 0xF&(result>>24), 0xF&(result>>16), 0xF&(result>>8), 0xF&result );
-	}
-	*/
-	xil_printf("Starting capture\r\n");
 	
 	SetFrameSaveOptions(1);
 	//SetFrameSaveOptions(VISION_SAVE_OPTIONS_CAM_BYTES_ALL);
 	xil_printf("Frame save options: 0x%x\r\n", GetFrameSaveOptions);
 	
-	stat = CameraStatus();
+	Xuint32 stat = CameraStatus();
 	xil_printf("Status: 0x%x\r\n", stat);
 	
-	
-	for(i=0;i<100000;i++)
-	{ //wait
+	//wait a bit
+	volatile int a;
+	for(i=0;i<100000;i++){
 		a += i;
 	}
+
 	//SetFrameAddress(VISION_FRAME_RGB565, MEMORY_ADDRESS);
 	stat = GetFrameAddress(VISION_FRAME_RGB565);
 	xil_printf("Frame address: 0x%x\r\n", stat);
+	print("Starting capture\r\n");
 	FT_Init();
 	FT_StartCapture(g_frametable[0]);
 
 	//StartFrameCapture();
 	
 	xil_printf("Frame capture started, writing to memory at 0x%x\r\n", MEMORY_ADDRESS);
-	xil_printf("Waiting for interrupt...");
-	gotInt = 0;
+	print("Waiting for interrupt...");
 
+	//endless loop
 	while(1);
-	/*while(!gotInt)
-	{
-		stat = CameraStatus();
-		//xil_printf("Status: 0x%x\r\n", stat);
-		for(i=0;i<100000;i++)
-		{ //wait
-			a += i;
-		}
-		if(stat == 0xD1) //capture done but FIFO not empty
-		{
-			for(i=0;i<100000;i++) //make sure no burst is going on currently
-			{ //wait
-				a += i;
-			}
-			//xil_printf("Status: 0x%x\r\n", stat);
-			//ResetCameraCore();
-			//StartFrameCapture();
-		}
-	}*/
+
 	xil_printf("Finished!\r\n");
 	return 0;
 }

@@ -11,17 +11,7 @@ cygwin warning:
   CYGWIN environment variable option "nodosfilewarning" turns off this warning.
   Consult the user's guide for more details about POSIX paths:
     http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c: In function 'CameraISR':
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c:99: warning: unused variable 'status'
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c: In function 'main':
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c:202: warning: passing argument 1 of 'XIo_Out32' makes integer from pointer without a cast
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c:199: warning: unused variable 'result'
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c:198: warning: unused variable 'Index'
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c:197: warning: unused variable 'Status'
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c: At top level:
 C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.h:186: warning: 'MpmcUpdateStaticPhyReg' declared 'static' but never defined
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c:27: warning: 'SrcBuffer' defined but not used
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c:28: warning: 'DstBuffer' defined but not used
 Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
  
 Building target: TestApp_Vision.elf
@@ -44,7 +34,7 @@ cygwin warning:
   Consult the user's guide for more details about POSIX paths:
     http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
    text	   data	    bss	    dec	    hex	filename
-  53122	    500	   3920	  57542	   e0c6	TestApp_Vision.elf
+  51258	    500	   2756	  54514	   d4f2	TestApp_Vision.elf
 Finished building: TestApp_Vision.elf.size
  
 Invoking: Xilinx ELF Check
