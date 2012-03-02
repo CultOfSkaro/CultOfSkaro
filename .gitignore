@@ -3,3 +3,7 @@ bin/
 obj/
 Debug/
 .history/
+*.o
+*.a
+.indexes/
+*.opensdf

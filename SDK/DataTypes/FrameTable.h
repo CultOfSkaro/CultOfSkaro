@@ -55,7 +55,6 @@ CHANGE LOG
 #include "Header.h"
 #include "BufferStore.h"
 
-
 /* Macros -------------------------------------------------------------------*/
 /** This controls how much memory we allocate for FrameTableEntry structs	
 	Each FrameTableEntry represents a single processed image from the camera.

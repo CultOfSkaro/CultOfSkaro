@@ -13,10 +13,10 @@
 #include <xexception_l.h>
 #include <xutil.h>
 #include <xio.h>
-#include <plb_vision.h>
 #include <xparameters.h>
 #include <USB_IO.h>
 #include <mpmc_calibration.h>
+#include "plb_vision.h"
 #include "FrameTable.h"
 /************************** Constant Definitions ***************************/
 

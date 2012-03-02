@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="C:\RobotRacers\SDK\vhdl_hw_platform\system_bd.bmm" key="vhdl_hw_platform-bmmFile"/>
-	<item value="C:\RobotRacers\SDK\vhdl_hw_platform\system.bit" key="vhdl_hw_platform-bitFile"/>
+	<item value="C:\RobotRacers\CultOfSkaro\SDK\vhdl_hw_platform\system_bd.bmm" key="vhdl_hw_platform-bmmFile"/>
+	<item value="C:\RobotRacers\CultOfSkaro\SDK\vhdl_hw_platform\system.bit" key="vhdl_hw_platform-bitFile"/>
+	<item value="C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug\TestApp_Vision.elf" key="vhdl_hw_platform-ppc405_0-initElf"/>
 	<item value="bootloop" key="vhdl_hw_platform-ppc405_1-initElf"/>
-	<item value="C:\RobotRacers\SDK\TestApp_Vision\Debug\TestApp_Vision.elf" key="vhdl_hw_platform-ppc405_0-initElf"/>
 </section>

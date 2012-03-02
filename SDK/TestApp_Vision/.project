@@ -83,27 +83,27 @@
 		<link>
 			<name>DataTypes</name>
 			<type>2</type>
-			<location>C:/RobotRacers/SDK/DataTypes</location>
+			<location>C:/RobotRacers/CultOfSkaro/SDK/DataTypes</location>
 		</link>
 		<link>
 			<name>Vision</name>
 			<type>2</type>
-			<location>C:/RobotRacers/SDK/Vision</location>
+			<location>C:/RobotRacers/CultOfSkaro/SDK/Vision</location>
 		</link>
 		<link>
 			<name>common</name>
 			<type>2</type>
-			<location>C:/RobotRacers/SDK/common</location>
+			<location>C:/RobotRacers/CultOfSkaro/SDK/common</location>
 		</link>
 		<link>
 			<name>plb_usb_v1_00_a</name>
 			<type>2</type>
-			<location>C:/RobotRacers/SDK/drivers/plb_usb_v1_00_a</location>
+			<location>C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a</location>
 		</link>
 		<link>
 			<name>plb_vision_v1_00_a</name>
 			<type>2</type>
-			<location>C:/RobotRacers/SDK/drivers/plb_vision_v1_00_a</location>
+			<location>C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a</location>
 		</link>
 	</linkedResources>
 </projectDescription>
