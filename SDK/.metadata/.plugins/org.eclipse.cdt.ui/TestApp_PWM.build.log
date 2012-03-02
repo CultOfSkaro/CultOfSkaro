@@ -1,0 +1,72 @@
+
+**** Build of configuration Debug for project TestApp_PWM ****
+
+make all 
+Building file: ../src/TestApp_PWM.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\common" -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\PIDControl" -c -fmessage-length=0 -MMD -MP -MF"src/TestApp_PWM.d" -MT"src/TestApp_PWM.d" -o"src/TestApp_PWM.o" "../src/TestApp_PWM.c"
+../src/TestApp_PWM.c: In function 'logData':
+../src/TestApp_PWM.c:144: warning: unused variable 'i'
+../src/TestApp_PWM.c:150: warning: control reaches end of non-void function
+../src/TestApp_PWM.c: In function 'WirelessRecvHandler':
+../src/TestApp_PWM.c:173: warning: implicit declaration of function 'PrintFloat'
+../src/TestApp_PWM.c:166: warning: unused variable 'temp'
+../src/TestApp_PWM.c: In function 'main':
+../src/TestApp_PWM.c:403: warning: implicit declaration of function 'usleep'
+../src/TestApp_PWM.c:376: warning: unused variable 'ticks_prev'
+../src/TestApp_PWM.c:375: warning: unused variable 'ticks'
+../src/TestApp_PWM.c:373: warning: unused variable 'cvel'
+../src/TestApp_PWM.c:369: warning: unused variable 'maxTicks'
+../src/TestApp_PWM.c:368: warning: unused variable 'eTicks'
+../src/TestApp_PWM.c:366: warning: unused variable 'c'
+Finished building: ../src/TestApp_PWM.c
+ 
+Building file: C:/RobotRacers/SDK/drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\common" -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\PIDControl" -c -fmessage-length=0 -MMD -MP -MF"plb_quad_encoder_v1_00_a/src/plb_quad_encoder.d" -MT"plb_quad_encoder_v1_00_a/src/plb_quad_encoder.d" -o"plb_quad_encoder_v1_00_a/src/plb_quad_encoder.o" "C:/RobotRacers/SDK/drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder.c"
+Finished building: C:/RobotRacers/SDK/drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder.c
+ 
+Building file: C:/RobotRacers/SDK/drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\common" -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\PIDControl" -c -fmessage-length=0 -MMD -MP -MF"plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.d" -MT"plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.d" -o"plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.o" "C:/RobotRacers/SDK/drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c"
+C:/RobotRacers/SDK/drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c: In function 'EncoderTest':
+C:/RobotRacers/SDK/drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c:51: warning: implicit declaration of function 'xil_printf'
+Finished building: C:/RobotRacers/SDK/drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c
+ 
+Building file: C:/RobotRacers/SDK/drivers/plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\common" -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\PIDControl" -c -fmessage-length=0 -MMD -MP -MF"plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.d" -MT"plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.d" -o"plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.o" "C:/RobotRacers/SDK/drivers/plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.c"
+Finished building: C:/RobotRacers/SDK/drivers/plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.c
+ 
+Building file: C:/RobotRacers/SDK/common/HeliosIO.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\common" -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\PIDControl" -c -fmessage-length=0 -MMD -MP -MF"common/HeliosIO.d" -MT"common/HeliosIO.d" -o"common/HeliosIO.o" "C:/RobotRacers/SDK/common/HeliosIO.c"
+C:/RobotRacers/SDK/common/HeliosIO.c: In function 'InitGameSystem':
+C:/RobotRacers/SDK/common/HeliosIO.c:241: warning: implicit declaration of function 'xil_printf'
+Finished building: C:/RobotRacers/SDK/common/HeliosIO.c
+ 
+Building file: C:/RobotRacers/SDK/common/Serial.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\common" -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\PIDControl" -c -fmessage-length=0 -MMD -MP -MF"common/Serial.d" -MT"common/Serial.d" -o"common/Serial.o" "C:/RobotRacers/SDK/common/Serial.c"
+Finished building: C:/RobotRacers/SDK/common/Serial.c
+ 
+Building file: C:/RobotRacers/SDK/common/ServoControl.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\common" -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\PIDControl" -c -fmessage-length=0 -MMD -MP -MF"common/ServoControl.d" -MT"common/ServoControl.d" -o"common/ServoControl.o" "C:/RobotRacers/SDK/common/ServoControl.c"
+Finished building: C:/RobotRacers/SDK/common/ServoControl.c
+ 
+Building file: C:/RobotRacers/SDK/common/Timer.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\common" -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\PIDControl" -c -fmessage-length=0 -MMD -MP -MF"common/Timer.d" -MT"common/Timer.d" -o"common/Timer.o" "C:/RobotRacers/SDK/common/Timer.c"
+Finished building: C:/RobotRacers/SDK/common/Timer.c
+ 
+Building file: C:/RobotRacers/SDK/PIDControl/PID_Control.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\common" -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\PIDControl" -c -fmessage-length=0 -MMD -MP -MF"PIDControl/PID_Control.d" -MT"PIDControl/PID_Control.d" -o"PIDControl/PID_Control.o" "C:/RobotRacers/SDK/PIDControl/PID_Control.c"
+Finished building: C:/RobotRacers/SDK/PIDControl/PID_Control.c
+ 
+Building target: TestApp_PWM.elf
+Invoking: PowerPC gcc linker
+powerpc-eabi-gcc -L"C:\RobotRacers\SDK\RobotRacers_bsp_0\ppc405_0\lib" -Wl,-T -Wl,../src/lscript.ld -L../../RobotRacers_bsp_0/ppc405_0/lib -o"TestApp_PWM.elf"  ./src/TestApp_PWM.o  ./plb_quad_encoder_v1_00_a/src/plb_quad_encoder.o ./plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.o  ./plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.o  ./common/HeliosIO.o ./common/Serial.o ./common/ServoControl.o ./common/Timer.o  ./PIDControl/PID_Control.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -lxilflash
+Finished building target: TestApp_PWM.elf
+ 

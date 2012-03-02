@@ -1,0 +1,58 @@
+
+**** Build of configuration Debug for project TestApp_PWM_andrew ****
+
+make all 
+Building file: ../src/TestApp_PWM.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -c -fmessage-length=0 -MMD -MP -MF"src/TestApp_PWM.d" -MT"src/TestApp_PWM.d" -o"src/TestApp_PWM.o" "../src/TestApp_PWM.c"
+../src/TestApp_PWM.c:48:20: error: Header.h: No such file or directory
+../src/TestApp_PWM.c:49:26: error: ServoControl.h: No such file or directory
+../src/TestApp_PWM.c:50:25: error: PID_Control.h: No such file or directory
+../src/TestApp_PWM.c:55:30: error: plb_quad_encoder.h: No such file or directory
+../src/TestApp_PWM.c:56:19: error: Timer.h: No such file or directory
+../src/TestApp_PWM.c:57:22: error: HeliosIO.h: No such file or directory
+../src/TestApp_PWM.c: In function 'main':
+../src/TestApp_PWM.c:86: error: 'int32' undeclared (first use in this function)
+../src/TestApp_PWM.c:86: error: (Each undeclared identifier is reported only once
+../src/TestApp_PWM.c:86: error: for each function it appears in.)
+../src/TestApp_PWM.c:86: error: expected ';' before 'str'
+../src/TestApp_PWM.c:87: error: expected ';' before 'thr'
+../src/TestApp_PWM.c:100: error: 'str' undeclared (first use in this function)
+../src/TestApp_PWM.c:101: error: 'thr' undeclared (first use in this function)
+../src/TestApp_PWM.c:106: warning: implicit declaration of function 'XExc_Init'
+../src/TestApp_PWM.c:114: warning: implicit declaration of function 'InitGameSystem'
+../src/TestApp_PWM.c:120: warning: implicit declaration of function 'ServoInit'
+../src/TestApp_PWM.c:120: error: 'RC_STR_SERVO' undeclared (first use in this function)
+../src/TestApp_PWM.c:121: error: 'RC_VEL_SERVO' undeclared (first use in this function)
+../src/TestApp_PWM.c:122: warning: implicit declaration of function 'GetServo'
+../src/TestApp_PWM.c:163: warning: implicit declaration of function 'Game_Shoot'
+../src/TestApp_PWM.c:163: error: 'GAME_PASS_SHOT' undeclared (first use in this function)
+../src/TestApp_PWM.c:166: error: 'GAME_KILL_SHOT' undeclared (first use in this function)
+../src/TestApp_PWM.c:169: warning: implicit declaration of function 'Game_Enabled'
+../src/TestApp_PWM.c:170: warning: implicit declaration of function 'Game_HaveFlag'
+../src/TestApp_PWM.c:171: warning: implicit declaration of function 'Game_TeamNumber'
+../src/TestApp_PWM.c:172: warning: implicit declaration of function 'Game_GameState'
+../src/TestApp_PWM.c:177: warning: implicit declaration of function 'SetServo'
+../src/TestApp_PWM.c:181: warning: implicit declaration of function 'clearEncoder'
+../src/TestApp_PWM.c:183: warning: implicit declaration of function 'getTicks'
+../src/TestApp_PWM.c:222: warning: implicit declaration of function 'initPID'
+../src/TestApp_PWM.c:223: warning: implicit declaration of function 'setVelocity'
+../src/TestApp_PWM.c:226: warning: implicit declaration of function 'usleep'
+../src/TestApp_PWM.c:227: warning: implicit declaration of function 'updateVelocityOutput'
+../src/TestApp_PWM.c:234: warning: implicit declaration of function 'setDistance'
+../src/TestApp_PWM.c:236: warning: implicit declaration of function 'updateDistanceOutput'
+../src/TestApp_PWM.c:245: error: 'uint32' undeclared (first use in this function)
+../src/TestApp_PWM.c:245: error: expected ';' before 'start'
+../src/TestApp_PWM.c:248: warning: unused variable 'f'
+../src/TestApp_PWM.c:250: error: expected ';' before 'end'
+../src/TestApp_PWM.c:251: error: 'end' undeclared (first use in this function)
+../src/TestApp_PWM.c:251: error: 'start' undeclared (first use in this function)
+../src/TestApp_PWM.c:252: warning: implicit declaration of function 'ClockTime'
+../src/TestApp_PWM.c:254: warning: unused variable 'd'
+../src/TestApp_PWM.c:261: warning: unused variable 'f'
+../src/TestApp_PWM.c:268: warning: unused variable 'd'
+../src/TestApp_PWM.c:275: warning: unused variable 'f'
+../src/TestApp_PWM.c:282: warning: unused variable 'd'
+../src/TestApp_PWM.c:289: warning: unused variable 'f'
+../src/TestApp_PWM.c:296: warning: unused variable 'd'
+make: *** [src/TestApp_PWM.o] Error 1

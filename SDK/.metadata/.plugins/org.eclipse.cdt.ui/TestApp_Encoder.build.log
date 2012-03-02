@@ -1,0 +1,35 @@
+
+**** Build of configuration Debug for project TestApp_Encoder ****
+
+make all 
+Building file: C:/RobotRacers/SDK/common/PID_Control.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -IC:/RobotRacers/SDK/RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\common" -c -fmessage-length=0 -I../../RobotRacers_bsp_0/ppc405_0/include -MMD -MP -MF"common/PID_Control.d" -MT"common/PID_Control.d" -o"common/PID_Control.o" "C:/RobotRacers/SDK/common/PID_Control.c"
+C:/RobotRacers/SDK/common/PID_Control.c: In function 'updateDistanceOutput':
+C:/RobotRacers/SDK/common/PID_Control.c:153: warning: unused variable 'currentDistance'
+Finished building: C:/RobotRacers/SDK/common/PID_Control.c
+ 
+Building target: TestApp_Encoder.elf
+Invoking: PowerPC gcc linker
+powerpc-eabi-gcc -L"C:\RobotRacers\SDK\RobotRacers_bsp_0\ppc405_0\lib" -Wl,-T -Wl,../src/lscript.ld -L../../RobotRacers_bsp_0/ppc405_0/lib -o"TestApp_Encoder.elf"  ./src/TestEncoder.o  ./plb_quad_encoder_v1_00_a/src/plb_quad_encoder.o ./plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.o  ./plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.o  ./common/PID_Control.o ./common/ServoControl.o ./common/Timer.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -lxilflash
+Finished building target: TestApp_Encoder.elf
+ 
+Invoking: PowerPC Print Size
+powerpc-eabi-size TestApp_Encoder.elf  |tee "TestApp_Encoder.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  14322	    320	   4256	  18898	   49d2	TestApp_Encoder.elf
+Finished building: TestApp_Encoder.elf.size
+ 
+Invoking: Xilinx ELF Check
+elfcheck TestApp_Encoder.elf -hw ../../vhdl_hw_platform/system.xml -pe ppc405_0  |tee "TestApp_Encoder.elf.elfcheck"
+elfcheck
+Xilinx EDK 13.3 Build EDK_O.76xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../vhdl_hw_platform/system.xml -pe ppc405_0
+TestApp_Encoder.elf 
+
+ELF file	: TestApp_Encoder.elf
+elfcheck passed.
+Finished building: TestApp_Encoder.elf.elfcheck
+ 

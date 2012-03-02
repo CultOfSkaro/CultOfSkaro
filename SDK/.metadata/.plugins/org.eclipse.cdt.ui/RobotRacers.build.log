@@ -1,0 +1,21 @@
+
+**** Build of configuration Debug for project RobotRacers ****
+
+make all 
+Building file: C:/RobotRacers/SDK/vision/MatrixLibrary.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\DataTypes" -I"C:\RobotRacers\SDK\common" -I"C:\RobotRacers\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\SDK\vision" -I"C:\RobotRacers\SDK\PIDControl" -I"C:\RobotRacers\SDK\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\SDK\Communications" -c -fmessage-length=0 -MMD -MP -MF"VISION/MatrixLibrary.d" -MT"VISION/MatrixLibrary.d" -o"VISION/MatrixLibrary.o" "C:/RobotRacers/SDK/vision/MatrixLibrary.c"
+C:/RobotRacers/SDK/vision/MatrixLibrary.c: In function 'mInit':
+C:/RobotRacers/SDK/vision/MatrixLibrary.c:122: error: 'BS_MAT_XSMALL' undeclared (first use in this function)
+C:/RobotRacers/SDK/vision/MatrixLibrary.c:122: error: (Each undeclared identifier is reported only once
+C:/RobotRacers/SDK/vision/MatrixLibrary.c:122: error: for each function it appears in.)
+C:/RobotRacers/SDK/vision/MatrixLibrary.c:123: error: 'BS_MAT_SMALL' undeclared (first use in this function)
+C:/RobotRacers/SDK/vision/MatrixLibrary.c:124: error: 'BS_MAT_MEDIUM' undeclared (first use in this function)
+C:/RobotRacers/SDK/vision/MatrixLibrary.c:125: error: 'BS_MAT_LARGE' undeclared (first use in this function)
+C:/RobotRacers/SDK/vision/MatrixLibrary.c: In function 'mError':
+C:/RobotRacers/SDK/vision/MatrixLibrary.c:186: error: 'U_MAT_NUM_ERRORS' undeclared (first use in this function)
+C:/RobotRacers/SDK/vision/MatrixLibrary.c:187: error: 'U_MAT_ERROR' undeclared (first use in this function)
+C:/RobotRacers/SDK/vision/MatrixLibrary.c: In function 'mPrint':
+C:/RobotRacers/SDK/vision/MatrixLibrary.c:211: warning: implicit declaration of function 'Println'
+C:/RobotRacers/SDK/vision/MatrixLibrary.c:215: warning: implicit declaration of function 'Print'
+make: *** [VISION/MatrixLibrary.o] Error 1

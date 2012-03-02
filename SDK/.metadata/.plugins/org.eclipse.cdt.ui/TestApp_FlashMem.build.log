@@ -1,0 +1,57 @@
+
+**** Build of configuration Debug for project TestApp_FlashMem ****
+
+make all 
+Building file: ../src/TestDriver.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../RobotRacers_bsp_0/ppc405_0/include -MMD -MP -MF"src/TestDriver.d" -MT"src/TestDriver.d" -o"src/TestDriver.o" "../src/TestDriver.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\SDK\TestApp_FlashMem\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/SDK/TestApp_FlashMem/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+Finished building: ../src/TestDriver.c
+ 
+Building target: TestApp_FlashMem.elf
+Invoking: PowerPC gcc linker
+powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../RobotRacers_bsp_0/ppc405_0/lib -o"TestApp_FlashMem.elf"  ./src/TestDriver.o   -lxil -lxilflash -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -lxilflash
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\SDK\TestApp_FlashMem\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/SDK/TestApp_FlashMem/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+Finished building target: TestApp_FlashMem.elf
+ 
+Invoking: PowerPC Print Size
+powerpc-eabi-size TestApp_FlashMem.elf  |tee "TestApp_FlashMem.elf.size"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\SDK\TestApp_FlashMem\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/SDK/TestApp_FlashMem/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+   text	   data	    bss	    dec	    hex	filename
+  19422	    316	  33240	  52978	   cef2	TestApp_FlashMem.elf
+Finished building: TestApp_FlashMem.elf.size
+ 
+Invoking: Xilinx ELF Check
+elfcheck TestApp_FlashMem.elf -hw ../../vhdl_hw_platform/system.xml -pe ppc405_0  |tee "TestApp_FlashMem.elf.elfcheck"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\SDK\TestApp_FlashMem\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/SDK/TestApp_FlashMem/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+elfcheck
+Xilinx EDK 13.3 Build EDK_O.76xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../vhdl_hw_platform/system.xml -pe ppc405_0
+TestApp_FlashMem.elf 
+
+ELF file	: TestApp_FlashMem.elf
+elfcheck passed.
+Finished building: TestApp_FlashMem.elf.elfcheck
+ 

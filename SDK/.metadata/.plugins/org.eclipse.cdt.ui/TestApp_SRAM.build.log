@@ -1,0 +1,57 @@
+
+**** Build of configuration Debug for project TestApp_SRAM ****
+
+make all 
+Building file: ../src/TestDriverSRAM.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../RobotRacers_bsp_0/ppc405_0/include -MMD -MP -MF"src/TestDriverSRAM.d" -MT"src/TestDriverSRAM.d" -o"src/TestDriverSRAM.o" "../src/TestDriverSRAM.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\SDK\TestApp_SRAM\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/SDK/TestApp_SRAM/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+Finished building: ../src/TestDriverSRAM.c
+ 
+Building target: TestApp_SRAM.elf
+Invoking: PowerPC gcc linker
+powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../RobotRacers_bsp_0/ppc405_0/lib -o"TestApp_SRAM.elf"  ./src/TestDriverSRAM.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\SDK\TestApp_SRAM\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/SDK/TestApp_SRAM/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+Finished building target: TestApp_SRAM.elf
+ 
+Invoking: PowerPC Print Size
+powerpc-eabi-size TestApp_SRAM.elf  |tee "TestApp_SRAM.elf.size"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\SDK\TestApp_SRAM\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/SDK/TestApp_SRAM/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+   text	   data	    bss	    dec	    hex	filename
+   4642	    316	  16420	  21378	   5382	TestApp_SRAM.elf
+Finished building: TestApp_SRAM.elf.size
+ 
+Invoking: Xilinx ELF Check
+elfcheck TestApp_SRAM.elf -hw ../../VHDL_hw_platform/system.xml -pe ppc405_0  |tee "TestApp_SRAM.elf.elfcheck"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\SDK\TestApp_SRAM\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/SDK/TestApp_SRAM/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+elfcheck
+Xilinx EDK 13.3 Build EDK_O.76xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../VHDL_hw_platform/system.xml -pe ppc405_0
+TestApp_SRAM.elf 
+
+ELF file	: TestApp_SRAM.elf
+elfcheck passed.
+Finished building: TestApp_SRAM.elf.elfcheck
+ 

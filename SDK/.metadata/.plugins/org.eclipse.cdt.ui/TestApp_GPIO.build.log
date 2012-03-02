@@ -1,0 +1,21 @@
+
+**** Build of configuration Debug for project TestApp_GPIO ****
+
+make all 
+Building file: C:/RobotRacers/SDK/common/PID_Control.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\SDK\common" -I"C:\RobotRacers\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/PID_Control.d" -MT"common/PID_Control.d" -o"common/PID_Control.o" "C:/RobotRacers/SDK/common/PID_Control.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\SDK\TestApp_GPIO\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/SDK/TestApp_GPIO/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+In file included from C:/RobotRacers/SDK/common/PID_Control.c:16:
+C:/RobotRacers/SDK/common/ServoControl.h:17:26: error: plb_pwm_ctrl.h: No such file or directory
+C:/RobotRacers/SDK/common/PID_Control.c:22:30: error: plb_quad_encoder.h: No such file or directory
+C:/RobotRacers/SDK/common/PID_Control.c: In function 'initPID':
+C:/RobotRacers/SDK/common/PID_Control.c:39: warning: implicit declaration of function 'getTicks'
+C:/RobotRacers/SDK/common/PID_Control.c: In function 'updateDistanceOutput':
+C:/RobotRacers/SDK/common/PID_Control.c:157: warning: implicit declaration of function 'logData'
+make: *** [common/PID_Control.o] Error 1

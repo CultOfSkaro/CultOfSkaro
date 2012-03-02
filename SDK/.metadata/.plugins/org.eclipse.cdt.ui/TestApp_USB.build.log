@@ -1,0 +1,5 @@
+
+**** Build of configuration Debug for project TestApp_USB ****
+
+make all 
+make: *** No rule to make target `xil_sprintf.o', needed by `TestApp_USB.elf'.  Stop.

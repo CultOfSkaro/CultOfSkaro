@@ -1,0 +1,115 @@
+// BMM LOC annotation file.
+//
+// Release 13.3 - Data2MEM O.76xd, build 2.5 Aug 4, 2011
+// Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Processor 'ppc405_0', ID 100, memory map.
+//
+///////////////////////////////////////////////////////////////////////////////
+
+ADDRESS_MAP ppc405_0 PPC405 100
+
+
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    // Processor 'ppc405_0' address space 'plb_bram_if_cntlr_0_bram_combined' 0xFFFF0000:0xFFFFFFFF (64 KBytes).
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+
+    ADDRESS_SPACE plb_bram_if_cntlr_0_bram_combined RAMB16 [0xFFFF0000:0xFFFFFFFF]
+        BUS_BLOCK
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_0 [63:62] INPUT = plb_bram_if_cntlr_0_bram_combined_0.mem PLACED = X3Y26;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_1 [61:60] INPUT = plb_bram_if_cntlr_0_bram_combined_1.mem PLACED = X4Y26;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_2 [59:58] INPUT = plb_bram_if_cntlr_0_bram_combined_2.mem PLACED = X2Y26;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_3 [57:56] INPUT = plb_bram_if_cntlr_0_bram_combined_3.mem PLACED = X2Y27;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_4 [55:54] INPUT = plb_bram_if_cntlr_0_bram_combined_4.mem PLACED = X1Y17;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_5 [53:52] INPUT = plb_bram_if_cntlr_0_bram_combined_5.mem PLACED = X3Y27;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_6 [51:50] INPUT = plb_bram_if_cntlr_0_bram_combined_6.mem PLACED = X5Y22;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_7 [49:48] INPUT = plb_bram_if_cntlr_0_bram_combined_7.mem PLACED = X3Y18;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_8 [47:46] INPUT = plb_bram_if_cntlr_0_bram_combined_8.mem PLACED = X2Y25;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_9 [45:44] INPUT = plb_bram_if_cntlr_0_bram_combined_9.mem PLACED = X4Y25;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_10 [43:42] INPUT = plb_bram_if_cntlr_0_bram_combined_10.mem PLACED = X4Y23;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_11 [41:40] INPUT = plb_bram_if_cntlr_0_bram_combined_11.mem PLACED = X5Y23;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_12 [39:38] INPUT = plb_bram_if_cntlr_0_bram_combined_12.mem PLACED = X4Y20;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_13 [37:36] INPUT = plb_bram_if_cntlr_0_bram_combined_13.mem PLACED = X4Y21;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_14 [35:34] INPUT = plb_bram_if_cntlr_0_bram_combined_14.mem PLACED = X0Y19;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_15 [33:32] INPUT = plb_bram_if_cntlr_0_bram_combined_15.mem PLACED = X5Y19;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_16 [31:30] INPUT = plb_bram_if_cntlr_0_bram_combined_16.mem PLACED = X3Y21;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_17 [29:28] INPUT = plb_bram_if_cntlr_0_bram_combined_17.mem PLACED = X4Y24;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_18 [27:26] INPUT = plb_bram_if_cntlr_0_bram_combined_18.mem PLACED = X3Y25;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_19 [25:24] INPUT = plb_bram_if_cntlr_0_bram_combined_19.mem PLACED = X2Y17;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_20 [23:22] INPUT = plb_bram_if_cntlr_0_bram_combined_20.mem PLACED = X1Y18;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_21 [21:20] INPUT = plb_bram_if_cntlr_0_bram_combined_21.mem PLACED = X1Y25;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_22 [19:18] INPUT = plb_bram_if_cntlr_0_bram_combined_22.mem PLACED = X5Y21;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_23 [17:16] INPUT = plb_bram_if_cntlr_0_bram_combined_23.mem PLACED = X3Y15;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_24 [15:14] INPUT = plb_bram_if_cntlr_0_bram_combined_24.mem PLACED = X3Y24;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_25 [13:12] INPUT = plb_bram_if_cntlr_0_bram_combined_25.mem PLACED = X3Y20;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_26 [11:10] INPUT = plb_bram_if_cntlr_0_bram_combined_26.mem PLACED = X4Y22;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_27 [9:8] INPUT = plb_bram_if_cntlr_0_bram_combined_27.mem PLACED = X5Y20;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_28 [7:6] INPUT = plb_bram_if_cntlr_0_bram_combined_28.mem PLACED = X4Y19;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_29 [5:4] INPUT = plb_bram_if_cntlr_0_bram_combined_29.mem PLACED = X2Y16;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_30 [3:2] INPUT = plb_bram_if_cntlr_0_bram_combined_30.mem PLACED = X0Y18;
+            plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_31 [1:0] INPUT = plb_bram_if_cntlr_0_bram_combined_31.mem PLACED = X4Y17;
+        END_BUS_BLOCK;
+    END_ADDRESS_SPACE;
+
+END_ADDRESS_MAP;
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Processor 'ppc405_1', ID 101, memory map.
+//
+///////////////////////////////////////////////////////////////////////////////
+
+ADDRESS_MAP ppc405_1 PPC405 101
+
+
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    // Processor 'ppc405_1' address space 'plb_bram_if_cntlr_1_bram_combined' 0xFFFF0000:0xFFFFFFFF (64 KBytes).
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+
+    ADDRESS_SPACE plb_bram_if_cntlr_1_bram_combined RAMB16 [0xFFFF0000:0xFFFFFFFF]
+        BUS_BLOCK
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_0 [63:62] INPUT = plb_bram_if_cntlr_1_bram_combined_0.mem PLACED = X2Y15;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_1 [61:60] INPUT = plb_bram_if_cntlr_1_bram_combined_1.mem PLACED = X4Y13;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_2 [59:58] INPUT = plb_bram_if_cntlr_1_bram_combined_2.mem PLACED = X1Y15;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_3 [57:56] INPUT = plb_bram_if_cntlr_1_bram_combined_3.mem PLACED = X4Y12;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_4 [55:54] INPUT = plb_bram_if_cntlr_1_bram_combined_4.mem PLACED = X3Y13;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_5 [53:52] INPUT = plb_bram_if_cntlr_1_bram_combined_5.mem PLACED = X4Y11;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_6 [51:50] INPUT = plb_bram_if_cntlr_1_bram_combined_6.mem PLACED = X4Y10;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_7 [49:48] INPUT = plb_bram_if_cntlr_1_bram_combined_7.mem PLACED = X5Y10;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_8 [47:46] INPUT = plb_bram_if_cntlr_1_bram_combined_8.mem PLACED = X0Y9;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_9 [45:44] INPUT = plb_bram_if_cntlr_1_bram_combined_9.mem PLACED = X3Y12;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_10 [43:42] INPUT = plb_bram_if_cntlr_1_bram_combined_10.mem PLACED = X2Y5;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_11 [41:40] INPUT = plb_bram_if_cntlr_1_bram_combined_11.mem PLACED = X3Y14;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_12 [39:38] INPUT = plb_bram_if_cntlr_1_bram_combined_12.mem PLACED = X3Y4;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_13 [37:36] INPUT = plb_bram_if_cntlr_1_bram_combined_13.mem PLACED = X1Y5;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_14 [35:34] INPUT = plb_bram_if_cntlr_1_bram_combined_14.mem PLACED = X4Y7;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_15 [33:32] INPUT = plb_bram_if_cntlr_1_bram_combined_15.mem PLACED = X2Y4;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_16 [31:30] INPUT = plb_bram_if_cntlr_1_bram_combined_16.mem PLACED = X2Y14;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_17 [29:28] INPUT = plb_bram_if_cntlr_1_bram_combined_17.mem PLACED = X3Y10;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_18 [27:26] INPUT = plb_bram_if_cntlr_1_bram_combined_18.mem PLACED = X0Y12;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_19 [25:24] INPUT = plb_bram_if_cntlr_1_bram_combined_19.mem PLACED = X3Y11;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_20 [23:22] INPUT = plb_bram_if_cntlr_1_bram_combined_20.mem PLACED = X2Y13;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_21 [21:20] INPUT = plb_bram_if_cntlr_1_bram_combined_21.mem PLACED = X3Y7;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_22 [19:18] INPUT = plb_bram_if_cntlr_1_bram_combined_22.mem PLACED = X3Y9;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_23 [17:16] INPUT = plb_bram_if_cntlr_1_bram_combined_23.mem PLACED = X4Y9;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_24 [15:14] INPUT = plb_bram_if_cntlr_1_bram_combined_24.mem PLACED = X3Y8;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_25 [13:12] INPUT = plb_bram_if_cntlr_1_bram_combined_25.mem PLACED = X4Y8;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_26 [11:10] INPUT = plb_bram_if_cntlr_1_bram_combined_26.mem PLACED = X2Y3;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_27 [9:8] INPUT = plb_bram_if_cntlr_1_bram_combined_27.mem PLACED = X2Y6;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_28 [7:6] INPUT = plb_bram_if_cntlr_1_bram_combined_28.mem PLACED = X3Y5;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_29 [5:4] INPUT = plb_bram_if_cntlr_1_bram_combined_29.mem PLACED = X1Y6;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_30 [3:2] INPUT = plb_bram_if_cntlr_1_bram_combined_30.mem PLACED = X4Y5;
+            plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_31 [1:0] INPUT = plb_bram_if_cntlr_1_bram_combined_31.mem PLACED = X3Y6;
+        END_BUS_BLOCK;
+    END_ADDRESS_SPACE;
+
+END_ADDRESS_MAP;
+

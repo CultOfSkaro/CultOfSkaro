@@ -1,0 +1,22 @@
+
+**** Build of configuration Debug for project Skaro ****
+
+make all 
+Building file: ../src/main.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -Os -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\Skaro\common" -I"C:\RobotRacers\SDK\Skaro\Communications" -I"C:\RobotRacers\SDK\Skaro\DataTypes" -I"C:\RobotRacers\SDK\Skaro\drivers\plb_pwm_ctrl_v1_00_a\src" -I"C:\RobotRacers\SDK\Skaro\drivers\plb_quad_encoder_v1_00_a\src" -I"C:\RobotRacers\SDK\Skaro\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\SDK\Skaro\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\SDK\Skaro\PIDControl" -I"C:\RobotRacers\SDK\Skaro\Vision" -I"C:\RobotRacers\SDK\Skaro\Wireless" -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o"src/main.o" "../src/main.c"
+../src/main.c: In function 'WirelessSendHandler':
+../src/main.c:170: warning: assignment makes integer from pointer without a cast
+../src/main.c: In function 'WirelessRecvHandler':
+../src/main.c:179: warning: pointer targets in passing argument 2 of 'XUartLite_Recv' differ in signedness
+../src/main.c:319: warning: dereferencing type-punned pointer will break strict-aliasing rules
+../src/main.c:190: warning: unused variable 'd'
+../src/main.c:188: warning: unused variable 'temp_int'
+../src/main.c:187: warning: unused variable 'temp'
+Finished building: ../src/main.c
+ 
+Building target: Skaro.elf
+Invoking: PowerPC gcc linker
+powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../RobotRacers_bsp_0/ppc405_0/lib -o"Skaro.elf"  ./src/main.o  ./drivers/plb_vision_v1_00_a/src/plb_vision.o  ./drivers/plb_usb_v1_00_a/src/USB_IO.o  ./drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder.o  ./drivers/plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.o  ./common/HeliosIO.o ./common/Serial.o ./common/ServoControl.o ./common/State.o ./common/Timer.o  ./Wireless/scheduler.o ./Wireless/skaro_queue.o ./Wireless/skaro_wireless.o  ./PIDControl/PID_Control.o  ./DataTypes/BufferStore.o ./DataTypes/FrameTable.o ./DataTypes/Queue.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -lxilflash
+Finished building target: Skaro.elf
+ 

@@ -1,0 +1,15 @@
+
+**** Build of configuration Debug for project TestApp_SDRAM ****
+
+make all 
+Building file: C:/RobotRacers/SDK/common/PID_Control.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I../../RobotRacers_bsp_0/ppc405_0/include -I"C:\RobotRacers\SDK\common" -c -fmessage-length=0 -I../../RobotRacers_bsp_0/ppc405_0/include -MMD -MP -MF"common/PID_Control.d" -MT"common/PID_Control.d" -o"common/PID_Control.o" "C:/RobotRacers/SDK/common/PID_Control.c"
+In file included from C:/RobotRacers/SDK/common/PID_Control.c:17:
+C:/RobotRacers/SDK/common/ServoControl.h:17:26: error: plb_pwm_ctrl.h: No such file or directory
+C:/RobotRacers/SDK/common/PID_Control.c:23:30: error: plb_quad_encoder.h: No such file or directory
+C:/RobotRacers/SDK/common/PID_Control.c: In function 'initPID':
+C:/RobotRacers/SDK/common/PID_Control.c:46: warning: implicit declaration of function 'getTicks'
+C:/RobotRacers/SDK/common/PID_Control.c: In function 'updateDistanceOutput':
+C:/RobotRacers/SDK/common/PID_Control.c:153: warning: unused variable 'currentDistance'
+make: *** [common/PID_Control.o] Error 1
