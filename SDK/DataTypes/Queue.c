@@ -103,6 +103,15 @@ void QueueClear(Queue* Q)
 */
 int QueuePush(Queue* Q, void* X ) 
 {
+	/*
+	print("QueuePush:\r\n");
+	xil_printf("  capacity: %d\r\n", Q->capacity);
+	xil_printf("  front: %d\r\n", Q->front);
+	xil_printf("  back: %d\r\n", Q->back);
+	xil_printf("  size: %d\r\n", Q->size);
+	xil_printf("  data: %08x\r\n", Q->data);
+	 */
+
 	if(QueueIsFull(Q)) 
 		return FALSE;
 
@@ -146,6 +155,15 @@ void* QueueFront(Queue* Q)
 */
 void* QueuePop(Queue* Q) 
 {
+	/*
+	print("QueuePop:\r\n");
+	xil_printf("  capacity: %d\r\n", Q->capacity);
+	xil_printf("  front: %d\r\n", Q->front);
+	xil_printf("  back: %d\r\n", Q->back);
+	xil_printf("  size: %d\r\n", Q->size);
+	xil_printf("  data: %08x\r\n", Q->data);
+	 */
+
 	void* X = QueueFront(Q);
 	if(!QueueIsEmpty(Q)) 
 	{
@@ -156,6 +174,14 @@ void* QueuePop(Queue* Q)
 	}
 	else
 		xil_printf("Queue is empty!\r\n");
+	/*
+	print("QueuePop End:\r\n");
+	xil_printf("  capacity: %d\r\n", Q->capacity);
+	xil_printf("  front: %d\r\n", Q->front);
+	xil_printf("  back: %d\r\n", Q->back);
+	xil_printf("  size: %d\r\n", Q->size);
+	xil_printf("  data: %08x\r\n", Q->data);
+	*/
 
 	return X;
 }
