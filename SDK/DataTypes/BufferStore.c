@@ -173,12 +173,9 @@ void BSInit()
 			int j;
 			for(j = 0 ; j < num_of_buffers ; j++)
 			{
-			  xil_printf("%d: Allocating %d bytes of data space\r\n", j, list_size*data_size);
+			  //xil_printf("%d: Allocating %d bytes of data space\r\n", j, list_size*data_size);
 			  Buffer* buf			= QueuePop(g_queues[i]);
 			  buf->data.voidptr	= MemAlloc(list_size*data_size);
-			  xil_printf("Buf at: %08x\r\n", buf);
-			  xil_printf("Allocated at: %08x\r\n", buf->data.voidptr);
-
 			  //memset(buf->data.voidptr, 0, list_size*data_size);  //remove the noise from the sdram
 			  QueuePush(g_queues[i], buf);
 			}		
@@ -219,17 +216,12 @@ if there are any available. Returns NULL if there are none available
 */
 Buffer* BSCheckOut(int buffer_type)
 {
-	xil_printf("BSCheckOut type: %d\r\n", buffer_type);
-	xil_printf("g_queues: %08x\r\n", g_queues);
 	if(		g_queues == NULL 
 		||	buffer_type < 0 
 		||	buffer_type >= NUM_BUFFER_STORE_TYPES)
 		return NULL;
-
-	xil_printf("g_queues[buffer_type]: %08x\r\n", g_queues[buffer_type]);
-	Buffer* buf = (Buffer*) QueuePop(g_queues[buffer_type]);
-	xil_printf("BSCheckOut Buffer addr: %08x\r\n", buf);
-	return buf;
+	 
+	return (Buffer*) QueuePop(g_queues[buffer_type]);
 }
 
 
@@ -275,10 +267,8 @@ int BSNumAvailable(int buffer_type)
 */
 void MemAllocInit(uint32 *base_addr)
 {
-	if(g_mem_alloc_top == NULL) {
+	if(g_mem_alloc_top == NULL)
 		g_mem_alloc_top = base_addr;
-		xil_printf("MemAlloc top set to: %08x\r\n", base_addr);
-	}
 }
 
 

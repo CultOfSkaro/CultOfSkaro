@@ -163,14 +163,11 @@ void FT_PrintFrameTable()
 	-# Apply camera chip settings
 */
 void FT_StartCapture(FrameTableEntry* fte)
-{
-	print("FT_StartCapture\r\n");
-
+{	
 	uint32 save_options;
 	
-	if(fte == NULL) {
+	if(fte == NULL)
 		return;
-	}
 
 	
 	// STEP: check in any Static Buffer frames that are still in the FTE
@@ -212,7 +209,6 @@ void FT_StartCapture(FrameTableEntry* fte)
 			 cannot save that frame since we do not have a place in memory to write it to.
 	*/
 	{
-		print("Checking out buffers\r\n");
 		int i;
 		for(i = 0 ; i < VISION_MAX_NUM_FRAMES ; i++)
 		{
@@ -230,13 +226,11 @@ void FT_StartCapture(FrameTableEntry* fte)
 				{
 					Buffer* buf = BSCheckOut(BSCamType2BufferType(type));
 					
-					if(buf != NULL) {// The buffer was sucessfully checked out...
+					if(buf != NULL) // The buffer was sucessfully checked out...
 						fte->frame_address[i] = buf;
-						xil_printf("framebuf checked out: %08x\r\n", buf->data.voidptr);
-					} else
+					else 
 					{	// The buffer was NOT successfuly checked out so don't try and save the frame...					
 						//HeliosSetLED2(!HeliosReadLED2());
-						print("Buffer checkout returned null!\r\n");
 						save_options &= (~mask);
 					}
 				} else 
