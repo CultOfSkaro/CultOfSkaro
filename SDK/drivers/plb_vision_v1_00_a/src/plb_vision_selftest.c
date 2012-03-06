@@ -35,51 +35,35 @@ void CameraISR()
 {
 	static FrameTableEntry* frame = NULL;
 
-	/*
-	//Get IntC Status Register
-	Xuint32 status = XIntc_GetIntrStatus(XPAR_INTC_SINGLE_BASEADDR);
-	//confirm that this is the Camera Interrupt
-	if((status & XPAR_PLB_VISION_0_INTERRUPT_MASK) != XPAR_PLB_VISION_0_INTERRUPT_MASK){
-		xil_printf("Interrupt was not camera interrupt\r\n");
-		return;
-	}
-	*/
-
 	CPU_MSR msr = DISABLE_INTERRUPTS();
 
 	//check in and out frames
-	if (frame != NULL) {
-		FT_CheckInFrame(frame);
-	}
+	//if (frame != NULL) {
+	//	FT_CheckInFrame(frame);
+	//}
 	frame = FT_CheckOutFrame();
 
 	//acknowledge interrupts so the camera can start the next capture
-	XIntc_AckIntr(XPAR_INTC_SINGLE_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
-	FT_InterruptHandlerFrameTable();
 
 	if (frame == NULL) {
 		print("Null frame!\r\n");
 	} else {
-		//Xuint32 add = GetFrameAddress(VISION_FRAME_RGB565);
-
-
-		//Buffer * b = frame->frame_address[VISION_FRAME_RGB565];
-		//Xuint32 add = (b->data.data32);//GetFrameAddress(VISION_FRAME_RGB565) - 0x6A000;
-		//xil_printf("0x%x\r\n", frame->frame_address_end[VISION_FRAME_RGB565]);
-		//xil_printf("%x  %d\r\n", add, frame->id);
-
 		uint32* bufAddr = frame->frame_address[VISION_FRAME_RGB565]->data.data32;
+
 		int bufSize = frame->frame_address[VISION_FRAME_RGB565]->capacity;
 		xil_printf("Frame id:%d\r\n", frame->id);
 		xil_printf("Frame addr: %08x", bufAddr);
 		xil_printf("Frame size: %d\r\n", bufSize);
 
+
 		print("Writing frame over usb!\r\n");
-		while(!USB_writeReady());
-		//USB_blockWrite((u32*)0,307200);
+		//while(!USB_writeReady());
 		USB_blockWrite((u32*)bufAddr,307200);
 	}
 
+
+	XIntc_AckIntr(XPAR_INTC_SINGLE_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
+	FT_InterruptHandlerFrameTable();
 
 	print("CamerISR Done\r\n");
 
@@ -97,15 +81,6 @@ int main()
 	MpmcCalibrationExample(XPAR_MPMC_0_DEVICE_ID);
 	XCache_EnableICache(0x80000000);
 	XCache_EnableDCache(0x80000000);
-
-	/*
-	print("Queue Test...");
-	if (QueueTest() != 0) {
-		print("Failed!\r\n");
-	} else {
-		print("Passed.\r\n");
-	}
-	*/
 
 	print("Initializing Memory Buffers...\r\n");
 	MemAllocInit((uint32*)0x100000);	//root of the DDR (can't use 0, that's NULL)
@@ -155,16 +130,9 @@ int main()
 		a += i;
 	}
 
-
-
-	//SetFrameAddress(VISION_FRAME_RGB565, MEMORY_ADDRESS);
-	//stat = GetFrameAddress(VISION_FRAME_RGB565);
-	//xil_printf("Frame address: 0x%x\r\n", stat);
 	print("Starting capture\r\n");
 	FT_Init();
 	FT_StartCapture(g_frametable[0]);
-
-	//StartFrameCapture();
 	
 	//xil_printf("Frame capture started, writing to memory at 0x%x\r\n", MEMORY_ADDRESS);
 	print("Waiting for interrupt...\r\n");
