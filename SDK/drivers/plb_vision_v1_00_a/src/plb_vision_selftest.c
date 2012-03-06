@@ -33,6 +33,8 @@ typedef Xuint32 CPU_MSR;
 
 void CameraISR()
 {
+	static FrameTableEntry* frame = NULL;
+
 	/*
 	//Get IntC Status Register
 	Xuint32 status = XIntc_GetIntrStatus(XPAR_INTC_SINGLE_BASEADDR);
@@ -43,9 +45,18 @@ void CameraISR()
 	}
 	*/
 
-	//CPU_MSR msr = DISABLE_INTERRUPTS();
+	CPU_MSR msr = DISABLE_INTERRUPTS();
 
-	FrameTableEntry* frame = FT_CheckOutFrame();
+	//check in and out frames
+	if (frame != NULL) {
+		FT_CheckInFrame(frame);
+	}
+	frame = FT_CheckOutFrame();
+
+	//acknowledge interrupts so the camera can start the next capture
+	XIntc_AckIntr(XPAR_INTC_SINGLE_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
+	FT_InterruptHandlerFrameTable();
+
 	if (frame == NULL) {
 		print("Null frame!\r\n");
 	} else {
@@ -67,14 +78,12 @@ void CameraISR()
 		while(!USB_writeReady());
 		//USB_blockWrite((u32*)0,307200);
 		USB_blockWrite((u32*)bufAddr,307200);
-		//FT_CheckInFrame(frame);
 	}
 
-	XIntc_AckIntr(XPAR_INTC_SINGLE_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
 
 	print("CamerISR Done\r\n");
-	FT_InterruptHandlerFrameTable();
-	//RESTORE_INTERRUPTS(msr);
+
+	RESTORE_INTERRUPTS(msr);
 }
 
 int main()
@@ -99,7 +108,7 @@ int main()
 	*/
 
 	print("Initializing Memory Buffers...\r\n");
-	MemAllocInit(0x100000);	//root of the DDR (can't use 0, that's NULL)
+	MemAllocInit((uint32*)0x100000);	//root of the DDR (can't use 0, that's NULL)
 	BSInit();
 
 	print("Initializing USB...\r\n");

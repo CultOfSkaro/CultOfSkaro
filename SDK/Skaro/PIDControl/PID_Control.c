@@ -265,7 +265,7 @@ void updateDistanceSetVelocity(int velocity){
 	int ticks = getTicks();
 	pid.distanceError = pid.desiredDistancePID - ticks;
 	int distanceError = pid.distanceError;
-	Wireless_ControlLog(ticks, pid.desiredDistancePID);
+	//Wireless_ControlLog(ticks, pid.desiredDistancePID);
 	//xil_printf("distanceError = %d\r\n", distanceError);
 	//xil_printf("old velocity = %d\r\n", velocity);
 

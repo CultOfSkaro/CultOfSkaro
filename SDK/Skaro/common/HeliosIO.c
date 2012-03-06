@@ -20,7 +20,7 @@ GPIO core:
   NET<5> = GPIO<26> - SRAM sleep
   NET<6> = GPIO<25> - Flash sleep (MSB)
 
-  * GPIO refers to the register read/written from the GPIO device via software
+ * GPIO refers to the register read/written from the GPIO device via software
     and NET refers to the net conntected to the GPIO_IO port on the GPIO core.
 
 Note that NET is assumed to be defined as VEC 4:0 in the MHS file, which causes
@@ -38,7 +38,7 @@ CHANGE LOG
 12/02/05 WSF Added code to control sleep pins on SRAM and flash.
 3/36/10 SFG Added game board IO functions
 
-******************************************************************************/
+ ******************************************************************************/
 
 
 #include "HeliosIO.h"
@@ -59,8 +59,8 @@ Xuint32 oldBits;
 uint8 HeliosReadBTN(void)
 {
 	return (uint8)(
-		XGpio_ReadReg(HELIOS_IO_BASEADDR, XGPIO_DATA_OFFSET) & 0x1
-		);
+			XGpio_ReadReg(HELIOS_IO_BASEADDR, XGPIO_DATA_OFFSET) & 0x1
+	);
 }
 
 #endif
@@ -74,8 +74,8 @@ uint8 HeliosReadBTN(void)
 uint8 HeliosReadSW1(void)
 {
 	return (uint8)(
-		(XGpio_ReadReg(HELIOS_IO_BASEADDR, XGPIO_DATA_OFFSET) >> 1) & 0x1
-		);
+			(XGpio_ReadReg(HELIOS_IO_BASEADDR, XGPIO_DATA_OFFSET) >> 1) & 0x1
+	);
 }
 
 #endif
@@ -89,7 +89,7 @@ uint8 HeliosReadSW1(void)
 uint8 HeliosReadSW2(void)
 {
 	return (uint8)(
-		(XGpio_ReadReg(HELIOS_IO_BASEADDR, XGPIO_DATA_OFFSET) >> 2) & 0x1	);
+			(XGpio_ReadReg(HELIOS_IO_BASEADDR, XGPIO_DATA_OFFSET) >> 2) & 0x1	);
 }
 
 #endif
@@ -103,8 +103,8 @@ uint8 HeliosReadSW2(void)
 uint8 HeliosReadLED1(void)
 {
 	return (uint8)(
-		(XGpio_ReadReg(HELIOS_IO_BASEADDR, XGPIO_DATA_OFFSET) >> 3) & 0x1
-		);
+			(XGpio_ReadReg(HELIOS_IO_BASEADDR, XGPIO_DATA_OFFSET) >> 3) & 0x1
+	);
 }
 
 
@@ -131,8 +131,8 @@ void HeliosSetLED1(uint8 value)
 uint8 HeliosReadLED2(void)
 {
 	return (uint8)(
-		(XGpio_ReadReg(HELIOS_IO_BASEADDR, XGPIO_DATA_OFFSET) >> 4) & 0x1
-		);
+			(XGpio_ReadReg(HELIOS_IO_BASEADDR, XGPIO_DATA_OFFSET) >> 4) & 0x1
+	);
 }
 
 
@@ -228,6 +228,9 @@ uint8 HeliosGetSleepFlash(void)
 /* GLOBAL MEMORY */
 XGpio Gpio;
 
+void HeliosEnableGyro(void) {
+	XGpio_DiscreteSet(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, HELIOS_ENABLE_GYRO);
+}
 /* FUNCTIONS */
 /* Initializes the game system.  Interrupts should have already been initialized in INIT_ISR.  This function
  * initializes the GPIO high-level interface (using the GPio struct), sets the data direction for the game-system GPIO pins
@@ -241,17 +244,17 @@ XStatus InitGameSystem(void)
 	//Interrupts were already initialized in ISR.c (INIT_ISR())
 	//Wireless_Debug("Initializing GPIO...");
 	Status = XGpio_Initialize(&Gpio, GPIO_DEVICE_ID);
-   if (Status != XST_SUCCESS)
-   {
+	if (Status != XST_SUCCESS)
+	{
 		return XST_FAILURE;
-   }
-   // Reverse the endian-ness
-	XGpio_SetDataDirection(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, 0xFFFFFC7D); //0xfffef8ff
+	}
+	// Reverse the endian-ness
+	//XGpio_SetDataDirection(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, 0xFFFFFF1B); //0xfffef8ff
+	XGpio_SetDataDirection(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, 0xFFFFD8FF); //0xfffef8ff
 	XGpio_SetDataDirection(&Gpio, 1, 0xFFFFFFE7); //0xFFFFFFE7
 	//Wireless_Debug("Enabling interrupts...");
 	XGpio_InterruptEnable(&Gpio, XGPIO_IR_CH2_MASK);
-   XGpio_InterruptGlobalEnable(&Gpio);
-   //Wireless_Debug("Done!\r\n");
+	XGpio_InterruptGlobalEnable(&Gpio);
 	return XST_SUCCESS;
 }
 
@@ -271,25 +274,9 @@ void Game_State()
  */
 void  Game_Shoot(uint16 shotType)
 {
-	if(Game_Truck_Alive() && Game_Enabled() && !Game_WaitingToShoot())
-	{
-		xil_printf("Shooting...%x\r\n", shotType);
-//		XGpio_DiscreteSet(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, shotType);
-//		XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, (~shotType) & GAME_SHOT_TYPE_M);
-//		XGpio_DiscreteSet(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, GAME_SHOOT_M);
-//		ClockDelay(200000);
-//		XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, GAME_SHOOT_M);
-		XGpio_DiscreteSet(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, shotType);
-		ClockDelay(200000);
-		XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, shotType);
-	}
-	if(!Game_Enabled())
-		xil_printf("Cannot shoot, game is not enabled!\n");
-	if(!Game_Truck_Alive())
-		xil_printf("Cannot shoot, truck is dead!\n");
-	if(Game_WaitingToShoot())
-		xil_printf("Cannot shoot, still waiting...\r\n");
-	xil_printf("Game state: %x\r\n", XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL));
+	XGpio_DiscreteSet(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, shotType);
+	ClockDelay(200000);
+	XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, shotType);
 }
 /* Returns the current state of the game.  The enabled bit is set automatically for you by the GPIO ISR.
  * This function simply returns the value set by the ISR.
@@ -300,8 +287,7 @@ uint8 Game_Enabled(void)
 {
 	//return GAMEENABLED;
 	//xil_printf("GE: %x\r\n", XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL));
-	uint32 temp = (XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL) & (GAME_STATE_1_M|GAME_STATE_0_M|GAME_NOT_IN_PLAY));
-	return (temp == 0x400); // Game is enabled and running if GS<14> == 0, GS<7> == 1, and GS<6> == 0, which equals 0x80
+	return (!(XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL) & GAME_NOT_IN_PLAY) != 0);
 }
 /* Returns the current state of the truck.  The enabled bit is set automatically for you by the GPIO ISR.
  * This function simply returns the value set by the ISR.
@@ -311,7 +297,7 @@ uint8 Game_Enabled(void)
 uint8 Game_Truck_Alive(void)
 {
 	//xil_printf("GE: %x\r\n", XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL));
-	return ((XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL) & GAME_TRUCK_ALIVE_M) > 0);
+	return ((XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL) & GAME_TRUCK_ALIVE_M) != 0);
 }
 /* Returns whether or not this truck has the flag.  The flag bit is set automatically for you by the GPIO ISR.
  * This function simply returns the value set by the ISR.
@@ -321,18 +307,18 @@ uint8 Game_Truck_Alive(void)
 uint8 Game_HaveFlag(void)
 {
 	//return GAMEFLAG;
-	return (XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL) & GAME_HAVE_FLAG_M) > 0;
+	return (XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL) & GAME_HAVE_FLAG_M) != 0;
 }
 
 uint8 Game_TeamNumber(void){
-	uint32 temp = XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL);
-	return ((uint8)((temp & GAME_TEAM_NUM_1_M)|(temp & GAME_TEAM_NUM_0_M)) >> 12);
+	uint32 value = XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL);
+	return (uint8)(((value & GAME_TEAM_NUM_1_M) >> 3)| ((value & GAME_TEAM_NUM_0_M) >> 5));
 }
 
 uint8 Game_GameState(void){
 	//return (XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL) & GAME_STATE_M) >> 2;
-	uint32 temp = XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL);
-	return ((uint8)((temp & GAME_STATE_1_M)|(temp & GAME_STATE_0_M)) >> 10);
+	uint32 value = XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL);
+	return (uint8) (((value & GAME_STATE_1_M) >> 5) | ((value & GAME_STATE_0_M) >> 7));
 }
 /* This is the function called by the GPIO ISR if you receive a HIT acknowledgement after firing a shot.
  * Put whatever code you like here (play a cool sound, etc...).
@@ -366,7 +352,7 @@ uint8  Game_WaitingToShoot(void)
 {
 	//return GAMEWTS;
 	//return 0;//!(XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL) & GAME_READY_TO_SHOOT_M);
-	return ((XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL) & GAME_WAIT_TO_SHOOT) > 0);
+	return ((XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL) & GAME_WAIT_TO_SHOOT) != 0);
 }
 /* This is the function called by the GPIO ISR if you receive a GAME PAUSED signal.
  * Put whatever code you need here to properly implement game protocol for a game being paused.

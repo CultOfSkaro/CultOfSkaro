@@ -11,6 +11,7 @@ using HeliosUsbWrapper;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Drawing.Imaging;
+using System.Diagnostics;
 
 namespace CameraViewer
 {    
@@ -19,6 +20,8 @@ namespace CameraViewer
         private usbReader usb;
         private bool captureLoop = false;
         private bool quit = false;
+        private Stopwatch timer = new Stopwatch();
+
 
         public Form1()
         {
@@ -28,6 +31,7 @@ namespace CameraViewer
 
         private void startCapture() {
             txtDebug.AppendText("Reading from usb...\r\n");
+            timer.Restart();
             usb.read(640 * 480 * 2); //*2 for 16 bits per pixel
         }
              
@@ -100,6 +104,11 @@ namespace CameraViewer
 
             pictureBox1.Image = image;
 
+            //calculate the fps
+            timer.Stop();
+            long mil = timer.ElapsedMilliseconds;
+            double fps = 1 / (mil / 1000.0);
+            lblFps.Text = "fps: " + fps;
 
             if (captureLoop) {
                 startCapture();

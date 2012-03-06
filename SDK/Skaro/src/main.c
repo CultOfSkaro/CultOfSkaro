@@ -90,6 +90,7 @@
 #define SET_OVERLAP			0xd
 #define SET_25_CIRCLE2		0xe
 #define SET_20_CIRCLE2		0xf
+#define SHOOT_GAME_SHOOT_KILL	0x10
 extern PID pid;
 
 #define	STATE_DEFAULT					0x0
@@ -125,6 +126,7 @@ int overlap = 0;
 XIntc InterruptController;     /* The instance of the Interrupt Controller */
 
 Skaro_Wireless wireless;
+XUartLite gameboard_uart;
 Scheduler scheduler;
 
 int PIDvel(Xuint32 target, Xuint32 cur){
@@ -150,32 +152,22 @@ void showHelp(){
 	//xil_printf("q Center servos and exit\r\n\r\n");
 }
 
-void logData(int actual, int expected){
-	/*
-	int i;
-	if(logIndex > 999){
-		return 0;
-	}
-	logValues[logIndex++] = actual;
-	logValues[logIndex++] = expected;\
-	*/
-}
 
 void WirelessSendHandler(void *CallBackRef, unsigned int EventData)
 {
 	unsigned char c;
 	wireless.send_in_progress = 0;
 	if(!QueueIsEmpty(&(wireless.write_queue))) {
-			wireless.send_in_progress = 1;
-			c = QueuePop(&(wireless.write_queue));
-			XUartLite_Send(&wireless.uart, &c, 1);
+		wireless.send_in_progress = 1;
+		c = QueuePop(&(wireless.write_queue));
+		XUartLite_Send(&wireless.uart, &c, 1);
 	}
 }
 
 void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 {
 	char c = 0;
-
+	Wireless_Debug("received something");
 	if(!XUartLite_Recv(&(wireless.uart), &c, 1)){
 		return;
 	}
@@ -189,150 +181,188 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 	int i;
 	char d;
 	switch (c){
-		case SET_PID_KP:
-			read(0,&c,1);
-			pid.Kp = c/25500.0;
-//			xil_printf("We are setting Kp to ");
-//			PrintFloat(pid.Kp);
-			print("\n\r");
-			break;
-		case SET_PID_KI:
-			read(0,&c,1);
-			pid.Ki = c/25500.0;
-//			xil_printf("We are setting Ki to ");
-//			PrintFloat(pid.Ki);
-//			print("\n\r");
-			break;
-		case SET_PID_KD:
-			read(0,&c,1);
-			pid.Kd = c/25500.0;
-//			xil_printf("We are setting Kd to ");
-//			PrintFloat(pid.Kd);
-//			print("\n\r");
-			break;
-		case SET_PID_KP_D:
-			read(0,&c,1);
-//			xil_printf("received %d", c);
-			pid.Kp_d = c/25500.0;
-//			xil_printf("We are setting Kp_d to ");
-//			PrintFloat(pid.Kp_d);
-//			print("\n\r");
-			break;
-		case SET_PID_KI_D:
-			read(0,&c,1);
-			pid.Ki_d = c/25500.0;
-//			xil_printf("We are setting Ki_d to ");
-//			PrintFloat(pid.Ki_d);
-//			print("\n\r");
-			break;
-		case SET_PID_KD_D:
-			read(0,&c,1);
-			pid.Kd_d = c/25500.0;
-//			xil_printf("We are setting Kd_d to ");
-//			PrintFloat(pid.Kd_d);
-//			print("\n\r");
-			break;
-		case REQUEST_CONTROL_LOG:
-//			for(i = 0; i < 1000; i++){
-//				xil_printf("%d\n",logValues[i]);
-//			}
-			break;
-		case SET_DISTANCE:
-			read(0,word,10);
-			//getWirelessBytes(word, 13);
+	case SET_PID_KP:
+		read(0,&c,1);
+		pid.Kp = c/25500.0;
+		//			xil_printf("We are setting Kp to ");
+		//			PrintFloat(pid.Kp);
+		print("\n\r");
+		break;
+	case SET_PID_KI:
+		read(0,&c,1);
+		pid.Ki = c/25500.0;
+		//			xil_printf("We are setting Ki to ");
+		//			PrintFloat(pid.Ki);
+		//			print("\n\r");
+		break;
+	case SET_PID_KD:
+		read(0,&c,1);
+		pid.Kd = c/25500.0;
+		//			xil_printf("We are setting Kd to ");
+		//			PrintFloat(pid.Kd);
+		//			print("\n\r");
+		break;
+	case SET_PID_KP_D:
+		read(0,&c,1);
+		//			xil_printf("received %d", c);
+		pid.Kp_d = c/25500.0;
+		//			xil_printf("We are setting Kp_d to ");
+		//			PrintFloat(pid.Kp_d);
+		//			print("\n\r");
+		break;
+	case SET_PID_KI_D:
+		read(0,&c,1);
+		pid.Ki_d = c/25500.0;
+		//			xil_printf("We are setting Ki_d to ");
+		//			PrintFloat(pid.Ki_d);
+		//			print("\n\r");
+		break;
+	case SET_PID_KD_D:
+		read(0,&c,1);
+		pid.Kd_d = c/25500.0;
+		//			xil_printf("We are setting Kd_d to ");
+		//			PrintFloat(pid.Kd_d);
+		//			print("\n\r");
+		break;
+	case REQUEST_CONTROL_LOG:
+		//			for(i = 0; i < 1000; i++){
+		//				xil_printf("%d\n",logValues[i]);
+		//			}
+		break;
+	case SET_DISTANCE:
+		read(0,word,10);
+		//getWirelessBytes(word, 13);
 
-			//word[11] = 0;
-			//xil_printf("received %s\r\n", word);
-			//print("\r\n");
-			i = atoi(word);
-			setDistance(i);
-			//xil_printf("set distance to %d\r\n", i);
-			break;
-		case SET_STEERING:
-			read(0,&c,1);
-			SetServo(RC_STR_SERVO, (signed char)c);
-			//xil_printf("Set Steering servo to %d\n\r", (signed char)c);
-			break;
-		case SET_MAX_VELOCITY:
-			read(0,word,10);
-			//xil_printf("received %s\r\n", word);
-			i = atoi(word);
-			//setVelocity(i);
-			max_velocity = i;
-			//xil_printf("set max velocity to %d\r\n", i);
-			break;
-		case SET_25_CIRCLE1:
-			read(0,word,10);
-//			xil_printf("received %s", word);
-			circle25_ticks1 = atoi(word);
-//			xil_printf("set distance to %d", circle25_ticks1);
-			break;
-		case SET_20_CIRCLE1:
-			read(0,word,10);
-//			xil_printf("received %s", word);
-			circle20_ticks1 = atoi(word);
-//			xil_printf("set distance to %d", circle20_ticks1);
-			break;
-		case SET_25_CIRCLE2:
-			read(0,word,10);
-//			xil_printf("received %s", word);
-			circle25_ticks2 = atoi(word);
-//			xil_printf("set distance to %d", circle25_ticks2);
-			break;
-		case SET_20_CIRCLE2:
-			read(0,word,10);
-//			xil_printf("received %s", word);
-			circle20_ticks2 = atoi(word);
-//			xil_printf("set distance to %d", circle20_ticks2);
-			break;
-		case SET_OVERLAP:
-			read(0,word,10);
-			//xil_printf("received %s", word);
-			overlap = atoi(word);
-			//xil_printf("set distance to %d", overlap);
-			scheduler.events.flags.hello = 1;
-			break;
-		case 'a':
-			loop_count = 2;
-			state = STATE_FIGURE_EIGHT_LEFT_START;
-			break;
-		case 'b':
-			loop_count = 2;
-			state = STATE_FIGURE_EIGHT_RIGHT_START;
-			break;
-		case 'd':
-			print("USB Status: ");
-			xil_printf("%x\r\n", USB_getStatus());
-			print("Testing writeReady of USB: ");
-			if (!USB_writeReady()) {
-				print("FAILED\r\n");
-			} else {
-				print("PASSED\r\n\r\n");
-			}
+		//word[11] = 0;
+		//xil_printf("received %s\r\n", word);
+		//print("\r\n");
+		i = atoi(word);
+		setDistance(i);
+		//xil_printf("set distance to %d\r\n", i);
+		//Wireless_Debug("set distance to ");
+		break;
+	case SET_STEERING:
+		read(0,&c,1);
+		SetServo(RC_STR_SERVO, (signed char)c);
+		//xil_printf("Set Steering servo to %d\n\r", (signed char)c);
+		//Wireless_Debug("Set Steering servo to ");
+		break;
+	case SET_MAX_VELOCITY:
+		read(0,word,10);
+		//xil_printf("received %s\r\n", word);
+		i = atoi(word);
+		//setVelocity(i);
+		max_velocity = i;
+		//max_velocity = 3000;
+		//xil_printf("set max velocity to %d\r\n", i);
+		//Wireless_Debug("set max velocity to ");
+		break;
+	case SET_25_CIRCLE1:
+		read(0,word,10);
+		//			xil_printf("received %s", word);
+		circle25_ticks1 = atoi(word);
+		//circle25_ticks1 = 10000;
+		//			xil_printf("set distance to %d", circle25_ticks1);
+		break;
+	case SET_20_CIRCLE1:
+		read(0,word,10);
+		//			xil_printf("received %s", word);
+		circle20_ticks1 = atoi(word);
+		//circle20_ticks1 = 10000;
+		//			xil_printf("set distance to %d", circle20_ticks1);
+		break;
+	case SET_25_CIRCLE2:
+		read(0,word,10);
+		//			xil_printf("received %s", word);
+		circle25_ticks2 = atoi(word);
+		//circle25_ticks2 = 10000;
+		//			xil_printf("set distance to %d", circle25_ticks2);
+		break;
+	case SET_20_CIRCLE2:
+		read(0,word,10);
+		//			xil_printf("received %s", word);
+		circle20_ticks2 = atoi(word);
+		//circle20_ticks2 = 10000;
+		//			xil_printf("set distance to %d", circle20_ticks2);
+		break;
+	case SHOOT_GAME_SHOOT_KILL:
+		Game_Shoot(GAME_KILL_SHOT);
+		break;
+	case '3':
+		read(0,word,10);
+		//xil_printf("received %s", word);
+		overlap = atoi(word);
+		//overlap = 10000;
+		//xil_printf("set distance to %d", overlap);
+		scheduler.events.flags.hello = 1;
+		break;
+	case 'a':
+		loop_count = 2;
+		state = STATE_FIGURE_EIGHT_LEFT_START;
+		break;
+	case 'b':
+		loop_count = 2;
+		state = STATE_FIGURE_EIGHT_RIGHT_START;
+		break;
+	case 'd':
+		print("USB Status: ");
+		xil_printf("%x\r\n", USB_getStatus());
+		print("Testing writeReady of USB: ");
+		if (!USB_writeReady()) {
+			print("FAILED\r\n");
+		} else {
+			print("PASSED\r\n\r\n");
+		}
 
-			USB_setBurstSize(128);
-			u16 data[100];
-			for (i = 0; i < 100; i++) {
-				data[i] = i;
-			}
-			//u32* longdword = (u32*)
-			USB_blockWrite((u32*)data, 100);
-			USB_forceCommit();
+		USB_setBurstSize(128);
+		u16 data[100];
+		for (i = 0; i < 100; i++) {
+			data[i] = i;
+		}
+		//u32* longdword = (u32*)
+		USB_blockWrite((u32*)data, 100);
+		USB_forceCommit();
 
-			print("wrote text to usb\r\n");
+		print("wrote text to usb\r\n");
 
-			break;
-		case 'c':
-			setDistance(0);
-			state = STATE_DEFAULT;
-			break;
-		default:
-			xil_printf("Unknown command received: %d\r\n", c);
-			break;
+		break;
+	case 'c':
+		setDistance(0);
+		loop_count = 0;
+		state = STATE_DEFAULT;
+		break;
+	default:
+		xil_printf("Unknown command received: %d\r\n", c);
+		break;
 	}
 	while(!XUartLite_IsReceiveEmpty(wireless.uart.RegBaseAddress)){
 		XUartLite_RecvByte(wireless.uart.RegBaseAddress);
 	}
+}
+
+void GameboardSendHandler(void *CallBackRef, unsigned int EventData)
+{
+}
+
+void GameboardRecvHandler(void *CallBackRef, unsigned int EventData)
+{
+	char word[5];
+	int velocity;
+	int angular_velocity;
+
+	Wireless_Debug(".");
+	read(0,word,5);
+	Wireless_Debug("%");
+	velocity = (signed char)word[1];
+	velocity <<= 8;
+	velocity |= word[2];
+	angular_velocity = (signed char)word[3];
+	angular_velocity <<= 8;
+	angular_velocity |= word[4];
+	Wireless_Debug(" Velocity:");
+	PrintInt(velocity);
+	Wireless_Debug(" Angular Velocity:");
+	PrintInt(angular_velocity);
 }
 
 int counter = 0;
@@ -355,67 +385,60 @@ void hello(){
 }
 
 void InitInterrupts() {
-		XUartLite_Initialize(&(wireless.uart), XPAR_WIRELESS_UART_DEVICE_ID);
-		XUartLite_ResetFifos(&(wireless.uart));
-		Wireless_Init(&wireless);
+	// Initialize wireless uart
+	XUartLite_Initialize(&(wireless.uart), XPAR_WIRELESS_UART_DEVICE_ID);
+	XUartLite_ResetFifos(&(wireless.uart));
+	Wireless_Init(&wireless);
 
-		/*
-		 * Initialize the interrupt controller driver so that it is ready to
-		 * use.
-		 */
-		XIntc_Initialize(&InterruptController, XPAR_INTC_0_DEVICE_ID);
+	// Initialize gameboard uart
+	XUartLite_Initialize(&gameboard_uart, XPAR_SERIAL_UART_DEVICE_ID);
+	XUartLite_ResetFifos(&gameboard_uart);
 
+	// Initialize the interrupt controller
+	XIntc_Initialize(&InterruptController, XPAR_INTC_0_DEVICE_ID);
 
-		/*
-		 * Connect a device driver handler that will be called when an interrupt
-		 * for the device occurs, the device driver handler performs the
-		 * specific interrupt processing for the device.
-		 */
-		XIntc_Connect(&InterruptController, XPAR_XPS_INTC_0_WIRELESS_UART_INTERRUPT_INTR,
-				(XInterruptHandler)XUartLite_InterruptHandler,
-				(void *)&(wireless.uart));
+	// Connect the wireless uart to the interrupt controller
+	XIntc_Connect(&InterruptController, XPAR_XPS_INTC_0_WIRELESS_UART_INTERRUPT_INTR,
+			(XInterruptHandler)XUartLite_InterruptHandler,
+			(void *)&(wireless.uart));
 
-		/*
-		 * Start the interrupt controller such that interrupts are enabled for
-		 * all devices that cause interrupts, specific real mode so that
-		 * the UartLite can cause interrupts through the interrupt controller.
-		 */
-		XIntc_Start(&InterruptController, XIN_REAL_MODE);
+	// Connect the gameboard uart to the interrupt controller
+	XIntc_Connect(&InterruptController, XPAR_XPS_INTC_0_SERIAL_UART_INTERRUPT_INTR,
+			(XInterruptHandler)XUartLite_InterruptHandler,
+			(void *)&gameboard_uart);
 
-		/*
-		 * Enable the interrupt for the UartLite device.
-		 */
-		XIntc_Enable(&InterruptController, XPAR_XPS_INTC_0_WIRELESS_UART_INTERRUPT_INTR);
+	XIntc_Start(&InterruptController, XIN_REAL_MODE);
 
-		/*
-		 * Initialize the exception table.
-		 */
-		Xil_ExceptionInit();
+	// Enable interrupts for serial controllers
+	XIntc_Enable(&InterruptController, XPAR_XPS_INTC_0_WIRELESS_UART_INTERRUPT_INTR);
+	XIntc_Enable(&InterruptController, XPAR_XPS_INTC_0_SERIAL_UART_INTERRUPT_INTR);
 
-		/*
-		 * Register the interrupt controller handler with the exception table.
-		 */
-		Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
-				(Xil_ExceptionHandler)XIntc_InterruptHandler,
-				&InterruptController);
+	Xil_ExceptionInit();
 
-		/*
-		 * Enable exceptions.
-		 */
-		Xil_ExceptionEnable();
-		XUartLite_SetSendHandler(&(wireless.uart), WirelessSendHandler, &(wireless.uart));
-		XUartLite_SetRecvHandler(&(wireless.uart), WirelessRecvHandler, &(wireless.uart));
-		XUartLite_EnableInterrupt(&(wireless.uart));
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+			(Xil_ExceptionHandler)XIntc_InterruptHandler,
+			&InterruptController);
 
-	    XExceptionHandler pithandler = &my_pitHandler;
-	    XExc_RegisterHandler(XEXC_ID_PIT_INT, pithandler,
-	                      0);
-	    XTime_PITEnableAutoReload();
-	    XTime_PITSetInterval(100000);
-	    XExc_mEnableExceptions(XEXC_ALL);
-	    XTime_PITEnableInterrupt();
-	    XTime_PITClearInterrupt();
+	Xil_ExceptionEnable();
 
+	// Set up send/receive handlers for wireless uart
+	XUartLite_SetSendHandler(&(wireless.uart), WirelessSendHandler, &(wireless.uart));
+	XUartLite_SetRecvHandler(&(wireless.uart), WirelessRecvHandler, &(wireless.uart));
+	XUartLite_EnableInterrupt(&(wireless.uart));
+
+	// Set up send/receive handlers for gameboard uart
+	XUartLite_SetSendHandler(&gameboard_uart, GameboardSendHandler, &gameboard_uart);
+	XUartLite_SetRecvHandler(&gameboard_uart, GameboardRecvHandler, &gameboard_uart);
+	XUartLite_EnableInterrupt(&gameboard_uart);
+
+	XExceptionHandler pithandler = &my_pitHandler;
+	XExc_RegisterHandler(XEXC_ID_PIT_INT, pithandler,
+			0);
+	XTime_PITEnableAutoReload();
+	XTime_PITSetInterval(100000);
+	XExc_mEnableExceptions(XEXC_ALL);
+	XTime_PITEnableInterrupt();
+	XTime_PITClearInterrupt();
 }
 
 // control_loop is registered with the scheduler on the 'timer' event.
@@ -424,102 +447,111 @@ void control_loop(){
 	int distance;
 	updateDistanceSetVelocity(max_velocity);
 	switch(state) {
-		case STATE_DEFAULT:
+	case STATE_DEFAULT:
+		break;
+	case STATE_FIGURE_EIGHT_LEFT_START:
+		Wireless_Debug("STATE_FIGURE_EIGHT_LEFT_START");
+		if(!loop_count){
+			state = STATE_DEFAULT;
 			break;
-		case STATE_FIGURE_EIGHT_LEFT_START:
-			if(!loop_count){
-				state = STATE_DEFAULT;
-				break;
-			}
-			SetServo(RC_STR_SERVO, LEFT*26);
-			if(loop_count == 2){
-				setDistance(2*(circle25_ticks1 + circle20_ticks1) - 3*overlap);
-			}
+		}
+		SetServo(RC_STR_SERVO, LEFT*26);
+		if(loop_count == 2){
+			setDistance(2*(circle25_ticks1 + circle20_ticks1) - 3*overlap);
+		}
+		loop_count--;
+		state = STATE_FIGURE_EIGHT_LEFT_END;
+		break;
+	case STATE_FIGURE_EIGHT_LEFT_END:
+		if (pid.distanceError < (circle20_ticks1 + circle25_ticks1 + circle20_ticks1 )) {
+			state = STATE_FIGURE_EIGHT_LEFT_START;
+			SetServo(RC_STR_SERVO, RIGHT*31);
+		}
+		break;
+	case STATE_FIGURE_EIGHT_RIGHT_START:
+		if(!loop_count){
+			state = STATE_DEFAULT;
+			break;
+		}
+		if(loop_count == 2){
+			setDistance(circle25_ticks1 + circle25_ticks2 + circle20_ticks1 + circle20_ticks2);
+			state = STATE_FIGURE_EIGHT_RIGHT_END;
+			SetServo(RC_STR_SERVO, RIGHT*26);
 			loop_count--;
-			state = STATE_FIGURE_EIGHT_LEFT_END;
-			break;
-		case STATE_FIGURE_EIGHT_LEFT_END:
-				if (pid.distanceError < (circle20_ticks1 + circle25_ticks1 + circle20_ticks1 )) {
-					state = STATE_FIGURE_EIGHT_LEFT_START;
-					SetServo(RC_STR_SERVO, RIGHT*31);
-				}
-				break;
-		case STATE_FIGURE_EIGHT_RIGHT_START:
-			if(!loop_count){
-				state = STATE_DEFAULT;
-				break;
-			}
-			if(loop_count == 2){
-				setDistance(circle25_ticks1 + circle25_ticks2 + circle20_ticks1 + circle20_ticks2);
-				state = STATE_FIGURE_EIGHT_RIGHT_END;
-				SetServo(RC_STR_SERVO, RIGHT*26);
-				loop_count--;
-			} else if (pid.distanceError < (circle20_ticks2 + circle25_ticks2 )) {
-				state = STATE_FIGURE_EIGHT_RIGHT_HALF;
-				SetServo(RC_STR_SERVO, RIGHT*26);
-				loop_count--;
-			}
-			break;
-		case STATE_FIGURE_EIGHT_RIGHT_HALF:
-			if(loop_count == 1){
-				distance = circle25_ticks2 + circle20_ticks1 +circle20_ticks2 + circle25_ticks1/2;
-			} else {
-				distance = circle25_ticks2/2 + circle20_ticks2;
-			}
-			if (pid.distanceError < distance) {
-				state = STATE_FIGURE_EIGHT_RIGHT_END;
-				SetServo(RC_STR_SERVO, RIGHT*26);
-			}
-			break;
-		case STATE_FIGURE_EIGHT_RIGHT_END:
-			if(loop_count == 1){
-				distance = circle25_ticks2 + circle20_ticks1 +circle20_ticks2;
-			} else {
-				distance = circle20_ticks2;
-			}
-			if (pid.distanceError < distance) {
-				state = STATE_FIGURE_EIGHT_RIGHT_END_HALF;
-				SetServo(RC_STR_SERVO, LEFT*31);
-			}
-			break;
-		case STATE_FIGURE_EIGHT_RIGHT_END_HALF:
-			if(loop_count == 1){
-				distance = circle25_ticks2 + circle20_ticks2 +circle20_ticks1/2;
-			} else {
-				distance = circle20_ticks2/2;
-			}
-			if (pid.distanceError < distance) {
-				state = STATE_FIGURE_EIGHT_RIGHT_START;
-				SetServo(RC_STR_SERVO, LEFT*31);
-			}
-			break;
+		} else if (pid.distanceError < (circle20_ticks2 + circle25_ticks2 )) {
+			state = STATE_FIGURE_EIGHT_RIGHT_HALF;
+			SetServo(RC_STR_SERVO, RIGHT*26);
+			loop_count--;
+		}
+		break;
+	case STATE_FIGURE_EIGHT_RIGHT_HALF:
+		if(loop_count == 1){
+			distance = circle25_ticks2 + circle20_ticks1 +circle20_ticks2 + circle25_ticks1/2;
+		} else {
+			distance = circle25_ticks2/2 + circle20_ticks2;
+		}
+		if (pid.distanceError < distance) {
+			state = STATE_FIGURE_EIGHT_RIGHT_END;
+			SetServo(RC_STR_SERVO, RIGHT*26);
+		}
+		break;
+	case STATE_FIGURE_EIGHT_RIGHT_END:
+		if(loop_count == 1){
+			distance = circle25_ticks2 + circle20_ticks1 +circle20_ticks2;
+		} else {
+			distance = circle20_ticks2;
+		}
+		if (pid.distanceError < distance) {
+			state = STATE_FIGURE_EIGHT_RIGHT_END_HALF;
+			SetServo(RC_STR_SERVO, LEFT*31);
+		}
+		break;
+	case STATE_FIGURE_EIGHT_RIGHT_END_HALF:
+		if(loop_count == 1){
+			distance = circle25_ticks2 + circle20_ticks2 +circle20_ticks1/2;
+		} else {
+			distance = circle20_ticks2/2;
+		}
+		if (pid.distanceError < distance) {
+			state = STATE_FIGURE_EIGHT_RIGHT_START;
+			SetServo(RC_STR_SERVO, LEFT*31);
+		}
+		break;
 	}
 }
 
 int main (void) {
 	int32 str;
 	int32 thr;
-//	Xuint32 velcount = 0;
+	//	Xuint32 velcount = 0;
 	//Xuint32 eTicks = 0;
 	//Xuint32 maxTicks = 10;
-//	Xuint32 sTicks1 = 0;
-//	Xuint32 sTicks2 = 0;
-//	Xuint32 vel = 0;
+	//	Xuint32 sTicks1 = 0;
+	//	Xuint32 sTicks2 = 0;
+	//	Xuint32 vel = 0;
 	//Xuint32 cvel = 0;
-//	Xuint32 pid = 0;
+	//	Xuint32 pid = 0;
 	///int ticks;
 	//int ticks_prev;
 
 	InitInterrupts();
 
+
+
 	USB_init();
+
+	Wireless_Debug("-- Starting PWM Test Mode --\r\n");
+	Wireless_Debug("Current max velocity: ");
+	PrintInt(max_velocity);
+	Wireless_Debug("\r\n");
+	Wireless_Debug("NOTICE: Make sure car is placed on stand before proceeding!!\r\n");
 
 	/* Scheduler initialization */
 	Scheduler_Init(&scheduler);
 
 	/* Initialize Tasks */
 	Events control_events;  // in order to register the control loop,
-							// we need an events struct
+	// we need an events struct
 	control_events.reg = 0;  		// clear all events
 	control_events.flags.timer = 1;	// set the flags we want as triggers
 	Scheduler_RegisterTask(&scheduler,control_loop,control_events);  // Register task with Scheduler
@@ -534,16 +566,12 @@ int main (void) {
 
 	str = 0;
 	thr = 0;
-	
+
 	XCache_EnableICache(0x00000001);
 	XCache_EnableDCache(0x00000001);
-	
+
 	InitGameSystem();
-	Wireless_Debug("-- Starting PWM Test Mode --\r\n");
-	Wireless_Debug("Current max velocity: ");
-	PrintInt(max_velocity);
-	Wireless_Debug("\r\n");
-	Wireless_Debug("NOTICE: Make sure car is placed on stand before proceeding!!\r\n");
+	HeliosEnableGyro();
 	//showHelp();
 	//Initialze servos to center position
 	ServoInit(RC_STR_SERVO);
@@ -553,11 +581,37 @@ int main (void) {
 	initPID();
 	//setVelocity(3000);
 	setDistance(0);
+	//setDistance(100000);
 	SetServo(RC_STR_SERVO, 1);
+	char c;
 
 	while(1){
 		/*  Run Scheduler repeatedly */
 		Scheduler_Run(&scheduler);
+		//		usleep(1000000);
+		//		Wireless_Debug("Has Flag: ");
+		//		PrintInt(Game_HaveFlag());
+		//		Wireless_Debug("\r\n");
+		//
+		//		Wireless_Debug("Game Enabled: ");
+		//		PrintInt(Game_Enabled());
+		//		Wireless_Debug("\r\n");
+		//
+		//		Wireless_Debug("Game Truck Alive: ");
+		//		PrintInt(Game_Truck_Alive());
+		//		Wireless_Debug("\r\n");
+		//
+		//		Wireless_Debug("Waiting To Shoot: ");
+		//		PrintInt(Game_WaitingToShoot());
+		//		Wireless_Debug("\r\n");
+		//
+		//		Wireless_Debug("Game State: ");
+		//		PrintInt(Game_GameState());
+		//		Wireless_Debug("\r\n");
+		//
+		//		Wireless_Debug("Team Number: ");
+		//		PrintInt(Game_TeamNumber());
+		//		Wireless_Debug("\r\n");
 	}
 
 	Wireless_Debug("-- Exiting main() --\r\n");

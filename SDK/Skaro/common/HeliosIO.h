@@ -50,72 +50,26 @@ CHANGE LOG
 	#define INTC_GPIO_INTERRUPT_ID	XPAR_XPS_INTC_0_XPS_GPIO_0_IP2INTC_IRPT_INTR
 	#define GAME_SYSTEM_GPIO_CHANNEL	2
 	#define GAME_SYSTEM_GPIO_INT		XPAR_XPS_GPIO_1_IP2INTC_IRPT_MASK
-	//bit definitions (for masks)
-	/*
-	#define GAME_READY_TO_SHOOT_M		0x0080
-	#define GAME_HIT_M					0x0020
-	#define GAME_SHOT_STATUS_READY_M	0x0010
-	#define GAME_TRUCK_ALIVE_M			0x0008
-	#define GAME_HAVE_FLAG_M			0x0004
-	#define GAME_SHOT_TYPE_1_M			0x0002	//pass, revive, kill
-	#define GAME_SHOT_TYPE_2_M			0x0001	//
-	#define GAME_SHOOT_M					0x0100
-	#define GAME_STATE_1_M				0x0400		//stop, go, pause, win
-	#define GAME_STATE_2_M				0x0800		//
-	#define GAME_TEAM_NUM_1_M			0x4000
-	#define GAME_TEAM_NUM_2_M			0x8000
 	
-	#define GAME_STATE_M					0x0C00
-	#define GAME_SHOT_TYPE_M			0x0003
-	
-	#define GAME_STATE_STOP				0x0000	// okay
-	#define GAME_STATE_GO				0x0C00
-	#define GAME_STATE_PAUSE			0x0400
-	#define GAME_STATE_WIN				0x0800
-	
-	#define GAME_KILL_SHOT				0x0002	// okay
-	#define GAME_REVIVE_SHOT			0x0001
-	#define GAME_PASS_SHOT				0x0003
-	*/
-	// last minute changes
-	#define GAME_TRUCK_IS_BASE_M		0x20000
-	#define GAME_HAVE_FLAG_M			0x10000
-	#define GAME_TRUCK_ALIVE_M			0x08000
-	#define GAME_TRUCK_REGISTERED_M		0x04000
-	#define GAME_TEAM_NUM_1_M			0x02000
-	#define GAME_TEAM_NUM_0_M			0x01000
-	#define GAME_STATE_1_M				0x00800		//stop, go, pause, win
-	#define GAME_STATE_0_M				0x00400
-	#define GAME_KILL_SHOT				0x00200
-	#define GAME_PASS_SHOT				0x00100
-	#define GAME_REVIVE_SHOT			0x00080
-	#define GAME_HIT_ACK				0x00040
-	#define GAME_MISS_ACK				0x00020
-	//#define undef						0x00010
-	#define GAME_NOT_IN_PLAY			0x00008
-	#define GAME_WAIT_TO_SHOOT			0x00004
-	#define GAME_SERIAL_HEL2GS			0x00002
-	#define GAME_SERIAL_GS2HEL			0x00001
+	// Game System Interface (16 bits)
+	#define GAME_TRUCK_IS_BASE_M		0x0001
+	#define GAME_HAVE_FLAG_M			0x0002
+	#define GAME_TRUCK_ALIVE_M			0x0004
+	#define GAME_TRUCK_REGISTERED_M		0x0008
+	#define GAME_TEAM_NUM_1_M			0x0010
+	#define GAME_TEAM_NUM_0_M			0x0020
+	#define GAME_STATE_1_M				0x0040		//stop, go, pause, win
+	#define GAME_STATE_0_M				0x0080
+	#define GAME_KILL_SHOT				0x0100
+	#define GAME_PASS_SHOT				0x0200
+	#define GAME_REVIVE_SHOT			0x0400
+	#define GAME_HIT_ACK				0x0800
+	#define GAME_MISS_ACK				0x1000
+	#define HELIOS_ENABLE_GYRO			0x2000
+	#define GAME_NOT_IN_PLAY			0x4000
+	#define GAME_WAIT_TO_SHOOT			0x8000
 
-	#define GAME_SHOOT_M				0x0040
-	#define GAME_SHOT_TYPE_1_M			0x0080		//1 is kill, 0 is pass
-	
-	
-	#define GAME_STATE_STOP				0x0000	// okay
-	#define GAME_STATE_GO				0x000C
-	#define GAME_STATE_PAUSE			0x0004
-	#define GAME_STATE_WIN				0x0008
-	
-	#define GAME_STATE_M				0x000C
-	#define GAME_SHOT_TYPE_M			0x0080
-	
-	
-
-	
 ///////////////////////////////////////////////////////////////////////////////
-
-
-
 // FUNCTION PROTOTYPES ////////////////////////////////////////////////////////
 #define Game_ClearShots() \
 	XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, GAME_SHOOT_M);
@@ -131,6 +85,7 @@ void   HeliosSetSleepSRAM(uint8 state);
 uint8  HeliosGetSleepSRAM(void);
 void   HeliosSetSleepFlash(uint8 state);
 uint8  HeliosGetSleepFlash(void);
+void   HeliosEnableGyro(void);
 // Game board function prototypes
 void   Game_State();
 void   Game_Shoot(uint16 shotType);
