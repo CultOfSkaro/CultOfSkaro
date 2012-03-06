@@ -34,7 +34,7 @@ cygwin warning:
   Consult the user's guide for more details about POSIX paths:
     http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
    text	   data	    bss	    dec	    hex	filename
-  51254	    500	   2760	  54514	   d4f2	TestApp_Vision.elf
+  51158	    500	   2760	  54418	   d492	TestApp_Vision.elf
 Finished building: TestApp_Vision.elf.size
  
 Invoking: Xilinx ELF Check

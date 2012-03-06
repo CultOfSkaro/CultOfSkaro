@@ -38,34 +38,30 @@ void CameraISR()
 	CPU_MSR msr = DISABLE_INTERRUPTS();
 
 	//check in and out frames
-	//if (frame != NULL) {
-	//	FT_CheckInFrame(frame);
-	//}
+	if (frame != NULL) {
+		FT_CheckInFrame(frame);
+	}
 	frame = FT_CheckOutFrame();
 
 	//acknowledge interrupts so the camera can start the next capture
+	XIntc_AckIntr(XPAR_INTC_SINGLE_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
+	FT_InterruptHandlerFrameTable();
 
 	if (frame == NULL) {
 		print("Null frame!\r\n");
 	} else {
 		uint32* bufAddr = frame->frame_address[VISION_FRAME_RGB565]->data.data32;
-
+		/*
 		int bufSize = frame->frame_address[VISION_FRAME_RGB565]->capacity;
 		xil_printf("Frame id:%d\r\n", frame->id);
 		xil_printf("Frame addr: %08x", bufAddr);
 		xil_printf("Frame size: %d\r\n", bufSize);
+		*/
 
-
-		print("Writing frame over usb!\r\n");
-		//while(!USB_writeReady());
+		xil_printf("Writing frame over usb: %d\r\n", frame->id);
+		while(!USB_writeReady());
 		USB_blockWrite((u32*)bufAddr,307200);
 	}
-
-
-	XIntc_AckIntr(XPAR_INTC_SINGLE_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
-	FT_InterruptHandlerFrameTable();
-
-	print("CamerISR Done\r\n");
 
 	RESTORE_INTERRUPTS(msr);
 }
