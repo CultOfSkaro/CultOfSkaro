@@ -1,0 +1,7 @@
+INFILE=C:\RobotRacers\hardware_dans_branch\implementation\system.ncd
+OUTFILE=C:\RobotRacers\hardware_dans_branch\implementation\system.bit
+FAMILY=Virtex4
+PART=xc4vfx60-11ff672
+WORKINGDIR=C:\RobotRacers\hardware_dans_branch\implementation
+LICENSE=ISE
+USER_INFO=174672765_175170704_209411003_003

@@ -1,0 +1,9 @@
+-batch 
+-create plb_pwm_ctrl 
+-ver 1.00.a 
+-dir "C:\Documents and Settings\Administrator\Desktop\My Dropbox\Documents\2010\winter\Senior Project\svn\EDK11\Drew" 
+-lang vhdl 
+-bus plbv46 s 
+-reg 2 
+-xps 
+-driver 

@@ -1,0 +1,39 @@
+V3 23
+FL C:/Xilinx/12.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/ipif_control_rd.vhd 2008/01/25.10:53:33 M.81d
+EN rdpfifo_v4_01_a/ipif_control_rd 1301159954 \
+      FL C:/Xilinx/12.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/ipif_control_rd.vhd \
+      PB ieee/std_logic_1164 1290154108 PB ieee/NUMERIC_STD 1290154109 \
+      LB proc_common_v3_00_a PB proc_common_v3_00_a/proc_common_pkg 1301159919
+AR rdpfifo_v4_01_a/ipif_control_rd/implementation 1301159955 \
+      FL C:/Xilinx/12.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/ipif_control_rd.vhd \
+      EN rdpfifo_v4_01_a/ipif_control_rd 1301159954 CP std_logic CP natural \
+      CP std_logic_vector
+FL C:/Xilinx/12.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/rdpfifo_dp_cntl.vhd 2008/01/25.10:53:33 M.81d
+EN rdpfifo_v4_01_a/rdpfifo_dp_cntl 1301159956 \
+      FL C:/Xilinx/12.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/rdpfifo_dp_cntl.vhd \
+      PB ieee/std_logic_1164 1290154108 PB ieee/NUMERIC_STD 1290154109 \
+      LB proc_common_v3_00_a EN proc_common_v3_00_a/pf_counter_top 1301159912 \
+      EN proc_common_v3_00_a/pf_occ_counter_top 1301159910 \
+      EN proc_common_v3_00_a/pf_adder 1301159914
+AR rdpfifo_v4_01_a/rdpfifo_dp_cntl/implementation 1301159957 \
+      FL C:/Xilinx/12.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/rdpfifo_dp_cntl.vhd \
+      EN rdpfifo_v4_01_a/rdpfifo_dp_cntl 1301159956 CP std_logic \
+      CP transition_state_type CP std_logic_vector \
+      CP proc_common_v3_00_a/pf_occ_counter_top \
+      CP proc_common_v3_00_a/pf_counter_top CP boolean \
+      CP proc_common_v3_00_a/pf_adder
+FL C:/Xilinx/12.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/rdpfifo_top.vhd 2008/01/28.18:21:42 M.81d
+EN rdpfifo_v4_01_a/rdpfifo_top 1301159958 \
+      FL C:/Xilinx/12.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/rdpfifo_top.vhd \
+      PB ieee/std_logic_1164 1290154108 PB ieee/NUMERIC_STD 1290154109 \
+      LB proc_common_v3_00_a LB rdpfifo_v4_01_a \
+      EN proc_common_v3_00_a/pf_dpram_select 1301159932 \
+      EN proc_common_v3_00_a/srl16_fifo 1301159930 \
+      PB proc_common_v3_00_a/family_support 1301159917 \
+      EN rdpfifo_v4_01_a/ipif_control_rd 1301159954 \
+      EN rdpfifo_v4_01_a/rdpfifo_dp_cntl 1301159956
+AR rdpfifo_v4_01_a/rdpfifo_top/implementation 1301159959 \
+      FL C:/Xilinx/12.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/rdpfifo_top.vhd \
+      EN rdpfifo_v4_01_a/rdpfifo_top 1301159958 \
+      CP rdpfifo_v4_01_a/ipif_control_rd CP rdpfifo_v4_01_a/rdpfifo_dp_cntl \
+      CP proc_common_v3_00_a/pf_dpram_select CP proc_common_v3_00_a/srl16_fifo

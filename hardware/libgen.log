@@ -1,0 +1,78 @@
+Release 12.4 - libgen Xilinx EDK 12.4 Build EDK_MS4.81d
+ (nt)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+
+Command Line: libgen -mhs system.mhs -p xc4vfx20ff672-10 -msg
+__xps/ise/xmsgprops.lst system.mss 
+
+Release 12.4 - psf2Edward EDK_MS4.81d (nt)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+WARNING:EDK:3449 - IPNAME:clock_generator INSTANCE:clock_generator_0 -
+   C:\projects\rr2011v5\system.mhs line 160 - Superseded core for architecture
+   'virtex4fx'!
+WARNING:EDK:3449 - IPNAME:proc_sys_reset INSTANCE:proc_sys_reset_0 -
+   C:\projects\rr2011v5\system.mhs line 185 - Superseded core for architecture
+   'virtex4fx'!
+WARNING:EDK:3449 - IPNAME:mpmc INSTANCE:mpmc_0 - C:\projects\rr2011v5\system.mhs
+   line 353 - Superseded core for architecture 'virtex4fx'!
+WARNING:EDK:3449 - IPNAME:clock_generator INSTANCE:clock_generator_0 -
+   C:\projects\rr2011v5\system.mhs line 160 - Superseded core for architecture
+   'virtex4fx'!
+WARNING:EDK:3449 - IPNAME:proc_sys_reset INSTANCE:proc_sys_reset_0 -
+   C:\projects\rr2011v5\system.mhs line 185 - Superseded core for architecture
+   'virtex4fx'!
+WARNING:EDK:3449 - IPNAME:mpmc INSTANCE:mpmc_0 - C:\projects\rr2011v5\system.mhs
+   line 353 - Superseded core for architecture 'virtex4fx'!
+
+Checking platform configuration ...
+IPNAME:plb_v46 INSTANCE:plb - C:\projects\rr2011v5\system.mhs line 101 - 4
+master(s) : 13 slave(s)
+
+Checking port drivers...
+WARNING:EDK:2099 - PORT:sdram_clk_fb CONNECTOR:sdram_clk_fb -
+   C:\projects\rr2011v5\system.mhs line 75 - floating connection!
+
+Performing Clock DRCs...
+
+Performing Reset DRCs...
+
+Overriding system level properties...
+
+Running system level update procedures...
+
+Running UPDATE Tcl procedures for OPTION SYSLEVEL_UPDATE_PROC...
+
+Running system level DRCs...
+
+Performing System level DRCs on properties...
+
+Running DRC Tcl procedures for OPTION SYSLEVEL_DRC_PROC...
+Conversion to XML complete.
+WARNING:EDK:411 - bram - C:\projects\rr2011v5\system.mss line 23 - deprecated
+   driver!
+WARNING:EDK:411 - uartlite - C:\projects\rr2011v5\system.mss line 35 -
+   deprecated driver!
+WARNING:EDK:411 - uartlite - C:\projects\rr2011v5\system.mss line 41 -
+   deprecated driver!
+WARNING:EDK:411 - intc - C:\projects\rr2011v5\system.mss line 65 - deprecated
+   driver!
+WARNING:EDK:411 - emc - C:\projects\rr2011v5\system.mss line 83 - deprecated
+   driver!
+WARNING:EDK:411 - mpmc - C:\projects\rr2011v5\system.mss line 89 - deprecated
+   driver!
+WARNING:EDK:411 - emc - C:\projects\rr2011v5\system.mss line 95 - deprecated
+   driver!
+
+-- Generating libraries for processor: ppc405_0 --
+
+
+Staging source files.
+Running DRCs.
+Running generate.
+Running post_generate.
+Running include - 'make -s include "COMPILER=powerpc-eabi-gcc"
+"ARCHIVER=powerpc-eabi-ar" "COMPILER_FLAGS= -O2 -c" "EXTRA_COMPILER_FLAGS=-g"'.
+
+Running libs - 'make -s libs "COMPILER=powerpc-eabi-gcc"
+"ARCHIVER=powerpc-eabi-ar" "COMPILER_FLAGS= -O2 -c" "EXTRA_COMPILER_FLAGS=-g"'.
+Running execs_generate.

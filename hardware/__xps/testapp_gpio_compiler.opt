@@ -1,0 +1,20 @@
+ppc405_0
+TESTAPP_GPIO_SOURCES = TestApp_GPIO/TestApp_GPIO.c code/Common/HeliosIO.c code/Common/Timer.c 
+TESTAPP_GPIO_HEADERS = code/Common/HeliosIO.h code/Common/SystemTypes.h code/Common/Timer.h 
+TESTAPP_GPIO_CC = powerpc-eabi-gcc
+TESTAPP_GPIO_CC_SIZE = powerpc-eabi-size
+TESTAPP_GPIO_CC_OPT = -O2
+TESTAPP_GPIO_CFLAGS = 
+TESTAPP_GPIO_CC_SEARCH = # -B
+TESTAPP_GPIO_LIBPATH = -L./ppc405_0/lib/   -L./ppc405_0/lib 
+TESTAPP_GPIO_INCLUDES = -I./ppc405_0/include/  -Icode/Common/ # -I
+TESTAPP_GPIO_LFLAGS =   -lxilflash 
+TESTAPP_GPIO_LINKER_SCRIPT = code/DefaultLinkerScript.ld
+TESTAPP_GPIO_CC_DEBUG_FLAG =  -g 
+TESTAPP_GPIO_CC_PROFILE_FLAG = # -pg
+TESTAPP_GPIO_CC_GLOBPTR_FLAG= # -msdata=eabi
+TESTAPP_GPIO_CC_INFERRED_FLAGS= 
+TESTAPP_GPIO_CC_START_ADDR_FLAG=  #  # -Wl,-defsym -Wl,_START_ADDR=
+TESTAPP_GPIO_CC_STACK_SIZE_FLAG=  #  # -Wl,-defsym -Wl,_STACK_SIZE=
+TESTAPP_GPIO_CC_HEAP_SIZE_FLAG=  #  # -Wl,-defsym -Wl,_HEAP_SIZE=
+                  $(TESTAPP_GPIO_CC_INFERRED_FLAGS)  \

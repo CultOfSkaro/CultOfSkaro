@@ -1,0 +1,296 @@
+
+bitinit version Xilinx EDK 13.3 Build EDK_O.76xd
+Copyright (c) Xilinx Inc. 2002.
+
+Parsing MHS File system.mhs...
+
+Overriding IP level properties ...
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
+   C_BASEFAMILY value to virtex4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 152 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
+   C_IODELAY_GRP value to mpmc_0 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 179 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
+   C_MEM_DM_WIDTH value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 309 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
+   C_MEM_DQS_WIDTH value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 310 
+
+Computing clock values...
+INFO:EDK:1039 - Did not update the value for parameter:
+   dcm_module_0:C_CLKIN_PERIOD. Top-level frequency could not be propagated to
+   this IP. Please make sure that you have specified the frequency of the
+   top-level clock port, and that the clocks are properly connected.
+
+Performing IP level DRCs on properties...
+
+Running DRC Tcl procedures for OPTION IPLEVEL_DRC_PROC...
+Address Map for Processor ppc405_0
+  (0b0100000000-0b0111111111) ppc405_0	
+  (0000000000-0x01ffffff) mpmc_0	plb_0
+  (0x80000000-0x80ffffff) xps_mch_emc_flash	plb_0
+  (0x81400000-0x8140ffff) xps_gpio_1	plb_0
+  (0x81800000-0x8180ffff) xps_intc_0	plb_0
+  (0x81d00000-0x81dfffff) xps_mch_emc_sram	plb_0
+  (0x84000000-0x8400ffff) wireless_uart	plb_0
+  (0x84020000-0x8402ffff) serial_uart	plb_0
+  (0x84800000-0x8480ffff) mpmc_0	plb_0
+  (0xc4600000-0xc460ffff) plb_vision_0	plb_0
+  (0xc9800000-0xc980ffff) plb_quad_encoder_0	plb_0
+  (0xc9c00000-0xc9c0ffff) plb_usb_0	plb_0
+  (0xcb600000-0xcb60ffff) plb_pwm_ctrl_0	plb_0
+  (0xffff0000-0xffffffff) xps_bram_if_cntlr_0	plb_0
+Address Map for Processor ppc405_1
+  (0b0100000000-0b0111111111) ppc405_1	
+  (0x84400000-0x8440ffff) debug_module_0	plb_1
+  (0xffff0000-0xffffffff) xps_bram_if_cntlr_1	plb_1
+INFO:EDK:4130 - IPNAME: ppc405_virtex4, INSTANCE:ppc405_0 - tool is overriding
+   PARAMETER C_DPLB0_P2P value to 0 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01
+   _b\data\ppc405_virtex4_v2_1_0.mpd line 105 
+INFO:EDK:4130 - IPNAME: ppc405_virtex4, INSTANCE:ppc405_0 - tool is overriding
+   PARAMETER C_IPLB0_P2P value to 0 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01
+   _b\data\ppc405_virtex4_v2_1_0.mpd line 107 
+INFO:EDK:4130 - IPNAME: plb_usb, INSTANCE:plb_usb_0 - tool is overriding
+   PARAMETER C_MPLB_P2P value to 0 -
+   C:\RobotRacers\VHDL\pcores\plb_usb_v1_01_a\data\plb_usb_v2_1_0.mpd line 42 
+INFO:EDK:4130 - IPNAME: plb_usb, INSTANCE:plb_usb_0 - tool is overriding
+   PARAMETER C_SPLB_P2P value to 0 -
+   C:\RobotRacers\VHDL\pcores\plb_usb_v1_01_a\data\plb_usb_v2_1_0.mpd line 33 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
+   C_SPLB0_P2P value to 0 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 366 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
+   C_MPMC_CTRL_P2P value to 0 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 174 
+INFO:EDK:4130 - IPNAME: ppc405_virtex4, INSTANCE:ppc405_1 - tool is overriding
+   PARAMETER C_DPLB0_P2P value to 0 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01
+   _b\data\ppc405_virtex4_v2_1_0.mpd line 105 
+INFO:EDK:4130 - IPNAME: ppc405_virtex4, INSTANCE:ppc405_1 - tool is overriding
+   PARAMETER C_IPLB0_P2P value to 0 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01
+   _b\data\ppc405_virtex4_v2_1_0.mpd line 107 
+INFO:EDK:4130 - IPNAME: plb_v46, INSTANCE:plb_0 - tool is overriding PARAMETER
+   C_PLBV46_NUM_SLAVES value to 13 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\plb_v46_v1_05_a\data
+   \plb_v46_v2_1_0.mpd line 79 
+INFO:EDK:4130 - IPNAME: plb_v46, INSTANCE:plb_1 - tool is overriding PARAMETER
+   C_PLBV46_NUM_MASTERS value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\plb_v46_v1_05_a\data
+   \plb_v46_v2_1_0.mpd line 78 
+INFO:EDK:4130 - IPNAME: plb_v46, INSTANCE:plb_1 - tool is overriding PARAMETER
+   C_PLBV46_NUM_SLAVES value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\plb_v46_v1_05_a\data
+   \plb_v46_v2_1_0.mpd line 79 
+INFO:EDK:4130 - IPNAME: plb_v46, INSTANCE:plb_1 - tool is overriding PARAMETER
+   C_PLBV46_MID_WIDTH value to 1 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\plb_v46_v1_05_a\data
+   \plb_v46_v2_1_0.mpd line 80 
+INFO:EDK:4130 - IPNAME: xps_bram_if_cntlr, INSTANCE:xps_bram_if_cntlr_0 - tool
+   is overriding PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_bram_if_cntlr_v1
+   _00_b\data\xps_bram_if_cntlr_v2_1_0.mpd line 82 
+INFO:EDK:4130 - IPNAME: xps_bram_if_cntlr, INSTANCE:xps_bram_if_cntlr_0 - tool
+   is overriding PARAMETER C_SPLB_NUM_MASTERS value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_bram_if_cntlr_v1
+   _00_b\data\xps_bram_if_cntlr_v2_1_0.mpd line 83 
+INFO:EDK:4130 - IPNAME: xps_bram_if_cntlr, INSTANCE:xps_bram_if_cntlr_0 - tool
+   is overriding PARAMETER C_SPLB_MID_WIDTH value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_bram_if_cntlr_v1
+   _00_b\data\xps_bram_if_cntlr_v2_1_0.mpd line 84 
+INFO:EDK:4130 - IPNAME: xps_bram_if_cntlr, INSTANCE:xps_bram_if_cntlr_1 - tool
+   is overriding PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_bram_if_cntlr_v1
+   _00_b\data\xps_bram_if_cntlr_v2_1_0.mpd line 82 
+INFO:EDK:4130 - IPNAME: xps_bram_if_cntlr, INSTANCE:xps_bram_if_cntlr_1 - tool
+   is overriding PARAMETER C_SPLB_SMALLEST_MASTER value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_bram_if_cntlr_v1
+   _00_b\data\xps_bram_if_cntlr_v2_1_0.mpd line 87 
+INFO:EDK:4130 - IPNAME: bram_block, INSTANCE:plb_bram_if_cntlr_0_bram - tool is
+   overriding PARAMETER C_MEMSIZE value to 0x10000 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\bram_block_v1_00_a\d
+   ata\bram_block_v2_1_0.mpd line 76 
+INFO:EDK:4130 - IPNAME: bram_block, INSTANCE:plb_bram_if_cntlr_0_bram - tool is
+   overriding PARAMETER C_PORT_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\bram_block_v1_00_a\d
+   ata\bram_block_v2_1_0.mpd line 77 
+INFO:EDK:4130 - IPNAME: bram_block, INSTANCE:plb_bram_if_cntlr_0_bram - tool is
+   overriding PARAMETER C_NUM_WE value to 8 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\bram_block_v1_00_a\d
+   ata\bram_block_v2_1_0.mpd line 79 
+INFO:EDK:4130 - IPNAME: bram_block, INSTANCE:plb_bram_if_cntlr_1_bram - tool is
+   overriding PARAMETER C_MEMSIZE value to 0x10000 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\bram_block_v1_00_a\d
+   ata\bram_block_v2_1_0.mpd line 76 
+INFO:EDK:4130 - IPNAME: bram_block, INSTANCE:plb_bram_if_cntlr_1_bram - tool is
+   overriding PARAMETER C_PORT_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\bram_block_v1_00_a\d
+   ata\bram_block_v2_1_0.mpd line 77 
+INFO:EDK:4130 - IPNAME: bram_block, INSTANCE:plb_bram_if_cntlr_1_bram - tool is
+   overriding PARAMETER C_NUM_WE value to 8 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\bram_block_v1_00_a\d
+   ata\bram_block_v2_1_0.mpd line 79 
+INFO:EDK:4130 - IPNAME: xps_uartlite, INSTANCE:serial_uart - tool is overriding
+   PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_uartlite_v1_02_a
+   \data\xps_uartlite_v2_1_0.mpd line 80 
+INFO:EDK:4130 - IPNAME: xps_uartlite, INSTANCE:serial_uart - tool is overriding
+   PARAMETER C_SPLB_MID_WIDTH value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_uartlite_v1_02_a
+   \data\xps_uartlite_v2_1_0.mpd line 82 
+INFO:EDK:4130 - IPNAME: xps_uartlite, INSTANCE:serial_uart - tool is overriding
+   PARAMETER C_SPLB_NUM_MASTERS value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_uartlite_v1_02_a
+   \data\xps_uartlite_v2_1_0.mpd line 83 
+INFO:EDK:4130 - IPNAME: xps_uartlite, INSTANCE:wireless_uart - tool is
+   overriding PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_uartlite_v1_02_a
+   \data\xps_uartlite_v2_1_0.mpd line 80 
+INFO:EDK:4130 - IPNAME: xps_uartlite, INSTANCE:wireless_uart - tool is
+   overriding PARAMETER C_SPLB_MID_WIDTH value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_uartlite_v1_02_a
+   \data\xps_uartlite_v2_1_0.mpd line 82 
+INFO:EDK:4130 - IPNAME: xps_uartlite, INSTANCE:wireless_uart - tool is
+   overriding PARAMETER C_SPLB_NUM_MASTERS value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_uartlite_v1_02_a
+   \data\xps_uartlite_v2_1_0.mpd line 83 
+INFO:EDK:4130 - IPNAME: xps_intc, INSTANCE:xps_intc_0 - tool is overriding
+   PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_intc_v2_01_a\dat
+   a\xps_intc_v2_1_0.mpd line 80 
+INFO:EDK:4130 - IPNAME: xps_intc, INSTANCE:xps_intc_0 - tool is overriding
+   PARAMETER C_SPLB_NUM_MASTERS value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_intc_v2_01_a\dat
+   a\xps_intc_v2_1_0.mpd line 82 
+INFO:EDK:4130 - IPNAME: xps_intc, INSTANCE:xps_intc_0 - tool is overriding
+   PARAMETER C_SPLB_MID_WIDTH value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_intc_v2_01_a\dat
+   a\xps_intc_v2_1_0.mpd line 83 
+INFO:EDK:4130 - IPNAME: plb_quad_encoder, INSTANCE:plb_quad_encoder_0 - tool is
+   overriding PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\RobotRacers\VHDL\pcores\plb_quad_encoder_v1_00_a\data\plb_quad_encoder_v2_
+   1_0.mpd line 25 
+INFO:EDK:4130 - IPNAME: plb_quad_encoder, INSTANCE:plb_quad_encoder_0 - tool is
+   overriding PARAMETER C_SPLB_NUM_MASTERS value to 4 -
+   C:\RobotRacers\VHDL\pcores\plb_quad_encoder_v1_00_a\data\plb_quad_encoder_v2_
+   1_0.mpd line 26 
+INFO:EDK:4130 - IPNAME: plb_quad_encoder, INSTANCE:plb_quad_encoder_0 - tool is
+   overriding PARAMETER C_SPLB_MID_WIDTH value to 2 -
+   C:\RobotRacers\VHDL\pcores\plb_quad_encoder_v1_00_a\data\plb_quad_encoder_v2_
+   1_0.mpd line 27 
+INFO:EDK:4130 - IPNAME: plb_pwm_ctrl, INSTANCE:plb_pwm_ctrl_0 - tool is
+   overriding PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\RobotRacers\VHDL\pcores\plb_pwm_ctrl_v1_00_a\data\plb_pwm_ctrl_v2_1_0.mpd
+   line 26 
+INFO:EDK:4130 - IPNAME: plb_pwm_ctrl, INSTANCE:plb_pwm_ctrl_0 - tool is
+   overriding PARAMETER C_SPLB_NUM_MASTERS value to 4 -
+   C:\RobotRacers\VHDL\pcores\plb_pwm_ctrl_v1_00_a\data\plb_pwm_ctrl_v2_1_0.mpd
+   line 27 
+INFO:EDK:4130 - IPNAME: plb_pwm_ctrl, INSTANCE:plb_pwm_ctrl_0 - tool is
+   overriding PARAMETER C_SPLB_MID_WIDTH value to 2 -
+   C:\RobotRacers\VHDL\pcores\plb_pwm_ctrl_v1_00_a\data\plb_pwm_ctrl_v2_1_0.mpd
+   line 28 
+INFO:EDK:4130 - IPNAME: xps_mch_emc, INSTANCE:xps_mch_emc_flash - tool is
+   overriding PARAMETER C_SPLB_MID_WIDTH value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_mch_emc_v3_01_a\
+   data\xps_mch_emc_v2_1_0.mpd line 87 
+INFO:EDK:4130 - IPNAME: xps_mch_emc, INSTANCE:xps_mch_emc_flash - tool is
+   overriding PARAMETER C_SPLB_NUM_MASTERS value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_mch_emc_v3_01_a\
+   data\xps_mch_emc_v2_1_0.mpd line 88 
+INFO:EDK:4130 - IPNAME: xps_mch_emc, INSTANCE:xps_mch_emc_flash - tool is
+   overriding PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_mch_emc_v3_01_a\
+   data\xps_mch_emc_v2_1_0.mpd line 90 
+INFO:EDK:4130 - IPNAME: xps_mch_emc, INSTANCE:xps_mch_emc_sram - tool is
+   overriding PARAMETER C_SPLB_MID_WIDTH value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_mch_emc_v3_01_a\
+   data\xps_mch_emc_v2_1_0.mpd line 87 
+INFO:EDK:4130 - IPNAME: xps_mch_emc, INSTANCE:xps_mch_emc_sram - tool is
+   overriding PARAMETER C_SPLB_NUM_MASTERS value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_mch_emc_v3_01_a\
+   data\xps_mch_emc_v2_1_0.mpd line 88 
+INFO:EDK:4130 - IPNAME: xps_mch_emc, INSTANCE:xps_mch_emc_sram - tool is
+   overriding PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_mch_emc_v3_01_a\
+   data\xps_mch_emc_v2_1_0.mpd line 90 
+INFO:EDK:4130 - IPNAME: plb_usb, INSTANCE:plb_usb_0 - tool is overriding
+   PARAMETER C_SPLB_SMALLEST_MASTER value to 32 -
+   C:\RobotRacers\VHDL\pcores\plb_usb_v1_01_a\data\plb_usb_v2_1_0.mpd line 35 
+INFO:EDK:4130 - IPNAME: plb_vision, INSTANCE:plb_vision_0 - tool is overriding
+   PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\RobotRacers\VHDL\pcores\plb_vision_v1_00_a\data\plb_vision_v2_1_0.mpd line
+   29 
+INFO:EDK:4130 - IPNAME: plb_vision, INSTANCE:plb_vision_0 - tool is overriding
+   PARAMETER C_SPLB_NUM_MASTERS value to 4 -
+   C:\RobotRacers\VHDL\pcores\plb_vision_v1_00_a\data\plb_vision_v2_1_0.mpd line
+   30 
+INFO:EDK:4130 - IPNAME: plb_vision, INSTANCE:plb_vision_0 - tool is overriding
+   PARAMETER C_SPLB_MID_WIDTH value to 2 -
+   C:\RobotRacers\VHDL\pcores\plb_vision_v1_00_a\data\plb_vision_v2_1_0.mpd line
+   31 
+INFO:EDK:4130 - IPNAME: plb_vision, INSTANCE:plb_vision_0 - tool is overriding
+   PARAMETER C_MPLB_DWIDTH value to 64 -
+   C:\RobotRacers\VHDL\pcores\plb_vision_v1_00_a\data\plb_vision_v2_1_0.mpd line
+   40 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
+   C_MPMC_CTRL_NUM_MASTERS value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 172 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
+   C_MPMC_CTRL_MID_WIDTH value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 173 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
+   C_SPLB0_NUM_MASTERS value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 364 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
+   C_SPLB0_MID_WIDTH value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 365 
+INFO:EDK:4130 - IPNAME: xps_gpio, INSTANCE:xps_gpio_1 - tool is overriding
+   PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_gpio_v2_00_a\dat
+   a\xps_gpio_v2_1_0.mpd line 78 
+INFO:EDK:4130 - IPNAME: xps_gpio, INSTANCE:xps_gpio_1 - tool is overriding
+   PARAMETER C_SPLB_MID_WIDTH value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_gpio_v2_00_a\dat
+   a\xps_gpio_v2_1_0.mpd line 80 
+INFO:EDK:4130 - IPNAME: xps_gpio, INSTANCE:xps_gpio_1 - tool is overriding
+   PARAMETER C_SPLB_NUM_MASTERS value to 4 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_gpio_v2_00_a\dat
+   a\xps_gpio_v2_1_0.mpd line 81 
+INFO:EDK:4130 - IPNAME: mdm, INSTANCE:debug_module_0 - tool is overriding
+   PARAMETER C_SPLB_DWIDTH value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\data\mdm
+   _v2_1_0.mpd line 90 
+INFO:EDK:4130 - IPNAME: mdm, INSTANCE:debug_module_0 - tool is overriding
+   PARAMETER C_SPLB_MID_WIDTH value to 1 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\data\mdm
+   _v2_1_0.mpd line 92 
+INFO:EDK:4130 - IPNAME: mdm, INSTANCE:debug_module_0 - tool is overriding
+   PARAMETER C_SPLB_NUM_MASTERS value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\data\mdm
+   _v2_1_0.mpd line 93 
+
+Checking platform address map ...
+
+Initializing Memory...
+Running Data2Mem with the following command:
+data2mem -bm "implementation/system_bd" -p xc4vfx60ff672-11 -bt
+"implementation/system.bit"  -bd
+"../SDK/TestApp_Encoder/Debug/TestApp_Encoder.elf" tag ppc405_0  -bd
+"bootloops/ppc405_1.elf" tag ppc405_1  -o b implementation/download.bit 
+Memory Initialization completed successfully.
+

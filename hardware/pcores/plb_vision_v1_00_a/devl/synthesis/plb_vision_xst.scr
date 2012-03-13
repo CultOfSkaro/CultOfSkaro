@@ -1,0 +1,12 @@
+run
+-opt_level 2
+-opt_mode speed
+-ifmt mixed
+-ifn "/data/projects/SpencerBranch/pcores/plb_vision_v1_00_a/devl/synthesis/plb_vision_xst.prj"
+-top plb_vision
+-p virtex5
+-ofn "/data/projects/SpencerBranch/pcores/plb_vision_v1_00_a/devl/synthesis/plb_vision_xst.ngc"
+-iobuf NO
+-rtlview YES
+-hierarchy_separator /
+-work_lib plb_vision_v1_00_a

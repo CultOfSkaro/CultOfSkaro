@@ -1,0 +1,20 @@
+ppc405_0
+TESTAPP_ENCODER_SOURCES = code/Common/Timer.c drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder.c TestApp_Encoder/TestEncoder.c 
+TESTAPP_ENCODER_HEADERS = code/Common/Timer.h code/Common/SystemTypes.h drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder.h 
+TESTAPP_ENCODER_CC = powerpc-eabi-gcc
+TESTAPP_ENCODER_CC_SIZE = powerpc-eabi-size
+TESTAPP_ENCODER_CC_OPT = -O2
+TESTAPP_ENCODER_CFLAGS = 
+TESTAPP_ENCODER_CC_SEARCH = # -B
+TESTAPP_ENCODER_LIBPATH = -L./ppc405_0/lib/ # -L
+TESTAPP_ENCODER_INCLUDES = -I./ppc405_0/include/  -Icode/Common/ -Idrivers/plb_quad_encoder_v1_00_a/src/ # -I
+TESTAPP_ENCODER_LFLAGS = # -l
+TESTAPP_ENCODER_LINKER_SCRIPT = code/DefaultLinkerScript.ld
+TESTAPP_ENCODER_CC_DEBUG_FLAG =  -g 
+TESTAPP_ENCODER_CC_PROFILE_FLAG = # -pg
+TESTAPP_ENCODER_CC_GLOBPTR_FLAG= # -msdata=eabi
+TESTAPP_ENCODER_CC_INFERRED_FLAGS= 
+TESTAPP_ENCODER_CC_START_ADDR_FLAG=  #  # -Wl,-defsym -Wl,_START_ADDR=
+TESTAPP_ENCODER_CC_STACK_SIZE_FLAG=  #  # -Wl,-defsym -Wl,_STACK_SIZE=
+TESTAPP_ENCODER_CC_HEAP_SIZE_FLAG=  #  # -Wl,-defsym -Wl,_HEAP_SIZE=
+                  $(TESTAPP_ENCODER_CC_INFERRED_FLAGS)  \

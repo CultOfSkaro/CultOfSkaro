@@ -1,0 +1,62 @@
+##############################################################################
+## Filename:          /data/projects/SpencerBranch/pcores/plb_vision_v1_00_a/data/plb_vision_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Mon Feb  8 12:50:50 2010 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a proc_common_pkg vhdl
+lib proc_common_v3_00_a ipif_pkg vhdl
+lib proc_common_v3_00_a or_muxcy vhdl
+lib proc_common_v3_00_a or_gate128 vhdl
+lib proc_common_v3_00_a family_support vhdl
+lib proc_common_v3_00_a pselect_f vhdl
+lib proc_common_v3_00_a counter_f vhdl
+lib plbv46_slave_single_v1_01_a plb_address_decoder vhdl
+lib plbv46_slave_single_v1_01_a plb_slave_attachment vhdl
+lib plbv46_slave_single_v1_01_a plbv46_slave_single vhdl
+lib proc_common_v3_00_a family vhdl
+lib plbv46_master_burst_v1_01_a plb_mstr_addr_gen vhdl
+lib plbv46_master_burst_v1_01_a rd_wr_calc_burst vhdl
+lib plbv46_master_burst_v1_01_a rd_wr_controller vhdl
+lib plbv46_master_burst_v1_01_a llink_rd_backend_no_fifo vhdl
+lib plbv46_master_burst_v1_01_a llink_wr_backend_no_fifo vhdl
+lib plbv46_master_burst_v1_01_a data_width_adapter vhdl
+lib plbv46_master_burst_v1_01_a data_mirror_128 vhdl
+lib plbv46_master_burst_v1_01_a cc_brst_exp_adptr vhdl
+lib plbv46_master_burst_v1_01_a plbv46_master_burst vhdl
+lib proc_common_v3_00_a inferred_lut4 vhdl
+lib proc_common_v3_00_a pf_counter_bit vhdl
+lib proc_common_v3_00_a pf_counter vhdl
+lib proc_common_v3_00_a pf_counter_top vhdl
+lib proc_common_v3_00_a pf_occ_counter vhdl
+lib proc_common_v3_00_a pf_occ_counter_top vhdl
+lib proc_common_v3_00_a pf_adder_bit vhdl
+lib proc_common_v3_00_a pf_adder vhdl
+lib proc_common_v3_00_a pf_dpram_select vhdl
+lib proc_common_v3_00_a srl16_fifo vhdl
+lib rdpfifo_v4_01_a rdpfifo_dp_cntl vhdl
+lib rdpfifo_v4_01_a ipif_control_rd vhdl
+lib rdpfifo_v4_01_a rdpfifo_top vhdl
+lib proc_common_v3_00_a cntr_incr_decr_addn_f vhdl
+lib proc_common_v3_00_a muxf_struct_f vhdl
+lib proc_common_v3_00_a dynshreg_f vhdl
+lib proc_common_v3_00_a srl_fifo_rbu_f vhdl
+lib proc_common_v3_00_a srl_fifo_f vhdl
+lib plb_vision_v1_00_a camera_processor vhdl
+lib plb_vision_v1_00_a color_correction vhdl
+lib plb_vision_v1_00_a delay_buffer_ramb16 vhdl
+lib plb_vision_v1_00_a demosaic_frame vhdl
+lib plb_vision_v1_00_a demosaic_linear vhdl
+lib plb_vision_v1_00_a demosaic_microsoft vhdl
+lib plb_vision_v1_00_a filter_buffer_3x3 vhdl
+lib plb_vision_v1_00_a filter_buffer_5x5 vhdl
+lib plb_vision_v1_00_a filter_output_adjust vhdl
+lib plb_vision_v1_00_a rgb_sum vhdl
+lib plb_vision_v1_00_a round vhdl
+lib plb_vision_v1_00_a user_logic vhdl
+lib plb_vision_v1_00_a plb_vision vhdl
+lib plb_vision_v1_00_a cam_ser vhdl
+lib plb_vision_v1_00_a frame_sync_hs vhdl
+lib plb_vision_v1_00_a size_buffer vhdl
+lib plb_vision_v1_00_a rgb2hsv vhdl
+

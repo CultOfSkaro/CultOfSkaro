@@ -1,0 +1,9 @@
+##############################################################################
+## Filename:          C:\EDK11Cores\pcores/plb_usb_v1_01_a/data/plb_usb_v2_1_0.bbd
+## Description:       Black Box Definition
+## Date:              Thu Feb 04 14:49:56 2010 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+Files
+################################################################################
+plb_burst_fifo.ngc,usb_fifo_8.ngc,usb_fifo_9.ngc,usb_fifo_16.ngc,usb_fifo_17.ngc

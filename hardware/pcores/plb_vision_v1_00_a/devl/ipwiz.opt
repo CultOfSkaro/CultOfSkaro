@@ -1,0 +1,13 @@
+-batch 
+-create plb_vision 
+-ver 1.00.a 
+-dir "/data/projects/SpencerBranch" 
+-lang vhdl 
+-bus plbv46 ms 
+-burst m 64 
+-rfifo 4 512 
+-reg 10 
+-xps 
+-ise 
+-bfmsim "" "" 
+-driver 

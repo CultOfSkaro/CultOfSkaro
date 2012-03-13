@@ -1,0 +1,20 @@
+ppc405_0
+ROBOTRACERS_SOURCES = code/Vision/BufferStore.c code/Vision/FrameTable.c code/DataTypes/Queue.c code/DataTypes/Stack.c code/Common/State.c code/Common/Timer.c code/Common/Flash.c code/Common/HeliosIO.c code/Common/LoopScheduler.c code/main.c code/init.c code/Communcations/ISR.c code/Communcations/Comm.c code/Communcations/Packet.c code/Common/mpmc_calibration.c code/Common/mpmc_mem_test_example.c code/Common/ServoControl.c 
+ROBOTRACERS_HEADERS = code/Vision/BufferStore.h code/Vision/FrameTable.h code/DataTypes/Queue.h code/DataTypes/Stack.h code/Common/State.h code/Common/Timer.h code/Common/Header.h code/Common/HeliosIO.h code/Common/InterruptControl.h code/Common/LoopScheduler.h code/init.h code/Communcations/ISR.h code/Communcations/Comm.h code/Communcations/Packet.h code/Common/Flash.h code/Common/mpmc_calibration.h code/Common/mpmc_mem_test_example.h code/Common/ServoControl.h code/GUI/HeliosLibrary/SystemTypes.h drivers/plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.h drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder.h 
+ROBOTRACERS_CC = powerpc-eabi-gcc
+ROBOTRACERS_CC_SIZE = powerpc-eabi-size
+ROBOTRACERS_CC_OPT = -O2
+ROBOTRACERS_CFLAGS = 
+ROBOTRACERS_CC_SEARCH = # -B
+ROBOTRACERS_LIBPATH = -L./ppc405_0/lib/ # -L
+ROBOTRACERS_INCLUDES = -I./ppc405_0/include/  -Icode/Vision/ -Icode/DataTypes/ -Icode/Common/ -Icode/ -Icode/Communcations/ -Icode/GUI/HeliosLibrary/ -Idrivers/plb_pwm_ctrl_v1_00_a/src/ -Idrivers/plb_quad_encoder_v1_00_a/src/ # -I
+ROBOTRACERS_LFLAGS = # -l
+ROBOTRACERS_LINKER_SCRIPT = code/DefaultLinkerScript.ld
+ROBOTRACERS_CC_DEBUG_FLAG =  -g 
+ROBOTRACERS_CC_PROFILE_FLAG = # -pg
+ROBOTRACERS_CC_GLOBPTR_FLAG= # -msdata=eabi
+ROBOTRACERS_CC_INFERRED_FLAGS= 
+ROBOTRACERS_CC_START_ADDR_FLAG=  #  # -Wl,-defsym -Wl,_START_ADDR=
+ROBOTRACERS_CC_STACK_SIZE_FLAG=  #  # -Wl,-defsym -Wl,_STACK_SIZE=
+ROBOTRACERS_CC_HEAP_SIZE_FLAG=  #  # -Wl,-defsym -Wl,_HEAP_SIZE=
+                  $(ROBOTRACERS_CC_INFERRED_FLAGS)  \

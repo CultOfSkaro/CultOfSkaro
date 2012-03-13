@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2009 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="netgen"/>
+    <file xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/synthesis/plb_vision_synthesis.nlf"/>
+    <file xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/synthesis/plb_vision_synthesis.v"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="plb_vision.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="plb_vision.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="plb_vision.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="plb_vision.ngr"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="plb_vision.ntrc_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="plb_vision.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="plb_vision.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="plb_vision.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="plb_vision.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="plb_vision_summary.html"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BCD" xil_pn:name="plb_vision_xdb/cst.xbcd"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="plb_vision_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1265845998" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1265845998">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1265845998" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-8431413177139988127" xil_pn:start_ts="1265845998">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1265845998" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="6328093769879573090" xil_pn:start_ts="1265845998">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputAdded"/>
+    </transform>
+    <transform xil_pn:end_ts="1265845998" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1265845998">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1265845998" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="5917217509834150101" xil_pn:start_ts="1265845998">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1265845998" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:start_ts="1265845998">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+    </transform>
+    <transform xil_pn:end_ts="1265845998" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="4333629135084420834" xil_pn:start_ts="1265845998">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+    </transform>
+    <transform xil_pn:end_ts="1265846341" xil_pn:in_ck="7681935638096987282" xil_pn:name="TRANEXT_xstsynthesize_virtex4" xil_pn:prop_ck="4128780928876286270" xil_pn:start_ts="1265846268">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="plb_vision.cmd_log"/>
+      <outfile xil_pn:name="plb_vision.lso"/>
+      <outfile xil_pn:name="plb_vision.ngc"/>
+      <outfile xil_pn:name="plb_vision.ngr"/>
+      <outfile xil_pn:name="plb_vision.ntrc_log"/>
+      <outfile xil_pn:name="plb_vision.prj"/>
+      <outfile xil_pn:name="plb_vision.stx"/>
+      <outfile xil_pn:name="plb_vision.syr"/>
+      <outfile xil_pn:name="plb_vision.xst"/>
+      <outfile xil_pn:name="plb_vision_summary.html"/>
+      <outfile xil_pn:name="plb_vision_xst.xrpt"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1265846358" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="2140094460943260854" xil_pn:start_ts="1265846357">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="plb_vision_xdb/cst.xbcd"/>
+    </transform>
+    <transform xil_pn:end_ts="1265846368" xil_pn:in_ck="4076009236280067643" xil_pn:name="TRAN_postSynthesisSimModel" xil_pn:prop_ck="8509553439193445033" xil_pn:start_ts="1265846358">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="netgen"/>
+      <outfile xil_pn:name="netgen/synthesis/plb_vision_synthesis.nlf"/>
+      <outfile xil_pn:name="netgen/synthesis/plb_vision_synthesis.v"/>
+    </transform>
+  </transforms>
+
+</generated_project>

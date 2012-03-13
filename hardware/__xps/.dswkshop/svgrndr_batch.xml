@@ -1,0 +1,58 @@
+
+<RENDERBATCH>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\ppc405_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\ppc405_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\ppc405_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\ppc405_1.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\ppc405_1.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\ppc405_1.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\plb_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_1.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_1.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\plb_1.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_bram_if_cntlr_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_bram_if_cntlr_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\xps_bram_if_cntlr_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_bram_if_cntlr_1.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_bram_if_cntlr_1.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\xps_bram_if_cntlr_1.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_bram_if_cntlr_0_bram.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_bram_if_cntlr_0_bram.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\plb_bram_if_cntlr_0_bram.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_bram_if_cntlr_1_bram.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_bram_if_cntlr_1_bram.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\plb_bram_if_cntlr_1_bram.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\serial_uart.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\serial_uart.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\serial_uart.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\wireless_uart.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\wireless_uart.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\wireless_uart.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\clock_generator_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\clock_generator_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\clock_generator_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\jtagppc_cntlr_inst.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\jtagppc_cntlr_inst.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\jtagppc_cntlr_inst.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\proc_sys_reset_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\proc_sys_reset_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\proc_sys_reset_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_intc_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_intc_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\xps_intc_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_quad_encoder_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_quad_encoder_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\plb_quad_encoder_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_pwm_ctrl_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_pwm_ctrl_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\plb_pwm_ctrl_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_mch_emc_flash.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_mch_emc_flash.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\xps_mch_emc_flash.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_mch_emc_sram.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_mch_emc_sram.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\xps_mch_emc_sram.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\dcm_module_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\dcm_module_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\dcm_module_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_usb_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_usb_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\plb_usb_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_vision_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\plb_vision_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\plb_vision_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\mpmc_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\mpmc_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\mpmc_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\dcm_2.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\dcm_2.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\dcm_2.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_gpio_1.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\xps_gpio_1.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\xps_gpio_1.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\debug_module_0.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\debug_module_0.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\debug_module_0.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\gameboard_uart.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\gameboard_uart.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\gameboard_uart.svg"/>
+
+  <RENDERIMG RASNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\system_blkd.jpg" SVGNAME="C:\RobotRacers\hardware_dans_branch\SDK\SDK_Export\hw\imgs\system_blkd.svg" TMPSVGFN="C:\RobotRacers\hardware_dans_branch\__xps\.dswkshop\system_blkd.svg"/>
+
+</RENDERBATCH>

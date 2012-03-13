@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <header>
+    <!-- ISE source project file created by Project Navigator.             -->
+    <!--                                                                   -->
+    <!-- This file contains project source information including a list of -->
+    <!-- project source files, project and process properties.  This file, -->
+    <!-- along with the project source files, is sufficient to open and    -->
+    <!-- implement in ISE Project Navigator.                               -->
+    <!--                                                                   -->
+    <!-- Copyright (c) 1995-2009 Xilinx, Inc.  All rights reserved. -->
+  </header>
+
+  <version xil_pn:ise_version="11.1" xil_pn:schema_version="2"/>
+
+  <files>
+    <file xil_pn:name="../../hdl/vhdl/plb_vision.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plb_vision_v1_00_a"/>
+    </file>
+    <file xil_pn:name="../../hdl/vhdl/user_logic.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plb_vision_v1_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/proc_common_pkg.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/ipif_pkg.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/or_muxcy.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/or_gate128.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/family_support.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pselect_f.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/counter_f.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_slave_single_v1_01_a/hdl/vhdl/plb_address_decoder.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_slave_single_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_slave_single_v1_01_a/hdl/vhdl/plb_slave_attachment.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_slave_single_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_slave_single_v1_01_a/hdl/vhdl/plbv46_slave_single.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_slave_single_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/family.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/plb_mstr_addr_gen.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_master_burst_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/rd_wr_calc_burst.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_master_burst_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/rd_wr_controller.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_master_burst_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/llink_rd_backend_no_fifo.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_master_burst_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/llink_wr_backend_no_fifo.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_master_burst_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/data_width_adapter.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_master_burst_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/data_mirror_128.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_master_burst_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/cc_brst_exp_adptr.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_master_burst_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/plbv46_master_burst.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="plbv46_master_burst_v1_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/inferred_lut4.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pf_counter_bit.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pf_counter.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pf_counter_top.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pf_occ_counter.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pf_occ_counter_top.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pf_adder_bit.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pf_adder.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pf_dpram_select.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/srl16_fifo.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/rdpfifo_dp_cntl.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="rdpfifo_v4_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/ipif_control_rd.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="rdpfifo_v4_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/rdpfifo_v4_01_a/hdl/vhdl/rdpfifo_top.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="rdpfifo_v4_01_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/cntr_incr_decr_addn_f.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/muxf_struct_f.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/dynshreg_f.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/srl_fifo_rbu_f.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="/opt/Xilinx/11.1/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/srl_fifo_f.vhd" xil_pn:type="FILE_VHDL">
+      <association xil_pn:name="BehavioralSimulation"/>
+      <association xil_pn:name="Implementation"/>
+      <library xil_pn:name="proc_common_v3_00_a"/>
+    </file>
+    <file xil_pn:name="../../../../../fifo-coregen/frame_fifo.xco" xil_pn:type="FILE_COREGEN">
+      <association xil_pn:name="Implementation"/>
+      <association xil_pn:name="BehavioralSimulation"/>
+    </file>
+    <file xil_pn:name="../../../../../fifo-coregen/frame_fifo.ise" xil_pn:type="FILE_COREGENISE">
+      <association xil_pn:name="Implementation"/>
+    </file>
+  </files>
+
+  <properties>
+    <property xil_pn:name="Constraints Entry" xil_pn:value="Constraints Editor"/>
+    <property xil_pn:name="Device" xil_pn:value="xc4vfx20"/>
+    <property xil_pn:name="Device Family" xil_pn:value="Virtex4"/>
+    <property xil_pn:name="Fitter Report Format" xil_pn:value="HTML"/>
+    <property xil_pn:name="Implementation Top" xil_pn:value="Architecture|plb_vision|IMP"/>
+    <property xil_pn:name="Implementation Top Instance Path" xil_pn:value="/plb_vision"/>
+    <property xil_pn:name="PROP_DesignName" xil_pn:value="plb_vision"/>
+    <property xil_pn:name="Package" xil_pn:value="ff672"/>
+    <property xil_pn:name="Preferred Language" xil_pn:value="Verilog"/>
+    <property xil_pn:name="Simulator" xil_pn:value="Modelsim-SE Mixed"/>
+    <property xil_pn:name="Speed Grade" xil_pn:value="-10"/>
+    <property xil_pn:name="Synthesis Tool" xil_pn:value="XST (VHDL/Verilog)"/>
+    <property xil_pn:name="Top-Level Source Type" xil_pn:value="HDL"/>
+    <property xil_pn:name="Verbose Property Persistence" xil_pn:value="false"/>
+  </properties>
+
+  <bindings/>
+
+  <libraries>
+    <library xil_pn:name="plb_vision_v1_00_a"/>
+    <library xil_pn:name="plbv46_master_burst_v1_01_a"/>
+    <library xil_pn:name="plbv46_slave_single_v1_01_a"/>
+    <library xil_pn:name="proc_common_v3_00_a"/>
+    <library xil_pn:name="rdpfifo_v4_01_a"/>
+  </libraries>
+
+  <partitions>
+    <partition xil_pn:name="/plb_vision"/>
+  </partitions>
+
+</project>

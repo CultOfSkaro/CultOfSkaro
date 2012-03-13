@@ -1,0 +1,20 @@
+ppc405_0
+TESTAPP_SDRAM_SOURCES = code/Common/MemoryTest.c code/Common/Serial.c TestApp_SDRAM/mpmc_calibration_example.c TestApp_SDRAM/TestApp_SDRAM.c TestApp_SDRAM/mpmc_mem_test_example.c 
+TESTAPP_SDRAM_HEADERS = code/Common/SystemTypes.h code/Common/MemoryTest.h code/Common/Serial.h TestApp_SDRAM/mpmc_calibration_example.h TestApp_SDRAM/mpmc_mem_test_example.h 
+TESTAPP_SDRAM_CC = powerpc-eabi-gcc
+TESTAPP_SDRAM_CC_SIZE = powerpc-eabi-size
+TESTAPP_SDRAM_CC_OPT = -O2
+TESTAPP_SDRAM_CFLAGS = 
+TESTAPP_SDRAM_CC_SEARCH = # -B
+TESTAPP_SDRAM_LIBPATH = -L./ppc405_0/lib/ # -L
+TESTAPP_SDRAM_INCLUDES = -I./ppc405_0/include/  -Icode/Common/ -ITestApp_SDRAM/ # -I
+TESTAPP_SDRAM_LFLAGS = # -l
+TESTAPP_SDRAM_LINKER_SCRIPT = 
+TESTAPP_SDRAM_CC_DEBUG_FLAG =  -g 
+TESTAPP_SDRAM_CC_PROFILE_FLAG = # -pg
+TESTAPP_SDRAM_CC_GLOBPTR_FLAG= # -msdata=eabi
+TESTAPP_SDRAM_CC_INFERRED_FLAGS= 
+TESTAPP_SDRAM_CC_START_ADDR_FLAG=  # -Wl,-defsym -Wl,_START_ADDR=
+TESTAPP_SDRAM_CC_STACK_SIZE_FLAG=  # -Wl,-defsym -Wl,_STACK_SIZE=
+TESTAPP_SDRAM_CC_HEAP_SIZE_FLAG=  # -Wl,-defsym -Wl,_HEAP_SIZE=
+                  $(TESTAPP_SDRAM_CC_INFERRED_FLAGS)  \

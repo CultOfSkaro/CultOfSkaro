@@ -1,0 +1,535 @@
+/// Gameboard UART Signals
+////////////////////////////////////////////////////////////////////////////
+NET gameboard_uart_rx LOC    = G5 | TIG;
+NET gameboard_uart_tx LOC    = B7 | SLEW = SLOW | TIG;
+NET gameboard_uart_* IOSTANDARD = LVCMOS33;
+
+////////////////////////////////////////////////////////////////////////////
+// Serial UART Signals
+////////////////////////////////////////////////////////////////////////////
+Net uart_rx LOC= J14 | TIG;
+Net uart_tx LOC= J15 | SLEW = SLOW | TIG;
+Net uart_* IOSTANDARD = LVCMOS33;
+
+////////////////////////////////////////////////////////////////////////////
+// Wireless UART Signals
+////////////////////////////////////////////////////////////////////////////
+NET wireless_rx LOC    = C6 | TIG;
+NET wireless_tx LOC    = B9 | SLEW = SLOW | TIG;
+# NET wireless_cts_n LOC = G9 | TIG;
+# NET wireless_rts_n LOC = C7 | TIG;
+NET wireless_* IOSTANDARD = LVCMOS33;
+
+///////////////////////////////////////////////////////////////////////////////
+// RC Servo and ESC PWM Signals
+///////////////////////////////////////////////////////////////////////////////
+
+NET pwm_servo LOC = E11;  # SERVO_1
+NET pwm_esc   LOC = A9;   # SERVO_2
+
+NET pwm_* IOSTANDARD = LVTTL;
+NET pwm_* SLEW = SLOW;
+NET pwm_* TIG;
+
+
+////////////////////////////////////////////////////////////////////////////
+// Clock and Reset Signals
+////////////////////////////////////////////////////////////////////////////
+Net fpga_0_clk_1_sys_clk_pin LOC=A12 | IOSTANDARD = LVCMOS33;
+Net fpga_0_clk_1_sys_clk_pin TNM_NET = sys_clk_pin;
+Net fpga_0_rst_1_sys_rst_pin LOC=AE13 | PULLUP | TIG;
+Net fpga_0_rst_1_sys_rst_pin TIG;
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Encoder Signals (GBV)
+///////////////////////////////////////////////////////////////////////////////
+
+NET plb_quad_encoder_0_enc_a_in LOC = B11;
+NET plb_quad_encoder_0_enc_b_in LOC = C11;
+
+NET plb_quad_encoder_0_enc_* IOSTANDARD = LVTTL;
+NET plb_quad_encoder_0_enc_* TIG;
+
+///////////////////////////////////////////////////////////////////////////////
+// New GS Protocol
+///////////////////////////////////////////////////////////////////////////////
+
+NET gpio_helios_game<0> LOC = B6;	#Truck State 3: is a base 		in
+NET gpio_helios_game<0>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<1> LOC = D3;	#Truck State 2: has flag  		in
+NET gpio_helios_game<1>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<2> LOC = L10;	#Truck State 1: is alive  		in
+NET gpio_helios_game<2>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<3> LOC = F7;	#Truck State 0: is registered	in
+NET gpio_helios_game<3>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<4> LOC = C3;	#Team ID 1							in
+NET gpio_helios_game<4>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<5> LOC = F3;	#Team ID 0							in
+NET gpio_helios_game<5>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<6> LOC = J4;	#State 1								in
+NET gpio_helios_game<6>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<7> LOC = E3;	#State 0								in
+NET gpio_helios_game<7>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<8> LOC = K6;	#Kill shot request				out
+NET gpio_helios_game<8>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<9> LOC = H3;	#Pass shot request				out
+NET gpio_helios_game<9>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<10> LOC = H9;	#Revive shot request				out
+NET gpio_helios_game<10>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<11> LOC = K8;	#Hit acknowledge					in
+NET gpio_helios_game<11>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<12> LOC = K3;	#Miss acknowledge					in
+NET gpio_helios_game<12>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<13> LOC = M5;	#Gyro enable/disable				in
+NET gpio_helios_game<13>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<14> LOC = J3;	#Game not in play					in
+NET gpio_helios_game<14>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<15> LOC = M6;	#Wait to shoot						in
+NET gpio_helios_game<15>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+NET gpio_helios_game<*> TIG;
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Buttons, Switches, and LEDs
+///////////////////////////////////////////////////////////////////////////////
+
+// Game board GPIO
+# NET gpio_helios_game<7>  LOC = D4;  # IO 8 - Wait to shoot (INPUT)
+# NET gpio_helios_game<7>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+# NET gpio_helios_game<6>  LOC = F7;  # IO 7 - Miss/Flag Captured (INPUT)
+# NET gpio_helios_game<6>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+# NET gpio_helios_game<5>  LOC = C3;  # IO 6 - Hit/Pause (INPUT)
+# NET gpio_helios_game<5>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+# NET gpio_helios_game<4>  LOC = F3;  # IO 5 - Flag (INPUT)
+# NET gpio_helios_game<4>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+# NET gpio_helios_game<3>  LOC = H6;  # IO 4 - Enabled (INPUT)
+# NET gpio_helios_game<3>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+# NET gpio_helios_game<2>  LOC = G4;  # IO 3 - Shoot Revive (OUTPUT)
+# NET gpio_helios_game<2>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+# NET gpio_helios_game<1>  LOC = F4;  # IO 2 - Shoot Pass (OUTPUT)
+# NET gpio_helios_game<1>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+# NET gpio_helios_game<0>  LOC = H8;  # IO 1 - Shoot Kill (OUTPUT)
+# NET gpio_helios_game<0>  IOSTANDARD = LVCMOS33 | SLEW = SLOW;
+# NET gpio_helios_game<*> TIG;
+
+NET gpio_helios<4>  LOC = K13;  # LED 2 (MSB)
+NET gpio_helios<4>  IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 4;
+
+NET gpio_helios<3>  LOC = J13;  # LED 1
+NET gpio_helios<3>  IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 4;
+
+NET gpio_helios<2>  LOC = V13;  # Switch 2
+NET gpio_helios<2>  IOSTANDARD = LVCMOS25;
+
+NET gpio_helios<1>  LOC = W13;  # Switch 1
+NET gpio_helios<1>  IOSTANDARD = LVCMOS25;
+
+NET gpio_helios<0>  LOC = AD14; # Button (LSB)
+NET gpio_helios<0>  IOSTANDARD = LVCMOS25;
+
+NET gpio_helios<*> TIG;
+
+///////////////////////////////////////////////////////////////////////////////
+// Flash Memory 
+///////////////////////////////////////////////////////////////////////////////
+
+#Data lines mapped BigEndian to LittleEndian
+NET xps_mch_emc_flash_Mem_DQ<0> LOC = D20 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<1> LOC = C14 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<2> LOC = B12 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<3> LOC = D21 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<4> LOC = H14 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<5> LOC = F19 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<6> LOC = H18 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<7> LOC = D19 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<8> LOC = A14 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<9> LOC = B14 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<10> LOC = A13 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<11> LOC = G20 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<12> LOC = C16 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<13> LOC = D14 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<14> LOC = E13 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_DQ<15> LOC = D13 | IOSTANDARD = LVCMOS33;
+
+#Address Lines mapped BigEndian to LittleEndian
+NET xps_mch_emc_flash_Mem_A_pin<31> LOC = F17 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<30> LOC = G17 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<29> LOC = D16 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<28> LOC = C12 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<27> LOC = C13 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<26> LOC = E15 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<25> LOC = E17 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<24> LOC = C18 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<23> LOC = E21 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<22> LOC = G19 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<21> LOC = C17 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<20> LOC = E18 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<19> LOC = E20 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<18> LOC = F20 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<17> LOC = H17 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<16> LOC = F18 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<15> LOC = A17 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<14> LOC = B16 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<13> LOC = H19 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<12> LOC = C21 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<11> LOC = C19 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<10> LOC = B17 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<9> LOC = C22 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_A_pin<8> LOC = G14 | IOSTANDARD = LVCMOS33;
+
+#Control signals
+NET xps_mch_emc_flash_Mem_RPN_pin LOC = E16 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_CEN_pin<0> LOC = D18 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_OEN_pin<0> LOC = B15 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_QWEN_pin<0> LOC = A15 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_flash_Mem_BEN_pin<0> LOC = H12 | IOSTANDARD = LVCMOS33;
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// SRAM 
+///////////////////////////////////////////////////////////////////////////////
+
+#Data lines
+#SET A
+NET xps_mch_emc_sram_Mem_DQ<0> LOC = AC16 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<1> LOC = Y15  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<2> LOC = AB17 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<3> LOC = AC19 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<4> LOC = U17  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<5> LOC = AB20 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<6> LOC = AD23 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<7> LOC = AC22 | IOSTANDARD = LVCMOS33;
+#SET B
+NET xps_mch_emc_sram_Mem_DQ<8>  LOC = Y18  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<9>  LOC = W18  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<10> LOC = AA23 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<11> LOC = V23  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<12> LOC = U19  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<13> LOC = U21  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<14> LOC = T23  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<15> LOC = R20  | IOSTANDARD = LVCMOS33;
+#SET C
+NET xps_mch_emc_sram_Mem_DQ<16> LOC = AA20 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<17> LOC = AC21 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<18> LOC = AA22 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<19> LOC = V18  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<20> LOC = W20  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<21> LOC = W24  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<22> LOC = V22  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<23> LOC = U24  | IOSTANDARD = LVCMOS33;
+#SET D
+NET xps_mch_emc_sram_Mem_DQ<24> LOC = AA12 | IOSTANDARD = LVCMOS25;
+NET xps_mch_emc_sram_Mem_DQ<25> LOC = AC12 | IOSTANDARD = LVCMOS25;
+NET xps_mch_emc_sram_Mem_DQ<26> LOC = AB14 | IOSTANDARD = LVCMOS25;
+NET xps_mch_emc_sram_Mem_DQ<27> LOC = AD16 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<28> LOC = AB16 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<29> LOC = AA17 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<30> LOC = AC18 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_DQ<31> LOC = Y16  | IOSTANDARD = LVCMOS33;
+
+
+#Address Lines
+#NET xps_mch_emc_sram_Mem_A_pin<31> LOC = AA19 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<31> LOC = AA18 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<30> LOC = W23  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<29> LOC = AC14 | IOSTANDARD = LVCMOS25;
+NET xps_mch_emc_sram_Mem_A_pin<28> LOC = AB15 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<27> LOC = T17  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<26> LOC = AC17 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<25> LOC = Y17  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<24> LOC = AB19 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<23> LOC = Y23  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<22> LOC = T18  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<21> LOC = AA24 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<20> LOC = AB22 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<19> LOC = AB21 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<18> LOC = V21  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<17> LOC = U20  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<16> LOC = R21  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<15> LOC = T20  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<14> LOC = T22  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<13> LOC = W19  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_A_pin<12> LOC = AC24 | IOSTANDARD = LVCMOS33;
+
+#Control signals
+NET xps_mch_emc_sram_Mem_CEN_pin<0> LOC = AD19 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_OEN_pin<0> LOC = P24  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_WEN_pin    LOC = T24  | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_BEN_pin<0> LOC = AD24 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_BEN_pin<1> LOC = AB24 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_BEN_pin<2> LOC = AD21 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_BEN_pin<3> LOC = AD20 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_ADV_LDN_pin LOC = R23 | IOSTANDARD = LVCMOS33;
+NET xps_mch_emc_sram_Mem_LBON_pin   LOC = AF15 | IOSTANDARD = LVCMOS25;
+NET sram_clk_pin LOC = V24 | IOSTANDARD = LVCMOS33;
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Camera Signals CAM0
+// r2011 Daughter board
+///////////////////////////////////////////////////////////////////////////////
+
+# NET cam0_data<0>     LOC = D10;   #Use this set if improving color resolution to 10 bits
+# NET cam0_data<1>     LOC = E10;
+# NET cam0_data<2>     LOC = C9;
+# NET cam0_data<3>     LOC = D9;
+# NET cam0_data<4>     LOC = C8;
+# NET cam0_data<5>     LOC = D8;
+# NET cam0_data<6>     LOC = E8;
+# NET cam0_data<7>     LOC = E7;
+# NET cam0_data<8>     LOC = D6;
+# NET cam0_data<9>     LOC = E6;
+
+NET cam0_data<0>     LOC = C9;
+NET cam0_data<1>     LOC = D9;
+NET cam0_data<2>     LOC = C8;
+NET cam0_data<3>     LOC = D8;
+NET cam0_data<4>     LOC = E8;
+NET cam0_data<5>     LOC = E7;
+NET cam0_data<6>     LOC = D6;
+NET cam0_data<7>     LOC = E6;
+
+NET cam0_frame_valid LOC = D4;
+NET cam0_line_valid  LOC = D5;
+NET cam0_pixclk      LOC = H8;
+
+NET cam0_sclk        LOC = G7;
+NET cam0_sdata       LOC = C4;
+NET cam0_sdata PULLUP;
+NET cam0_sclk  SLEW = SLOW;
+NET cam0_sdata SLEW = SLOW;
+
+NET cam0_reset_n      LOC = E5;
+NET cam0_reset_n TIG;
+NET cam_standby      LOC = F4;
+NET cam_standby TIG;
+
+NET cam* IOSTANDARD = LVCMOS33;
+NET "cam0_pixclk"  CLOCK_DEDICATED_ROUTE = FALSE;
+TIMESPEC "TS_cam0_pixclk" = PERIOD cam0_pixclk 30 MHz;
+INST cam0_data<*>     TNM = "Cam0_Input";
+INST cam0_frame_valid TNM = "Cam0_Input";
+INST cam0_line_valid  TNM = "Cam0_Input";
+TIMEGRP "Cam0_Input" OFFSET = IN 8 ns VALID 16 ns BEFORE cam0_pixclk;
+
+////////////////////////////////////////////////////////////////////////////
+// Miscellaneous Constraints
+////////////////////////////////////////////////////////////////////////////
+
+# Ignore timing on interrupt signals
+NET wireless_int      TIG;
+NET ext_int           TIG;
+
+TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 100000 kHz;
+NET "ppc405_0/C405RSTCHIPRESETREQ" TPTHRU = "ppc405_0_RST_GRP";
+NET "ppc405_0/C405RSTCORERESETREQ" TPTHRU = "ppc405_0_RST_GRP";
+NET "ppc405_0/C405RSTSYSRESETREQ" TPTHRU = "ppc405_0_RST_GRP";
+TIMESPEC "TS_RST_ppc405_0" = FROM CPUS THRU ppc405_0_RST_GRP TO FFS TIG;
+
+///////////////////////////////////////////////////////////////////////////////
+// USB Signals
+///////////////////////////////////////////////////////////////////////////////
+
+NET usb_if_clk LOC = D15;
+NET usb_if_clk IOSTANDARD = LVCMOS33;
+NET usb_if_clk PERIOD = 20.833333 ns;
+
+NET usb_full_n LOC = C23;
+NET usb_full_n IOSTANDARD = LVCMOS33;
+
+NET usb_empty_n LOC = D23;
+NET usb_empty_n IOSTANDARD = LVCMOS33;
+
+NET usb_alive LOC = C24;
+NET usb_alive IOSTANDARD = LVCMOS33;
+NET usb_alive PULLDOWN;
+
+NET usb_sloe_n LOC = L18;
+NET usb_sloe_n IOSTANDARD = LVCMOS33;
+
+NET usb_slrd_n LOC = N23;
+NET usb_slrd_n IOSTANDARD = LVCMOS33;
+
+NET usb_slwr_n LOC = N24;
+NET usb_slwr_n IOSTANDARD = LVCMOS33;
+
+NET usb_pktend_n LOC = D24;
+NET usb_pktend_n IOSTANDARD = LVCMOS33;
+
+NET usb_fifoaddr<0> LOC = E23;
+NET usb_fifoaddr<1> LOC = F23;
+NET usb_fifoaddr<*> IOSTANDARD = LVCMOS33;
+
+NET usb_fd<0> LOC = N22;
+NET usb_fd<1> LOC = M24;
+NET usb_fd<2> LOC = L24;
+NET usb_fd<3> LOC = M22;
+NET usb_fd<4> LOC = L19;
+NET usb_fd<5> LOC = L23;
+NET usb_fd<6> LOC = K23;
+NET usb_fd<7> LOC = J23;
+NET usb_fd<8> LOC = K20;
+NET usb_fd<9> LOC = J19;
+NET usb_fd<10> LOC = J21;
+NET usb_fd<11> LOC = G24;
+NET usb_fd<12> LOC = F24;
+NET usb_fd<13> LOC = K22;
+NET usb_fd<14> LOC = H24;
+NET usb_fd<15> LOC = K21;
+NET usb_fd<*> IOSTANDARD = LVCMOS33;
+
+
+///////////////////////////////////////////////////////////////////////////////
+// SDRAM Controller Signals
+///////////////////////////////////////////////////////////////////////////////
+
+# NET sdram_addr<12> LOC = L3;
+NET sdram_addr<11> LOC = AD11;
+NET sdram_addr<10> LOC = AD6;
+NET sdram_addr<9>  LOC = N4;
+NET sdram_addr<8>  LOC = P3;
+NET sdram_addr<7>  LOC = U4;
+NET sdram_addr<6>  LOC = Y3;
+NET sdram_addr<5>  LOC = W3;
+NET sdram_addr<4>  LOC = W5;
+NET sdram_addr<3>  LOC = Y7;
+NET sdram_addr<2>  LOC = AB4;
+NET sdram_addr<1>  LOC = AC8;
+NET sdram_addr<0>  LOC = AB6;
+
+NET sdram_data<31> LOC = P4;
+NET sdram_data<30> LOC = R5;
+NET sdram_data<29> LOC = U6;
+NET sdram_data<28> LOC = U5;
+NET sdram_data<27> LOC = V4;
+NET sdram_data<26> LOC = T8;
+NET sdram_data<25> LOC = T9;
+NET sdram_data<24> LOC = AA3;
+NET sdram_data<23> LOC = AC6;
+NET sdram_data<22> LOC = AB7;
+NET sdram_data<21> LOC = AA8;
+NET sdram_data<20> LOC = AD8;
+NET sdram_data<19> LOC = AD9;
+NET sdram_data<18> LOC = AB9;
+NET sdram_data<17> LOC = Y10;
+NET sdram_data<16> LOC = AC11;
+NET sdram_data<15> LOC = P5;
+NET sdram_data<14> LOC = R3;
+NET sdram_data<13> LOC = T4;
+NET sdram_data<12> LOC = U7;
+NET sdram_data<11> LOC = V6;
+NET sdram_data<10> LOC = W4;
+NET sdram_data<9>  LOC = U9;
+NET sdram_data<8>  LOC = Y6;
+NET sdram_data<7>  LOC = AB11;
+NET sdram_data<6>  LOC = AA10;
+NET sdram_data<5>  LOC = AC9;
+NET sdram_data<4>  LOC = AC7;
+NET sdram_data<3>  LOC = Y8;
+NET sdram_data<2>  LOC = AA7;
+NET sdram_data<1>  LOC = AD4;
+NET sdram_data<0>  LOC = AB5;
+
+NET sdram_clk    LOC = AC4;
+NET sdram_clk_fb LOC = AB12;
+NET sdram_cke    LOC = AA4;
+
+NET sdram_cs_n  LOC = W10;
+NET sdram_we_n  LOC = AC3;
+
+NET sdram_ras_n LOC = AA5;
+NET sdram_cas_n LOC = AD3;
+
+NET SDRAM_ba<1> LOC = AD10;
+NET SDRAM_ba<0> LOC = AA9;
+
+NET sdram_dqm<3> LOC = Y5;
+NET sdram_dqm<2> LOC = AD5;
+NET sdram_dqm<1> LOC = L4;
+NET sdram_dqm<0> LOC = AB10;
+
+
+NET sdram_addr<*> IOSTANDARD = LVDCI_25;
+NET sdram_addr<*> SLEW = FAST;
+
+NET sdram_data<*> IOSTANDARD = LVDCI_25;
+NET sdram_data<*> SLEW = FAST;
+
+NET sdram_clk IOSTANDARD = LVCMOS25;
+NET sdram_clk DRIVE = 16;
+NET sdram_clk SLEW = FAST;
+
+NET sdram_clk_fb IOSTANDARD = LVCMOS25;
+NET sdram_clk_fb PERIOD = 10 ns;
+
+NET sdram_cke IOSTANDARD = LVDCI_25;
+NET sdram_cke SLEW = FAST;
+
+NET sdram_cs_n IOSTANDARD = LVDCI_25;
+NET sdram_cs_n SLEW = FAST;
+
+NET sdram_we_n IOSTANDARD = LVDCI_25;
+NET sdram_we_n SLEW = FAST;
+
+NET sdram_ras_n IOSTANDARD = LVDCI_25;
+NET sdram_ras_n SLEW = FAST;
+
+NET sdram_cas_n IOSTANDARD = LVDCI_25;
+NET sdram_cas_n SLEW = FAST;
+
+NET sdram_ba<*> IOSTANDARD = LVDCI_25;
+NET sdram_ba<*> SLEW = FAST;
+
+NET sdram_dqm<*> IOSTANDARD = LVDCI_25;
+NET sdram_dqm<*> SLEW = FAST;
+
+INST "sdram_data<*>" TNM = SdramInput;
+TIMEGRP "SdramInput" OFFSET = IN 2 ns VALID 4 ns BEFORE "fpga_0_clk_1_sys_clk_pin";
+
+INST "sdram_data<*>" TNM = SdramOutput;
+INST "sdram_addr<*>" TNM = SdramOutput;
+INST "sdram_cs_n" TNM = SdramOutput;
+INST "sdram_we_n" TNM = SdramOutput;
+INST "sdram_ras_n" TNM = SdramOutput;
+INST "sdram_cas_n" TNM = SdramOutput;
+INST "sdram_ba<*>" TNM = SdramOutput;
+INST "sdram_dqm<*>" TNM = SdramOutput;
+INST "sdram_addr<*>" TNM = SdramOutput;
+TIMEGRP "SdramOutput" OFFSET = OUT 5 ns AFTER "fpga_0_clk_1_sys_clk_pin";
+
+#for static PHY SDRAM with dynamic phase change, this constraint must be here
+NET mpmc_0/*rd_data_rise_rdclk* MAXDELAY = 1000 ps;
+
+////////////////////////////////////////////////////////////////////////////
+// Miscellaneous Constraints
+////////////////////////////////////////////////////////////////////////////
+
+# Ignore timing on interrupt signals
+#NET wireless_int      TIG;
+#NET ext_int           TIG;
+
+# Ignore timing on reset signals
+#NET sys_bus_reset     TIG;
+#NET opb_v20_0_OPB_Rst TIG;
+#NET plb_v34_0_PLB_Rst TIG;
+
+# Ignore timing on final DCM locked signals
+#NET dcm_0_lock        TIG;
+#NET dcm_1_lock        TIG;
+#NET dcm_locked        TIG;
+NET Dcm_all_locked	 TIG;
+
+# Define reset group, ignore timing on this group
+#NET "resetsys"     TPTHRU = "RST_GRP";
+#NET "resetchip"    TPTHRU = "RST_GRP";
+#NET "resetcore"    TPTHRU = "RST_GRP";
+#NET "resetsysreq"  TPTHRU = "RST_GRP";
+#NET "resetchipreq" TPTHRU = "RST_GRP";
+#NET "resetcorereq" TPTHRU = "RST_GRP";
+#TIMESPEC "TS_RST" = FROM CPUS THRU RST_GRP TO FFS TIG;
+
+# Ignore timing constraints from PPC to OPB2PLB bridge
+#INST "opb2plb_bridge_0" TNM = "opb2plb_bridge";
+#TIMESPEC "TS_PPC_TO_OPB2PLB" = FROM CPUS to "opb2plb_bridge" TIG;

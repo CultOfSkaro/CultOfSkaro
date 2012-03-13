@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "C:/projects/rr2011v5/pcores/plb_vision_v1_00_a/devl/projnav/plb_vision.xst" -ofn "C:/projects/rr2011v5/pcores/plb_vision_v1_00_a/devl/projnav/plb_vision.syr" 

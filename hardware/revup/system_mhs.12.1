@@ -1,0 +1,477 @@
+
+# ##############################################################################
+# Created by Base System Builder Wizard for Xilinx EDK 11.1 Build EDK_L.29.1
+# Tue Jan 19 11:02:27 2010
+# Target Board:  Custom
+# Family:    virtex4
+# Device:    xc4vfx20
+# Package:   ff672
+# Speed Grade:  -10
+# Processor number: 1
+# Processor 1: ppc405_0
+# Processor clock frequency: 300.0
+# Bus clock frequency: 300.0
+# Debug Interface: FPGA JTAG
+# ##############################################################################
+ PARAMETER VERSION = 2.1.0
+
+
+# #### Serial UART Signals #####
+ PORT uart_rx = uart_rx, DIR = I
+ PORT uart_tx = uart_tx, DIR = O
+# #### Wireless UART Signals #####
+ PORT wireless_rx = wireless_rx, DIR = I
+ PORT wireless_tx = wireless_tx, DIR = O
+# #### Servo/ESC PWM Signals #####
+ PORT pwm_servo = pwm_servo, DIR = O
+ PORT pwm_esc = pwm_esc, DIR = O
+# #### Clock and Reset Signals #####
+ PORT fpga_0_clk_1_sys_clk_pin = dcm_clk_s, DIR = I, SIGIS = CLK, CLK_FREQ = 100000000
+ PORT fpga_0_rst_1_sys_rst_pin = sys_rst_s, DIR = I, SIGIS = RST, RST_POLARITY = 0
+# #### Quad Encoder Signals #####
+ PORT plb_quad_encoder_0_enc_a_in = plb_quad_encoder_0_enc_a_in, DIR = I
+ PORT plb_quad_encoder_0_enc_b_in = plb_quad_encoder_0_enc_b_in, DIR = I
+# #### GPIO Signals ####
+ PORT gpio_helios = gpio_helios, VEC = [4:0], DIR = IO
+ PORT gpio_helios_game = gpio_helios_game, VEC = [7:0], DIR = IO
+ PORT xps_mch_emc_flash_Mem_DQ = xps_mch_emc_0_Mem_DQ, DIR = IO, VEC = [0:15]
+ PORT xps_mch_emc_flash_Mem_A_pin = xps_mch_emc_0_Mem_A, DIR = O, VEC = [0:31]
+ PORT xps_mch_emc_flash_Mem_CEN_pin = xps_mch_emc_0_Mem_CEN, DIR = O, VEC = [0:0]
+ PORT xps_mch_emc_flash_Mem_RPN_pin = xps_mch_emc_0_Mem_RPN, DIR = O
+ PORT xps_mch_emc_flash_Mem_BEN_pin = net_vcc, DIR = O, VEC = [0:1]
+ PORT xps_mch_emc_flash_Mem_QWEN_pin = xps_mch_emc_0_Mem_QWEN, DIR = O, VEC = [0:1]
+ PORT xps_mch_emc_flash_Mem_OEN_pin = xps_mch_emc_0_Mem_OEN, DIR = O, VEC = [0:0]
+ PORT xps_mch_emc_sram_Mem_WEN_pin = xps_mch_emc_sram_Mem_WEN, DIR = O
+ PORT xps_mch_emc_sram_Mem_A_pin = xps_mch_emc_sram_Mem_A, DIR = O, VEC = [0:31]
+ PORT xps_mch_emc_sram_Mem_CEN_pin = xps_mch_emc_sram_Mem_CEN, DIR = O, VEC = [0:0]
+ PORT xps_mch_emc_sram_Mem_OEN_pin = xps_mch_emc_sram_Mem_OEN, DIR = O, VEC = [0:0]
+ PORT xps_mch_emc_sram_Mem_BEN_pin = xps_mch_emc_sram_Mem_BEN, DIR = O, VEC = [0:3]
+ PORT xps_mch_emc_sram_Mem_DQ = xps_mch_emc_sram_Mem_DQ, DIR = IO, VEC = [0:31]
+ PORT sram_clk_pin = plb_clk_100MHz, DIR = O
+ PORT xps_mch_emc_sram_Mem_ADV_LDN_pin = xps_mch_emc_sram_Mem_ADV_LDN, DIR = O
+ PORT xps_mch_emc_sram_Mem_LBON_pin = xps_mch_emc_sram_Mem_LBON, DIR = O
+# #### Camera Signals ####
+ PORT cam0_data = cam0_data, VEC = [7:0], DIR = I
+ PORT cam0_frame_valid = cam0_frame_valid, DIR = I
+ PORT cam0_line_valid = cam0_line_valid, DIR = I
+ PORT cam0_pixclk = cam0_pixclk, DIR = I
+ PORT cam0_sclk = cam0_sclk, DIR = O
+ PORT cam0_sdata = cam0_sdata, DIR = IO
+ PORT cam0_reset_n = cam0_reset_n, DIR = IO
+ PORT cam_standby = net_gnd, DIR = O
+# #### USB Signals
+ PORT usb_if_clk = usb_if_clk, DIR = I
+ PORT usb_full_n = usb_full_n, DIR = I
+ PORT usb_empty_n = usb_empty_n, DIR = I
+ PORT usb_alive = usb_alive, DIR = I
+ PORT usb_sloe_n = usb_sloe_n, DIR = O
+ PORT usb_slrd_n = usb_slrd_n, DIR = O
+ PORT usb_slwr_n = usb_slwr_n, DIR = O
+ PORT usb_pktend_n = usb_pktend_n, DIR = O
+ PORT usb_fifoaddr = usb_fifoaddr, DIR = O, VEC = [1:0]
+ PORT usb_fd = usb_fd, DIR = IO, VEC = [15:0]
+# #### SDRAM Signals #####
+ PORT sdram_clk = sdram_clk, DIR = O
+ PORT sdram_clk_fb = sdram_clk_fb, DIR = I
+ PORT sdram_cke = sdram_cke, DIR = O
+ PORT sdram_cs_n = sdram_cs_n, DIR = O
+ PORT sdram_ras_n = sdram_ras_n, DIR = O
+ PORT sdram_cas_n = sdram_cas_n, DIR = O
+ PORT sdram_we_n = sdram_we_n, DIR = O
+ PORT sdram_dqm = sdram_dqm, VEC = [3:0], DIR = O
+ PORT sdram_ba = sdram_ba, VEC = [1:0], DIR = O
+ PORT sdram_addr = sdram_addr, VEC = [11:0], DIR = O
+ PORT sdram_data = sdram_data, VEC = [31:0], DIR = IO
+
+
+BEGIN ppc405_virtex4
+ PARAMETER INSTANCE = ppc405_0
+ PARAMETER C_FASTEST_PLB_CLOCK = DPLB0
+ PARAMETER C_IDCR_BASEADDR = 0b0100000000
+ PARAMETER C_IDCR_HIGHADDR = 0b0111111111
+ PARAMETER HW_VER = 2.01.b
+ BUS_INTERFACE DPLB0 = plb
+ BUS_INTERFACE IPLB0 = plb
+ BUS_INTERFACE JTAGPPC = ppc405_0_jtagppc_bus
+ BUS_INTERFACE RESETPPC = ppc_reset_bus
+ PORT CPMC405CLOCK = clk_300_0000MHzDCM0
+ PORT EICC405EXTINPUTIRQ = ext_int
+END
+
+BEGIN plb_v46
+ PARAMETER INSTANCE = plb
+ PARAMETER C_DCR_INTFCE = 0
+ PARAMETER C_FAMILY = virtex4
+ PARAMETER HW_VER = 1.04.a
+ PORT PLB_Clk = plb_clk_100MHz
+ PORT SYS_Rst = sys_bus_reset
+END
+
+BEGIN xps_bram_if_cntlr
+ PARAMETER INSTANCE = xps_bram_if_cntlr_1
+ PARAMETER C_SPLB_NATIVE_DWIDTH = 64
+ PARAMETER C_FAMILY = virtex4
+ PARAMETER HW_VER = 1.00.b
+ PARAMETER C_BASEADDR = 0xffff0000
+ PARAMETER C_HIGHADDR = 0xffffffff
+ BUS_INTERFACE SPLB = plb
+ BUS_INTERFACE PORTA = xps_bram_if_cntlr_1_port
+END
+
+BEGIN bram_block
+ PARAMETER INSTANCE = plb_bram_if_cntlr_1_bram
+ PARAMETER C_FAMILY = virtex4
+ PARAMETER HW_VER = 1.00.a
+ BUS_INTERFACE PORTA = xps_bram_if_cntlr_1_port
+END
+
+BEGIN xps_uartlite
+ PARAMETER INSTANCE = serial_uart
+ PARAMETER C_FAMILY = virtex4
+ PARAMETER C_BAUDRATE = 115200
+ PARAMETER C_DATA_BITS = 8
+ PARAMETER C_USE_PARITY = 0
+ PARAMETER C_ODD_PARITY = 0
+ PARAMETER HW_VER = 1.01.a
+ PARAMETER C_BASEADDR = 0x84000000
+ PARAMETER C_HIGHADDR = 0x8400ffff
+ BUS_INTERFACE SPLB = plb
+ PORT RX = uart_rx
+ PORT TX = uart_tx
+ PORT Interrupt = serial_int
+END
+
+BEGIN xps_uartlite
+ PARAMETER INSTANCE = wireless_uart
+ PARAMETER C_FAMILY = virtex4
+ PARAMETER C_BAUDRATE = 57600
+ PARAMETER C_DATA_BITS = 8
+ PARAMETER C_USE_PARITY = 0
+ PARAMETER C_ODD_PARITY = 0
+ PARAMETER HW_VER = 1.01.a
+ PARAMETER C_BASEADDR = 0x84100000
+ PARAMETER C_HIGHADDR = 0x8410ffff
+ BUS_INTERFACE SPLB = plb
+ PORT RX = wireless_rx
+ PORT TX = wireless_tx
+ PORT Interrupt = wireless_int
+END
+
+BEGIN clock_generator
+ PARAMETER INSTANCE = clock_generator_0
+ PARAMETER C_CLKIN_FREQ = 100000000
+ PARAMETER C_CLKOUT0_FREQ = 100000000
+ PARAMETER C_CLKOUT0_PHASE = 0
+ PARAMETER C_CLKOUT0_GROUP = DCM0
+ PARAMETER C_CLKOUT0_BUF = TRUE
+ PARAMETER C_CLKOUT1_FREQ = 300000000
+ PARAMETER C_CLKOUT1_PHASE = 0
+ PARAMETER C_CLKOUT1_GROUP = DCM0
+ PARAMETER C_CLKOUT1_BUF = TRUE
+ PARAMETER HW_VER = 3.02.a
+ PORT CLKIN = dcm_clk_s
+ PORT CLKOUT0 = plb_clk_100MHz
+ PORT CLKOUT1 = clk_300_0000MHzDCM0
+ PORT RST = net_gnd
+ PORT LOCKED = DCM_1_lock
+END
+
+BEGIN jtagppc_cntlr
+ PARAMETER INSTANCE = jtagppc_cntlr_inst
+ PARAMETER HW_VER = 2.01.c
+ BUS_INTERFACE JTAGPPC0 = ppc405_0_jtagppc_bus
+END
+
+BEGIN proc_sys_reset
+ PARAMETER INSTANCE = proc_sys_reset_0
+ PARAMETER C_EXT_RESET_HIGH = 0
+ PARAMETER HW_VER = 2.00.a
+ BUS_INTERFACE RESETPPC0 = ppc_reset_bus
+ PORT Slowest_sync_clk = plb_clk_100MHz
+ PORT Ext_Reset_In = sys_rst_s
+ PORT Dcm_locked = Dcm_all_locked
+ PORT Bus_Struct_Reset = sys_bus_reset
+END
+
+# PORT Peripheral_Reset = sys_periph_reset
+BEGIN xps_intc
+ PARAMETER INSTANCE = xps_intc_0
+ PARAMETER HW_VER = 2.00.a
+ PARAMETER C_NUM_INTR_INPUTS = 5
+ PARAMETER C_BASEADDR = 0x81800000
+ PARAMETER C_HIGHADDR = 0x8180ffff
+ BUS_INTERFACE SPLB = plb
+# PORT Intr = wireless_int & serial_int & usb_int & cam_int
+ PORT Intr = gpio_int&wireless_int&serial_int&usb_int&plb_vision_0_Interrupt
+ PORT Irq = ext_int
+END
+
+BEGIN plb_quad_encoder
+ PARAMETER INSTANCE = plb_quad_encoder_0
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0xc9800000
+ PARAMETER C_HIGHADDR = 0xc980ffff
+ BUS_INTERFACE SPLB = plb
+ PORT enc_a_in = plb_quad_encoder_0_enc_a_in
+ PORT enc_b_in = plb_quad_encoder_0_enc_b_in
+END
+
+BEGIN plb_pwm_ctrl
+ PARAMETER INSTANCE = plb_pwm_ctrl_0
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_SPLB_SMALLEST_MASTER = 32
+ PARAMETER C_INCLUDE_DPHASE_TIMER = 0
+ PARAMETER C_FAMILY = virtex4
+ PARAMETER C_BASEADDR = 0x84200000
+ PARAMETER C_HIGHADDR = 0x8420ffff
+ BUS_INTERFACE SPLB = plb
+ PORT pwm = pwm_servo & pwm_esc
+END
+
+BEGIN xps_gpio
+ PARAMETER INSTANCE = xps_gpio_0
+ PARAMETER HW_VER = 2.00.a
+ PARAMETER C_IS_DUAL = 1
+ PARAMETER C_GPIO_WIDTH = 5
+ PARAMETER C_GPIO2_WIDTH = 8
+ PARAMETER C_DOUT_DEFAULT = 0x00000000
+ PARAMETER C_DOUT_DEFAULT_2 = 0x00000000
+ PARAMETER C_TRI_DEFAULT = 0xFFFFFFE7
+ PARAMETER C_TRI_DEFAULT_2 = 0xFFFFFFF8
+ PARAMETER C_BASEADDR = 0x40000000
+ PARAMETER C_HIGHADDR = 0x4000ffff
+ PARAMETER C_INTERRUPT_PRESENT = 1
+ BUS_INTERFACE SPLB = plb
+# PORT GPIO_IO = wireless_cts_n & flash_rp_n & sram_zz & gpio_helios
+ PORT GPIO_IO = gpio_helios
+ PORT GPIO2_IO = gpio_helios_game
+ PORT IP2INTC_Irpt = gpio_int
+END
+
+BEGIN xps_mch_emc
+ PARAMETER INSTANCE = xps_mch_emc_flash
+ PARAMETER HW_VER = 3.01.a
+ PARAMETER C_NUM_CHANNELS = 0
+ PARAMETER C_MEM0_WIDTH = 16
+ PARAMETER C_INCLUDE_DATAWIDTH_MATCHING_0 = 1
+ PARAMETER C_PAGEMODE_FLASH_0 = 1
+ PARAMETER C_TCEDV_PS_MEM_0 = 120000
+ PARAMETER C_TAVDV_PS_MEM_0 = 120000
+ PARAMETER C_THZCE_PS_MEM_0 = 35000
+ PARAMETER C_THZOE_PS_MEM_0 = 15000
+ PARAMETER C_TWC_PS_MEM_0 = 120000
+ PARAMETER C_TWP_PS_MEM_0 = 70000
+ PARAMETER C_SPLB_SMALLEST_MASTER = 32
+ PARAMETER C_MEM0_BASEADDR = 0x83000000
+ PARAMETER C_MEM0_HIGHADDR = 0x83FFFFFF
+ PARAMETER C_INCLUDE_DATAWIDTH_MATCHING_1 = 1
+ PARAMETER C_SYNCH_MEM_1 = 1
+ PARAMETER C_SYNCH_PIPEDELAY_1 = 1
+ PARAMETER C_TCEDV_PS_MEM_1 = 2000
+ PARAMETER C_TAVDV_PS_MEM_1 = 5000
+ PARAMETER C_THZCE_PS_MEM_1 = 5000
+ PARAMETER C_THZOE_PS_MEM_1 = 3500
+ PARAMETER C_TWC_PS_MEM_1 = 10000
+ PARAMETER C_TWP_PS_MEM_1 = 2000
+ PARAMETER C_TLZWE_PS_MEM_1 = 3500
+ PARAMETER C_MEM1_WIDTH = 16
+ PARAMETER C_MAX_MEM_WIDTH = 16
+ BUS_INTERFACE SPLB = plb
+ PORT RdClk = plb_clk_100MHz
+ PORT Mem_DQ = xps_mch_emc_0_Mem_DQ
+ PORT Mem_A = xps_mch_emc_0_Mem_A
+ PORT Mem_CEN = xps_mch_emc_0_Mem_CEN
+ PORT Mem_RPN = xps_mch_emc_0_Mem_RPN
+ PORT Mem_QWEN = xps_mch_emc_0_Mem_QWEN
+ PORT Mem_OEN = xps_mch_emc_0_Mem_OEN
+END
+
+BEGIN xps_mch_emc
+ PARAMETER INSTANCE = xps_mch_emc_sram
+ PARAMETER HW_VER = 3.01.a
+ PARAMETER C_NUM_CHANNELS = 0
+ PARAMETER C_INCLUDE_DATAWIDTH_MATCHING_0 = 1
+ PARAMETER C_SYNCH_MEM_0 = 1
+ PARAMETER C_SYNCH_PIPEDELAY_0 = 1
+ PARAMETER C_TCEDV_PS_MEM_0 = 2000
+ PARAMETER C_TAVDV_PS_MEM_0 = 5000
+ PARAMETER C_THZCE_PS_MEM_0 = 5000
+ PARAMETER C_THZOE_PS_MEM_0 = 3500
+ PARAMETER C_TWC_PS_MEM_0 = 10000
+ PARAMETER C_TWP_PS_MEM_0 = 2000
+ PARAMETER C_TLZWE_PS_MEM_0 = 3500
+ PARAMETER C_MEM0_BASEADDR = 0x84300000
+ PARAMETER C_MEM0_HIGHADDR = 0x843FFFFF
+ PARAMETER C_SPLB_SMALLEST_MASTER = 32
+ BUS_INTERFACE SPLB = plb
+ PORT RdClk = plb_clk_100MHz
+ PORT Mem_WEN = xps_mch_emc_sram_Mem_WEN
+ PORT Mem_A = xps_mch_emc_sram_Mem_A
+ PORT Mem_CEN = xps_mch_emc_sram_Mem_CEN
+ PORT Mem_OEN = xps_mch_emc_sram_Mem_OEN
+ PORT Mem_BEN = xps_mch_emc_sram_Mem_BEN
+ PORT Mem_DQ = xps_mch_emc_sram_Mem_DQ
+ PORT Mem_ADV_LDN = xps_mch_emc_sram_Mem_ADV_LDN
+ PORT Mem_LBON = xps_mch_emc_sram_Mem_LBON
+END
+
+BEGIN dcm_module
+ PARAMETER INSTANCE = dcm_module_0
+ PARAMETER HW_VER = 1.00.d
+ PARAMETER C_CLKIN_PERIOD = 20.83333333333
+ PARAMETER C_CLK0_BUF = TRUE
+ PARAMETER C_CLKOUT_PHASE_SHIFT = FIXED
+ PARAMETER C_PHASE_SHIFT = -30
+ PORT CLKIN = usb_if_clk
+ PORT CLK0 = usb_if_clk_shift
+ PORT CLKFB = usb_if_clk_shift
+ PORT RST = usb_dcm_reset
+ PORT LOCKED = usb_dcm_locked
+END
+
+BEGIN plb_usb
+ PARAMETER INSTANCE = plb_usb_0
+ PARAMETER HW_VER = 1.01.a
+ PARAMETER C_USB_DATA_WIDTH = 16
+ PARAMETER C_BASEADDR = 0xc9c00000
+ PARAMETER C_HIGHADDR = 0xc9c0ffff
+ BUS_INTERFACE SPLB = plb
+ BUS_INTERFACE MPLB = plb
+ PORT dcm_locked = usb_dcm_locked
+ PORT dcm_reset = usb_dcm_reset
+ PORT if_clk = usb_if_clk_shift
+ PORT usb_full_n = usb_full_n
+ PORT usb_empty_n = usb_empty_n
+ PORT usb_alive = usb_alive
+ PORT sloe_n = usb_sloe_n
+ PORT slrd_n = usb_slrd_n
+ PORT slwr_n = usb_slwr_n
+ PORT pktend_n = usb_pktend_n
+ PORT fifoaddr = usb_fifoaddr
+ PORT fd = usb_fd
+ PORT Interrupt = usb_int
+END
+
+BEGIN plb_vision
+ PARAMETER INSTANCE = plb_vision_0
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0xc4600000
+ PARAMETER C_HIGHADDR = 0xc460ffff
+ BUS_INTERFACE MPLB = plb
+ BUS_INTERFACE SPLB = plb
+ PORT cam_sdata = cam0_sdata
+ PORT cam_sclk = cam0_sclk
+ PORT cam_pix_clk = cam0_pixclk
+ PORT cam_line_valid = cam0_line_valid
+ PORT cam_frame_valid = cam0_frame_valid
+ PORT cam_data = cam0_data
+ PORT cam_reset_n = cam0_reset_n
+ PORT Interrupt = plb_vision_0_Interrupt
+END
+
+# SDRAM Controller
+BEGIN mpmc
+ PARAMETER INSTANCE = mpmc_0
+ PARAMETER HW_VER = 5.04.a
+ PARAMETER C_MPMC_CLK0_PERIOD_PS = 10000
+ PARAMETER C_FAMILY = virtex4
+# MT48V8M32LFF5-8
+# -8 speed grade
+ PARAMETER C_MEM_PARTNO = CUSTOM
+ PARAMETER C_MEM_PART_DATA_DEPTH = 256
+ PARAMETER C_MEM_PART_DATA_WIDTH = 32
+ PARAMETER C_MEM_PART_NUM_BANK_BITS = 2
+ PARAMETER C_MEM_PART_NUM_ROW_BITS = 12
+ PARAMETER C_MEM_PART_NUM_COL_BITS = 9
+ PARAMETER C_MEM_PART_TRAS = 48000
+# tRAS in Micron datasheet (ps)
+ PARAMETER C_MEM_PART_TRASMAX = 120000000
+# tRAS MAX in Micron datasheet  (ps)
+ PARAMETER C_MEM_PART_TRC = 72000
+# tRC in Micron datasheet (ps)
+ PARAMETER C_MEM_PART_TRCD = 20000
+# tRCD in Micron datasheet (ps)
+ PARAMETER C_MEM_PART_TWR = 15000
+# tWR(m) in Micron datasheet (ps)
+ PARAMETER C_MEM_PART_TRP = 19000
+# tRP in Micron datasheet (ps)
+ PARAMETER C_MEM_PART_TMRD = 2
+# tMRD in Micron datasheet (tCK)
+ PARAMETER C_MEM_PART_TRRD = 16000
+# tRRD in Micron datasheet (ps)
+ PARAMETER C_MEM_PART_TRFC = 80000
+# tRFC in Micron datasheet (ps)
+ PARAMETER C_MEM_PART_TREFI = 15625000
+# tREF in Micron datasheet is 64ms, the sdram needs 4096 refresh cycles every 64ms, so 64ms/4096 = tREFI = 15.625us
+ PARAMETER C_MEM_PART_TCCD = 1
+# tCCD in Micron datasheet (cycles)
+ PARAMETER C_MEM_PART_CAS_A_FMAX = 104
+ PARAMETER C_MEM_PART_CAS_A = 2
+ PARAMETER C_MEM_PART_CAS_B_FMAX = 125
+ PARAMETER C_MEM_PART_CAS_B = 3
+ PARAMETER C_INCLUDE_ECC_SUPPORT = 0
+ PARAMETER C_MEM_TYPE = SDRAM
+ PARAMETER C_USE_STATIC_PHY = 1
+ PARAMETER C_MEM_DATA_WIDTH = 32
+ PARAMETER C_MEM_ADDR_WIDTH = 12
+ PARAMETER C_MEM_BANKADDR_WIDTH = 2
+# PARAMETER C_MEM_DM_WIDTH = 4
+# PARAMETER C_TWR = 15000
+# auto calculated PARAMETER C_MEM_CAS_LATENCY = 2
+ PARAMETER C_MPMC_BASEADDR = 0x00000000
+ PARAMETER C_MPMC_HIGHADDR = 0x01ffffff
+ PARAMETER C_MPMC_CTRL_BASEADDR = 0x92000000
+ PARAMETER C_MPMC_CTRL_HIGHADDR = 0x9200ffff
+ PARAMETER C_NUM_PORTS = 1
+ PARAMETER C_PIM0_BASETYPE = 2
+ PARAMETER C_SPLB0_SUPPORT_BURSTS = 1
+ BUS_INTERFACE MPMC_CTRL = plb
+ BUS_INTERFACE SPLB0 = plb
+# signals for clocking the SDRAM controller
+# system clock
+ PORT MPMC_Clk0 = plb_clk_100MHz
+ PORT MPMC_Rst = sys_bus_reset
+# memory read data capture clock used by static PHY
+ PORT MPMC_Clk_Mem = sdram_clk_phy
+ PORT MPMC_DCM_PSEN = mpmc_dcm_psen
+ PORT MPMC_DCM_PSINCDEC = mpmc_dcm_psincdec
+ PORT MPMC_DCM_PSDONE = mpmc_dcm_psdone
+# ports wired to the actual SDRAM chip
+# clock into the SDRAM
+ PORT SDRAM_Clk = sdram_clk
+ PORT SDRAM_CE = sdram_cke
+ PORT SDRAM_CS_n = sdram_cs_n
+ PORT SDRAM_RAS_n = sdram_ras_n
+ PORT SDRAM_CAS_n = sdram_cas_n
+ PORT SDRAM_WE_n = sdram_we_n
+ PORT SDRAM_DM = sdram_dqm
+ PORT SDRAM_BankAddr = sdram_ba
+ PORT SDRAM_Addr = sdram_addr
+ PORT SDRAM_DQ = sdram_data
+END
+
+# SDRAM DCM Module
+# Adjust skew here for proper SDRAM usage
+BEGIN dcm_module
+ PARAMETER INSTANCE = dcm_2
+ PARAMETER HW_VER = 1.00.d
+ PARAMETER C_FAMILY = virtex4
+ PARAMETER C_CLKIN_PERIOD = 10.000000
+ PARAMETER C_EXT_RESET_HIGH = 0
+ PARAMETER C_CLK_FEEDBACK = 1X
+ PARAMETER C_DLL_FREQUENCY_MODE = LOW
+ PARAMETER C_CLK0_BUF = TRUE
+# PARAMETER C_CLK90_BUF = TRUE
+ PARAMETER C_CLKOUT_PHASE_SHIFT = VARIABLE_CENTER
+# PARAMETER C_PHASE_SHIFT = 0
+ PORT CLKIN = plb_clk_100MHz
+ PORT CLK0 = sdram_clk_phy
+ PORT CLKFB = sdram_clk_phy
+ PORT RST = DCM_1_lock
+ PORT LOCKED = DCM_all_locked
+ PORT PSINCDEC = mpmc_dcm_psincdec
+ PORT PSEN = mpmc_dcm_psen
+ PORT PSDONE = mpmc_dcm_psdone
+ PORT PSCLK = plb_clk_100MHz
+END
+

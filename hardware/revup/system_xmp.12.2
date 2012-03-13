@@ -1,0 +1,257 @@
+#Please do not modify this file by hand
+XmpVersion: 12.2
+VerMgmt: 11.4
+IntStyle: default
+MHS File: system.mhs
+MSS File: system.mss
+Architecture: virtex4
+Device: xc4vfx20
+Package: ff672
+SpeedGrade: -10
+UserCmd1: 
+UserCmd1Type: 0
+UserCmd2: 
+UserCmd2Type: 0
+GenSimTB: 1
+SdkExportBmmBit: 1
+SdkExportDir: SDK/SDK_Export
+InsertNoPads: 0
+WarnForEAArch: 1
+HdlLang: VHDL
+SimModel: BEHAVIORAL
+UcfFile: data/system.ucf
+EnableParTimingError: 1
+ShowLicenseDialog: 1
+ICacheAddr: xps_bram_if_cntlr_1,
+DCacheAddr: xps_bram_if_cntlr_1,
+Processor: ppc405_0
+BootLoop: 0
+XmdStub: 0
+SwProj: TestApp_Encoder
+Processor: ppc405_0
+Executable: TestApp_Encoder/executable.elf
+Source: code/Common/Timer.c
+Source: drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c
+Source: drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder.c
+Source: TestApp_Encoder/TestEncoder.c
+Header: code/Common/Timer.h
+Header: code/Common/SystemTypes.h
+Header: drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder.h
+DefaultInit: EXECUTABLE
+InitBram: 0
+Active: 0
+CompilerOptLevel: 2
+GlobPtrOpt: 0
+DebugSym: 1
+ProfileFlag: 0
+ProgStart: 
+StackSize: 
+HeapSize: 
+LinkerScript: code/DefaultLinkerScript.ld
+ProgCCFlags: 
+CompileInXps: 1
+NonXpsApp: 0
+SwProj: TestApp_GPIO
+Processor: ppc405_0
+Executable: TestApp_GPIO/executable.elf
+Source: TestApp_GPIO/TestApp_GPIO.c
+Source: code/Common/HeliosIO.c
+Source: code/Common/Timer.c
+Header: code/Common/HeliosIO.h
+Header: code/Common/SystemTypes.h
+Header: code/Common/Timer.h
+DefaultInit: EXECUTABLE
+InitBram: 0
+Active: 0
+CompilerOptLevel: 2
+GlobPtrOpt: 0
+DebugSym: 1
+ProfileFlag: 0
+LFlags: xilflash
+ProgStart: 
+StackSize: 
+HeapSize: 
+LinkerScript: code/DefaultLinkerScript.ld
+ProgCCFlags: 
+CompileInXps: 1
+NonXpsApp: 0
+SwProj: TestApp_PWM
+Processor: ppc405_0
+Executable: TestApp_PWM/executable.elf
+Source: code/Common/ServoControl.c
+Source: TestApp_PWM/TestApp_PWM.c
+Header: code/Common/ServoControl.h
+Header: drivers/plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.h
+Header: code/Common/SystemTypes.h
+DefaultInit: EXECUTABLE
+InitBram: 0
+Active: 0
+CompilerOptLevel: 2
+GlobPtrOpt: 0
+DebugSym: 1
+ProfileFlag: 0
+ProgStart: 
+StackSize: 
+HeapSize: 
+LinkerScript: code/DefaultLinkerScript.ld
+ProgCCFlags: 
+CompileInXps: 1
+NonXpsApp: 0
+SwProj: TestApp_FlashMem
+Processor: ppc405_0
+Executable: TestApp_FlashMem/executable.elf
+Source: TestApp_FlashMem/TestDriver.c
+DefaultInit: EXECUTABLE
+InitBram: 0
+Active: 0
+CompilerOptLevel: 2
+GlobPtrOpt: 0
+DebugSym: 1
+ProfileFlag: 0
+LFlags: xilflash
+ProgStart: 
+StackSize: 
+HeapSize: 
+LinkerScript: 
+ProgCCFlags: 
+CompileInXps: 1
+NonXpsApp: 0
+SwProj: TestApp_SRAM
+Processor: ppc405_0
+Executable: TestApp_SRAM/executable.elf
+Source: TestApp_SRAM/TestDriverSRAM.c
+DefaultInit: executable
+InitBram: 0
+Active: 0
+CompilerOptLevel: 2
+GlobPtrOpt: 0
+DebugSym: 1
+ProfileFlag: 0
+ProgStart: 
+StackSize: 
+HeapSize: 
+LinkerScript: TestApp_SRAM/TestApp_SRAM_linker_script.ld
+ProgCCFlags: 
+CompileInXps: 1
+NonXpsApp: 0
+SwProj: TestApp_Vision
+Processor: ppc405_0
+Executable: TestApp_Vision/executable.elf
+Source: drivers/plb_vision_v1_00_a/src/plb_vision.c
+Source: drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
+Source: code/Common/Timer.c
+Source: TestApp_USB/USB_IO.c
+Source: code/Common/mpmc_calibration.c
+Header: drivers/plb_vision_v1_00_a/src/plb_vision.h
+Header: code/Common/Timer.h
+Header: code/Common/Header.h
+Header: code/Common/mpmc_calibration.h
+DefaultInit: executable
+InitBram: 0
+Active: 0
+CompilerOptLevel: 2
+GlobPtrOpt: 0
+DebugSym: 1
+ProfileFlag: 0
+ProgStart: 
+StackSize: 
+HeapSize: 
+LinkerScript: 
+ProgCCFlags: 
+CompileInXps: 1
+NonXpsApp: 0
+SwProj: TestApp_USB
+Processor: ppc405_0
+Executable: TestApp_USB/executable.elf
+Source: TestApp_USB/TestApp_USB.c
+DefaultInit: executable
+InitBram: 0
+Active: 0
+CompilerOptLevel: 2
+GlobPtrOpt: 0
+DebugSym: 1
+ProfileFlag: 0
+ProgStart: 
+StackSize: 
+HeapSize: 
+LinkerScript: 
+ProgCCFlags: 
+CompileInXps: 1
+NonXpsApp: 0
+SwProj: RobotRacers
+Processor: ppc405_0
+Executable: RobotRacers/executable.elf
+Source: code/Vision/BufferStore.c
+Source: code/Vision/FrameTable.c
+Source: code/DataTypes/Queue.c
+Source: code/DataTypes/Stack.c
+Source: code/Common/State.c
+Source: code/Common/Timer.c
+Source: code/Common/Flash.c
+Source: code/Common/HeliosIO.c
+Source: code/Common/LoopScheduler.c
+Source: code/main.c
+Source: code/init.c
+Source: code/Communcations/ISR.c
+Source: code/Communcations/Comm.c
+Source: code/Communcations/Packet.c
+Source: code/Common/mpmc_calibration.c
+Source: code/Common/mpmc_mem_test_example.c
+Header: code/Vision/BufferStore.h
+Header: code/Vision/FrameTable.h
+Header: code/DataTypes/Queue.h
+Header: code/DataTypes/Stack.h
+Header: code/Common/State.h
+Header: code/Common/Timer.h
+Header: code/Common/Header.h
+Header: code/Common/HeliosIO.h
+Header: code/Common/InterruptControl.h
+Header: code/Common/LoopScheduler.h
+Header: code/init.h
+Header: code/Communcations/ISR.h
+Header: code/Communcations/Comm.h
+Header: code/Communcations/Packet.h
+Header: code/Common/Flash.h
+Header: code/Common/mpmc_calibration.h
+Header: code/Common/mpmc_mem_test_example.h
+DefaultInit: executable
+InitBram: 1
+Active: 1
+CompilerOptLevel: 2
+GlobPtrOpt: 0
+DebugSym: 1
+ProfileFlag: 0
+ProgStart: 
+StackSize: 
+HeapSize: 
+LinkerScript: 
+ProgCCFlags: 
+CompileInXps: 1
+NonXpsApp: 0
+SwProj: TestApp_SDRAM
+Processor: ppc405_0
+Executable: TestApp_SDRAM/executable.elf
+Source: code/Common/MemoryTest.c
+Source: code/Common/Serial.c
+Source: TestApp_SDRAM/mpmc_calibration_example.c
+Source: TestApp_SDRAM/TestApp_SDRAM.c
+Source: TestApp_SDRAM/mpmc_mem_test_example.c
+Header: code/Common/SystemTypes.h
+Header: code/Common/MemoryTest.h
+Header: code/Common/Serial.h
+Header: TestApp_SDRAM/mpmc_calibration_example.h
+Header: TestApp_SDRAM/mpmc_mem_test_example.h
+DefaultInit: executable
+InitBram: 0
+Active: 1
+CompilerOptLevel: 2
+GlobPtrOpt: 0
+DebugSym: 1
+ProfileFlag: 0
+ProgStart: 
+StackSize: 
+HeapSize: 
+LinkerScript: 
+ProgCCFlags: 
+CompileInXps: 1
+NonXpsApp: 0

@@ -1,0 +1,20 @@
+ppc405_0
+TESTAPP_PWM_SOURCES = code/Common/ServoControl.c TestApp_PWM/TestApp_PWM.c code/Common/Timer.c code/Common/HeliosIO.c 
+TESTAPP_PWM_HEADERS = code/Common/ServoControl.h drivers/plb_pwm_ctrl_v1_00_a/src/plb_pwm_ctrl.h code/Common/SystemTypes.h code/Common/HeliosIO.h code/Common/Timer.h drivers/plb_quad_encoder_v1_00_a/src/plb_quad_encoder.h code/Common/InterruptControl.h 
+TESTAPP_PWM_CC = powerpc-eabi-gcc
+TESTAPP_PWM_CC_SIZE = powerpc-eabi-size
+TESTAPP_PWM_CC_OPT = -O2
+TESTAPP_PWM_CFLAGS = 
+TESTAPP_PWM_CC_SEARCH = # -B
+TESTAPP_PWM_LIBPATH = -L./ppc405_0/lib/ # -L
+TESTAPP_PWM_INCLUDES = -I./ppc405_0/include/  -Icode/Common/ -Idrivers/plb_pwm_ctrl_v1_00_a/src/ -Idrivers/plb_quad_encoder_v1_00_a/src/ # -I
+TESTAPP_PWM_LFLAGS = # -l
+TESTAPP_PWM_LINKER_SCRIPT = code/DefaultLinkerScript.ld
+TESTAPP_PWM_CC_DEBUG_FLAG =  -g 
+TESTAPP_PWM_CC_PROFILE_FLAG = # -pg
+TESTAPP_PWM_CC_GLOBPTR_FLAG= # -msdata=eabi
+TESTAPP_PWM_CC_INFERRED_FLAGS= 
+TESTAPP_PWM_CC_START_ADDR_FLAG=  #  # -Wl,-defsym -Wl,_START_ADDR=
+TESTAPP_PWM_CC_STACK_SIZE_FLAG=  #  # -Wl,-defsym -Wl,_STACK_SIZE=
+TESTAPP_PWM_CC_HEAP_SIZE_FLAG=  #  # -Wl,-defsym -Wl,_HEAP_SIZE=
+                  $(TESTAPP_PWM_CC_INFERRED_FLAGS)  \

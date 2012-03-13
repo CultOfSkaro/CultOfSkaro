@@ -1,0 +1,6 @@
+FlashFile: executable.elf.srec
+FlashMode: ONESHOT
+ProcInst: ppc405_0
+FlashMem: xps_mch_emc_flash_c_mem0_baseaddr
+FlashOffset: 0x00000000
+ScratchMem: xps_bram_if_cntlr_1

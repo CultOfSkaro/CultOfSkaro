@@ -1,0 +1,1042 @@
+Release 13.3 - xst O.76xd (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+--> 
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input Format                       : MIXED
+Input File Name                    : "ppc405_1_wrapper_xst.prj"
+Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+
+---- Target Parameters
+Target Device                      : xc4vfx60ff672-11
+Output File Name                   : "../implementation/ppc405_1_wrapper.ngc"
+
+---- Source Options
+Top Module Name                    : ppc405_1_wrapper
+
+---- Target Options
+Add IO Buffers                     : NO
+
+---- General Options
+Optimization Goal                  : speed
+Netlist Hierarchy                  : as_optimized
+Optimization Effort                : 1
+Hierarchy Separator                : /
+
+---- Other Options
+Cores Search Directories           : {../implementation}
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01_b/hdl/verilog/mpmc2_sample_cycle.v" in library ppc405_virtex4_v2_01_b
+Module <mpmc2_sample_cycle> compiled
+No errors in compilation
+Analysis of file <"ppc405_1_wrapper_xst.prj"> succeeded.
+ 
+Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/iplb_plbv46_adapter.vhd" in Library ppc405_virtex4_v2_01_b.
+Entity <IPLB_PLBv46_Adapter> compiled.
+Entity <IPLB_PLBv46_Adapter> (Architecture <implementation>) compiled.
+Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/iplb_replicator.vhd" in Library ppc405_virtex4_v2_01_b.
+Entity <IPLB_Replicator> compiled.
+Entity <IPLB_Replicator> (Architecture <Behavioral>) compiled.
+Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/dplb_plbv46_adapter.vhd" in Library ppc405_virtex4_v2_01_b.
+Entity <DPLB_PLBv46_Adapter> compiled.
+Entity <DPLB_PLBv46_Adapter> (Architecture <implementation>) compiled.
+Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/dplb_replicator.vhd" in Library ppc405_virtex4_v2_01_b.
+Entity <DPLB_Replicator> compiled.
+Entity <DPLB_Replicator> (Architecture <Behavioral>) compiled.
+Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/ppc405_adv_wrap.vhd" in Library ppc405_virtex4_v2_01_b.
+Entity <PPC405_ADV_WRAP> compiled.
+Entity <PPC405_ADV_WRAP> (Architecture <STRUCTURE>) compiled.
+Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/ppc405_virtex4.vhd" in Library ppc405_virtex4_v2_01_b.
+Entity <ppc405_virtex4> compiled.
+Entity <ppc405_virtex4> (Architecture <structure>) compiled.
+Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/ppc405_1_wrapper.vhd" in Library work.
+Entity <ppc405_1_wrapper> compiled.
+Entity <ppc405_1_wrapper> (Architecture <STRUCTURE>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <ppc405_1_wrapper> in library <work> (architecture <STRUCTURE>).
+
+Analyzing hierarchy for entity <ppc405_virtex4> in library <ppc405_virtex4_v2_01_b> (architecture <structure>) with generics.
+	C_APU_CONTROL = "1101111000000000"
+	C_APU_UDI_1 = "101000011000100110000011"
+	C_APU_UDI_2 = "101000111000100110000011"
+	C_APU_UDI_3 = "101001011000100111000011"
+	C_APU_UDI_4 = "101001111000100111000011"
+	C_APU_UDI_5 = "101010011000110000000011"
+	C_APU_UDI_6 = "101010111000110000000011"
+	C_APU_UDI_7 = "101011011000110001000011"
+	C_APU_UDI_8 = "101011111000110001000011"
+	C_DETERMINISTIC_MULT = 0
+	C_DISABLE_OPERAND_FORWARDING = 1
+	C_DPLB0_DWIDTH = 64
+	C_DPLB0_NATIVE_DWIDTH = 64
+	C_DPLB1_ADDR_BASE = "11111111111111111111111111111111"
+	C_DPLB1_ADDR_HIGH = "00000000000000000000000000000000"
+	C_DPLB1_DWIDTH = 64
+	C_DPLB1_NATIVE_DWIDTH = 64
+	C_FASTEST_PLB_CLOCK = "DPLB0"
+	C_IDCR_BASEADDR = "0100000000"
+	C_IDCR_HIGHADDR = "0111111111"
+	C_IPLB0_DWIDTH = 64
+	C_IPLB0_NATIVE_DWIDTH = 64
+	C_IPLB1_ADDR_BASE = "11111111111111111111111111111111"
+	C_IPLB1_ADDR_HIGH = "00000000000000000000000000000000"
+	C_IPLB1_DWIDTH = 64
+	C_IPLB1_NATIVE_DWIDTH = 64
+	C_MMU_ENABLE = 1
+	C_PLBSYNCBYPASS = 1
+	C_PVR_HIGH = "0000"
+	C_PVR_LOW = "0000"
+
+Analyzing hierarchy for entity <IPLB_PLBv46_Adapter> in library <ppc405_virtex4_v2_01_b> (architecture <implementation>) with generics.
+	C_PLB_DWIDTH = 64
+
+Analyzing hierarchy for entity <DPLB_PLBv46_Adapter> in library <ppc405_virtex4_v2_01_b> (architecture <implementation>) with generics.
+	C_PLB_DWIDTH = 64
+
+Analyzing hierarchy for entity <PPC405_ADV_WRAP> in library <ppc405_virtex4_v2_01_b> (architecture <STRUCTURE>).
+
+Analyzing hierarchy for module <mpmc2_sample_cycle> in library <ppc405_virtex4_v2_01_b>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <ppc405_1_wrapper> in library <work> (Architecture <STRUCTURE>).
+Entity <ppc405_1_wrapper> analyzed. Unit <ppc405_1_wrapper> generated.
+
+Analyzing generic Entity <ppc405_virtex4> in library <ppc405_virtex4_v2_01_b> (Architecture <structure>).
+	C_APU_CONTROL = "1101111000000000"
+	C_APU_UDI_1 = "101000011000100110000011"
+	C_APU_UDI_2 = "101000111000100110000011"
+	C_APU_UDI_3 = "101001011000100111000011"
+	C_APU_UDI_4 = "101001111000100111000011"
+	C_APU_UDI_5 = "101010011000110000000011"
+	C_APU_UDI_6 = "101010111000110000000011"
+	C_APU_UDI_7 = "101011011000110001000011"
+	C_APU_UDI_8 = "101011111000110001000011"
+	C_DETERMINISTIC_MULT = 0
+	C_DISABLE_OPERAND_FORWARDING = 1
+	C_DPLB0_DWIDTH = 64
+	C_DPLB0_NATIVE_DWIDTH = 64
+	C_DPLB1_ADDR_BASE = "11111111111111111111111111111111"
+	C_DPLB1_ADDR_HIGH = "00000000000000000000000000000000"
+	C_DPLB1_DWIDTH = 64
+	C_DPLB1_NATIVE_DWIDTH = 64
+	C_FASTEST_PLB_CLOCK = "DPLB0"
+	C_IDCR_BASEADDR = "0100000000"
+	C_IDCR_HIGHADDR = "0111111111"
+	C_IPLB0_DWIDTH = 64
+	C_IPLB0_NATIVE_DWIDTH = 64
+	C_IPLB1_ADDR_BASE = "11111111111111111111111111111111"
+	C_IPLB1_ADDR_HIGH = "00000000000000000000000000000000"
+	C_IPLB1_DWIDTH = 64
+	C_IPLB1_NATIVE_DWIDTH = 64
+	C_MMU_ENABLE = 1
+	C_PLBSYNCBYPASS = 1
+	C_PVR_HIGH = "0000"
+	C_PVR_LOW = "0000"
+WARNING:Xst:753 - "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/ppc405_virtex4.vhd" line 1550: Unconnected output port 'C405PLBDCUABORT' of component 'PPC405_ADV_WRAP'.
+WARNING:Xst:37 - Detected unknown constraint/property "IPTYPE". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "IMP_NETLIST". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "HDL". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "HDL". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "IMP_NETLIST". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "IPTYPE". This constraint/property is not supported by the current software release and will be ignored.
+Entity <ppc405_virtex4> analyzed. Unit <ppc405_virtex4> generated.
+
+Analyzing generic Entity <IPLB_PLBv46_Adapter> in library <ppc405_virtex4_v2_01_b> (Architecture <implementation>).
+	C_PLB_DWIDTH = 64
+Entity <IPLB_PLBv46_Adapter> analyzed. Unit <IPLB_PLBv46_Adapter> generated.
+
+Analyzing module <mpmc2_sample_cycle> in library <ppc405_virtex4_v2_01_b>.
+WARNING:Xst:916 - "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01_b/hdl/verilog/mpmc2_sample_cycle.v" line 85: Delay is ignored for synthesis.
+Module <mpmc2_sample_cycle> is correct for synthesis.
+ 
+Analyzing generic Entity <DPLB_PLBv46_Adapter> in library <ppc405_virtex4_v2_01_b> (Architecture <implementation>).
+	C_PLB_DWIDTH = 64
+Entity <DPLB_PLBv46_Adapter> analyzed. Unit <DPLB_PLBv46_Adapter> generated.
+
+Analyzing Entity <PPC405_ADV_WRAP> in library <ppc405_virtex4_v2_01_b> (Architecture <STRUCTURE>).
+WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
+Entity <PPC405_ADV_WRAP> analyzed. Unit <PPC405_ADV_WRAP> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <mpmc2_sample_cycle>.
+    Related source file is "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01_b/hdl/verilog/mpmc2_sample_cycle.v".
+    Found 1-bit register for signal <sample_cycle>.
+    Found 5-bit comparator equal for signal <clear_count_p1>.
+    Found 1-bit register for signal <clk_1_to_1>.
+    Found 5-bit up counter for signal <count>.
+    Found 5-bit up counter for signal <new_count>.
+    Found 5-bit register for signal <ratio>.
+    Found 5-bit register for signal <ratio_minus1>.
+    Found 5-bit subtractor for signal <ratio_minus1$sub0000> created at line 106.
+    Found 5-bit comparator equal for signal <sample_cycle$cmp_eq0000> created at line 121.
+    Found 5-bit comparator equal for signal <sample_cycle$cmp_eq0001> created at line 121.
+    Found 1-bit register for signal <slow_clk_div2>.
+    Found 1-bit register for signal <slow_clk_div2_del>.
+    Summary:
+	inferred   2 Counter(s).
+	inferred  14 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   3 Comparator(s).
+Unit <mpmc2_sample_cycle> synthesized.
+
+
+Synthesizing Unit <IPLB_PLBv46_Adapter>.
+    Related source file is "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/iplb_plbv46_adapter.vhd".
+WARNING:Xst:647 - Input <PLB_MWrBTerm> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <PLB_MWrErr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <PLB_MWrDAck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <C405PLBICUSIZE<0:1>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <PLB_MRdBTerm> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <C405PLBICUABUS<30:31>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <PLB_MRearbitrate> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <timeout_beats<2>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <read_beats<2>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_0> for signal <adapter_cs>.
+    -----------------------------------------------------------------------
+    | States             | 8                                              |
+    | Transitions        | 26                                             |
+    | Inputs             | 10                                             |
+    | Outputs            | 8                                              |
+    | Clock              | PLB_Clk                   (rising_edge)        |
+    | Reset              | PLB_Rst                   (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | automatic                                      |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <abort_d1>.
+    Found 1-bit register for signal <abort_pending>.
+    Found 1-bit register for signal <abort_pending_dly>.
+    Found 1-bit register for signal <abort_pipe>.
+    Found 3-bit down counter for signal <dack_cnt>.
+    Found 2-bit register for signal <dack_load>.
+    Found 1-bit register for signal <int_CACHEABLE_save>.
+    Found 1-bit register for signal <int_U0ATTR_save>.
+    Found 30-bit register for signal <M_ABus_save>.
+    Found 2-bit register for signal <M_priority_save>.
+    Found 1-bit register for signal <M_request_int>.
+    Found 2-bit register for signal <M_size_save>.
+    Found 1-bit register for signal <pipe_d1>.
+    Found 1-bit register for signal <read_pipe>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+	inferred  45 D-type flip-flop(s).
+Unit <IPLB_PLBv46_Adapter> synthesized.
+
+
+Synthesizing Unit <DPLB_PLBv46_Adapter>.
+    Related source file is "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/dplb_plbv46_adapter.vhd".
+WARNING:Xst:647 - Input <PLB_MWrBTerm> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <PLB_MRdBTerm> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <PLB_MRearbitrate> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <int_M_wrDBus<64:127>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <int_M_BE<8:15>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_1> for signal <adapter_cs>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 3                                              |
+    | Clock              | PLB_Clk                   (rising_edge)        |
+    | Reset              | PLB_Rst                   (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | automatic                                      |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <M_TAttribute<0>>.
+    Found 2-bit register for signal <M_TAttribute<3:4>>.
+    Found 1-bit register for signal <M_TAttribute<9>>.
+    Found 1-bit register for signal <M_request>.
+    Found 4-bit register for signal <M_size>.
+    Found 2-bit register for signal <M_priority>.
+    Found 32-bit register for signal <M_ABus>.
+    Found 1-bit register for signal <M_RNW>.
+    Found 2-bit down counter for signal <dack_cnt>.
+    Found 8-bit register for signal <int_C405PLBDCUBE>.
+    Found 1-bit register for signal <PLB_MRdErr_reg>.
+    Found 1-bit register for signal <rnw_reg>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+	inferred  54 D-type flip-flop(s).
+Unit <DPLB_PLBv46_Adapter> synthesized.
+
+
+Synthesizing Unit <PPC405_ADV_WRAP>.
+    Related source file is "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/ppc405_adv_wrap.vhd".
+Unit <PPC405_ADV_WRAP> synthesized.
+
+
+Synthesizing Unit <ppc405_virtex4>.
+    Related source file is "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/ppc405_virtex4.vhd".
+WARNING:Xst:647 - Input <IPLB1_PLB_Clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MWrDAck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MRdBTerm> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_Rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MTimeout> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MRdDAck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MWrErr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MBusy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MWrErr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MRdWdAddr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MAddrAck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MRdBTerm> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MWrBTerm> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MRdDAck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MTimeout> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MSSize> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MRdDBus> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MSSize> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MRearbitrate> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MAddrAck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MBusy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MWrBTerm> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MRdErr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MRdDBus> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_Clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MRdErr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MRdWdAddr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <IPLB1_PLB_MRearbitrate> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_MWrDAck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <DPLB1_PLB_Rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <RSTC405RESET> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <PLBC405ICUSSIZE<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <PLBC405ICURDWDADDR<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <PLBC405DCUSSIZE<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <PLBC405DCURDWDADDR<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_Replicator_Lock> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_PLBC405ICUSSIZE> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_PLBC405ICURDWDADDR> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_PLBC405ICURDDBUS> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_PLBC405ICURDDACK> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_PLBC405ICUERR> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_PLBC405ICUBUSY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_PLBC405ICUADDRACK> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_C405PLBICUU0ATTR> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_C405PLBICUSIZE> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_C405PLBICUREQUEST> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_C405PLBICUPRIORITY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_C405PLBICUCACHEABLE> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_C405PLBICUABUS> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <IPLB1_C405PLBICUABORT> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <IPLB0_Replicator_Lock> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_PLBC405DCUWRDACK> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_PLBC405DCUSSIZE> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_PLBC405DCURDWDADDR> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_PLBC405DCURDDBUS> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_PLBC405DCURDDACK> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_PLBC405DCUERR_reg> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_PLBC405DCUBUSY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_PLBC405DCUADDRACK> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUWRITETHRU> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUWRDBUS_buf> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUWRDBUS> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUU0ATTR> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUSIZE> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCURNW> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUREQUEST> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUPRIORITY> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUGUARDED> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUCACHEABLE> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUBE> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <DPLB1_C405PLBDCUABUS> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 3-bit register for signal <DCU_PLB_MRdWdAddr_reg>.
+    Found 1-bit register for signal <PLBC405DCUBUSY_reg>.
+    Found 1-bit register for signal <PLBC405DCURDDACK_reg>.
+    Found 64-bit register for signal <PLBC405DCURDDBUS_reg>.
+    Summary:
+	inferred  69 D-type flip-flop(s).
+Unit <ppc405_virtex4> synthesized.
+
+
+Synthesizing Unit <ppc405_1_wrapper>.
+    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/ppc405_1_wrapper.vhd".
+Unit <ppc405_1_wrapper> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 5-bit subtractor                                      : 2
+# Counters                                             : 6
+ 2-bit down counter                                    : 1
+ 3-bit down counter                                    : 1
+ 5-bit up counter                                      : 4
+# Registers                                            : 41
+ 1-bit register                                        : 27
+ 2-bit register                                        : 4
+ 3-bit register                                        : 1
+ 30-bit register                                       : 1
+ 32-bit register                                       : 1
+ 4-bit register                                        : 1
+ 5-bit register                                        : 4
+ 64-bit register                                       : 1
+ 8-bit register                                        : 1
+# Comparators                                          : 6
+ 5-bit comparator equal                                : 6
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <ppc405_1/DPLB0_PLBv46_Adapter_i/adapter_cs/FSM> on signal <adapter_cs[1:2]> with user encoding.
+-----------------------------
+ State           | Encoding
+-----------------------------
+ idle            | 00
+ timeout_pend    | 01
+ timeout_current | 10
+-----------------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <ppc405_1/IPLB0_PLBv46_Adapter_i/adapter_cs/FSM> on signal <adapter_cs[1:3]> with gray encoding.
+-----------------------------
+ State           | Encoding
+-----------------------------
+ idle            | 000
+ read_start      | 011
+ read_current    | 111
+ abort_start     | 001
+ abort_current   | 101
+ abort_finish    | 010
+ timeout_start   | 110
+ timeout_current | 100
+-----------------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 2
+# Adders/Subtractors                                   : 2
+ 5-bit subtractor                                      : 2
+# Counters                                             : 6
+ 2-bit down counter                                    : 1
+ 3-bit down counter                                    : 1
+ 5-bit up counter                                      : 4
+# Registers                                            : 196
+ Flip-Flops                                            : 196
+# Comparators                                          : 6
+ 5-bit comparator equal                                : 6
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <M_size_3> in Unit <DPLB_PLBv46_Adapter> is equivalent to the following 2 FFs/Latches, which will be removed : <M_size_1> <M_size_0> 
+WARNING:Xst:1710 - FF/Latch <M_size_3> (without init value) has a constant value of 0 in block <DPLB_PLBv46_Adapter>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <ppc405_1_wrapper> ...
+
+Optimizing unit <IPLB_PLBv46_Adapter> ...
+
+Optimizing unit <DPLB_PLBv46_Adapter> ...
+
+Optimizing unit <ppc405_virtex4> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 223
+ Flip-Flops                                            : 223
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+Top Level Output File Name         : ../implementation/ppc405_1_wrapper.ngc
+Output Format                      : ngc
+Optimization Goal                  : speed
+Keep Hierarchy                     : no
+
+Design Statistics
+# IOs                              : 1775
+
+Cell Usage :
+# BELS                             : 213
+#      BUF                         : 64
+#      GND                         : 1
+#      INV                         : 5
+#      LUT2                        : 29
+#      LUT2_L                      : 2
+#      LUT3                        : 33
+#      LUT3_D                      : 1
+#      LUT3_L                      : 5
+#      LUT4                        : 57
+#      LUT4_D                      : 1
+#      LUT4_L                      : 5
+#      MUXF5                       : 9
+#      VCC                         : 1
+# FlipFlops/Latches                : 223
+#      FD                          : 136
+#      FDE                         : 47
+#      FDR                         : 24
+#      FDRE                        : 10
+#      FDRS                        : 4
+#      FDS                         : 2
+# Others                           : 1
+#      PPC405_ADV                  : 1
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 4vfx60ff672-11 
+
+ Number of Slices:                      150  out of  25280     0%  
+ Number of Slice Flip Flops:            223  out of  50560     0%  
+ Number of 4 input LUTs:                138  out of  50560     0%  
+ Number of IOs:                        1775
+ Number of bonded IOBs:                   0  out of    352     0%  
+ Number of PPC405s:                       1  out of      2    50%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+--------------------------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)                            | Load  |
+-----------------------------------+--------------------------------------------------+-------+
+DPLB0_PLB_Clk                      | NONE(ppc405_1/DPLB0_PLBv46_Adapter_i/rnw_reg)    | 177   |
+IPLB0_PLB_Clk                      | NONE(ppc405_1/IPLB0_PLBv46_Adapter_i/dack_load_1)| 47    |
+CPMC405CLOCK                       | NONE(ppc405_1/PPC405_ADV_i/PPC405_ADV_i)         | 1     |
+BRAMDSOCMCLK                       | NONE(ppc405_1/PPC405_ADV_i/PPC405_ADV_i)         | 1     |
+CPMDCRCLK                          | NONE(ppc405_1/PPC405_ADV_i/PPC405_ADV_i)         | 1     |
+CPMFCMCLK                          | NONE(ppc405_1/PPC405_ADV_i/PPC405_ADV_i)         | 1     |
+JTGC405TCK                         | NONE(ppc405_1/PPC405_ADV_i/PPC405_ADV_i)         | 1     |
+BRAMISOCMCLK                       | NONE(ppc405_1/PPC405_ADV_i/PPC405_ADV_i)         | 1     |
+-----------------------------------+--------------------------------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+-----------------------------------------+-------+
+Control Signal                     | Buffer(FF name)                         | Load  |
+-----------------------------------+-----------------------------------------+-------+
+IPLB0_M_UABus<31>(XST_GND:G)       | NONE(ppc405_1/PPC405_ADV_i/PPC405_ADV_i)| 924   |
+IPLB1_M_BE<7>(XST_VCC:P)           | NONE(ppc405_1/PPC405_ADV_i/PPC405_ADV_i)| 658   |
+DSARCVALUE<0>                      | NONE                                    | 7     |
+DSARCVALUE<1>                      | NONE                                    | 7     |
+DSARCVALUE<2>                      | NONE                                    | 7     |
+DSARCVALUE<3>                      | NONE                                    | 7     |
+DSARCVALUE<4>                      | NONE                                    | 7     |
+DSARCVALUE<5>                      | NONE                                    | 7     |
+DSARCVALUE<6>                      | NONE                                    | 7     |
+DSARCVALUE<7>                      | NONE                                    | 7     |
+DSCNTLVALUE<0>                     | NONE                                    | 7     |
+DSCNTLVALUE<1>                     | NONE                                    | 7     |
+DSCNTLVALUE<2>                     | NONE                                    | 7     |
+DSCNTLVALUE<3>                     | NONE                                    | 7     |
+DSCNTLVALUE<4>                     | NONE                                    | 7     |
+DSCNTLVALUE<5>                     | NONE                                    | 7     |
+DSCNTLVALUE<6>                     | NONE                                    | 7     |
+DSCNTLVALUE<7>                     | NONE                                    | 7     |
+EMACDCRACK                         | NONE                                    | 7     |
+EMACDCRDBUS<0>                     | NONE                                    | 7     |
+EMACDCRDBUS<10>                    | NONE                                    | 7     |
+EMACDCRDBUS<11>                    | NONE                                    | 7     |
+EMACDCRDBUS<12>                    | NONE                                    | 7     |
+EMACDCRDBUS<13>                    | NONE                                    | 7     |
+EMACDCRDBUS<14>                    | NONE                                    | 7     |
+EMACDCRDBUS<15>                    | NONE                                    | 7     |
+EMACDCRDBUS<16>                    | NONE                                    | 7     |
+EMACDCRDBUS<17>                    | NONE                                    | 7     |
+EMACDCRDBUS<18>                    | NONE                                    | 7     |
+EMACDCRDBUS<19>                    | NONE                                    | 7     |
+EMACDCRDBUS<1>                     | NONE                                    | 7     |
+EMACDCRDBUS<20>                    | NONE                                    | 7     |
+EMACDCRDBUS<21>                    | NONE                                    | 7     |
+EMACDCRDBUS<22>                    | NONE                                    | 7     |
+EMACDCRDBUS<23>                    | NONE                                    | 7     |
+EMACDCRDBUS<24>                    | NONE                                    | 7     |
+EMACDCRDBUS<25>                    | NONE                                    | 7     |
+EMACDCRDBUS<26>                    | NONE                                    | 7     |
+EMACDCRDBUS<27>                    | NONE                                    | 7     |
+EMACDCRDBUS<28>                    | NONE                                    | 7     |
+EMACDCRDBUS<29>                    | NONE                                    | 7     |
+EMACDCRDBUS<2>                     | NONE                                    | 7     |
+EMACDCRDBUS<30>                    | NONE                                    | 7     |
+EMACDCRDBUS<31>                    | NONE                                    | 7     |
+EMACDCRDBUS<3>                     | NONE                                    | 7     |
+EMACDCRDBUS<4>                     | NONE                                    | 7     |
+EMACDCRDBUS<5>                     | NONE                                    | 7     |
+EMACDCRDBUS<6>                     | NONE                                    | 7     |
+EMACDCRDBUS<7>                     | NONE                                    | 7     |
+EMACDCRDBUS<8>                     | NONE                                    | 7     |
+EMACDCRDBUS<9>                     | NONE                                    | 7     |
+ISARCVALUE<0>                      | NONE                                    | 7     |
+ISARCVALUE<1>                      | NONE                                    | 7     |
+ISARCVALUE<2>                      | NONE                                    | 7     |
+ISARCVALUE<3>                      | NONE                                    | 7     |
+ISARCVALUE<4>                      | NONE                                    | 7     |
+ISARCVALUE<5>                      | NONE                                    | 7     |
+ISARCVALUE<6>                      | NONE                                    | 7     |
+ISARCVALUE<7>                      | NONE                                    | 7     |
+ISCNTLVALUE<0>                     | NONE                                    | 7     |
+ISCNTLVALUE<1>                     | NONE                                    | 7     |
+ISCNTLVALUE<2>                     | NONE                                    | 7     |
+ISCNTLVALUE<3>                     | NONE                                    | 7     |
+ISCNTLVALUE<4>                     | NONE                                    | 7     |
+ISCNTLVALUE<5>                     | NONE                                    | 7     |
+ISCNTLVALUE<6>                     | NONE                                    | 7     |
+ISCNTLVALUE<7>                     | NONE                                    | 7     |
+MCBCPUCLKEN                        | NONE                                    | 7     |
+MCBJTAGEN                          | NONE                                    | 7     |
+MCBTIMEREN                         | NONE                                    | 7     |
+MCPPCRST                           | NONE                                    | 7     |
+-----------------------------------+-----------------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -11
+
+   Minimum period: 2.866ns (Maximum Frequency: 348.918MHz)
+   Minimum input arrival time before clock: 2.409ns
+   Maximum output required time after clock: 3.367ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'DPLB0_PLB_Clk'
+  Clock period: 2.866ns (frequency: 348.918MHz)
+  Total number of paths / destination ports: 478 / 217
+-------------------------------------------------------------------------
+Delay:               2.866ns (Levels of Logic = 2)
+  Source:            ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination:       ppc405_1/IPLB0_PLBv46_Adapter_i/abort_pending (FF)
+  Source Clock:      DPLB0_PLB_Clk rising
+  Destination Clock: DPLB0_PLB_Clk rising
+
+  Data Path: ppc405_1/PPC405_ADV_i/PPC405_ADV_i to ppc405_1/IPLB0_PLBv46_Adapter_i/abort_pending
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:PLBCLK->C405PLBICUREQUEST    2   1.910   0.467  ppc405_1/PPC405_ADV_i/PPC405_ADV_i (ppc405_1/C405PLBICUREQUEST)
+     LUT3_L:I2->LO         1   0.166   0.139  ppc405_1/IPLB0_PLBv46_Adapter_i/abort_qualified_SW0 (N25)
+     LUT3:I2->O            1   0.166   0.000  ppc405_1/IPLB0_PLBv46_Adapter_i/abort_pending_rstpot (ppc405_1/IPLB0_PLBv46_Adapter_i/abort_pending_rstpot)
+     FDR:D                     0.018          ppc405_1/IPLB0_PLBv46_Adapter_i/abort_pending
+    ----------------------------------------
+    Total                      2.866ns (2.260ns logic, 0.606ns route)
+                                       (78.9% logic, 21.1% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'IPLB0_PLB_Clk'
+  Clock period: 2.801ns (frequency: 357.015MHz)
+  Total number of paths / destination ports: 104 / 16
+-------------------------------------------------------------------------
+Delay:               2.801ns (Levels of Logic = 3)
+  Source:            ppc405_1/IPLB0_PLBv46_Adapter_i/dack_cnt_0 (FF)
+  Destination:       ppc405_1/IPLB0_PLBv46_Adapter_i/dack_cnt_2 (FF)
+  Source Clock:      IPLB0_PLB_Clk rising
+  Destination Clock: IPLB0_PLB_Clk rising
+
+  Data Path: ppc405_1/IPLB0_PLBv46_Adapter_i/dack_cnt_0 to ppc405_1/IPLB0_PLBv46_Adapter_i/dack_cnt_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             3   0.307   0.606  ppc405_1/IPLB0_PLBv46_Adapter_i/dack_cnt_0 (ppc405_1/IPLB0_PLBv46_Adapter_i/dack_cnt_0)
+     LUT4_D:I1->LO         1   0.166   0.139  ppc405_1/IPLB0_PLBv46_Adapter_i/adapter_cs_FSM_FFd2-In411 (N38)
+     LUT4:I3->O            4   0.166   0.464  ppc405_1/IPLB0_PLBv46_Adapter_i/dack_load_en1 (ppc405_1/IPLB0_PLBv46_Adapter_i/dack_load_en)
+     LUT4:I3->O            3   0.166   0.326  ppc405_1/IPLB0_PLBv46_Adapter_i/dack_cnt_not0001 (ppc405_1/IPLB0_PLBv46_Adapter_i/dack_cnt_not0001)
+     FDRE:CE                   0.461          ppc405_1/IPLB0_PLBv46_Adapter_i/dack_cnt_2
+    ----------------------------------------
+    Total                      2.801ns (1.266ns logic, 1.535ns route)
+                                       (45.2% logic, 54.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'DPLB0_PLB_Clk'
+  Total number of paths / destination ports: 183 / 166
+-------------------------------------------------------------------------
+Offset:              2.409ns (Levels of Logic = 2)
+  Source:            IPLB0_PLB_MRdDAck (PAD)
+  Destination:       ppc405_1/IPLB0_PLBv46_Adapter_i/read_pipe (FF)
+  Destination Clock: DPLB0_PLB_Clk rising
+
+  Data Path: IPLB0_PLB_MRdDAck to ppc405_1/IPLB0_PLBv46_Adapter_i/read_pipe
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LUT4_D:I0->O          2   0.166   0.520  ppc405_1/IPLB0_PLBv46_Adapter_i/adapter_cs_FSM_FFd2-In411 (ppc405_1/IPLB0_PLBv46_Adapter_i/N16)
+     LUT4:I2->O            3   0.166   0.326  ppc405_1/IPLB0_PLBv46_Adapter_i/read_pipe_or00001 (ppc405_1/IPLB0_PLBv46_Adapter_i/read_pipe_or0000)
+     FDRE:R                    0.906          ppc405_1/IPLB0_PLBv46_Adapter_i/read_pipe
+    ----------------------------------------
+    Total                      2.409ns (1.563ns logic, 0.846ns route)
+                                       (64.9% logic, 35.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'IPLB0_PLB_Clk'
+  Total number of paths / destination ports: 42 / 26
+-------------------------------------------------------------------------
+Offset:              2.328ns (Levels of Logic = 2)
+  Source:            IPLB0_PLB_MAddrAck (PAD)
+  Destination:       ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int (FF)
+  Destination Clock: IPLB0_PLB_Clk rising
+
+  Data Path: IPLB0_PLB_MAddrAck to ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LUT4:I0->O            1   0.166   0.452  ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int_or00009 (ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int_or00009)
+     LUT4:I3->O            1   0.166   0.313  ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int_or000034 (ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int_or0000)
+     FDRS:R                    0.906          ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int
+    ----------------------------------------
+    Total                      2.328ns (1.563ns logic, 0.765ns route)
+                                       (67.1% logic, 32.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CPMC405CLOCK'
+  Total number of paths / destination ports: 16 / 15
+-------------------------------------------------------------------------
+Offset:              1.321ns (Levels of Logic = 1)
+  Source:            DBGC405DEBUGHALTNEG (PAD)
+  Destination:       ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination Clock: CPMC405CLOCK rising
+
+  Data Path: DBGC405DEBUGHALTNEG to ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LUT2:I0->O            1   0.166   0.313  ppc405_1/DBGC405DEBUGHALT_i1 (ppc405_1/DBGC405DEBUGHALT_i)
+     PPC405_ADV:DBGC405DEBUGHALT        0.650          ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+    ----------------------------------------
+    Total                      1.321ns (1.008ns logic, 0.313ns route)
+                                       (76.3% logic, 23.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'BRAMDSOCMCLK'
+  Total number of paths / destination ports: 33 / 33
+-------------------------------------------------------------------------
+Offset:              0.650ns (Levels of Logic = 0)
+  Source:            DSOCMRWCOMPLETE (PAD)
+  Destination:       ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination Clock: BRAMDSOCMCLK rising
+
+  Data Path: DSOCMRWCOMPLETE to ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:DSOCMRWCOMPLETE        0.650          ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+    ----------------------------------------
+    Total                      0.650ns (0.650ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CPMDCRCLK'
+  Total number of paths / destination ports: 33 / 33
+-------------------------------------------------------------------------
+Offset:              0.570ns (Levels of Logic = 0)
+  Source:            EXTDCRDBUSIN<0> (PAD)
+  Destination:       ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination Clock: CPMDCRCLK rising
+
+  Data Path: EXTDCRDBUSIN<0> to ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:EXTDCRDBUSIN0        0.570          ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+    ----------------------------------------
+    Total                      0.570ns (0.570ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CPMFCMCLK'
+  Total number of paths / destination ports: 70 / 70
+-------------------------------------------------------------------------
+Offset:              1.013ns (Levels of Logic = 0)
+  Source:            FCMAPURESULTVALID (PAD)
+  Destination:       ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination Clock: CPMFCMCLK rising
+
+  Data Path: FCMAPURESULTVALID to ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:FCMAPURESULTVALID        1.013          ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+    ----------------------------------------
+    Total                      1.013ns (1.013ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'JTGC405TCK'
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Offset:              1.520ns (Levels of Logic = 0)
+  Source:            JTGC405TMS (PAD)
+  Destination:       ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination Clock: JTGC405TCK rising
+
+  Data Path: JTGC405TMS to ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:JTGC405TMS        1.520          ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+    ----------------------------------------
+    Total                      1.520ns (1.520ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'BRAMISOCMCLK'
+  Total number of paths / destination ports: 96 / 96
+-------------------------------------------------------------------------
+Offset:              0.815ns (Levels of Logic = 0)
+  Source:            BRAMISOCMRDDBUS<0> (PAD)
+  Destination:       ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination Clock: BRAMISOCMCLK rising
+
+  Data Path: BRAMISOCMRDDBUS<0> to ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:BRAMISOCMRDDBUS0        0.815          ppc405_1/PPC405_ADV_i/PPC405_ADV_i
+    ----------------------------------------
+    Total                      0.815ns (0.815ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'DPLB0_PLB_Clk'
+  Total number of paths / destination ports: 113 / 113
+-------------------------------------------------------------------------
+Offset:              2.849ns (Levels of Logic = 1)
+  Source:            ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination:       DPLB0_M_wrDBus<0> (PAD)
+  Source Clock:      DPLB0_PLB_Clk rising
+
+  Data Path: ppc405_1/PPC405_ADV_i/PPC405_ADV_i to DPLB0_M_wrDBus<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:PLBCLK->C405PLBDCUWRDBUS0    1   2.231   0.313  ppc405_1/PPC405_ADV_i/PPC405_ADV_i (ppc405_1/C405PLBDCUWRDBUS<0>)
+     BUF:I->O              0   0.305   0.000  ppc405_1/DPLB0_WRDBUS_buf_gen[0].DPLB0_WRDBUS_buf (DPLB0_M_wrDBus<0>)
+    ----------------------------------------
+    Total                      2.849ns (2.536ns logic, 0.313ns route)
+                                       (89.0% logic, 11.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'BRAMISOCMCLK'
+  Total number of paths / destination ports: 80 / 80
+-------------------------------------------------------------------------
+Offset:              3.367ns (Levels of Logic = 0)
+  Source:            ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination:       ISOCMDCRBRAMEVENEN (PAD)
+  Source Clock:      BRAMISOCMCLK rising
+
+  Data Path: ppc405_1/PPC405_ADV_i/PPC405_ADV_i to ISOCMDCRBRAMEVENEN
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:BRAMISOCMCLK->ISOCMDCRBRAMEVENEN    0   3.367   0.000  ppc405_1/PPC405_ADV_i/PPC405_ADV_i (ISOCMDCRBRAMEVENEN)
+    ----------------------------------------
+    Total                      3.367ns (3.367ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CPMFCMCLK'
+  Total number of paths / destination ports: 144 / 144
+-------------------------------------------------------------------------
+Offset:              1.750ns (Levels of Logic = 0)
+  Source:            ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination:       APUFCMWRITEBACKOK (PAD)
+  Source Clock:      CPMFCMCLK rising
+
+  Data Path: ppc405_1/PPC405_ADV_i/PPC405_ADV_i to APUFCMWRITEBACKOK
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:CPMFCMCLK->APUFCMWRITEBACKOK    0   1.750   0.000  ppc405_1/PPC405_ADV_i/PPC405_ADV_i (APUFCMWRITEBACKOK)
+    ----------------------------------------
+    Total                      1.750ns (1.750ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CPMC405CLOCK'
+  Total number of paths / destination ports: 65 / 65
+-------------------------------------------------------------------------
+Offset:              1.980ns (Levels of Logic = 0)
+  Source:            ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination:       C405DBGWBCOMPLETE (PAD)
+  Source Clock:      CPMC405CLOCK rising
+
+  Data Path: ppc405_1/PPC405_ADV_i/PPC405_ADV_i to C405DBGWBCOMPLETE
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:CPMC405CLOCK->C405DBGWBCOMPLETE    0   1.980   0.000  ppc405_1/PPC405_ADV_i/PPC405_ADV_i (C405DBGWBCOMPLETE)
+    ----------------------------------------
+    Total                      1.980ns (1.980ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CPMDCRCLK'
+  Total number of paths / destination ports: 44 / 44
+-------------------------------------------------------------------------
+Offset:              1.450ns (Levels of Logic = 0)
+  Source:            ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination:       EXTDCRABUS<0> (PAD)
+  Source Clock:      CPMDCRCLK rising
+
+  Data Path: ppc405_1/PPC405_ADV_i/PPC405_ADV_i to EXTDCRABUS<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:CPMDCRCLK->EXTDCRABUS0    0   1.450   0.000  ppc405_1/PPC405_ADV_i/PPC405_ADV_i (EXTDCRABUS<0>)
+    ----------------------------------------
+    Total                      1.450ns (1.450ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'BRAMDSOCMCLK'
+  Total number of paths / destination ports: 62 / 62
+-------------------------------------------------------------------------
+Offset:              2.300ns (Levels of Logic = 0)
+  Source:            ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination:       DSOCMBRAMEN (PAD)
+  Source Clock:      BRAMDSOCMCLK rising
+
+  Data Path: ppc405_1/PPC405_ADV_i/PPC405_ADV_i to DSOCMBRAMEN
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:BRAMDSOCMCLK->DSOCMBRAMEN    0   2.300   0.000  ppc405_1/PPC405_ADV_i/PPC405_ADV_i (DSOCMBRAMEN)
+    ----------------------------------------
+    Total                      2.300ns (2.300ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'JTGC405TCK'
+  Total number of paths / destination ports: 7 / 7
+-------------------------------------------------------------------------
+Offset:              1.890ns (Levels of Logic = 0)
+  Source:            ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
+  Destination:       C405JTGTDOEN (PAD)
+  Source Clock:      JTGC405TCK rising
+
+  Data Path: ppc405_1/PPC405_ADV_i/PPC405_ADV_i to C405JTGTDOEN
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     PPC405_ADV:JTGC405TCK->C405JTGTDOEN    0   1.890   0.000  ppc405_1/PPC405_ADV_i/PPC405_ADV_i (C405JTGTDOEN)
+    ----------------------------------------
+    Total                      1.890ns (1.890ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'IPLB0_PLB_Clk'
+  Total number of paths / destination ports: 37 / 37
+-------------------------------------------------------------------------
+Offset:              0.307ns (Levels of Logic = 0)
+  Source:            ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int (FF)
+  Destination:       IPLB0_M_request (PAD)
+  Source Clock:      IPLB0_PLB_Clk rising
+
+  Data Path: ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int to IPLB0_M_request
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRS:C->Q             2   0.307   0.000  ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int (ppc405_1/IPLB0_PLBv46_Adapter_i/M_request_int)
+    ----------------------------------------
+    Total                      0.307ns (0.307ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 45.00 secs
+Total CPU time to Xst completion: 45.07 secs
+ 
+--> 
+
+Total memory usage is 349500 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  102 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+

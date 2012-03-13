@@ -1,0 +1,15 @@
+Anytime bzr asks you for authentication, use the following:
+username: ecestudent
+password: circuit
+
+Tell Bazaar who you are
+bzr whoami "Your Name" <your_email@mail.com>
+
+Add a file
+bzr add your-file-name
+
+Commit a file
+bzr commit -m "your commit message" 
+
+Update your local repository
+bzr update

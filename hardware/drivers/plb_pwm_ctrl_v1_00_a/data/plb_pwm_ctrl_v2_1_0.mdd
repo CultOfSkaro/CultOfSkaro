@@ -1,0 +1,15 @@
+##############################################################################
+## Filename:          C:\Documents and Settings\Administrator\Desktop\My Dropbox\Documents\2010\winter\Senior Project\svn\EDK11\Drew/drivers/plb_pwm_ctrl_v1_00_a/data/plb_pwm_ctrl_v2_1_0.mdd
+## Description:       Microprocessor Driver Definition
+## Date:              Fri Jan 22 12:28:25 2010 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+OPTION psf_version = 2.1.0;
+
+BEGIN DRIVER plb_pwm_ctrl
+
+  OPTION supported_peripherals = (plb_pwm_ctrl);
+  OPTION depends = (common_v1_00_a);
+  OPTION copyfiles = all;
+
+END DRIVER

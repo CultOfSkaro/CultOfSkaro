@@ -1,0 +1,7 @@
+vhdl ppc405_virtex4_v2_01_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01_b\hdl\vhdl\dplb_plbv46_adapter.vhd"
+vhdl ppc405_virtex4_v2_01_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01_b\hdl\vhdl\iplb_plbv46_adapter.vhd"
+vhdl ppc405_virtex4_v2_01_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01_b\hdl\vhdl\dplb_replicator.vhd"
+vhdl ppc405_virtex4_v2_01_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01_b\hdl\vhdl\ppc405_adv_wrap.vhd"
+vhdl ppc405_virtex4_v2_01_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01_b\hdl\vhdl\iplb_replicator.vhd"
+vhdl ppc405_virtex4_v2_01_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01_b\hdl\vhdl\ppc405_virtex4.vhd"
+vhdl work "C:\RobotRacers\hardware_dans_branch\hdl\ppc405_0_wrapper.vhd"

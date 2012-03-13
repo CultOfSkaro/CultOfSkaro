@@ -1,0 +1,759 @@
+--------------------------------------------------------------------------------
+Release 13.3 Trace  (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\13.3\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -e 3 -xml system.twx
+system.ncd system.pcf
+
+Design file:              system.ncd
+Physical constraint file: system.pcf
+Device,package,speed:     xc4vfx60,ff672,-11 (PRODUCTION 1.70 2011-10-03, STEPPING level 0)
+Report level:             error report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3386 - Intersecting Constraints found and resolved.  For more 
+   information, see the TSI report.  Please consult the Xilinx Command Line 
+   Tools User Guide for information on generating a TSI report.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: NET "usb_if_clk_IBUFG" PERIOD = 20.833333 ns HIGH 50%;
+
+ 3 paths analyzed, 3 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  10.000ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: PERIOD analysis for net "dcm_module_0/dcm_module_0/CLK0_BUF" 
+derived from  NET "usb_if_clk_IBUFG" PERIOD = 20.833333 ns HIGH 50%;  duty 
+cycle corrected to 20.833 nS  HIGH 10.416 nS  
+
+ 845 paths analyzed, 359 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   6.666ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET "sdram_clk_fb_IBUF" PERIOD = 10 ns HIGH 50%;
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 component switching limit errors)
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[31].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.714ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[30].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.753ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[29].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.592ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[28].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.577ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[27].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.583ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[26].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.735ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[25].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.534ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[24].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.542ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[23].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.682ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[22].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.758ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[21].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.864ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[20].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.376ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[19].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.376ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[18].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.534ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[17].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.515ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[16].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.877ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[15].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.537ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[14].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.727ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[13].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.521ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[12].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.542ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[11].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.339ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[10].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.493ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[9].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.542ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[8].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.693ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[7].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.950ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[6].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.591ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[5].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.626ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[4].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.687ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[3].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.750ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[2].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.997ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[1].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.530ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: NET         
+"mpmc_0/mpmc_0/mpmc_core_0/gen_sdram_phy.mpmc_phy_if_0/u_phy_io/
+gen_dq[0].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
+
+ 1 net analyzed, 0 failing nets detected.
+ 0 timing errors detected.
+ Maximum net delay is   0.939ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 
+50%;
+
+ 3 paths analyzed, 3 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   4.800ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: PATH "TS_RST_ppc405_0_path" TIG;
+
+ 3 paths analyzed, 3 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = 
+PERIOD TIMEGRP         "clock_generator_0_clock_generator_0_SIG_DCM0_CLK0" 
+TS_sys_clk_pin         HIGH 50%;
+
+ 382801 paths analyzed, 31685 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   9.950ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_clock_generator_0_clock_generator_0_SIG_DCM0_CLKFX = 
+PERIOD TIMEGRP         "clock_generator_0_clock_generator_0_SIG_DCM0_CLKFX" 
+TS_sys_clk_pin *         3 HIGH 50%;
+
+ 6 paths analyzed, 6 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   2.670ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_dcm_2_dcm_2_CLK0_BUF = PERIOD TIMEGRP 
+"dcm_2_dcm_2_CLK0_BUF"         
+TS_clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 HIGH 50%;
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 component switching limit errors)
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TIMEGRP "Cam0_Input" OFFSET = IN 8 ns VALID 16 ns BEFORE 
+COMP "cam0_pixclk";
+
+ 37 paths analyzed, 37 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Offset is  -2.517ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TIMEGRP "SdramInput" OFFSET = IN 2 ns VALID 4 ns BEFORE COMP 
+        "fpga_0_clk_1_sys_clk_pin";
+
+ 32 paths analyzed, 32 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum allowable offset is   0.913ns.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TIMEGRP "SdramOutput" OFFSET = OUT 5 ns AFTER COMP 
+"fpga_0_clk_1_sys_clk_pin";
+
+ 86 paths analyzed, 54 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+ Minimum allowable offset is   4.053ns.
+--------------------------------------------------------------------------------
+
+
+Derived Constraint Report
+Derived Constraints for usb_if_clk_IBUFG
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths Analyzed       |
+|           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|usb_if_clk_IBUFG               |     20.833ns|     10.000ns|      6.666ns|            0|            0|            3|          845|
+| dcm_module_0/dcm_module_0/CLK0|     20.833ns|      6.666ns|          N/A|            0|            0|          845|            0|
+| _BUF                          |             |             |             |             |             |             |             |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+
+Derived Constraints for TS_sys_clk_pin
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths Analyzed       |
+|           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|TS_sys_clk_pin                 |     10.000ns|      4.800ns|      9.950ns|            0|            0|            3|       382807|
+| TS_clock_generator_0_clock_gen|     10.000ns|      9.950ns|          N/A|            0|            0|       382801|            0|
+| erator_0_SIG_DCM0_CLK0        |             |             |             |             |             |             |             |
+|  TS_dcm_2_dcm_2_CLK0_BUF      |     10.000ns|          N/A|          N/A|            0|            0|            0|            0|
+| TS_clock_generator_0_clock_gen|      3.333ns|      2.670ns|          N/A|            0|            0|            6|            0|
+| erator_0_SIG_DCM0_CLKFX       |             |             |             |             |             |             |             |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock cam0_pixclk
+---------------+------------+------------+------------------+--------+
+               |Max Setup to|Max Hold to |                  | Clock  |
+Source         | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+---------------+------------+------------+------------------+--------+
+cam0_data<0>   |   -3.320(R)|    5.537(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<1>   |   -3.263(R)|    5.484(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<2>   |   -3.548(R)|    5.744(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<3>   |   -2.874(R)|    5.107(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<4>   |   -3.402(R)|    5.618(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<5>   |   -3.547(R)|    5.748(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<6>   |   -3.461(R)|    5.673(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<7>   |   -3.526(R)|    5.734(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_line_valid|   -2.517(R)|    5.125(R)|cam0_pixclk_BUFGP |   0.000|
+---------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock fpga_0_clk_1_sys_clk_pin
+--------------+------------+------------+------------------+--------+
+              |Max Setup to|Max Hold to |                  | Clock  |
+Source        | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+--------------+------------+------------+------------------+--------+
+sdram_data<0> |    0.873(R)|    0.098(R)|sdram_clk_phy     |   0.000|
+sdram_data<1> |    0.883(R)|    0.090(R)|sdram_clk_phy     |   0.000|
+sdram_data<2> |    0.856(R)|    0.115(R)|sdram_clk_phy     |   0.000|
+sdram_data<3> |    0.854(R)|    0.114(R)|sdram_clk_phy     |   0.000|
+sdram_data<4> |    0.890(R)|    0.081(R)|sdram_clk_phy     |   0.000|
+sdram_data<5> |    0.886(R)|    0.088(R)|sdram_clk_phy     |   0.000|
+sdram_data<6> |    0.903(R)|    0.065(R)|sdram_clk_phy     |   0.000|
+sdram_data<7> |    0.904(R)|    0.066(R)|sdram_clk_phy     |   0.000|
+sdram_data<8> |    0.861(R)|    0.106(R)|sdram_clk_phy     |   0.000|
+sdram_data<9> |    0.869(R)|    0.097(R)|sdram_clk_phy     |   0.000|
+sdram_data<10>|    0.866(R)|    0.106(R)|sdram_clk_phy     |   0.000|
+sdram_data<11>|    0.877(R)|    0.090(R)|sdram_clk_phy     |   0.000|
+sdram_data<12>|    0.868(R)|    0.098(R)|sdram_clk_phy     |   0.000|
+sdram_data<13>|    0.892(R)|    0.077(R)|sdram_clk_phy     |   0.000|
+sdram_data<14>|    0.903(R)|    0.064(R)|sdram_clk_phy     |   0.000|
+sdram_data<15>|    0.895(R)|    0.074(R)|sdram_clk_phy     |   0.000|
+sdram_data<16>|    0.913(R)|    0.059(R)|sdram_clk_phy     |   0.000|
+sdram_data<17>|    0.899(R)|    0.067(R)|sdram_clk_phy     |   0.000|
+sdram_data<18>|    0.882(R)|    0.090(R)|sdram_clk_phy     |   0.000|
+sdram_data<19>|    0.896(R)|    0.081(R)|sdram_clk_phy     |   0.000|
+sdram_data<20>|    0.897(R)|    0.079(R)|sdram_clk_phy     |   0.000|
+sdram_data<21>|    0.866(R)|    0.103(R)|sdram_clk_phy     |   0.000|
+sdram_data<22>|    0.865(R)|    0.105(R)|sdram_clk_phy     |   0.000|
+sdram_data<23>|    0.886(R)|    0.084(R)|sdram_clk_phy     |   0.000|
+sdram_data<24>|    0.887(R)|    0.085(R)|sdram_clk_phy     |   0.000|
+sdram_data<25>|    0.886(R)|    0.082(R)|sdram_clk_phy     |   0.000|
+sdram_data<26>|    0.875(R)|    0.092(R)|sdram_clk_phy     |   0.000|
+sdram_data<27>|    0.882(R)|    0.086(R)|sdram_clk_phy     |   0.000|
+sdram_data<28>|    0.886(R)|    0.081(R)|sdram_clk_phy     |   0.000|
+sdram_data<29>|    0.881(R)|    0.085(R)|sdram_clk_phy     |   0.000|
+sdram_data<30>|    0.890(R)|    0.078(R)|sdram_clk_phy     |   0.000|
+sdram_data<31>|    0.909(R)|    0.059(R)|sdram_clk_phy     |   0.000|
+--------------+------------+------------+------------------+--------+
+
+Clock fpga_0_clk_1_sys_clk_pin to Pad
+--------------+------------+------------------+--------+
+              | clk (edge) |                  | Clock  |
+Destination   |   to PAD   |Internal Clock(s) | Phase  |
+--------------+------------+------------------+--------+
+sdram_addr<0> |    4.014(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<1> |    4.044(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<2> |    4.019(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<3> |    4.005(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<4> |    4.003(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<5> |    4.002(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<6> |    4.033(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<7> |    3.997(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<8> |    4.003(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<9> |    4.012(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<10>|    4.031(R)|sram_clk_pin_OBUF |   0.000|
+sdram_addr<11>|    4.038(R)|sram_clk_pin_OBUF |   0.000|
+sdram_ba<0>   |    4.017(R)|sram_clk_pin_OBUF |   0.000|
+sdram_ba<1>   |    4.044(R)|sram_clk_pin_OBUF |   0.000|
+sdram_cas_n   |    4.036(R)|sram_clk_pin_OBUF |   0.000|
+sdram_cs_n    |    3.979(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<0> |    4.017(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<1> |    4.034(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<2> |    4.010(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<3> |    3.993(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<4> |    4.017(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<5> |    4.037(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<6> |    3.999(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<7> |    4.018(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<8> |    3.995(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<9> |    3.985(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<10>|    4.020(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<11>|    3.987(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<12>|    3.978(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<13>|    3.997(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<14>|    3.993(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<15>|    3.996(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<16>|    4.027(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<17>|    3.989(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<18>|    4.026(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<19>|    4.052(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<20>|    4.053(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<21>|    4.005(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<22>|    4.013(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<23>|    4.013(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<24>|    4.035(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<25>|    3.991(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<26>|    3.980(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<27>|    3.995(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<28>|    3.987(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<29>|    3.982(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<30>|    3.991(R)|sram_clk_pin_OBUF |   0.000|
+sdram_data<31>|    3.999(R)|sram_clk_pin_OBUF |   0.000|
+sdram_dqm<0>  |    4.008(R)|sram_clk_pin_OBUF |   0.000|
+sdram_dqm<1>  |    4.028(R)|sram_clk_pin_OBUF |   0.000|
+sdram_dqm<2>  |    4.032(R)|sram_clk_pin_OBUF |   0.000|
+sdram_dqm<3>  |    4.006(R)|sram_clk_pin_OBUF |   0.000|
+sdram_ras_n   |    4.003(R)|sram_clk_pin_OBUF |   0.000|
+sdram_we_n    |    4.023(R)|sram_clk_pin_OBUF |   0.000|
+--------------+------------+------------------+--------+
+
+Clock to Setup on destination clock fpga_0_clk_1_sys_clk_pin
+------------------------+---------+---------+---------+---------+
+                        | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+------------------------+---------+---------+---------+---------+
+fpga_0_clk_1_sys_clk_pin|    9.950|    2.868|    1.989|         |
+------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock usb_if_clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+usb_if_clk     |    6.188|         |         |         |
+---------------+---------+---------+---------+---------+
+
+TIMEGRP "Cam0_Input" OFFSET = IN 8 ns VALID 16 ns BEFORE COMP "cam0_pixclk";
+Worst Case Data Window 3.231; Ideal Clock Offset To Actual Clock -4.133; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+cam0_data<0>      |   -3.320(R)|    5.537(R)|   11.320|    2.463|        4.429|
+cam0_data<1>      |   -3.263(R)|    5.484(R)|   11.263|    2.516|        4.374|
+cam0_data<2>      |   -3.548(R)|    5.744(R)|   11.548|    2.256|        4.646|
+cam0_data<3>      |   -2.874(R)|    5.107(R)|   10.874|    2.893|        3.991|
+cam0_data<4>      |   -3.402(R)|    5.618(R)|   11.402|    2.382|        4.510|
+cam0_data<5>      |   -3.547(R)|    5.748(R)|   11.547|    2.252|        4.648|
+cam0_data<6>      |   -3.461(R)|    5.673(R)|   11.461|    2.327|        4.567|
+cam0_data<7>      |   -3.526(R)|    5.734(R)|   11.526|    2.266|        4.630|
+cam0_line_valid   |   -2.517(R)|    5.125(R)|   10.517|    2.875|        3.821|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|      -2.517|       5.748|   10.517|    2.252|             |
+------------------+------------+------------+---------+---------+-------------+
+
+TIMEGRP "SdramInput" OFFSET = IN 2 ns VALID 4 ns BEFORE COMP         "fpga_0_clk_1_sys_clk_pin";
+Worst Case Data Window 1.028; Ideal Clock Offset To Actual Clock 0.399; 
+------------------+------------+------------+---------+---------+-------------+
+                  |            |            |  Setup  |  Hold   |Source Offset|
+Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
+------------------+------------+------------+---------+---------+-------------+
+sdram_data<0>     |    0.873(R)|    0.098(R)|    1.127|    1.902|       -0.387|
+sdram_data<1>     |    0.883(R)|    0.090(R)|    1.117|    1.910|       -0.396|
+sdram_data<2>     |    0.856(R)|    0.115(R)|    1.144|    1.885|       -0.371|
+sdram_data<3>     |    0.854(R)|    0.114(R)|    1.146|    1.886|       -0.370|
+sdram_data<4>     |    0.890(R)|    0.081(R)|    1.110|    1.919|       -0.404|
+sdram_data<5>     |    0.886(R)|    0.088(R)|    1.114|    1.912|       -0.399|
+sdram_data<6>     |    0.903(R)|    0.065(R)|    1.097|    1.935|       -0.419|
+sdram_data<7>     |    0.904(R)|    0.066(R)|    1.096|    1.934|       -0.419|
+sdram_data<8>     |    0.861(R)|    0.106(R)|    1.139|    1.894|       -0.377|
+sdram_data<9>     |    0.869(R)|    0.097(R)|    1.131|    1.903|       -0.386|
+sdram_data<10>    |    0.866(R)|    0.106(R)|    1.134|    1.894|       -0.380|
+sdram_data<11>    |    0.877(R)|    0.090(R)|    1.123|    1.910|       -0.393|
+sdram_data<12>    |    0.868(R)|    0.098(R)|    1.132|    1.902|       -0.385|
+sdram_data<13>    |    0.892(R)|    0.077(R)|    1.108|    1.923|       -0.407|
+sdram_data<14>    |    0.903(R)|    0.064(R)|    1.097|    1.936|       -0.420|
+sdram_data<15>    |    0.895(R)|    0.074(R)|    1.105|    1.926|       -0.411|
+sdram_data<16>    |    0.913(R)|    0.059(R)|    1.087|    1.941|       -0.427|
+sdram_data<17>    |    0.899(R)|    0.067(R)|    1.101|    1.933|       -0.416|
+sdram_data<18>    |    0.882(R)|    0.090(R)|    1.118|    1.910|       -0.396|
+sdram_data<19>    |    0.896(R)|    0.081(R)|    1.104|    1.919|       -0.407|
+sdram_data<20>    |    0.897(R)|    0.079(R)|    1.103|    1.921|       -0.409|
+sdram_data<21>    |    0.866(R)|    0.103(R)|    1.134|    1.897|       -0.382|
+sdram_data<22>    |    0.865(R)|    0.105(R)|    1.135|    1.895|       -0.380|
+sdram_data<23>    |    0.886(R)|    0.084(R)|    1.114|    1.916|       -0.401|
+sdram_data<24>    |    0.887(R)|    0.085(R)|    1.113|    1.915|       -0.401|
+sdram_data<25>    |    0.886(R)|    0.082(R)|    1.114|    1.918|       -0.402|
+sdram_data<26>    |    0.875(R)|    0.092(R)|    1.125|    1.908|       -0.391|
+sdram_data<27>    |    0.882(R)|    0.086(R)|    1.118|    1.914|       -0.398|
+sdram_data<28>    |    0.886(R)|    0.081(R)|    1.114|    1.919|       -0.402|
+sdram_data<29>    |    0.881(R)|    0.085(R)|    1.119|    1.915|       -0.398|
+sdram_data<30>    |    0.890(R)|    0.078(R)|    1.110|    1.922|       -0.406|
+sdram_data<31>    |    0.909(R)|    0.059(R)|    1.091|    1.941|       -0.425|
+------------------+------------+------------+---------+---------+-------------+
+Worst Case Summary|       0.913|       0.115|    1.087|    1.885|             |
+------------------+------------+------------+---------+---------+-------------+
+
+TIMEGRP "SdramOutput" OFFSET = OUT 5 ns AFTER COMP "fpga_0_clk_1_sys_clk_pin";
+Bus Skew: 0.075 ns; 
+-----------------------------------------------+-------------+--------------+
+PAD                                            | Delay (ns)  |Edge Skew (ns)|
+-----------------------------------------------+-------------+--------------+
+sdram_addr<0>                                  |        4.014|         0.036|
+sdram_addr<1>                                  |        4.044|         0.066|
+sdram_addr<2>                                  |        4.019|         0.041|
+sdram_addr<3>                                  |        4.005|         0.027|
+sdram_addr<4>                                  |        4.003|         0.025|
+sdram_addr<5>                                  |        4.002|         0.024|
+sdram_addr<6>                                  |        4.033|         0.055|
+sdram_addr<7>                                  |        3.997|         0.019|
+sdram_addr<8>                                  |        4.003|         0.025|
+sdram_addr<9>                                  |        4.012|         0.034|
+sdram_addr<10>                                 |        4.031|         0.053|
+sdram_addr<11>                                 |        4.038|         0.060|
+sdram_ba<0>                                    |        4.017|         0.039|
+sdram_ba<1>                                    |        4.044|         0.066|
+sdram_cas_n                                    |        4.036|         0.058|
+sdram_cs_n                                     |        3.979|         0.001|
+sdram_data<0>                                  |        4.017|         0.039|
+sdram_data<1>                                  |        4.034|         0.056|
+sdram_data<2>                                  |        4.010|         0.032|
+sdram_data<3>                                  |        3.993|         0.015|
+sdram_data<4>                                  |        4.017|         0.039|
+sdram_data<5>                                  |        4.037|         0.059|
+sdram_data<6>                                  |        3.999|         0.021|
+sdram_data<7>                                  |        4.018|         0.040|
+sdram_data<8>                                  |        3.995|         0.017|
+sdram_data<9>                                  |        3.985|         0.007|
+sdram_data<10>                                 |        4.020|         0.042|
+sdram_data<11>                                 |        3.987|         0.009|
+sdram_data<12>                                 |        3.978|         0.000|
+sdram_data<13>                                 |        3.997|         0.019|
+sdram_data<14>                                 |        3.993|         0.015|
+sdram_data<15>                                 |        3.996|         0.018|
+sdram_data<16>                                 |        4.027|         0.049|
+sdram_data<17>                                 |        3.989|         0.011|
+sdram_data<18>                                 |        4.026|         0.048|
+sdram_data<19>                                 |        4.052|         0.074|
+sdram_data<20>                                 |        4.053|         0.075|
+sdram_data<21>                                 |        4.005|         0.027|
+sdram_data<22>                                 |        4.013|         0.035|
+sdram_data<23>                                 |        4.013|         0.035|
+sdram_data<24>                                 |        4.035|         0.057|
+sdram_data<25>                                 |        3.991|         0.013|
+sdram_data<26>                                 |        3.980|         0.002|
+sdram_data<27>                                 |        3.995|         0.017|
+sdram_data<28>                                 |        3.987|         0.009|
+sdram_data<29>                                 |        3.982|         0.004|
+sdram_data<30>                                 |        3.991|         0.013|
+sdram_data<31>                                 |        3.999|         0.021|
+sdram_dqm<0>                                   |        4.008|         0.030|
+sdram_dqm<1>                                   |        4.028|         0.050|
+sdram_dqm<2>                                   |        4.032|         0.054|
+sdram_dqm<3>                                   |        4.006|         0.028|
+sdram_ras_n                                    |        4.003|         0.025|
+sdram_we_n                                     |        4.023|         0.045|
+-----------------------------------------------+-------------+--------------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 383816 paths, 32 nets, and 51470 connections
+
+Design statistics:
+   Minimum period:  10.000ns   (Maximum frequency: 100.000MHz)
+   Maximum net delay:   0.997ns
+   Minimum input required time before clock:   0.913ns
+   Minimum output required time after clock:   4.053ns
+
+
+Analysis completed Mon Mar 12 17:09:26 2012 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 592 MB
+
+
+
