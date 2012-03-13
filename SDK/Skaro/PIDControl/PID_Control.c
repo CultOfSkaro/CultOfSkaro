@@ -17,6 +17,7 @@
 #include "PID_Control.h"
 #include "InterruptControl.h"
 #include "Header.h"
+#include "skaro_wireless.h"
 //====================================================
 //more #includes to use the encoder
 #include "plb_quad_encoder.h"
@@ -29,22 +30,27 @@ extern Scheduler scheduler;
 
 PID pid;
 
+int control_log_counter;
+int i=0;
+
 void initPID(){
 			//General params
 			pid.outputPID = 0;
 			pid.outputPID_unsat = 0;
 			pid.encoderValue = 0;
 			pid.lastEncoderValue = getTicks();
-			pid.Tau = 0.05;
+			pid.Tau = 0.05f;
+
 			//Velocity params
-	        pid.Kp = 0.010f;
+	        pid.Kp = 0.02f;
 	        pid.Kd = 0.0001f;
-	        pid.Ki = 0.0005f;
+	        pid.Ki = 0.005f;
 	        pid.integrator = 0.0f;
 	        pid.differentiator = 0.0f;
 	        pid.desiredVelocityPID = 0;
 	        pid.lastError = 0;
 	        pid.lastDesiredVelocity = 0.0;
+	        pid.lastCurrentVelocity = 0.0f;
 	        pid.lastClockTicks = 0;
 	        pid.error = 0.0;
 		    //Distance params
@@ -86,73 +92,74 @@ void updateVelocityOutput()
 
 	float refreshRate = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
 	//uint32 refreshRate = (deltaClocks)/(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ/1000) ;
-	//xil_printf("nowClock: %d\r\n", nowClocks);
-	//xil_printf("pid.lastClockTicks: %d\r\n", pid.lastClockTicks);
-	//xil_printf("Delta Clock: %d\r\n", deltaClocks);
-	//xil_printf("Refresh Rate: ");
-	//PrintFloat(refreshRate);
-	//print("\n\r");
+
 	pid.lastClockTicks = nowClocks;
 
 
 	//------Distance since last function call in ticks
 	int encoderDifference = pid.encoderValue - pid.lastEncoderValue;
-	//xil_printf("Encoder Value: %d\r\n", pid.encoderValue);
-	//xil_printf("Last Encoder Value: %d\r\n", pid.lastEncoderValue);
-	//xil_printf("Encoder Diff: %d\r\n", encoderDifference);
 
-	//------Calculate velocity
+	//------Calculate Velocity
 	currentVelocity = ((encoderDifference) / (refreshRate));
-	//xil_printf("Desired Velocity: ");
-	//PrintFloat(desiredVelocity);
-	//xil_printf("Current Velocity: ");
-	//xil_printf(",");
-	//PrintFloat(currentVelocity);
-	//xil_printf(",");
-	//print("\n\r");
 
-
-	//------Error
+	//------Calculate Error
 	pid.error = desiredVelocity - (currentVelocity);
-	//xil_printf("error: ");
-	//PrintFloat(pid.error);
-	//print("\n\r");
+
+	//------Send Data to gui graphing function
+	if(++control_log_counter > 0){
+		Wireless_ControlLog(currentVelocity, desiredVelocity);
+		control_log_counter = 0;
+	}
 
 	//------Update Derivative
 	pid.differentiator = (2*pid.Tau-refreshRate)/(2*pid.Tau+refreshRate)*pid.differentiator + 2/(2*pid.Tau+refreshRate)*(currentVelocity - pid.lastCurrentVelocity);
-	//xil_printf("differentiator: ");
-	//PrintFloat(pid.differentiator);
-	//print("\n\r");
+	//pid.differentiator = (2*pid.Tau-refreshRate)/(2*pid.Tau+refreshRate)*pid.differentiator + 2/(2*pid.Tau+refreshRate)*(pid.error - pid.lastError);
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	if ((pid.error < 1000 && pid.error > -1000) && (pid.error > 100 || pid.error < -100)){
+	//if ((pid.error < 1000 && pid.error > -1000) && (pid.error > 100 || pid.error < -100)){
 			pid.integrator = pid.integrator + (refreshRate/2)*(pid.error + pid.lastError);
-	} else {
-		pid.integrator = 0;
-	}
-
-	//xil_printf("integrator: ");
-	//PrintFloat(pid.integrator);
-	//print("\n\r");
+	//} else {
+	//	pid.integrator = 0;
+	//}
 
 	//------Output Calculation
 	P = pid.Kp * pid.error;
 	I = pid.Ki * pid.integrator;
-	D = pid.Kd * 0;//pid.differentiator;
+	D = pid.Kd * pid.differentiator;
 
-	pid.outputPID_unsat = P + I - D;
+	pid.outputPID_unsat = ((int)P) + ((int)I) - ((int)D);
 	pid.outputPID = sat(pid.outputPID_unsat, 60);
+
+	if(++i > 5){
+		Wireless_Debug("P:");
+		PrintFloat(P);
+		Wireless_Debug("I:");
+		PrintFloat(I);
+		Wireless_Debug("D:");
+		PrintFloat(D);
+		//Wireless_Debug("I word:");
+		//PrintWord(*((uint32 *)&I));
+		//Wireless_Debug("D word:");
+		//PrintWord(*((uint32 *)&D));
+		Wireless_Debug("outputPID_unsat");
+		PrintFloat(pid.outputPID_unsat);
+		Wireless_Debug("outputPID");
+		PrintFloat(pid.outputPID);
+		Wireless_Debug("CurrentVelocity");
+		PrintFloat(currentVelocity);
+		Wireless_Debug("LastCurrentVelocity");
+		PrintFloat(pid.lastCurrentVelocity);
+		Wireless_Debug("------------------");
+		i = 0;
+		}
+
+	pid.integrator = pid.integrator + (refreshRate/pid.Ki)*(pid.outputPID - pid.outputPID_unsat);
 
 	//------Save states and send PWM to motors
 	pid.lastEncoderValue = pid.encoderValue;
 	pid.lastCurrentVelocity = currentVelocity;
 	pid.lastDesiredVelocity = desiredVelocity;
 	SetServo(RC_VEL_SERVO, (int)pid.outputPID);
-	//xil_printf("Output PID unsat: ");
-	//PrintFloat(pid.outputPID_unsat);
-	//print("\n\r");
-	//xil_printf("Output PID: %d", pid.outputPID);
-	//print("--------------------------------------\r\n");
 }
 
 void updateDistanceOutput()
@@ -174,14 +181,8 @@ void updateDistanceOutput()
 		deltaClocks = (maxClocks-pid.lastClockTicks)+nowClocks;
 	else
 		deltaClocks = nowClocks - pid.lastClockTicks;
-
 	float deltaTime = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
-
 	pid.error_d = desiredDistance - pid.encoderValue;
-//
-//	xil_printf("Encoder Value: %d\r\n", pid.encoderValue);
-//	xil_printf("Desired Distance: %d\r\n", desiredDistance);
-//	xil_printf("error_d: %d\r\n", pid.error_d);
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
 	if ((pid.error_d < 1000 && pid.error_d > -1000) && (pid.error_d > 100 || pid.error_d < -100)){
@@ -197,67 +198,39 @@ void updateDistanceOutput()
 //	else
 //		pid.integrator_d = 0;
 
-	//print("integrator: ");
-	//PrintFloat(pid.integrator_d);
-	//print("\n\r");
-
 	//------Update Derivative
-
 	pid.differentiator_d = (2*pid.Tau-deltaTime)/(2*pid.Tau+deltaTime)*pid.differentiator_d + 2/(2*pid.Tau+deltaTime)*(pid.error_d-pid.lastError_d);
-	//print("differentiator: ");
-	//PrintFloat(pid.differentiator_d);
 
 	P = pid.Kp_d * pid.error_d;
 	I = pid.Ki_d * pid.integrator_d;
 	D = pid.Kd_d * pid.differentiator_d;
-	//print("P: ");
-	//PrintFloat(P);
-	//print("\n\r");
-	//print("I: ");
-	//PrintFloat(I);
-	//print("\n\r");
-	//print("D: ");
-	//PrintFloat(D);
-	//print("\n\r");
+
 
 	pid.outputPID_unsat = P + I - D;
 	pid.outputPID = sat(pid.outputPID_unsat, 60);
 
 	//------if we are really close, don't do anything!
-	if (pid.error_d < 100 && pid.error_d > -100) {
-		pid.outputPID = 0;
-	}
+	//if (pid.error_d < 100 && pid.error_d > -100) {
+	//	pid.outputPID = 0;
+	//}
 
 	//------Integrator Anti-windup
 //	if (pid.Ki_d != 0.0f) {
 //		pid.integrator_d = pid.integrator_d + deltaTime/pid.Ki_d * (pid.outputPID - pid.outputPID_unsat);
 //	}
-//	print("integrator_antiWind: ");
-//	PrintFloat(pid.integrator_d);
-	//print("\n\r");
 
 	pid.lastError_d = pid.error_d;
 	pid.lastDesiredDistance = desiredDistance;
 
 	SetServo(RC_VEL_SERVO, pid.outputPID);
-	//xil_printf("Output PID: %d\r\n", pid.outputPID);
-	//print("--------------------------------------\r\n");
 }
 
 void setDistance(int32 distance){
-//    if(distance > 20000.0)
-//    	distance = 20000.0;
-//    else if(distance < -0.0)
-//    	distance = -0.0;
 	pid.desiredDistancePID = distance + getTicks();
-	//xil_printf("distance %d\n\r",pid.desiredDistancePID);
 }
 
 void setVelocity(int32 velocity){
-//	if(velocity > 5000.0)
-//    	velocity = 5000.0;
-//    else if(velocity < -5000.0)
-//	    velocity = -5000.0;
+
 	pid.desiredVelocityPID = velocity;
 }
 
@@ -265,9 +238,6 @@ void updateDistanceSetVelocity(int velocity){
 	int ticks = getTicks();
 	pid.distanceError = pid.desiredDistancePID - ticks;
 	int distanceError = pid.distanceError;
-	//Wireless_ControlLog(ticks, pid.desiredDistancePID);
-	//xil_printf("distanceError = %d\r\n", distanceError);
-	//xil_printf("old velocity = %d\r\n", velocity);
 
 //	int vel =  pid.desiredVelocityPID;
 //
@@ -279,6 +249,27 @@ void updateDistanceSetVelocity(int velocity){
 //	pid.desiredVelocityPID = velocity;
 //	updateVelocityOutput();
 
+	if (velocity == 1 ||(velocity > 0 && velocity <= 1000))
+		velocity = 1000;
+	else if (velocity == 2 ||(velocity > 1000 && velocity <= 2000))
+		velocity = 2000;
+	else if (velocity == 3 ||(velocity > 2000 && velocity <= 3000))
+		velocity = 3000;
+	else if (velocity == 4 ||(velocity > 3000 && velocity <= 4000))
+		velocity = 4000;
+	else if (velocity == -1 ||(velocity < 0 && velocity >= -1000))
+		velocity = -1000;
+	else if (velocity == -2 ||(velocity < 1000 && velocity >= -2000))
+		velocity = -2000;
+	else if (velocity == -3 ||(velocity < 2000 && velocity >= -3000))
+		velocity = -3000;
+	else if (velocity == -4 ||(velocity < 3000 && velocity >= -4000))
+		velocity = -4000;
+	else if (velocity == 1000000)
+		velocity = 5000;
+	else
+		velocity = 0;
+
 	if (distanceError < 1500 && distanceError >= 1000)
 		velocity = velocity/2;
 	else if (distanceError < 1000 && distanceError >= 700)
@@ -287,31 +278,31 @@ void updateDistanceSetVelocity(int velocity){
 		velocity = velocity/4;
 	else if (distanceError < 500 && distanceError >= 200)
 		velocity = velocity/5;
-	else if (distanceError < 200 && distanceError >= 100)
-		velocity = 0;
-	else if (distanceError < 100 && distanceError >= 2)
-		velocity = 700;
-	else if (distanceError < 2 && distanceError >= -2){
-		velocity = 0;
-	}else if (distanceError < -2 && distanceError >= -500)
-		velocity = -700;
-	else if (distanceError < -500 && distanceError >= -20)
-		velocity = -velocity/4;
-	else if (distanceError < -700 && distanceError >= -500)
-		velocity = -velocity/3;
-	else if (distanceError < -1000 && distanceError >= -700)
-		velocity = -velocity/2;
-	else if (distanceError < -1500 && distanceError >= -1000)
-		velocity = -velocity;
+				else if (distanceError < 200)
+					velocity = 0;
+//	else if (distanceError < 200 && distanceError >= 100)
+//		velocity = 0;
+//	else if (distanceError < 100 && distanceError >= 2)
+//		velocity = 700;
+//	else if (distanceError < 2 && distanceError >= -2){
+//		velocity = 0;
+//	}
+//	else if (distanceError > -2 && distanceError <= -500)
+//		velocity = -700;
+//	else if (distanceError > -500 && distanceError <= -2)
+//		velocity = -velocity/4;
+//	else if (distanceError > -700 && distanceError <= -500)
+//		velocity = -velocity/3;
+//	else if (distanceError > -1000 && distanceError <= -700)
+//		velocity = -velocity/2;
+//	else if (distanceError > -1500 && distanceError <= -1000)
+//		velocity = -velocity;
 
-
-	//xil_printf("new velocity = %d\r\n", velocity);
 	setVelocity(velocity);
 	updateVelocityOutput();
 }
 
 void setSteeringRadius(int direction, uint32 radius_cm) {
-	//print("start radius\r\n");
 	int str = 0;
 	switch (radius_cm){
 			case 100:
@@ -344,13 +335,11 @@ void setSteeringRadius(int direction, uint32 radius_cm) {
 			default:
 				str = 0;
 				break;
-	//print("end radius\r\n");
 	}
-	//print("servo\r\n");
 	SetServo(RC_STR_SERVO, (direction*str));
 }
 
-int sat(float in, float limit) {
+int sat(int in, int limit) {
 	if (in >= limit){
 		return limit;
 	}

@@ -2,6 +2,22 @@
 **** Build of configuration Debug for project TestApp_Vision ****
 
 make all 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"plb_vision_v1_00_a/src/plb_vision.d" -MT"plb_vision_v1_00_a/src/plb_vision.d" -o"plb_vision_v1_00_a/src/plb_vision.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c: In function 'Init_Camera':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:249: warning: implicit declaration of function 'ClockDelay'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:254: warning: implicit declaration of function 'xil_printf'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:256: warning: unused variable 'timeout'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:255: warning: unused variable 'spiaddr'
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c
+ 
 Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
 Invoking: PowerPC gcc compiler
 powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"plb_vision_v1_00_a/src/plb_vision_selftest.d" -MT"plb_vision_v1_00_a/src/plb_vision_selftest.d" -o"plb_vision_v1_00_a/src/plb_vision_selftest.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c"
@@ -13,6 +29,136 @@ cygwin warning:
     http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
 C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.h:186: warning: 'MpmcUpdateStaticPhyReg' declared 'static' but never defined
 Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"plb_usb_v1_00_a/src/USB_IO.d" -MT"plb_usb_v1_00_a/src/USB_IO.d" -o"plb_usb_v1_00_a/src/USB_IO.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c"
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c: In function 'USB_init':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c:25: warning: implicit declaration of function 'XIo_Out32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c: In function 'USB_Connected':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c:32: warning: implicit declaration of function 'XIo_In32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c: In function 'USB_burstRead32':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c:125: warning: suggest parentheses around comparison in operand of &
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/common/HeliosIO.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/HeliosIO.d" -MT"common/HeliosIO.d" -o"common/HeliosIO.o" "C:/RobotRacers/CultOfSkaro/SDK/common/HeliosIO.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+C:/RobotRacers/CultOfSkaro/SDK/common/HeliosIO.c: In function 'InitGameSystem':
+C:/RobotRacers/CultOfSkaro/SDK/common/HeliosIO.c:241: warning: implicit declaration of function 'xil_printf'
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/HeliosIO.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/common/LoopScheduler.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/LoopScheduler.d" -MT"common/LoopScheduler.d" -o"common/LoopScheduler.o" "C:/RobotRacers/CultOfSkaro/SDK/common/LoopScheduler.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+C:/RobotRacers/CultOfSkaro/SDK/common/LoopScheduler.c: In function 'LoopScheduler':
+C:/RobotRacers/CultOfSkaro/SDK/common/LoopScheduler.c:97: warning: implicit declaration of function 'xil_printf'
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/LoopScheduler.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/common/State.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/State.d" -MT"common/State.d" -o"common/State.o" "C:/RobotRacers/CultOfSkaro/SDK/common/State.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/State.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/common/Timer.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/Timer.d" -MT"common/Timer.d" -o"common/Timer.o" "C:/RobotRacers/CultOfSkaro/SDK/common/Timer.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/Timer.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/mpmc_calibration.d" -MT"common/mpmc_calibration.d" -o"common/mpmc_calibration.o" "C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c"
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+ 
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c: In function 'MpmcWriteTestPattern':
+C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c:618: warning: implicit declaration of function 'XIo_Out32'
+C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c: In function 'MpmcCheckPattern':
+C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c:645: warning: implicit declaration of function 'XIo_In32'
+Building file: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_mem_test_example.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/mpmc_mem_test_example.d" -MT"common/mpmc_mem_test_example.d" -o"common/mpmc_mem_test_example.o" "C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_mem_test_example.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_mem_test_example.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"DataTypes/BufferStore.d" -MT"DataTypes/BufferStore.d" -o"DataTypes/BufferStore.o" "C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c: In function 'BSInit':
+C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c:176: warning: implicit declaration of function 'xil_printf'
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"DataTypes/FrameTable.d" -MT"DataTypes/FrameTable.d" -o"DataTypes/FrameTable.o" "C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c: In function 'FT_PrintFrameTable':
+C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c:124: warning: implicit declaration of function 'xil_printf'
+C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c: In function 'FT_StartCapture':
+C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c:167: warning: implicit declaration of function 'print'
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Queue.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"DataTypes/Queue.d" -MT"DataTypes/Queue.d" -o"DataTypes/Queue.o" "C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Queue.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Queue.c
  
 Building target: TestApp_Vision.elf
 Invoking: PowerPC gcc linker
@@ -34,7 +180,7 @@ cygwin warning:
   Consult the user's guide for more details about POSIX paths:
     http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
    text	   data	    bss	    dec	    hex	filename
-  51902	    500	   2752	  55154	   d772	TestApp_Vision.elf
+  51894	    508	   2752	  55154	   d772	TestApp_Vision.elf
 Finished building: TestApp_Vision.elf.size
  
 Invoking: Xilinx ELF Check
@@ -53,6 +199,28 @@ Command Line: elfcheck -hw ../../VHDL_hw_platform/system.xml -pe ppc405_0
 TestApp_Vision.elf 
 
 ELF file	: TestApp_Vision.elf
-elfcheck passed.
+ERROR:EDK:3165 - elfcheck failed!
+The following sections did not fit into Processor  memory:
+	Section .heap (0xFFFFD360 - 0xFFFFD75F)
+	Section .stack (0xFFFFCF60 - 0xFFFFD35F)
+	Section .boot (0xFFFFFFFC - 0xFFFFFFFF)
+	Section .boot0 (0xFFFFFFEC - 0xFFFFFFFB)
+	Section .bss (0xFFFFCD04 - 0xFFFFCF5F)
+	Section .sbss (0xFFFFCCA0 - 0xFFFFCD03)
+	Section .sdata (0xFFFFCC88 - 0xFFFFCC9F)
+	Section .jcr (0xFFFFCC84 - 0xFFFFCC87)
+	Section .eh_frame (0xFFFFCC7C - 0xFFFFCC83)
+	Section .dtors (0xFFFFCC74 - 0xFFFFCC7B)
+	Section .ctors (0xFFFFCC6C - 0xFFFFCC73)
+	Section .got2 (0xFFFFCC50 - 0xFFFFCC6B)
+	Section .data (0xFFFFCAA4 - 0xFFFFCC4F)
+	Section .rodata (0xFFFFB75C - 0xFFFFCAA1)
+	Section .fini (0xFFFFB73C - 0xFFFFB75B)
+	Section .init (0xFFFFB718 - 0xFFFFB73B)
+	Section .text (0xFFFF20C4 - 0xFFFFB717)
+	Section .vectors (0xFFFF0000 - 0xFFFF20C3)
+
+Try using the linker script generation tools to generate an ELF that maps
+correctly to your hardware design.
 Finished building: TestApp_Vision.elf.elfcheck
  

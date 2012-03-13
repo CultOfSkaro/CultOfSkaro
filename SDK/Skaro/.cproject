@@ -85,22 +85,6 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<folderInfo id="xilinx.gnu.ppc.exe.debug.318411942.109189542" name="/" resourcePath="drivers/plb_vision_v1_00_a">
-						<toolChain id="xilinx.gnu.ppc.exe.debug.toolchain.581254203" name="Xilinx PowerPC GNU Toolchain" superClass="xilinx.gnu.ppc.exe.debug.toolchain" unusedChildren="">
-							<tool id="xilinx.gnu.ppc.c.toolchain.assembler.debug.1096633561" name="PowerPC gcc assembler" superClass="xilinx.gnu.ppc.c.toolchain.assembler.debug.1925427013">
-								<inputType id="xilinx.gnu.assembler.input.539041531" superClass="xilinx.gnu.assembler.input"/>
-							</tool>
-							<tool id="xilinx.gnu.ppc.c.toolchain.compiler.debug.1834590018" name="PowerPC gcc compiler" superClass="xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454">
-								<inputType id="xilinx.gnu.ppc.c.compiler.input.2061672287" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
-							</tool>
-							<tool id="xilinx.gnu.ppc.cxx.toolchain.compiler.debug.454930302" name="PowerPC g++ compiler" superClass="xilinx.gnu.ppc.cxx.toolchain.compiler.debug.612443351"/>
-							<tool id="xilinx.gnu.ppc.toolchain.archiver.586724084" name="PowerPC archiver" superClass="xilinx.gnu.ppc.toolchain.archiver.954598347"/>
-							<tool id="xilinx.gnu.ppc.c.toolchain.linker.debug.2051742923" name="PowerPC gcc linker" superClass="xilinx.gnu.ppc.c.toolchain.linker.debug.1195231464"/>
-							<tool id="xilinx.gnu.ppc.cxx.toolchain.linker.debug.629339777" name="PowerPC g++ linker" superClass="xilinx.gnu.ppc.cxx.toolchain.linker.debug.1306719491"/>
-							<tool id="xilinx.gnu.ppc.size.debug.1634762111" name="PowerPC Print Size" superClass="xilinx.gnu.ppc.size.debug.956973060"/>
-							<tool id="xilinx.elfcheck.ppc.debug.483712916" name="Xilinx ELF Check" superClass="xilinx.elfcheck.ppc.debug.290854629"/>
-						</toolChain>
-					</folderInfo>
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.1146751088" name="Queue.h" rcbsApplicability="disable" resourcePath="DataTypes/Queue.h" toolsToInvoke=""/>
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.1313017762" name="Timer.h" rcbsApplicability="disable" resourcePath="common/Timer.h" toolsToInvoke=""/>
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.639997192" name="Wireless.h" rcbsApplicability="disable" resourcePath="common/Wireless.h" toolsToInvoke=""/>

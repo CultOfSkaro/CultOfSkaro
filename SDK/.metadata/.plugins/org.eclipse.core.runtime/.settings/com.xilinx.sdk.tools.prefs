@@ -1,22 +1,24 @@
-#Tue Feb 14 17:08:16 MST 2012
+#Mon Mar 12 11:37:38 MDT 2012
 com.xilinx.sdk.linkgen.prefs.hello_world_0\:.vectors=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.Skaro\:.bss=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.hello_world_0\:.sdata=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.Skaro\:.data=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.hello_world_0\:.text=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.hello_world_0\:Heap=xps_bram_if_cntlr_0
+com.xilinx.sdk.linkgen.prefs.Skaro\:.boot0=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.Skaro\:.sbss=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.hello_world_0\:.rodata1=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.Skaro\:.sdata=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.Skaro\:.vectors=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.Skaro\:.sdata2=xps_bram_if_cntlr_0
 eclipse.preferences.version=1
-com.xilinx.sdk.linkgen.prefs.Skaro\:Stack=xps_bram_if_cntlr_0
+com.xilinx.sdk.linkgen.prefs.Skaro\:Stack=xps_mch_emc_sram_MEM0_BASEADDR
 com.xilinx.sdk.linkgen.prefs.Skaro\:.rodata=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.Skaro\:.rodata1=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.hello_world_0\:.sbss2=xps_bram_if_cntlr_0
+com.xilinx.sdk.linkgen.prefs.Skaro\:.boot=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.hello_world_0\:.data1=xps_bram_if_cntlr_0
-com.xilinx.sdk.linkgen.prefs.Skaro\:Heap=xps_bram_if_cntlr_0
+com.xilinx.sdk.linkgen.prefs.Skaro\:Heap=xps_mch_emc_sram_MEM0_BASEADDR
 com.xilinx.sdk.linkgen.prefs.Skaro\:.sbss2=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.hello_world_0\:.sdata2=xps_bram_if_cntlr_0
 com.xilinx.sdk.linkgen.prefs.hello_world_0\:.data=xps_bram_if_cntlr_0

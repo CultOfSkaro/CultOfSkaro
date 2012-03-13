@@ -51,11 +51,14 @@ void Wireless_Debug(char * message) {
 	Wireless_Send(&wireless, WIRELESS_DEBUG, length, message);
 }
 
-int Wireless_ControlLog(int actual, int expected){
-	int values[2];
-	values[0] = actual;
-	values[1] = expected;
-	return Wireless_Send(&wireless, WIRELESS_CONTROL_LOG, 2*sizeof(int), values);
+int Wireless_ControlLog(float actual, float expected){
+	char values[8];
+	int i;
+	for(i = 0; i <4; i++){
+		values[i] = *((char *)(&actual)+i);
+		values[4+i] = *((char *)(&expected)+i);
+	}
+	return Wireless_Send(&wireless, WIRELESS_CONTROL_LOG,8, values);
 }
 
 //int mains(){

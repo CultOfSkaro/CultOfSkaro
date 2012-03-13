@@ -27,8 +27,8 @@ Compiling lldma
 Compiling standalone
 Compiling XilFlash Library:
 Creating archive libxilflash.a
-Compiling mpmc
 Compiling uartlite
+Compiling mpmc
 Compiling bram
 Compiling gpio
 Compiling intc

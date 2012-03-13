@@ -231,6 +231,10 @@ XGpio Gpio;
 void HeliosEnableGyro(void) {
 	XGpio_DiscreteSet(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, HELIOS_ENABLE_GYRO);
 }
+
+void HeliosDisableGyro(void) {
+	XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, HELIOS_ENABLE_GYRO);
+}
 /* FUNCTIONS */
 /* Initializes the game system.  Interrupts should have already been initialized in INIT_ISR.  This function
  * initializes the GPIO high-level interface (using the GPio struct), sets the data direction for the game-system GPIO pins

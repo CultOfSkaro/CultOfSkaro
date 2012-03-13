@@ -25,6 +25,6 @@ int Wireless_Destroy(Skaro_Wireless * w);
 int Wireless_Send(Skaro_Wireless * w, char commmand, char length, char * data);
 
 void Wireless_Debug(char * message);
-int Wireless_ControlLog(int actual, int expected);
+int Wireless_ControlLog(float actual, float expected);
 
 #endif

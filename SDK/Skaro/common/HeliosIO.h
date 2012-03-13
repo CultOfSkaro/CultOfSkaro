@@ -86,6 +86,7 @@ uint8  HeliosGetSleepSRAM(void);
 void   HeliosSetSleepFlash(uint8 state);
 uint8  HeliosGetSleepFlash(void);
 void   HeliosEnableGyro(void);
+void   HeliosDisableGyro(void);
 // Game board function prototypes
 void   Game_State();
 void   Game_Shoot(uint16 shotType);

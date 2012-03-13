@@ -128,6 +128,7 @@ XIntc InterruptController;     /* The instance of the Interrupt Controller */
 Skaro_Wireless wireless;
 XUartLite gameboard_uart;
 Scheduler scheduler;
+char test_string[100];
 
 int PIDvel(Xuint32 target, Xuint32 cur){
 	if (cur < (target-5))
@@ -167,7 +168,7 @@ void WirelessSendHandler(void *CallBackRef, unsigned int EventData)
 void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 {
 	char c = 0;
-	Wireless_Debug("received something");
+	//Wireless_Debug("received something");
 	if(!XUartLite_Recv(&(wireless.uart), &c, 1)){
 		return;
 	}
@@ -182,53 +183,51 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 	char d;
 	switch (c){
 	case SET_PID_KP:
-		read(0,&c,1);
-		pid.Kp = c/25500.0;
+		read(0,&temp,sizeof(float));
+		pid.Kp = temp;
 		//			xil_printf("We are setting Kp to ");
-		//			PrintFloat(pid.Kp);
-		print("\n\r");
+					Wireless_Debug("Setting Kp to:");
+					PrintFloat(pid.Kp);
+		//print("\n\r");
 		break;
 	case SET_PID_KI:
-		read(0,&c,1);
-		pid.Ki = c/25500.0;
+		read(0,&temp,sizeof(float));
+		pid.Ki = temp;
 		//			xil_printf("We are setting Ki to ");
-		//			PrintFloat(pid.Ki);
+		Wireless_Debug("Setting Ki to:");
+					PrintFloat(pid.Ki);
 		//			print("\n\r");
 		break;
 	case SET_PID_KD:
-		read(0,&c,1);
-		pid.Kd = c/25500.0;
+		read(0,&temp,sizeof(float));
+		pid.Kd = temp;
 		//			xil_printf("We are setting Kd to ");
-		//			PrintFloat(pid.Kd);
+		Wireless_Debug("Setting Kd to:");
+					PrintFloat(pid.Kd);
 		//			print("\n\r");
 		break;
-	case SET_PID_KP_D:
-		read(0,&c,1);
-		//			xil_printf("received %d", c);
-		pid.Kp_d = c/25500.0;
-		//			xil_printf("We are setting Kp_d to ");
-		//			PrintFloat(pid.Kp_d);
-		//			print("\n\r");
-		break;
-	case SET_PID_KI_D:
-		read(0,&c,1);
-		pid.Ki_d = c/25500.0;
-		//			xil_printf("We are setting Ki_d to ");
-		//			PrintFloat(pid.Ki_d);
-		//			print("\n\r");
-		break;
-	case SET_PID_KD_D:
-		read(0,&c,1);
-		pid.Kd_d = c/25500.0;
-		//			xil_printf("We are setting Kd_d to ");
-		//			PrintFloat(pid.Kd_d);
-		//			print("\n\r");
-		break;
-	case REQUEST_CONTROL_LOG:
-		//			for(i = 0; i < 1000; i++){
-		//				xil_printf("%d\n",logValues[i]);
-		//			}
-		break;
+//	case SET_PID_KP_D:
+//		read(0,&c,1);
+//		//			xil_printf("received %d", c);
+//		pid.Kp_d = c/25500.0;
+//		//			xil_printf("We are setting Kp_d to ");
+//		//			PrintFloat(pid.Kp_d);
+//		//			print("\n\r");
+//		break;
+//	case SET_PID_KI_D:
+//		read(0,&c,1);
+//		pid.Ki_d = c/25500.0;
+//		//			xil_printf("We are setting Ki_d to ");
+//		//			PrintFloat(pid.Ki_d);
+//		//			print("\n\r");
+//		break;
+//	case SET_PID_KD_D:
+//		read(0,&c,1);
+//		pid.Kd_d = c/25500.0;
+//		//			xil_printf("We are setting Kd_d to ");
+//		//			PrintFloat(pid.Kd_d);
+//		//			print("\n\r");
+//		break;
 	case SET_DISTANCE:
 		read(0,word,10);
 		//getWirelessBytes(word, 13);
@@ -238,6 +237,9 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		//print("\r\n");
 		i = atoi(word);
 		setDistance(i);
+		Wireless_Debug("Set distance to ");
+		PrintInt(i);
+		Wireless_Debug("\n\r");
 		//xil_printf("set distance to %d\r\n", i);
 		//Wireless_Debug("set distance to ");
 		break;
@@ -245,7 +247,8 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		read(0,&c,1);
 		SetServo(RC_STR_SERVO, (signed char)c);
 		//xil_printf("Set Steering servo to %d\n\r", (signed char)c);
-		//Wireless_Debug("Set Steering servo to ");
+		Wireless_Debug("Set Steering servo to ");
+		PrintInt(c);
 		break;
 	case SET_MAX_VELOCITY:
 		read(0,word,10);
@@ -253,86 +256,93 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		i = atoi(word);
 		//setVelocity(i);
 		max_velocity = i;
+		Wireless_Debug("Set velocity to ");
+		PrintInt(i);
+		Wireless_Debug("\n\r");
 		//max_velocity = 3000;
 		//xil_printf("set max velocity to %d\r\n", i);
 		//Wireless_Debug("set max velocity to ");
 		break;
-	case SET_25_CIRCLE1:
-		read(0,word,10);
-		//			xil_printf("received %s", word);
-		circle25_ticks1 = atoi(word);
-		//circle25_ticks1 = 10000;
-		//			xil_printf("set distance to %d", circle25_ticks1);
-		break;
-	case SET_20_CIRCLE1:
-		read(0,word,10);
-		//			xil_printf("received %s", word);
-		circle20_ticks1 = atoi(word);
-		//circle20_ticks1 = 10000;
-		//			xil_printf("set distance to %d", circle20_ticks1);
-		break;
-	case SET_25_CIRCLE2:
-		read(0,word,10);
-		//			xil_printf("received %s", word);
-		circle25_ticks2 = atoi(word);
-		//circle25_ticks2 = 10000;
-		//			xil_printf("set distance to %d", circle25_ticks2);
-		break;
-	case SET_20_CIRCLE2:
-		read(0,word,10);
-		//			xil_printf("received %s", word);
-		circle20_ticks2 = atoi(word);
-		//circle20_ticks2 = 10000;
-		//			xil_printf("set distance to %d", circle20_ticks2);
-		break;
-	case SHOOT_GAME_SHOOT_KILL:
-		Game_Shoot(GAME_KILL_SHOT);
-		break;
-	case '3':
-		read(0,word,10);
-		//xil_printf("received %s", word);
-		overlap = atoi(word);
-		//overlap = 10000;
-		//xil_printf("set distance to %d", overlap);
+//	case SET_25_CIRCLE1:
+//		read(0,word,10);
+//		//			xil_printf("received %s", word);
+//		circle25_ticks1 = atoi(word);
+//		//circle25_ticks1 = 10000;
+//		//			xil_printf("set distance to %d", circle25_ticks1);
+//		break;
+//	case SET_20_CIRCLE1:
+//		read(0,word,10);
+//		//			xil_printf("received %s", word);
+//		circle20_ticks1 = atoi(word);
+//		//circle20_ticks1 = 10000;
+//		//			xil_printf("set distance to %d", circle20_ticks1);
+//		break;
+//	case SET_25_CIRCLE2:
+//		read(0,word,10);
+//		//			xil_printf("received %s", word);
+//		circle25_ticks2 = atoi(word);
+//		//circle25_ticks2 = 10000;
+//		//			xil_printf("set distance to %d", circle25_ticks2);
+//		break;
+//	case SET_20_CIRCLE2:
+//		read(0,word,10);
+//		//			xil_printf("received %s", word);
+//		circle20_ticks2 = atoi(word);
+//		//circle20_ticks2 = 10000;
+//		//			xil_printf("set distance to %d", circle20_ticks2);
+//		break;
+//	case SHOOT_GAME_SHOOT_KILL:
+//		Game_Shoot(GAME_KILL_SHOT);
+//		break;
+//	case '3':
+//		read(0,word,10);
+//		//xil_printf("received %s", word);
+//		overlap = atoi(word);
+//		//overlap = 10000;
+//		//xil_printf("set distance to %d", overlap);
+//		break;
+	case 'e':
 		scheduler.events.flags.hello = 1;
 		break;
-	case 'a':
-		loop_count = 2;
-		state = STATE_FIGURE_EIGHT_LEFT_START;
-		break;
-	case 'b':
-		loop_count = 2;
-		state = STATE_FIGURE_EIGHT_RIGHT_START;
-		break;
-	case 'd':
-		print("USB Status: ");
-		xil_printf("%x\r\n", USB_getStatus());
-		print("Testing writeReady of USB: ");
-		if (!USB_writeReady()) {
-			print("FAILED\r\n");
-		} else {
-			print("PASSED\r\n\r\n");
-		}
-
-		USB_setBurstSize(128);
-		u16 data[100];
-		for (i = 0; i < 100; i++) {
-			data[i] = i;
-		}
-		//u32* longdword = (u32*)
-		USB_blockWrite((u32*)data, 100);
-		USB_forceCommit();
-
-		print("wrote text to usb\r\n");
-
-		break;
+//	case 'a':
+//		loop_count = 2;
+//		state = STATE_FIGURE_EIGHT_LEFT_START;
+//		break;
+//	case 'b':
+//		loop_count = 2;
+//		state = STATE_FIGURE_EIGHT_RIGHT_START;
+//		break;
+//	case 'd':
+//		print("USB Status: ");
+//		xil_printf("%x\r\n", USB_getStatus());
+//		print("Testing writeReady of USB: ");
+//		if (!USB_writeReady()) {
+//			print("FAILED\r\n");
+//		} else {
+//			print("PASSED\r\n\r\n");
+//		}
+//
+//		USB_setBurstSize(128);
+//		u16 data[100];
+//		for (i = 0; i < 100; i++) {
+//			data[i] = i;
+//		}
+//		//u32* longdword = (u32*)
+//		USB_blockWrite((u32*)data, 100);
+//		USB_forceCommit();
+//
+//		print("wrote text to usb\r\n");
+//
+//		break;
 	case 'c':
 		setDistance(0);
 		loop_count = 0;
 		state = STATE_DEFAULT;
 		break;
 	default:
-		xil_printf("Unknown command received: %d\r\n", c);
+		Wireless_Debug("Unknown command received: 0x");
+		PrintByte(c);
+		Wireless_Debug("\r\n");
 		break;
 	}
 	while(!XUartLite_IsReceiveEmpty(wireless.uart.RegBaseAddress)){
@@ -342,30 +352,40 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 
 void GameboardSendHandler(void *CallBackRef, unsigned int EventData)
 {
+	Wireless_Debug("This should never get called\r\n");
 }
 
 void GameboardRecvHandler(void *CallBackRef, unsigned int EventData)
 {
-	char word[5];
+	unsigned char word[5];
 	int velocity;
 	int angular_velocity;
 
-	Wireless_Debug(".");
-	read(0,word,5);
-	Wireless_Debug("%");
+	int i;
+	//Wireless_Debug("Received Characters: ");
+	for (i = 0; i < 5; i++) {
+		word[i] = XUartLite_RecvByte(gameboard_uart.RegBaseAddress);
+		//PrintByte(word[i]);
+	}
+	//Wireless_Debug("\r\n");
+
 	velocity = (signed char)word[1];
 	velocity <<= 8;
-	velocity |= word[2];
+	velocity |= (uint32) word[2];
+
 	angular_velocity = (signed char)word[3];
 	angular_velocity <<= 8;
-	angular_velocity |= word[4];
-	Wireless_Debug(" Velocity:");
-	PrintInt(velocity);
-	Wireless_Debug(" Angular Velocity:");
-	PrintInt(angular_velocity);
+	angular_velocity |= (uint32) word[4];
+
+//	Wireless_Debug("Velocity: ");
+//	PrintInt(velocity);
+//	Wireless_Debug("\r\nAngular Velocity: ");
+//	PrintInt(angular_velocity);
+//	Wireless_Debug("\r\n");
 }
 
 int counter = 0;
+int counter2 = 0;
 int update = 0;
 
 // For the pit handler, we increment a counter.  Every time the counter reaches a certain threshold,
@@ -381,7 +401,9 @@ void my_pitHandler(){
 
 // This is a dummy task just to test out different events.
 void hello(){
-	Wireless_Debug("Hello World");
+	Wireless_Debug("Contents of test string: ");
+	Wireless_Debug(test_string);
+	Wireless_Debug("\n\r");
 }
 
 void InitInterrupts() {
@@ -391,7 +413,7 @@ void InitInterrupts() {
 	Wireless_Init(&wireless);
 
 	// Initialize gameboard uart
-	XUartLite_Initialize(&gameboard_uart, XPAR_SERIAL_UART_DEVICE_ID);
+	XUartLite_Initialize(&gameboard_uart, XPAR_GAMEBOARD_UART_DEVICE_ID);
 	XUartLite_ResetFifos(&gameboard_uart);
 
 	// Initialize the interrupt controller
@@ -403,7 +425,7 @@ void InitInterrupts() {
 			(void *)&(wireless.uart));
 
 	// Connect the gameboard uart to the interrupt controller
-	XIntc_Connect(&InterruptController, XPAR_XPS_INTC_0_SERIAL_UART_INTERRUPT_INTR,
+	XIntc_Connect(&InterruptController, XPAR_XPS_INTC_0_GAMEBOARD_UART_INTERRUPT_INTR,
 			(XInterruptHandler)XUartLite_InterruptHandler,
 			(void *)&gameboard_uart);
 
@@ -411,7 +433,7 @@ void InitInterrupts() {
 
 	// Enable interrupts for serial controllers
 	XIntc_Enable(&InterruptController, XPAR_XPS_INTC_0_WIRELESS_UART_INTERRUPT_INTR);
-	XIntc_Enable(&InterruptController, XPAR_XPS_INTC_0_SERIAL_UART_INTERRUPT_INTR);
+	XIntc_Enable(&InterruptController, XPAR_XPS_INTC_0_GAMEBOARD_UART_INTERRUPT_INTR);
 
 	Xil_ExceptionInit();
 
@@ -424,18 +446,20 @@ void InitInterrupts() {
 	// Set up send/receive handlers for wireless uart
 	XUartLite_SetSendHandler(&(wireless.uart), WirelessSendHandler, &(wireless.uart));
 	XUartLite_SetRecvHandler(&(wireless.uart), WirelessRecvHandler, &(wireless.uart));
-	XUartLite_EnableInterrupt(&(wireless.uart));
 
 	// Set up send/receive handlers for gameboard uart
 	XUartLite_SetSendHandler(&gameboard_uart, GameboardSendHandler, &gameboard_uart);
 	XUartLite_SetRecvHandler(&gameboard_uart, GameboardRecvHandler, &gameboard_uart);
+
+	XUartLite_EnableInterrupt(&(wireless.uart));
 	XUartLite_EnableInterrupt(&gameboard_uart);
 
 	XExceptionHandler pithandler = &my_pitHandler;
 	XExc_RegisterHandler(XEXC_ID_PIT_INT, pithandler,
 			0);
 	XTime_PITEnableAutoReload();
-	XTime_PITSetInterval(100000);
+	// PIT should be set to 1ms
+	XTime_PITSetInterval(300000);
 	XExc_mEnableExceptions(XEXC_ALL);
 	XTime_PITEnableInterrupt();
 	XTime_PITClearInterrupt();
@@ -539,13 +563,13 @@ int main (void) {
 
 
 	USB_init();
-
+	Wireless_Debug("The test_string is at:");
+	PrintInt(test_string);
 	Wireless_Debug("-- Starting PWM Test Mode --\r\n");
 	Wireless_Debug("Current max velocity: ");
 	PrintInt(max_velocity);
 	Wireless_Debug("\r\n");
 	Wireless_Debug("NOTICE: Make sure car is placed on stand before proceeding!!\r\n");
-
 	/* Scheduler initialization */
 	Scheduler_Init(&scheduler);
 
