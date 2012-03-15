@@ -22,17 +22,34 @@ namespace CameraViewer
         private bool captureLoop = false;
         private bool quit = false;
         private Stopwatch timer = new Stopwatch();
-
+        private byte[] header;
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e) {
+            usb = new usbReader(txtDebug);
+            usb.gotData += new DataEventHandler(usb_gotData);
+            usb.connect(this.Handle);
+
+            converter = new pixelConverter();
+            converter.finished += new ImageEventHandler(converter_finished);
+
+            header = new byte[64 + 64];
+            for (int i = 0; i < 64; i++) {
+                header[i] = 0;
+            }
+            for (int i = 64; i < 64+64; i++) {
+                header[i] = 255;
+            }
+        }
 
         private void startCapture() {
             txtDebug.AppendText("Reading from usb...");
-            usb.read(640 * 480 * 2); //*2 for 16 bits per pixel
+            //usb.read(640 * 480 * 2); //*2 for 16 bits per pixel
+            usb.findHeader(header);
         }
              
         private void button1_Click(object sender, EventArgs e)
@@ -50,17 +67,6 @@ namespace CameraViewer
             captureLoop = false;
         }
 
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            usb = new usbReader(txtDebug);
-            usb.gotData += new DataEventHandler(usb_gotData);
-            usb.connect(this.Handle);
-
-            converter = new pixelConverter();
-            converter.finished += new ImageEventHandler(converter_finished);
-        }
-
         void converter_finished(object sender, ImageEventArgs e) {
             pictureBox1.Image = e.image;
 
@@ -73,9 +79,9 @@ namespace CameraViewer
         }
 
         void usb_gotData(object sender, DataEventArgs e) {
-            txtDebug.AppendText("Done\r\n");
+            txtDebug.AppendText("Done" + e.data[0] + "\r\n");
 
-            converter.convert(e.data);
+            //converter.convert(e.data);
             if (captureLoop) {
                 startCapture();
             } else if (quit) {
@@ -179,15 +185,19 @@ namespace CameraViewer
     class usbReader
     {
         public event DataEventHandler gotData;
-
+        private enum Mode { READ, FIND_HEADER };
+        private Mode mode = Mode.READ;
         private BackgroundWorker bw;
         private TextBox txtDebug;
         byte[] data;
         int leftToRead = 0;
 
-        byte[] buffer;
-        GCHandle bufHandle;
-        IntPtr bufAddr;
+        byte[] buffer1;
+        GCHandle bufHandle1;
+        IntPtr bufAddr1;
+        byte[] buffer2;
+        GCHandle bufHandle2;
+        IntPtr bufAddr2;
 
         public usbReader(TextBox txtDebug) {
             this.txtDebug = txtDebug;
@@ -196,13 +206,17 @@ namespace CameraViewer
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
 
-            buffer = new byte[512];
-            bufHandle = GCHandle.Alloc(buffer, GCHandleType.Pinned);
-            bufAddr = bufHandle.AddrOfPinnedObject();
+            buffer1 = new byte[512];
+            bufHandle1 = GCHandle.Alloc(buffer1, GCHandleType.Pinned);
+            bufAddr1 = bufHandle1.AddrOfPinnedObject();
+            buffer2 = new byte[512];
+            bufHandle2 = GCHandle.Alloc(buffer2, GCHandleType.Pinned);
+            bufAddr2 = bufHandle2.AddrOfPinnedObject();
         }
 
         ~usbReader() {
-            bufHandle.Free();
+            bufHandle1.Free();
+            bufHandle2.Free();
         }
 
 
@@ -215,12 +229,73 @@ namespace CameraViewer
         //blocking read of usb
         private void bw_DoWork(object sender, DoWorkEventArgs e) {
             int curLoc = 0;
-            while (leftToRead > 0) {
-                int numRead = HeliosUsb.Read(bufAddr);
-                Buffer.BlockCopy(buffer, 0, data, curLoc, 
-                    Math.Min(numRead, leftToRead));
-                leftToRead -= numRead;
-                curLoc += numRead;
+            byte[] bufCur = buffer1;
+            byte[] bufOld = buffer2;
+
+            while (true) {
+                int numRead;
+                if (bufCur == buffer1) {
+                    numRead = HeliosUsb.Read(bufAddr1);
+                } else {
+                    numRead = HeliosUsb.Read(bufAddr2);
+                }
+
+                if (numRead != 512) {
+                    txtDebug.AppendText("WrongSize: " + numRead + "!\r\n");
+
+                    for (int i = 0; i < numRead; i++) {
+                        for (int j = 0; j < 8 && i < numRead; i++, j++) {
+                            txtDebug.AppendText(bufCur[i] + " ");
+                        }
+                        txtDebug.AppendText("\r\n");
+                    }
+                }
+
+                if (mode == Mode.READ) {
+                    Buffer.BlockCopy(bufCur, 0, data, curLoc,
+                        Math.Min(numRead, leftToRead));
+                    leftToRead -= numRead;
+                    curLoc += numRead;
+                    if (leftToRead <= 0) break;
+                } else if (mode == Mode.FIND_HEADER) {
+                    bool found = false;
+                    int i;
+                    for (i = data.Length * -1; i < numRead; i++) {
+                        //check every posistion in the read data
+                        int j;
+                        for (j = 0; j < data.Length; j++) {
+                            //check the whole header
+                            if (i + j >= numRead) break;
+
+                            if (i + j < 0) {
+                                if (bufOld[i + j + 512] != data[j]) break;
+                            } else {
+                                if (bufCur[i + j] != data[j]) break;
+                            }
+                        }
+
+                        if (j == data.Length) {
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (found == true) {
+                        data = new byte[] { (byte)i };
+
+                        /*
+                        for (int j = i; j < 10; j++) {
+                            txtDebug.AppendText(buffer[i + j] + "\r\n");
+                        }
+                        */
+
+                        break;
+                    }
+                }
+
+                byte[] temp = bufCur;
+                bufCur = bufOld;
+                bufOld = temp;
             }
         }
 
@@ -242,9 +317,21 @@ namespace CameraViewer
             }
         }
 
+        public void findHeader(byte[] header) {
+            if (!bw.IsBusy) {
+                mode = Mode.FIND_HEADER;
+                data = header;
+                //bw.RunWorkerAsync();
+                bw_DoWork(null, null);
+            } else {
+                throw new Exception("Already reading!");
+            }
+        }
+
         public void read(int bytes) {
             if (!bw.IsBusy) {
                 data = new byte[bytes];
+                mode = Mode.READ;
                 leftToRead = bytes;
                 bw.RunWorkerAsync();
             } else {

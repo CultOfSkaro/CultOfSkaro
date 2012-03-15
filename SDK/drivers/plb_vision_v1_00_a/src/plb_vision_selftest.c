@@ -58,6 +58,75 @@ void pitHandler(){
 	XTime_PITClearInterrupt();
 }
 
+/*
+ * Header
+ * bytes  description
+ * ------------------
+ * 64     0's
+ * 64     255's
+ * 4      size of total transmission - 128 (in bytes)
+ * 4      size of frame (in bytes)
+ * 4      size of detection data (in bytes)
+ * *      frame
+ * *      detection data
+ */
+
+//char headerBuf[64 + 64 + 4 + 4 + 4];
+//char headerBuf[512];
+char *headerBuf = (char*)0x10000;
+int *transmitSize = (int*)(0x10000 + 64 + 64);
+int *frameSize = (int*)(0x10000 + 64 + 64 + 4);
+int *detectionSize = (int*)(0x10000 + 64 + 64 + 4 + 4);
+
+void initHeader() {
+	int i;
+	for (i = 0; i < 64; i++) {
+		headerBuf[i] = 0;
+	}
+	for (i = 64; i < 64 + 64; i++) {
+		headerBuf[i] = 255;
+	}
+}
+
+void transmitFrame(FrameTableEntry* frame) {
+	uint32* bufAddr = frame->frame_address[VISION_FRAME_RGB565]->data.data32;
+	int bufSize = frame->frame_address[VISION_FRAME_RGB565]->capacity;
+
+	*frameSize = bufSize;
+	*detectionSize = 0;
+	*transmitSize = *frameSize + *detectionSize + 8;
+
+	/*
+	xil_printf("Frame id:%d\r\n", frame->id);
+	xil_printf("Frame addr: %08x", bufAddr);
+	xil_printf("Frame size: %d\r\n", bufSize);
+	*/
+	xil_printf("Transmit size: %d\r\n", 140 / 2);
+	int i, j;
+	for (i = 0; i < 140; i++) {
+		for (j = 0; j < 8 && i < 140; i++, j++) {
+			xil_printf("%d ", headerBuf[i]);
+		}
+		print("\r\n");
+	}
+
+	print("Writing header over usb...");
+	while(!USB_writeReady());
+	USB_blockWrite((u32*)headerBuf, 140 / 2);
+	while(!USB_writeReady());
+	print("Done\r\n");
+
+	xil_printf("Writing frame over usb: %d...", frame->id);
+	while(!USB_writeReady());
+	USB_blockWrite((u32*)bufAddr, bufSize / 2);
+	while(!USB_writeReady());
+	print("Done\r\n");
+}
+
+void processFrame(FrameTableEntry* frame) {
+	transmitFrame(frame);
+}
+
 int main()
 {
 	print("-------------------------Camera Stream App------------------------\r\n");
@@ -71,9 +140,12 @@ int main()
 	XCache_EnableDCache(0x00000001);
 
 	print("Initializing Memory Buffers...\r\n");
-	MemAllocInit((uint32*)0x100000);	//root of the DDR (can't use 0, that's NULL)
+	MemAllocInit((uint32*)0x100000);
 	BSInit();
 	STInit();
+
+	//init header
+	initHeader();
 
 	print("Initializing USB...\r\n");
 	USB_init();
@@ -83,7 +155,6 @@ int main()
 	print("ready\r\n");
 
 	print("Setting up interrupts\r\n");
-	//Enable exceptions
 	XExc_Init();
 	XExc_RegisterHandler( XEXC_ID_NON_CRITICAL_INT, (XExceptionHandler)XIntc_DeviceInterruptHandler, (void*)XPAR_XPS_INTC_0_DEVICE_ID);
 	XExc_mEnableExceptions(XEXC_NON_CRITICAL);
@@ -91,15 +162,13 @@ int main()
 	XIntc_EnableIntr( XPAR_XPS_INTC_0_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
 	XIntc_MasterEnable( XPAR_XPS_INTC_0_BASEADDR );
 
+	//PIT
 	XExc_RegisterHandler(XEXC_ID_PIT_INT, &pitHandler, 0);
 	XTime_PITEnableAutoReload();
 	XTime_PITSetInterval(PIT_INTERVAL);
 	XExc_mEnableExceptions(XEXC_ALL);
 	XTime_PITEnableInterrupt();
 	XTime_PITClearInterrupt();
-
-	xil_printf("Pit Interval: %d\r\n", PIT_INTERVAL);
-
 	print("Done!\r\n");
 
 	/* SET UP CAMERA */
@@ -142,20 +211,7 @@ int main()
 		if (frame == NULL) {
 			//print("Null frame!\r\n");
 		} else {
-			uint32* bufAddr = frame->frame_address[VISION_FRAME_RGB565]->data.data32;
-			/*
-			int bufSize = frame->frame_address[VISION_FRAME_RGB565]->capacity;
-			xil_printf("Frame id:%d\r\n", frame->id);
-			xil_printf("Frame addr: %08x", bufAddr);
-			xil_printf("Frame size: %d\r\n", bufSize);
-			*/
-
-			xil_printf("Writing frame over usb: %d...", frame->id);
-			while(!USB_writeReady());
-			USB_blockWrite((u32*)bufAddr,307200);
-			while(!USB_writeReady());
-			print("Done\r\n");
-
+			processFrame(frame);
 			FT_CheckInFrame(frame);
 
 			xil_printf("Process Rate: %d\r\n", rduint(U_FPS));
