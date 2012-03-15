@@ -1,7 +1,7 @@
 
 Checking platform configuration ...
 IPNAME: plb_v46, INSTANCE: plb_0 - 4 master(s) : 14 slave(s) 
-IPNAME: plb_v46, INSTANCE: plb_1 - 2 master(s) : 2 slave(s) 
+IPNAME: plb_v46, INSTANCE: plb_1 - 2 master(s) : 3 slave(s) 
 
 Checking port drivers...
 WARNING:EDK:4180 - PORT: bscan_tdo1, CONNECTOR: bscan_tdo1 - No driver found.
@@ -9,7 +9,7 @@ WARNING:EDK:4180 - PORT: bscan_tdo1, CONNECTOR: bscan_tdo1 - No driver found.
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\data\mdm
    _v2_1_0.mpd line 239 
 WARNING:EDK:4181 - PORT: sdram_clk_fb, CONNECTOR: sdram_clk_fb - floating
-   connection - C:\RobotRacers\hardware_dans_branch\system.mhs line 75 
+   connection - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 75 
 WARNING:EDK:4181 - PORT: Ext_BRK, CONNECTOR: Ext_BRK - floating connection -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\data\mdm
    _v2_1_0.mpd line 105 
@@ -52,7 +52,7 @@ Performing Reset DRCs...
 Overriding system level properties...
 WARNING:EDK:4083 - IPNAME: xps_intc, INSTANCE: xps_intc_0 -  PARAMETER:
    C_NUM_INTR_INPUTS has value 5 specified in MHS, but tcl is overriding the
-   value to 6 - C:\RobotRacers\hardware_dans_branch\system.mhs line 243 
+   value to 6 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 243 
 
 Running system level update procedures...
 

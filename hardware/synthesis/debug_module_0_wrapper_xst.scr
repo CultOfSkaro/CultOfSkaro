@@ -10,4 +10,4 @@ run
 -hierarchy_separator /
 -iobuf NO
 -sd {../implementation}
--vlgincdir {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+-vlgincdir {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }

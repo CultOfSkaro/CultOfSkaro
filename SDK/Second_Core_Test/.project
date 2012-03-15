@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>Second_Core_Test</name>
-	<comment>hello_world_bsp_0 - ppc405_1</comment>
+	<comment></comment>
 	<projects>
 		<project>hello_world_bsp_0</project>
 	</projects>

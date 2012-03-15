@@ -1,5 +1,5 @@
 // This file has been automatically generated.  Do not modify.
-// Command Line Options: -family virtex4 -enable_ecc 0 -tRAS 48000 -part_data_width 32 -cas_latency 2 -cas_wr_latency 5 -memory_burst_length 4 -tRC 72000 -tRCD 20000 -nDQSS 1 -tWR 15000 -tRP 19000 -tRRD 16000 -tRFC 80000 -nAL 0 -nCCD 1 -tWTR 0 -tRTP 7500 -nZQCS 64 -c 10000 -reg 0 -m SDRAM -d 32 -f_txt C:/RobotRacers/hardware_dans_branch/__xps/mpmc_0_ctrl_path_table.txt -f_err C:/RobotRacers/hardware_dans_branch/__xps/mpmc_0_ctrl_path_generation_errors.txt -f_ver C:/RobotRacers/hardware_dans_branch/__xps/mpmc_0_ctrl_path_params.v -static_phy 1 -wr_mem_pipeline 1
+// Command Line Options: -family virtex4 -enable_ecc 0 -tRAS 48000 -part_data_width 32 -cas_latency 2 -cas_wr_latency 5 -memory_burst_length 4 -tRC 72000 -tRCD 20000 -nDQSS 1 -tWR 15000 -tRP 19000 -tRRD 16000 -tRFC 80000 -nAL 0 -nCCD 0 -tWTR 0 -tRTP 7500 -nZQCS 64 -c 10000 -reg 0 -m SDRAM -d 32 -f_txt C:/RobotRacers/CultOfSkaro/hardware/__xps/mpmc_0_ctrl_path_table.txt -f_err C:/RobotRacers/CultOfSkaro/hardware/__xps/mpmc_0_ctrl_path_generation_errors.txt -f_ver C:/RobotRacers/CultOfSkaro/hardware/__xps/mpmc_0_ctrl_path_params.v -static_phy 1 -wr_mem_pipeline 1
 //
 // Timing Parameters:
 // Memory Clock Period (ps): 10000 
@@ -30,7 +30,7 @@
 // +------------------------------+--------+-----+-------+-------+---------+
 // |READ-to-PRECHARGE time        | tRTP   |   1 |   -   |   7.5 |    -    |
 // +------------------------------+--------+-----+-------+-------+---------+
-// |CAS#-to-CAS# command delay    | tCCD   |   1 |   -   |       |    -    |
+// |CAS#-to-CAS# command delay    | tCCD   |   0 |   -   |       |    -    |
 // +------------------------------+--------+-----+-------+-------+---------+
 // |ZQCS command: short calib time| nZQCS  |  64 |   -   |       |    -    |
 // +------------------------------+--------+-----+-------+-------+---------+

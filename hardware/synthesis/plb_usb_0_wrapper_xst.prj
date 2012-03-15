@@ -23,7 +23,7 @@ vhdl proc_common_v3_00_a C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcore
 vhdl proc_common_v3_00_a C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a/hdl/vhdl/dynshreg_f.vhd
 vhdl proc_common_v3_00_a C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a/hdl/vhdl/srl_fifo_rbu_f.vhd
 vhdl proc_common_v3_00_a C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a/hdl/vhdl/srl_fifo_f.vhd
-vhdl plb_usb_v1_01_a C:\RobotRacers\hardware_dans_branch\pcores\plb_usb_v1_01_a/hdl/vhdl/usb_core.vhd
-vhdl plb_usb_v1_01_a C:\RobotRacers\hardware_dans_branch\pcores\plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd
-vhdl plb_usb_v1_01_a C:\RobotRacers\hardware_dans_branch\pcores\plb_usb_v1_01_a/hdl/vhdl/plb_usb.vhd
+vhdl plb_usb_v1_01_a C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_usb_v1_01_a/hdl/vhdl/usb_core.vhd
+vhdl plb_usb_v1_01_a C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd
+vhdl plb_usb_v1_01_a C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_usb_v1_01_a/hdl/vhdl/plb_usb.vhd
 vhdl work ../hdl/plb_usb_0_wrapper.vhd

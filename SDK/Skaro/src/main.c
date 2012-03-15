@@ -33,23 +33,20 @@
 
 // Located in: ppc405_0/include/xparameters.h
 #include "xparameters.h"
-
 #include "xcache_l.h"
-
 #include "stdio.h"
-
 #include "xutil.h"
 #include "xcache_l.h"
-
-#include <stdlib.h>
-
 #include "xintc.h"
 #include "xil_exception.h"
 #include "InterruptControl.h"
 #include "xtime_l.h"
+#include "sleep.h"
 
+#include <stdlib.h>
 
-#include  <fcntl.h>
+#include <mpmc_calibration.h>
+#include <fcntl.h>
 
 //#include "SystemTypes.h"
 #include "Header.h"
@@ -127,8 +124,8 @@ XIntc InterruptController;     /* The instance of the Interrupt Controller */
 
 Skaro_Wireless wireless;
 XUartLite gameboard_uart;
+unsigned char gyro_data[5];
 Scheduler scheduler;
-char test_string[100];
 
 int PIDvel(Xuint32 target, Xuint32 cur){
 	if (cur < (target-5))
@@ -357,31 +354,26 @@ void GameboardSendHandler(void *CallBackRef, unsigned int EventData)
 
 void GameboardRecvHandler(void *CallBackRef, unsigned int EventData)
 {
-	unsigned char word[5];
 	int velocity;
 	int angular_velocity;
 
-	int i;
-	//Wireless_Debug("Received Characters: ");
-	for (i = 0; i < 5; i++) {
-		word[i] = XUartLite_RecvByte(gameboard_uart.RegBaseAddress);
-		//PrintByte(word[i]);
+	XUartLite_Recv(&gameboard_uart, gyro_data, 5);
+
+	if (EventData == 5) {
+		velocity = (signed char)gyro_data[1];
+		velocity <<= 8;
+		velocity |= (uint32) gyro_data[2];
+
+		angular_velocity = (signed char)gyro_data[3];
+		angular_velocity <<= 8;
+		angular_velocity |= (uint32) gyro_data[4];
+
+//		Wireless_Debug("Velocity: ");
+//		PrintInt(velocity);
+//		Wireless_Debug("\r\nAngular Velocity: ");
+//		PrintInt(angular_velocity);
+//		Wireless_Debug("\r\n");
 	}
-	//Wireless_Debug("\r\n");
-
-	velocity = (signed char)word[1];
-	velocity <<= 8;
-	velocity |= (uint32) word[2];
-
-	angular_velocity = (signed char)word[3];
-	angular_velocity <<= 8;
-	angular_velocity |= (uint32) word[4];
-
-//	Wireless_Debug("Velocity: ");
-//	PrintInt(velocity);
-//	Wireless_Debug("\r\nAngular Velocity: ");
-//	PrintInt(angular_velocity);
-//	Wireless_Debug("\r\n");
 }
 
 int counter = 0;
@@ -399,11 +391,55 @@ void my_pitHandler(){
 	XTime_PITClearInterrupt();
 }
 
+volatile char *test_string = (char*)0x100000;
+#define TEST_STRING 0x100000
+
 // This is a dummy task just to test out different events.
 void hello(){
-	Wireless_Debug("Contents of test string: ");
-	Wireless_Debug(test_string);
-	Wireless_Debug("\n\r");
+	//Wireless_Debug("Contents of test string: ");
+	/*
+	char temp[100];
+
+	print("Writing to DRAM\r\n");
+	XIo_Out8(test_string,'P');
+	XIo_Out8(test_string+1,'e');
+	XIo_Out8(test_string+2,'t');
+	XIo_Out8(test_string+3,'e');
+	XIo_Out8(test_string+4,'r');
+	XIo_Out8(test_string+5,'i');
+	XIo_Out8(test_string+6, 0);
+	 */
+
+
+	print("Reading DRAM...\r\n");
+	/*
+	char temp[100];
+	temp[0] = XIo_In8(test_string);
+	temp[1] = XIo_In8(test_string+1);
+	temp[2] = 0;
+	print(temp);
+	*/
+	print(test_string);
+	print("\r\nDone.\r\n");
+
+	//*(int*)(test_string+0) = 0xDEAD;
+	//*(int*)(test_string+8) =0xBEEF;
+	/*
+	XIo_Out32(TEST_STRING, 0xDEADBEEF);
+	XIo_Out32(TEST_STRING + 4, 0xBA5EBA11);
+	int in1, in2, in3, in4;
+	in1 = XIo_In32(TEST_STRING+0);
+	in2 = XIo_In32(TEST_STRING+4);
+	in3 = XIo_In32(TEST_STRING+8);
+	in4 = XIo_In32(TEST_STRING+12);
+
+	//print(temp);
+	//
+	print("\r\n");
+	xil_printf("%x,%x,%x,%x\r\n",in1, in2, in3, in4);
+	*/
+	//Wireless_Debug(temp);
+	//Wireless_Debug("\n\r");
 }
 
 void InitInterrupts() {
@@ -545,6 +581,18 @@ void control_loop(){
 }
 
 int main (void) {
+
+	//Calibrate DRAM memory controller
+	print("Calibrating Memory...");
+	XCache_DisableDCache();
+	XCache_DisableICache();
+	MpmcCalibrationExample(XPAR_MPMC_0_DEVICE_ID);
+	XCache_EnableICache(0x00000001);
+	XCache_EnableDCache(0x00000001);
+	print("Done\r\n");
+
+	usleep(100000);
+
 	int32 str;
 	int32 thr;
 	//	Xuint32 velcount = 0;
@@ -563,14 +611,16 @@ int main (void) {
 
 
 	USB_init();
-	Wireless_Debug("The test_string is at:");
-	PrintInt(test_string);
+	/*
 	Wireless_Debug("-- Starting PWM Test Mode --\r\n");
 	Wireless_Debug("Current max velocity: ");
 	PrintInt(max_velocity);
 	Wireless_Debug("\r\n");
 	Wireless_Debug("NOTICE: Make sure car is placed on stand before proceeding!!\r\n");
+	*/
+
 	/* Scheduler initialization */
+	Wireless_Debug("Setting up scheduler\r\n");
 	Scheduler_Init(&scheduler);
 
 	/* Initialize Tasks */
@@ -590,9 +640,6 @@ int main (void) {
 
 	str = 0;
 	thr = 0;
-
-	XCache_EnableICache(0x00000001);
-	XCache_EnableDCache(0x00000001);
 
 	InitGameSystem();
 	HeliosEnableGyro();

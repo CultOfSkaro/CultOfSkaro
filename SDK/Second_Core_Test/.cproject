@@ -30,6 +30,7 @@
 								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.459806828" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
 									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/include"/>
 								</option>
+								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.1717717184" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.889147866" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
 							</tool>
 							<tool id="xilinx.gnu.ppc.cxx.toolchain.compiler.debug.110647029" name="PowerPC g++ compiler" superClass="xilinx.gnu.ppc.cxx.toolchain.compiler.debug">
@@ -38,6 +39,7 @@
 								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.2061618679" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
 									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/include"/>
 								</option>
+								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.905488422" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 							</tool>
 							<tool id="xilinx.gnu.ppc.toolchain.archiver.724056918" name="PowerPC archiver" superClass="xilinx.gnu.ppc.toolchain.archiver"/>
 							<tool id="xilinx.gnu.ppc.c.toolchain.linker.debug.513985856" name="PowerPC gcc linker" superClass="xilinx.gnu.ppc.c.toolchain.linker.debug">
@@ -688,6 +690,8 @@
 				</scannerConfigBuildInfo>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 		</cconfiguration>
 		<cconfiguration id="xilinx.gnu.ppc.exe.release.1381269920">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="xilinx.gnu.ppc.exe.release.1381269920" moduleId="org.eclipse.cdt.core.settings" name="Release">
@@ -716,6 +720,7 @@
 								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.2114576505" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
 									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/include"/>
 								</option>
+								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.232678349" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.461613880" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
 							</tool>
 							<tool id="xilinx.gnu.ppc.cxx.toolchain.compiler.release.411805442" name="PowerPC g++ compiler" superClass="xilinx.gnu.ppc.cxx.toolchain.compiler.release">
@@ -724,6 +729,7 @@
 								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.1253113889" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
 									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/include"/>
 								</option>
+								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.1256074986" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 							</tool>
 							<tool id="xilinx.gnu.ppc.toolchain.archiver.2018994137" name="PowerPC archiver" superClass="xilinx.gnu.ppc.toolchain.archiver"/>
 							<tool id="xilinx.gnu.ppc.c.toolchain.linker.release.2034222322" name="PowerPC gcc linker" superClass="xilinx.gnu.ppc.c.toolchain.linker.release">
@@ -1374,6 +1380,8 @@
 				</scannerConfigBuildInfo>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">

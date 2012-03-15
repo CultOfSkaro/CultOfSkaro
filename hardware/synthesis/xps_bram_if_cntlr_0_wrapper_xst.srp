@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "xps_bram_if_cntlr_0_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -256,7 +256,7 @@ Entity <xbic_slave_attach_burst> (Architecture <implementation>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/xps_bram_if_cntlr_v1_00_b/hdl/vhdl/xps_bram_if_cntlr.vhd" in Library xps_bram_if_cntlr_v1_00_b.
 Entity <xps_bram_if_cntlr> compiled.
 Entity <xps_bram_if_cntlr> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/xps_bram_if_cntlr_0_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/xps_bram_if_cntlr_0_wrapper.vhd" in Library work.
 Entity <xps_bram_if_cntlr_0_wrapper> compiled.
 Entity <xps_bram_if_cntlr_0_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -266,7 +266,7 @@ Entity <xps_bram_if_cntlr_0_wrapper> (Architecture <STRUCTURE>) compiled.
 Analyzing hierarchy for entity <xps_bram_if_cntlr_0_wrapper> in library <work> (architecture <STRUCTURE>).
 
 Analyzing hierarchy for entity <xps_bram_if_cntlr> in library <xps_bram_if_cntlr_v1_00_b> (architecture <implementation>) with generics.
-	C_BASEADDR = "11111111111111100000000000000000"
+	C_BASEADDR = "11111111111111000000000000000000"
 	C_FAMILY = "virtex4"
 	C_HIGHADDR = "11111111111111111111111111111111"
 	C_SPLB_AWIDTH = 32
@@ -279,7 +279,7 @@ Analyzing hierarchy for entity <xps_bram_if_cntlr> in library <xps_bram_if_cntlr
 	C_SPLB_SUPPORT_BURSTS = 1
 
 Analyzing hierarchy for entity <xbic_slave_attach_burst> in library <xps_bram_if_cntlr_v1_00_b> (architecture <implementation>) with generics.
-	C_ARD_ADDR_RANGE_ARRAY = ("0000000000000000000000000000000011111111111111100000000000000000",
+	C_ARD_ADDR_RANGE_ARRAY = ("0000000000000000000000000000000011111111111111000000000000000000",
 	                          "0000000000000000000000000000000011111111111111111111111111111111")
 	C_CACHLINE_ADDR_MODE = 0
 	C_FAMILY = "virtex4"
@@ -297,7 +297,7 @@ Analyzing hierarchy for entity <xbic_addr_be_support> in library <xps_bram_if_cn
 	C_SPLB_NATIVE_DWIDTH = 64
 
 Analyzing hierarchy for entity <xbic_addr_decode> in library <xps_bram_if_cntlr_v1_00_b> (architecture <implementation>) with generics.
-	C_ARD_ADDR_RANGE_ARRAY = ("0000000000000000000000000000000011111111111111100000000000000000",
+	C_ARD_ADDR_RANGE_ARRAY = ("0000000000000000000000000000000011111111111111000000000000000000",
 	                          "0000000000000000000000000000000011111111111111111111111111111111")
 	C_FAMILY = "virtex4"
 	C_SPLB_AWIDTH = 32
@@ -342,7 +342,7 @@ WARNING:Xst:37 - Detected unknown constraint/property "SPECIAL". This constraint
 Entity <xps_bram_if_cntlr_0_wrapper> analyzed. Unit <xps_bram_if_cntlr_0_wrapper> generated.
 
 Analyzing generic Entity <xps_bram_if_cntlr> in library <xps_bram_if_cntlr_v1_00_b> (Architecture <implementation>).
-	C_BASEADDR = "11111111111111100000000000000000"
+	C_BASEADDR = "11111111111111000000000000000000"
 	C_FAMILY = "virtex4"
 	C_HIGHADDR = "11111111111111111111111111111111"
 	C_SPLB_AWIDTH = 32
@@ -358,7 +358,7 @@ WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/p
 Entity <xps_bram_if_cntlr> analyzed. Unit <xps_bram_if_cntlr> generated.
 
 Analyzing generic Entity <xbic_slave_attach_burst> in library <xps_bram_if_cntlr_v1_00_b> (Architecture <implementation>).
-	C_ARD_ADDR_RANGE_ARRAY = ("0000000000000000000000000000000011111111111111100000000000000000",
+	C_ARD_ADDR_RANGE_ARRAY = ("0000000000000000000000000000000011111111111111000000000000000000",
 	                          "0000000000000000000000000000000011111111111111111111111111111111")
 	C_CACHLINE_ADDR_MODE = 0
 	C_FAMILY = "virtex4"
@@ -391,7 +391,7 @@ Analyzing generic Entity <xbic_addr_be_support> in library <xps_bram_if_cntlr_v1
 Entity <xbic_addr_be_support> analyzed. Unit <xbic_addr_be_support> generated.
 
 Analyzing generic Entity <xbic_addr_decode> in library <xps_bram_if_cntlr_v1_00_b> (Architecture <implementation>).
-	C_ARD_ADDR_RANGE_ARRAY = ("0000000000000000000000000000000011111111111111100000000000000000",
+	C_ARD_ADDR_RANGE_ARRAY = ("0000000000000000000000000000000011111111111111000000000000000000",
 	                          "0000000000000000000000000000000011111111111111111111111111111111")
 	C_FAMILY = "virtex4"
 	C_SPLB_AWIDTH = 32
@@ -467,7 +467,7 @@ Unit <xbic_addr_be_support> synthesized.
 Synthesizing Unit <xbic_addr_decode>.
     Related source file is "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/xps_bram_if_cntlr_v1_00_b/hdl/vhdl/xbic_addr_decode.vhd".
 WARNING:Xst:647 - Input <Address_Valid> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <Address_In<15:31>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <Address_In<14:31>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 Unit <xbic_addr_decode> synthesized.
 
 
@@ -606,7 +606,7 @@ Unit <xps_bram_if_cntlr> synthesized.
 
 
 Synthesizing Unit <xps_bram_if_cntlr_0_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/xps_bram_if_cntlr_0_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/xps_bram_if_cntlr_0_wrapper.vhd".
 Unit <xps_bram_if_cntlr_0_wrapper> synthesized.
 
 
@@ -734,8 +734,8 @@ Cell Usage :
 #      LUT2                        : 17
 #      LUT2_D                      : 1
 #      LUT2_L                      : 1
-#      LUT3                        : 60
-#      LUT4                        : 98
+#      LUT3                        : 61
+#      LUT4                        : 97
 #      MULT_AND                    : 31
 #      MUXCY                       : 31
 #      MUXCY_L                     : 6
@@ -857,7 +857,7 @@ Delay:               4.674ns (Levels of Logic = 33)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'BRAM_Clk'
-  Total number of paths / destination ports: 3709 / 518
+  Total number of paths / destination ports: 3682 / 518
 -------------------------------------------------------------------------
 Offset:              4.139ns (Levels of Logic = 5)
   Source:            PLB_size<0> (PAD)
@@ -917,12 +917,12 @@ Delay:               0.000ns (Levels of Logic = 0)
 =========================================================================
 
 
-Total REAL time to Xst completion: 33.00 secs
-Total CPU time to Xst completion: 33.73 secs
+Total REAL time to Xst completion: 34.00 secs
+Total CPU time to Xst completion: 34.33 secs
  
 --> 
 
-Total memory usage is 396476 kilobytes
+Total memory usage is 396540 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   93 (   0 filtered)

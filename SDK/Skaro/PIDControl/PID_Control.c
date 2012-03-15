@@ -107,7 +107,7 @@ void updateVelocityOutput()
 
 	//------Send Data to gui graphing function
 	if(++control_log_counter > 0){
-		Wireless_ControlLog(currentVelocity, desiredVelocity);
+		//Wireless_ControlLog(currentVelocity, desiredVelocity);
 		control_log_counter = 0;
 	}
 
@@ -131,6 +131,7 @@ void updateVelocityOutput()
 	pid.outputPID = sat(pid.outputPID_unsat, 60);
 
 	if(++i > 5){
+		/*
 		Wireless_Debug("P:");
 		PrintFloat(P);
 		Wireless_Debug("I:");
@@ -150,8 +151,11 @@ void updateVelocityOutput()
 		Wireless_Debug("LastCurrentVelocity");
 		PrintFloat(pid.lastCurrentVelocity);
 		Wireless_Debug("------------------");
+		*/
 		i = 0;
 		}
+	int deltaTime = refreshRate;
+	Wireless_ControlLog_Ext(currentVelocity, pid.lastCurrentVelocity, pid.outputPID, pid.outputPID_unsat, deltaTime);
 
 	pid.integrator = pid.integrator + (refreshRate/pid.Ki)*(pid.outputPID - pid.outputPID_unsat);
 

@@ -6,7 +6,7 @@
 @REM #
 @REM # Command line for ngdbuild
 @REM #
-ngdbuild -p xc4vfx60ff672-11 -nt timestamp -bm system.bmm "C:/RobotRacers/hardware_dans_branch/implementation/system.ngc" -uc system.ucf system.ngd 
+ngdbuild -p xc4vfx60ff672-11 -nt timestamp -bm system.bmm "C:/RobotRacers/CultOfSkaro/hardware/implementation/system.ngc" -uc system.ucf system.ngd 
 
 @REM #
 @REM # Command line for map

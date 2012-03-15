@@ -22,27 +22,37 @@
 
 #include <stdio.h>
 #include "platform.h"
+#include "sleep.h"
+#include "string.h"
 
 void print(char *str);
 
 int main()
 {
 	int i = 0;
-	char * test_string = (char *)0xFFFFD9C4;
+	volatile char * test_string = (char *)0x100000;
 	while(1){
-		usleep(100000000);
-		test_string[0] = 'P';
-		test_string[1] = 'e';
-		test_string[2] = 't';
-		test_string[3] = 'e';
-		test_string[4] = 'r';
-		test_string[5] = 0;
-		usleep(100000000);
+		usleep(1000000);
+		strcpy(test_string, "Hello Peter!");
+		/*
+		XIo_Out8(test_string,'P');
+		XIo_Out8(test_string+1,'e');
+		XIo_Out8(test_string+2,'t');
+		XIo_Out8(test_string+3,'e');
+		XIo_Out8(test_string+4,'r');
+		XIo_Out8(test_string+5,'i');
+		XIo_Out8(test_string+6, 0);
+		*/
+
+		usleep(1000000);
+		strcpy(test_string, "Yay, strcpy!!!!!");
+		/*
 		test_string[0] = 'Y';
 		test_string[1] = 'o';
 		test_string[2] = 'g';
 		test_string[3] = 'i';
-		test_string[4] = 0;
+		test_string[4] = 'a';
 		test_string[5] = 0;
+		*/
 	}
 }

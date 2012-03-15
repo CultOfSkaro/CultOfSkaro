@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "xps_bram_if_cntlr_1_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -256,7 +256,7 @@ Entity <xbic_slave_attach_burst> (Architecture <implementation>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/xps_bram_if_cntlr_v1_00_b/hdl/vhdl/xps_bram_if_cntlr.vhd" in Library xps_bram_if_cntlr_v1_00_b.
 Entity <xps_bram_if_cntlr> compiled.
 Entity <xps_bram_if_cntlr> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/xps_bram_if_cntlr_1_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/xps_bram_if_cntlr_1_wrapper.vhd" in Library work.
 Entity <xps_bram_if_cntlr_1_wrapper> compiled.
 Entity <xps_bram_if_cntlr_1_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -607,7 +607,7 @@ Unit <xps_bram_if_cntlr> synthesized.
 
 
 Synthesizing Unit <xps_bram_if_cntlr_1_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/xps_bram_if_cntlr_1_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/xps_bram_if_cntlr_1_wrapper.vhd".
 Unit <xps_bram_if_cntlr_1_wrapper> synthesized.
 
 
@@ -954,7 +954,7 @@ Total CPU time to Xst completion: 30.81 secs
  
 --> 
 
-Total memory usage is 395580 kilobytes
+Total memory usage is 364860 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   97 (   0 filtered)

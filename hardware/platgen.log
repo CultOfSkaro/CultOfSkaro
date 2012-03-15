@@ -5,7 +5,7 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 Command Line: platgen -p xc4vfx60ff672-11 -lang vhdl -intstyle default -msg
 __xps/ise/xmsgprops.lst system.mhs 
 
-Parse C:/RobotRacers/hardware_dans_branch/system.mhs ...
+Parse C:/RobotRacers/CultOfSkaro/hardware/system.mhs ...
 
 Read MPD definitions ...
 
@@ -18,6 +18,10 @@ INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
    C_IODELAY_GRP value to mpmc_0 -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
    mc_v2_1_0.mpd line 179 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
+   C_MEM_ADDR_WIDTH value to 12 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 305 
 INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
    C_MEM_DM_WIDTH value to 4 -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
@@ -51,9 +55,10 @@ Address Map for Processor ppc405_0
   (0xc9c00000-0xc9c0ffff) plb_usb_0	plb_0
   (0xcb600000-0xcb60ffff) plb_pwm_ctrl_0	plb_0
   (0xcd000000-0xcd00ffff) gameboard_uart	plb_0
-  (0xfffe0000-0xffffffff) xps_bram_if_cntlr_0	plb_0
+  (0xfffc0000-0xffffffff) xps_bram_if_cntlr_0	plb_0
 Address Map for Processor ppc405_1
   (0b0100000000-0b0111111111) ppc405_1	
+  (0000000000-0x01ffffff) mpmc_0	plb_1
   (0x84400000-0x8440ffff) debug_module_0	plb_1
   (0xfffe0000-0xffffffff) xps_bram_if_cntlr_1	plb_1
 INFO:EDK:4130 - IPNAME: ppc405_virtex4, INSTANCE:ppc405_0 - tool is overriding
@@ -66,11 +71,11 @@ INFO:EDK:4130 - IPNAME: ppc405_virtex4, INSTANCE:ppc405_0 - tool is overriding
    _b\data\ppc405_virtex4_v2_1_0.mpd line 107 
 INFO:EDK:4130 - IPNAME: plb_usb, INSTANCE:plb_usb_0 - tool is overriding
    PARAMETER C_MPLB_P2P value to 0 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_usb_v1_01_a\data\plb_usb_v2_1_
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_usb_v1_01_a\data\plb_usb_v2_1_
    0.mpd line 42 
 INFO:EDK:4130 - IPNAME: plb_usb, INSTANCE:plb_usb_0 - tool is overriding
    PARAMETER C_SPLB_P2P value to 0 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_usb_v1_01_a\data\plb_usb_v2_1_
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_usb_v1_01_a\data\plb_usb_v2_1_
    0.mpd line 33 
 INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
    C_SPLB0_P2P value to 0 -
@@ -88,6 +93,10 @@ INFO:EDK:4130 - IPNAME: ppc405_virtex4, INSTANCE:ppc405_1 - tool is overriding
    PARAMETER C_IPLB0_P2P value to 0 -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\ppc405_virtex4_v2_01
    _b\data\ppc405_virtex4_v2_1_0.mpd line 107 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
+   C_SPLB1_P2P value to 0 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 417 
 INFO:EDK:4130 - IPNAME: plb_v46, INSTANCE:plb_0 - tool is overriding PARAMETER
    C_PLBV46_NUM_SLAVES value to 14 -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\plb_v46_v1_05_a\data
@@ -97,7 +106,7 @@ INFO:EDK:4130 - IPNAME: plb_v46, INSTANCE:plb_1 - tool is overriding PARAMETER
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\plb_v46_v1_05_a\data
    \plb_v46_v2_1_0.mpd line 78 
 INFO:EDK:4130 - IPNAME: plb_v46, INSTANCE:plb_1 - tool is overriding PARAMETER
-   C_PLBV46_NUM_SLAVES value to 2 -
+   C_PLBV46_NUM_SLAVES value to 3 -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\plb_v46_v1_05_a\data
    \plb_v46_v2_1_0.mpd line 79 
 INFO:EDK:4130 - IPNAME: plb_v46, INSTANCE:plb_1 - tool is overriding PARAMETER
@@ -125,7 +134,7 @@ INFO:EDK:4130 - IPNAME: xps_bram_if_cntlr, INSTANCE:xps_bram_if_cntlr_1 - tool
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_bram_if_cntlr_v1
    _00_b\data\xps_bram_if_cntlr_v2_1_0.mpd line 87 
 INFO:EDK:4130 - IPNAME: bram_block, INSTANCE:plb_bram_if_cntlr_0_bram - tool is
-   overriding PARAMETER C_MEMSIZE value to 0x20000 -
+   overriding PARAMETER C_MEMSIZE value to 0x40000 -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\bram_block_v1_00_a\d
    ata\bram_block_v2_1_0.mpd line 76 
 INFO:EDK:4130 - IPNAME: bram_block, INSTANCE:plb_bram_if_cntlr_0_bram - tool is
@@ -186,27 +195,27 @@ INFO:EDK:4130 - IPNAME: xps_intc, INSTANCE:xps_intc_0 - tool is overriding
    a\xps_intc_v2_1_0.mpd line 83 
 INFO:EDK:4130 - IPNAME: plb_quad_encoder, INSTANCE:plb_quad_encoder_0 - tool is
    overriding PARAMETER C_SPLB_DWIDTH value to 64 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_quad_encoder_v1_00_a\data\plb_
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_quad_encoder_v1_00_a\data\plb_
    quad_encoder_v2_1_0.mpd line 25 
 INFO:EDK:4130 - IPNAME: plb_quad_encoder, INSTANCE:plb_quad_encoder_0 - tool is
    overriding PARAMETER C_SPLB_NUM_MASTERS value to 4 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_quad_encoder_v1_00_a\data\plb_
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_quad_encoder_v1_00_a\data\plb_
    quad_encoder_v2_1_0.mpd line 26 
 INFO:EDK:4130 - IPNAME: plb_quad_encoder, INSTANCE:plb_quad_encoder_0 - tool is
    overriding PARAMETER C_SPLB_MID_WIDTH value to 2 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_quad_encoder_v1_00_a\data\plb_
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_quad_encoder_v1_00_a\data\plb_
    quad_encoder_v2_1_0.mpd line 27 
 INFO:EDK:4130 - IPNAME: plb_pwm_ctrl, INSTANCE:plb_pwm_ctrl_0 - tool is
    overriding PARAMETER C_SPLB_DWIDTH value to 64 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_pwm_ctrl_v1_00_a\data\plb_pwm_
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_pwm_ctrl_v1_00_a\data\plb_pwm_
    ctrl_v2_1_0.mpd line 26 
 INFO:EDK:4130 - IPNAME: plb_pwm_ctrl, INSTANCE:plb_pwm_ctrl_0 - tool is
    overriding PARAMETER C_SPLB_NUM_MASTERS value to 4 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_pwm_ctrl_v1_00_a\data\plb_pwm_
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_pwm_ctrl_v1_00_a\data\plb_pwm_
    ctrl_v2_1_0.mpd line 27 
 INFO:EDK:4130 - IPNAME: plb_pwm_ctrl, INSTANCE:plb_pwm_ctrl_0 - tool is
    overriding PARAMETER C_SPLB_MID_WIDTH value to 2 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_pwm_ctrl_v1_00_a\data\plb_pwm_
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_pwm_ctrl_v1_00_a\data\plb_pwm_
    ctrl_v2_1_0.mpd line 28 
 INFO:EDK:4130 - IPNAME: xps_mch_emc, INSTANCE:xps_mch_emc_flash - tool is
    overriding PARAMETER C_SPLB_MID_WIDTH value to 2 -
@@ -234,23 +243,23 @@ INFO:EDK:4130 - IPNAME: xps_mch_emc, INSTANCE:xps_mch_emc_sram - tool is
    data\xps_mch_emc_v2_1_0.mpd line 90 
 INFO:EDK:4130 - IPNAME: plb_usb, INSTANCE:plb_usb_0 - tool is overriding
    PARAMETER C_SPLB_SMALLEST_MASTER value to 32 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_usb_v1_01_a\data\plb_usb_v2_1_
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_usb_v1_01_a\data\plb_usb_v2_1_
    0.mpd line 35 
 INFO:EDK:4130 - IPNAME: plb_vision, INSTANCE:plb_vision_0 - tool is overriding
    PARAMETER C_SPLB_DWIDTH value to 64 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_vision_v1_00_a\data\plb_vision
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_vision_v1_00_a\data\plb_vision
    _v2_1_0.mpd line 29 
 INFO:EDK:4130 - IPNAME: plb_vision, INSTANCE:plb_vision_0 - tool is overriding
    PARAMETER C_SPLB_NUM_MASTERS value to 4 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_vision_v1_00_a\data\plb_vision
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_vision_v1_00_a\data\plb_vision
    _v2_1_0.mpd line 30 
 INFO:EDK:4130 - IPNAME: plb_vision, INSTANCE:plb_vision_0 - tool is overriding
    PARAMETER C_SPLB_MID_WIDTH value to 2 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_vision_v1_00_a\data\plb_vision
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_vision_v1_00_a\data\plb_vision
    _v2_1_0.mpd line 31 
 INFO:EDK:4130 - IPNAME: plb_vision, INSTANCE:plb_vision_0 - tool is overriding
    PARAMETER C_MPLB_DWIDTH value to 64 -
-   C:\RobotRacers\hardware_dans_branch\pcores\plb_vision_v1_00_a\data\plb_vision
+   C:\RobotRacers\CultOfSkaro\hardware\pcores\plb_vision_v1_00_a\data\plb_vision
    _v2_1_0.mpd line 40 
 INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
    C_MPMC_CTRL_NUM_MASTERS value to 4 -
@@ -268,6 +277,14 @@ INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
    C_SPLB0_MID_WIDTH value to 2 -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
    mc_v2_1_0.mpd line 365 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
+   C_SPLB1_NUM_MASTERS value to 2 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 415 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tool is overriding PARAMETER
+   C_SPLB1_SMALLEST_MASTER value to 64 -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 419 
 INFO:EDK:4130 - IPNAME: xps_gpio, INSTANCE:xps_gpio_1 - tool is overriding
    PARAMETER C_SPLB_DWIDTH value to 64 -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_gpio_v2_00_a\dat
@@ -309,7 +326,7 @@ Checking platform address map ...
 
 Checking platform configuration ...
 IPNAME: plb_v46, INSTANCE: plb_0 - 4 master(s) : 14 slave(s) 
-IPNAME: plb_v46, INSTANCE: plb_1 - 2 master(s) : 2 slave(s) 
+IPNAME: plb_v46, INSTANCE: plb_1 - 2 master(s) : 3 slave(s) 
 
 Checking port drivers...
 WARNING:EDK:4180 - PORT: bscan_tdo1, CONNECTOR: bscan_tdo1 - No driver found.
@@ -317,7 +334,7 @@ WARNING:EDK:4180 - PORT: bscan_tdo1, CONNECTOR: bscan_tdo1 - No driver found.
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\data\mdm
    _v2_1_0.mpd line 239 
 WARNING:EDK:4181 - PORT: sdram_clk_fb, CONNECTOR: sdram_clk_fb - floating
-   connection - C:\RobotRacers\hardware_dans_branch\system.mhs line 75 
+   connection - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 75 
 WARNING:EDK:4181 - PORT: Ext_BRK, CONNECTOR: Ext_BRK - floating connection -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\data\mdm
    _v2_1_0.mpd line 105 
@@ -368,7 +385,7 @@ INFO:EDK:4130 - IPNAME: jtagppc_cntlr, INSTANCE:jtagppc_cntlr_inst - tcl is
    c\data\jtagppc_cntlr_v2_1_0.mpd line 77 
 WARNING:EDK:4083 - IPNAME: xps_intc, INSTANCE: xps_intc_0 -  PARAMETER:
    C_NUM_INTR_INPUTS has value 5 specified in MHS, but tcl is overriding the
-   value to 6 - C:\RobotRacers\hardware_dans_branch\system.mhs line 243 
+   value to 6 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 243 
 INFO:EDK:4130 - IPNAME: xps_intc, INSTANCE:xps_intc_0 - tcl is overriding
    PARAMETER C_KIND_OF_INTR value to 0b11111111111111111111111111011011 -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_intc_v2_01_a\dat
@@ -389,6 +406,14 @@ INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
    C_PIM0_B_SUBTYPE value to PLB -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
    mc_v2_1_0.mpd line 358 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
+   C_PIM1_SUBTYPE value to PLB -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 404 
+INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
+   C_PIM1_B_SUBTYPE value to PLB -
+   C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
+   mc_v2_1_0.mpd line 409 
 INFO:EDK:4130 - IPNAME: mpmc, INSTANCE:mpmc_0 - tcl is overriding PARAMETER
    C_TWR value to 15000 -
    C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mpmc_v6_05_a\data\mp
@@ -892,100 +917,97 @@ Creating hardware output directories ...
 
 Managing hardware (BBD-specified) netlist files ...
 IPNAME:plb_usb INSTANCE:plb_usb_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 355 - Copying
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 355 - Copying
 (BBD-specified) netlist files.
 IPNAME:plb_vision INSTANCE:plb_vision_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 378 - Copying
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 378 - Copying
 (BBD-specified) netlist files.
 
 Managing cache ...
 IPNAME:ppc405_virtex4 INSTANCE:ppc405_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 89 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 89 - Copying cache
 implementation netlist
 IPNAME:ppc405_virtex4 INSTANCE:ppc405_1 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 103 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 103 - Copying cache
 implementation netlist
-IPNAME:plb_v46 INSTANCE:plb_0 - C:\RobotRacers\hardware_dans_branch\system.mhs
+IPNAME:plb_v46 INSTANCE:plb_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs
 line 117 - Copying cache implementation netlist
-IPNAME:plb_v46 INSTANCE:plb_1 - C:\RobotRacers\hardware_dans_branch\system.mhs
+IPNAME:plb_v46 INSTANCE:plb_1 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs
 line 125 - Copying cache implementation netlist
 IPNAME:xps_bram_if_cntlr INSTANCE:xps_bram_if_cntlr_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 133 - Copying cache
-implementation netlist
-IPNAME:xps_bram_if_cntlr INSTANCE:xps_bram_if_cntlr_1 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 144 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 133 - Copying cache
 implementation netlist
 IPNAME:bram_block INSTANCE:plb_bram_if_cntlr_0_bram -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 155 - Copying cache
-implementation netlist
-IPNAME:bram_block INSTANCE:plb_bram_if_cntlr_1_bram -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 162 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 155 - Copying cache
 implementation netlist
 IPNAME:xps_uartlite INSTANCE:serial_uart -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 169 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 169 - Copying cache
 implementation netlist
 IPNAME:xps_uartlite INSTANCE:wireless_uart -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 185 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 185 - Copying cache
 implementation netlist
 IPNAME:jtagppc_cntlr INSTANCE:jtagppc_cntlr_inst -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 220 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 220 - Copying cache
 implementation netlist
 IPNAME:proc_sys_reset INSTANCE:proc_sys_reset_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 227 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 227 - Copying cache
 implementation netlist
 IPNAME:xps_intc INSTANCE:xps_intc_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 240 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 240 - Copying cache
 implementation netlist
 IPNAME:plb_quad_encoder INSTANCE:plb_quad_encoder_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 252 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 252 - Copying cache
 implementation netlist
 IPNAME:plb_pwm_ctrl INSTANCE:plb_pwm_ctrl_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 262 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 262 - Copying cache
 implementation netlist
 IPNAME:xps_mch_emc INSTANCE:xps_mch_emc_flash -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 274 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 274 - Copying cache
 implementation netlist
 IPNAME:xps_mch_emc INSTANCE:xps_mch_emc_sram -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 312 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 312 - Copying cache
 implementation netlist
 IPNAME:dcm_module INSTANCE:dcm_module_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 341 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 341 - Copying cache
 implementation netlist
 IPNAME:plb_usb INSTANCE:plb_usb_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 355 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 355 - Copying cache
 implementation netlist
 IPNAME:plb_vision INSTANCE:plb_vision_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 378 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 378 - Copying cache
 implementation netlist
-IPNAME:mpmc INSTANCE:mpmc_0 - C:\RobotRacers\hardware_dans_branch\system.mhs
+IPNAME:mpmc INSTANCE:mpmc_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs
 line 396 - Copying cache implementation netlist
 IPNAME:dcm_module INSTANCE:dcm_2 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 475 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 471 - Copying cache
 implementation netlist
 IPNAME:xps_gpio INSTANCE:xps_gpio_1 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 498 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 494 - Copying cache
 implementation netlist
 IPNAME:mdm INSTANCE:debug_module_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 516 - Copying cache
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 512 - Copying cache
+implementation netlist
+IPNAME:xps_uartlite INSTANCE:gameboard_uart -
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 520 - Copying cache
 implementation netlist
 
 Elaborating instances ...
 IPNAME:bram_block INSTANCE:plb_bram_if_cntlr_0_bram -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 155 - elaborating IP
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 155 - elaborating IP
 IPNAME:bram_block INSTANCE:plb_bram_if_cntlr_1_bram -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 162 - elaborating IP
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 162 - elaborating IP
 IPNAME:clock_generator INSTANCE:clock_generator_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 201 - elaborating IP
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 201 - elaborating IP
 ClkGen elaborate status: PASSED
 ----------------------------------------
 
 Writing HDL for elaborated instances ...
 
 Inserting wrapper level ...
-Completion time: 21.00 seconds
+Completion time: 4.00 seconds
 
 Constructing platform-level connectivity ...
-Completion time: 3.00 seconds
+Completion time: 1.00 seconds
 
 Writing (top-level) BMM ...
 
@@ -998,18 +1020,20 @@ Running XST synthesis ...
 INFO:EDK:4211 - The following instances are synthesized with XST. The MPD option
    IMP_NETLIST=TRUE indicates that a NGC file is to be produced using XST
    synthesis. IMP_NETLIST=FALSE (default) instances are not synthesized. 
-INSTANCE:clock_generator_0 - C:\RobotRacers\hardware_dans_branch\system.mhs line
+INSTANCE:xps_bram_if_cntlr_1 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs
+line 144 - Running XST synthesis
+INSTANCE:plb_bram_if_cntlr_1_bram -
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 162 - Running XST synthesis
+INSTANCE:clock_generator_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line
 201 - Running XST synthesis
-INSTANCE:gameboard_uart - C:\RobotRacers\hardware_dans_branch\system.mhs line
-524 - Running XST synthesis
 
 Running NGCBUILD ...
 IPNAME:clock_generator_0_wrapper INSTANCE:clock_generator_0 -
-C:\RobotRacers\hardware_dans_branch\system.mhs line 201 - Running NGCBUILD
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 201 - Running NGCBUILD
 INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
    If any constraint needs to be overridden, this should be done by modifying
    the data/system.ucf file.
 
 Rebuilding cache ...
 
-Total run time: 215.00 seconds
+Total run time: 411.00 seconds

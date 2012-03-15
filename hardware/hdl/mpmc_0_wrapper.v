@@ -2044,10 +2044,10 @@ module mpmc_0_wrapper
   output SPLB1_Sl_rdDAck;
   output SPLB1_Sl_rdComp;
   output SPLB1_Sl_rdBTerm;
-  output [0:0] SPLB1_Sl_MBusy;
-  output [0:0] SPLB1_Sl_MRdErr;
-  output [0:0] SPLB1_Sl_MWrErr;
-  output [0:0] SPLB1_Sl_MIRQ;
+  output [0:1] SPLB1_Sl_MBusy;
+  output [0:1] SPLB1_Sl_MRdErr;
+  output [0:1] SPLB1_Sl_MWrErr;
+  output [0:1] SPLB1_Sl_MIRQ;
   input SDMA1_Clk;
   output SDMA1_Rx_IntOut;
   output SDMA1_Tx_IntOut;
@@ -3564,11 +3564,11 @@ module mpmc_0_wrapper
       .C_FAMILY ( "virtex4" ),
       .C_BASEFAMILY ( "virtex4" ),
       .C_SPEEDGRADE_INT ( 1 ),
-      .C_NUM_PORTS ( 1 ),
+      .C_NUM_PORTS ( 2 ),
       .C_PORT_CONFIG ( 1 ),
       .C_ALL_PIMS_SHARE_ADDRESSES ( 1 ),
       .C_MPMC_BASEADDR ( 32'h00000000 ),
-      .C_MPMC_HIGHADDR ( 32'h01ffffff ),
+      .C_MPMC_HIGHADDR ( 32'h01FFFFFF ),
       .C_SDMA_CTRL_BASEADDR ( 32'hFFFFFFFF ),
       .C_SDMA_CTRL_HIGHADDR ( 32'h00000000 ),
       .C_MPMC_CTRL_BASEADDR ( 32'h84800000 ),
@@ -3763,23 +3763,23 @@ module mpmc_0_wrapper
       .C_PIM1_HIGHADDR ( 32'h00000000 ),
       .C_PIM1_OFFSET ( 32'h00000000 ),
       .C_PIM1_DATA_WIDTH ( 64 ),
-      .C_PIM1_BASETYPE ( 0 ),
-      .C_PIM1_SUBTYPE ( "INACTIVE" ),
+      .C_PIM1_BASETYPE ( 2 ),
+      .C_PIM1_SUBTYPE ( "PLB" ),
       .C_XCL1_LINESIZE ( 4 ),
       .C_XCL1_WRITEXFER ( 1 ),
       .C_XCL1_PIPE_STAGES ( 2 ),
       .C_XCL1_B_IN_USE ( 0 ),
-      .C_PIM1_B_SUBTYPE ( "INACTIVE" ),
+      .C_PIM1_B_SUBTYPE ( "PLB" ),
       .C_XCL1_B_LINESIZE ( 4 ),
       .C_XCL1_B_WRITEXFER ( 1 ),
       .C_SPLB1_AWIDTH ( 32 ),
       .C_SPLB1_DWIDTH ( 64 ),
       .C_SPLB1_NATIVE_DWIDTH ( 64 ),
-      .C_SPLB1_NUM_MASTERS ( 1 ),
+      .C_SPLB1_NUM_MASTERS ( 2 ),
       .C_SPLB1_MID_WIDTH ( 1 ),
-      .C_SPLB1_P2P ( 1 ),
-      .C_SPLB1_SUPPORT_BURSTS ( 0 ),
-      .C_SPLB1_SMALLEST_MASTER ( 32 ),
+      .C_SPLB1_P2P ( 0 ),
+      .C_SPLB1_SUPPORT_BURSTS ( 1 ),
+      .C_SPLB1_SMALLEST_MASTER ( 64 ),
       .C_SDMA_CTRL1_BASEADDR ( 32'hFFFFFFFF ),
       .C_SDMA_CTRL1_HIGHADDR ( 32'h00000000 ),
       .C_SDMA_CTRL1_AWIDTH ( 32 ),

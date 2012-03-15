@@ -1,7 +1,7 @@
-// File: C:\RobotRacers\hardware_dans_branch\implementation\system_stub.bmm
+// File: C:\RobotRacers\CultOfSkaro\hardware\implementation\system_stub.bmm
 
 ADDRESS_MAP ppc405_0 PPC405 100
-	ADDRESS_SPACE plb_bram_if_cntlr_0_bram_combined COMBINED [0xfffe0000:0xffffffff]
+	ADDRESS_SPACE plb_bram_if_cntlr_0_bram_combined COMBINED [0xfffc0000:0xffffffff]
 		ADDRESS_RANGE RAMB16
 		BUS_BLOCK
 			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_0 [63:63] INPUT = plb_bram_if_cntlr_0_bram_combined_0.mem ;
@@ -68,6 +68,72 @@ ADDRESS_MAP ppc405_0 PPC405 100
 			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_61 [2:2] INPUT = plb_bram_if_cntlr_0_bram_combined_61.mem ;
 			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_62 [1:1] INPUT = plb_bram_if_cntlr_0_bram_combined_62.mem ;
 			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_63 [0:0] INPUT = plb_bram_if_cntlr_0_bram_combined_63.mem ;
+		END_BUS_BLOCK;
+		BUS_BLOCK
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_64 [63:63] INPUT = plb_bram_if_cntlr_0_bram_combined_64.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_65 [62:62] INPUT = plb_bram_if_cntlr_0_bram_combined_65.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_66 [61:61] INPUT = plb_bram_if_cntlr_0_bram_combined_66.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_67 [60:60] INPUT = plb_bram_if_cntlr_0_bram_combined_67.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_68 [59:59] INPUT = plb_bram_if_cntlr_0_bram_combined_68.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_69 [58:58] INPUT = plb_bram_if_cntlr_0_bram_combined_69.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_70 [57:57] INPUT = plb_bram_if_cntlr_0_bram_combined_70.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_71 [56:56] INPUT = plb_bram_if_cntlr_0_bram_combined_71.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_72 [55:55] INPUT = plb_bram_if_cntlr_0_bram_combined_72.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_73 [54:54] INPUT = plb_bram_if_cntlr_0_bram_combined_73.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_74 [53:53] INPUT = plb_bram_if_cntlr_0_bram_combined_74.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_75 [52:52] INPUT = plb_bram_if_cntlr_0_bram_combined_75.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_76 [51:51] INPUT = plb_bram_if_cntlr_0_bram_combined_76.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_77 [50:50] INPUT = plb_bram_if_cntlr_0_bram_combined_77.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_78 [49:49] INPUT = plb_bram_if_cntlr_0_bram_combined_78.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_79 [48:48] INPUT = plb_bram_if_cntlr_0_bram_combined_79.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_80 [47:47] INPUT = plb_bram_if_cntlr_0_bram_combined_80.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_81 [46:46] INPUT = plb_bram_if_cntlr_0_bram_combined_81.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_82 [45:45] INPUT = plb_bram_if_cntlr_0_bram_combined_82.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_83 [44:44] INPUT = plb_bram_if_cntlr_0_bram_combined_83.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_84 [43:43] INPUT = plb_bram_if_cntlr_0_bram_combined_84.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_85 [42:42] INPUT = plb_bram_if_cntlr_0_bram_combined_85.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_86 [41:41] INPUT = plb_bram_if_cntlr_0_bram_combined_86.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_87 [40:40] INPUT = plb_bram_if_cntlr_0_bram_combined_87.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_88 [39:39] INPUT = plb_bram_if_cntlr_0_bram_combined_88.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_89 [38:38] INPUT = plb_bram_if_cntlr_0_bram_combined_89.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_90 [37:37] INPUT = plb_bram_if_cntlr_0_bram_combined_90.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_91 [36:36] INPUT = plb_bram_if_cntlr_0_bram_combined_91.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_92 [35:35] INPUT = plb_bram_if_cntlr_0_bram_combined_92.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_93 [34:34] INPUT = plb_bram_if_cntlr_0_bram_combined_93.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_94 [33:33] INPUT = plb_bram_if_cntlr_0_bram_combined_94.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_95 [32:32] INPUT = plb_bram_if_cntlr_0_bram_combined_95.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_96 [31:31] INPUT = plb_bram_if_cntlr_0_bram_combined_96.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_97 [30:30] INPUT = plb_bram_if_cntlr_0_bram_combined_97.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_98 [29:29] INPUT = plb_bram_if_cntlr_0_bram_combined_98.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_99 [28:28] INPUT = plb_bram_if_cntlr_0_bram_combined_99.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_100 [27:27] INPUT = plb_bram_if_cntlr_0_bram_combined_100.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_101 [26:26] INPUT = plb_bram_if_cntlr_0_bram_combined_101.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_102 [25:25] INPUT = plb_bram_if_cntlr_0_bram_combined_102.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_103 [24:24] INPUT = plb_bram_if_cntlr_0_bram_combined_103.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_104 [23:23] INPUT = plb_bram_if_cntlr_0_bram_combined_104.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_105 [22:22] INPUT = plb_bram_if_cntlr_0_bram_combined_105.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_106 [21:21] INPUT = plb_bram_if_cntlr_0_bram_combined_106.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_107 [20:20] INPUT = plb_bram_if_cntlr_0_bram_combined_107.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_108 [19:19] INPUT = plb_bram_if_cntlr_0_bram_combined_108.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_109 [18:18] INPUT = plb_bram_if_cntlr_0_bram_combined_109.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_110 [17:17] INPUT = plb_bram_if_cntlr_0_bram_combined_110.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_111 [16:16] INPUT = plb_bram_if_cntlr_0_bram_combined_111.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_112 [15:15] INPUT = plb_bram_if_cntlr_0_bram_combined_112.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_113 [14:14] INPUT = plb_bram_if_cntlr_0_bram_combined_113.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_114 [13:13] INPUT = plb_bram_if_cntlr_0_bram_combined_114.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_115 [12:12] INPUT = plb_bram_if_cntlr_0_bram_combined_115.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_116 [11:11] INPUT = plb_bram_if_cntlr_0_bram_combined_116.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_117 [10:10] INPUT = plb_bram_if_cntlr_0_bram_combined_117.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_118 [9:9] INPUT = plb_bram_if_cntlr_0_bram_combined_118.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_119 [8:8] INPUT = plb_bram_if_cntlr_0_bram_combined_119.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_120 [7:7] INPUT = plb_bram_if_cntlr_0_bram_combined_120.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_121 [6:6] INPUT = plb_bram_if_cntlr_0_bram_combined_121.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_122 [5:5] INPUT = plb_bram_if_cntlr_0_bram_combined_122.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_123 [4:4] INPUT = plb_bram_if_cntlr_0_bram_combined_123.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_124 [3:3] INPUT = plb_bram_if_cntlr_0_bram_combined_124.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_125 [2:2] INPUT = plb_bram_if_cntlr_0_bram_combined_125.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_126 [1:1] INPUT = plb_bram_if_cntlr_0_bram_combined_126.mem ;
+			system_i/plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_127 [0:0] INPUT = plb_bram_if_cntlr_0_bram_combined_127.mem ;
 		END_BUS_BLOCK;
 		END_ADDRESS_RANGE;
 	END_ADDRESS_SPACE;

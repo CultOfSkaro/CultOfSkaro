@@ -58,7 +58,7 @@ gen_dq[31].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.714ns.
+ Maximum net delay is   0.969ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -68,7 +68,7 @@ gen_dq[30].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.753ns.
+ Maximum net delay is   0.757ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -78,7 +78,7 @@ gen_dq[29].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.592ns.
+ Maximum net delay is   0.934ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -88,7 +88,7 @@ gen_dq[28].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.577ns.
+ Maximum net delay is   0.946ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -98,7 +98,7 @@ gen_dq[27].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.583ns.
+ Maximum net delay is   0.805ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -108,7 +108,7 @@ gen_dq[26].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.735ns.
+ Maximum net delay is   0.748ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -118,7 +118,7 @@ gen_dq[25].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.534ns.
+ Maximum net delay is   0.962ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -128,7 +128,7 @@ gen_dq[24].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.542ns.
+ Maximum net delay is   0.593ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -138,7 +138,7 @@ gen_dq[23].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.682ns.
+ Maximum net delay is   0.818ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -148,7 +148,7 @@ gen_dq[22].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.758ns.
+ Maximum net delay is   0.744ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -158,7 +158,7 @@ gen_dq[21].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.864ns.
+ Maximum net delay is   0.756ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -168,7 +168,7 @@ gen_dq[20].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.376ns.
+ Maximum net delay is   0.807ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -178,7 +178,7 @@ gen_dq[19].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.376ns.
+ Maximum net delay is   0.720ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -188,7 +188,7 @@ gen_dq[18].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.534ns.
+ Maximum net delay is   0.593ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -198,7 +198,7 @@ gen_dq[17].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.515ns.
+ Maximum net delay is   0.897ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -208,7 +208,7 @@ gen_dq[16].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.877ns.
+ Maximum net delay is   0.950ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -218,7 +218,7 @@ gen_dq[15].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.537ns.
+ Maximum net delay is   0.964ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -228,7 +228,7 @@ gen_dq[14].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.727ns.
+ Maximum net delay is   0.750ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -238,7 +238,7 @@ gen_dq[13].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.521ns.
+ Maximum net delay is   0.805ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -248,7 +248,7 @@ gen_dq[12].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.542ns.
+ Maximum net delay is   0.925ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -258,7 +258,7 @@ gen_dq[11].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.339ns.
+ Maximum net delay is   0.805ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -268,7 +268,7 @@ gen_dq[10].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.493ns.
+ Maximum net delay is   0.727ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -278,7 +278,7 @@ gen_dq[9].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.542ns.
+ Maximum net delay is   0.798ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -288,7 +288,7 @@ gen_dq[8].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.693ns.
+ Maximum net delay is   0.798ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -298,7 +298,7 @@ gen_dq[7].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.950ns.
+ Maximum net delay is   0.737ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -308,7 +308,7 @@ gen_dq[6].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.591ns.
+ Maximum net delay is   0.963ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -318,7 +318,7 @@ gen_dq[5].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.626ns.
+ Maximum net delay is   0.954ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -328,7 +328,7 @@ gen_dq[4].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.687ns.
+ Maximum net delay is   0.961ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -338,7 +338,7 @@ gen_dq[3].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.750ns.
+ Maximum net delay is   0.896ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -348,7 +348,7 @@ gen_dq[2].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.997ns.
+ Maximum net delay is   0.593ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -358,7 +358,7 @@ gen_dq[1].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.530ns.
+ Maximum net delay is   0.744ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -368,7 +368,7 @@ gen_dq[0].u_iob_dq/rd_data_rise_rdclk"         MAXDELAY = 1 ns;
 
  1 net analyzed, 0 failing nets detected.
  0 timing errors detected.
- Maximum net delay is   0.939ns.
+ Maximum net delay is   0.951ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -392,9 +392,9 @@ Timing constraint: TS_clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 =
 PERIOD TIMEGRP         "clock_generator_0_clock_generator_0_SIG_DCM0_CLK0" 
 TS_sys_clk_pin         HIGH 50%;
 
- 382801 paths analyzed, 31685 endpoints analyzed, 0 failing endpoints
+ 404398 paths analyzed, 36619 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   9.950ns.
+ Minimum period is   9.742ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -404,7 +404,7 @@ TS_sys_clk_pin *         3 HIGH 50%;
 
  6 paths analyzed, 6 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   2.670ns.
+ Minimum period is   3.076ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -422,7 +422,7 @@ COMP "cam0_pixclk";
 
  37 paths analyzed, 37 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors)
- Offset is  -2.517ns.
+ Offset is  -3.110ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -462,11 +462,11 @@ Derived Constraints for TS_sys_clk_pin
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_sys_clk_pin                 |     10.000ns|      4.800ns|      9.950ns|            0|            0|            3|       382807|
-| TS_clock_generator_0_clock_gen|     10.000ns|      9.950ns|          N/A|            0|            0|       382801|            0|
+|TS_sys_clk_pin                 |     10.000ns|      4.800ns|      9.742ns|            0|            0|            3|       404404|
+| TS_clock_generator_0_clock_gen|     10.000ns|      9.742ns|          N/A|            0|            0|       404398|            0|
 | erator_0_SIG_DCM0_CLK0        |             |             |             |             |             |             |             |
 |  TS_dcm_2_dcm_2_CLK0_BUF      |     10.000ns|          N/A|          N/A|            0|            0|            0|            0|
-| TS_clock_generator_0_clock_gen|      3.333ns|      2.670ns|          N/A|            0|            0|            6|            0|
+| TS_clock_generator_0_clock_gen|      3.333ns|      3.076ns|          N/A|            0|            0|            6|            0|
 | erator_0_SIG_DCM0_CLKFX       |             |             |             |             |             |             |             |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
@@ -482,15 +482,15 @@ Setup/Hold to clock cam0_pixclk
                |Max Setup to|Max Hold to |                  | Clock  |
 Source         | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ---------------+------------+------------+------------------+--------+
-cam0_data<0>   |   -3.320(R)|    5.537(R)|cam0_pixclk_BUFGP |   0.000|
-cam0_data<1>   |   -3.263(R)|    5.484(R)|cam0_pixclk_BUFGP |   0.000|
-cam0_data<2>   |   -3.548(R)|    5.744(R)|cam0_pixclk_BUFGP |   0.000|
-cam0_data<3>   |   -2.874(R)|    5.107(R)|cam0_pixclk_BUFGP |   0.000|
-cam0_data<4>   |   -3.402(R)|    5.618(R)|cam0_pixclk_BUFGP |   0.000|
-cam0_data<5>   |   -3.547(R)|    5.748(R)|cam0_pixclk_BUFGP |   0.000|
-cam0_data<6>   |   -3.461(R)|    5.673(R)|cam0_pixclk_BUFGP |   0.000|
-cam0_data<7>   |   -3.526(R)|    5.734(R)|cam0_pixclk_BUFGP |   0.000|
-cam0_line_valid|   -2.517(R)|    5.125(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<0>   |   -3.889(R)|    6.035(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<1>   |   -3.652(R)|    5.816(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<2>   |   -3.920(R)|    6.057(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<3>   |   -3.708(R)|    5.861(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<4>   |   -3.453(R)|    5.626(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<5>   |   -3.630(R)|    5.790(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<6>   |   -3.558(R)|    5.724(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_data<7>   |   -3.784(R)|    5.937(R)|cam0_pixclk_BUFGP |   0.000|
+cam0_line_valid|   -3.110(R)|    5.478(R)|cam0_pixclk_BUFGP |   0.000|
 ---------------+------------+------------+------------------+--------+
 
 Setup/Hold to clock fpga_0_clk_1_sys_clk_pin
@@ -598,7 +598,7 @@ Clock to Setup on destination clock fpga_0_clk_1_sys_clk_pin
                         | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------------+---------+---------+---------+---------+
-fpga_0_clk_1_sys_clk_pin|    9.950|    2.868|    1.989|         |
+fpga_0_clk_1_sys_clk_pin|    9.742|    3.386|    2.384|         |
 ------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock usb_if_clk
@@ -606,26 +606,26 @@ Clock to Setup on destination clock usb_if_clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-usb_if_clk     |    6.188|         |         |         |
+usb_if_clk     |    5.359|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 TIMEGRP "Cam0_Input" OFFSET = IN 8 ns VALID 16 ns BEFORE COMP "cam0_pixclk";
-Worst Case Data Window 3.231; Ideal Clock Offset To Actual Clock -4.133; 
+Worst Case Data Window 2.947; Ideal Clock Offset To Actual Clock -4.584; 
 ------------------+------------+------------+---------+---------+-------------+
                   |            |            |  Setup  |  Hold   |Source Offset|
 Source            |   Setup    |    Hold    |  Slack  |  Slack  |  To Center  |
 ------------------+------------+------------+---------+---------+-------------+
-cam0_data<0>      |   -3.320(R)|    5.537(R)|   11.320|    2.463|        4.429|
-cam0_data<1>      |   -3.263(R)|    5.484(R)|   11.263|    2.516|        4.374|
-cam0_data<2>      |   -3.548(R)|    5.744(R)|   11.548|    2.256|        4.646|
-cam0_data<3>      |   -2.874(R)|    5.107(R)|   10.874|    2.893|        3.991|
-cam0_data<4>      |   -3.402(R)|    5.618(R)|   11.402|    2.382|        4.510|
-cam0_data<5>      |   -3.547(R)|    5.748(R)|   11.547|    2.252|        4.648|
-cam0_data<6>      |   -3.461(R)|    5.673(R)|   11.461|    2.327|        4.567|
-cam0_data<7>      |   -3.526(R)|    5.734(R)|   11.526|    2.266|        4.630|
-cam0_line_valid   |   -2.517(R)|    5.125(R)|   10.517|    2.875|        3.821|
+cam0_data<0>      |   -3.889(R)|    6.035(R)|   11.889|    1.965|        4.962|
+cam0_data<1>      |   -3.652(R)|    5.816(R)|   11.652|    2.184|        4.734|
+cam0_data<2>      |   -3.920(R)|    6.057(R)|   11.920|    1.943|        4.989|
+cam0_data<3>      |   -3.708(R)|    5.861(R)|   11.708|    2.139|        4.785|
+cam0_data<4>      |   -3.453(R)|    5.626(R)|   11.453|    2.374|        4.539|
+cam0_data<5>      |   -3.630(R)|    5.790(R)|   11.630|    2.210|        4.710|
+cam0_data<6>      |   -3.558(R)|    5.724(R)|   11.558|    2.276|        4.641|
+cam0_data<7>      |   -3.784(R)|    5.937(R)|   11.784|    2.063|        4.861|
+cam0_line_valid   |   -3.110(R)|    5.478(R)|   11.110|    2.522|        4.294|
 ------------------+------------+------------+---------+---------+-------------+
-Worst Case Summary|      -2.517|       5.748|   10.517|    2.252|             |
+Worst Case Summary|      -3.110|       6.057|   11.110|    1.943|             |
 ------------------+------------+------------+---------+---------+-------------+
 
 TIMEGRP "SdramInput" OFFSET = IN 2 ns VALID 4 ns BEFORE COMP         "fpga_0_clk_1_sys_clk_pin";
@@ -737,23 +737,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 383816 paths, 32 nets, and 51470 connections
+Constraints cover 405413 paths, 32 nets, and 58624 connections
 
 Design statistics:
    Minimum period:  10.000ns   (Maximum frequency: 100.000MHz)
-   Maximum net delay:   0.997ns
+   Maximum net delay:   0.969ns
    Minimum input required time before clock:   0.913ns
    Minimum output required time after clock:   4.053ns
 
 
-Analysis completed Mon Mar 12 17:09:26 2012 
+Analysis completed Tue Mar 13 17:01:55 2012 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 592 MB
+Peak Memory Usage: 621 MB
 
 
 

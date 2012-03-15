@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/svg11-tiny.dtd">
 
-<svg width="2284" height="1533">
+<svg width="2324" height="1533">
   <defs>
     <g xmlns:svg="http://www.w3.org/2000/svg" id="G_IOPort">
       <rect x="0" y="0" width="16" height="16" fill="#CCCCFF" stroke="#000088" stroke-width="1"/>
@@ -529,23 +529,23 @@
     </g>
     <g id="AXI_SharedBus">
       <use xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" xlink:href="#AXI_BusArrowWest"/>
-      <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2058" y="0" xlink:href="#AXI_BusArrowEast"/>
-      <rect x="8" y="2" width="2050" height="8" style="stroke:none; fill:#0084AB"/>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2098" y="0" xlink:href="#AXI_BusArrowEast"/>
+      <rect x="8" y="2" width="2090" height="8" style="stroke:none; fill:#0084AB"/>
     </g>
     <g id="OPB_SharedBus">
       <use xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" xlink:href="#OPB_BusArrowWest"/>
-      <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2058" y="0" xlink:href="#OPB_BusArrowEast"/>
-      <rect x="8" y="2" width="2050" height="8" style="stroke:none; fill:#339900"/>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2098" y="0" xlink:href="#OPB_BusArrowEast"/>
+      <rect x="8" y="2" width="2090" height="8" style="stroke:none; fill:#339900"/>
     </g>
     <g id="PLB_SharedBus">
       <use xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" xlink:href="#PLB_BusArrowWest"/>
-      <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2058" y="0" xlink:href="#PLB_BusArrowEast"/>
-      <rect x="8" y="2" width="2050" height="8" style="stroke:none; fill:#FF5500"/>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2098" y="0" xlink:href="#PLB_BusArrowEast"/>
+      <rect x="8" y="2" width="2090" height="8" style="stroke:none; fill:#FF5500"/>
     </g>
     <g id="PLBV46_SharedBus">
       <use xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" xlink:href="#PLBV46_BusArrowWest"/>
-      <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2058" y="0" xlink:href="#PLBV46_BusArrowEast"/>
-      <rect x="8" y="2" width="2050" height="8" style="stroke:none; fill:#BB9955"/>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2098" y="0" xlink:href="#PLBV46_BusArrowEast"/>
+      <rect x="8" y="2" width="2090" height="8" style="stroke:none; fill:#BB9955"/>
     </g>
     <g id="group_sharedBusses">
       <use xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" xlink:href="#PLBV46_SharedBus"/>
@@ -894,9 +894,9 @@
       <use xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="244" xlink:href="#symbol_STACK_6_SHAPE_0"/>
     </g>
     <g id="symbol_SPACE_WEST_NONE_EAST_0">
-      <use xmlns:xlink="http://www.w3.org/1999/xlink" x="136" y="50" xlink:href="#PLBV46_busconn_SLAVE"/>
-      <rect x="112" y="60" width="8" height="72" style="stroke:none; fill:#BB9955"/>
-      <rect x="112" y="58" width="30" height="8" style="stroke:none; fill:#BB9955"/>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" x="176" y="50" xlink:href="#PLBV46_busconn_SLAVE"/>
+      <rect x="152" y="60" width="8" height="72" style="stroke:none; fill:#BB9955"/>
+      <rect x="152" y="58" width="30" height="8" style="stroke:none; fill:#BB9955"/>
     </g>
     <g id="symbol_SPACE_WEST_0_EAST_1">
       <use xmlns:xlink="http://www.w3.org/1999/xlink" x="45" y="50" xlink:href="#PLBV46_busconn_MASTER"/>
@@ -972,11 +972,11 @@
     </g>
     <g id="symbol_SPACE_WEST_6_EAST_NONE"/>
     <g id="mpmcmodule_mpmc_0">
-      <rect x="0" y="0" width="2066" height="48" style="fill:#8B0800; stroke:#000000; stroke-width:2"/>
+      <rect x="0" y="0" width="2106" height="48" style="fill:#8B0800; stroke:#000000; stroke-width:2"/>
       <rect x="4" y="5" rx="3" ry="3" width="68" height="38" style="fill:#FFFFFF; stroke:none;"/>
       <text x="36" y="13" fill="#AA0017" stroke="none" font-size="10pt" font-style="italic" font-weight="900" text-anchor="middle" font-family="Verdana Arial Helvetica san-serif">mpmc</text>
       <text x="36" y="21" fill="#000000" stroke="none" font-size="10pt" font-style="italic" font-weight="900" text-anchor="middle" font-family="Courier Arial Helvetica san-serif">mpmc_0</text>
-      <text x="1033" y="21" fill="#FFFFFF" stroke="none" font-size="16pt" font-style="oblique" font-weight="900" text-anchor="middle" font-family="Arial Helvetica san-serif">MPMC Module Interface</text>
+      <text x="1053" y="21" fill="#FFFFFF" stroke="none" font-size="16pt" font-style="oblique" font-weight="900" text-anchor="middle" font-family="Arial Helvetica san-serif">MPMC Module Interface</text>
     </g>
     <g id="KEY_IntrCntrl">
       <rect x="0" y="0" rx="3" ry="3" width="9" height="18" style="fill:#888888; stroke:none; stroke-width:1"/>
@@ -1070,43 +1070,49 @@
       <text x="241" y="72" fill="#000000" stroke="none" font-size="10pt" font-style="italic" font-weight="bold" text-anchor="middle" font-family="Courier Arial Helvetica san-serif">xc4vfx60ff672-11</text>
       <rect x="0" y="80" width="300" height="16" style="fill:#EEEEEE; stroke:none;"/>
       <text x="4" y="92" fill="#000000" stroke="none" font-size="10pt" font-weight="bold" text-anchor="start" font-family="Arial Helvetica san-serif">GENERATED</text>
-      <text x="217" y="92" fill="#000000" stroke="none" font-size="10pt" font-style="italic" font-weight="bold" text-anchor="middle" font-family="Courier Arial Helvetica san-serif">Mon Mar 12 16:37:15 2012</text>
+      <text x="217" y="92" fill="#000000" stroke="none" font-size="10pt" font-style="italic" font-weight="bold" text-anchor="middle" font-family="Courier Arial Helvetica san-serif">Tue Mar 13 16:21:01 2012</text>
     </g>
   </defs>
-  <rect x="0" y="0" width="2284" height="1533" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
-  <rect x="48" y="40" width="2188" height="1192" style="fill:#000088"/>
-  <rect x="64" y="56" rx="8" ry="8" width="2156" height="1160" fill="#CCCCCC"/>
+  <rect x="0" y="0" width="2324" height="1533" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+  <rect x="48" y="40" width="2228" height="1192" style="fill:#000088"/>
+  <rect x="64" y="56" rx="8" ry="8" width="2196" height="1160" fill="#CCCCCC"/>
   <use xmlns:xlink="http://www.w3.org/1999/xlink" x="109" y="101" xlink:href="#mpmcmodule_mpmc_0"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="381" y="129" xlink:href="#PLBV46_BifLabel"/>
+  <text x="397" y="140" fill="#FFFFFF" stroke="none" font-size="8pt" font-style="normal" font-weight="900" text-anchor="middle" font-family="Verdana Arial Helvetica san-serif">MPMC_CTRL</text>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="385" y="149" xlink:href="#PLBV46_busconn_SLAVE"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="391" y="170" xlink:href="#PLBV46_BusArrowNorth"/>
+  <rect x="393" y="182" width="8" height="151" style="stroke:none; fill:#BB9955"/>
+  <text x="405" y="252" fill="#000000" stroke="none" font-size="8pt" font-style="italic" font-weight="900" text-anchor="start" font-family="Verdana Courier Arial Helvetica san-serif">plb_0</text>
   <use xmlns:xlink="http://www.w3.org/1999/xlink" x="341" y="129" xlink:href="#PLBV46_BifLabel"/>
-  <text x="357" y="140" fill="#FFFFFF" stroke="none" font-size="8pt" font-style="normal" font-weight="900" text-anchor="middle" font-family="Verdana Arial Helvetica san-serif">MPMC_CTRL</text>
+  <text x="357" y="140" fill="#FFFFFF" stroke="none" font-size="8pt" font-style="normal" font-weight="900" text-anchor="middle" font-family="Verdana Arial Helvetica san-serif">SPLB0</text>
   <use xmlns:xlink="http://www.w3.org/1999/xlink" x="345" y="149" xlink:href="#PLBV46_busconn_SLAVE"/>
   <use xmlns:xlink="http://www.w3.org/1999/xlink" x="351" y="170" xlink:href="#PLBV46_BusArrowNorth"/>
   <rect x="353" y="182" width="8" height="151" style="stroke:none; fill:#BB9955"/>
   <text x="365" y="252" fill="#000000" stroke="none" font-size="8pt" font-style="italic" font-weight="900" text-anchor="start" font-family="Verdana Courier Arial Helvetica san-serif">plb_0</text>
   <use xmlns:xlink="http://www.w3.org/1999/xlink" x="301" y="129" xlink:href="#PLBV46_BifLabel"/>
-  <text x="317" y="140" fill="#FFFFFF" stroke="none" font-size="8pt" font-style="normal" font-weight="900" text-anchor="middle" font-family="Verdana Arial Helvetica san-serif">SPLB0</text>
+  <text x="317" y="140" fill="#FFFFFF" stroke="none" font-size="8pt" font-style="normal" font-weight="900" text-anchor="middle" font-family="Verdana Arial Helvetica san-serif">SPLB1</text>
   <use xmlns:xlink="http://www.w3.org/1999/xlink" x="305" y="149" xlink:href="#PLBV46_busconn_SLAVE"/>
   <use xmlns:xlink="http://www.w3.org/1999/xlink" x="311" y="170" xlink:href="#PLBV46_BusArrowNorth"/>
-  <rect x="313" y="182" width="8" height="151" style="stroke:none; fill:#BB9955"/>
-  <text x="325" y="252" fill="#000000" stroke="none" font-size="8pt" font-style="italic" font-weight="900" text-anchor="start" font-family="Verdana Courier Arial Helvetica san-serif">plb_0</text>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="429" y="209" xlink:href="#symbol_STACK_0"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="639" y="209" xlink:href="#symbol_STACK_1"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="889" y="181" xlink:href="#symbol_STACK_2"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1343" y="267" xlink:href="#symbol_STACK_3"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1593" y="181" xlink:href="#symbol_STACK_4"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1875" y="267" xlink:href="#symbol_STACK_5"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2045" y="267" xlink:href="#symbol_STACK_6"/>
+  <rect x="313" y="182" width="8" height="257" style="stroke:none; fill:#BB9955"/>
+  <text x="325" y="305" fill="#000000" stroke="none" font-size="8pt" font-style="italic" font-weight="900" text-anchor="start" font-family="Verdana Courier Arial Helvetica san-serif">plb_1</text>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="469" y="209" xlink:href="#symbol_STACK_0"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="679" y="209" xlink:href="#symbol_STACK_1"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="929" y="181" xlink:href="#symbol_STACK_2"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1383" y="267" xlink:href="#symbol_STACK_3"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1633" y="181" xlink:href="#symbol_STACK_4"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1915" y="267" xlink:href="#symbol_STACK_5"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2085" y="267" xlink:href="#symbol_STACK_6"/>
   <use xmlns:xlink="http://www.w3.org/1999/xlink" x="269" y="209" xlink:href="#symbol_SPACE_WEST_NONE_EAST_0"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="474" y="209" xlink:href="#symbol_SPACE_WEST_0_EAST_1"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="684" y="181" xlink:href="#symbol_SPACE_WEST_1_EAST_2"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1056" y="181" xlink:href="#symbol_SPACE_WEST_2_EAST_3"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1388" y="181" xlink:href="#symbol_SPACE_WEST_3_EAST_4"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1654" y="181" xlink:href="#symbol_SPACE_WEST_4_EAST_5"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1920" y="267" xlink:href="#symbol_SPACE_WEST_5_EAST_6"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2090" y="267" xlink:href="#symbol_SPACE_WEST_6_EAST_NONE"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="514" y="209" xlink:href="#symbol_SPACE_WEST_0_EAST_1"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="724" y="181" xlink:href="#symbol_SPACE_WEST_1_EAST_2"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1096" y="181" xlink:href="#symbol_SPACE_WEST_2_EAST_3"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1428" y="181" xlink:href="#symbol_SPACE_WEST_3_EAST_4"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1694" y="181" xlink:href="#symbol_SPACE_WEST_4_EAST_5"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1960" y="267" xlink:href="#symbol_SPACE_WEST_5_EAST_6"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="2130" y="267" xlink:href="#symbol_SPACE_WEST_6_EAST_NONE"/>
   <use xmlns:xlink="http://www.w3.org/1999/xlink" x="109" y="331" xlink:href="#group_sharedBusses"/>
-  <text x="975" y="1003" fill="#000000" stroke="none" font-size="9pt" font-style="normal" font-weight="900" text-anchor="start" font-family="Arial Helvetica san-serif">IP</text>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="975" y="1007" xlink:href="#ipbucket"/>
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1768" y="1275" xlink:href="#BlkDiagram_Key"/>
+  <text x="995" y="1003" fill="#000000" stroke="none" font-size="9pt" font-style="normal" font-weight="900" text-anchor="start" font-family="Arial Helvetica san-serif">IP</text>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="995" y="1007" xlink:href="#ipbucket"/>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" x="1808" y="1275" xlink:href="#BlkDiagram_Key"/>
   <use xmlns:xlink="http://www.w3.org/1999/xlink" x="48" y="1275" xlink:href="#BlkDiagram_Specs"/>
 </svg>

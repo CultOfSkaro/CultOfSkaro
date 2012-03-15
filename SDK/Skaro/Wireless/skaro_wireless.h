@@ -6,6 +6,7 @@
 
 #define WIRELESS_DEBUG        0x0
 #define WIRELESS_CONTROL_LOG  0x1
+#define WIRELESS_CONTROL_LOG_EXT  0x2
 
 #define WRITE_QUEUE_SIZE      400
 #define READ_QUEUE_SIZE      400
@@ -26,5 +27,6 @@ int Wireless_Send(Skaro_Wireless * w, char commmand, char length, char * data);
 
 void Wireless_Debug(char * message);
 int Wireless_ControlLog(float actual, float expected);
+int Wireless_ControlLog_Ext(float actual, float expected, int saturated, int unsaturated, int refresh_rate);
 
 #endif

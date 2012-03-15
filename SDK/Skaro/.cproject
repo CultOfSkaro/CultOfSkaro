@@ -89,11 +89,12 @@
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.1313017762" name="Timer.h" rcbsApplicability="disable" resourcePath="common/Timer.h" toolsToInvoke=""/>
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.639997192" name="Wireless.h" rcbsApplicability="disable" resourcePath="common/Wireless.h" toolsToInvoke=""/>
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.574900053" name="State.h" rcbsApplicability="disable" resourcePath="common/State.h" toolsToInvoke=""/>
+					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.1199352225" name="mpmc_calibration.h" rcbsApplicability="disable" resourcePath="common/mpmc_calibration.h" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="plb_vision_v1_00_a/src/plb_vision_selftest.c|plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>
 						<entry excluding="Vision|Wireless|DataTypes|drivers|common|PIDControl|Communications" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="Wireless.c|Wireless.h|Flash.c|Flash.h|LoopScheduler.c|LoopScheduler.h|MemoryTest.c|MemoryTest.h|mpmc_mem_test_example.c|mpmc_mem_test_example.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="common"/>
+						<entry excluding="plb_vision_v1_00_a/src/plb_vision_selftest.c|plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>
 						<entry excluding="Stack.c|Stack.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="DataTypes"/>
-						<entry excluding="Wireless.c|Wireless.h|Flash.c|Flash.h|LoopScheduler.c|LoopScheduler.h|MemoryTest.c|MemoryTest.h|mpmc_calibration.c|mpmc_calibration.h|mpmc_mem_test_example.c|mpmc_mem_test_example.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="common"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="PIDControl"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Wireless"/>
 					</sourceEntries>
@@ -6912,11 +6913,11 @@
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.802476513.common/Wireless.h" name="Wireless.h" rcbsApplicability="disable" resourcePath="common/Wireless.h" toolsToInvoke=""/>
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.802476513.common/State.h" name="State.h" rcbsApplicability="disable" resourcePath="common/State.h" toolsToInvoke=""/>
 					<sourceEntries>
+						<entry excluding="Wireless.c|Wireless.h|Flash.c|Flash.h|LoopScheduler.c|LoopScheduler.h|MemoryTest.c|MemoryTest.h|mpmc_calibration.h|mpmc_mem_test_example.c|mpmc_mem_test_example.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="common"/>
+						<entry excluding="Vision|DataTypes|drivers|common|PIDControl|Communications" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="Stack.c|Stack.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="DataTypes"/>
 						<entry excluding="plb_vision_v1_00_a|plb_vision_v1_00_a/src/plb_vision_selftest.c|plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>
-						<entry excluding="Wireless.c|Wireless.h|Flash.c|Flash.h|LoopScheduler.c|LoopScheduler.h|MemoryTest.c|MemoryTest.h|mpmc_calibration.c|mpmc_calibration.h|mpmc_mem_test_example.c|mpmc_mem_test_example.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="common"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="PIDControl"/>
-						<entry excluding="Vision|DataTypes|drivers|common|PIDControl|Communications" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="plb_vision_selftest.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers/plb_vision_v1_00_a/src"/>
 					</sourceEntries>
 				</configuration>

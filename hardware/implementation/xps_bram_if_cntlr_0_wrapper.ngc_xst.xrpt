@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Sat Mar 10 21:14:24 2012">
+  <application stringID="Xst" timeStamp="Tue Mar 13 15:06:20 2012">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -61,7 +61,7 @@
       <item DEFAULT="/" stringID="XST_HIERARCHYSEPARATOR" value="/"/>
       <item DEFAULT="YES" label="-iobuf" stringID="XST_IOBUF" value="NO"/>
       <item DEFAULT="" label="-sd" stringID="XST_SD" value="{../implementation}"/>
-      <item DEFAULT="" label="-vlgincdir" stringID="XST_VLGINCDIR" value="{&quot;C:\RobotRacers\hardware_dans_branch\pcores\&quot; &quot;C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\&quot; &quot;C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\&quot; }"/>
+      <item DEFAULT="" label="-vlgincdir" stringID="XST_VLGINCDIR" value="{&quot;C:\RobotRacers\CultOfSkaro\hardware\pcores\&quot; &quot;C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\&quot; &quot;C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\&quot; }"/>
     </section>
     <section stringID="XST_HDL_SYNTHESIS_REPORT">
       <item dataType="int" stringID="XST_ROMS" value="1"></item>
@@ -122,8 +122,8 @@
           <item dataType="int" stringID="XST_LUT2" value="17"/>
           <item dataType="int" stringID="XST_LUT2D" value="1"/>
           <item dataType="int" stringID="XST_LUT2L" value="1"/>
-          <item dataType="int" stringID="XST_LUT3" value="60"/>
-          <item dataType="int" stringID="XST_LUT4" value="98"/>
+          <item dataType="int" stringID="XST_LUT3" value="61"/>
+          <item dataType="int" stringID="XST_LUT4" value="97"/>
           <item dataType="int" stringID="XST_MULTAND" value="31"/>
           <item dataType="int" stringID="XST_MUXCY" value="31"/>
           <item dataType="int" stringID="XST_MUXF5" value="8"/>

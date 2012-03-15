@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "clock_generator_0_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -63,10 +63,10 @@ Entity <mmcm_module> (Architecture <STRUCT>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/clock_generator_v4_03_a/hdl/vhdl/plle2_module.vhd" in Library clock_generator_v4_03_a.
 Entity <plle2_module> compiled.
 Entity <plle2_module> (Architecture <STRUCT>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" in Library clock_generator_0_v4_03_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" in Library clock_generator_0_v4_03_a.
 Entity <clock_generator> compiled.
 Entity <clock_generator> (Architecture <STRUCTURE>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/clock_generator_0_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/clock_generator_0_wrapper.vhd" in Library work.
 Entity <clock_generator_0_wrapper> compiled.
 Entity <clock_generator_0_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -124,11 +124,11 @@ Analyzing generic Entity <clock_generator> in library <clock_generator_0_v4_03_a
 	C_FAMILY = "virtex4"
 	C_PACKAGE = "ff672"
 	C_SPEEDGRADE = "-11"
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" line 249: Unconnected output port 'CLK180' of component 'dcm_module'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" line 249: Unconnected output port 'CLK270' of component 'dcm_module'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" line 249: Unconnected output port 'CLK2X180' of component 'dcm_module'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" line 249: Unconnected output port 'CLKFX180' of component 'dcm_module'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" line 249: Unconnected output port 'STATUS' of component 'dcm_module'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" line 249: Unconnected output port 'CLK180' of component 'dcm_module'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" line 249: Unconnected output port 'CLK270' of component 'dcm_module'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" line 249: Unconnected output port 'CLK2X180' of component 'dcm_module'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" line 249: Unconnected output port 'CLKFX180' of component 'dcm_module'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd" line 249: Unconnected output port 'STATUS' of component 'dcm_module'.
 Entity <clock_generator> analyzed. Unit <clock_generator> generated.
 
 Analyzing generic Entity <dcm_module> in library <clock_generator_v4_03_a> (Architecture <STRUCT>).
@@ -198,7 +198,7 @@ Unit <dcm_module> synthesized.
 
 
 Synthesizing Unit <clock_generator>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/elaborate/clock_generator_0_v4_03_a/hdl/vhdl/clock_generator.vhd".
 WARNING:Xst:1305 - Output <CLKFBOUT> is never assigned. Tied to value 0.
 WARNING:Xst:647 - Input <PSEN> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1305 - Output <PSDONE> is never assigned. Tied to value 0.
@@ -228,7 +228,7 @@ Unit <clock_generator> synthesized.
 
 
 Synthesizing Unit <clock_generator_0_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/clock_generator_0_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/clock_generator_0_wrapper.vhd".
 Unit <clock_generator_0_wrapper> synthesized.
 
 
@@ -397,11 +397,11 @@ Delay:               0.638ns (Levels of Logic = 0)
 
 
 Total REAL time to Xst completion: 16.00 secs
-Total CPU time to Xst completion: 16.31 secs
+Total CPU time to Xst completion: 16.45 secs
  
 --> 
 
-Total memory usage is 299516 kilobytes
+Total memory usage is 297340 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   32 (   0 filtered)

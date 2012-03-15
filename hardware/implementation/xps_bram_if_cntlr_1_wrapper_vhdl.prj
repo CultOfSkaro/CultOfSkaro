@@ -66,4 +66,4 @@ vhdl xps_bram_if_cntlr_v1_00_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLi
 vhdl xps_bram_if_cntlr_v1_00_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_bram_if_cntlr_v1_00_b\hdl\vhdl\xbic_dbeat_control.vhd"
 vhdl xps_bram_if_cntlr_v1_00_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_bram_if_cntlr_v1_00_b\hdl\vhdl\xbic_slave_attach_burst.vhd"
 vhdl xps_bram_if_cntlr_v1_00_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_bram_if_cntlr_v1_00_b\hdl\vhdl\xps_bram_if_cntlr.vhd"
-vhdl work "C:\RobotRacers\hardware_dans_branch\hdl\xps_bram_if_cntlr_1_wrapper.vhd"
+vhdl work "C:\RobotRacers\CultOfSkaro\hardware\hdl\xps_bram_if_cntlr_1_wrapper.vhd"

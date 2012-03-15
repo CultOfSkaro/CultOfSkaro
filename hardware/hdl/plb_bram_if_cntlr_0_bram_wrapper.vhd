@@ -67,7 +67,7 @@ begin
 
   plb_bram_if_cntlr_0_bram : plb_bram_if_cntlr_0_bram_elaborate
     generic map (
-      C_MEMSIZE => 16#20000#,
+      C_MEMSIZE => 16#40000#,
       C_PORT_DWIDTH => 64,
       C_PORT_AWIDTH => 32,
       C_NUM_WE => 8,
