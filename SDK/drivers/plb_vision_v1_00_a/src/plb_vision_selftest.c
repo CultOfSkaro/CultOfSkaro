@@ -75,8 +75,8 @@ int main()
 	XCache_DisableDCache();
 	XCache_DisableICache();
 	MpmcCalibrationExample(XPAR_MPMC_0_DEVICE_ID);
-	XCache_EnableICache(0x80000000);
-	XCache_EnableDCache(0x80000000);
+	XCache_EnableICache(0x00000001);
+	XCache_EnableDCache(0x00000001);
 
 	print("Initializing Memory Buffers...\r\n");
 	MemAllocInit((uint32*)0x100000);	//root of the DDR (can't use 0, that's NULL)

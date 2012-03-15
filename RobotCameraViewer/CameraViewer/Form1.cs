@@ -18,6 +18,7 @@ namespace CameraViewer
     public partial class Form1 : Form
     {
         private usbReader usb;
+        private pixelConverter converter;
         private bool captureLoop = false;
         private bool quit = false;
         private Stopwatch timer = new Stopwatch();
@@ -30,8 +31,7 @@ namespace CameraViewer
 
 
         private void startCapture() {
-            txtDebug.AppendText("Reading from usb...\r\n");
-            timer.Restart();
+            txtDebug.AppendText("Reading from usb...");
             usb.read(640 * 480 * 2); //*2 for 16 bits per pixel
         }
              
@@ -54,71 +54,33 @@ namespace CameraViewer
         private void Form1_Load(object sender, EventArgs e)
         {
             usb = new usbReader(txtDebug);
-            usb.gotData += new usbReader.DataEventHandler(usb_gotData);
+            usb.gotData += new DataEventHandler(usb_gotData);
             usb.connect(this.Handle);
+
+            converter = new pixelConverter();
+            converter.finished += new ImageEventHandler(converter_finished);
+        }
+
+        void converter_finished(object sender, ImageEventArgs e) {
+            pictureBox1.Image = e.image;
+
+            timer.Stop();
+            long mil = timer.ElapsedMilliseconds;
+            timer.Restart();
+            
+            double fps = 1 / (mil / 1000.0);
+            lblFps.Text = "fps: " + fps;
         }
 
         void usb_gotData(object sender, DataEventArgs e) {
-            byte[] data = e.data;
-            txtDebug.AppendText("Got Data: " + data.Length + "\r\n");
+            txtDebug.AppendText("Done\r\n");
 
-            int height = data.Length / 640 / 2;
-            txtDebug.AppendText("ImageSize: 640 x" + height + "\r\n");
-
-            //Bitmap image = new Bitmap(640, 480, System.Drawing.Imaging.PixelFormat.Format32bppArgb);//"C:\\Users\\Garrett\\Pictures\\ny.bmp");
-        
-            //convert to rgb
-            byte[] pixels = new byte[data.Length * 3 / 2];  //24 bpp instead of 16
-            for (int d = 0, p = 0; d < data.Length; d += 2, p += 3) {
-                int pixel = data[d] << 8 | data[d + 1];
-                //double h = Convert.ToDouble((data[d] & 0xFC));
-                //double s = Convert.ToDouble((((data[d] & 0x03) << 6) | ((data[d + 1] & 0xE0) >> 2)));
-                //double v = Convert.ToDouble((data[d + 1] & 0x1F) << 3);
-
-                //h = h * 360 / 255;
-                //s /= 255;
-                //v /= 255;
-                
-                double h = (((pixel >> 10) & 0x3F) << (2)) / 255.0 * 360;
-	            double s = (((pixel>>5)&0x1F)<<(3)) / 255.0;
-	            double v = ((pixel & 0x1F)<<(3)) / 255.0;
-                int r, g, b;
-                ColorConvert.HsvToRgbOld(h, s, v, out r, out g, out b);
-
-                //txtDebug.AppendText(r + "," + g + "," + b + "\r\n");
-                //image.SetPixel((d / 2) % 640, (d/2)/640, Color.FromArgb(r, g, b));
-
-                pixels[p] = (byte)b; // 255; //(byte)r;
-                pixels[p + 1] = (byte)g;
-                pixels[p + 2] = (byte)r; // 255; //(byte)b;
-            }
-
-            
-            //create an image from the pixel data
-            Bitmap image;
-            unsafe {
-                fixed (byte* ptr = pixels) {
-                    image = new Bitmap(640, height, 640 * 3, PixelFormat.Format24bppRgb, new IntPtr(ptr));
-                }
-            }
-
-            pictureBox1.Image = image;
-
-            //calculate the fps
-            timer.Stop();
-            long mil = timer.ElapsedMilliseconds;
-            double fps = 1 / (mil / 1000.0);
-            lblFps.Text = "fps: " + fps;
-
+            converter.convert(e.data);
             if (captureLoop) {
                 startCapture();
             } else if (quit) {
                 this.Close();
             }
-
-            //for (int i = 0; i < e.data.Length; i++) {
-            //    txtDebug.AppendText(e.data[i] + "\r\n");
-            //}
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
@@ -139,19 +101,83 @@ namespace CameraViewer
 
     }
 
-    class DataEventArgs : EventArgs
-    {
+    delegate void DataEventHandler(object sender, DataEventArgs e);
+    class DataEventArgs : EventArgs{
         public byte[] data;
-
         public DataEventArgs(byte[] data) {
             this.data = data;
         }
 
     }
 
+    delegate void ImageEventHandler(object sender, ImageEventArgs e);
+    class ImageEventArgs : EventArgs
+    {
+        public Bitmap image;
+        public ImageEventArgs(Bitmap image) {
+            this.image = image;
+        }
+
+    }
+
+    class pixelConverter {
+        public event ImageEventHandler finished;
+        private BackgroundWorker bw;
+        private byte[] raw;
+        Bitmap image;
+        
+        public pixelConverter() {
+            bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+
+        }
+
+        public void convert(byte[] raw) {
+            if (!bw.IsBusy) {
+                this.raw = raw;
+                bw.RunWorkerAsync();
+            } else {
+                throw new Exception("Already converting!");
+            }
+        }
+
+
+        private void bw_DoWork(object sender, DoWorkEventArgs e) {
+            byte[] pixels = new byte[raw.Length * 3 / 2];  //24 bpp instead of 16
+            
+            //convert to rgb
+            for (int d = 0, p = 0; d < raw.Length; d += 2, p += 3) {
+                int pixel = raw[d] << 8 | raw[d + 1];
+                double h = (((pixel >> 10) & 0x3F) << (2)) / 255.0 * 360;
+                double s = (((pixel >> 5) & 0x1F) << (3)) / 255.0;
+                double v = ((pixel & 0x1F) << (3)) / 255.0;
+                int r, g, b;
+                ColorConvert.HsvToRgb(h, s, v, out r, out g, out b);
+
+                pixels[p] = (byte)b;
+                pixels[p + 1] = (byte)g;
+                pixels[p + 2] = (byte)r;
+            }
+
+            //create an image from the pixel data
+            unsafe {
+                fixed (byte* ptr = pixels) {
+                    image = new Bitmap(640, 480, 640 * 3, 
+                        PixelFormat.Format24bppRgb, new IntPtr(ptr));
+                }
+            }
+        }
+
+        private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            if (finished != null) {
+                finished(this, new ImageEventArgs(image));
+            }
+        }
+    }
+
     class usbReader
     {
-        public delegate void DataEventHandler(object sender, DataEventArgs e);
         public event DataEventHandler gotData;
 
         private BackgroundWorker bw;
@@ -180,16 +206,14 @@ namespace CameraViewer
         }
 
 
-        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+        private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             if (gotData != null) {
                 gotData(this, new DataEventArgs(data));
             }
         }
 
         //blocking read of usb
-        void bw_DoWork(object sender, DoWorkEventArgs e) {
-            //txtDebug.AppendText("run");
-            
+        private void bw_DoWork(object sender, DoWorkEventArgs e) {
             int curLoc = 0;
             while (leftToRead > 0) {
                 int numRead = HeliosUsb.Read(bufAddr);
@@ -198,16 +222,9 @@ namespace CameraViewer
                 leftToRead -= numRead;
                 curLoc += numRead;
             }
-            /*
-            txtDebug.AppendText("got data:\r\n");
-            for (int i = 0; i < 10; i++) {
-                txtDebug.AppendText(data[i] + "\r\n");
-            }
-            */
         }
 
-        public void connect(IntPtr windowHandle)
-        {
+        public void connect(IntPtr windowHandle) {
             if (HeliosUsb.Open(windowHandle)) {
                 txtDebug.AppendText("Connected to Helios USB!\r\n");
             } else {
@@ -215,8 +232,7 @@ namespace CameraViewer
             }
         }
 
-        public void disconnet()
-        {
+        public void disconnet() {
             HeliosUsb.Close();
         }
 
@@ -226,13 +242,11 @@ namespace CameraViewer
             }
         }
 
-        public void read(int bytes)
-        {
+        public void read(int bytes) {
             if (!bw.IsBusy) {
                 data = new byte[bytes];
                 leftToRead = bytes;
                 bw.RunWorkerAsync();
-                //bw_DoWork(null, null);
             } else {
                 throw new Exception("Already reading!");
             }
@@ -241,58 +255,6 @@ namespace CameraViewer
 
     class ColorConvert
     {
-        public static void HsvToRgb(double h, double s, double v, 
-            out int r, out int g, out int b) {
-            h /= 60.0;
-            //s /= 255.0;
-            //v /= 255.0;
-            double C = s * v;
-            double X = C * (1 - Math.Abs((h % 2) - 1));
-            double m = v - C;
-            if (0 <= h && h < 1)
-            {
-                r = Convert.ToInt32((C + m) * 255);
-                g = Convert.ToInt32((X + m) * 255);
-                b = Convert.ToInt32((m) * 255);
-            }
-            else if (1 <= h && h < 2)
-            {
-                r = Convert.ToInt32((X + m) * 255);
-                g = Convert.ToInt32((C + m) * 255);
-                b = Convert.ToInt32((m) * 255);
-            }
-            else if (2 <= h && h < 3)
-            {
-                r = Convert.ToInt32((m) * 255);
-                g = Convert.ToInt32((C + m) * 255);
-                b = Convert.ToInt32((X + m) * 255);
-            }
-            else if (3 <= h && h < 4)
-            {
-                r = Convert.ToInt32((m) * 255);
-                g = Convert.ToInt32((X + m) * 255);
-                b = Convert.ToInt32((C + m) * 255);
-            }
-            else if (4 <= h && h < 5)
-            {
-                r = Convert.ToInt32((X + m) * 255);
-                g = Convert.ToInt32((m) * 255);
-                b = Convert.ToInt32((C + m) * 255);
-            }
-            else if (5 <= h && h < 6)
-            {
-                r = Convert.ToInt32((C + m) * 255);
-                g = Convert.ToInt32((m) * 255);
-                b = Convert.ToInt32((X + m) * 255);
-            }
-            else
-            {
-                r = Convert.ToInt32((m) * 255);
-                g = Convert.ToInt32((m) * 255);
-                b = Convert.ToInt32((m) * 255);
-            }
-        }
-        
         /// <summary>
         /// Convert HSV to RGB
         /// h is from 0-360
@@ -300,7 +262,7 @@ namespace CameraViewer
         /// r,g,b values are 0-255
         /// Based upon http://ilab.usc.edu/wiki/index.php/HSV_And_H2SV_Color_Space#HSV_Transformation_C_.2F_C.2B.2B_Code_2
         /// </summary>
-        public static void HsvToRgbOld(double h, double S, double V, 
+        public static void HsvToRgb(double h, double S, double V, 
             out int r, out int g, out int b) {
             
             double H = h;
