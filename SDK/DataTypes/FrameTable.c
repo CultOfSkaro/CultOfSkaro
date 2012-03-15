@@ -323,7 +323,7 @@ void FT_InterruptHandlerFrameTable()
 			uint32 now  = rduint(U_MS);
 			uint32 diff = now - msLastFrame;
 			msLastFrame = now;
-			if(diff != 0)	wruint(U_FPS_CAM, 1000/diff );
+			if(diff != 0)	wruint(U_FPS_CAM, 100000/diff );
 			else			wruint(U_FPS_CAM, 0);
 		}
 		
@@ -399,7 +399,7 @@ FrameTableEntry* FT_CheckOutFrame()
 				uint32 time = rduint(U_MS);
 				uint32 diff = time - msLastFrame;
 				msLastFrame = time;
-				if(diff != 0)	wruint(U_FPS, 1000/diff );
+				if(diff != 0)	wruint(U_FPS, 100000/diff );
 				else			wruint(U_FPS, 0);			
 			}
 		}
