@@ -24,7 +24,9 @@ namespace CameraViewer
         private Stopwatch timer = new Stopwatch();
         private byte[] header;
         private int numBlobs;
-        private Blob[] blobs = new Blob[10];
+        private Blob[] blobs = new Blob[200];
+        private byte[] hsv;
+        private int hsvOffset;
 
         public Form1()
         {
@@ -123,6 +125,10 @@ namespace CameraViewer
             txtDebug.AppendText("\r\n");
             */
 
+            //save hsv data for mouse over
+            hsv = e.data;
+            hsvOffset = 8;
+
             converter.convert(e.data, 8, imageSize);
         }
 
@@ -146,10 +152,34 @@ namespace CameraViewer
         private void pictureBox1_Paint(object sender, PaintEventArgs e) {
             Graphics g = e.Graphics;
 
+            if (numBlobs <= 0) return;
+
+            txtDebug.AppendText("Draw Blobs\r\n");
             for (int i = 0; i < numBlobs; i++) {
+                txtDebug.AppendText("x: " + blobs[i].left + ", y: " + blobs[i].top +
+                    ", width: " + blobs[i].width + ", height: " + blobs[i].height + "\r\n");
+
                 g.DrawRectangle(pen, blobs[i].left, blobs[i].top, 
                     blobs[i].width, blobs[i].height);
             }
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e) {
+            if (hsv == null) return;
+
+            int pixelOffset = hsvOffset + (e.Y * 640 + e.X) * 2;
+            int pixel = hsv[pixelOffset] << 8 | hsv[pixelOffset + 1];
+            /*
+            double h = (((pixel >> 10) & 0x3F) << (2)) / 255.0 * 360;
+            double s = (((pixel >> 5) & 0x1F) << (3)) / 255.0;
+            double v = ((pixel & 0x1F) << (3)) / 255.0;
+            */
+
+            int h = (pixel >> 10) & 0x3F;
+            int s = (pixel >> 5) & 0x1F;
+            int v = pixel & 0x1F;
+                  
+            lblHsv.Text = "h: " + h + ", s: " + s + ", v: " + v;
         }
 
     }

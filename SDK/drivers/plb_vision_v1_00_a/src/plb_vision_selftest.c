@@ -19,15 +19,46 @@
 #include "plb_vision.h"
 #include "FrameTable.h"
 #include "State.h"
+#include "Stack.h"
 
 #include "xtime_l.h"
 
 #include <stdlib.h>
+#include <string.h>
+#include <Math.h>
+
+/************************** Type Definitions ***************************/
+
+typedef struct {
+	int type;
+	int left;
+	int top;
+	int width;
+	int height;
+} Blob;
 
 /************************** Constant Definitions ***************************/
 
 #define PIT_PER_SECOND 		1000
 #define PIT_INTERVAL 		(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ / PIT_PER_SECOND)
+
+#define HEADER_LOC     0x1000
+#define HEADER_SIZE    64 + 64 + 4 + 4 + 4
+#define NUM_BLOBS_LOC  HEADER_LOC + HEADER_SIZE
+#define BLOB_LOC       NUM_BLOBS_LOC + 4
+#define MAX_BLOBS      100
+#define BLOB_DATA_LOC  NUM_BLOBS_LOC
+#define BLOB_DATA_SIZE 4 + sizeof(Blob) * MAX_BLOBS
+
+#define FILL_STACK_LOC      BLOB_DATA_LOC + BLOB_DATA_SIZE
+#define FILL_STACK_SIZE     40000 * 4
+#define IMAGE_WIDTH         640
+#define IMAGE_HEIGHT        480
+#define CHECKED_LOC         0x81D00000 //root of the SRAM //BLOB_DATA_LOC + BLOB_DATA_SIZE
+#define CHECKED_SIZE        IMAGE_WIDTH * IMAGE_HEIGHT
+
+
+#define TARGET_COLOR        23, 0, 0
 
 /************************** Variable Definitions ****************************/
 
@@ -73,24 +104,6 @@ void pitHandler(){
  * *      detection data
  */
 
-typedef struct {
-	int type;
-	int left;
-	int top;
-	int width;
-	int height;
-} Blob;
-
-//char headerBuf[64 + 64 + 4 + 4 + 4];
-//char headerBuf[512];
-#define HEADER_LOC     0x10000
-#define HEADER_SIZE    64 + 64 + 4 + 4 + 4
-#define NUM_BLOBS_LOC  HEADER_LOC + HEADER_SIZE
-#define BLOB_LOC       NUM_BLOBS_LOC + 4
-#define MAX_BLOBS      10
-#define BLOB_DATA_LOC  NUM_BLOBS_LOC
-#define BLOB_DATA_SIZE 4 + sizeof(Blob) * MAX_BLOBS
-
 char *headerBuf = (char*)HEADER_LOC;
 int *transmitSize = (int*)(HEADER_LOC + 64 + 64);
 int *frameSize = (int*)(HEADER_LOC + 64 + 64 + 4);
@@ -117,12 +130,13 @@ void transmitFrame(FrameTableEntry* frame) {
 
 	//set up transmission sizes
 	*frameSize = bufSize;
-	*numBlobs = rand() % MAX_BLOBS;
 	*detectionSize = 4 + (sizeof(Blob) * *numBlobs);
 	*transmitSize = *frameSize + *detectionSize + 8;
 
 	xil_printf("data size: %d\r\n", *detectionSize);
 
+	/*
+	*numBlobs = rand() % MAX_BLOBS;
 	int i;
 	for (i = 0; i < *numBlobs; i++) {
 		//blobs
@@ -132,6 +146,7 @@ void transmitFrame(FrameTableEntry* frame) {
 		blobBuf[i].width = rand() % (640 - blobBuf[i].left);
 		blobBuf[i].height = rand() % (480 - blobBuf[i].top);
 	}
+	 */
 
 	/*
 	xil_printf("Frame id:%d\r\n", frame->id);
@@ -168,7 +183,142 @@ void transmitFrame(FrameTableEntry* frame) {
 	print("Done\r\n");
 }
 
+
+inline int colorMatch(short pixel, int dh, int ds, int dv) {
+	int h = (pixel >> 10) & 0x3F;
+	//int s = (pixel >> 5) & 0x1F;
+	int v = pixel & 0x1F;
+
+	//int hdiff = h - dh;
+	//if (hdiff < 0) hdiff *= -1;
+	return (abs(h-dh) < 6 && v > 15); //|| v > 27;
+}
+
+char* pixelsChecked = (char*)CHECKED_LOC;
+//char* pixelsChecked;
+Stack toCheckMem;
+Stack* toCheck = &toCheckMem;
+//#define STACK_MEM_SIZE  15000
+//void* stackMem[STACK_MEM_SIZE];
+
+inline void* cTp(int x, int y) {
+	return (void*)(x << 16 | y);
+}
+inline int pTx(void *p) {
+	return ((int)p) >> 16;
+}
+inline int pTy(void *p) {
+	return ((int)p) & 0xFFFF;
+}
+
+/*
+inline int getH(int pixel) {
+	return (pixel >> 10) & 0x3F;
+}
+inline int getS(int pixel) {
+	return (pixel >> 5) & 0x1F;
+}
+inline int getV(int pixel) {
+	return pixel & 0x1F;
+}
+*/
+
+/*
+Flood-fill (node, target-color, replacement-color):
+ 1. Set Q to the empty queue.
+ 2. Add node to the end of Q.
+ 4. While Q is not empty:
+ 5.     Set n equal to the last element of Q.
+ 7.     Remove last element from Q.
+ 8.     If the color of n is equal to target-color:
+ 9.         Set the color of n to replacement-color.
+ 10.        Add west node to end of Q.
+ 11.        Add east node to end of Q.
+ 12.        Add north node to end of Q.
+ 13.        Add south node to end of Q.
+ 14. Return.
+ */
+
+void floodFill(ushort *pixels, int xStart, int yStart) {
+	if (*numBlobs >= MAX_BLOBS) return;
+
+	StackClear(toCheck);
+	StackPush(toCheck, cTp(xStart,yStart));
+	int xMin = 100000;
+	int xMax = 0;
+	int yMin = 100000;
+	int yMax = 0;
+
+	while (!StackIsEmpty(toCheck)) {
+		void* point = StackPop(toCheck);
+		int x = pTx(point);
+		int y = pTy(point);
+		//xil_printf("x: %d, y:%d\r\n", x, y);
+
+		if (pixelsChecked[y * IMAGE_WIDTH + x]) continue;
+		pixelsChecked[y * IMAGE_WIDTH + x] = 1;
+
+		short pixel = pixels[y * IMAGE_WIDTH + x];
+		if (colorMatch(pixel, TARGET_COLOR)) {
+			if (x < xMin) xMin = x;
+			if (x > xMax) xMax = x;
+			if (y < yMin) yMin = y;
+			if (y > yMax) yMax = y;
+
+			StackPush(toCheck, cTp(x+2,y));
+			StackPush(toCheck, cTp(x-2,y));
+			StackPush(toCheck, cTp(x,y+2));
+			StackPush(toCheck, cTp(x,y-2));
+		}
+	}
+
+	//creat blob
+	blobBuf[*numBlobs].type = 0;
+	blobBuf[*numBlobs].left = xMin;
+	blobBuf[*numBlobs].top = yMin;
+	blobBuf[*numBlobs].width = xMax - xMin;
+	blobBuf[*numBlobs].height = yMax - yMin;
+	(*numBlobs)++;
+}
+
 void processFrame(FrameTableEntry* frame) {
+	ushort *pixels = frame->frame_address[VISION_FRAME_RGB565]->data.data16;
+	memset(pixelsChecked, 0, CHECKED_SIZE);
+
+	//xil_printf("pixelsChecked: %0x", pixelsChecked);
+	//xil_printf("pixelsCheckedSize: %d", CHECKED_SIZE);
+	//xil_printf("pixelsCheckedEnd: %0x", pixelsChecked + CHECKED_SIZE);
+
+	//optimization : init the stack once
+	StackInit(toCheck, (void**)FILL_STACK_LOC, FILL_STACK_SIZE);
+	//StackInit(toCheck, stackMem, STACK_MEM_SIZE);
+
+	*numBlobs = 0;
+
+
+	int x, y;
+	for (x = 0; x < IMAGE_WIDTH; x += 10) {
+		for (y = 0; y < IMAGE_HEIGHT; y += 10) {
+			short pixel = pixels[y * IMAGE_WIDTH + x];
+			if (colorMatch(pixel, TARGET_COLOR)) {
+				if (*numBlobs >= MAX_BLOBS) continue;
+				if (pixelsChecked[y * IMAGE_WIDTH + x]) continue;
+				floodFill(pixels, x, y);
+
+
+				/*
+				blobBuf[*numBlobs].type = 0;
+				blobBuf[*numBlobs].left = x - 5;
+				blobBuf[*numBlobs].top = y - 5;
+				blobBuf[*numBlobs].width = 10;
+				blobBuf[*numBlobs].height = 10;
+
+				(*numBlobs)++;
+				*/
+			}
+		}
+	}
+
 	transmitFrame(frame);
 }
 
@@ -252,6 +402,7 @@ int main()
 		FrameTableEntry* frame = NULL;
 
 		//process frames
+		//print("checking out frame\r\n");
 		frame = FT_CheckOutFrame();
 		if (frame == NULL) {
 			//print("Null frame!\r\n");

@@ -80,11 +80,12 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="xilinx.gnu.ppc.exe.debug.2139582870.1900232491" name="Stack.h" rcbsApplicability="disable" resourcePath="DataTypes/Stack.h" toolsToInvoke=""/>
 					<sourceEntries>
 						<entry excluding="DataTypes|Vision|plb_usb_v1_00_a|plb_vision_v1_00_a|common" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry excluding="ServoControl.c|ServoControl.h|Wireless.c|Wireless.h|Flash.c|Flash.h|MemoryTest.c|MemoryTest.h|Serial.c|Serial.h" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="common"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="DataTypes"/>
+						<entry excluding="ServoControl.c|ServoControl.h|Wireless.c|Wireless.h|Flash.c|Flash.h|MemoryTest.c|MemoryTest.h|Serial.c|Serial.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="common"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="plb_usb_v1_00_a"/>
-						<entry excluding="Stack.c|Stack.h" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="DataTypes"/>
 						<entry excluding="src_garret_vision|plb_vision_v1_00_a/src_new|plb_vision_v1_00_a/src_garret_vision|plb_vision_v1_00_a/src_old|src_new|src_old" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="plb_vision_v1_00_a"/>
 					</sourceEntries>
 				</configuration>

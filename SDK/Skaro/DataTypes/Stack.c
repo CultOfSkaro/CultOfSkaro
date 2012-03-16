@@ -114,8 +114,10 @@ void* StackPop(Stack* stack)
 */
 int StackPush(Stack* stack, void* data) 
 {
-	if(stack->top == stack->size - 1) 
+	if(stack->top == stack->size - 1) {
+		print("Stack Overflow!!!\r\n");
 		return FALSE;
+	}
 	
 	++stack->top;
 

@@ -34,6 +34,7 @@
             this.btnStop = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblFps = new System.Windows.Forms.Label();
+            this.lblHsv = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,6 +87,7 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             // 
             // lblFps
             // 
@@ -96,11 +98,21 @@
             this.lblFps.TabIndex = 5;
             this.lblFps.Text = "fps:";
             // 
+            // lblHsv
+            // 
+            this.lblHsv.AutoSize = true;
+            this.lblHsv.Location = new System.Drawing.Point(213, 13);
+            this.lblHsv.Name = "lblHsv";
+            this.lblHsv.Size = new System.Drawing.Size(24, 13);
+            this.lblHsv.TabIndex = 6;
+            this.lblHsv.Text = "hsv";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 628);
+            this.Controls.Add(this.lblHsv);
             this.Controls.Add(this.lblFps);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnStop);
@@ -126,6 +138,7 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblFps;
+        private System.Windows.Forms.Label lblHsv;
     }
 }
 
