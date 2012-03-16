@@ -21,5 +21,8 @@ typedef struct
 
 void gyroCalculation(int gyroInput, int velocityBack);
 void encoderBackToFrontCorrections();
+int distanceBackToFront(int distance);
+int absDistanceFromArchDistCuvrature(float curvature, int archDistance);
+void dubin_curves_math(int distance, float bearing);
 
 #endif

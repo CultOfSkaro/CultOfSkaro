@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "serial_uart_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -253,7 +253,7 @@ Entity <uartlite_core> (Architecture <imp>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/xps_uartlite_v1_02_a/hdl/vhdl/xps_uartlite.vhd" in Library xps_uartlite_v1_02_a.
 Entity <xps_uartlite> compiled.
 Entity <xps_uartlite> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/serial_uart_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/serial_uart_wrapper.vhd" in Library work.
 Entity <serial_uart_wrapper> compiled.
 Entity <serial_uart_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -272,9 +272,9 @@ Analyzing hierarchy for entity <xps_uartlite> in library <xps_uartlite_v1_02_a> 
 	C_SPLB_AWIDTH = 32
 	C_SPLB_CLK_FREQ_HZ = 100000000
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
+	C_SPLB_MID_WIDTH = 1
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 	C_SPLB_SUPPORT_BURSTS = 0
 	C_USE_PARITY = 0
@@ -297,8 +297,8 @@ Analyzing hierarchy for entity <plbv46_slave_single> in library <plbv46_slave_si
 	C_SIPIF_DWIDTH = 32
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 
 Analyzing hierarchy for entity <baudrate> in library <xps_uartlite_v1_02_a> (architecture <imp>) with generics.
@@ -326,8 +326,8 @@ Analyzing hierarchy for entity <plb_slave_attachment> in library <plbv46_slave_s
 	C_INCLUDE_DPHASE_TIMER = 1
 	C_IPIF_ABUS_WIDTH = 32
 	C_IPIF_DBUS_WIDTH = 32
-	C_PLB_MID_WIDTH = 2
-	C_PLB_NUM_MASTERS = 4
+	C_PLB_MID_WIDTH = 1
+	C_PLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 
 Analyzing hierarchy for entity <dynshreg_i_f> in library <proc_common_v3_00_a> (architecture <behavioral>) with generics.
@@ -447,9 +447,9 @@ Analyzing generic Entity <xps_uartlite> in library <xps_uartlite_v1_02_a> (Archi
 	C_SPLB_AWIDTH = 32
 	C_SPLB_CLK_FREQ_HZ = 100000000
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
+	C_SPLB_MID_WIDTH = 1
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 	C_SPLB_SUPPORT_BURSTS = 0
 	C_USE_PARITY = 0
@@ -557,8 +557,8 @@ Analyzing generic Entity <plbv46_slave_single> in library <plbv46_slave_single_v
 	C_SIPIF_DWIDTH = 32
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 Entity <plbv46_slave_single> analyzed. Unit <plbv46_slave_single> generated.
 
@@ -572,8 +572,8 @@ Analyzing generic Entity <plb_slave_attachment> in library <plbv46_slave_single_
 	C_INCLUDE_DPHASE_TIMER = 1
 	C_IPIF_ABUS_WIDTH = 32
 	C_IPIF_DBUS_WIDTH = 32
-	C_PLB_MID_WIDTH = 2
-	C_PLB_NUM_MASTERS = 4
+	C_PLB_MID_WIDTH = 1
+	C_PLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 WARNING:Xst:753 - "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_slave_single_v1_01_a/hdl/vhdl/plb_slave_attachment.vhd" line 1201: Unconnected output port 'Count_Out' of component 'counter_f'.
 Entity <plb_slave_attachment> analyzed. Unit <plb_slave_attachment> generated.
@@ -805,10 +805,10 @@ WARNING:Xst:1780 - Signal <clear_rd_ce> is never used or assigned. This unconnec
     Found 4-bit register for signal <bus2ip_be_i>.
     Found 1-bit register for signal <bus2ip_rnw_i>.
     Found 1-bit register for signal <data_timeout>.
-    Found 2-bit register for signal <master_id>.
+    Found 1-bit register for signal <master_id<31>>.
     Found 32-bit register for signal <plb_abus_reg>.
     Found 4-bit register for signal <plb_be_reg>.
-    Found 2-bit register for signal <plb_masterid_reg>.
+    Found 1-bit register for signal <plb_masterid_reg<0>>.
     Found 1-bit register for signal <plb_pavalid_reg>.
     Found 1-bit register for signal <plb_rnw_reg>.
     Found 4-bit register for signal <plb_size_reg>.
@@ -817,14 +817,14 @@ WARNING:Xst:1780 - Signal <clear_rd_ce> is never used or assigned. This unconnec
     Found 1-bit register for signal <rd_clear_sl_busy>.
     Found 1-bit register for signal <set_sl_busy>.
     Found 1-bit register for signal <sl_busy>.
-    Found 4-bit register for signal <sl_mbusy_i>.
-    Found 4-bit register for signal <sl_mrderr_i>.
-    Found 4-bit register for signal <sl_mwrerr_i>.
+    Found 2-bit register for signal <sl_mbusy_i>.
+    Found 2-bit register for signal <sl_mrderr_i>.
+    Found 2-bit register for signal <sl_mwrerr_i>.
     Found 32-bit register for signal <sl_rddbus_i>.
     Found 1-bit register for signal <sl_rearbitrate_i>.
     Found 1-bit register for signal <sl_wrcomp_i>.
     Summary:
-	inferred 170 D-type flip-flop(s).
+	inferred 162 D-type flip-flop(s).
 Unit <plb_slave_attachment> synthesized.
 
 
@@ -911,7 +911,7 @@ Unit <xps_uartlite> synthesized.
 
 
 Synthesizing Unit <serial_uart_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/serial_uart_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/serial_uart_wrapper.vhd".
 Unit <serial_uart_wrapper> synthesized.
 
 
@@ -924,9 +924,8 @@ Macro Statistics
 # Counters                                             : 2
  3-bit down counter                                    : 1
  6-bit down counter                                    : 1
-# Registers                                            : 164
- 1-bit register                                        : 120
- 2-bit register                                        : 2
+# Registers                                            : 158
+ 1-bit register                                        : 116
  3-bit register                                        : 1
  32-bit register                                       : 4
  4-bit register                                        : 4
@@ -977,8 +976,8 @@ Macro Statistics
 # Counters                                             : 2
  3-bit down counter                                    : 1
  6-bit down counter                                    : 1
-# Registers                                            : 240
- Flip-Flops                                            : 240
+# Registers                                            : 232
+ Flip-Flops                                            : 232
 # Shift Registers                                      : 19
  16-bit dynamic shift register                         : 19
 # Comparators                                          : 2
@@ -1096,8 +1095,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 152
- Flip-Flops                                            : 152
+# Registers                                            : 144
+ Flip-Flops                                            : 144
 
 =========================================================================
 
@@ -1122,18 +1121,18 @@ Optimization Goal                  : speed
 Keep Hierarchy                     : no
 
 Design Statistics
-# IOs                              : 281
+# IOs                              : 272
 
 Cell Usage :
-# BELS                             : 161
+# BELS                             : 154
 #      GND                         : 1
 #      INV                         : 4
-#      LUT2                        : 20
+#      LUT2                        : 23
 #      LUT2_L                      : 2
-#      LUT3                        : 34
+#      LUT3                        : 31
 #      LUT3_D                      : 6
-#      LUT3_L                      : 2
-#      LUT4                        : 55
+#      LUT3_L                      : 1
+#      LUT4                        : 49
 #      LUT4_D                      : 5
 #      LUT4_L                      : 1
 #      MUXCY                       : 8
@@ -1141,10 +1140,10 @@ Cell Usage :
 #      MUXF5                       : 2
 #      VCC                         : 1
 #      XORCY                       : 10
-# FlipFlops/Latches                : 152
-#      FD                          : 16
-#      FDR                         : 79
-#      FDRE                        : 26
+# FlipFlops/Latches                : 144
+#      FD                          : 12
+#      FDR                         : 78
+#      FDRE                        : 23
 #      FDRS                        : 2
 #      FDS                         : 25
 #      FDSE                        : 4
@@ -1157,12 +1156,12 @@ Device utilization summary:
 
 Selected Device : 4vfx60ff672-11 
 
- Number of Slices:                      116  out of  25280     0%  
- Number of Slice Flip Flops:            152  out of  50560     0%  
- Number of 4 input LUTs:                148  out of  50560     0%  
-    Number used as logic:               129
+ Number of Slices:                      110  out of  25280     0%  
+ Number of Slice Flip Flops:            144  out of  50560     0%  
+ Number of 4 input LUTs:                141  out of  50560     0%  
+    Number used as logic:               122
     Number used as Shift registers:      19
- Number of IOs:                         281
+ Number of IOs:                         272
  Number of bonded IOBs:                   0  out of    352     0%  
 
 ---------------------------
@@ -1186,7 +1185,7 @@ Clock Information:
 -----------------------------------+----------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                          | Load  |
 -----------------------------------+----------------------------------------------------------------+-------+
-SPLB_Clk                           | NONE(serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/I_DECODER/rnw_s_h)| 171   |
+SPLB_Clk                           | NONE(serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/I_DECODER/rnw_s_h)| 163   |
 -----------------------------------+----------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -1199,7 +1198,7 @@ Timing Summary:
 Speed Grade: -11
 
    Minimum period: 3.832ns (Maximum Frequency: 260.960MHz)
-   Minimum input arrival time before clock: 2.341ns
+   Minimum input arrival time before clock: 2.328ns
    Maximum output required time after clock: 0.307ns
    Maximum combinational path delay: No path found
 
@@ -1210,7 +1209,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'SPLB_Clk'
   Clock period: 3.832ns (frequency: 260.960MHz)
-  Total number of paths / destination ports: 1491 / 291
+  Total number of paths / destination ports: 1404 / 281
 -------------------------------------------------------------------------
 Delay:               3.832ns (Levels of Logic = 1)
   Source:            serial_uart/UARTLITE_CORE_I/UARTLITE_RX_I/Mshreg_sample_Point_0 (FF)
@@ -1231,9 +1230,9 @@ Delay:               3.832ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'SPLB_Clk'
-  Total number of paths / destination ports: 163 / 163
+  Total number of paths / destination ports: 154 / 154
 -------------------------------------------------------------------------
-Offset:              2.341ns (Levels of Logic = 2)
+Offset:              2.328ns (Levels of Logic = 2)
   Source:            SPLB_Rst (PAD)
   Destination:       serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_0 (FF)
   Destination Clock: SPLB_Clk rising
@@ -1242,16 +1241,16 @@ Offset:              2.341ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LUT4_D:I0->O          3   0.166   0.465  serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_0_or000021 (serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/N4)
-     LUT3:I2->O            1   0.166   0.313  serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_0_or00001 (serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_0_or0000)
+     LUT4_D:I0->O          1   0.166   0.452  serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_0_or000021 (serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/N5)
+     LUT2:I1->O            1   0.166   0.313  serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_0_or00001 (serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_0_or0000)
      FDR:R                     0.906          serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_0
     ----------------------------------------
-    Total                      2.341ns (1.563ns logic, 0.778ns route)
-                                       (66.8% logic, 33.2% route)
+    Total                      2.328ns (1.563ns logic, 0.765ns route)
+                                       (67.1% logic, 32.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'SPLB_Clk'
-  Total number of paths / destination ports: 36 / 36
+  Total number of paths / destination ports: 30 / 30
 -------------------------------------------------------------------------
 Offset:              0.307ns (Levels of Logic = 0)
   Source:            serial_uart/PLBV46_I/I_SLAVE_ATTACHMENT/sl_rearbitrate_i (FF)
@@ -1271,11 +1270,11 @@ Offset:              0.307ns (Levels of Logic = 0)
 
 
 Total REAL time to Xst completion: 65.00 secs
-Total CPU time to Xst completion: 65.06 secs
+Total CPU time to Xst completion: 64.66 secs
  
 --> 
 
-Total memory usage is 669500 kilobytes
+Total memory usage is 669308 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  169 (   0 filtered)

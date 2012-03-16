@@ -53,6 +53,8 @@
 
   <RENDERIMG RASNAME="C:\RobotRacers\CultOfSkaro\hardware\SDK\SDK_Export\hw\imgs\gameboard_uart.jpg" SVGNAME="C:\RobotRacers\CultOfSkaro\hardware\SDK\SDK_Export\hw\imgs\gameboard_uart.svg" TMPSVGFN="C:\RobotRacers\CultOfSkaro\hardware\__xps\.dswkshop\gameboard_uart.svg"/>
 
+  <RENDERIMG RASNAME="C:\RobotRacers\CultOfSkaro\hardware\SDK\SDK_Export\hw\imgs\xps_intc_1.jpg" SVGNAME="C:\RobotRacers\CultOfSkaro\hardware\SDK\SDK_Export\hw\imgs\xps_intc_1.svg" TMPSVGFN="C:\RobotRacers\CultOfSkaro\hardware\__xps\.dswkshop\xps_intc_1.svg"/>
+
   <RENDERIMG RASNAME="C:\RobotRacers\CultOfSkaro\hardware\SDK\SDK_Export\hw\imgs\system_blkd.jpg" SVGNAME="C:\RobotRacers\CultOfSkaro\hardware\SDK\SDK_Export\hw\imgs\system_blkd.svg" TMPSVGFN="C:\RobotRacers\CultOfSkaro\hardware\__xps\.dswkshop\system_blkd.svg"/>
 
 </RENDERBATCH>

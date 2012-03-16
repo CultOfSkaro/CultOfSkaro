@@ -271,11 +271,11 @@ Analyzing hierarchy for entity <xps_bram_if_cntlr> in library <xps_bram_if_cntlr
 	C_HIGHADDR = "11111111111111111111111111111111"
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 1
+	C_SPLB_MID_WIDTH = 2
 	C_SPLB_NATIVE_DWIDTH = 64
-	C_SPLB_NUM_MASTERS = 2
+	C_SPLB_NUM_MASTERS = 4
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 64
+	C_SPLB_SMALLEST_MASTER = 32
 	C_SPLB_SUPPORT_BURSTS = 1
 
 Analyzing hierarchy for entity <xbic_slave_attach_burst> in library <xps_bram_if_cntlr_v1_00_b> (architecture <implementation>) with generics.
@@ -285,11 +285,11 @@ Analyzing hierarchy for entity <xbic_slave_attach_burst> in library <xps_bram_if
 	C_FAMILY = "virtex4"
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 1
+	C_SPLB_MID_WIDTH = 2
 	C_SPLB_NATIVE_DWIDTH = 64
-	C_SPLB_NUM_MASTERS = 2
+	C_SPLB_NUM_MASTERS = 4
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 64
+	C_SPLB_SMALLEST_MASTER = 32
 
 Analyzing hierarchy for entity <xbic_addr_be_support> in library <xps_bram_if_cntlr_v1_00_b> (architecture <implementation>) with generics.
 	C_SPLB_AWIDTH = 32
@@ -308,21 +308,21 @@ Analyzing hierarchy for entity <xbic_addr_cntr> in library <xps_bram_if_cntlr_v1
 	C_CACHLINE_ADDR_MODE = 0
 	C_NATIVE_DWIDTH = 64
 	C_PLB_AWIDTH = 32
-	C_SMALLEST_MASTER = 64
+	C_SMALLEST_MASTER = 32
 
 Analyzing hierarchy for entity <xbic_dbeat_control> in library <xps_bram_if_cntlr_v1_00_b> (architecture <implementation>) with generics.
 	C_FAMILY = "virtex4"
 	C_NATIVE_DWIDTH = 64
 
 Analyzing hierarchy for entity <xbic_data_steer_mirror> in library <xps_bram_if_cntlr_v1_00_b> (architecture <implementation>) with generics.
-	C_SMALLEST_MASTER = 64
+	C_SMALLEST_MASTER = 32
 	C_SPLB_DWIDTH = 64
 	C_SPLB_NATIVE_DWIDTH = 64
 	C_STEER_ADDR_WIDTH = 6
 
 Analyzing hierarchy for entity <xbic_be_reset_gen> in library <xps_bram_if_cntlr_v1_00_b> (architecture <implementation>) with generics.
 	C_NATIVE_DWIDTH = 64
-	C_SMALLEST = 64
+	C_SMALLEST = 32
 
 Analyzing hierarchy for entity <counter_f> in library <proc_common_v3_00_a> (architecture <imp>) with generics.
 	C_FAMILY = "virtex4"
@@ -347,11 +347,11 @@ Analyzing generic Entity <xps_bram_if_cntlr> in library <xps_bram_if_cntlr_v1_00
 	C_HIGHADDR = "11111111111111111111111111111111"
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 1
+	C_SPLB_MID_WIDTH = 2
 	C_SPLB_NATIVE_DWIDTH = 64
-	C_SPLB_NUM_MASTERS = 2
+	C_SPLB_NUM_MASTERS = 4
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 64
+	C_SPLB_SMALLEST_MASTER = 32
 	C_SPLB_SUPPORT_BURSTS = 1
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
@@ -364,11 +364,11 @@ Analyzing generic Entity <xbic_slave_attach_burst> in library <xps_bram_if_cntlr
 	C_FAMILY = "virtex4"
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 1
+	C_SPLB_MID_WIDTH = 2
 	C_SPLB_NATIVE_DWIDTH = 64
-	C_SPLB_NUM_MASTERS = 2
+	C_SPLB_NUM_MASTERS = 4
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 64
+	C_SPLB_SMALLEST_MASTER = 32
     Set user-defined property "INIT =  0" for instance <I_FLOP_REARB> in unit <xbic_slave_attach_burst>.
     Set user-defined property "INIT =  0" for instance <I_FLOP_ADDRACK> in unit <xbic_slave_attach_burst>.
     Set user-defined property "INIT =  0" for instance <I_FLOP_SET_SLBUSY> in unit <xbic_slave_attach_burst>.
@@ -403,13 +403,13 @@ Analyzing generic Entity <xbic_addr_cntr> in library <xps_bram_if_cntlr_v1_00_b>
 	C_CACHLINE_ADDR_MODE = 0
 	C_NATIVE_DWIDTH = 64
 	C_PLB_AWIDTH = 32
-	C_SMALLEST_MASTER = 64
+	C_SMALLEST_MASTER = 32
 INFO:Xst:2679 - Register <qwdwrds_s_h> in unit <xbic_addr_cntr> has a constant value of 0 during circuit operation. The register is replaced by logic.
 Entity <xbic_addr_cntr> analyzed. Unit <xbic_addr_cntr> generated.
 
 Analyzing generic Entity <xbic_be_reset_gen> in library <xps_bram_if_cntlr_v1_00_b> (Architecture <implementation>).
 	C_NATIVE_DWIDTH = 64
-	C_SMALLEST = 64
+	C_SMALLEST = 32
 Entity <xbic_be_reset_gen> analyzed. Unit <xbic_be_reset_gen> generated.
 
 Analyzing generic Entity <xbic_dbeat_control> in library <xps_bram_if_cntlr_v1_00_b> (Architecture <implementation>).
@@ -441,7 +441,7 @@ WARNING:Xst:2211 - "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/pro
 Entity <counter_f> analyzed. Unit <counter_f> generated.
 
 Analyzing generic Entity <xbic_data_steer_mirror> in library <xps_bram_if_cntlr_v1_00_b> (Architecture <implementation>).
-	C_SMALLEST_MASTER = 64
+	C_SMALLEST_MASTER = 32
 	C_SPLB_DWIDTH = 64
 	C_SPLB_NATIVE_DWIDTH = 64
 	C_STEER_ADDR_WIDTH = 6
@@ -482,8 +482,7 @@ Unit <xbic_data_steer_mirror> synthesized.
 
 Synthesizing Unit <xbic_be_reset_gen>.
     Related source file is "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/xps_bram_if_cntlr_v1_00_b/hdl/vhdl/xbic_be_reset_gen.vhd".
-WARNING:Xst:647 - Input <Addr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <MSize> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <Addr<0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 Unit <xbic_be_reset_gen> synthesized.
 
 
@@ -565,17 +564,17 @@ WARNING:Xst:1780 - Signal <bus2ip_rnw_i> is never used or assigned. This unconne
     Found 1-bit register for signal <doing_flburst_reg>.
     Found 1-bit register for signal <doing_single_reg>.
     Found 1-bit register for signal <sig_force_wrbterm>.
-    Found 1-bit register for signal <sig_mst_id<0>>.
+    Found 2-bit register for signal <sig_mst_id>.
     Found 64-bit register for signal <sig_rd_dreg>.
     Found 1-bit register for signal <sig_rd_req_reg>.
     Found 1-bit register for signal <sig_sl_busy>.
     Found 6-bit register for signal <sig_steer_addr_reg>.
     Found 64-bit register for signal <sig_wr_dreg>.
     Found 1-bit register for signal <sig_wr_req_reg>.
-    Found 2-bit register for signal <sl_mbusy_i>.
+    Found 4-bit register for signal <sl_mbusy_i>.
     Found 3-bit register for signal <sl_rdwdaddr_i<1:3>>.
     Summary:
-	inferred 148 D-type flip-flop(s).
+	inferred 151 D-type flip-flop(s).
 Unit <xbic_slave_attach_burst> synthesized.
 
 
@@ -620,9 +619,9 @@ Macro Statistics
 # Adders/Subtractors                                   : 2
  32-bit adder                                          : 1
  5-bit adder                                           : 1
-# Registers                                            : 36
- 1-bit register                                        : 25
- 2-bit register                                        : 2
+# Registers                                            : 38
+ 1-bit register                                        : 26
+ 2-bit register                                        : 3
  32-bit register                                       : 1
  4-bit register                                        : 1
  5-bit register                                        : 3
@@ -655,8 +654,8 @@ Macro Statistics
  5-bit adder                                           : 1
 # Accumulators                                         : 1
  32-bit up loadable accumulator                        : 1
-# Registers                                            : 205
- Flip-Flops                                            : 205
+# Registers                                            : 208
+ Flip-Flops                                            : 208
 # Comparators                                          : 1
  4-bit comparator equal                                : 1
 
@@ -669,10 +668,7 @@ WARNING:Xst:1710 - FF/Latch <flbrst_inc_value_s_h_3> (without init value) has a 
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <flbrst_inc_value_s_h_2> (without init value) has a constant value of 0 in block <xbic_addr_cntr>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cline_inc_value_s_h_3> (without init value) has a constant value of 0 in block <xbic_addr_cntr>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cline_inc_value_s_h_2> (without init value) has a constant value of 0 in block <xbic_addr_cntr>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <sig_addr_4_3_s_h_1> of sequential type is unconnected in block <xbic_addr_cntr>.
 WARNING:Xst:2677 - Node <sig_addr_4_3_s_h_0> of sequential type is unconnected in block <xbic_addr_cntr>.
-WARNING:Xst:2677 - Node <msize_s_h_1> of sequential type is unconnected in block <xbic_addr_cntr>.
-WARNING:Xst:2677 - Node <msize_s_h_0> of sequential type is unconnected in block <xbic_addr_cntr>.
 WARNING:Xst:2677 - Node <sig_steer_addr_reg_5> of sequential type is unconnected in block <xbic_slave_attach_burst>.
 WARNING:Xst:2677 - Node <sig_steer_addr_reg_4> of sequential type is unconnected in block <xbic_slave_attach_burst>.
 WARNING:Xst:2677 - Node <sig_steer_addr_reg_0> of sequential type is unconnected in block <xbic_slave_attach_burst>.
@@ -702,8 +698,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 224
- Flip-Flops                                            : 224
+# Registers                                            : 230
+ Flip-Flops                                            : 230
 
 =========================================================================
 
@@ -728,28 +724,28 @@ Optimization Goal                  : speed
 Keep Hierarchy                     : no
 
 Design Statistics
-# IOs                              : 440
+# IOs                              : 449
 
 Cell Usage :
-# BELS                             : 294
+# BELS                             : 298
 #      GND                         : 1
 #      INV                         : 2
 #      LUT1                        : 4
-#      LUT2                        : 19
+#      LUT2                        : 17
 #      LUT2_D                      : 1
 #      LUT2_L                      : 1
-#      LUT3                        : 56
-#      LUT4                        : 96
+#      LUT3                        : 60
+#      LUT4                        : 98
 #      MULT_AND                    : 31
 #      MUXCY                       : 31
 #      MUXCY_L                     : 6
 #      MUXF5                       : 8
 #      VCC                         : 1
 #      XORCY                       : 37
-# FlipFlops/Latches                : 224
+# FlipFlops/Latches                : 230
 #      FDR                         : 67
-#      FDRE                        : 153
-#      FDRSE                       : 4
+#      FDRE                        : 157
+#      FDRSE                       : 6
 =========================================================================
 
 Device utilization summary:
@@ -757,10 +753,10 @@ Device utilization summary:
 
 Selected Device : 4vfx60ff672-11 
 
- Number of Slices:                      143  out of  25280     0%  
- Number of Slice Flip Flops:            224  out of  50560     0%  
- Number of 4 input LUTs:                179  out of  50560     0%  
- Number of IOs:                         440
+ Number of Slices:                      148  out of  25280     0%  
+ Number of Slice Flip Flops:            230  out of  50560     0%  
+ Number of 4 input LUTs:                183  out of  50560     0%  
+ Number of IOs:                         449
  Number of bonded IOBs:                   0  out of    352     0%  
 
 ---------------------------
@@ -784,7 +780,7 @@ Clock Information:
 -----------------------------------+------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                              | Load  |
 -----------------------------------+------------------------------------------------------------------------------------+-------+
-BRAM_Clk                           | NONE(xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_rd_req_reg)| 224   |
+BRAM_Clk                           | NONE(xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_rd_req_reg)| 230   |
 -----------------------------------+------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -796,9 +792,9 @@ Timing Summary:
 ---------------
 Speed Grade: -11
 
-   Minimum period: 4.649ns (Maximum Frequency: 215.081MHz)
-   Minimum input arrival time before clock: 4.054ns
-   Maximum output required time after clock: 2.719ns
+   Minimum period: 4.674ns (Maximum Frequency: 213.968MHz)
+   Minimum input arrival time before clock: 4.139ns
+   Maximum output required time after clock: 2.764ns
    Maximum combinational path delay: 0.000ns
 
 Timing Detail:
@@ -807,21 +803,21 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'BRAM_Clk'
-  Clock period: 4.649ns (frequency: 215.081MHz)
-  Total number of paths / destination ports: 6543 / 416
+  Clock period: 4.674ns (frequency: 213.968MHz)
+  Total number of paths / destination ports: 6565 / 427
 -------------------------------------------------------------------------
-Delay:               4.649ns (Levels of Logic = 33)
-  Source:            xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_sl_busy (FF)
+Delay:               4.674ns (Levels of Logic = 33)
+  Source:            xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_FLOP_SET_SLBUSY (FF)
   Destination:       xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/sig_addr_cntr_0 (FF)
   Source Clock:      BRAM_Clk rising
   Destination Clock: BRAM_Clk rising
 
-  Data Path: xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_sl_busy to xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/sig_addr_cntr_0
+  Data Path: xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_FLOP_SET_SLBUSY to xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/sig_addr_cntr_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             5   0.307   0.613  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_sl_busy (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_sl_busy)
-     LUT4:I1->O           71   0.166   1.078  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_init_db_cntr1 (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_init_db_cntr)
+     FDRE:C->Q            11   0.307   0.627  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_FLOP_SET_SLBUSY (Sl_SSize<1>)
+     LUT4:I2->O           74   0.166   1.089  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_init_db_cntr1 (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_init_db_cntr)
      LUT3:I2->O            1   0.166   0.452  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Bus_Addr_in<29>1 (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Bus_Addr_in<29>1)
      LUT3:I2->O            1   0.166   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_lut<2> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_lut<2>)
      MUXCY:S->O            1   0.312   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<2> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<2>)
@@ -856,80 +852,52 @@ Delay:               4.649ns (Levels of Logic = 33)
      XORCY:CI->O           1   0.307   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_xor<31> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Result<31>)
      FDRE:D                    0.018          xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/sig_addr_cntr_0
     ----------------------------------------
-    Total                      4.649ns (2.506ns logic, 2.143ns route)
-                                       (53.9% logic, 46.1% route)
+    Total                      4.674ns (2.506ns logic, 2.168ns route)
+                                       (53.6% logic, 46.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'BRAM_Clk'
-  Total number of paths / destination ports: 3628 / 504
+  Total number of paths / destination ports: 3709 / 518
 -------------------------------------------------------------------------
-Offset:              4.054ns (Levels of Logic = 33)
-  Source:            PLB_PAValid (PAD)
-  Destination:       xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/sig_addr_cntr_0 (FF)
+Offset:              4.139ns (Levels of Logic = 5)
+  Source:            PLB_size<0> (PAD)
+  Destination:       xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_DBEAT_CONTROL/dbeat_cnt_almst_done (FF)
   Destination Clock: BRAM_Clk rising
 
-  Data Path: PLB_PAValid to xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/sig_addr_cntr_0
+  Data Path: PLB_size<0> to xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_DBEAT_CONTROL/dbeat_cnt_almst_done
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LUT4:I0->O           71   0.166   1.078  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_init_db_cntr1 (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/sig_init_db_cntr)
-     LUT3:I2->O            1   0.166   0.452  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Bus_Addr_in<29>1 (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Bus_Addr_in<29>1)
-     LUT3:I2->O            1   0.166   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_lut<2> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_lut<2>)
-     MUXCY:S->O            1   0.312   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<2> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<2>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<3> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<3>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<4> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<4>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<5> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<5>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<6> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<6>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<7> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<7>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<8> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<8>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<9> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<9>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<10> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<10>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<11> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<11>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<12> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<12>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<13> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<13>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<14> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<14>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<15> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<15>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<16> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<16>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<17> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<17>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<18> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<18>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<19> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<19>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<20> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<20>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<21> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<21>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<22> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<22>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<23> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<23>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<24> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<24>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<25> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<25>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<26> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<26>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<27> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<27>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<28> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<28>)
-     MUXCY:CI->O           1   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<29> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<29>)
-     MUXCY:CI->O           0   0.038   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<30> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_cy<30>)
-     XORCY:CI->O           1   0.307   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Maccum_sig_addr_cntr_xor<31> (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/Result<31>)
-     FDRE:D                    0.018          xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/sig_addr_cntr_0
+     LUT4:I0->O            7   0.166   0.554  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/burst_transfer_or00001 (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/burst_transfer)
+     LUT4:I2->O            3   0.166   0.606  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_DBEAT_CONTROL/Burst_special_case1_and00001 (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_DBEAT_CONTROL/Burst_special_case1)
+     LUT4:I1->O            1   0.166   0.000  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_DBEAT_CONTROL/dbeat_cnt_almst_done_or000138_SW0_G (N50)
+     MUXF5:I1->O           1   0.319   0.452  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_DBEAT_CONTROL/dbeat_cnt_almst_done_or000138_SW0 (N31)
+     LUT3:I2->O            1   0.166   0.313  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_DBEAT_CONTROL/dbeat_cnt_almst_done_or000138 (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_DBEAT_CONTROL/dbeat_cnt_almst_done_or0001)
+     FDRSE:S                   0.906          xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_DBEAT_CONTROL/dbeat_cnt_almst_done
     ----------------------------------------
-    Total                      4.054ns (2.524ns logic, 1.530ns route)
-                                       (62.3% logic, 37.7% route)
+    Total                      4.139ns (2.214ns logic, 1.925ns route)
+                                       (53.5% logic, 46.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'BRAM_Clk'
-  Total number of paths / destination ports: 274 / 183
+  Total number of paths / destination ports: 300 / 185
 -------------------------------------------------------------------------
-Offset:              2.719ns (Levels of Logic = 3)
+Offset:              2.764ns (Levels of Logic = 3)
   Source:            xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/cacheln_4_s_h (FF)
-  Destination:       BRAM_WEN<4> (PAD)
+  Destination:       BRAM_WEN<0> (PAD)
   Source Clock:      BRAM_Clk rising
 
-  Data Path: xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/cacheln_4_s_h to BRAM_WEN<4>
+  Data Path: xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/cacheln_4_s_h to BRAM_WEN<0>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDRE:C->Q             5   0.307   0.658  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/cacheln_4_s_h (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/cacheln_4_s_h)
-     LUT4:I0->O            3   0.166   0.606  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/sig_address_out_29_mux00001 (BRAM_Addr<29>)
-     LUT4:I1->O            4   0.166   0.650  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/BE_out<4>21 (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/N6)
-     LUT4:I0->O            0   0.166   0.000  xps_bram_if_cntlr_1/sig_bram_wr_enable_7_and00001 (BRAM_WEN<7>)
+     LUT4:I0->O            3   0.166   0.651  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/sig_address_out_29_mux00001 (BRAM_Addr<29>)
+     LUT4:I0->O            4   0.166   0.650  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/BE_out<0>21 (xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_ADDR_CNTR/N5)
+     LUT4:I0->O            0   0.166   0.000  xps_bram_if_cntlr_1/sig_bram_wr_enable_3_and00001 (BRAM_WEN<3>)
     ----------------------------------------
-    Total                      2.719ns (0.805ns logic, 1.914ns route)
-                                       (29.6% logic, 70.4% route)
+    Total                      2.764ns (0.805ns logic, 1.959ns route)
+                                       (29.1% logic, 70.9% route)
 
 =========================================================================
 Timing constraint: Default path analysis
@@ -949,14 +917,14 @@ Delay:               0.000ns (Levels of Logic = 0)
 =========================================================================
 
 
-Total REAL time to Xst completion: 31.00 secs
-Total CPU time to Xst completion: 30.81 secs
+Total REAL time to Xst completion: 30.00 secs
+Total CPU time to Xst completion: 29.51 secs
  
 --> 
 
-Total memory usage is 364860 kilobytes
+Total memory usage is 364604 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   97 (   0 filtered)
+Number of warnings :   93 (   0 filtered)
 Number of infos    :    9 (   0 filtered)
 

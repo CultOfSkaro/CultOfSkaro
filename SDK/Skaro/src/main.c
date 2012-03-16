@@ -127,30 +127,6 @@ XUartLite gameboard_uart;
 unsigned char gyro_data[5];
 Scheduler scheduler;
 
-int PIDvel(Xuint32 target, Xuint32 cur){
-	if (cur < (target-5))
-		return 1;
-	else if (cur > (target+10))
-		return 3;
-	else
-		return 7;
-}
-
-void showHelp(){
-	xil_printf("Use the number pad to control the car via Terminal\r\n");
-	xil_printf("8 Increment forward throttle\r\n");
-	xil_printf("4 Steer Left\r\n");
-	xil_printf("5 Center Steering\r\n");
-	xil_printf("6 Steer Right\r\n");
-	xil_printf("2 Increment reverse throttle\r\n");
-	xil_printf("x Fire kill shot\r\n");
-	xil_printf("z Fire pass shot\r\n");
-	xil_printf("s Print truck status\r\n");
-	xil_printf("h Print this help message\r\n");
-	//xil_printf("q Center servos and exit\r\n\r\n");
-}
-
-
 void WirelessSendHandler(void *CallBackRef, unsigned int EventData)
 {
 	unsigned char c;
@@ -227,18 +203,11 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 //		break;
 	case SET_DISTANCE:
 		read(0,word,10);
-		//getWirelessBytes(word, 13);
-
-		//word[11] = 0;
-		//xil_printf("received %s\r\n", word);
-		//print("\r\n");
 		i = atoi(word);
 		setDistance(i);
 		Wireless_Debug("Set distance to ");
 		PrintInt(i);
 		Wireless_Debug("\n\r");
-		//xil_printf("set distance to %d\r\n", i);
-		//Wireless_Debug("set distance to ");
 		break;
 	case SET_STEERING:
 		read(0,&c,1);
@@ -249,16 +218,11 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		break;
 	case SET_MAX_VELOCITY:
 		read(0,word,10);
-		//xil_printf("received %s\r\n", word);
 		i = atoi(word);
-		//setVelocity(i);
 		max_velocity = i;
 		Wireless_Debug("Set velocity to ");
 		PrintInt(i);
 		Wireless_Debug("\n\r");
-		//max_velocity = 3000;
-		//xil_printf("set max velocity to %d\r\n", i);
-		//Wireless_Debug("set max velocity to ");
 		break;
 //	case SET_25_CIRCLE1:
 //		read(0,word,10);
@@ -332,9 +296,10 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 //
 //		break;
 	case 'c':
-		setDistance(0);
 		loop_count = 0;
 		state = STATE_DEFAULT;
+		max_velocity = 0;
+		setDistance(0);
 		break;
 	default:
 		Wireless_Debug("Unknown command received: 0x");
@@ -507,78 +472,80 @@ void control_loop(){
 	int distance;
 	updateDistanceSetVelocity(max_velocity);
 	switch(state) {
-	case STATE_DEFAULT:
-		break;
-	case STATE_FIGURE_EIGHT_LEFT_START:
-		Wireless_Debug("STATE_FIGURE_EIGHT_LEFT_START");
-		if(!loop_count){
-			state = STATE_DEFAULT;
+		case STATE_DEFAULT:
 			break;
-		}
-		SetServo(RC_STR_SERVO, LEFT*26);
-		if(loop_count == 2){
-			setDistance(2*(circle25_ticks1 + circle20_ticks1) - 3*overlap);
-		}
-		loop_count--;
-		state = STATE_FIGURE_EIGHT_LEFT_END;
-		break;
-	case STATE_FIGURE_EIGHT_LEFT_END:
-		if (pid.distanceError < (circle20_ticks1 + circle25_ticks1 + circle20_ticks1 )) {
-			state = STATE_FIGURE_EIGHT_LEFT_START;
-			SetServo(RC_STR_SERVO, RIGHT*31);
-		}
-		break;
-	case STATE_FIGURE_EIGHT_RIGHT_START:
-		if(!loop_count){
-			state = STATE_DEFAULT;
+		case STATE_FIGURE_EIGHT_LEFT_START:
+			Wireless_Debug("STATE_FIGURE_EIGHT_LEFT_START");
+			if(!loop_count){
+				state = STATE_DEFAULT;
+				break;
+			}
+			SetServo(RC_STR_SERVO, LEFT*26);
+			if(loop_count == 2){
+				setDistance(2*(circle25_ticks1 + circle20_ticks1) - 3*overlap);
+			}
+			loop_count--;
+			state = STATE_FIGURE_EIGHT_LEFT_END;
 			break;
-		}
-		if(loop_count == 2){
-			setDistance(circle25_ticks1 + circle25_ticks2 + circle20_ticks1 + circle20_ticks2);
-			state = STATE_FIGURE_EIGHT_RIGHT_END;
-			SetServo(RC_STR_SERVO, RIGHT*26);
-			loop_count--;
-		} else if (pid.distanceError < (circle20_ticks2 + circle25_ticks2 )) {
-			state = STATE_FIGURE_EIGHT_RIGHT_HALF;
-			SetServo(RC_STR_SERVO, RIGHT*26);
-			loop_count--;
-		}
-		break;
-	case STATE_FIGURE_EIGHT_RIGHT_HALF:
-		if(loop_count == 1){
-			distance = circle25_ticks2 + circle20_ticks1 +circle20_ticks2 + circle25_ticks1/2;
-		} else {
-			distance = circle25_ticks2/2 + circle20_ticks2;
-		}
-		if (pid.distanceError < distance) {
-			state = STATE_FIGURE_EIGHT_RIGHT_END;
-			SetServo(RC_STR_SERVO, RIGHT*26);
-		}
-		break;
-	case STATE_FIGURE_EIGHT_RIGHT_END:
-		if(loop_count == 1){
-			distance = circle25_ticks2 + circle20_ticks1 +circle20_ticks2;
-		} else {
-			distance = circle20_ticks2;
-		}
-		if (pid.distanceError < distance) {
-			state = STATE_FIGURE_EIGHT_RIGHT_END_HALF;
-			SetServo(RC_STR_SERVO, LEFT*31);
-		}
-		break;
-	case STATE_FIGURE_EIGHT_RIGHT_END_HALF:
-		if(loop_count == 1){
-			distance = circle25_ticks2 + circle20_ticks2 +circle20_ticks1/2;
-		} else {
-			distance = circle20_ticks2/2;
-		}
-		if (pid.distanceError < distance) {
-			state = STATE_FIGURE_EIGHT_RIGHT_START;
-			SetServo(RC_STR_SERVO, LEFT*31);
-		}
-		break;
+		case STATE_FIGURE_EIGHT_LEFT_END:
+			if (pid.distanceError < (circle20_ticks1 + circle25_ticks1 + circle20_ticks1 )) {
+				state = STATE_FIGURE_EIGHT_LEFT_START;
+				SetServo(RC_STR_SERVO, RIGHT*31);
+			}
+			break;
+		case STATE_FIGURE_EIGHT_RIGHT_START:
+			if(!loop_count){
+				state = STATE_DEFAULT;
+				break;
+			}
+			if(loop_count == 2){
+				setDistance(circle25_ticks1 + circle25_ticks2 + circle20_ticks1 + circle20_ticks2);
+				state = STATE_FIGURE_EIGHT_RIGHT_END;
+				SetServo(RC_STR_SERVO, RIGHT*26);
+				loop_count--;
+			} else if (pid.distanceError < (circle20_ticks2 + circle25_ticks2 )) {
+				state = STATE_FIGURE_EIGHT_RIGHT_HALF;
+				SetServo(RC_STR_SERVO, RIGHT*26);
+				loop_count--;
+			}
+			break;
+		case STATE_FIGURE_EIGHT_RIGHT_HALF:
+			if(loop_count == 1){
+				distance = circle25_ticks2 + circle20_ticks1 +circle20_ticks2 + circle25_ticks1/2;
+			} else {
+				distance = circle25_ticks2/2 + circle20_ticks2;
+			}
+			if (pid.distanceError < distance) {
+				state = STATE_FIGURE_EIGHT_RIGHT_END;
+				SetServo(RC_STR_SERVO, RIGHT*26);
+			}
+			break;
+		case STATE_FIGURE_EIGHT_RIGHT_END:
+			if(loop_count == 1){
+				distance = circle25_ticks2 + circle20_ticks1 +circle20_ticks2;
+			} else {
+				distance = circle20_ticks2;
+			}
+			if (pid.distanceError < distance) {
+				state = STATE_FIGURE_EIGHT_RIGHT_END_HALF;
+				SetServo(RC_STR_SERVO, LEFT*31);
+			}
+			break;
+		case STATE_FIGURE_EIGHT_RIGHT_END_HALF:
+			if(loop_count == 1){
+				distance = circle25_ticks2 + circle20_ticks2 +circle20_ticks1/2;
+			} else {
+				distance = circle20_ticks2/2;
+			}
+			if (pid.distanceError < distance) {
+				state = STATE_FIGURE_EIGHT_RIGHT_START;
+				SetServo(RC_STR_SERVO, LEFT*31);
+			}
+			break;
 	}
 }
+
+
 
 int main (void) {
 
@@ -690,3 +657,5 @@ int main (void) {
 	XCache_DisableICache();
 	return 0;
 }
+
+

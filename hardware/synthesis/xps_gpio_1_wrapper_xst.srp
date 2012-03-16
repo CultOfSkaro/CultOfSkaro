@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "xps_gpio_1_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -247,7 +247,7 @@ Entity <GPIO_Core> (Architecture <IMP>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/xps_gpio_v2_00_a/hdl/vhdl/xps_gpio.vhd" in Library xps_gpio_v2_00_a.
 Entity <xps_gpio> compiled.
 Entity <xps_gpio> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/xps_gpio_1_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/xps_gpio_1_wrapper.vhd" in Library work.
 Entity <xps_gpio_1_wrapper> compiled.
 Entity <xps_gpio_1_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -270,9 +270,9 @@ Analyzing hierarchy for entity <xps_gpio> in library <xps_gpio_v2_00_a> (archite
 	C_IS_DUAL = 1
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
+	C_SPLB_MID_WIDTH = 1
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 	C_SPLB_SUPPORT_BURSTS = 0
 	C_TRI_DEFAULT = "11111111111111111111111111100111"
@@ -294,8 +294,8 @@ Analyzing hierarchy for entity <plbv46_slave_single> in library <plbv46_slave_si
 	C_SIPIF_DWIDTH = 32
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 
 Analyzing hierarchy for entity <interrupt_control> in library <interrupt_control_v2_01_a> (architecture <implementation>) with generics.
@@ -332,8 +332,8 @@ Analyzing hierarchy for entity <plb_slave_attachment> in library <plbv46_slave_s
 	C_INCLUDE_DPHASE_TIMER = 1
 	C_IPIF_ABUS_WIDTH = 32
 	C_IPIF_DBUS_WIDTH = 32
-	C_PLB_MID_WIDTH = 2
-	C_PLB_NUM_MASTERS = 4
+	C_PLB_MID_WIDTH = 1
+	C_PLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 
 Analyzing hierarchy for entity <plb_address_decoder> in library <plbv46_slave_single_v1_01_a> (architecture <IMP>) with generics.
@@ -524,9 +524,9 @@ Analyzing generic Entity <xps_gpio> in library <xps_gpio_v2_00_a> (Architecture 
 	C_IS_DUAL = 1
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
+	C_SPLB_MID_WIDTH = 1
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 	C_SPLB_SUPPORT_BURSTS = 0
 	C_TRI_DEFAULT = "11111111111111111111111111100111"
@@ -552,8 +552,8 @@ Analyzing generic Entity <plbv46_slave_single> in library <plbv46_slave_single_v
 	C_SIPIF_DWIDTH = 32
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 Entity <plbv46_slave_single> analyzed. Unit <plbv46_slave_single> generated.
 
@@ -569,8 +569,8 @@ Analyzing generic Entity <plb_slave_attachment> in library <plbv46_slave_single_
 	C_INCLUDE_DPHASE_TIMER = 1
 	C_IPIF_ABUS_WIDTH = 32
 	C_IPIF_DBUS_WIDTH = 32
-	C_PLB_MID_WIDTH = 2
-	C_PLB_NUM_MASTERS = 4
+	C_PLB_MID_WIDTH = 1
+	C_PLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 WARNING:Xst:753 - "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_slave_single_v1_01_a/hdl/vhdl/plb_slave_attachment.vhd" line 1201: Unconnected output port 'Count_Out' of component 'counter_f'.
 Entity <plb_slave_attachment> analyzed. Unit <plb_slave_attachment> generated.
@@ -1055,10 +1055,10 @@ WARNING:Xst:1780 - Signal <clear_rd_ce> is never used or assigned. This unconnec
     Found 4-bit register for signal <bus2ip_be_i>.
     Found 1-bit register for signal <bus2ip_rnw_i>.
     Found 1-bit register for signal <data_timeout>.
-    Found 2-bit register for signal <master_id>.
+    Found 1-bit register for signal <master_id<31>>.
     Found 32-bit register for signal <plb_abus_reg>.
     Found 4-bit register for signal <plb_be_reg>.
-    Found 2-bit register for signal <plb_masterid_reg>.
+    Found 1-bit register for signal <plb_masterid_reg<0>>.
     Found 1-bit register for signal <plb_pavalid_reg>.
     Found 1-bit register for signal <plb_rnw_reg>.
     Found 4-bit register for signal <plb_size_reg>.
@@ -1067,14 +1067,14 @@ WARNING:Xst:1780 - Signal <clear_rd_ce> is never used or assigned. This unconnec
     Found 1-bit register for signal <rd_clear_sl_busy>.
     Found 1-bit register for signal <set_sl_busy>.
     Found 1-bit register for signal <sl_busy>.
-    Found 4-bit register for signal <sl_mbusy_i>.
-    Found 4-bit register for signal <sl_mrderr_i>.
-    Found 4-bit register for signal <sl_mwrerr_i>.
+    Found 2-bit register for signal <sl_mbusy_i>.
+    Found 2-bit register for signal <sl_mrderr_i>.
+    Found 2-bit register for signal <sl_mwrerr_i>.
     Found 32-bit register for signal <sl_rddbus_i>.
     Found 1-bit register for signal <sl_rearbitrate_i>.
     Found 1-bit register for signal <sl_wrcomp_i>.
     Summary:
-	inferred 170 D-type flip-flop(s).
+	inferred 162 D-type flip-flop(s).
 Unit <plb_slave_attachment> synthesized.
 
 
@@ -1111,7 +1111,7 @@ Unit <xps_gpio> synthesized.
 
 
 Synthesizing Unit <xps_gpio_1_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/xps_gpio_1_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/xps_gpio_1_wrapper.vhd".
 Unit <xps_gpio_1_wrapper> synthesized.
 
 
@@ -1121,10 +1121,10 @@ HDL Synthesis Report
 Macro Statistics
 # Adders/Subtractors                                   : 1
  9-bit subtractor                                      : 1
-# Registers                                            : 170
- 1-bit register                                        : 149
+# Registers                                            : 164
+ 1-bit register                                        : 145
  16-bit register                                       : 4
- 2-bit register                                        : 3
+ 2-bit register                                        : 1
  3-bit register                                        : 1
  32-bit register                                       : 4
  4-bit register                                        : 3
@@ -1151,8 +1151,8 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # Adders/Subtractors                                   : 1
  9-bit subtractor                                      : 1
-# Registers                                            : 395
- Flip-Flops                                            : 395
+# Registers                                            : 387
+ Flip-Flops                                            : 387
 # Xors                                                 : 4
  1-bit xor2                                            : 2
  16-bit xor2                                           : 1
@@ -1178,9 +1178,7 @@ Optimizing unit <plb_address_decoder> ...
 Optimizing unit <plb_slave_attachment> ...
 
 Optimizing unit <xps_gpio> ...
-WARNING:Xst:1710 - FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_3> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_2> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_1> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_1> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_0> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_rddbus_i_1> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_rddbus_i_2> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
@@ -1197,8 +1195,6 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_rddbus_i_13> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_rddbus_i_14> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_rddbus_i_15> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_3> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_2> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_1> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_0> (without init value) has a constant value of 0 in block <xps_gpio_1_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/plb_wrdbus_reg_15> of sequential type is unconnected in block <xps_gpio_1_wrapper>.
@@ -1323,8 +1319,8 @@ Unit <xps_gpio_1_wrapper> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 243
- Flip-Flops                                            : 243
+# Registers                                            : 239
+ Flip-Flops                                            : 239
 # Shift Registers                                      : 21
  2-bit shift register                                  : 21
 
@@ -1351,14 +1347,14 @@ Optimization Goal                  : speed
 Keep Hierarchy                     : no
 
 Design Statistics
-# IOs                              : 342
+# IOs                              : 333
 
 Cell Usage :
-# BELS                             : 219
+# BELS                             : 217
 #      GND                         : 1
-#      LUT2                        : 41
+#      LUT2                        : 43
 #      LUT2_D                      : 1
-#      LUT3                        : 48
+#      LUT3                        : 44
 #      LUT3_D                      : 8
 #      LUT3_L                      : 3
 #      LUT4                        : 89
@@ -1367,10 +1363,10 @@ Cell Usage :
 #      MUXCY                       : 6
 #      MUXF5                       : 3
 #      VCC                         : 1
-# FlipFlops/Latches                : 264
+# FlipFlops/Latches                : 260
 #      FD                          : 91
-#      FDR                         : 94
-#      FDRE                        : 53
+#      FDR                         : 93
+#      FDRE                        : 50
 #      FDRS                        : 6
 #      FDS                         : 4
 #      FDSE                        : 16
@@ -1383,12 +1379,12 @@ Device utilization summary:
 
 Selected Device : 4vfx60ff672-11 
 
- Number of Slices:                      180  out of  25280     0%  
- Number of Slice Flip Flops:            264  out of  50560     0%  
- Number of 4 input LUTs:                229  out of  50560     0%  
-    Number used as logic:               208
+ Number of Slices:                      177  out of  25280     0%  
+ Number of Slice Flip Flops:            260  out of  50560     0%  
+ Number of 4 input LUTs:                227  out of  50560     0%  
+    Number used as logic:               206
     Number used as Shift registers:      21
- Number of IOs:                         342
+ Number of IOs:                         333
  Number of bonded IOBs:                   0  out of    352     0%  
 
 ---------------------------
@@ -1412,7 +1408,7 @@ Clock Information:
 -----------------------------------+---------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                         | Load  |
 -----------------------------------+---------------------------------------------------------------+-------+
-SPLB_Clk                           | NONE(xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/plb_wrdbus_reg_31)| 285   |
+SPLB_Clk                           | NONE(xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/plb_wrdbus_reg_31)| 281   |
 -----------------------------------+---------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -1436,7 +1432,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'SPLB_Clk'
   Clock period: 3.218ns (frequency: 310.752MHz)
-  Total number of paths / destination ports: 1592 / 299
+  Total number of paths / destination ports: 1575 / 293
 -------------------------------------------------------------------------
 Delay:               3.218ns (Levels of Logic = 9)
   Source:            xps_gpio_1/PLBV46_I/I_SLAVE_ATTACHMENT/plb_abus_reg_7 (FF)
@@ -1465,7 +1461,7 @@ Delay:               3.218ns (Levels of Logic = 9)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'SPLB_Clk'
-  Total number of paths / destination ports: 280 / 274
+  Total number of paths / destination ports: 275 / 269
 -------------------------------------------------------------------------
 Offset:              1.647ns (Levels of Logic = 3)
   Source:            SPLB_Rst (PAD)
@@ -1486,7 +1482,7 @@ Offset:              1.647ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'SPLB_Clk'
-  Total number of paths / destination ports: 94 / 87
+  Total number of paths / destination ports: 92 / 85
 -------------------------------------------------------------------------
 Offset:              1.443ns (Levels of Logic = 2)
   Source:            xps_gpio_1/INTR_CTRLR_GEN.INTERRUPT_CONTROL_I/ipif_glbl_irpt_enable_reg (FF)
@@ -1507,14 +1503,14 @@ Offset:              1.443ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 105.00 secs
-Total CPU time to Xst completion: 104.89 secs
+Total REAL time to Xst completion: 104.00 secs
+Total CPU time to Xst completion: 103.63 secs
  
 --> 
 
-Total memory usage is 855228 kilobytes
+Total memory usage is 855036 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  203 (   0 filtered)
+Number of warnings :  199 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 

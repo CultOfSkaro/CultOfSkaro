@@ -16,7 +16,7 @@ entity serial_uart_wrapper is
     SPLB_Rst : in std_logic;
     PLB_ABus : in std_logic_vector(0 to 31);
     PLB_PAValid : in std_logic;
-    PLB_masterID : in std_logic_vector(0 to 1);
+    PLB_masterID : in std_logic_vector(0 to 0);
     PLB_RNW : in std_logic;
     PLB_BE : in std_logic_vector(0 to 7);
     PLB_size : in std_logic_vector(0 to 3);
@@ -47,13 +47,13 @@ entity serial_uart_wrapper is
     Sl_rdDBus : out std_logic_vector(0 to 63);
     Sl_rdDAck : out std_logic;
     Sl_rdComp : out std_logic;
-    Sl_MBusy : out std_logic_vector(0 to 3);
-    Sl_MWrErr : out std_logic_vector(0 to 3);
-    Sl_MRdErr : out std_logic_vector(0 to 3);
+    Sl_MBusy : out std_logic_vector(0 to 1);
+    Sl_MWrErr : out std_logic_vector(0 to 1);
+    Sl_MRdErr : out std_logic_vector(0 to 1);
     Sl_wrBTerm : out std_logic;
     Sl_rdWdAddr : out std_logic_vector(0 to 3);
     Sl_rdBTerm : out std_logic;
-    Sl_MIRQ : out std_logic_vector(0 to 3);
+    Sl_MIRQ : out std_logic_vector(0 to 1);
     RX : in std_logic;
     TX : out std_logic;
     Interrupt : out std_logic
@@ -144,8 +144,8 @@ begin
       C_SPLB_AWIDTH => 32,
       C_SPLB_DWIDTH => 64,
       C_SPLB_P2P => 0,
-      C_SPLB_MID_WIDTH => 2,
-      C_SPLB_NUM_MASTERS => 4,
+      C_SPLB_MID_WIDTH => 1,
+      C_SPLB_NUM_MASTERS => 2,
       C_SPLB_SUPPORT_BURSTS => 0,
       C_SPLB_NATIVE_DWIDTH => 32,
       C_BAUDRATE => 115200,

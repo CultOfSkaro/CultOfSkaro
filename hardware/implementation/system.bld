@@ -74,6 +74,8 @@ Loading design module
 Loading design module
 "C:/RobotRacers/CultOfSkaro/hardware/implementation/gameboard_uart_wrapper.ngc".
 ..
+Loading design module
+"C:/RobotRacers/CultOfSkaro/hardware/implementation/xps_intc_1_wrapper.ngc"...
 Applying constraints in
 "C:/RobotRacers/CultOfSkaro/hardware/implementation/ppc405_0_wrapper.ncf" to
 module "ppc405_0"...
@@ -4831,11 +4833,11 @@ INFO:ConstraintSystem:178 - TNM
    TS_clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 HIGH 50%>
 
 INFO:ConstraintSystem - The Period constraint <NET usb_if_clk PERIOD = 20.833333
-   ns;> [system.ucf(337)], is specified using the Net Period method which is not
+   ns;> [system.ucf(338)], is specified using the Net Period method which is not
    recommended. Please use the Timespec PERIOD method.
 
 INFO:ConstraintSystem - The Period constraint <NET sdram_clk_fb PERIOD = 10 ns;>
-   [system.ucf(465)], is specified using the Net Period method which is not
+   [system.ucf(466)], is specified using the Net Period method which is not
    recommended. Please use the Timespec PERIOD method.
 
 Done...
@@ -4845,7 +4847,7 @@ Processing BMM file "system.bmm" ...
 INFO:NgdBuild:1222 - Setting CLKIN_PERIOD attribute associated with DCM instance
    clock_generator_0/DCM0_INST/Using_DCM_ADV.DCM_ADV_INST to 10.000000 ns based
    on the period specification (<TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin
-   100000 kHz;> [system.ucf(325)]).
+   100000 kHz;> [system.ucf(326)]).
 INFO:NgdBuild:1222 - Setting CLKIN_PERIOD attribute associated with DCM instance
    dcm_2/Using_DCM_ADV.DCM_ADV_INST to 10.000000 ns based on the period
    specification (<TIMESPEC TS_clock_generator_0_clock_generator_0_SIG_DCM0_CLK0
@@ -5101,10 +5103,10 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings: 993
 
-Total memory usage is 356592 kilobytes
+Total memory usage is 357616 kilobytes
 
 Writing NGD file "system.ngd" ...
-Total REAL time to NGDBUILD completion: 2 min  33 sec
-Total CPU time to NGDBUILD completion:  1 min  55 sec
+Total REAL time to NGDBUILD completion: 2 min  44 sec
+Total CPU time to NGDBUILD completion:  2 min  4 sec
 
 Writing NGDBUILD log file "system.bld"...

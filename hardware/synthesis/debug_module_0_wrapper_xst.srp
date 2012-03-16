@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "debug_module_0_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -250,7 +250,7 @@ Entity <MDM_Core> (Architecture <IMP>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/mdm_v2_00_b/hdl/vhdl/mdm.vhd" in Library mdm_v2_00_b.
 Entity <MDM> compiled.
 Entity <MDM> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/debug_module_0_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/debug_module_0_wrapper.vhd" in Library work.
 Entity <debug_module_0_wrapper> compiled.
 Entity <debug_module_0_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -268,9 +268,9 @@ Analyzing hierarchy for entity <mdm> in library <mdm_v2_00_b> (architecture <IMP
 	C_MB_DBG_PORTS = 1
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 1
+	C_SPLB_MID_WIDTH = 2
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 2
+	C_SPLB_NUM_MASTERS = 4
 	C_SPLB_P2P = 0
 	C_SPLB_SUPPORT_BURSTS = 1
 	C_S_AXI_ADDR_WIDTH = 32
@@ -284,9 +284,9 @@ Analyzing hierarchy for entity <MDM_Core> in library <mdm_v2_00_b> (architecture
 	C_MB_DBG_PORTS = 1
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 1
+	C_SPLB_MID_WIDTH = 2
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 2
+	C_SPLB_NUM_MASTERS = 4
 	C_SPLB_P2P = 0
 	C_SPLB_SUPPORT_BURSTS = 1
 	C_UART_WIDTH = 8
@@ -324,9 +324,9 @@ Analyzing generic Entity <mdm> in library <mdm_v2_00_b> (Architecture <IMP>).
 	C_MB_DBG_PORTS = 1
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 1
+	C_SPLB_MID_WIDTH = 2
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 2
+	C_SPLB_NUM_MASTERS = 4
 	C_SPLB_P2P = 0
 	C_SPLB_SUPPORT_BURSTS = 1
 	C_S_AXI_ADDR_WIDTH = 32
@@ -346,9 +346,9 @@ Analyzing generic Entity <MDM_Core> in library <mdm_v2_00_b> (Architecture <IMP>
 	C_MB_DBG_PORTS = 1
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 1
+	C_SPLB_MID_WIDTH = 2
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 2
+	C_SPLB_NUM_MASTERS = 4
 	C_SPLB_P2P = 0
 	C_SPLB_SUPPORT_BURSTS = 1
 	C_UART_WIDTH = 8
@@ -483,7 +483,7 @@ WARNING:Xst:647 - Input <PLB_wrPrim> is never used. This port will be preserved 
 WARNING:Xst:647 - Input <PLB_MSize> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <PLB_rdBurst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <bus2ip_resetn> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <PLB_masterID<0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <PLB_masterID> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <bus2ip_data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <PLB_SAValid> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <bus2ip_clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -566,7 +566,7 @@ Unit <mdm> synthesized.
 
 
 Synthesizing Unit <debug_module_0_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/debug_module_0_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/debug_module_0_wrapper.vhd".
 Unit <debug_module_0_wrapper> synthesized.
 
 
@@ -665,7 +665,7 @@ Optimization Goal                  : speed
 Keep Hierarchy                     : no
 
 Design Statistics
-# IOs                              : 557
+# IOs                              : 566
 
 Cell Usage :
 # BELS                             : 160
@@ -711,7 +711,7 @@ Selected Device : 4vfx60ff672-11
  Number of 4 input LUTs:                149  out of  50560     0%  
     Number used as logic:               126
     Number used as Shift registers:      23
- Number of IOs:                         557
+ Number of IOs:                         566
  Number of bonded IOBs:                   0  out of    352     0%  
  Number of GCLKs:                         2  out of     32     6%  
 
@@ -791,12 +791,12 @@ Slack:                  193.704ns
 =========================================================================
 
 
-Total REAL time to Xst completion: 35.00 secs
-Total CPU time to Xst completion: 34.51 secs
+Total REAL time to Xst completion: 30.00 secs
+Total CPU time to Xst completion: 30.64 secs
  
 --> 
 
-Total memory usage is 398396 kilobytes
+Total memory usage is 398652 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   94 (   0 filtered)

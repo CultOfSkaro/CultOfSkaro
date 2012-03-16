@@ -1,7 +1,7 @@
 Release 13.3 - par O.76xd (nt64)
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
-Tue Mar 13 16:59:33 2012
+Fri Mar 16 15:22:00 2012
 
 
 # NOTE: This file is designed to be imported into a spreadsheet program
@@ -499,11 +499,11 @@ N13|||GND||||||||||||
 N14|||VCCINT||||||||1.2||||
 N15|||GND||||||||||||
 N16|xps_mch_emc_sram_Mem_A_pin<0>|IOB|IO_L18N_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
-N17|xps_mch_emc_sram_Mem_A_pin<1>|IOB|IO_L20N_VREF_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
-N18|xps_mch_emc_sram_Mem_A_pin<5>|IOB|IO_L20P_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
-N19|xps_mch_emc_sram_Mem_A_pin<2>|IOB|IO_L21N_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
+N17|xps_mch_emc_sram_Mem_A_pin<5>|IOB|IO_L20N_VREF_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
+N18|xps_mch_emc_sram_Mem_A_pin<4>|IOB|IO_L20P_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
+N19|xps_mch_emc_sram_Mem_A_pin<6>|IOB|IO_L21N_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
 N20|||VCCO_9|||9|||||2.50||||
-N21|xps_mch_emc_sram_Mem_A_pin<3>|IOB|IO_L19P_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
+N21|xps_mch_emc_sram_Mem_A_pin<2>|IOB|IO_L19P_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
 N22|usb_fd<0>|IOB|IO_L29N_5|BIDIR|LVCMOS33|5|12|SLOW|NONE**|NONE||LOCATED|YES|NONE|
 N23|usb_slrd_n|IOB|IO_L31N_5|OUTPUT|LVCMOS33|5|12|SLOW|NONE**|||LOCATED|NO|NONE|
 N24|usb_slwr_n|IOB|IO_L31P_5|OUTPUT|LVCMOS33|5|12|SLOW|NONE**|||LOCATED|NO|NONE|
@@ -526,9 +526,9 @@ P14|||M0_0||||||||||||
 P15|||VCCAUX||||||||2.5||||
 P16||IOBM|IO_L18P_9|UNUSED||9|||||||||
 P17|||VCCO_9|||9|||||2.50||||
-P18|xps_mch_emc_sram_Mem_A_pin<6>|IOB|IO_L24N_CC_LC_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
-P19|xps_mch_emc_sram_Mem_A_pin<7>|IOB|IO_L21P_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
-P20|xps_mch_emc_sram_Mem_A_pin<4>|IOB|IO_L23N_VRP_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
+P18|xps_mch_emc_sram_Mem_A_pin<1>|IOB|IO_L24N_CC_LC_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
+P19|xps_mch_emc_sram_Mem_A_pin<3>|IOB|IO_L21P_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
+P20|xps_mch_emc_sram_Mem_A_pin<8>|IOB|IO_L23N_VRP_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
 P21|xps_mch_emc_sram_Mem_A_pin<10>|IOB|IO_L23P_VRN_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
 P22|||GND||||||||||||
 P23|||VCCAUX||||||||2.5||||
@@ -550,7 +550,7 @@ R12|||VCCINT||||||||1.2||||
 R13|||TDO_0||||||||||||
 R14|||VCCO_0|||0|||||any******||||
 R15|||M1_0||||||||||||
-R16|xps_mch_emc_sram_Mem_A_pin<8>|IOB|IO_L22N_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
+R16|xps_mch_emc_sram_Mem_A_pin<7>|IOB|IO_L22N_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
 R17|xps_mch_emc_sram_Mem_A_pin<9>|IOB|IO_L22P_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
 R18|xps_mch_emc_sram_Mem_A_pin<11>|IOB|IO_L24P_CC_LC_9|OUTPUT|LVCMOS25*|9|12|SLOW|NONE**|||UNLOCATED|YES|NONE|
 R19|||GND||||||||||||

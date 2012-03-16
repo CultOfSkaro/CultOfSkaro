@@ -20,7 +20,7 @@ entity xps_gpio_1_wrapper is
     PLB_SAValid : in std_logic;
     PLB_rdPrim : in std_logic;
     PLB_wrPrim : in std_logic;
-    PLB_masterID : in std_logic_vector(0 to 1);
+    PLB_masterID : in std_logic_vector(0 to 0);
     PLB_abort : in std_logic;
     PLB_busLock : in std_logic;
     PLB_RNW : in std_logic;
@@ -50,10 +50,10 @@ entity xps_gpio_1_wrapper is
     Sl_rdDAck : out std_logic;
     Sl_rdComp : out std_logic;
     Sl_rdBTerm : out std_logic;
-    Sl_MBusy : out std_logic_vector(0 to 3);
-    Sl_MWrErr : out std_logic_vector(0 to 3);
-    Sl_MRdErr : out std_logic_vector(0 to 3);
-    Sl_MIRQ : out std_logic_vector(0 to 3);
+    Sl_MBusy : out std_logic_vector(0 to 1);
+    Sl_MWrErr : out std_logic_vector(0 to 1);
+    Sl_MRdErr : out std_logic_vector(0 to 1);
+    Sl_MIRQ : out std_logic_vector(0 to 1);
     IP2INTC_Irpt : out std_logic;
     GPIO_IO_I : in std_logic_vector(0 to 4);
     GPIO_IO_O : out std_logic_vector(0 to 4);
@@ -155,8 +155,8 @@ begin
       C_SPLB_AWIDTH => 32,
       C_SPLB_DWIDTH => 64,
       C_SPLB_P2P => 0,
-      C_SPLB_MID_WIDTH => 2,
-      C_SPLB_NUM_MASTERS => 4,
+      C_SPLB_MID_WIDTH => 1,
+      C_SPLB_NUM_MASTERS => 2,
       C_SPLB_NATIVE_DWIDTH => 32,
       C_SPLB_SUPPORT_BURSTS => 0,
       C_FAMILY => "virtex4",

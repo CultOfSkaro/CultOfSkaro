@@ -1807,7 +1807,7 @@ module mpmc_0_wrapper
   input [0:31] SPLB0_PLB_ABus;
   input SPLB0_PLB_PAValid;
   input SPLB0_PLB_SAValid;
-  input [0:1] SPLB0_PLB_masterID;
+  input [0:0] SPLB0_PLB_masterID;
   input SPLB0_PLB_RNW;
   input [0:7] SPLB0_PLB_BE;
   input [0:31] SPLB0_PLB_UABus;
@@ -1840,10 +1840,10 @@ module mpmc_0_wrapper
   output SPLB0_Sl_rdDAck;
   output SPLB0_Sl_rdComp;
   output SPLB0_Sl_rdBTerm;
-  output [0:3] SPLB0_Sl_MBusy;
-  output [0:3] SPLB0_Sl_MRdErr;
-  output [0:3] SPLB0_Sl_MWrErr;
-  output [0:3] SPLB0_Sl_MIRQ;
+  output [0:1] SPLB0_Sl_MBusy;
+  output [0:1] SPLB0_Sl_MRdErr;
+  output [0:1] SPLB0_Sl_MWrErr;
+  output [0:1] SPLB0_Sl_MIRQ;
   input SDMA0_Clk;
   output SDMA0_Rx_IntOut;
   output SDMA0_Tx_IntOut;
@@ -2011,7 +2011,7 @@ module mpmc_0_wrapper
   input [0:31] SPLB1_PLB_ABus;
   input SPLB1_PLB_PAValid;
   input SPLB1_PLB_SAValid;
-  input [0:0] SPLB1_PLB_masterID;
+  input [0:1] SPLB1_PLB_masterID;
   input SPLB1_PLB_RNW;
   input [0:7] SPLB1_PLB_BE;
   input [0:31] SPLB1_PLB_UABus;
@@ -2044,10 +2044,10 @@ module mpmc_0_wrapper
   output SPLB1_Sl_rdDAck;
   output SPLB1_Sl_rdComp;
   output SPLB1_Sl_rdBTerm;
-  output [0:1] SPLB1_Sl_MBusy;
-  output [0:1] SPLB1_Sl_MRdErr;
-  output [0:1] SPLB1_Sl_MWrErr;
-  output [0:1] SPLB1_Sl_MIRQ;
+  output [0:3] SPLB1_Sl_MBusy;
+  output [0:3] SPLB1_Sl_MRdErr;
+  output [0:3] SPLB1_Sl_MWrErr;
+  output [0:3] SPLB1_Sl_MIRQ;
   input SDMA1_Clk;
   output SDMA1_Rx_IntOut;
   output SDMA1_Tx_IntOut;
@@ -3419,7 +3419,7 @@ module mpmc_0_wrapper
   input [0:31] MPMC_CTRL_PLB_ABus;
   input MPMC_CTRL_PLB_PAValid;
   input MPMC_CTRL_PLB_SAValid;
-  input [0:1] MPMC_CTRL_PLB_masterID;
+  input [0:0] MPMC_CTRL_PLB_masterID;
   input MPMC_CTRL_PLB_RNW;
   input [0:7] MPMC_CTRL_PLB_BE;
   input [0:31] MPMC_CTRL_PLB_UABus;
@@ -3452,10 +3452,10 @@ module mpmc_0_wrapper
   output MPMC_CTRL_Sl_rdDAck;
   output MPMC_CTRL_Sl_rdComp;
   output MPMC_CTRL_Sl_rdBTerm;
-  output [0:3] MPMC_CTRL_Sl_MBusy;
-  output [0:3] MPMC_CTRL_Sl_MRdErr;
-  output [0:3] MPMC_CTRL_Sl_MWrErr;
-  output [0:3] MPMC_CTRL_Sl_MIRQ;
+  output [0:1] MPMC_CTRL_Sl_MBusy;
+  output [0:1] MPMC_CTRL_Sl_MRdErr;
+  output [0:1] MPMC_CTRL_Sl_MWrErr;
+  output [0:1] MPMC_CTRL_Sl_MIRQ;
   input MPMC_Clk0;
   input MPMC_Clk0_DIV2;
   input MPMC_Clk90;
@@ -3576,11 +3576,11 @@ module mpmc_0_wrapper
       .C_MPMC_CTRL_AWIDTH ( 32 ),
       .C_MPMC_CTRL_DWIDTH ( 64 ),
       .C_MPMC_CTRL_NATIVE_DWIDTH ( 32 ),
-      .C_MPMC_CTRL_NUM_MASTERS ( 4 ),
-      .C_MPMC_CTRL_MID_WIDTH ( 2 ),
+      .C_MPMC_CTRL_NUM_MASTERS ( 2 ),
+      .C_MPMC_CTRL_MID_WIDTH ( 1 ),
       .C_MPMC_CTRL_P2P ( 0 ),
       .C_MPMC_CTRL_SUPPORT_BURSTS ( 0 ),
-      .C_MPMC_CTRL_SMALLEST_MASTER ( 32 ),
+      .C_MPMC_CTRL_SMALLEST_MASTER ( 64 ),
       .C_NUM_IDELAYCTRL ( 1 ),
       .C_IODELAY_GRP ( "mpmc_0" ),
       .C_MAX_REQ_ALLOWED ( 1 ),
@@ -3724,11 +3724,11 @@ module mpmc_0_wrapper
       .C_SPLB0_AWIDTH ( 32 ),
       .C_SPLB0_DWIDTH ( 64 ),
       .C_SPLB0_NATIVE_DWIDTH ( 64 ),
-      .C_SPLB0_NUM_MASTERS ( 4 ),
-      .C_SPLB0_MID_WIDTH ( 2 ),
+      .C_SPLB0_NUM_MASTERS ( 2 ),
+      .C_SPLB0_MID_WIDTH ( 1 ),
       .C_SPLB0_P2P ( 0 ),
       .C_SPLB0_SUPPORT_BURSTS ( 1 ),
-      .C_SPLB0_SMALLEST_MASTER ( 32 ),
+      .C_SPLB0_SMALLEST_MASTER ( 64 ),
       .C_SDMA_CTRL0_BASEADDR ( 32'hFFFFFFFF ),
       .C_SDMA_CTRL0_HIGHADDR ( 32'h00000000 ),
       .C_SDMA_CTRL0_AWIDTH ( 32 ),
@@ -3775,11 +3775,11 @@ module mpmc_0_wrapper
       .C_SPLB1_AWIDTH ( 32 ),
       .C_SPLB1_DWIDTH ( 64 ),
       .C_SPLB1_NATIVE_DWIDTH ( 64 ),
-      .C_SPLB1_NUM_MASTERS ( 2 ),
-      .C_SPLB1_MID_WIDTH ( 1 ),
+      .C_SPLB1_NUM_MASTERS ( 4 ),
+      .C_SPLB1_MID_WIDTH ( 2 ),
       .C_SPLB1_P2P ( 0 ),
       .C_SPLB1_SUPPORT_BURSTS ( 1 ),
-      .C_SPLB1_SMALLEST_MASTER ( 64 ),
+      .C_SPLB1_SMALLEST_MASTER ( 32 ),
       .C_SDMA_CTRL1_BASEADDR ( 32'hFFFFFFFF ),
       .C_SDMA_CTRL1_HIGHADDR ( 32'h00000000 ),
       .C_SDMA_CTRL1_AWIDTH ( 32 ),

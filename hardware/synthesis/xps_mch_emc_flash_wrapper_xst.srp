@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "xps_mch_emc_flash_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -313,7 +313,7 @@ Entity <EMC> (Architecture <IMP>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/xps_mch_emc_v3_01_a/hdl/vhdl/xps_mch_emc.vhd" in Library xps_mch_emc_v3_01_a.
 Entity <xps_mch_emc> compiled.
 Entity <xps_mch_emc> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/xps_mch_emc_flash_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/xps_mch_emc_flash_wrapper.vhd" in Library work.
 Entity <xps_mch_emc_flash_wrapper> compiled.
 Entity <xps_mch_emc_flash_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -367,10 +367,10 @@ Analyzing hierarchy for entity <xps_mch_emc> in library <xps_mch_emc_v3_01_a> (a
 	C_PAGEMODE_FLASH_3 = 0
 	C_PRIORITY_MODE = 0
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 32
+	C_SPLB_SMALLEST_MASTER = 64
 	C_SYNCH_MEM_0 = 0
 	C_SYNCH_MEM_1 = 1
 	C_SYNCH_MEM_2 = 0
@@ -449,10 +449,10 @@ Analyzing hierarchy for entity <mch_plbv46_slave_burst> in library <mch_plbv46_s
 	C_PLB_ARD_NUM_CE_ARRAY = (1)
 	C_PRIORITY_MODE = 0
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 32
+	C_SPLB_SMALLEST_MASTER = 64
 	C_WR_BUFFER_DEPTH = 16
 	C_XCL_LINESIZE_ARRAY = (4,4,4,4)
 	C_XCL_WRITEXFER_ARRAY = (1,1,1,1)
@@ -537,10 +537,10 @@ Analyzing hierarchy for entity <plbv46_slave_burst> in library <plbv46_slave_bur
 	C_SIPIF_DWIDTH = 32
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 32
+	C_SPLB_SMALLEST_MASTER = 64
 	C_WR_BUFFER_DEPTH = 16
 
 Analyzing hierarchy for entity <ipic_if> in library <emc_common_v4_01_a> (architecture <imp>) with generics.
@@ -634,9 +634,9 @@ Analyzing hierarchy for entity <plb_slave_attachment> in library <plbv46_slave_b
 	C_INCLUDE_DPHASE_TIMER = 0
 	C_IPIF_ABUS_WIDTH = 32
 	C_IPIF_DBUS_WIDTH = 32
-	C_PLB_MID_WIDTH = 2
-	C_PLB_NUM_MASTERS = 4
-	C_PLB_SMALLEST_MASTER = 32
+	C_PLB_MID_WIDTH = 1
+	C_PLB_NUM_MASTERS = 2
+	C_PLB_SMALLEST_MASTER = 64
 	C_SPLB_DWIDTH = 64
 	C_SPLB_P2P = 0
 	C_STEER_ADDR_SIZE = 10
@@ -646,7 +646,7 @@ Analyzing hierarchy for entity <data_mirror_128> in library <plbv46_slave_burst_
 	C_IPIF_DWIDTH = 32
 	C_PLB_AWIDTH = 10
 	C_PLB_DWIDTH = 64
-	C_SMALLEST = 32
+	C_SMALLEST = 64
 
 Analyzing hierarchy for entity <ld_arith_reg> in library <proc_common_v3_00_a> (architecture <imp>) with generics.
 	C_ADD_SUB_NOT = false
@@ -687,7 +687,7 @@ Analyzing hierarchy for entity <ld_arith_reg> in library <proc_common_v3_00_a> (
 Analyzing hierarchy for entity <be_reset_gen> in library <plbv46_slave_burst_v1_01_a> (architecture <implementation>) with generics.
 	C_AWIDTH = 32
 	C_DWIDTH = 32
-	C_SMALLEST = 32
+	C_SMALLEST = 64
 
 Analyzing hierarchy for entity <plb_address_decoder> in library <plbv46_slave_burst_v1_01_a> (architecture <IMP>) with generics.
 	C_ARD_ADDR_RANGE_ARRAY = ("0000000000000000000000000000000010000000000000000000000000000000",
@@ -804,10 +804,10 @@ Analyzing generic Entity <xps_mch_emc> in library <xps_mch_emc_v3_01_a> (Archite
 	C_PAGEMODE_FLASH_3 = 0
 	C_PRIORITY_MODE = 0
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 32
+	C_SPLB_SMALLEST_MASTER = 64
 	C_SYNCH_MEM_0 = 0
 	C_SYNCH_MEM_1 = 1
 	C_SYNCH_MEM_2 = 0
@@ -910,10 +910,10 @@ Analyzing generic Entity <mch_plbv46_slave_burst> in library <mch_plbv46_slave_b
 	C_PLB_ARD_NUM_CE_ARRAY = (1)
 	C_PRIORITY_MODE = 0
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 32
+	C_SPLB_SMALLEST_MASTER = 64
 	C_WR_BUFFER_DEPTH = 16
 	C_XCL_LINESIZE_ARRAY = (4,4,4,4)
 	C_XCL_WRITEXFER_ARRAY = (1,1,1,1)
@@ -942,10 +942,10 @@ Analyzing generic Entity <plbv46_slave_burst> in library <plbv46_slave_burst_v1_
 	C_SIPIF_DWIDTH = 32
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 32
+	C_SPLB_SMALLEST_MASTER = 64
 	C_WR_BUFFER_DEPTH = 16
 Entity <plbv46_slave_burst> analyzed. Unit <plbv46_slave_burst> generated.
 
@@ -961,9 +961,9 @@ Analyzing generic Entity <plb_slave_attachment> in library <plbv46_slave_burst_v
 	C_INCLUDE_DPHASE_TIMER = 0
 	C_IPIF_ABUS_WIDTH = 32
 	C_IPIF_DBUS_WIDTH = 32
-	C_PLB_MID_WIDTH = 2
-	C_PLB_NUM_MASTERS = 4
-	C_PLB_SMALLEST_MASTER = 32
+	C_PLB_MID_WIDTH = 1
+	C_PLB_NUM_MASTERS = 2
+	C_PLB_SMALLEST_MASTER = 64
 	C_SPLB_DWIDTH = 64
 	C_SPLB_P2P = 0
 	C_STEER_ADDR_SIZE = 10
@@ -981,7 +981,7 @@ Entity <plb_slave_attachment> analyzed. Unit <plb_slave_attachment> generated.
 Analyzing generic Entity <be_reset_gen> in library <plbv46_slave_burst_v1_01_a> (Architecture <implementation>).
 	C_AWIDTH = 32
 	C_DWIDTH = 32
-	C_SMALLEST = 32
+	C_SMALLEST = 64
 Entity <be_reset_gen> analyzed. Unit <be_reset_gen> generated.
 
 Analyzing generic Entity <plb_address_decoder> in library <plbv46_slave_burst_v1_01_a> (Architecture <IMP>).
@@ -1243,7 +1243,7 @@ Analyzing generic Entity <data_mirror_128> in library <plbv46_slave_burst_v1_01_
 	C_IPIF_DWIDTH = 32
 	C_PLB_AWIDTH = 10
 	C_PLB_DWIDTH = 64
-	C_SMALLEST = 32
+	C_SMALLEST = 64
 Entity <data_mirror_128> analyzed. Unit <data_mirror_128> generated.
 
 Analyzing generic Entity <EMC> in library <emc_common_v4_01_a> (Architecture <IMP>).
@@ -2036,10 +2036,10 @@ WARNING:Xst:1780 - Signal <CS_Early_i> is never used or assigned. This unconnect
     Found 5-bit down counter for signal <data_cycle_count>.
     Found 1-bit register for signal <extend_wr_busy>.
     Found 5-bit comparator lessequal for signal <line_count_done$cmp_le0000> created at line 2300.
-    Found 2-bit register for signal <master_id_vector>.
+    Found 1-bit register for signal <master_id_vector<0>>.
     Found 32-bit register for signal <plb_abus_reg>.
     Found 4-bit register for signal <plb_be_reg>.
-    Found 2-bit register for signal <plb_masterid_reg>.
+    Found 1-bit register for signal <plb_masterid_reg<0>>.
     Found 1-bit register for signal <plb_pavalid_reg>.
     Found 1-bit register for signal <plb_rdburst_reg>.
     Found 1-bit register for signal <plb_rnw_reg>.
@@ -2052,8 +2052,8 @@ WARNING:Xst:1780 - Signal <CS_Early_i> is never used or assigned. This unconnect
     Found 1-bit register for signal <set_sl_busy>.
     Found 1-bit register for signal <sl_addrack_i>.
     Found 1-bit register for signal <sl_busy>.
-    Found 4-bit register for signal <sl_mbusy_i>.
-    Found 4-bit register for signal <sl_mrderr_i>.
+    Found 2-bit register for signal <sl_mbusy_i>.
+    Found 2-bit register for signal <sl_mrderr_i>.
     Found 1-bit register for signal <sl_rdbterm_i>.
     Found 1-bit register for signal <sl_rdcomp_i>.
     Found 32-bit register for signal <sl_rddbus1_i>.
@@ -2066,7 +2066,7 @@ WARNING:Xst:1780 - Signal <CS_Early_i> is never used or assigned. This unconnect
     Summary:
 	inferred   4 Finite State Machine(s).
 	inferred   1 Counter(s).
-	inferred 165 D-type flip-flop(s).
+	inferred 159 D-type flip-flop(s).
 	inferred   2 Comparator(s).
 Unit <plb_slave_attachment> synthesized.
 
@@ -2134,7 +2134,7 @@ Unit <xps_mch_emc> synthesized.
 
 
 Synthesizing Unit <xps_mch_emc_flash_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/xps_mch_emc_flash_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/xps_mch_emc_flash_wrapper.vhd".
 Unit <xps_mch_emc_flash_wrapper> synthesized.
 
 
@@ -2145,11 +2145,11 @@ Macro Statistics
 # Counters                                             : 2
  2-bit up counter                                      : 1
  5-bit down counter                                    : 1
-# Registers                                            : 113
- 1-bit register                                        : 92
+# Registers                                            : 109
+ 1-bit register                                        : 90
  10-bit register                                       : 1
  16-bit register                                       : 3
- 2-bit register                                        : 7
+ 2-bit register                                        : 5
  3-bit register                                        : 1
  32-bit register                                       : 4
  4-bit register                                        : 3
@@ -2224,8 +2224,8 @@ Macro Statistics
 # Counters                                             : 2
  2-bit up counter                                      : 1
  5-bit down counter                                    : 1
-# Registers                                            : 559
- Flip-Flops                                            : 559
+# Registers                                            : 553
+ Flip-Flops                                            : 553
 # Comparators                                          : 4
  28-bit comparator not equal                           : 1
  32-bit comparator less                                : 1
@@ -2300,8 +2300,6 @@ WARNING:Xst:1710 - FF/Latch <xps_mch_emc_flash/EMC_CTRL_I/MEM_STATE_MACHINE_I/ad
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_mch_emc_flash/EMC_CTRL_I/IO_REGISTERS_I/mem_a_reg_31> (without init value) has a constant value of 0 in block <xps_mch_emc_flash_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_0> (without init value) has a constant value of 0 in block <xps_mch_emc_flash_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_1> (without init value) has a constant value of 0 in block <xps_mch_emc_flash_wrapper>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_2> (without init value) has a constant value of 0 in block <xps_mch_emc_flash_wrapper>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_3> (without init value) has a constant value of 0 in block <xps_mch_emc_flash_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <xps_mch_emc_flash/EMC_CTRL_I/MEM_STATE_MACHINE_I/Addr_align_rd> (without init value) has a constant value of 0 in block <xps_mch_emc_flash_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <xps_mch_emc_flash/EMC_CTRL_I/MEM_STATE_MACHINE_I/cs_strobe_reg> of sequential type is unconnected in block <xps_mch_emc_flash_wrapper>.
 WARNING:Xst:2677 - Node <xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/bus2ip_wrburst_i> of sequential type is unconnected in block <xps_mch_emc_flash_wrapper>.
@@ -2337,8 +2335,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 545
- Flip-Flops                                            : 545
+# Registers                                            : 541
+ Flip-Flops                                            : 541
 
 =========================================================================
 
@@ -2363,21 +2361,21 @@ Optimization Goal                  : speed
 Keep Hierarchy                     : no
 
 Design Statistics
-# IOs                              : 652
+# IOs                              : 643
 
 Cell Usage :
-# BELS                             : 706
+# BELS                             : 705
 #      GND                         : 1
 #      INV                         : 2
 #      LUT1                        : 2
 #      LUT2                        : 68
 #      LUT2_D                      : 4
 #      LUT2_L                      : 9
-#      LUT3                        : 98
+#      LUT3                        : 102
 #      LUT3_D                      : 7
 #      LUT3_L                      : 3
-#      LUT4                        : 228
-#      LUT4_D                      : 17
+#      LUT4                        : 222
+#      LUT4_D                      : 18
 #      LUT4_L                      : 9
 #      MULT_AND                    : 35
 #      MUXCY                       : 93
@@ -2385,11 +2383,11 @@ Cell Usage :
 #      MUXF5                       : 14
 #      VCC                         : 1
 #      XORCY                       : 95
-# FlipFlops/Latches                : 545
+# FlipFlops/Latches                : 541
 #      FD                          : 2
 #      FDR                         : 195
-#      FDRE                        : 283
-#      FDRS                        : 7
+#      FDRE                        : 280
+#      FDRS                        : 6
 #      FDRSE                       : 14
 #      FDS                         : 29
 #      FDSE                        : 15
@@ -2402,12 +2400,12 @@ Device utilization summary:
 
 Selected Device : 4vfx60ff672-11 
 
- Number of Slices:                      389  out of  25280     1%  
- Number of Slice Flip Flops:            513  out of  50560     1%  
- Number of 4 input LUTs:                479  out of  50560     0%  
-    Number used as logic:               447
+ Number of Slices:                      386  out of  25280     1%  
+ Number of Slice Flip Flops:            509  out of  50560     1%  
+ Number of 4 input LUTs:                478  out of  50560     0%  
+    Number used as logic:               446
     Number used as Shift registers:      32
- Number of IOs:                         652
+ Number of IOs:                         643
  Number of bonded IOBs:                   0  out of    352     0%  
     IOB Flip Flops:                      32
 
@@ -2432,7 +2430,7 @@ Clock Information:
 -----------------------------------+-------------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                                     | Load  |
 -----------------------------------+-------------------------------------------------------------------------------------------+-------+
-MCH_SPLB_Clk                       | NONE(xps_mch_emc_flash/EMC_CTRL_I/COUNTERS_I/TPACCCNT_I/PERBIT_GEN[0].FF_RST1_GEN.FDSE_i1)| 561   |
+MCH_SPLB_Clk                       | NONE(xps_mch_emc_flash/EMC_CTRL_I/COUNTERS_I/TPACCCNT_I/PERBIT_GEN[0].FF_RST1_GEN.FDSE_i1)| 557   |
 RdClk                              | NONE(xps_mch_emc_flash/EMC_CTRL_I/IO_REGISTERS_I/Mem_DQ_I_int_15)                         | 16    |
 -----------------------------------+-------------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -2457,7 +2455,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'MCH_SPLB_Clk'
   Clock period: 4.774ns (frequency: 209.459MHz)
-  Total number of paths / destination ports: 18749 / 1081
+  Total number of paths / destination ports: 18679 / 1074
 -------------------------------------------------------------------------
 Delay:               4.774ns (Levels of Logic = 4)
   Source:            xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/I_BURST_SUPPORT/RESPONSE_DBEAT_CNTR_I/STRUCTURAL_A_GEN.I_ADDSUB_GEN[3].FDRE_I (FF)
@@ -2470,7 +2468,7 @@ Delay:               4.774ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDRE:C->Q             4   0.307   0.605  xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/I_BURST_SUPPORT/RESPONSE_DBEAT_CNTR_I/STRUCTURAL_A_GEN.I_ADDSUB_GEN[3].FDRE_I (xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/I_BURST_SUPPORT/resp_dbeat_count<2>)
-     LUT3_D:I0->LO         1   0.166   0.139  xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/I_BURST_SUPPORT/resp_db_cnten1_SW0 (N202)
+     LUT3_D:I0->LO         1   0.166   0.139  xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/I_BURST_SUPPORT/resp_db_cnten1_SW0 (N200)
      LUT4:I3->O           16   0.166   0.655  xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/I_BURST_SUPPORT/resp_db_cnten1 (xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/I_BURST_SUPPORT/N0)
      LUT4:I3->O           33   0.166   0.949  xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/wr_buf_move_data_2 (xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/wr_buf_move_data_1)
      LUT3:I2->O           17   0.166   0.504  xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/GEN_WRITE_BUFFER.WR_DATA_BUFFER/valid_Write1 (xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/GEN_WRITE_BUFFER.WR_DATA_BUFFER/valid_Write)
@@ -2481,7 +2479,7 @@ Delay:               4.774ns (Levels of Logic = 4)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'MCH_SPLB_Clk'
-  Total number of paths / destination ports: 655 / 577
+  Total number of paths / destination ports: 650 / 572
 -------------------------------------------------------------------------
 Offset:              2.657ns (Levels of Logic = 2)
   Source:            MCH_SPLB_Rst (PAD)
@@ -2519,7 +2517,7 @@ Offset:              0.906ns (Levels of Logic = 0)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'MCH_SPLB_Clk'
-  Total number of paths / destination ports: 154 / 153
+  Total number of paths / destination ports: 152 / 151
 -------------------------------------------------------------------------
 Offset:              0.993ns (Levels of Logic = 1)
   Source:            xps_mch_emc_flash/MCH_PLB_IPIF_I/NO_CHNL_IF_GEN.PLBV46_SLAVE_BURST_I/I_SLAVE_ATTACHMENT/rd_data_ack (FF)
@@ -2539,14 +2537,14 @@ Offset:              0.993ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 62.00 secs
-Total CPU time to Xst completion: 61.35 secs
+Total REAL time to Xst completion: 58.00 secs
+Total CPU time to Xst completion: 57.89 secs
  
 --> 
 
-Total memory usage is 490620 kilobytes
+Total memory usage is 490556 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  336 (   0 filtered)
+Number of warnings :  334 (   0 filtered)
 Number of infos    :   16 (   0 filtered)
 

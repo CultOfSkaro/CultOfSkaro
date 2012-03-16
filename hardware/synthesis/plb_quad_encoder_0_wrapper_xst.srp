@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "plb_quad_encoder_0_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -84,13 +84,13 @@ Entity <plb_slave_attachment> (Architecture <implementation>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_slave_single_v1_01_a/hdl/vhdl/plbv46_slave_single.vhd" in Library plbv46_slave_single_v1_01_a.
 Entity <plbv46_slave_single> compiled.
 Entity <plbv46_slave_single> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_quad_encoder_v1_00_a/hdl/vhdl/user_logic.vhd" in Library plb_quad_encoder_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_quad_encoder_v1_00_a/hdl/vhdl/user_logic.vhd" in Library plb_quad_encoder_v1_00_a.
 Entity <user_logic> compiled.
 Entity <user_logic> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_quad_encoder_v1_00_a/hdl/vhdl/plb_quad_encoder.vhd" in Library plb_quad_encoder_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_quad_encoder_v1_00_a/hdl/vhdl/plb_quad_encoder.vhd" in Library plb_quad_encoder_v1_00_a.
 Entity <plb_quad_encoder> compiled.
 Entity <plb_quad_encoder> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/plb_quad_encoder_0_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/plb_quad_encoder_0_wrapper.vhd" in Library work.
 Entity <plb_quad_encoder_0_wrapper> compiled.
 Entity <plb_quad_encoder_0_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -107,11 +107,11 @@ Analyzing hierarchy for entity <plb_quad_encoder> in library <plb_quad_encoder_v
 	C_SPLB_AWIDTH = 32
 	C_SPLB_CLK_PERIOD_PS = 10000
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
+	C_SPLB_MID_WIDTH = 1
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 32
+	C_SPLB_SMALLEST_MASTER = 64
 	C_SPLB_SUPPORT_BURSTS = 1
 WARNING:Xst:821 - "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/proc_common_pkg.vhd" line 272: Loop body will iterate zero times
 
@@ -127,8 +127,8 @@ Analyzing hierarchy for entity <plbv46_slave_single> in library <plbv46_slave_si
 	C_SIPIF_DWIDTH = 32
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 
 Analyzing hierarchy for entity <soft_reset> in library <proc_common_v3_00_a> (architecture <implementation>) with generics.
@@ -151,8 +151,8 @@ Analyzing hierarchy for entity <plb_slave_attachment> in library <plbv46_slave_s
 	C_INCLUDE_DPHASE_TIMER = 1
 	C_IPIF_ABUS_WIDTH = 32
 	C_IPIF_DBUS_WIDTH = 32
-	C_PLB_MID_WIDTH = 2
-	C_PLB_NUM_MASTERS = 4
+	C_PLB_MID_WIDTH = 1
+	C_PLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 
 Analyzing hierarchy for entity <plb_address_decoder> in library <plbv46_slave_single_v1_01_a> (architecture <IMP>) with generics.
@@ -206,16 +206,16 @@ Analyzing generic Entity <plb_quad_encoder> in library <plb_quad_encoder_v1_00_a
 	C_SPLB_AWIDTH = 32
 	C_SPLB_CLK_PERIOD_PS = 10000
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
+	C_SPLB_MID_WIDTH = 1
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 32
+	C_SPLB_SMALLEST_MASTER = 64
 	C_SPLB_SUPPORT_BURSTS = 1
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:821 - "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/proc_common_pkg.vhd" line 272: Loop body will iterate zero times
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_quad_encoder_v1_00_a/hdl/vhdl/plb_quad_encoder.vhd" line 396: Unconnected output port 'Reset2Bus_ToutSup' of component 'soft_reset'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_quad_encoder_v1_00_a/hdl/vhdl/plb_quad_encoder.vhd" line 396: Unconnected output port 'Reset2Bus_ToutSup' of component 'soft_reset'.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 Entity <plb_quad_encoder> analyzed. Unit <plb_quad_encoder> generated.
@@ -232,8 +232,8 @@ Analyzing generic Entity <plbv46_slave_single> in library <plbv46_slave_single_v
 	C_SIPIF_DWIDTH = 32
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 Entity <plbv46_slave_single> analyzed. Unit <plbv46_slave_single> generated.
 
@@ -249,8 +249,8 @@ Analyzing generic Entity <plb_slave_attachment> in library <plbv46_slave_single_
 	C_INCLUDE_DPHASE_TIMER = 1
 	C_IPIF_ABUS_WIDTH = 32
 	C_IPIF_DBUS_WIDTH = 32
-	C_PLB_MID_WIDTH = 2
-	C_PLB_NUM_MASTERS = 4
+	C_PLB_MID_WIDTH = 1
+	C_PLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 WARNING:Xst:753 - "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_slave_single_v1_01_a/hdl/vhdl/plb_slave_attachment.vhd" line 1201: Unconnected output port 'Count_Out' of component 'counter_f'.
 Entity <plb_slave_attachment> analyzed. Unit <plb_slave_attachment> generated.
@@ -320,7 +320,7 @@ Entity <user_logic> analyzed. Unit <user_logic> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <user_logic>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_quad_encoder_v1_00_a/hdl/vhdl/user_logic.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_quad_encoder_v1_00_a/hdl/vhdl/user_logic.vhd".
 WARNING:Xst:647 - Input <Bus2IP_Data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Bus2IP_BE> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:646 - Signal <slv_reg_write_sel<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -436,10 +436,10 @@ WARNING:Xst:1780 - Signal <clear_rd_ce> is never used or assigned. This unconnec
     Found 4-bit register for signal <bus2ip_be_i>.
     Found 1-bit register for signal <bus2ip_rnw_i>.
     Found 1-bit register for signal <data_timeout>.
-    Found 2-bit register for signal <master_id>.
+    Found 1-bit register for signal <master_id<31>>.
     Found 32-bit register for signal <plb_abus_reg>.
     Found 4-bit register for signal <plb_be_reg>.
-    Found 2-bit register for signal <plb_masterid_reg>.
+    Found 1-bit register for signal <plb_masterid_reg<0>>.
     Found 1-bit register for signal <plb_pavalid_reg>.
     Found 1-bit register for signal <plb_rnw_reg>.
     Found 4-bit register for signal <plb_size_reg>.
@@ -448,14 +448,14 @@ WARNING:Xst:1780 - Signal <clear_rd_ce> is never used or assigned. This unconnec
     Found 1-bit register for signal <rd_clear_sl_busy>.
     Found 1-bit register for signal <set_sl_busy>.
     Found 1-bit register for signal <sl_busy>.
-    Found 4-bit register for signal <sl_mbusy_i>.
-    Found 4-bit register for signal <sl_mrderr_i>.
-    Found 4-bit register for signal <sl_mwrerr_i>.
+    Found 2-bit register for signal <sl_mbusy_i>.
+    Found 2-bit register for signal <sl_mrderr_i>.
+    Found 2-bit register for signal <sl_mwrerr_i>.
     Found 32-bit register for signal <sl_rddbus_i>.
     Found 1-bit register for signal <sl_rearbitrate_i>.
     Found 1-bit register for signal <sl_wrcomp_i>.
     Summary:
-	inferred 170 D-type flip-flop(s).
+	inferred 162 D-type flip-flop(s).
 Unit <plb_slave_attachment> synthesized.
 
 
@@ -481,7 +481,7 @@ Unit <plbv46_slave_single> synthesized.
 
 
 Synthesizing Unit <plb_quad_encoder>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_quad_encoder_v1_00_a/hdl/vhdl/plb_quad_encoder.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_quad_encoder_v1_00_a/hdl/vhdl/plb_quad_encoder.vhd".
 WARNING:Xst:646 - Signal <ipif_Bus2IP_RdCE<1>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ipif_Bus2IP_RNW> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ipif_Bus2IP_Addr> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -489,7 +489,7 @@ Unit <plb_quad_encoder> synthesized.
 
 
 Synthesizing Unit <plb_quad_encoder_0_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/plb_quad_encoder_0_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/plb_quad_encoder_0_wrapper.vhd".
 Unit <plb_quad_encoder_0_wrapper> synthesized.
 
 
@@ -502,9 +502,9 @@ Macro Statistics
 # Counters                                             : 2
  32-bit updown counter                                 : 1
  6-bit up counter                                      : 1
-# Registers                                            : 53
- 1-bit register                                        : 41
- 2-bit register                                        : 3
+# Registers                                            : 47
+ 1-bit register                                        : 37
+ 2-bit register                                        : 1
  3-bit register                                        : 1
  32-bit register                                       : 4
  4-bit register                                        : 3
@@ -526,8 +526,8 @@ Macro Statistics
 # Counters                                             : 2
  32-bit updown counter                                 : 1
  6-bit up counter                                      : 1
-# Registers                                            : 204
- Flip-Flops                                            : 204
+# Registers                                            : 196
+ Flip-Flops                                            : 196
 
 =========================================================================
 
@@ -627,6 +627,7 @@ WARNING:Xst:2677 - Node <plb_quad_encoder_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACH
 
 Mapping all equations...
 Building and optimizing final netlist ...
+FlipFlop plb_quad_encoder_0/USER_LOGIC_I/enc_reg_1 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -634,8 +635,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 166
- Flip-Flops                                            : 166
+# Registers                                            : 159
+ Flip-Flops                                            : 159
 
 =========================================================================
 
@@ -660,27 +661,25 @@ Optimization Goal                  : speed
 Keep Hierarchy                     : no
 
 Design Statistics
-# IOs                              : 280
+# IOs                              : 271
 
 Cell Usage :
-# BELS                             : 239
+# BELS                             : 229
 #      GND                         : 1
-#      INV                         : 2
-#      LUT2                        : 23
-#      LUT2_L                      : 1
-#      LUT3                        : 21
-#      LUT3_D                      : 1
+#      LUT2                        : 25
+#      LUT3                        : 19
+#      LUT3_D                      : 2
 #      LUT3_L                      : 3
-#      LUT4                        : 105
-#      LUT4_D                      : 8
-#      LUT4_L                      : 4
+#      LUT4                        : 100
+#      LUT4_D                      : 6
+#      LUT4_L                      : 3
 #      MUXCY                       : 37
 #      VCC                         : 1
 #      XORCY                       : 32
-# FlipFlops/Latches                : 166
-#      FD                          : 30
+# FlipFlops/Latches                : 159
+#      FD                          : 26
 #      FDR                         : 85
-#      FDRE                        : 44
+#      FDRE                        : 41
 #      FDRS                        : 2
 #      FDRSE                       : 5
 =========================================================================
@@ -690,10 +689,10 @@ Device utilization summary:
 
 Selected Device : 4vfx60ff672-11 
 
- Number of Slices:                      111  out of  25280     0%  
- Number of Slice Flip Flops:            166  out of  50560     0%  
- Number of 4 input LUTs:                168  out of  50560     0%  
- Number of IOs:                         280
+ Number of Slices:                      104  out of  25280     0%  
+ Number of Slice Flip Flops:            159  out of  50560     0%  
+ Number of 4 input LUTs:                158  out of  50560     0%  
+ Number of IOs:                         271
  Number of bonded IOBs:                   0  out of    352     0%  
 
 ---------------------------
@@ -717,7 +716,7 @@ Clock Information:
 -----------------------------------+------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                              | Load  |
 -----------------------------------+------------------------------------------------------------------------------------+-------+
-SPLB_Clk                           | NONE(plb_quad_encoder_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/plb_wrdbus_reg_31)| 166   |
+SPLB_Clk                           | NONE(plb_quad_encoder_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/plb_wrdbus_reg_31)| 159   |
 -----------------------------------+------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -729,8 +728,8 @@ Timing Summary:
 ---------------
 Speed Grade: -11
 
-   Minimum period: 3.386ns (Maximum Frequency: 295.333MHz)
-   Minimum input arrival time before clock: 2.446ns
+   Minimum period: 3.298ns (Maximum Frequency: 303.214MHz)
+   Minimum input arrival time before clock: 2.172ns
    Maximum output required time after clock: 0.307ns
    Maximum combinational path delay: No path found
 
@@ -740,21 +739,21 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'SPLB_Clk'
-  Clock period: 3.386ns (frequency: 295.333MHz)
-  Total number of paths / destination ports: 3834 / 250
+  Clock period: 3.298ns (frequency: 303.214MHz)
+  Total number of paths / destination ports: 3757 / 242
 -------------------------------------------------------------------------
-Delay:               3.386ns (Levels of Logic = 33)
-  Source:            plb_quad_encoder_0/USER_LOGIC_I/enc_reg_1 (FF)
+Delay:               3.298ns (Levels of Logic = 33)
+  Source:            plb_quad_encoder_0/USER_LOGIC_I/enc_reg_0 (FF)
   Destination:       plb_quad_encoder_0/USER_LOGIC_I/enc_count_reg_0 (FF)
   Source Clock:      SPLB_Clk rising
   Destination Clock: SPLB_Clk rising
 
-  Data Path: plb_quad_encoder_0/USER_LOGIC_I/enc_reg_1 to plb_quad_encoder_0/USER_LOGIC_I/enc_count_reg_0
+  Data Path: plb_quad_encoder_0/USER_LOGIC_I/enc_reg_0 to plb_quad_encoder_0/USER_LOGIC_I/enc_count_reg_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             35   0.307   1.097  plb_quad_encoder_0/USER_LOGIC_I/enc_reg_1 (plb_quad_encoder_0/USER_LOGIC_I/enc_reg_1)
-     LUT3:I0->O            1   0.166   0.313  plb_quad_encoder_0/USER_LOGIC_I/enc_count_inc_inv2 (plb_quad_encoder_0/USER_LOGIC_I/enc_count_inc_inv)
+     FDR:C->Q             35   0.307   1.009  plb_quad_encoder_0/USER_LOGIC_I/enc_reg_0 (plb_quad_encoder_0/USER_LOGIC_I/enc_reg_0)
+     LUT3:I1->O            1   0.166   0.313  plb_quad_encoder_0/USER_LOGIC_I/enc_count_inc_inv2 (plb_quad_encoder_0/USER_LOGIC_I/enc_count_inc_inv)
      MUXCY:CI->O           1   0.038   0.000  plb_quad_encoder_0/USER_LOGIC_I/Mcount_enc_count_reg_cy<0> (plb_quad_encoder_0/USER_LOGIC_I/Mcount_enc_count_reg_cy<0>)
      MUXCY:CI->O           1   0.038   0.000  plb_quad_encoder_0/USER_LOGIC_I/Mcount_enc_count_reg_cy<1> (plb_quad_encoder_0/USER_LOGIC_I/Mcount_enc_count_reg_cy<1>)
      MUXCY:CI->O           1   0.038   0.000  plb_quad_encoder_0/USER_LOGIC_I/Mcount_enc_count_reg_cy<2> (plb_quad_encoder_0/USER_LOGIC_I/Mcount_enc_count_reg_cy<2>)
@@ -789,33 +788,33 @@ Delay:               3.386ns (Levels of Logic = 33)
      XORCY:CI->O           1   0.307   0.000  plb_quad_encoder_0/USER_LOGIC_I/Mcount_enc_count_reg_xor<31> (plb_quad_encoder_0/USER_LOGIC_I/Result<31>)
      FDRE:D                    0.018          plb_quad_encoder_0/USER_LOGIC_I/enc_count_reg_0
     ----------------------------------------
-    Total                      3.386ns (1.976ns logic, 1.410ns route)
-                                       (58.4% logic, 41.6% route)
+    Total                      3.298ns (1.976ns logic, 1.322ns route)
+                                       (59.9% logic, 40.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'SPLB_Clk'
-  Total number of paths / destination ports: 201 / 199
+  Total number of paths / destination ports: 193 / 191
 -------------------------------------------------------------------------
-Offset:              2.446ns (Levels of Logic = 3)
+Offset:              2.172ns (Levels of Logic = 3)
   Source:            SPLB_Rst (PAD)
-  Destination:       plb_quad_encoder_0/USER_LOGIC_I/enc_sample_en (FF)
+  Destination:       plb_quad_encoder_0/USER_LOGIC_I/enc_sample_counter_5 (FF)
   Destination Clock: SPLB_Clk rising
 
-  Data Path: SPLB_Rst to plb_quad_encoder_0/USER_LOGIC_I/enc_sample_en
+  Data Path: SPLB_Rst to plb_quad_encoder_0/USER_LOGIC_I/enc_sample_counter_5
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LUT2:I0->O           40   0.166   0.973  plb_quad_encoder_0/SOFT_RESET_I/Reset2IP_Reset1_1 (plb_quad_encoder_0/SOFT_RESET_I/Reset2IP_Reset1)
-     LUT4:I3->O            1   0.166   0.313  plb_quad_encoder_0/USER_LOGIC_I/enc_sample_en_or0000 (plb_quad_encoder_0/USER_LOGIC_I/enc_sample_en_or0000)
-     INV:I->O              1   0.305   0.313  plb_quad_encoder_0/USER_LOGIC_I/enc_sample_en_rstpot1_INV_0 (plb_quad_encoder_0/USER_LOGIC_I/enc_sample_en_rstpot)
-     FD:D                      0.018          plb_quad_encoder_0/USER_LOGIC_I/enc_sample_en
+     LUT2:I0->O           42   0.166   0.980  plb_quad_encoder_0/SOFT_RESET_I/Reset2IP_Reset1 (plb_quad_encoder_0/rst_Bus2IP_Reset)
+     LUT4:I3->O            6   0.166   0.484  plb_quad_encoder_0/USER_LOGIC_I/enc_sample_counter_or0000 (plb_quad_encoder_0/USER_LOGIC_I/enc_sample_counter_or0000)
+     LUT2:I1->O            1   0.166   0.000  plb_quad_encoder_0/USER_LOGIC_I/enc_sample_counter_4_rstpot (plb_quad_encoder_0/USER_LOGIC_I/enc_sample_counter_4_rstpot)
+     FD:D                      0.018          plb_quad_encoder_0/USER_LOGIC_I/enc_sample_counter_4
     ----------------------------------------
-    Total                      2.446ns (0.847ns logic, 1.599ns route)
-                                       (34.6% logic, 65.4% route)
+    Total                      2.172ns (0.708ns logic, 1.464ns route)
+                                       (32.6% logic, 67.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'SPLB_Clk'
-  Total number of paths / destination ports: 82 / 82
+  Total number of paths / destination ports: 76 / 76
 -------------------------------------------------------------------------
 Offset:              0.307ns (Levels of Logic = 0)
   Source:            plb_quad_encoder_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_rearbitrate_i (FF)
@@ -834,8 +833,8 @@ Offset:              0.307ns (Levels of Logic = 0)
 =========================================================================
 
 
-Total REAL time to Xst completion: 29.00 secs
-Total CPU time to Xst completion: 29.30 secs
+Total REAL time to Xst completion: 30.00 secs
+Total CPU time to Xst completion: 30.67 secs
  
 --> 
 

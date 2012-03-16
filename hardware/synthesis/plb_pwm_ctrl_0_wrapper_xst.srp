@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "plb_pwm_ctrl_0_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -81,13 +81,13 @@ Entity <plb_slave_attachment> (Architecture <implementation>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_slave_single_v1_01_a/hdl/vhdl/plbv46_slave_single.vhd" in Library plbv46_slave_single_v1_01_a.
 Entity <plbv46_slave_single> compiled.
 Entity <plbv46_slave_single> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_pwm_ctrl_v1_00_a/hdl/vhdl/user_logic.vhd" in Library plb_pwm_ctrl_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_pwm_ctrl_v1_00_a/hdl/vhdl/user_logic.vhd" in Library plb_pwm_ctrl_v1_00_a.
 Entity <user_logic> compiled.
 Entity <user_logic> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_pwm_ctrl_v1_00_a/hdl/vhdl/plb_pwm_ctrl.vhd" in Library plb_pwm_ctrl_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_pwm_ctrl_v1_00_a/hdl/vhdl/plb_pwm_ctrl.vhd" in Library plb_pwm_ctrl_v1_00_a.
 Entity <plb_pwm_ctrl> compiled.
 Entity <plb_pwm_ctrl> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/plb_pwm_ctrl_0_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/plb_pwm_ctrl_0_wrapper.vhd" in Library work.
 Entity <plb_pwm_ctrl_0_wrapper> compiled.
 Entity <plb_pwm_ctrl_0_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -104,11 +104,11 @@ Analyzing hierarchy for entity <plb_pwm_ctrl> in library <plb_pwm_ctrl_v1_00_a> 
 	C_SPLB_AWIDTH = 32
 	C_SPLB_CLK_PERIOD_PS = 10000
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
+	C_SPLB_MID_WIDTH = 1
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 32
+	C_SPLB_SMALLEST_MASTER = 64
 	C_SPLB_SUPPORT_BURSTS = 0
 
 Analyzing hierarchy for entity <plbv46_slave_single> in library <plbv46_slave_single_v1_01_a> (architecture <implementation>) with generics.
@@ -121,8 +121,8 @@ Analyzing hierarchy for entity <plbv46_slave_single> in library <plbv46_slave_si
 	C_SIPIF_DWIDTH = 32
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 
 Analyzing hierarchy for entity <user_logic> in library <plb_pwm_ctrl_v1_00_a> (architecture <IMP>) with generics.
@@ -139,8 +139,8 @@ Analyzing hierarchy for entity <plb_slave_attachment> in library <plbv46_slave_s
 	C_INCLUDE_DPHASE_TIMER = 0
 	C_IPIF_ABUS_WIDTH = 32
 	C_IPIF_DBUS_WIDTH = 32
-	C_PLB_MID_WIDTH = 2
-	C_PLB_NUM_MASTERS = 4
+	C_PLB_MID_WIDTH = 1
+	C_PLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 
 Analyzing hierarchy for entity <plb_address_decoder> in library <plbv46_slave_single_v1_01_a> (architecture <IMP>) with generics.
@@ -206,11 +206,11 @@ Analyzing generic Entity <plb_pwm_ctrl> in library <plb_pwm_ctrl_v1_00_a> (Archi
 	C_SPLB_AWIDTH = 32
 	C_SPLB_CLK_PERIOD_PS = 10000
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
+	C_SPLB_MID_WIDTH = 1
 	C_SPLB_NATIVE_DWIDTH = 32
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
-	C_SPLB_SMALLEST_MASTER = 32
+	C_SPLB_SMALLEST_MASTER = 64
 	C_SPLB_SUPPORT_BURSTS = 0
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
@@ -228,8 +228,8 @@ Analyzing generic Entity <plbv46_slave_single> in library <plbv46_slave_single_v
 	C_SIPIF_DWIDTH = 32
 	C_SPLB_AWIDTH = 32
 	C_SPLB_DWIDTH = 64
-	C_SPLB_MID_WIDTH = 2
-	C_SPLB_NUM_MASTERS = 4
+	C_SPLB_MID_WIDTH = 1
+	C_SPLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 Entity <plbv46_slave_single> analyzed. Unit <plbv46_slave_single> generated.
 
@@ -243,8 +243,8 @@ Analyzing generic Entity <plb_slave_attachment> in library <plbv46_slave_single_
 	C_INCLUDE_DPHASE_TIMER = 0
 	C_IPIF_ABUS_WIDTH = 32
 	C_IPIF_DBUS_WIDTH = 32
-	C_PLB_MID_WIDTH = 2
-	C_PLB_NUM_MASTERS = 4
+	C_PLB_MID_WIDTH = 1
+	C_PLB_NUM_MASTERS = 2
 	C_SPLB_P2P = 0
 Entity <plb_slave_attachment> analyzed. Unit <plb_slave_attachment> generated.
 
@@ -317,7 +317,7 @@ Entity <user_logic> analyzed. Unit <user_logic> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <user_logic>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_pwm_ctrl_v1_00_a/hdl/vhdl/user_logic.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_pwm_ctrl_v1_00_a/hdl/vhdl/user_logic.vhd".
     Found 32-bit register for signal <duty_reg0>.
     Found 32-bit register for signal <duty_reg1>.
     Found 32-bit register for signal <period_reg0>.
@@ -423,10 +423,10 @@ WARNING:Xst:1780 - Signal <clear_rd_ce> is never used or assigned. This unconnec
     Found 32-bit register for signal <bus2ip_addr_i>.
     Found 4-bit register for signal <bus2ip_be_i>.
     Found 1-bit register for signal <bus2ip_rnw_i>.
-    Found 2-bit register for signal <master_id>.
+    Found 1-bit register for signal <master_id<31>>.
     Found 32-bit register for signal <plb_abus_reg>.
     Found 4-bit register for signal <plb_be_reg>.
-    Found 2-bit register for signal <plb_masterid_reg>.
+    Found 1-bit register for signal <plb_masterid_reg<0>>.
     Found 1-bit register for signal <plb_pavalid_reg>.
     Found 1-bit register for signal <plb_rnw_reg>.
     Found 4-bit register for signal <plb_size_reg>.
@@ -435,14 +435,14 @@ WARNING:Xst:1780 - Signal <clear_rd_ce> is never used or assigned. This unconnec
     Found 1-bit register for signal <rd_clear_sl_busy>.
     Found 1-bit register for signal <set_sl_busy>.
     Found 1-bit register for signal <sl_busy>.
-    Found 4-bit register for signal <sl_mbusy_i>.
-    Found 4-bit register for signal <sl_mrderr_i>.
-    Found 4-bit register for signal <sl_mwrerr_i>.
+    Found 2-bit register for signal <sl_mbusy_i>.
+    Found 2-bit register for signal <sl_mrderr_i>.
+    Found 2-bit register for signal <sl_mwrerr_i>.
     Found 32-bit register for signal <sl_rddbus_i>.
     Found 1-bit register for signal <sl_rearbitrate_i>.
     Found 1-bit register for signal <sl_wrcomp_i>.
     Summary:
-	inferred 169 D-type flip-flop(s).
+	inferred 161 D-type flip-flop(s).
 Unit <plb_slave_attachment> synthesized.
 
 
@@ -468,7 +468,7 @@ Unit <plbv46_slave_single> synthesized.
 
 
 Synthesizing Unit <plb_pwm_ctrl>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_pwm_ctrl_v1_00_a/hdl/vhdl/plb_pwm_ctrl.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_pwm_ctrl_v1_00_a/hdl/vhdl/plb_pwm_ctrl.vhd".
 WARNING:Xst:646 - Signal <ipif_Bus2IP_RNW> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ipif_Bus2IP_CS<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ipif_Bus2IP_Addr> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -476,7 +476,7 @@ Unit <plb_pwm_ctrl> synthesized.
 
 
 Synthesizing Unit <plb_pwm_ctrl_0_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/plb_pwm_ctrl_0_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/plb_pwm_ctrl_0_wrapper.vhd".
 Unit <plb_pwm_ctrl_0_wrapper> synthesized.
 
 
@@ -486,9 +486,8 @@ HDL Synthesis Report
 Macro Statistics
 # Counters                                             : 2
  32-bit up counter                                     : 2
-# Registers                                            : 175
- 1-bit register                                        : 164
- 2-bit register                                        : 2
+# Registers                                            : 169
+ 1-bit register                                        : 160
  3-bit register                                        : 1
  32-bit register                                       : 4
  4-bit register                                        : 4
@@ -511,8 +510,8 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # Counters                                             : 2
  32-bit up counter                                     : 2
-# Registers                                            : 313
- Flip-Flops                                            : 313
+# Registers                                            : 305
+ Flip-Flops                                            : 305
 # Comparators                                          : 4
  32-bit comparator greatequal                          : 2
  32-bit comparator greater                             : 2
@@ -531,12 +530,8 @@ Optimizing unit <user_logic> ...
 Optimizing unit <plb_address_decoder> ...
 
 Optimizing unit <plb_slave_attachment> ...
-WARNING:Xst:1710 - FF/Latch <plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_3> (without init value) has a constant value of 0 in block <plb_pwm_ctrl_0_wrapper>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_2> (without init value) has a constant value of 0 in block <plb_pwm_ctrl_0_wrapper>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_1> (without init value) has a constant value of 0 in block <plb_pwm_ctrl_0_wrapper>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_1> (without init value) has a constant value of 0 in block <plb_pwm_ctrl_0_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_mrderr_i_0> (without init value) has a constant value of 0 in block <plb_pwm_ctrl_0_wrapper>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_3> (without init value) has a constant value of 0 in block <plb_pwm_ctrl_0_wrapper>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_2> (without init value) has a constant value of 0 in block <plb_pwm_ctrl_0_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_1> (without init value) has a constant value of 0 in block <plb_pwm_ctrl_0_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_mwrerr_i_0> (without init value) has a constant value of 0 in block <plb_pwm_ctrl_0_wrapper>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_s_h_0> of sequential type is unconnected in block <plb_pwm_ctrl_0_wrapper>.
@@ -598,8 +593,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 319
- Flip-Flops                                            : 319
+# Registers                                            : 315
+ Flip-Flops                                            : 315
 
 =========================================================================
 
@@ -624,24 +619,24 @@ Optimization Goal                  : speed
 Keep Hierarchy                     : no
 
 Design Statistics
-# IOs                              : 280
+# IOs                              : 271
 
 Cell Usage :
-# BELS                             : 637
+# BELS                             : 635
 #      GND                         : 1
 #      INV                         : 3
-#      LUT2                        : 201
-#      LUT3                        : 57
+#      LUT2                        : 203
+#      LUT3                        : 53
 #      LUT4                        : 82
 #      MUXCY                       : 195
 #      MUXF5                       : 33
 #      VCC                         : 1
 #      XORCY                       : 64
-# FlipFlops/Latches                : 319
+# FlipFlops/Latches                : 315
 #      FDC                         : 64
 #      FDP                         : 2
-#      FDR                         : 103
-#      FDRE                        : 150
+#      FDR                         : 102
+#      FDRE                        : 147
 =========================================================================
 
 Device utilization summary:
@@ -649,10 +644,10 @@ Device utilization summary:
 
 Selected Device : 4vfx60ff672-11 
 
- Number of Slices:                      270  out of  25280     1%  
- Number of Slice Flip Flops:            319  out of  50560     0%  
- Number of 4 input LUTs:                343  out of  50560     0%  
- Number of IOs:                         280
+ Number of Slices:                      267  out of  25280     1%  
+ Number of Slice Flip Flops:            315  out of  50560     0%  
+ Number of 4 input LUTs:                341  out of  50560     0%  
+ Number of IOs:                         271
  Number of bonded IOBs:                   0  out of    352     0%  
 
 ---------------------------
@@ -676,7 +671,7 @@ Clock Information:
 -----------------------------------+----------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                              | Load  |
 -----------------------------------+----------------------------------------------------+-------+
-SPLB_Clk                           | NONE(plb_pwm_ctrl_0/USER_LOGIC_I/pwm_count_reg1_31)| 319   |
+SPLB_Clk                           | NONE(plb_pwm_ctrl_0/USER_LOGIC_I/pwm_count_reg1_31)| 315   |
 -----------------------------------+----------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -704,7 +699,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'SPLB_Clk'
   Clock period: 5.689ns (frequency: 175.771MHz)
-  Total number of paths / destination ports: 110518 / 453
+  Total number of paths / destination ports: 110501 / 447
 -------------------------------------------------------------------------
 Delay:               5.689ns (Levels of Logic = 66)
   Source:            plb_pwm_ctrl_0/USER_LOGIC_I/pwm_count_reg1_0 (FF)
@@ -790,7 +785,7 @@ Delay:               5.689ns (Levels of Logic = 66)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'SPLB_Clk'
-  Total number of paths / destination ports: 326 / 318
+  Total number of paths / destination ports: 321 / 313
 -------------------------------------------------------------------------
 Offset:              2.018ns (Levels of Logic = 1)
   Source:            SPLB_Rst (PAD)
@@ -809,7 +804,7 @@ Offset:              2.018ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'SPLB_Clk'
-  Total number of paths / destination ports: 76 / 76
+  Total number of paths / destination ports: 74 / 74
 -------------------------------------------------------------------------
 Offset:              0.307ns (Levels of Logic = 0)
   Source:            plb_pwm_ctrl_0/PLBV46_SLAVE_SINGLE_I/I_SLAVE_ATTACHMENT/sl_rearbitrate_i (FF)
@@ -828,14 +823,14 @@ Offset:              0.307ns (Levels of Logic = 0)
 =========================================================================
 
 
-Total REAL time to Xst completion: 42.00 secs
-Total CPU time to Xst completion: 41.83 secs
+Total REAL time to Xst completion: 37.00 secs
+Total CPU time to Xst completion: 37.34 secs
  
 --> 
 
-Total memory usage is 453692 kilobytes
+Total memory usage is 453436 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  111 (   0 filtered)
+Number of warnings :  107 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 

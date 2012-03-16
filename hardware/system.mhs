@@ -97,7 +97,7 @@ BEGIN ppc405_virtex4
  BUS_INTERFACE RESETPPC = ppc_reset_bus_0
  BUS_INTERFACE JTAGPPC = ppc405_0_jtagppc_bus
  PORT CPMC405CLOCK = clk_300_0000MHzDCM0
- PORT EICC405EXTINPUTIRQ = ext_int
+ PORT EICC405EXTINPUTIRQ = ext_int_ppc405_0
 END
 
 BEGIN ppc405_virtex4
@@ -111,7 +111,7 @@ BEGIN ppc405_virtex4
  BUS_INTERFACE RESETPPC = ppc_reset_bus_1
  BUS_INTERFACE JTAGPPC = ppc405_1_jtagppc_bus
  PORT CPMC405CLOCK = clk_300_0000MHzDCM0
- PORT EICC405EXTINPUTIRQ = xps_intc_1_Irq
+ PORT EICC405EXTINPUTIRQ = ext_int_ppc405_1
 END
 
 BEGIN plb_v46
@@ -240,13 +240,12 @@ END
 BEGIN xps_intc
  PARAMETER INSTANCE = xps_intc_0
  PARAMETER HW_VER = 2.01.a
- PARAMETER C_NUM_INTR_INPUTS = 5
+ PARAMETER C_NUM_INTR_INPUTS = 4
  PARAMETER C_BASEADDR = 0x81800000
  PARAMETER C_HIGHADDR = 0x8180ffff
  BUS_INTERFACE SPLB = plb_0
-# PORT Intr = wireless_int & serial_int & usb_int & cam_int
  PORT Intr = gpio_int & wireless_int & serial_int & gameboard_uart_Interrupt
- PORT Irq = ext_int
+ PORT Irq = ext_int_ppc405_0
 END
 
 BEGIN plb_quad_encoder
@@ -534,10 +533,11 @@ END
 BEGIN xps_intc
  PARAMETER INSTANCE = xps_intc_1
  PARAMETER HW_VER = 2.01.a
+ PARAMETER C_NUM_INTR_INPUTS = 2
  PARAMETER C_BASEADDR = 0x81400000
  PARAMETER C_HIGHADDR = 0x8140FFFF
  BUS_INTERFACE SPLB = plb_1
- PORT Irq = ext_int
+ PORT Irq = ext_int_ppc405_1
  PORT Intr = usb_int & plb_vision_0_Interrupt
 END
 

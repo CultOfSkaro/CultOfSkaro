@@ -320,7 +320,8 @@ TIMEGRP "Cam0_Input" OFFSET = IN 8 ns VALID 16 ns BEFORE cam0_pixclk;
 
 # Ignore timing on interrupt signals
 NET wireless_int      TIG;
-NET ext_int           TIG;
+NET ext_int_ppc405_0  TIG;
+NET ext_int_ppc405_1  TIG;
 
 TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 100000 kHz;
 NET "ppc405_0/C405RSTCHIPRESETREQ" TPTHRU = "ppc405_0_RST_GRP";

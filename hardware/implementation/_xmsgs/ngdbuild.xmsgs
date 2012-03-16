@@ -2732,13 +2732,13 @@
 <arg fmt="%s" index="7">CLK0</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_dcm_2_dcm_2_CLK0_BUF = PERIOD &quot;dcm_2_dcm_2_CLK0_BUF&quot; TS_clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 HIGH 50%&gt;</arg>
 </msg>
 
-<msg type="info" file="ConstraintSystem" num="0" >The Period constraint &lt;NET usb_if_clk PERIOD = 20.833333 ns;&gt; [system.ucf(337)], is specified using the Net Period method which is not recommended. Please use the Timespec PERIOD method.
+<msg type="info" file="ConstraintSystem" num="0" >The Period constraint &lt;NET usb_if_clk PERIOD = 20.833333 ns;&gt; [system.ucf(338)], is specified using the Net Period method which is not recommended. Please use the Timespec PERIOD method.
 </msg>
 
-<msg type="info" file="ConstraintSystem" num="0" >The Period constraint &lt;NET sdram_clk_fb PERIOD = 10 ns;&gt; [system.ucf(465)], is specified using the Net Period method which is not recommended. Please use the Timespec PERIOD method.
+<msg type="info" file="ConstraintSystem" num="0" >The Period constraint &lt;NET sdram_clk_fb PERIOD = 10 ns;&gt; [system.ucf(466)], is specified using the Net Period method which is not recommended. Please use the Timespec PERIOD method.
 </msg>
 
-<msg type="info" file="NgdBuild" num="1222" delta="old" >Setting <arg fmt="%s" index="1">CLKIN_PERIOD</arg> attribute associated with <arg fmt="%s" index="2">DCM</arg> instance <arg fmt="%s" index="3">clock_generator_0/DCM0_INST/Using_DCM_ADV.DCM_ADV_INST</arg> to <arg fmt="%s" index="4">10.000000</arg> ns based on the period specification (<arg fmt="%s" index="5">&lt;TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 100000 kHz;&gt; [system.ucf(325)]</arg>).
+<msg type="info" file="NgdBuild" num="1222" delta="new" >Setting <arg fmt="%s" index="1">CLKIN_PERIOD</arg> attribute associated with <arg fmt="%s" index="2">DCM</arg> instance <arg fmt="%s" index="3">clock_generator_0/DCM0_INST/Using_DCM_ADV.DCM_ADV_INST</arg> to <arg fmt="%s" index="4">10.000000</arg> ns based on the period specification (<arg fmt="%s" index="5">&lt;TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 100000 kHz;&gt; [system.ucf(326)]</arg>).
 </msg>
 
 <msg type="info" file="NgdBuild" num="1222" delta="old" >Setting <arg fmt="%s" index="1">CLKIN_PERIOD</arg> attribute associated with <arg fmt="%s" index="2">DCM</arg> instance <arg fmt="%s" index="3">dcm_2/Using_DCM_ADV.DCM_ADV_INST</arg> to <arg fmt="%s" index="4">10.000000</arg> ns based on the period specification (<arg fmt="%s" index="5">&lt;TIMESPEC TS_clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PERIOD &quot;clock_generator_0_clock_generator_0_SIG_DCM0_CLK0&quot; TS_sys_clk_pin HIGH 50%&gt;</arg>).

@@ -68,4 +68,4 @@ vhdl mdm_v2_00_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v
 vhdl mdm_v2_00_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\hdl\vhdl\jtag_control.vhd"
 vhdl mdm_v2_00_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\hdl\vhdl\mdm_core.vhd"
 vhdl mdm_v2_00_b "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\hdl\vhdl\mdm.vhd"
-vhdl work "C:\RobotRacers\hardware_dans_branch\hdl\debug_module_0_wrapper.vhd"
+vhdl work "C:\RobotRacers\CultOfSkaro\hardware\hdl\debug_module_0_wrapper.vhd"

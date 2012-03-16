@@ -43,7 +43,7 @@ entity debug_module_0_wrapper is
     PLB_SAValid : in std_logic;
     PLB_rdPrim : in std_logic;
     PLB_wrPrim : in std_logic;
-    PLB_masterID : in std_logic_vector(0 to 0);
+    PLB_masterID : in std_logic_vector(0 to 1);
     PLB_abort : in std_logic;
     PLB_busLock : in std_logic;
     PLB_RNW : in std_logic;
@@ -73,10 +73,10 @@ entity debug_module_0_wrapper is
     Sl_rdDAck : out std_logic;
     Sl_rdComp : out std_logic;
     Sl_rdBTerm : out std_logic;
-    Sl_MBusy : out std_logic_vector(0 to 1);
-    Sl_MWrErr : out std_logic_vector(0 to 1);
-    Sl_MRdErr : out std_logic_vector(0 to 1);
-    Sl_MIRQ : out std_logic_vector(0 to 1);
+    Sl_MBusy : out std_logic_vector(0 to 3);
+    Sl_MWrErr : out std_logic_vector(0 to 3);
+    Sl_MRdErr : out std_logic_vector(0 to 3);
+    Sl_MIRQ : out std_logic_vector(0 to 3);
     Dbg_Clk_0 : out std_logic;
     Dbg_TDI_0 : out std_logic;
     Dbg_TDO_0 : in std_logic;
@@ -346,8 +346,8 @@ begin
       C_SPLB_AWIDTH => 32,
       C_SPLB_DWIDTH => 64,
       C_SPLB_P2P => 0,
-      C_SPLB_MID_WIDTH => 1,
-      C_SPLB_NUM_MASTERS => 2,
+      C_SPLB_MID_WIDTH => 2,
+      C_SPLB_NUM_MASTERS => 4,
       C_SPLB_NATIVE_DWIDTH => 32,
       C_SPLB_SUPPORT_BURSTS => 1,
       C_MB_DBG_PORTS => 1,

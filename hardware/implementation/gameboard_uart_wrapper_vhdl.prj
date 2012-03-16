@@ -124,4 +124,4 @@ vhdl xps_uartlite_v1_02_a "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pco
 vhdl xps_uartlite_v1_02_a "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_uartlite_v1_02_a\hdl\vhdl\uartlite_tx.vhd"
 vhdl xps_uartlite_v1_02_a "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_uartlite_v1_02_a\hdl\vhdl\uartlite_core.vhd"
 vhdl xps_uartlite_v1_02_a "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\xps_uartlite_v1_02_a\hdl\vhdl\xps_uartlite.vhd"
-vhdl work "C:\RobotRacers\hardware_dans_branch\hdl\gameboard_uart_wrapper.vhd"
+vhdl work "C:\RobotRacers\CultOfSkaro\hardware\hdl\gameboard_uart_wrapper.vhd"
