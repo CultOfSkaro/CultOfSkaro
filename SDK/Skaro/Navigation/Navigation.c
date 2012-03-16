@@ -53,19 +53,16 @@ void gyroCalculation(int gyroInput, int velocityBack)
 	gyro.omega = (PI*gyroInput)/180;
 	gyro.backCurvature = gyro.omega/velocityBack;
 	// V_f
-	//Error because of math.h not included, we're using ^ and srt()
 	gyro.frontVelocity = velocityBack * sqrt(1+((gyro.backCurvature)*gyro.backCurvature*(gyro.wheelBase)*gyro.wheelBase));
 	// K_f
 	gyro.frontCurvature = gyro.omega/gyro.frontVelocity;
 	// Delta
-	//Doesn't like the arcsin()
 	gyro.steeringAngle = asin(gyro.wheelBase * gyro.frontCurvature);
 }
 
 void encoderBackToFrontCorrections()
 {
 	gyro.backEncoder = pid.encoderValue - pid.lastEncoderValue;
-	//Error because of math.h not included, we're using ^
 	gyro.frontEncoder = (gyro.backEncoder/(1 - ((gyro.steeringAngle*gyro.steeringAngle))/2));
 }
 
@@ -78,7 +75,6 @@ int distanceFrontToBack(int distance)
 {
 	return distance*(1-((gyro.steeringAngle*gyro.steeringAngle)/2)); //distance devided by cos(delta)
 }
-
 
 int absDistanceFromArchDistCuvrature(float curvature, int archDistance)
 {

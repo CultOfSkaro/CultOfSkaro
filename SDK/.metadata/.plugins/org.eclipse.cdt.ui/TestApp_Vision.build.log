@@ -18,6 +18,18 @@ C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:256: 
 C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:255: warning: unused variable 'spiaddr'
 Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c
  
+Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"plb_vision_v1_00_a/src/plb_vision_selftest.d" -MT"plb_vision_v1_00_a/src/plb_vision_selftest.d" -o"plb_vision_v1_00_a/src/plb_vision_selftest.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.h:186: warning: 'MpmcUpdateStaticPhyReg' declared 'static' but never defined
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
+ 
 Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c
 Invoking: PowerPC gcc compiler
 powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"plb_usb_v1_00_a/src/USB_IO.d" -MT"plb_usb_v1_00_a/src/USB_IO.d" -o"plb_usb_v1_00_a/src/USB_IO.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c"
@@ -147,18 +159,6 @@ cygwin warning:
   Consult the user's guide for more details about POSIX paths:
     http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
 Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Queue.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"plb_vision_v1_00_a/src/plb_vision_selftest.d" -MT"plb_vision_v1_00_a/src/plb_vision_selftest.d" -o"plb_vision_v1_00_a/src/plb_vision_selftest.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.h:186: warning: 'MpmcUpdateStaticPhyReg' declared 'static' but never defined
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
  
 Building target: TestApp_Vision.elf
 Invoking: PowerPC gcc linker

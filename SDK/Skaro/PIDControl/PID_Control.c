@@ -37,14 +37,16 @@ void initPID(){
 			//General params
 			pid.outputPID = 0;
 			pid.outputPID_unsat = 0;
+			pid.outputPID_c = 0;
+			pid.outputPID_unsat_c = 0;
 			pid.encoderValue = 0;
 			pid.lastEncoderValue = getTicks();
 			pid.Tau = 0.05f;
 
 			//Velocity params
 	        pid.Kp = 0.02f;
-	        pid.Kd = 0.0001f;
-	        pid.Ki = 0.005f;
+	        pid.Kd = 0.00003f;
+	        pid.Ki = 0.025f;
 	        pid.integrator = 0.0f;
 	        pid.differentiator = 0.0f;
 	        pid.desiredVelocityPID = 0;
@@ -66,7 +68,17 @@ void initPID(){
 	        pid.distanceError = 0;
 	        //Angle params
 			pid.desiredAnglePID = 0;
-
+			pid.desiredCentroidPID = 0;
+			pid.Kp_c = 0.0f;
+			pid.Kd_c = 0.0f;
+			pid.Ki_c = 0.0f;
+			pid.integrator_c = 0.0f;
+			pid.differentiator_c = 0.0f;
+			pid.lastError_c = 0;
+			pid.lastCurrentCentroid = 0;
+			pid.currentCentroid = 0;
+			pid.error_c = 0.0;
+			pid.lastClockTicks_c = 0;
 
 	}
 
@@ -164,6 +176,58 @@ void updateVelocityOutput()
 	pid.lastCurrentVelocity = currentVelocity;
 	pid.lastDesiredVelocity = desiredVelocity;
 	SetServo(RC_VEL_SERVO, (int)pid.outputPID);
+}
+
+void updateCentroid()
+{
+	int P, I, D;
+	uint32 deltaClocks;
+	CPU_MSR msr;
+
+	//------Read Encoder and clock
+	msr = DISABLE_INTERRUPTS();
+	pid.currentCentroid = 0;//----//get info from camera here
+	uint32 nowClocks = ClockTime();
+	RESTORE_INTERRUPTS(msr);
+
+
+	//------Time since last function call in seconds
+	uint32 maxClocks = 0xffffffff;
+	if ((nowClocks < pid.lastClockTicks_c))
+		deltaClocks = (maxClocks-pid.lastClockTicks_c)+nowClocks;
+	else
+		deltaClocks = nowClocks - pid.lastClockTicks_c;
+
+	float refreshRate = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
+	//uint32 refreshRate = (deltaClocks)/(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ/1000) ;
+
+	pid.lastClockTicks_c = nowClocks;
+
+	//------Calculate Error
+	pid.error_c = pid.desiredCentroidPID - pid.currentCentroid;
+
+	//------Update Derivative
+	pid.differentiator_c = (2*pid.Tau-refreshRate)/(2*pid.Tau+refreshRate)*pid.differentiator_c + 2/(2*pid.Tau+refreshRate)*(pid.currentCentroid - pid.lastCurrentCentroid);
+
+	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
+	pid.integrator_c = pid.integrator_c + (refreshRate/2)*(pid.error_c + pid.lastError_c);
+
+
+	//------Output Calculation
+	P = pid.Kp_c * pid.error_c;
+	I = pid.Ki_c * pid.integrator_c;
+	D = pid.Kd_c * pid.differentiator_c;
+
+	pid.outputPID_unsat_c = (P) + (I) - (D);
+	pid.outputPID_c = sat(pid.outputPID_unsat_c, 50);
+
+	pid.integrator_c = pid.integrator_c + (refreshRate/pid.Ki_c)*(pid.outputPID_c - pid.outputPID_unsat_c);
+
+	//------Save states and send PWM to motors
+	pid.lastCurrentCentroid = pid.currentCentroid;
+	pid.lastError_c = pid.error_c;
+	SetServo(RC_STR_SERVO, pid.outputPID_c);
+
 }
 
 void updateDistanceOutput()

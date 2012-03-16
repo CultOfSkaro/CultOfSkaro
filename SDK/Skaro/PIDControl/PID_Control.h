@@ -16,6 +16,8 @@ typedef struct
 	//General Variables
 	int outputPID;
 	float outputPID_unsat;
+	int outputPID_c;
+	int outputPID_unsat_c;
 	int encoderValue;
 	int lastEncoderValue;              // Last position input
 	float Tau;
@@ -45,6 +47,17 @@ typedef struct
 	uint32 lastCurrentDistance;
 	//Angle Variables
 	int desiredAnglePID;
+	int desiredCentroidPID;
+	float Kp_c;
+	float Kd_c;
+	float Ki_c;
+	float integrator_c;
+	float differentiator_c;
+	int lastError_c;
+	int lastCurrentCentroid;
+	int currentCentroid;
+	int error_c;
+	int lastClockTicks_c;
 	} PID;
 
 #define ENCODER_BASE_ADDR 0x7a400000
