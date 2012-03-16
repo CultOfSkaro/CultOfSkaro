@@ -16,7 +16,7 @@ Finished building target: TestApp_Vision.elf
 Invoking: PowerPC Print Size
 powerpc-eabi-size TestApp_Vision.elf  |tee "TestApp_Vision.elf.size"
    text	   data	    bss	    dec	    hex	filename
-  52346	    516	   2756	  55618	   d942	TestApp_Vision.elf
+  57494	   1564	   2816	  61874	   f1b2	TestApp_Vision.elf
 Finished building: TestApp_Vision.elf.size
  
 Invoking: Xilinx ELF Check

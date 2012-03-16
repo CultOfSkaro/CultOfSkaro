@@ -22,6 +22,8 @@
 
 #include "xtime_l.h"
 
+#include <stdlib.h>
+
 /************************** Constant Definitions ***************************/
 
 #define PIT_PER_SECOND 		1000
@@ -71,12 +73,31 @@ void pitHandler(){
  * *      detection data
  */
 
+typedef struct {
+	int type;
+	int left;
+	int top;
+	int width;
+	int height;
+} Blob;
+
 //char headerBuf[64 + 64 + 4 + 4 + 4];
 //char headerBuf[512];
-char *headerBuf = (char*)0x10000;
-int *transmitSize = (int*)(0x10000 + 64 + 64);
-int *frameSize = (int*)(0x10000 + 64 + 64 + 4);
-int *detectionSize = (int*)(0x10000 + 64 + 64 + 4 + 4);
+#define HEADER_LOC     0x10000
+#define HEADER_SIZE    64 + 64 + 4 + 4 + 4
+#define NUM_BLOBS_LOC  HEADER_LOC + HEADER_SIZE
+#define BLOB_LOC       NUM_BLOBS_LOC + 4
+#define MAX_BLOBS      10
+#define BLOB_DATA_LOC  NUM_BLOBS_LOC
+#define BLOB_DATA_SIZE 4 + sizeof(Blob) * MAX_BLOBS
+
+char *headerBuf = (char*)HEADER_LOC;
+int *transmitSize = (int*)(HEADER_LOC + 64 + 64);
+int *frameSize = (int*)(HEADER_LOC + 64 + 64 + 4);
+int *detectionSize = (int*)(HEADER_LOC + 64 + 64 + 4 + 4);
+
+int *numBlobs = (int*)(NUM_BLOBS_LOC);
+Blob *blobBuf = (Blob*)(BLOB_LOC);
 
 void initHeader() {
 	int i;
@@ -86,21 +107,38 @@ void initHeader() {
 	for (i = 64; i < 64 + 64; i++) {
 		headerBuf[i] = 255;
 	}
+
+	srand(12345621);
 }
 
 void transmitFrame(FrameTableEntry* frame) {
 	uint32* bufAddr = frame->frame_address[VISION_FRAME_RGB565]->data.data32;
 	int bufSize = frame->frame_address[VISION_FRAME_RGB565]->capacity;
 
+	//set up transmission sizes
 	*frameSize = bufSize;
-	*detectionSize = 0;
+	*numBlobs = rand() % MAX_BLOBS;
+	*detectionSize = 4 + (sizeof(Blob) * *numBlobs);
 	*transmitSize = *frameSize + *detectionSize + 8;
+
+	xil_printf("data size: %d\r\n", *detectionSize);
+
+	int i;
+	for (i = 0; i < *numBlobs; i++) {
+		//blobs
+		blobBuf[i].type = rand() % 10;
+		blobBuf[i].left = rand() % 640;
+		blobBuf[i].top = rand() % 480;
+		blobBuf[i].width = rand() % (640 - blobBuf[i].left);
+		blobBuf[i].height = rand() % (480 - blobBuf[i].top);
+	}
 
 	/*
 	xil_printf("Frame id:%d\r\n", frame->id);
 	xil_printf("Frame addr: %08x", bufAddr);
 	xil_printf("Frame size: %d\r\n", bufSize);
 	*/
+	/*
 	xil_printf("Transmit size: %d\r\n", 140 / 2);
 	int i, j;
 	for (i = 0; i < 140; i++) {
@@ -109,6 +147,7 @@ void transmitFrame(FrameTableEntry* frame) {
 		}
 		print("\r\n");
 	}
+	 */
 
 	print("Writing header over usb...");
 	while(!USB_writeReady());
@@ -118,7 +157,13 @@ void transmitFrame(FrameTableEntry* frame) {
 
 	xil_printf("Writing frame over usb: %d...", frame->id);
 	while(!USB_writeReady());
-	USB_blockWrite((u32*)bufAddr, bufSize / 2);
+	USB_blockWrite((u32*)((int)bufAddr + 4), bufSize / 2);
+	while(!USB_writeReady());
+	print("Done\r\n");
+
+	print("Writing blobs over usb...");
+	while(!USB_writeReady());
+	USB_blockWrite((u32*)numBlobs, *detectionSize / 2);
 	while(!USB_writeReady());
 	print("Done\r\n");
 }

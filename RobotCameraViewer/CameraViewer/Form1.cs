@@ -23,6 +23,8 @@ namespace CameraViewer
         private bool quit = false;
         private Stopwatch timer = new Stopwatch();
         private byte[] header;
+        private int numBlobs;
+        private Blob[] blobs = new Blob[10];
 
         public Form1()
         {
@@ -44,12 +46,15 @@ namespace CameraViewer
             for (int i = 64; i < 64+64; i++) {
                 header[i] = 255;
             }
+
+            usb.packetHeader = header;
         }
 
         private void startCapture() {
             txtDebug.AppendText("Reading from usb...");
             //usb.read(640 * 480 * 2); //*2 for 16 bits per pixel
-            usb.findHeader(header);
+            //usb.findHeader(header);
+            usb.readPacket();
         }
              
         private void button1_Click(object sender, EventArgs e)
@@ -79,14 +84,46 @@ namespace CameraViewer
         }
 
         void usb_gotData(object sender, DataEventArgs e) {
-            txtDebug.AppendText("Done" + e.data[0] + "\r\n");
-
-            //converter.convert(e.data);
             if (captureLoop) {
                 startCapture();
             } else if (quit) {
                 this.Close();
             }
+
+            txtDebug.AppendText("Done\r\n");
+            int imageSize = ByteConvert.toUint32(e.data, 0);
+            int dataSize = ByteConvert.toUint32(e.data, 4);
+            numBlobs = ByteConvert.toUint32(e.data, 8 + imageSize);
+          
+            txtDebug.AppendText("Image size: " + imageSize + "\r\n");
+            txtDebug.AppendText("Data size: " + dataSize + "\r\n");
+            txtDebug.AppendText("num Blobs: " + numBlobs + "\r\n");
+            
+            
+            int blobsStart = 8 + imageSize + 4;
+            for (int i = 0; i < numBlobs; i++) {
+                int blobStart = blobsStart + i * 20; //5 ints per blob
+                int type = ByteConvert.toUint32(e.data, blobStart);
+                int left = ByteConvert.toUint32(e.data, blobStart + 4);
+                int top = ByteConvert.toUint32(e.data, blobStart + 8);
+                int width = ByteConvert.toUint32(e.data, blobStart + 12);
+                int height = ByteConvert.toUint32(e.data, blobStart + 16);
+
+                blobs[i] = new Blob(type, left, top, width, height);
+            }
+
+            /*
+            for (int i = 0; i < 16; i++) {
+                txtDebug.AppendText(e.data[i] + " ");
+            }
+            txtDebug.AppendText("\r\n");
+            for (int i = 0; i < 16; i++) {
+                txtDebug.AppendText(e.data[i + 16] + " ");
+            }
+            txtDebug.AppendText("\r\n");
+            */
+
+            converter.convert(e.data, 8, imageSize);
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
@@ -105,6 +142,28 @@ namespace CameraViewer
             }
         }
 
+        private Pen pen = new Pen(Color.Blue, 2);            
+        private void pictureBox1_Paint(object sender, PaintEventArgs e) {
+            Graphics g = e.Graphics;
+
+            for (int i = 0; i < numBlobs; i++) {
+                g.DrawRectangle(pen, blobs[i].left, blobs[i].top, 
+                    blobs[i].width, blobs[i].height);
+            }
+        }
+
+    }
+
+    class Blob
+    {
+        public int type, left, top, width, height;
+        public Blob(int type, int left, int top, int width, int height) {
+            this.type = type;
+            this.left = left;
+            this.top = top;
+            this.width = width;
+            this.height = height;
+        }
     }
 
     delegate void DataEventHandler(object sender, DataEventArgs e);
@@ -130,6 +189,8 @@ namespace CameraViewer
         public event ImageEventHandler finished;
         private BackgroundWorker bw;
         private byte[] raw;
+        private int start;
+        private int length;
         Bitmap image;
         
         public pixelConverter() {
@@ -139,9 +200,11 @@ namespace CameraViewer
 
         }
 
-        public void convert(byte[] raw) {
+        public void convert(byte[] raw, int start, int length) {
             if (!bw.IsBusy) {
                 this.raw = raw;
+                this.start = start;
+                this.length = length;
                 bw.RunWorkerAsync();
             } else {
                 throw new Exception("Already converting!");
@@ -150,10 +213,10 @@ namespace CameraViewer
 
 
         private void bw_DoWork(object sender, DoWorkEventArgs e) {
-            byte[] pixels = new byte[raw.Length * 3 / 2];  //24 bpp instead of 16
+            byte[] pixels = new byte[length * 3 / 2];  //24 bpp instead of 16
             
             //convert to rgb
-            for (int d = 0, p = 0; d < raw.Length; d += 2, p += 3) {
+            for (int d = start, p = 0; d < start + length; d += 2, p += 3) {
                 int pixel = raw[d] << 8 | raw[d + 1];
                 double h = (((pixel >> 10) & 0x3F) << (2)) / 255.0 * 360;
                 double s = (((pixel >> 5) & 0x1F) << (3)) / 255.0;
@@ -185,19 +248,20 @@ namespace CameraViewer
     class usbReader
     {
         public event DataEventHandler gotData;
+
+        public byte[] packetHeader;
+
         private enum Mode { READ, FIND_HEADER };
         private Mode mode = Mode.READ;
+        private bool gettingPacket = false;
         private BackgroundWorker bw;
         private TextBox txtDebug;
         byte[] data;
         int leftToRead = 0;
 
-        byte[] buffer1;
-        GCHandle bufHandle1;
-        IntPtr bufAddr1;
-        byte[] buffer2;
-        GCHandle bufHandle2;
-        IntPtr bufAddr2;
+        byte[] buffer;
+        GCHandle bufHandle;
+        IntPtr bufAddr;
 
         public usbReader(TextBox txtDebug) {
             this.txtDebug = txtDebug;
@@ -206,17 +270,13 @@ namespace CameraViewer
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
 
-            buffer1 = new byte[512];
-            bufHandle1 = GCHandle.Alloc(buffer1, GCHandleType.Pinned);
-            bufAddr1 = bufHandle1.AddrOfPinnedObject();
-            buffer2 = new byte[512];
-            bufHandle2 = GCHandle.Alloc(buffer2, GCHandleType.Pinned);
-            bufAddr2 = bufHandle2.AddrOfPinnedObject();
+            buffer = new byte[512];
+            bufHandle = GCHandle.Alloc(buffer, GCHandleType.Pinned);
+            bufAddr = bufHandle.AddrOfPinnedObject();
         }
 
         ~usbReader() {
-            bufHandle1.Free();
-            bufHandle2.Free();
+            bufHandle.Free();
         }
 
 
@@ -229,49 +289,40 @@ namespace CameraViewer
         //blocking read of usb
         private void bw_DoWork(object sender, DoWorkEventArgs e) {
             int curLoc = 0;
-            byte[] bufCur = buffer1;
-            byte[] bufOld = buffer2;
 
             while (true) {
-                int numRead;
-                if (bufCur == buffer1) {
-                    numRead = HeliosUsb.Read(bufAddr1);
-                } else {
-                    numRead = HeliosUsb.Read(bufAddr2);
-                }
+                int numRead = HeliosUsb.Read(bufAddr);
 
+                /*
                 if (numRead != 512) {
                     txtDebug.AppendText("WrongSize: " + numRead + "!\r\n");
 
                     for (int i = 0; i < numRead; i++) {
                         for (int j = 0; j < 8 && i < numRead; i++, j++) {
-                            txtDebug.AppendText(bufCur[i] + " ");
+                            txtDebug.AppendText(buffer[i] + " ");
                         }
                         txtDebug.AppendText("\r\n");
                     }
                 }
+                */
 
                 if (mode == Mode.READ) {
-                    Buffer.BlockCopy(bufCur, 0, data, curLoc,
+                    Buffer.BlockCopy(buffer, 0, data, curLoc,
                         Math.Min(numRead, leftToRead));
                     leftToRead -= numRead;
                     curLoc += numRead;
                     if (leftToRead <= 0) break;
+                
                 } else if (mode == Mode.FIND_HEADER) {
                     bool found = false;
-                    int i;
-                    for (i = data.Length * -1; i < numRead; i++) {
+                    int headerLoc;
+                    for (headerLoc = 0; headerLoc < numRead; headerLoc++) {
                         //check every posistion in the read data
                         int j;
                         for (j = 0; j < data.Length; j++) {
                             //check the whole header
-                            if (i + j >= numRead) break;
-
-                            if (i + j < 0) {
-                                if (bufOld[i + j + 512] != data[j]) break;
-                            } else {
-                                if (bufCur[i + j] != data[j]) break;
-                            }
+                            if (headerLoc + j >= numRead) break;
+                            if (buffer[headerLoc + j] != data[j]) break;
                         }
 
                         if (j == data.Length) {
@@ -281,21 +332,23 @@ namespace CameraViewer
                     }
 
                     if (found == true) {
-                        data = new byte[] { (byte)i };
-
-                        /*
-                        for (int j = i; j < 10; j++) {
-                            txtDebug.AppendText(buffer[i + j] + "\r\n");
+                        if (gettingPacket) {
+                            int dataLoc = headerLoc + data.Length;
+                            int size = ByteConvert.toUint32(buffer, dataLoc);
+                            int alreadyRead = numRead - dataLoc - 4;
+                            data = new byte[size];
+                            Buffer.BlockCopy(buffer, dataLoc + 4, data, 0,
+                                alreadyRead);
+                            mode = Mode.READ;
+                            gettingPacket = false;
+                            leftToRead = size - alreadyRead;
+                            curLoc = alreadyRead;
+                        } else {
+                            data = new byte[] { (byte)headerLoc };
+                            break;
                         }
-                        */
-
-                        break;
                     }
                 }
-
-                byte[] temp = bufCur;
-                bufCur = bufOld;
-                bufOld = temp;
             }
         }
 
@@ -317,12 +370,20 @@ namespace CameraViewer
             }
         }
 
+        public void readPacket() {
+            if (packetHeader == null) {
+                throw new Exception("packetHeader NULL!");
+            }
+            gettingPacket = true;
+            findHeader(packetHeader);
+        }
+
         public void findHeader(byte[] header) {
             if (!bw.IsBusy) {
                 mode = Mode.FIND_HEADER;
                 data = header;
-                //bw.RunWorkerAsync();
-                bw_DoWork(null, null);
+                bw.RunWorkerAsync();
+                //bw_DoWork(null, null);
             } else {
                 throw new Exception("Already reading!");
             }
@@ -337,6 +398,18 @@ namespace CameraViewer
             } else {
                 throw new Exception("Already reading!");
             }
+        }
+    }
+
+    class ByteConvert
+    {
+        public static int toUint32(byte[] data, int start) {
+            int val = 0;
+            for (int i = 0; i < 4; i++) {
+                val |= (int)data[start + i] << (3 - i) * 8;
+            }
+
+            return val;
         }
     }
 
