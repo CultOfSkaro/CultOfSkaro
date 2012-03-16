@@ -17,6 +17,17 @@ cygwin warning:
 ../src/helloworld.c:32: warning: unused variable 'i'
 Finished building: ../src/helloworld.c
  
+Building file: ../src/platform.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../hello_world_bsp_0/ppc405_1/include -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o"src/platform.o" "../src/platform.c"
+cygwin warning:
+  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\Second_Core_Test\Debug
+  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/Second_Core_Test/Debug
+  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+Finished building: ../src/platform.c
+ 
 Building target: Second_Core_Test.elf
 Invoking: PowerPC gcc linker
 powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../hello_world_bsp_0/ppc405_1/lib -o"Second_Core_Test.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group

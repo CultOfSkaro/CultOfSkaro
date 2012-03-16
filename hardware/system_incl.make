@@ -89,7 +89,8 @@ implementation/mpmc_0_wrapper.ngc \
 implementation/dcm_2_wrapper.ngc \
 implementation/xps_gpio_1_wrapper.ngc \
 implementation/debug_module_0_wrapper.ngc \
-implementation/gameboard_uart_wrapper.ngc
+implementation/gameboard_uart_wrapper.ngc \
+implementation/xps_intc_1_wrapper.ngc
 
 POSTSYN_NETLIST = implementation/$(SYSTEM).ngc
 

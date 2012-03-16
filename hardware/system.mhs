@@ -111,7 +111,7 @@ BEGIN ppc405_virtex4
  BUS_INTERFACE RESETPPC = ppc_reset_bus_1
  BUS_INTERFACE JTAGPPC = ppc405_1_jtagppc_bus
  PORT CPMC405CLOCK = clk_300_0000MHzDCM0
- PORT EICC405EXTINPUTIRQ = ext_int
+ PORT EICC405EXTINPUTIRQ = xps_intc_1_Irq
 END
 
 BEGIN plb_v46
@@ -245,7 +245,7 @@ BEGIN xps_intc
  PARAMETER C_HIGHADDR = 0x8180ffff
  BUS_INTERFACE SPLB = plb_0
 # PORT Intr = wireless_int & serial_int & usb_int & cam_int
- PORT Intr = gpio_int & wireless_int & serial_int & usb_int & plb_vision_0_Interrupt & gameboard_uart_Interrupt
+ PORT Intr = gpio_int & wireless_int & serial_int & gameboard_uart_Interrupt
  PORT Irq = ext_int
 END
 
@@ -326,7 +326,7 @@ BEGIN xps_mch_emc
  PARAMETER C_SPLB_SMALLEST_MASTER = 32
  PARAMETER C_MEM0_BASEADDR = 0x81d00000
  PARAMETER C_MEM0_HIGHADDR = 0x81dfffff
- BUS_INTERFACE SPLB = plb_0
+ BUS_INTERFACE SPLB = plb_1
  PORT RdClk = plb_clk_100MHz
  PORT Mem_WEN = xps_mch_emc_sram_Mem_WEN
  PORT Mem_A = xps_mch_emc_sram_Mem_A
@@ -358,8 +358,8 @@ BEGIN plb_usb
  PARAMETER C_USB_DATA_WIDTH = 16
  PARAMETER C_BASEADDR = 0xc9c00000
  PARAMETER C_HIGHADDR = 0xc9c0ffff
- BUS_INTERFACE SPLB = plb_0
- BUS_INTERFACE MPLB = plb_0
+ BUS_INTERFACE SPLB = plb_1
+ BUS_INTERFACE MPLB = plb_1
  PORT dcm_locked = usb_dcm_locked
  PORT dcm_reset = usb_dcm_reset
  PORT if_clk = usb_if_clk_shift
@@ -380,8 +380,8 @@ BEGIN plb_vision
  PARAMETER HW_VER = 1.00.a
  PARAMETER C_BASEADDR = 0xc4600000
  PARAMETER C_HIGHADDR = 0xc460ffff
- BUS_INTERFACE MPLB = plb_0
- BUS_INTERFACE SPLB = plb_0
+ BUS_INTERFACE MPLB = plb_1
+ BUS_INTERFACE SPLB = plb_1
  PORT cam_sdata = cam0_sdata
  PORT cam_sclk = cam0_sclk
  PORT cam_pix_clk = cam0_pixclk
@@ -522,12 +522,22 @@ BEGIN xps_uartlite
  PARAMETER HW_VER = 1.02.a
  PARAMETER C_BASEADDR = 0xCD000000
  PARAMETER C_HIGHADDR = 0xCD00FFFF
- PARAMETER C_BAUDRATE = 9600
+ PARAMETER C_BAUDRATE = 38400
  PARAMETER C_USE_PARITY = 0
  PARAMETER C_ODD_PARITY = 0
  BUS_INTERFACE SPLB = plb_0
  PORT Interrupt = gameboard_uart_Interrupt
  PORT RX = gameboard_uart_RX
  PORT TX = gameboard_uart_TX
+END
+
+BEGIN xps_intc
+ PARAMETER INSTANCE = xps_intc_1
+ PARAMETER HW_VER = 2.01.a
+ PARAMETER C_BASEADDR = 0x81400000
+ PARAMETER C_HIGHADDR = 0x8140FFFF
+ BUS_INTERFACE SPLB = plb_1
+ PORT Irq = ext_int
+ PORT Intr = usb_int & plb_vision_0_Interrupt
 END
 

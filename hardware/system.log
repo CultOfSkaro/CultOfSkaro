@@ -28900,3 +28900,90 @@ Creating bit map...
 Saving bit stream in "system.bit".
 Bitstream generation is complete.
 Done!
+Project files have changed on disk.
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_sram -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 326 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_sram -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 326 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+Assigned Driver intc 2.03.a for instance xps_intc_1
+xps_intc_1 has been added to the project
+ERROR:EDK:4125 - IPNAME: xps_intc, INSTANCE: xps_intc_1, PARAMETER: C_BASEADDR - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a value in the MHS. 
+ERROR:EDK:4125 - IPNAME: xps_intc, INSTANCE: xps_intc_1, PARAMETER: C_HIGHADDR - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a value in the MHS. 
+WARNING:EDK:2137 - Peripheral xps_intc_1 is not accessible from any processor in the system. Check Bus Interface connections and address parameters. 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+ERROR:EDK:4125 - IPNAME: xps_intc, INSTANCE: xps_intc_1, PARAMETER: C_BASEADDR - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a value in the MHS. 
+ERROR:EDK:4125 - IPNAME: xps_intc, INSTANCE: xps_intc_1, PARAMETER: C_HIGHADDR - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a value in the MHS. 
+WARNING:EDK:2137 - Peripheral xps_intc_1 is not accessible from any processor in the system. Check Bus Interface connections and address parameters. 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+ERROR:EDK:4125 - IPNAME: xps_intc, INSTANCE: xps_intc_1, PARAMETER: C_BASEADDR - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a value in the MHS. 
+ERROR:EDK:4125 - IPNAME: xps_intc, INSTANCE: xps_intc_1, PARAMETER: C_HIGHADDR - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a value in the MHS. 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+Make instance xps_intc_1 port Irq external with net as port name
+Instance xps_intc_1 port Irq connector undefined, using xps_intc_1_Irq
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+Save project successfully
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+Save project successfully
+Assigned Driver apu_fpu 2.10.a for instance apu_fpu_0
+apu_fpu_0 has been added to the project
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+fcb_v10_0 has been added to the project
+ERROR:EDK:4125 - IPNAME: fcb_v10, INSTANCE: fcb_v10_0, PORT: FCB_CLK - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a connection in the MHS. 
+ERROR:EDK:4125 - IPNAME: fcb_v10, INSTANCE: fcb_v10_0, PORT: SYS_RST - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a connection in the MHS. 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+ERROR:EDK:4125 - IPNAME: fcb_v10, INSTANCE: fcb_v10_0, PORT: FCB_CLK - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a connection in the MHS. 
+ERROR:EDK:4125 - IPNAME: fcb_v10, INSTANCE: fcb_v10_0, PORT: SYS_RST - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a connection in the MHS. 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+ERROR:EDK:4125 - IPNAME: fcb_v10, INSTANCE: fcb_v10_0, PORT: FCB_CLK - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a connection in the MHS. 
+ERROR:EDK:4125 - IPNAME: fcb_v10, INSTANCE: fcb_v10_0, PORT: SYS_RST - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a connection in the MHS. 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+ERROR:EDK:4125 - IPNAME: fcb_v10, INSTANCE: fcb_v10_0, PORT: FCB_CLK - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a connection in the MHS. 
+ERROR:EDK:4125 - IPNAME: fcb_v10, INSTANCE: fcb_v10_0, PORT: SYS_RST - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a connection in the MHS. 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+ERROR:EDK:4125 - IPNAME: fcb_v10, INSTANCE: fcb_v10_0, PORT: FCB_CLK - ASSIGNMENT=REQUIRE is defined in the MPD. You must specify a connection in the MHS. 
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+fcb_v10_0 has been deleted from the project
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+apu_fpu_0 has been deleted from the project
+WARNING:EDK:4083 - IPNAME: plb_pwm_ctrl, INSTANCE: plb_pwm_ctrl_0 -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 265 
+WARNING:EDK:4083 - IPNAME: xps_mch_emc, INSTANCE: xps_mch_emc_flash -  PARAMETER: C_SPLB_SMALLEST_MASTER has value 32 specified in MHS, but tool is overriding the value to 64 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 287 
+Save project successfully
+Writing filter settings....
+Done writing filter settings to:
+	C:\RobotRacers\CultOfSkaro\hardware\etc\system.filters
+Done writing Tab View settings to:
+	C:\RobotRacers\CultOfSkaro\hardware\etc\system.gui
