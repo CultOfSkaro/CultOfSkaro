@@ -60,6 +60,9 @@ typedef int                BOOL;	///< c-style boolean, which is raelly just an i
 
 
 
+#define FRAME_HEIGHT 480
+#define FRAME_WIDTH  640
+
 
 /// Standardized macro to define the SRAM base address
 #define SDRAM_ADDR			((uint8 *)XPAR_PLB_SDRAM_0_BASEADDR)

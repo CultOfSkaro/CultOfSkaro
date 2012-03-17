@@ -68,9 +68,6 @@
 #include "scheduler.h"
 #include "Serial.h"
 
-
-#include "USB_IO.h"
-
 //#include "ISR.h"
 
 #define SET_PID_KP   		0x1
@@ -562,9 +559,6 @@ int main (void) {
 
 	InitInterrupts();
 
-
-
-	USB_init();
 	/*
 	Wireless_Debug("-- Starting PWM Test Mode --\r\n");
 	Wireless_Debug("Current max velocity: ");

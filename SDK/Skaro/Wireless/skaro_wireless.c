@@ -6,7 +6,6 @@
 #include <InterruptControl.h>
 #include <stdarg.h>
 #include <ctype.h>
-#include <xil_sprintf.h>
 
 extern Skaro_Wireless wireless;
 
