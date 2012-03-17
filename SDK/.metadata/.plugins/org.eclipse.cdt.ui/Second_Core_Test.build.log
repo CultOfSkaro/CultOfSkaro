@@ -5,60 +5,24 @@ make all
 Building file: ../src/helloworld.c
 Invoking: PowerPC gcc compiler
 powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../hello_world_bsp_0/ppc405_1/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.d" -o"src/helloworld.o" "../src/helloworld.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\Second_Core_Test\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/Second_Core_Test/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
 ../src/helloworld.c: In function 'main':
-../src/helloworld.c:36: warning: passing argument 1 of 'strcpy' discards qualifiers from pointer target type
-../src/helloworld.c:48: warning: passing argument 1 of 'strcpy' discards qualifiers from pointer target type
-../src/helloworld.c:32: warning: unused variable 'i'
+../src/helloworld.c:68: warning: passing argument 1 of 'updateVisionData' discards qualifiers from pointer target type
+../src/helloworld.c:72: warning: passing argument 1 of 'updateVisionData' discards qualifiers from pointer target type
 Finished building: ../src/helloworld.c
- 
-Building file: ../src/platform.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../hello_world_bsp_0/ppc405_1/include -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o"src/platform.o" "../src/platform.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\Second_Core_Test\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/Second_Core_Test/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-Finished building: ../src/platform.c
  
 Building target: Second_Core_Test.elf
 Invoking: PowerPC gcc linker
 powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../hello_world_bsp_0/ppc405_1/lib -o"Second_Core_Test.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\Second_Core_Test\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/Second_Core_Test/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
 Finished building target: Second_Core_Test.elf
  
 Invoking: PowerPC Print Size
 powerpc-eabi-size Second_Core_Test.elf  |tee "Second_Core_Test.elf.size"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\Second_Core_Test\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/Second_Core_Test/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
    text	   data	    bss	    dec	    hex	filename
-   2738	    312	   2088	   5138	   1412	Second_Core_Test.elf
+   2954	    324	   2084	   5362	   14f2	Second_Core_Test.elf
 Finished building: Second_Core_Test.elf.size
  
 Invoking: Xilinx ELF Check
 elfcheck Second_Core_Test.elf -hw ../../vhdl_hw_platform/system.xml -pe ppc405_1  |tee "Second_Core_Test.elf.elfcheck"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\Second_Core_Test\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/Second_Core_Test/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
 elfcheck
 Xilinx EDK 13.3 Build EDK_O.76xd
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.

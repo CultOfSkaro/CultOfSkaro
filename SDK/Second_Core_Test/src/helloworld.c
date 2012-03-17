@@ -27,32 +27,48 @@
 
 void print(char *str);
 
+typedef struct {
+	int a;
+	int b;
+} VisionData;
+
+volatile VisionData * vision_data = (VisionData *) 0x200000;
+volatile VisionData ** live_vision_data = (volatile VisionData **) 0x100000;
+volatile VisionData ** snap_vision_data = (volatile VisionData **) (0x100000 + sizeof(volatile VisionData **));
+
+
+volatile VisionData * getVisionBuffer(){
+	int i;
+	for(i = 0; i < 3; i++){
+		if((vision_data + i) == *live_vision_data){
+			continue;
+		} else if ((vision_data + i) == *snap_vision_data){
+			continue;
+		} else {
+			return vision_data + i;
+		}
+	}
+	return 0;
+}
+
+void updateVisionData(VisionData * tmp){
+	*live_vision_data = (volatile VisionData *)tmp;
+}
+
 int main()
 {
-	int i = 0;
-	volatile char * test_string = (char *)0x100000;
+	usleep(100000);
+	*snap_vision_data = 0;
+	*live_vision_data = 0;
+	volatile VisionData * tmp;
 	while(1){
-		usleep(1000000);
-		strcpy(test_string, "Hello Peter!");
-		/*
-		XIo_Out8(test_string,'P');
-		XIo_Out8(test_string+1,'e');
-		XIo_Out8(test_string+2,'t');
-		XIo_Out8(test_string+3,'e');
-		XIo_Out8(test_string+4,'r');
-		XIo_Out8(test_string+5,'i');
-		XIo_Out8(test_string+6, 0);
-		*/
-
-		usleep(1000000);
-		strcpy(test_string, "Yay, strcpy!!!!!");
-		/*
-		test_string[0] = 'Y';
-		test_string[1] = 'o';
-		test_string[2] = 'g';
-		test_string[3] = 'i';
-		test_string[4] = 'a';
-		test_string[5] = 0;
-		*/
+		tmp = getVisionBuffer();
+		tmp->a = 20;
+		tmp->b = 5;
+		updateVisionData(tmp);
+		tmp = getVisionBuffer();
+		tmp->a = 10;
+		tmp->b = 6;
+		updateVisionData(tmp);
 	}
 }

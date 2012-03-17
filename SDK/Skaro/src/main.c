@@ -42,6 +42,7 @@
 #include "InterruptControl.h"
 #include "xtime_l.h"
 #include "sleep.h"
+#include "signal.h"
 
 #include <stdlib.h>
 
@@ -347,64 +348,50 @@ int update = 0;
 
 // For the pit handler, we increment a counter.  Every time the counter reaches a certain threshold,
 // We set the timer flag in the scheduler's events struct.  We reset the counter.
+
+typedef struct {
+	int a;
+	int b;
+} VisionData;
+
+volatile VisionData ** live_vision_data = (volatile VisionData **) 0x100000;
+volatile VisionData ** snap_vision_data = (volatile VisionData **) (0x100000 + sizeof(volatile VisionData **));
+
+
 void my_pitHandler(){
 	counter++;
 	if(counter > 100){
 		scheduler.events.flags.timer = 1;
 		counter = 0;
 	}
+	if(*live_vision_data != *snap_vision_data){
+		scheduler.events.flags.vision = 1;
+	}
 	XTime_PITClearInterrupt();
 }
 
-volatile char *test_string = (char*)0x100000;
-#define TEST_STRING 0x100000
-
 // This is a dummy task just to test out different events.
+
 void hello(){
-	//Wireless_Debug("Contents of test string: ");
-	/*
-	char temp[100];
-
-	print("Writing to DRAM\r\n");
-	XIo_Out8(test_string,'P');
-	XIo_Out8(test_string+1,'e');
-	XIo_Out8(test_string+2,'t');
-	XIo_Out8(test_string+3,'e');
-	XIo_Out8(test_string+4,'r');
-	XIo_Out8(test_string+5,'i');
-	XIo_Out8(test_string+6, 0);
-	 */
-
-
-	print("Reading DRAM...\r\n");
-	/*
-	char temp[100];
-	temp[0] = XIo_In8(test_string);
-	temp[1] = XIo_In8(test_string+1);
-	temp[2] = 0;
-	print(temp);
-	*/
-	print(test_string);
-	print("\r\nDone.\r\n");
-
-	//*(int*)(test_string+0) = 0xDEAD;
-	//*(int*)(test_string+8) =0xBEEF;
-	/*
-	XIo_Out32(TEST_STRING, 0xDEADBEEF);
-	XIo_Out32(TEST_STRING + 4, 0xBA5EBA11);
-	int in1, in2, in3, in4;
-	in1 = XIo_In32(TEST_STRING+0);
-	in2 = XIo_In32(TEST_STRING+4);
-	in3 = XIo_In32(TEST_STRING+8);
-	in4 = XIo_In32(TEST_STRING+12);
-
-	//print(temp);
-	//
-	print("\r\n");
-	xil_printf("%x,%x,%x,%x\r\n",in1, in2, in3, in4);
-	*/
-	//Wireless_Debug(temp);
-	//Wireless_Debug("\n\r");
+}
+void vision(){
+	*snap_vision_data = *live_vision_data;
+	if(!*snap_vision_data){
+		return;
+	}
+	int a = (*snap_vision_data)->a * (*snap_vision_data)->b;
+	if(a != 60 && a != 100){
+		Wireless_Debug("RACE CONDITION!!!\r\n");
+		PrintInt(a);
+		PrintInt(snap_vision_data);
+		PrintInt(*snap_vision_data);
+		PrintInt((*snap_vision_data)->a);
+		Wireless_Debug("\n\r");
+		PrintInt(live_vision_data);
+		PrintInt(*live_vision_data);
+		PrintInt((*live_vision_data)->a);
+		usleep(1000000);
+	}
 }
 
 void InitInterrupts() {
@@ -585,7 +572,11 @@ int main (void) {
 	Wireless_Debug("\r\n");
 	Wireless_Debug("NOTICE: Make sure car is placed on stand before proceeding!!\r\n");
 	*/
-
+	Wireless_Debug("Checking atomic op size: ");
+	PrintInt(sizeof(sig_atomic_t));
+	Wireless_Debug(" vs ");
+	PrintInt(sizeof(void *));
+	Wireless_Debug("\n\r");
 	/* Scheduler initialization */
 	Wireless_Debug("Setting up scheduler\r\n");
 	Scheduler_Init(&scheduler);
@@ -603,6 +594,11 @@ int main (void) {
 	hello_events.flags.hello = 1;
 	Scheduler_RegisterTask(&scheduler,hello,hello_events);
 
+	// Another example
+	Events vision_events;
+	vision_events.reg = 0;
+	vision_events.flags.vision = 1;
+	Scheduler_RegisterTask(&scheduler,vision,vision_events);
 
 
 	str = 0;
@@ -622,7 +618,9 @@ int main (void) {
 	//setDistance(100000);
 	SetServo(RC_STR_SERVO, 1);
 	char c;
-
+	while(1){
+		hello();
+	};
 	while(1){
 		/*  Run Scheduler repeatedly */
 		Scheduler_Run(&scheduler);
