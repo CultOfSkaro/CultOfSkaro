@@ -388,6 +388,9 @@ void vision(){
 		PrintInt(*live_vision_data);
 		PrintInt((*live_vision_data)->a);
 		usleep(1000000);
+	} else {
+		Wireless_Debug("C3 success!");
+		usleep(100000);
 	}
 }
 
@@ -611,10 +614,6 @@ int main (void) {
 	setDistance(0);
 	//setDistance(100000);
 	SetServo(RC_STR_SERVO, 1);
-	char c;
-	while(1){
-		hello();
-	};
 	while(1){
 		/*  Run Scheduler repeatedly */
 		Scheduler_Run(&scheduler);

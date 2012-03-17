@@ -4,7 +4,7 @@
 make all 
 Building file: ../src/helloworld.c
 Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../hello_world_bsp_0/ppc405_1/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.d" -o"src/helloworld.o" "../src/helloworld.c"
+powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../VisionCore_bsp/ppc405_1/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.d" -o"src/helloworld.o" "../src/helloworld.c"
 ../src/helloworld.c: In function 'main':
 ../src/helloworld.c:68: warning: passing argument 1 of 'updateVisionData' discards qualifiers from pointer target type
 ../src/helloworld.c:72: warning: passing argument 1 of 'updateVisionData' discards qualifiers from pointer target type
@@ -12,12 +12,12 @@ Finished building: ../src/helloworld.c
  
 Building file: ../src/platform.c
 Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../hello_world_bsp_0/ppc405_1/include -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o"src/platform.o" "../src/platform.c"
+powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../VisionCore_bsp/ppc405_1/include -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o"src/platform.o" "../src/platform.c"
 Finished building: ../src/platform.c
  
 Building target: Second_Core_Test.elf
 Invoking: PowerPC gcc linker
-powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../hello_world_bsp_0/ppc405_1/lib -o"Second_Core_Test.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../VisionCore_bsp/ppc405_1/lib -o"Second_Core_Test.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
 Finished building target: Second_Core_Test.elf
  
 Invoking: PowerPC Print Size

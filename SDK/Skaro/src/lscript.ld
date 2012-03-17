@@ -16,9 +16,8 @@ _HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x400;
 
 MEMORY
 {
-   xps_bram_if_cntlr_0 : ORIGIN = 0xFFFE0000, LENGTH = 0x0001FFEC
+   xps_bram_if_cntlr_0 : ORIGIN = 0xFFFC0000, LENGTH = 0x0003FFEC
    xps_mch_emc_flash_MEM0_BASEADDR : ORIGIN = 0x80000000, LENGTH = 0x01000000
-   xps_mch_emc_sram_MEM0_BASEADDR : ORIGIN = 0x81D00000, LENGTH = 0x00100000
    mpmc_0_MPMC_BASEADDR : ORIGIN = 0x00000000, LENGTH = 0x02000000
 }
 
@@ -214,7 +213,7 @@ SECTIONS
    . += _STACK_SIZE;
    . = ALIGN(16);
    __stack = .;
-} > xps_mch_emc_sram_MEM0_BASEADDR
+} > xps_bram_if_cntlr_0
 
 .heap : {
    . = ALIGN(16);
@@ -223,7 +222,7 @@ SECTIONS
    . = ALIGN(16);
    _heap_end = .;
    _end = .;
-} > xps_mch_emc_sram_MEM0_BASEADDR
+} > xps_bram_if_cntlr_0
 
 }
 

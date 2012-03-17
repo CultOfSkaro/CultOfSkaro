@@ -16,7 +16,9 @@ _HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x400;
 
 MEMORY
 {
-   xps_bram_if_cntlr_1 : ORIGIN = 0xFFFF0000, LENGTH = 0x0000FFEC
+   xps_bram_if_cntlr_1 : ORIGIN = 0xFFFE0000, LENGTH = 0x0001FFEC
+   xps_mch_emc_sram_MEM0_BASEADDR : ORIGIN = 0x81D00000, LENGTH = 0x00100000
+   mpmc_0_MPMC_BASEADDR : ORIGIN = 0x00000000, LENGTH = 0x02000000
 }
 
 /* Specify the default entry point to the program */
@@ -28,6 +30,12 @@ STARTUP(boot.o)
 
 SECTIONS
 {
+.vectors : {
+   __vectors_start = .;
+   *(.vectors)
+   __vectors_end = .;
+} > xps_bram_if_cntlr_1
+
 .text : {
    *(.text)
    *(.text.*)

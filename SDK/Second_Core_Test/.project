@@ -3,7 +3,7 @@
 	<name>Second_Core_Test</name>
 	<comment></comment>
 	<projects>
-		<project>hello_world_bsp_0</project>
+		<project>VisionCore_bsp</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -28,7 +28,7 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="xilinx.gnu.compiler.option.optimization.level.1538946407" superClass="xilinx.gnu.compiler.option.optimization.level" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.option.debugging.level.1344959187" superClass="xilinx.gnu.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.459806828" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/include"/>
+									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/include"/>
 								</option>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.1717717184" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.889147866" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
@@ -37,14 +37,14 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="xilinx.gnu.compiler.option.optimization.level.1454320784" superClass="xilinx.gnu.compiler.option.optimization.level" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.option.debugging.level.652686316" superClass="xilinx.gnu.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.2061618679" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/include"/>
+									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/include"/>
 								</option>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.905488422" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 							</tool>
 							<tool id="xilinx.gnu.ppc.toolchain.archiver.724056918" name="PowerPC archiver" superClass="xilinx.gnu.ppc.toolchain.archiver"/>
 							<tool id="xilinx.gnu.ppc.c.toolchain.linker.debug.513985856" name="PowerPC gcc linker" superClass="xilinx.gnu.ppc.c.toolchain.linker.debug">
 								<option id="xilinx.gnu.linker.inferred.swplatform.lpath.496456114" superClass="xilinx.gnu.linker.inferred.swplatform.lpath" valueType="libPaths">
-									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/lib"/>
+									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/lib"/>
 								</option>
 								<option id="xilinx.gnu.linker.inferred.swplatform.flags.1896640829" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
 									<listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lgcc,-lc,--end-group"/>
@@ -58,7 +58,7 @@
 							</tool>
 							<tool id="xilinx.gnu.ppc.cxx.toolchain.linker.debug.843027861" name="PowerPC g++ linker" superClass="xilinx.gnu.ppc.cxx.toolchain.linker.debug">
 								<option id="xilinx.gnu.linker.inferred.swplatform.lpath.899628794" superClass="xilinx.gnu.linker.inferred.swplatform.lpath" valueType="libPaths">
-									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/lib"/>
+									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/lib"/>
 								</option>
 								<option id="xilinx.gnu.linker.inferred.swplatform.flags.432759237" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
 									<listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lgcc,-lc,--end-group"/>
@@ -718,7 +718,7 @@
 								<option defaultValue="gnu.c.optimization.level.most" id="xilinx.gnu.compiler.option.optimization.level.959311821" superClass="xilinx.gnu.compiler.option.optimization.level" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.option.debugging.level.108589922" superClass="xilinx.gnu.compiler.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.2114576505" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/include"/>
+									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/include"/>
 								</option>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.232678349" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.461613880" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
@@ -727,14 +727,14 @@
 								<option defaultValue="gnu.c.optimization.level.most" id="xilinx.gnu.compiler.option.optimization.level.621612678" superClass="xilinx.gnu.compiler.option.optimization.level" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.option.debugging.level.664414988" superClass="xilinx.gnu.compiler.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.1253113889" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/include"/>
+									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/include"/>
 								</option>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.1256074986" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 							</tool>
 							<tool id="xilinx.gnu.ppc.toolchain.archiver.2018994137" name="PowerPC archiver" superClass="xilinx.gnu.ppc.toolchain.archiver"/>
 							<tool id="xilinx.gnu.ppc.c.toolchain.linker.release.2034222322" name="PowerPC gcc linker" superClass="xilinx.gnu.ppc.c.toolchain.linker.release">
 								<option id="xilinx.gnu.linker.inferred.swplatform.lpath.1744178231" superClass="xilinx.gnu.linker.inferred.swplatform.lpath" valueType="libPaths">
-									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/lib"/>
+									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/lib"/>
 								</option>
 								<option id="xilinx.gnu.linker.inferred.swplatform.flags.378821106" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
 									<listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lgcc,-lc,--end-group"/>
@@ -748,7 +748,7 @@
 							</tool>
 							<tool id="xilinx.gnu.ppc.cxx.toolchain.linker.release.551211726" name="PowerPC g++ linker" superClass="xilinx.gnu.ppc.cxx.toolchain.linker.release">
 								<option id="xilinx.gnu.linker.inferred.swplatform.lpath.1073565247" superClass="xilinx.gnu.linker.inferred.swplatform.lpath" valueType="libPaths">
-									<listOptionValue builtIn="false" value="../../hello_world_bsp_0/ppc405_1/lib"/>
+									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/lib"/>
 								</option>
 								<option id="xilinx.gnu.linker.inferred.swplatform.flags.7082457" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
 									<listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lgcc,-lc,--end-group"/>

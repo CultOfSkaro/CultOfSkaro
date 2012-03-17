@@ -1,0 +1,28 @@
+
+**** Build of configuration Debug for project hello_world_1 ****
+
+make all 
+Building target: hello_world_1.elf
+Invoking: PowerPC gcc linker
+powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../hello_world_bsp_1/ppc405_0/lib -o"hello_world_1.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: hello_world_1.elf
+ 
+Invoking: PowerPC Print Size
+powerpc-eabi-size hello_world_1.elf  |tee "hello_world_1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   2594	    312	   2088	   4994	   1382	hello_world_1.elf
+Finished building: hello_world_1.elf.size
+ 
+Invoking: Xilinx ELF Check
+elfcheck hello_world_1.elf -hw ../../vhdl_hw_platform/system.xml -pe ppc405_0  |tee "hello_world_1.elf.elfcheck"
+elfcheck
+Xilinx EDK 13.3 Build EDK_O.76xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../vhdl_hw_platform/system.xml -pe ppc405_0
+hello_world_1.elf 
+
+ELF file	: hello_world_1.elf
+elfcheck passed.
+Finished building: hello_world_1.elf.elfcheck
+ 
