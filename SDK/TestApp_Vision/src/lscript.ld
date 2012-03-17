@@ -16,8 +16,7 @@ _HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x400;
 
 MEMORY
 {
-   xps_bram_if_cntlr_0 : ORIGIN = 0xFFFE0000, LENGTH = 0x0001FFEC
-   xps_mch_emc_flash_MEM0_BASEADDR : ORIGIN = 0x80000000, LENGTH = 0x01000000
+   xps_bram_if_cntlr_1 : ORIGIN = 0xFFFE0000, LENGTH = 0x0001FFEC
    xps_mch_emc_sram_MEM0_BASEADDR : ORIGIN = 0x81D00000, LENGTH = 0x00100000
    mpmc_0_MPMC_BASEADDR : ORIGIN = 0x00000000, LENGTH = 0x02000000
 }
@@ -35,21 +34,21 @@ SECTIONS
    __vectors_start = .;
    *(.vectors)
    __vectors_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .text : {
    *(.text)
    *(.text.*)
    *(.gnu.linkonce.t.*)
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .init : {
    KEEP (*(.init))
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .fini : {
    KEEP (*(.fini))
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .rodata : {
    __rodata_start = .;
@@ -57,14 +56,14 @@ SECTIONS
    *(.rodata.*)
    *(.gnu.linkonce.r.*)
    __rodata_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .rodata1 : {
    __rodata1_start = .;
    *(.rodata1)
    *(.rodata1.*)
    __rodata1_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .sdata2 : {
    __sdata2_start = .;
@@ -72,7 +71,7 @@ SECTIONS
    *(.sdata2.*)
    *(.gnu.linkonce.s2.*)
    __sdata2_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .sbss2 : {
    __sbss2_start = .;
@@ -80,7 +79,7 @@ SECTIONS
    *(.sbss2.*)
    *(.gnu.linkonce.sb2.*)
    __sbss2_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .data : {
    __data_start = .;
@@ -88,26 +87,26 @@ SECTIONS
    *(.data.*)
    *(.gnu.linkonce.d.*)
    __data_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .data1 : {
    __data1_start = .;
    *(.data1)
    *(.data1.*)
    __data1_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .got : {
    *(.got)
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .got1 : {
    *(.got1)
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .got2 : {
    *(.got2)
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .ctors : {
    __CTOR_LIST__ = .;
@@ -118,7 +117,7 @@ SECTIONS
    KEEP (*(.ctors))
    __CTOR_END__ = .;
    ___CTORS_END___ = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .dtors : {
    __DTOR_LIST__ = .;
@@ -129,25 +128,25 @@ SECTIONS
    KEEP (*(.dtors))
    __DTOR_END__ = .;
    ___DTORS_END___ = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .fixup : {
    __fixup_start = .;
    *(.fixup)
    __fixup_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .eh_frame : {
    *(.eh_frame)
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .jcr : {
    *(.jcr)
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .gcc_except_table : {
    *(.gcc_except_table)
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .sdata : {
    __sdata_start = .;
@@ -155,7 +154,7 @@ SECTIONS
    *(.sdata.*)
    *(.gnu.linkonce.s.*)
    __sdata_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .sbss : {
    . = ALIGN(4);
@@ -166,7 +165,7 @@ SECTIONS
    *(.scommon)
    . = ALIGN(4);
    __sbss_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .tdata : {
    __tdata_start = .;
@@ -174,7 +173,7 @@ SECTIONS
    *(.tdata.*)
    *(.gnu.linkonce.td.*)
    __tdata_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .tbss : {
    __tbss_start = .;
@@ -182,7 +181,7 @@ SECTIONS
    *(.tbss.*)
    *(.gnu.linkonce.tb.*)
    __tbss_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .bss : {
    . = ALIGN(4);
@@ -193,7 +192,7 @@ SECTIONS
    *(COMMON)
    . = ALIGN(4);
    __bss_end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .boot0 0xFFFFFFEC : {
    __boot0_start = .;
@@ -214,7 +213,7 @@ SECTIONS
    . += _STACK_SIZE;
    . = ALIGN(16);
    __stack = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 .heap : {
    . = ALIGN(16);
@@ -223,7 +222,7 @@ SECTIONS
    . = ALIGN(16);
    _heap_end = .;
    _end = .;
-} > xps_bram_if_cntlr_0
+} > xps_bram_if_cntlr_1
 
 }
 

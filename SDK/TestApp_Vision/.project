@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>TestApp_Vision</name>
-	<comment>RobotRacers_bsp_0 - ppc405_0</comment>
+	<comment></comment>
 	<projects>
-		<project>RobotRacers_bsp_0</project>
+		<project>VisionTest_bsp</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

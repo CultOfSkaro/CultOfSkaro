@@ -2,14 +2,89 @@
 **** Build of configuration Debug for project TestApp_Vision ****
 
 make all 
+Building file: ../xil_sprintf/xil_sprintf.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"xil_sprintf/xil_sprintf.d" -MT"xil_sprintf/xil_sprintf.d" -o"xil_sprintf/xil_sprintf.o" "../xil_sprintf/xil_sprintf.c"
+Finished building: ../xil_sprintf/xil_sprintf.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"plb_vision_v1_00_a/src/plb_vision.d" -MT"plb_vision_v1_00_a/src/plb_vision.d" -o"plb_vision_v1_00_a/src/plb_vision.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c"
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c: In function 'Init_Camera':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:249: warning: implicit declaration of function 'ClockDelay'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:254: warning: implicit declaration of function 'xil_printf'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:256: warning: unused variable 'timeout'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:255: warning: unused variable 'spiaddr'
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c
+ 
 Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
 Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"plb_vision_v1_00_a/src/plb_vision_selftest.d" -MT"plb_vision_v1_00_a/src/plb_vision_selftest.d" -o"plb_vision_v1_00_a/src/plb_vision_selftest.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c"
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"plb_vision_v1_00_a/src/plb_vision_selftest.d" -MT"plb_vision_v1_00_a/src/plb_vision_selftest.d" -o"plb_vision_v1_00_a/src/plb_vision_selftest.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c"
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c: In function 'main':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c:329: warning: implicit declaration of function 'usleep'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c: At top level:
 C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.h:186: warning: 'MpmcUpdateStaticPhyReg' declared 'static' but never defined
 Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
  
+Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"plb_usb_v1_00_a/src/USB_IO.d" -MT"plb_usb_v1_00_a/src/USB_IO.d" -o"plb_usb_v1_00_a/src/USB_IO.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c"
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c: In function 'USB_init':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c:25: warning: implicit declaration of function 'XIo_Out32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c: In function 'USB_Connected':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c:32: warning: implicit declaration of function 'XIo_In32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c: In function 'USB_burstRead32':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c:125: warning: suggest parentheses around comparison in operand of &
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/common/State.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"common/State.d" -MT"common/State.d" -o"common/State.o" "C:/RobotRacers/CultOfSkaro/SDK/common/State.c"
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/State.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/common/Timer.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"common/Timer.d" -MT"common/Timer.d" -o"common/Timer.o" "C:/RobotRacers/CultOfSkaro/SDK/common/Timer.c"
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/Timer.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"common/mpmc_calibration.d" -MT"common/mpmc_calibration.d" -o"common/mpmc_calibration.o" "C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c"
+C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c: In function 'MpmcWriteTestPattern':
+C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c:618: warning: implicit declaration of function 'XIo_Out32'
+C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c: In function 'MpmcCheckPattern':
+C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c:645: warning: implicit declaration of function 'XIo_In32'
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_mem_test_example.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"common/mpmc_mem_test_example.d" -MT"common/mpmc_mem_test_example.d" -o"common/mpmc_mem_test_example.o" "C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_mem_test_example.c"
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_mem_test_example.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"DataTypes/BufferStore.d" -MT"DataTypes/BufferStore.d" -o"DataTypes/BufferStore.o" "C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c"
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"DataTypes/FrameTable.d" -MT"DataTypes/FrameTable.d" -o"DataTypes/FrameTable.o" "C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c"
+C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c: In function 'FT_PrintFrameTable':
+C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c:124: warning: implicit declaration of function 'xil_printf'
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Queue.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"DataTypes/Queue.d" -MT"DataTypes/Queue.d" -o"DataTypes/Queue.o" "C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Queue.c"
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Queue.c
+ 
+Building file: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Stack.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"DataTypes/Stack.d" -MT"DataTypes/Stack.d" -o"DataTypes/Stack.o" "C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Stack.c"
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Stack.c
+ 
 Building target: TestApp_Vision.elf
 Invoking: PowerPC gcc linker
-powerpc-eabi-gcc -L"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\lib" -Wl,-T -Wl,../src/lscript.ld -o"TestApp_Vision.elf"  ./xil_sprintf/xil_sprintf.o  ./plb_vision_v1_00_a/src/plb_vision.o ./plb_vision_v1_00_a/src/plb_vision_selftest.o  ./plb_usb_v1_00_a/src/USB_IO.o  ./common/HeliosIO.o ./common/LoopScheduler.o ./common/State.o ./common/Timer.o ./common/mpmc_calibration.o ./common/mpmc_mem_test_example.o  ./DataTypes/BufferStore.o ./DataTypes/FrameTable.o ./DataTypes/Queue.o ./DataTypes/Stack.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -lxilflash
+powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../VisionTest_bsp/ppc405_1/lib -o"TestApp_Vision.elf"  ./xil_sprintf/xil_sprintf.o  ./plb_vision_v1_00_a/src/plb_vision.o ./plb_vision_v1_00_a/src/plb_vision_selftest.o  ./plb_usb_v1_00_a/src/USB_IO.o  ./common/State.o ./common/Timer.o ./common/mpmc_calibration.o ./common/mpmc_mem_test_example.o  ./DataTypes/BufferStore.o ./DataTypes/FrameTable.o ./DataTypes/Queue.o ./DataTypes/Stack.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
 Finished building target: TestApp_Vision.elf
  

@@ -1,0 +1,3 @@
+THIRPARTY=false
+PROCESSOR=ppc405_0
+MSS_FILE=system.mss

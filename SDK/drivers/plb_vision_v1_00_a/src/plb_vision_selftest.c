@@ -13,7 +13,7 @@
 #include <xexception_l.h>
 #include <xutil.h>
 #include <xio.h>
-#include <xparameters.h>
+#include "xparameters.h"
 #include <USB_IO.h>
 #include <mpmc_calibration.h>
 #include "plb_vision.h"
@@ -326,13 +326,7 @@ int main()
 {
 	print("-------------------------Camera Stream App------------------------\r\n");
 
-
-	print("Calibrating Memory Controller...\r\n");
-	XCache_DisableDCache();
-	XCache_DisableICache();
-	MpmcCalibrationExample(XPAR_MPMC_0_DEVICE_ID);
-	XCache_EnableICache(0x00000001);
-	XCache_EnableDCache(0x00000001);
+	usleep(1000000);
 
 	print("Initializing Memory Buffers...\r\n");
 	MemAllocInit((uint32*)0x100000);
@@ -351,11 +345,11 @@ int main()
 
 	print("Setting up interrupts\r\n");
 	XExc_Init();
-	XExc_RegisterHandler( XEXC_ID_NON_CRITICAL_INT, (XExceptionHandler)XIntc_DeviceInterruptHandler, (void*)XPAR_XPS_INTC_0_DEVICE_ID);
+	XExc_RegisterHandler( XEXC_ID_NON_CRITICAL_INT, (XExceptionHandler)XIntc_DeviceInterruptHandler, (void*)XPAR_XPS_INTC_1_DEVICE_ID);
 	XExc_mEnableExceptions(XEXC_NON_CRITICAL);
-	XIntc_RegisterHandler( XPAR_XPS_INTC_0_BASEADDR, XPAR_XPS_INTC_0_PLB_VISION_0_INTERRUPT_INTR, (XInterruptHandler)CameraISR, (void*)NULL);
-	XIntc_EnableIntr( XPAR_XPS_INTC_0_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
-	XIntc_MasterEnable( XPAR_XPS_INTC_0_BASEADDR );
+	XIntc_RegisterHandler( XPAR_XPS_INTC_1_BASEADDR, XPAR_XPS_INTC_1_PLB_VISION_0_INTERRUPT_INTR, (XInterruptHandler)CameraISR, (void*)NULL);
+	XIntc_EnableIntr( XPAR_XPS_INTC_1_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
+	XIntc_MasterEnable( XPAR_XPS_INTC_1_BASEADDR );
 
 	//PIT
 	XExc_RegisterHandler(XEXC_ID_PIT_INT, &pitHandler, 0);
