@@ -4,201 +4,136 @@
 make all 
 Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c
 Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"plb_vision_v1_00_a/src/plb_vision.d" -MT"plb_vision_v1_00_a/src/plb_vision.d" -o"plb_vision_v1_00_a/src/plb_vision.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -c -fmessage-length=0 -I../../VisionTest_bsp/ppc405_1/include -MMD -MP -MF"plb_vision_v1_00_a/src/plb_vision.d" -MT"plb_vision_v1_00_a/src/plb_vision.d" -o"plb_vision_v1_00_a/src/plb_vision.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c"
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:17:22: error: xcache_l.h: No such file or directory
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:18:25: warning: xpseudo_asm.h: No such file or directory
+In file included from C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:19:
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:13:26: error: xbasic_types.h: No such file or directory
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:14:21: error: xstatus.h: No such file or directory
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:15:17: error: xio.h: No such file or directory
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:16:25: warning: xparameters.h: No such file or directory
+In file included from C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:19:
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:119: error: expected specifier-qualifier-list before 'Xuint8'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:135: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'DAUGHTER_BOARD'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:265: error: expected ')' before 'frame_id'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:266: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'GetFrameAddress'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:267: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'CameraStatus'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:268: error: expected ')' before 'addr'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:269: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'ReadCameraRegister'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:270: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'CalculateImageBufferSize'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:271: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'GetFrameSaveOptions'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.h:272: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'GetPLBBurstSize'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:25: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:25: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:26: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:26: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:27: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:27: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:28: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:28: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:29: error: 'XPAR_PLB_VISION_0_BASEADDR' undeclared here (not in a function)
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:29: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:29: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:30: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:30: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:31: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:31: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:32: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:32: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:33: error: extra brace group at end of initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:33: error: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:37: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:37: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:38: error: extra brace group at end of initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:38: error: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:42: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:42: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:43: error: extra brace group at end of initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:43: error: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:47: warning: excess elements in struct initializer
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:47: warning: (near initialization for 'camera0')
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:49: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'DAUGHTER_BOARD'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c: In function 'ResetCameraSensor':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:57: error: 'DAUGHTER_BOARD' undeclared (first use in this function)
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:57: error: (Each undeclared identifier is reported only once
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:57: error: for each function it appears in.)
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:59: warning: implicit declaration of function 'WriteCameraRegister'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c: In function 'DisplayTestPattern':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:75: error: 'DAUGHTER_BOARD' undeclared (first use in this function)
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:82: warning: implicit declaration of function 'ReadCameraRegister'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c: In function 'DisableTestPattern':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:92: error: 'DAUGHTER_BOARD' undeclared (first use in this function)
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c: At top level:
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:112: error: expected ')' before 'frame_id'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:133: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'GetFrameAddress'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:154: error: expected ')' before 'addr'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:163: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'ReadCameraRegister'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:187: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'CameraStatus'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:191: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'CalculateImageBufferSize'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:226: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'GetFrameSaveOptions'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:231: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'GetPLBBurstSize'
 C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c: In function 'Init_Camera':
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:244: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:244: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:245: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:245: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:245: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:245: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:245: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:245: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:245: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:245: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:246: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:246: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:246: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:246: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:246: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:246: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:246: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:246: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:248: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:248: warning: type defaults to 'int' in declaration of 'type name'
 C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:249: warning: implicit declaration of function 'ClockDelay'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:252: error: 'Xuint16' undeclared (first use in this function)
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:252: error: expected ';' before 'CameraVersion'
 C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:254: warning: implicit declaration of function 'xil_printf'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:254: error: 'CameraVersion' undeclared (first use in this function)
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:255: error: 'Xuint8' undeclared (first use in this function)
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:255: error: expected ';' before 'spiaddr'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:272: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:272: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:272: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:272: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:272: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:272: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:272: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:272: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:274: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:274: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:274: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:274: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:274: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:274: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:274: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:274: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:288: error: 'DAUGHTER_BOARD' undeclared (first use in this function)
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:298: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:298: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:298: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:298: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:298: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:298: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:298: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:298: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:299: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:299: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:328: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:328: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:328: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:328: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:328: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:328: warning: type defaults to 'int' in declaration of 'type name'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:328: error: expected ')' before 'Xuint32'
+C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:328: warning: type defaults to 'int' in declaration of 'type name'
 C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:256: warning: unused variable 'timeout'
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c:255: warning: unused variable 'spiaddr'
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"plb_vision_v1_00_a/src/plb_vision_selftest.d" -MT"plb_vision_v1_00_a/src/plb_vision_selftest.d" -o"plb_vision_v1_00_a/src/plb_vision_selftest.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.h:186: warning: 'MpmcUpdateStaticPhyReg' declared 'static' but never defined
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"plb_usb_v1_00_a/src/USB_IO.d" -MT"plb_usb_v1_00_a/src/USB_IO.d" -o"plb_usb_v1_00_a/src/USB_IO.o" "C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c: In function 'USB_init':
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c:25: warning: implicit declaration of function 'XIo_Out32'
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c: In function 'USB_Connected':
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c:32: warning: implicit declaration of function 'XIo_In32'
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c: In function 'USB_burstRead32':
-C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c:125: warning: suggest parentheses around comparison in operand of &
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_usb_v1_00_a/src/USB_IO.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/common/HeliosIO.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/HeliosIO.d" -MT"common/HeliosIO.d" -o"common/HeliosIO.o" "C:/RobotRacers/CultOfSkaro/SDK/common/HeliosIO.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-C:/RobotRacers/CultOfSkaro/SDK/common/HeliosIO.c: In function 'InitGameSystem':
-C:/RobotRacers/CultOfSkaro/SDK/common/HeliosIO.c:241: warning: implicit declaration of function 'xil_printf'
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/HeliosIO.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/common/LoopScheduler.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/LoopScheduler.d" -MT"common/LoopScheduler.d" -o"common/LoopScheduler.o" "C:/RobotRacers/CultOfSkaro/SDK/common/LoopScheduler.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-C:/RobotRacers/CultOfSkaro/SDK/common/LoopScheduler.c: In function 'LoopScheduler':
-C:/RobotRacers/CultOfSkaro/SDK/common/LoopScheduler.c:97: warning: implicit declaration of function 'xil_printf'
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/LoopScheduler.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/common/State.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/State.d" -MT"common/State.d" -o"common/State.o" "C:/RobotRacers/CultOfSkaro/SDK/common/State.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/State.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/common/Timer.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/Timer.d" -MT"common/Timer.d" -o"common/Timer.o" "C:/RobotRacers/CultOfSkaro/SDK/common/Timer.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/Timer.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/mpmc_calibration.d" -MT"common/mpmc_calibration.d" -o"common/mpmc_calibration.o" "C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c: In function 'MpmcWriteTestPattern':
-C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c:618: warning: implicit declaration of function 'XIo_Out32'
-C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c: In function 'MpmcCheckPattern':
-C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c:645: warning: implicit declaration of function 'XIo_In32'
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_calibration.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_mem_test_example.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"common/mpmc_mem_test_example.d" -MT"common/mpmc_mem_test_example.d" -o"common/mpmc_mem_test_example.o" "C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_mem_test_example.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/common/mpmc_mem_test_example.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"DataTypes/BufferStore.d" -MT"DataTypes/BufferStore.d" -o"DataTypes/BufferStore.o" "C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c: In function 'BSInit':
-C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c:176: warning: implicit declaration of function 'xil_printf'
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/BufferStore.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"DataTypes/FrameTable.d" -MT"DataTypes/FrameTable.d" -o"DataTypes/FrameTable.o" "C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c: In function 'FT_PrintFrameTable':
-C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c:124: warning: implicit declaration of function 'xil_printf'
-C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c: In function 'FT_StartCapture':
-C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c:167: warning: implicit declaration of function 'print'
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/FrameTable.c
- 
-Building file: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Queue.c
-Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\common" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\include" -c -fmessage-length=0 -MMD -MP -MF"DataTypes/Queue.d" -MT"DataTypes/Queue.d" -o"DataTypes/Queue.o" "C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Queue.c"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-Finished building: C:/RobotRacers/CultOfSkaro/SDK/DataTypes/Queue.c
- 
-Building target: TestApp_Vision.elf
-Invoking: PowerPC gcc linker
-powerpc-eabi-gcc -L"C:\RobotRacers\CultOfSkaro\SDK\RobotRacers_bsp_0\ppc405_0\lib" -Wl,-T -Wl,../src/lscript.ld -o"TestApp_Vision.elf"  ./xil_sprintf/xil_sprintf.o  ./plb_vision_v1_00_a/src/plb_vision.o ./plb_vision_v1_00_a/src/plb_vision_selftest.o  ./plb_usb_v1_00_a/src/USB_IO.o  ./common/HeliosIO.o ./common/LoopScheduler.o ./common/State.o ./common/Timer.o ./common/mpmc_calibration.o ./common/mpmc_mem_test_example.o  ./DataTypes/BufferStore.o ./DataTypes/FrameTable.o ./DataTypes/Queue.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -lxilflash
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-Finished building target: TestApp_Vision.elf
- 
-Invoking: PowerPC Print Size
-powerpc-eabi-size TestApp_Vision.elf  |tee "TestApp_Vision.elf.size"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-   text	   data	    bss	    dec	    hex	filename
-  51894	    508	   2752	  55154	   d772	TestApp_Vision.elf
-Finished building: TestApp_Vision.elf.size
- 
-Invoking: Xilinx ELF Check
-elfcheck TestApp_Vision.elf -hw ../../VHDL_hw_platform/system.xml -pe ppc405_0  |tee "TestApp_Vision.elf.elfcheck"
-cygwin warning:
-  MS-DOS style path detected: C:\RobotRacers\CultOfSkaro\SDK\TestApp_Vision\Debug
-  Preferred POSIX equivalent is: /c/RobotRacers/CultOfSkaro/SDK/TestApp_Vision/Debug
-  CYGWIN environment variable option "nodosfilewarning" turns off this warning.
-  Consult the user's guide for more details about POSIX paths:
-    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
-elfcheck
-Xilinx EDK 13.3 Build EDK_O.76xd
-Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
-
-Command Line: elfcheck -hw ../../VHDL_hw_platform/system.xml -pe ppc405_0
-TestApp_Vision.elf 
-
-ELF file	: TestApp_Vision.elf
-elfcheck passed.
-Finished building: TestApp_Vision.elf.elfcheck
- 
+make: *** [plb_vision_v1_00_a/src/plb_vision.o] Error 1

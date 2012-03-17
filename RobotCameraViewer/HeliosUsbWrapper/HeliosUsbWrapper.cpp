@@ -29,6 +29,7 @@ namespace HeliosUsbWrapper
 			if (!USBReadHelios(dest.ToPointer(), (DWORD*)&numBytesRead)) {
 				throw gcnew Exception("Error reading from USB");
 			}
+
 			return numBytesRead;
 		}
 	};

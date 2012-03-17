@@ -1,0 +1,48 @@
+
+**** Build of configuration Debug for project VisionTestCore0 ****
+
+make all 
+Building file: ../src/helloworld.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../MainCoreTest/ppc405_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.d" -o"src/helloworld.o" "../src/helloworld.c"
+../src/mpmc_calibration.h:186: warning: 'MpmcUpdateStaticPhyReg' declared 'static' but never defined
+Finished building: ../src/helloworld.c
+ 
+Building file: ../src/mpmc_calibration.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../MainCoreTest/ppc405_0/include -MMD -MP -MF"src/mpmc_calibration.d" -MT"src/mpmc_calibration.d" -o"src/mpmc_calibration.o" "../src/mpmc_calibration.c"
+../src/mpmc_calibration.c: In function 'MpmcWriteTestPattern':
+../src/mpmc_calibration.c:618: warning: implicit declaration of function 'XIo_Out32'
+../src/mpmc_calibration.c: In function 'MpmcCheckPattern':
+../src/mpmc_calibration.c:645: warning: implicit declaration of function 'XIo_In32'
+Finished building: ../src/mpmc_calibration.c
+ 
+Building file: ../src/platform.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../MainCoreTest/ppc405_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o"src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building target: VisionTestCore0.elf
+Invoking: PowerPC gcc linker
+powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../MainCoreTest/ppc405_0/lib -o"VisionTestCore0.elf"  ./src/helloworld.o ./src/mpmc_calibration.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: VisionTestCore0.elf
+ 
+Invoking: PowerPC Print Size
+powerpc-eabi-size VisionTestCore0.elf  |tee "VisionTestCore0.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  13526	    364	   2208	  16098	   3ee2	VisionTestCore0.elf
+Finished building: VisionTestCore0.elf.size
+ 
+Invoking: Xilinx ELF Check
+elfcheck VisionTestCore0.elf -hw ../../vhdl_hw_platform/system.xml -pe ppc405_0  |tee "VisionTestCore0.elf.elfcheck"
+elfcheck
+Xilinx EDK 13.3 Build EDK_O.76xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: elfcheck -hw ../../vhdl_hw_platform/system.xml -pe ppc405_0
+VisionTestCore0.elf 
+
+ELF file	: VisionTestCore0.elf
+elfcheck passed.
+Finished building: VisionTestCore0.elf.elfcheck
+ 

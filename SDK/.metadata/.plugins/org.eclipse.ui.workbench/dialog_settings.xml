@@ -4,11 +4,11 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<item value="true" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_usb_v1_00_a"/>
+			<item value="C:\RobotRacers\CultOfSkaro\SDK\DataTypes"/>
+			<item value="C:\RobotRacers\CultOfSkaro\SDK\drivers\plb_vision_v1_00_a"/>
 			<item value="C:\Users\ecestudent\Downloads\xil_sprintf"/>
 			<item value="C:\Users\ecestudent\Downloads"/>
-			<item value="C:\RobotRacers\SDK\TestApp_PWM\src"/>
-			<item value="C:\RobotRacers\SDK\common"/>
-			<item value="C:\Users\ecestudent\Desktop\Vision"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">

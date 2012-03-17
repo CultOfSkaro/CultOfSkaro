@@ -18,21 +18,45 @@ namespace CameraViewer
     public partial class Form1 : Form
     {
         private usbReader usb;
+        private pixelConverter converter;
         private bool captureLoop = false;
         private bool quit = false;
         private Stopwatch timer = new Stopwatch();
-
+        private byte[] header;
+        private int numBlobs;
+        private Blob[] blobs = new Blob[200];
+        private byte[] hsv;
+        private int hsvOffset;
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e) {
+            usb = new usbReader(txtDebug);
+            usb.gotData += new DataEventHandler(usb_gotData);
+            usb.connect(this.Handle);
+
+            converter = new pixelConverter();
+            converter.finished += new ImageEventHandler(converter_finished);
+
+            header = new byte[64 + 64];
+            for (int i = 0; i < 64; i++) {
+                header[i] = 0;
+            }
+            for (int i = 64; i < 64+64; i++) {
+                header[i] = 255;
+            }
+
+            usb.packetHeader = header;
+        }
 
         private void startCapture() {
-            txtDebug.AppendText("Reading from usb...\r\n");
-            timer.Restart();
-            usb.read(640 * 480 * 2); //*2 for 16 bits per pixel
+            txtDebug.AppendText("Reading from usb...");
+            //usb.read(640 * 480 * 2); //*2 for 16 bits per pixel
+            //usb.findHeader(header);
+            usb.readPacket();
         }
              
         private void button1_Click(object sender, EventArgs e)
@@ -50,75 +74,62 @@ namespace CameraViewer
             captureLoop = false;
         }
 
+        void converter_finished(object sender, ImageEventArgs e) {
+            pictureBox1.Image = e.image;
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            usb = new usbReader(txtDebug);
-            usb.gotData += new usbReader.DataEventHandler(usb_gotData);
-            usb.connect(this.Handle);
+            timer.Stop();
+            long mil = timer.ElapsedMilliseconds;
+            timer.Restart();
+            
+            double fps = 1 / (mil / 1000.0);
+            lblFps.Text = "fps: " + fps;
         }
 
         void usb_gotData(object sender, DataEventArgs e) {
-            byte[] data = e.data;
-            txtDebug.AppendText("Got Data: " + data.Length + "\r\n");
-
-            int height = data.Length / 640 / 2;
-            txtDebug.AppendText("ImageSize: 640 x" + height + "\r\n");
-
-            //Bitmap image = new Bitmap(640, 480, System.Drawing.Imaging.PixelFormat.Format32bppArgb);//"C:\\Users\\Garrett\\Pictures\\ny.bmp");
-        
-            //convert to rgb
-            byte[] pixels = new byte[data.Length * 3 / 2];  //24 bpp instead of 16
-            for (int d = 0, p = 0; d < data.Length; d += 2, p += 3) {
-                int pixel = data[d] << 8 | data[d + 1];
-                //double h = Convert.ToDouble((data[d] & 0xFC));
-                //double s = Convert.ToDouble((((data[d] & 0x03) << 6) | ((data[d + 1] & 0xE0) >> 2)));
-                //double v = Convert.ToDouble((data[d + 1] & 0x1F) << 3);
-
-                //h = h * 360 / 255;
-                //s /= 255;
-                //v /= 255;
-                
-                double h = (((pixel >> 10) & 0x3F) << (2)) / 255.0 * 360;
-	            double s = (((pixel>>5)&0x1F)<<(3)) / 255.0;
-	            double v = ((pixel & 0x1F)<<(3)) / 255.0;
-                int r, g, b;
-                ColorConvert.HsvToRgbOld(h, s, v, out r, out g, out b);
-
-                //txtDebug.AppendText(r + "," + g + "," + b + "\r\n");
-                //image.SetPixel((d / 2) % 640, (d/2)/640, Color.FromArgb(r, g, b));
-
-                pixels[p] = (byte)b; // 255; //(byte)r;
-                pixels[p + 1] = (byte)g;
-                pixels[p + 2] = (byte)r; // 255; //(byte)b;
-            }
-
-            
-            //create an image from the pixel data
-            Bitmap image;
-            unsafe {
-                fixed (byte* ptr = pixels) {
-                    image = new Bitmap(640, height, 640 * 3, PixelFormat.Format24bppRgb, new IntPtr(ptr));
-                }
-            }
-
-            pictureBox1.Image = image;
-
-            //calculate the fps
-            timer.Stop();
-            long mil = timer.ElapsedMilliseconds;
-            double fps = 1 / (mil / 1000.0);
-            lblFps.Text = "fps: " + fps;
-
             if (captureLoop) {
                 startCapture();
             } else if (quit) {
                 this.Close();
             }
 
-            //for (int i = 0; i < e.data.Length; i++) {
-            //    txtDebug.AppendText(e.data[i] + "\r\n");
-            //}
+            txtDebug.AppendText("Done\r\n");
+            int imageSize = ByteConvert.toUint32(e.data, 0);
+            int dataSize = ByteConvert.toUint32(e.data, 4);
+            numBlobs = ByteConvert.toUint32(e.data, 8 + imageSize);
+          
+            txtDebug.AppendText("Image size: " + imageSize + "\r\n");
+            txtDebug.AppendText("Data size: " + dataSize + "\r\n");
+            txtDebug.AppendText("num Blobs: " + numBlobs + "\r\n");
+            
+            
+            int blobsStart = 8 + imageSize + 4;
+            for (int i = 0; i < numBlobs; i++) {
+                int blobStart = blobsStart + i * 20; //5 ints per blob
+                int type = ByteConvert.toUint32(e.data, blobStart);
+                int left = ByteConvert.toUint32(e.data, blobStart + 4);
+                int top = ByteConvert.toUint32(e.data, blobStart + 8);
+                int width = ByteConvert.toUint32(e.data, blobStart + 12);
+                int height = ByteConvert.toUint32(e.data, blobStart + 16);
+
+                blobs[i] = new Blob(type, left, top, width, height);
+            }
+
+            /*
+            for (int i = 0; i < 16; i++) {
+                txtDebug.AppendText(e.data[i] + " ");
+            }
+            txtDebug.AppendText("\r\n");
+            for (int i = 0; i < 16; i++) {
+                txtDebug.AppendText(e.data[i + 16] + " ");
+            }
+            txtDebug.AppendText("\r\n");
+            */
+
+            //save hsv data for mouse over
+            hsv = e.data;
+            hsvOffset = 8;
+
+            converter.convert(e.data, 8, imageSize);
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
@@ -137,23 +148,142 @@ namespace CameraViewer
             }
         }
 
+        private Pen pen = new Pen(Color.Blue, 2);            
+        private void pictureBox1_Paint(object sender, PaintEventArgs e) {
+            Graphics g = e.Graphics;
+
+            if (numBlobs <= 0) return;
+
+            txtDebug.AppendText("Draw Blobs\r\n");
+            for (int i = 0; i < numBlobs; i++) {
+                txtDebug.AppendText("x: " + blobs[i].left + ", y: " + blobs[i].top +
+                    ", width: " + blobs[i].width + ", height: " + blobs[i].height + "\r\n");
+
+                g.DrawRectangle(pen, blobs[i].left, blobs[i].top, 
+                    blobs[i].width, blobs[i].height);
+            }
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e) {
+            if (hsv == null) return;
+
+            int pixelOffset = hsvOffset + (e.Y * 640 + e.X) * 2;
+            int pixel = hsv[pixelOffset] << 8 | hsv[pixelOffset + 1];
+            /*
+            double h = (((pixel >> 10) & 0x3F) << (2)) / 255.0 * 360;
+            double s = (((pixel >> 5) & 0x1F) << (3)) / 255.0;
+            double v = ((pixel & 0x1F) << (3)) / 255.0;
+            */
+
+            int h = (pixel >> 10) & 0x3F;
+            int s = (pixel >> 5) & 0x1F;
+            int v = pixel & 0x1F;
+                  
+            lblHsv.Text = "h: " + h + ", s: " + s + ", v: " + v;
+        }
+
     }
 
-    class DataEventArgs : EventArgs
+    class Blob
     {
-        public byte[] data;
+        public int type, left, top, width, height;
+        public Blob(int type, int left, int top, int width, int height) {
+            this.type = type;
+            this.left = left;
+            this.top = top;
+            this.width = width;
+            this.height = height;
+        }
+    }
 
+    delegate void DataEventHandler(object sender, DataEventArgs e);
+    class DataEventArgs : EventArgs{
+        public byte[] data;
         public DataEventArgs(byte[] data) {
             this.data = data;
         }
 
     }
 
+    delegate void ImageEventHandler(object sender, ImageEventArgs e);
+    class ImageEventArgs : EventArgs
+    {
+        public Bitmap image;
+        public ImageEventArgs(Bitmap image) {
+            this.image = image;
+        }
+
+    }
+
+    class pixelConverter {
+        public event ImageEventHandler finished;
+        private BackgroundWorker bw;
+        private byte[] raw;
+        private int start;
+        private int length;
+        Bitmap image;
+        
+        public pixelConverter() {
+            bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+
+        }
+
+        public void convert(byte[] raw, int start, int length) {
+            if (!bw.IsBusy) {
+                this.raw = raw;
+                this.start = start;
+                this.length = length;
+                bw.RunWorkerAsync();
+            } else {
+                throw new Exception("Already converting!");
+            }
+        }
+
+
+        private void bw_DoWork(object sender, DoWorkEventArgs e) {
+            byte[] pixels = new byte[length * 3 / 2];  //24 bpp instead of 16
+            
+            //convert to rgb
+            for (int d = start, p = 0; d < start + length; d += 2, p += 3) {
+                int pixel = raw[d] << 8 | raw[d + 1];
+                double h = (((pixel >> 10) & 0x3F) << (2)) / 255.0 * 360;
+                double s = (((pixel >> 5) & 0x1F) << (3)) / 255.0;
+                double v = ((pixel & 0x1F) << (3)) / 255.0;
+                int r, g, b;
+                ColorConvert.HsvToRgb(h, s, v, out r, out g, out b);
+
+                pixels[p] = (byte)b;
+                pixels[p + 1] = (byte)g;
+                pixels[p + 2] = (byte)r;
+            }
+
+            //create an image from the pixel data
+            unsafe {
+                fixed (byte* ptr = pixels) {
+                    image = new Bitmap(640, 480, 640 * 3, 
+                        PixelFormat.Format24bppRgb, new IntPtr(ptr));
+                }
+            }
+        }
+
+        private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            if (finished != null) {
+                finished(this, new ImageEventArgs(image));
+            }
+        }
+    }
+
     class usbReader
     {
-        public delegate void DataEventHandler(object sender, DataEventArgs e);
         public event DataEventHandler gotData;
 
+        public byte[] packetHeader;
+
+        private enum Mode { READ, FIND_HEADER };
+        private Mode mode = Mode.READ;
+        private bool gettingPacket = false;
         private BackgroundWorker bw;
         private TextBox txtDebug;
         byte[] data;
@@ -180,34 +310,79 @@ namespace CameraViewer
         }
 
 
-        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+        private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             if (gotData != null) {
                 gotData(this, new DataEventArgs(data));
             }
         }
 
         //blocking read of usb
-        void bw_DoWork(object sender, DoWorkEventArgs e) {
-            //txtDebug.AppendText("run");
-            
+        private void bw_DoWork(object sender, DoWorkEventArgs e) {
             int curLoc = 0;
-            while (leftToRead > 0) {
+
+            while (true) {
                 int numRead = HeliosUsb.Read(bufAddr);
-                Buffer.BlockCopy(buffer, 0, data, curLoc, 
-                    Math.Min(numRead, leftToRead));
-                leftToRead -= numRead;
-                curLoc += numRead;
+
+                /*
+                if (numRead != 512) {
+                    txtDebug.AppendText("WrongSize: " + numRead + "!\r\n");
+
+                    for (int i = 0; i < numRead; i++) {
+                        for (int j = 0; j < 8 && i < numRead; i++, j++) {
+                            txtDebug.AppendText(buffer[i] + " ");
+                        }
+                        txtDebug.AppendText("\r\n");
+                    }
+                }
+                */
+
+                if (mode == Mode.READ) {
+                    Buffer.BlockCopy(buffer, 0, data, curLoc,
+                        Math.Min(numRead, leftToRead));
+                    leftToRead -= numRead;
+                    curLoc += numRead;
+                    if (leftToRead <= 0) break;
+                
+                } else if (mode == Mode.FIND_HEADER) {
+                    bool found = false;
+                    int headerLoc;
+                    for (headerLoc = 0; headerLoc < numRead; headerLoc++) {
+                        //check every posistion in the read data
+                        int j;
+                        for (j = 0; j < data.Length; j++) {
+                            //check the whole header
+                            if (headerLoc + j >= numRead) break;
+                            if (buffer[headerLoc + j] != data[j]) break;
+                        }
+
+                        if (j == data.Length) {
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (found == true) {
+                        if (gettingPacket) {
+                            int dataLoc = headerLoc + data.Length;
+                            int size = ByteConvert.toUint32(buffer, dataLoc);
+                            int alreadyRead = numRead - dataLoc - 4;
+                            data = new byte[size];
+                            Buffer.BlockCopy(buffer, dataLoc + 4, data, 0,
+                                alreadyRead);
+                            mode = Mode.READ;
+                            gettingPacket = false;
+                            leftToRead = size - alreadyRead;
+                            curLoc = alreadyRead;
+                        } else {
+                            data = new byte[] { (byte)headerLoc };
+                            break;
+                        }
+                    }
+                }
             }
-            /*
-            txtDebug.AppendText("got data:\r\n");
-            for (int i = 0; i < 10; i++) {
-                txtDebug.AppendText(data[i] + "\r\n");
-            }
-            */
         }
 
-        public void connect(IntPtr windowHandle)
-        {
+        public void connect(IntPtr windowHandle) {
             if (HeliosUsb.Open(windowHandle)) {
                 txtDebug.AppendText("Connected to Helios USB!\r\n");
             } else {
@@ -215,8 +390,7 @@ namespace CameraViewer
             }
         }
 
-        public void disconnet()
-        {
+        public void disconnet() {
             HeliosUsb.Close();
         }
 
@@ -226,73 +400,51 @@ namespace CameraViewer
             }
         }
 
-        public void read(int bytes)
-        {
+        public void readPacket() {
+            if (packetHeader == null) {
+                throw new Exception("packetHeader NULL!");
+            }
+            gettingPacket = true;
+            findHeader(packetHeader);
+        }
+
+        public void findHeader(byte[] header) {
             if (!bw.IsBusy) {
-                data = new byte[bytes];
-                leftToRead = bytes;
+                mode = Mode.FIND_HEADER;
+                data = header;
                 bw.RunWorkerAsync();
                 //bw_DoWork(null, null);
             } else {
                 throw new Exception("Already reading!");
             }
         }
+
+        public void read(int bytes) {
+            if (!bw.IsBusy) {
+                data = new byte[bytes];
+                mode = Mode.READ;
+                leftToRead = bytes;
+                bw.RunWorkerAsync();
+            } else {
+                throw new Exception("Already reading!");
+            }
+        }
+    }
+
+    class ByteConvert
+    {
+        public static int toUint32(byte[] data, int start) {
+            int val = 0;
+            for (int i = 0; i < 4; i++) {
+                val |= (int)data[start + i] << (3 - i) * 8;
+            }
+
+            return val;
+        }
     }
 
     class ColorConvert
     {
-        public static void HsvToRgb(double h, double s, double v, 
-            out int r, out int g, out int b) {
-            h /= 60.0;
-            //s /= 255.0;
-            //v /= 255.0;
-            double C = s * v;
-            double X = C * (1 - Math.Abs((h % 2) - 1));
-            double m = v - C;
-            if (0 <= h && h < 1)
-            {
-                r = Convert.ToInt32((C + m) * 255);
-                g = Convert.ToInt32((X + m) * 255);
-                b = Convert.ToInt32((m) * 255);
-            }
-            else if (1 <= h && h < 2)
-            {
-                r = Convert.ToInt32((X + m) * 255);
-                g = Convert.ToInt32((C + m) * 255);
-                b = Convert.ToInt32((m) * 255);
-            }
-            else if (2 <= h && h < 3)
-            {
-                r = Convert.ToInt32((m) * 255);
-                g = Convert.ToInt32((C + m) * 255);
-                b = Convert.ToInt32((X + m) * 255);
-            }
-            else if (3 <= h && h < 4)
-            {
-                r = Convert.ToInt32((m) * 255);
-                g = Convert.ToInt32((X + m) * 255);
-                b = Convert.ToInt32((C + m) * 255);
-            }
-            else if (4 <= h && h < 5)
-            {
-                r = Convert.ToInt32((X + m) * 255);
-                g = Convert.ToInt32((m) * 255);
-                b = Convert.ToInt32((C + m) * 255);
-            }
-            else if (5 <= h && h < 6)
-            {
-                r = Convert.ToInt32((C + m) * 255);
-                g = Convert.ToInt32((m) * 255);
-                b = Convert.ToInt32((X + m) * 255);
-            }
-            else
-            {
-                r = Convert.ToInt32((m) * 255);
-                g = Convert.ToInt32((m) * 255);
-                b = Convert.ToInt32((m) * 255);
-            }
-        }
-        
         /// <summary>
         /// Convert HSV to RGB
         /// h is from 0-360
@@ -300,7 +452,7 @@ namespace CameraViewer
         /// r,g,b values are 0-255
         /// Based upon http://ilab.usc.edu/wiki/index.php/HSV_And_H2SV_Color_Space#HSV_Transformation_C_.2F_C.2B.2B_Code_2
         /// </summary>
-        public static void HsvToRgbOld(double h, double S, double V, 
+        public static void HsvToRgb(double h, double S, double V, 
             out int r, out int g, out int b) {
             
             double H = h;

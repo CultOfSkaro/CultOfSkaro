@@ -34,43 +34,33 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
 <part id="2"/>
+<part id="1"/>
 <part id="3"/>
 <part id="4"/>
-<part id="5"/>
-<part id="6"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/src/main.c" title="main.c" tooltip="Skaro/src/main.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/src/main.c" title="main.c" tooltip="Skaro/src/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/src/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9820" selectionTopPixel="6326"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="357"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="PID_Control.c" partName="PID_Control.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/PIDControl/PID_Control.c" title="PID_Control.c" tooltip="Skaro/PIDControl/PID_Control.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/PIDControl/PID_Control.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1323" selectionTopPixel="2976"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="plb_vision_selftest.c" partName="plb_vision_selftest.c" path="C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c" title="plb_vision_selftest.c" tooltip="TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="10694" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="PID_Control.h" partName="PID_Control.h" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/PIDControl/PID_Control.h" title="PID_Control.h" tooltip="Skaro/PIDControl/PID_Control.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/PIDControl/PID_Control.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="322" selectionTopPixel="51"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/RobotRacers/CultOfSkaro/SDK/SkaroVision/src/main.c" title="main.c" tooltip="SkaroVision/src/main.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SkaroVision/src/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="283" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Navigation.c" partName="Navigation.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Navigation/Navigation.c" title="Navigation.c" tooltip="Skaro/Navigation/Navigation.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Navigation/Navigation.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4302" selectionTopPixel="1343"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="plb_vision.h" partName="plb_vision.h" path="C:/RobotRacers/CultOfSkaro/SDK/SkaroVision/plb_vision_v1_00_a/src/plb_vision.h" title="plb_vision.h" tooltip="SkaroVision/plb_vision_v1_00_a/src/plb_vision.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SkaroVision/plb_vision_v1_00_a/src/plb_vision.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="3298"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="helloworld.c" partName="helloworld.c" path="C:/RobotRacers/CultOfSkaro/SDK/Second_Core_Test/src/helloworld.c" title="helloworld.c" tooltip="Second_Core_Test/src/helloworld.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Second_Core_Test/src/helloworld.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="217" selectionOffset="1023" selectionTopPixel="357"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="scheduler.c" partName="scheduler.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Wireless/scheduler.c" title="scheduler.c" tooltip="Skaro/Wireless/scheduler.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Wireless/scheduler.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="315" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="scheduler.h" partName="scheduler.h" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Wireless/scheduler.h" title="scheduler.h" tooltip="Skaro/Wireless/scheduler.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Wireless/scheduler.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="199" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="plb_vision.c" partName="plb_vision.c" path="C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c" title="plb_vision.c" tooltip="TestApp_Vision/plb_vision_v1_00_a/src/plb_vision.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="632" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -91,10 +81,11 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>&#x0A;<category IMemento.internal.id="Warnings"/>
+<expanded>
+<category IMemento.internal.id="Warnings"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
-<columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
+<columnWidths org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.resourceField="94" org.eclipse.ui.ide.severityAndDescriptionField="418"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -118,7 +109,7 @@
 </viewState>
 </view>
 </views>
-<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.eclipse.cdt.ui.CPerspective">
+<perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="org.eclipse.cdt.ui.CPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.cdt.internal.ui.CPerspectiveFactory" id="org.eclipse.cdt.ui.CPerspective" label="C/C++"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -195,7 +186,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.2387931" ratioLeft="277" ratioRight="883" relationship="2" relative="topLeft"/>
+<info part="org.eclipse.ui.editorss" ratio="0.23965517" ratioLeft="278" ratioRight="882" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottom" ratio="0.6069869" ratioLeft="556" ratioRight="360" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
@@ -236,88 +227,17 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/PIDControl/PID_Control.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Wireless/scheduler.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Wireless/scheduler.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/PIDControl/PID_Control.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SkaroVision/src/platform_config.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SkaroVision/src/platform.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.lscript.editor" path="/SkaroVision/src/lscript.ld"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SkaroVision/src/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SkaroVision/plb_vision_v1_00_a/src/plb_vision.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SkaroVision/DataTypes/FrameTable.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SkaroVision/common/Header.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision.c"/>
 </editors>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9723" y="0"/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1513" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9723" y="0"/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1705" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1274" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9526" y="16"/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1744" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9526" y="16"/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1695" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9526" y="16"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9551" y="0"/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1744" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9905" y="0"/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1486" y="0"/>
-</item>
-<item historyLabel="PID_Control.c" index="1">
-<position info="not_deleted" x="1323" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9905" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9506" y="37"/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1486" y="0"/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1825" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9665" y="0"/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1744" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9568" y="0"/>
-</item>
-<item historyLabel="helloworld.c" index="2">
-<position info="not_deleted" x="1881" y="0"/>
-</item>
-<item historyLabel="Navigation.c" index="3">
-<position info="not_deleted" x="4302" y="0"/>
-</item>
-<item historyLabel="PID_Control.h" index="4">
-<position info="not_deleted" x="322" y="0"/>
-</item>
 <item historyLabel="PID_Control.c" index="1">
 <position info="not_deleted" x="1323" y="0"/>
 </item>
@@ -384,8 +304,83 @@
 <item historyLabel="scheduler.c" index="5">
 <position info="not_deleted" x="315" y="0"/>
 </item>
-<item active="true" historyLabel="main.c" index="0">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="15649" y="0"/>
+</item>
+<item historyLabel="PID_Control.c" index="7"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="plb_vision_selftest.c" index="8">
+<position/>
+</item>
+<item historyLabel="plb_vision_selftest.c" index="8">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="plb_vision_selftest.c" index="8">
+<position info="not_deleted" x="773" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="plb_vision_selftest.c" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="plb_vision_selftest.c" index="8">
+<position info="not_deleted" x="0" y="10694"/>
+</item>
+<item historyLabel="platform_config.h" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="platform.c" index="10">
+<position info="not_deleted" x="820" y="0"/>
+</item>
+<item historyLabel="plb_vision_selftest.c" index="8">
+<position info="not_deleted" x="719" y="0"/>
+</item>
+<item historyLabel="lscript.ld" index="11"/>
+<item historyLabel="plb_vision_selftest.c" index="8">
+<position info="not_deleted" x="719" y="0"/>
+</item>
+<item historyLabel="lscript.ld" index="11"/>
+<item historyLabel="plb_vision_selftest.c" index="8">
+<position info="not_deleted" x="0" y="10694"/>
+</item>
+<item historyLabel="main.c" index="12">
+<position info="not_deleted" x="10596" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="12">
+<position info="not_deleted" x="283" y="0"/>
+</item>
+<item historyLabel="plb_vision.h" index="13">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="plb_vision_selftest.c" index="8">
+<position info="not_deleted" x="0" y="10694"/>
+</item>
+<item historyLabel="main.c" index="12">
+<position info="not_deleted" x="283" y="0"/>
+</item>
+<item historyLabel="FrameTable.h" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Header.h" index="15">
+<position info="not_deleted" x="342" y="0"/>
+</item>
+<item historyLabel="FrameTable.h" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="12">
+<position info="not_deleted" x="283" y="0"/>
+</item>
+<item active="true" historyLabel="plb_vision.c" index="16">
+<position info="not_deleted" x="12203" y="50"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -404,6 +399,33 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="plb_vision.c" tooltip="TestApp_Vision/plb_vision_v1_00_a/src/plb_vision.c">
+<persistable path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Header.h" tooltip="SkaroVision/common/Header.h">
+<persistable path="/SkaroVision/common/Header.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="FrameTable.h" tooltip="SkaroVision/DataTypes/FrameTable.h">
+<persistable path="/SkaroVision/DataTypes/FrameTable.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="plb_vision.h" tooltip="SkaroVision/plb_vision_v1_00_a/src/plb_vision.h">
+<persistable path="/SkaroVision/plb_vision_v1_00_a/src/plb_vision.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="SkaroVision/src/main.c">
+<persistable path="/SkaroVision/src/main.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.lscript.editor" name="lscript.ld" tooltip="SkaroVision/src/lscript.ld">
+<persistable path="/SkaroVision/src/lscript.ld"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="platform.c" tooltip="SkaroVision/src/platform.c">
+<persistable path="/SkaroVision/src/platform.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="platform_config.h" tooltip="SkaroVision/src/platform_config.h">
+<persistable path="/SkaroVision/src/platform_config.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="plb_vision_selftest.c" tooltip="TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c">
+<persistable path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="scheduler.h" tooltip="Skaro/Wireless/scheduler.h">
 <persistable path="/Skaro/Wireless/scheduler.h"/>
 </file>
@@ -419,35 +441,8 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="PID_Control.h" tooltip="Skaro/PIDControl/PID_Control.h">
 <persistable path="/Skaro/PIDControl/PID_Control.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="plb_vision_selftest.c" tooltip="TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c">
-<persistable path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xuartlite_intr.c" tooltip="RobotRacers_bsp_0/ppc405_0/libsrc/uartlite_v2_00_a/src/xuartlite_intr.c">
 <persistable path="/RobotRacers_bsp_0/ppc405_0/libsrc/uartlite_v2_00_a/src/xuartlite_intr.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="PID_Control.c" tooltip="Skaro/PIDControl/PID_Control.c">
-<persistable path="/Skaro/PIDControl/PID_Control.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="HeliosIO.h" tooltip="Skaro/common/HeliosIO.h">
-<persistable path="/Skaro/common/HeliosIO.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="HeliosIO.c" tooltip="Skaro/common/HeliosIO.c">
-<persistable path="/Skaro/common/HeliosIO.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xparameters.h" tooltip="RobotRacers_bsp_0/ppc405_0/include/xparameters.h">
-<persistable path="/RobotRacers_bsp_0/ppc405_0/include/xparameters.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Serial.c" tooltip="Skaro/common/Serial.c">
-<persistable path="/Skaro/common/Serial.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Serial.h" tooltip="Skaro/common/Serial.h">
-<persistable path="/Skaro/common/Serial.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xuartlite_l.c" tooltip="RobotRacers_bsp_0/ppc405_0/libsrc/uartlite_v2_00_a/src/xuartlite_l.c">
-<persistable path="/RobotRacers_bsp_0/ppc405_0/libsrc/uartlite_v2_00_a/src/xuartlite_l.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.hw.ui.HwSpecXMLEditor" name="system.xml" tooltip="vhdl_hw_platform/system.xml">
-<persistable path="/vhdl_hw_platform/system.xml"/>
 </file>
 </mruList>
 </workbench>
