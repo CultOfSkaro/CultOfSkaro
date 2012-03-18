@@ -1,3 +1,0 @@
-PROCESSOR=ppc405_0
-REPOSITORIES=
-HWSPEC=../vhdl_hw_platform/system.xml

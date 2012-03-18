@@ -51,8 +51,8 @@ volatile VisionData * getVisionBuffer(){
 	return 0;
 }
 
-void updateVisionData(VisionData * tmp){
-	*live_vision_data = (volatile VisionData *)tmp;
+void inline updateVisionData(volatile VisionData * tmp){
+	*live_vision_data = tmp;
 }
 
 int main()

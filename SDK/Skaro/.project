@@ -79,4 +79,11 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>CrossCore</name>
+			<type>2</type>
+			<location>C:/RobotRacers/CultOfSkaro/SDK/CrossCore</location>
+		</link>
+	</linkedResources>
 </projectDescription>

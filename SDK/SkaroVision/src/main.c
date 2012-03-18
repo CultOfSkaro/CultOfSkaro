@@ -1,32 +1,36 @@
 /***************************** Include Files *******************************/
+//Standard C Libraries
 #include <stdio.h>
-#include <xbasic_types.h>
-#include <xintc_l.h>
-#include <xexception_l.h>
-#include <xutil.h>
-#include <xio.h>
-#include "xparameters.h"
-#include <USB_IO.h>
-#include "plb_vision.h"
-#include "FrameTable.h"
-#include "State.h"
-#include "Stack.h"
-
-#include "xtime_l.h"
-
 #include <stdlib.h>
 #include <string.h>
 #include <Math.h>
 
+//Xilinx Libraries
+#include "xbasic_types.h"
+#include "xintc_l.h"
+#include "xexception_l.h"
+#include "xutil.h"
+#include "xio.h"
+#include "xparameters.h"
+#include "xtime_l.h"
+#include "sleep.h"
+
+//Custom Includes
+#include "USB_IO.h"
+#include "plb_vision.h"
+#include "FrameTable.h"
+#include "State.h"
+#include "Stack.h"
+#include "CrossCore.h"
+
+
 /************************** Type Definitions ***************************/
 
 typedef struct {
-	int type;
-	int left;
-	int top;
-	int width;
-	int height;
-} Blob;
+	int h;
+	int s;
+	int v;
+} Color;
 
 /************************** Constant Definitions ***************************/
 
@@ -35,9 +39,9 @@ typedef struct {
 
 #define HEADER_LOC     0x1000
 #define HEADER_SIZE    64 + 64 + 4 + 4 + 4
+
 #define NUM_BLOBS_LOC  HEADER_LOC + HEADER_SIZE
 #define BLOB_LOC       NUM_BLOBS_LOC + 4
-#define MAX_BLOBS      100
 #define BLOB_DATA_LOC  NUM_BLOBS_LOC
 #define BLOB_DATA_SIZE 4 + sizeof(Blob) * MAX_BLOBS
 
@@ -48,10 +52,38 @@ typedef struct {
 #define CHECKED_LOC         0x81D00000 //root of the SRAM //BLOB_DATA_LOC + BLOB_DATA_SIZE
 #define CHECKED_SIZE        IMAGE_WIDTH * IMAGE_HEIGHT
 
+#define SEARCH_STRIDE_X  8
+#define SEARCH_STRIDE_Y  4
 
-#define TARGET_COLOR        23, 0, 0
+#define FLOOD_STRIDE_X   2
+#define FLOOD_STRIDE_Y   2
+
+#define TARGET_COLOR_BLUE       23, 0, 15
+#define TARGET_COLOR_RED		5, 0, 28
+
+Color targetColors[NUM_BLOB_TYPES];
 
 /************************** Variable Definitions ****************************/
+
+/*
+ * Header
+ * bytes  description
+ * ------------------
+ * 64     0's
+ * 64     255's
+ * 4      size of total transmission - 128 (in bytes)
+ * 4      size of frame (in bytes)
+ * 4      size of detection data (in bytes)
+ * *      frame
+ * *      detection data
+ */
+
+char *headerBuf = (char*)HEADER_LOC;
+int *transmitSize = (int*)(HEADER_LOC + 64 + 64);
+int *frameSize = (int*)(HEADER_LOC + 64 + 64 + 4);
+int *detectionSize = (int*)(HEADER_LOC + 64 + 64 + 4 + 4);
+
+VisionData *visionData;
 
 /************************** Function Definitions ***************************/
 typedef Xuint32 CPU_MSR;
@@ -82,27 +114,6 @@ void pitHandler(){
 	XTime_PITClearInterrupt();
 }
 
-/*
- * Header
- * bytes  description
- * ------------------
- * 64     0's
- * 64     255's
- * 4      size of total transmission - 128 (in bytes)
- * 4      size of frame (in bytes)
- * 4      size of detection data (in bytes)
- * *      frame
- * *      detection data
- */
-
-char *headerBuf = (char*)HEADER_LOC;
-int *transmitSize = (int*)(HEADER_LOC + 64 + 64);
-int *frameSize = (int*)(HEADER_LOC + 64 + 64 + 4);
-int *detectionSize = (int*)(HEADER_LOC + 64 + 64 + 4 + 4);
-
-int *numBlobs = (int*)(NUM_BLOBS_LOC);
-Blob *blobBuf = (Blob*)(BLOB_LOC);
-
 void initHeader() {
 	int i;
 	for (i = 0; i < 64; i++) {
@@ -115,13 +126,18 @@ void initHeader() {
 	srand(12345621);
 }
 
+void initTargetColors() {
+	targetColors[BLOB_TYPE_BLUE] = (Color){TARGET_COLOR_BLUE};
+	targetColors[BLOB_TYPE_RED] = (Color){TARGET_COLOR_RED};
+}
+
 void transmitFrame(FrameTableEntry* frame) {
 	uint32* bufAddr = frame->frame_address[VISION_FRAME_RGB565]->data.data32;
 	int bufSize = frame->frame_address[VISION_FRAME_RGB565]->capacity;
 
 	//set up transmission sizes
 	*frameSize = bufSize;
-	*detectionSize = 4 + (sizeof(Blob) * *numBlobs);
+	*detectionSize = 4 + (sizeof(Blob) * visionData->numBlobs);
 	*transmitSize = *frameSize + *detectionSize + 8;
 
 	xil_printf("data size: %d\r\n", *detectionSize);
@@ -169,20 +185,20 @@ void transmitFrame(FrameTableEntry* frame) {
 
 	print("Writing blobs over usb...");
 	while(!USB_writeReady());
-	USB_blockWrite((u32*)numBlobs, *detectionSize / 2);
+	USB_blockWrite((u32*)visionData, *detectionSize / 2);
 	while(!USB_writeReady());
 	print("Done\r\n");
 }
 
 
-inline int colorMatch(short pixel, int dh, int ds, int dv) {
+inline int colorMatch(short pixel, Color targetColor) {
 	int h = (pixel >> 10) & 0x3F;
 	//int s = (pixel >> 5) & 0x1F;
 	int v = pixel & 0x1F;
 
 	//int hdiff = h - dh;
 	//if (hdiff < 0) hdiff *= -1;
-	return (abs(h-dh) < 6 && v > 15); //|| v > 27;
+	return (abs(h - targetColor.h) < 6 && v > targetColor.v); //|| v > 27;
 }
 
 char* pixelsChecked = (char*)CHECKED_LOC;
@@ -203,18 +219,6 @@ inline int pTy(void *p) {
 }
 
 /*
-inline int getH(int pixel) {
-	return (pixel >> 10) & 0x3F;
-}
-inline int getS(int pixel) {
-	return (pixel >> 5) & 0x1F;
-}
-inline int getV(int pixel) {
-	return pixel & 0x1F;
-}
-*/
-
-/*
 Flood-fill (node, target-color, replacement-color):
  1. Set Q to the empty queue.
  2. Add node to the end of Q.
@@ -230,8 +234,8 @@ Flood-fill (node, target-color, replacement-color):
  14. Return.
  */
 
-void floodFill(ushort *pixels, int xStart, int yStart) {
-	if (*numBlobs >= MAX_BLOBS) return;
+void floodFill(ushort *pixels, int xStart, int yStart, Color targetColor, int blobType) {
+	if (visionData->numBlobs >= MAX_BLOBS) return;
 
 	StackClear(toCheck);
 	StackPush(toCheck, cTp(xStart,yStart));
@@ -250,26 +254,34 @@ void floodFill(ushort *pixels, int xStart, int yStart) {
 		pixelsChecked[y * IMAGE_WIDTH + x] = 1;
 
 		short pixel = pixels[y * IMAGE_WIDTH + x];
-		if (colorMatch(pixel, TARGET_COLOR)) {
+		if (colorMatch(pixel, targetColor)) {
 			if (x < xMin) xMin = x;
 			if (x > xMax) xMax = x;
 			if (y < yMin) yMin = y;
 			if (y > yMax) yMax = y;
 
-			StackPush(toCheck, cTp(x+2,y));
-			StackPush(toCheck, cTp(x-2,y));
-			StackPush(toCheck, cTp(x,y+2));
-			StackPush(toCheck, cTp(x,y-2));
+			if (x <= IMAGE_WIDTH - FLOOD_STRIDE_X)
+				StackPush(toCheck, cTp(x+FLOOD_STRIDE_X,y));
+			if (x >= FLOOD_STRIDE_X)
+				StackPush(toCheck, cTp(x-FLOOD_STRIDE_X,y));
+			if (y <= IMAGE_HEIGHT - FLOOD_STRIDE_Y)
+				StackPush(toCheck, cTp(x,y+FLOOD_STRIDE_Y));
+			if (y >= FLOOD_STRIDE_Y)
+				StackPush(toCheck, cTp(x,y-FLOOD_STRIDE_Y));
 		}
 	}
 
-	//creat blob
-	blobBuf[*numBlobs].type = 0;
-	blobBuf[*numBlobs].left = xMin;
-	blobBuf[*numBlobs].top = yMin;
-	blobBuf[*numBlobs].width = xMax - xMin;
-	blobBuf[*numBlobs].height = yMax - yMin;
-	(*numBlobs)++;
+	//create blob
+	int width = xMax - xMin;
+	int height = yMax - yMin;
+	if (width > 0 && height > 0) {
+		visionData->blobs[visionData->numBlobs].type = blobType;
+		visionData->blobs[visionData->numBlobs].left = xMin;
+		visionData->blobs[visionData->numBlobs].top = yMin;
+		visionData->blobs[visionData->numBlobs].width = width;
+		visionData->blobs[visionData->numBlobs].height = height;
+		(visionData->numBlobs)++;
+	}
 }
 
 void processFrame(FrameTableEntry* frame) {
@@ -284,32 +296,37 @@ void processFrame(FrameTableEntry* frame) {
 	StackInit(toCheck, (void**)FILL_STACK_LOC, FILL_STACK_SIZE);
 	//StackInit(toCheck, stackMem, STACK_MEM_SIZE);
 
-	*numBlobs = 0;
-
+	visionData = getVisionBuffer();
+	visionData->numBlobs = 0;
 
 	int x, y;
-	for (x = 0; x < IMAGE_WIDTH; x += 10) {
-		for (y = 0; y < IMAGE_HEIGHT; y += 10) {
+	for (x = 0; x < IMAGE_WIDTH; x += SEARCH_STRIDE_X) {
+		for (y = 0; y < IMAGE_HEIGHT; y += SEARCH_STRIDE_Y) {
+			if (pixelsChecked[y * IMAGE_WIDTH + x]) continue;
+
 			short pixel = pixels[y * IMAGE_WIDTH + x];
-			if (colorMatch(pixel, TARGET_COLOR)) {
-				if (*numBlobs >= MAX_BLOBS) continue;
-				if (pixelsChecked[y * IMAGE_WIDTH + x]) continue;
-				floodFill(pixels, x, y);
+			int i;
+			for (i = 0; i < NUM_BLOB_TYPES; i++) {
+				if (colorMatch(pixel, targetColors[i])) {
+					if (visionData->numBlobs >= MAX_BLOBS) continue;
+					floodFill(pixels, x, y, targetColors[i], i);
 
 
-				/*
-				blobBuf[*numBlobs].type = 0;
-				blobBuf[*numBlobs].left = x - 5;
-				blobBuf[*numBlobs].top = y - 5;
-				blobBuf[*numBlobs].width = 10;
-				blobBuf[*numBlobs].height = 10;
+					/*
+					blobBuf[*numBlobs].type = 0;
+					blobBuf[*numBlobs].left = x - 5;
+					blobBuf[*numBlobs].top = y - 5;
+					blobBuf[*numBlobs].width = 10;
+					blobBuf[*numBlobs].height = 10;
 
-				(*numBlobs)++;
-				*/
+					(*numBlobs)++;
+					*/
+				}
 			}
 		}
 	}
 
+	updateVisionData(visionData);
 	transmitFrame(frame);
 }
 
@@ -317,15 +334,20 @@ int main()
 {
 	print("-------------------------Camera Stream App------------------------\r\n");
 
+	//wait for other processor to run memory calibration
 	usleep(100000);
 
 	print("Initializing Memory Buffers...\r\n");
-	MemAllocInit((uint32*)0x100000);
+	MemAllocInit((uint32*)0x300000);
 	BSInit();
 	STInit();
 
-	//init header
+	//initialize cross core memory
+	*live_vision_data = 0;
+
+	//initialize constant memory
 	initHeader();
+	initTargetColors();
 
 	print("Initializing USB...\r\n");
 	USB_init();
@@ -372,11 +394,7 @@ int main()
 	xil_printf("Status: 0x%x\r\n", stat);
 
 	//wait a bit
-	volatile int a;
-	int i = 0;
-	for(i=0;i<100000;i++){
-		a += i;
-	}
+	usleep(100000);
 
 	print("Starting capture\r\n");
 	FT_Init();

@@ -59,7 +59,6 @@
 
 //====================================================
 
-//more #includes to use the encoder
 #include "plb_quad_encoder.h"
 #include "Timer.h"
 #include "HeliosIO.h"
@@ -67,6 +66,7 @@
 #include "skaro_queue.h"
 #include "scheduler.h"
 #include "Serial.h"
+#include "CrossCore.h"
 
 //#include "ISR.h"
 
@@ -262,6 +262,8 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 //		break;
 	case 'e':
 		scheduler.events.flags.hello = 1;
+		Game_Shoot(GAME_KILL_SHOT);
+		Wireless_Debug("Fired Kill Shot");
 		break;
 //	case 'a':
 //		loop_count = 2;
@@ -346,15 +348,6 @@ int update = 0;
 // For the pit handler, we increment a counter.  Every time the counter reaches a certain threshold,
 // We set the timer flag in the scheduler's events struct.  We reset the counter.
 
-typedef struct {
-	int a;
-	int b;
-} VisionData;
-
-volatile VisionData ** live_vision_data = (volatile VisionData **) 0x100000;
-volatile VisionData ** snap_vision_data = (volatile VisionData **) (0x100000 + sizeof(volatile VisionData **));
-
-
 void my_pitHandler(){
 	counter++;
 	if(counter > 100){
@@ -368,30 +361,59 @@ void my_pitHandler(){
 }
 
 // This is a dummy task just to test out different events.
-
 void hello(){
 }
+
 void vision(){
 	*snap_vision_data = *live_vision_data;
 	if(!*snap_vision_data){
 		return;
 	}
-	int a = (*snap_vision_data)->a * (*snap_vision_data)->b;
-	if(a != 60 && a != 100){
-		Wireless_Debug("RACE CONDITION!!!\r\n");
-		PrintInt(a);
-		PrintInt(snap_vision_data);
-		PrintInt(*snap_vision_data);
-		PrintInt((*snap_vision_data)->a);
-		Wireless_Debug("\n\r");
-		PrintInt(live_vision_data);
-		PrintInt(*live_vision_data);
-		PrintInt((*live_vision_data)->a);
-		usleep(1000000);
-	} else {
-		Wireless_Debug("C3 success!");
-		usleep(100000);
+
+	VisionData *visionData = *snap_vision_data;
+
+
+	Wireless_Debug("Blobs Detected: ");
+	int i;
+	Blob * biggest = 0;;
+	for(i=0; i < visionData->numBlobs; i++) {
+		if(!biggest){
+			biggest = &visionData->blobs[i];
+		} else {
+			if(visionData->blobs[i].width > biggest->width) {
+				biggest = &visionData->blobs[i];
+			}
+		}
 	}
+	if(visionData->numBlobs == 0) {
+		Wireless_Debug("NO BLOBS FOUND!");
+		return;
+	}
+
+	#define IMAGE_WIDTH 640
+	#define OBJECT_WIDTH       0.08255
+	#define FIELD_OF_VISION    ((float)(25.5 * 3.1415 / 180))
+	#define DISTANCE_CONSTANT  (IMAGE_WIDTH * OBJECT_WIDTH / FIELD_OF_VISION)
+
+	float distance = DISTANCE_CONSTANT / biggest->width;
+	int center = biggest->left + (biggest->width / 2) - (IMAGE_WIDTH / 2);
+	float angle = FIELD_OF_VISION * center / IMAGE_WIDTH;
+
+	PrintInt(visionData->numBlobs);
+	Wireless_Debug("Biggest Blob:");
+
+	Wireless_Debug("Left:");
+	PrintInt(biggest->left);
+	Wireless_Debug("Top:");
+	PrintInt(biggest->top);
+	Wireless_Debug("Width:");
+	PrintInt(biggest->width);
+	Wireless_Debug("Height:");
+	PrintInt(biggest->height);
+	Wireless_Debug("Distance:");
+	PrintFloat(distance);
+	Wireless_Debug("Angle:");
+	PrintFloat(angle);
 }
 
 void InitInterrupts() {

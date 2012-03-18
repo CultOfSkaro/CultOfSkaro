@@ -27,9 +27,7 @@
 							<tool id="xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454" name="PowerPC gcc compiler" superClass="xilinx.gnu.ppc.c.toolchain.compiler.debug">
 								<option defaultValue="gnu.c.optimization.level.none" id="xilinx.gnu.compiler.option.optimization.level.285112070" name="Optimization Level" superClass="xilinx.gnu.compiler.option.optimization.level" value="gnu.c.optimization.level.size" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.option.debugging.level.404968752" name="Debug Level" superClass="xilinx.gnu.compiler.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
-								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.1193893835" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="../../MainCore_bsp/ppc405_0/include"/>
-								</option>
+								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.1193893835" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath"/>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.1774005652" name="Software Platform Inferred Flags" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 								<option id="xilinx.gnu.compiler.dircategory.includes.1152721694" name="Include Paths" superClass="xilinx.gnu.compiler.dircategory.includes" valueType="includePath">
 									<listOptionValue builtIn="false" value="../../RobotRacers_bsp_0/ppc405_0/include"/>
@@ -43,6 +41,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/PIDControl}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Vision}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Wireless}&quot;"/>
+									<listOptionValue builtIn="false" value="../../MainCore_bsp/ppc405_0/include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/CrossCore}&quot;"/>
 								</option>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.641562527" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
 							</tool>
@@ -93,12 +93,13 @@
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.574900053" name="State.h" rcbsApplicability="disable" resourcePath="common/State.h" toolsToInvoke=""/>
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.1199352225" name="mpmc_calibration.h" rcbsApplicability="disable" resourcePath="common/mpmc_calibration.h" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="Vision|Wireless|DataTypes|drivers|common|PIDControl|Communications" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="CrossCore|Vision|Wireless|DataTypes|drivers|common|PIDControl|Communications" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="plb_vision_v1_00_a/src/plb_vision_selftest.c|plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="PIDControl"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Wireless"/>
 						<entry excluding="State.h|State.c|Wireless.c|Wireless.h|Flash.c|Flash.h|LoopScheduler.c|LoopScheduler.h|MemoryTest.c|MemoryTest.h|mpmc_mem_test_example.c|mpmc_mem_test_example.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="common"/>
 						<entry excluding="FrameTable.h|BufferStore.h|FrameTable.c|BufferStore.c|Stack.c|Stack.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="DataTypes"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="CrossCore"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -227,7 +228,7 @@
 						<parser enabled="true"/>
 					</scannerInfoProvider>
 				</profile>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.490088197;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.623500470;xilinx.gnu.ppc.c.compiler.input.1096631616">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942.802476513;xilinx.gnu.ppc.exe.debug.318411942.802476513.">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -350,7 +351,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.571623575;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.420783413;xilinx.gnu.ppc.c.compiler.input.173482206">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.490088197;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.623500470;xilinx.gnu.ppc.c.compiler.input.1096631616">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -596,7 +597,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1921629916;xilinx.gnu.ppc.c.toolchain.compiler.debug.1949415757;xilinx.gnu.ppc.c.compiler.input.1430310650">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.571623575;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.420783413;xilinx.gnu.ppc.c.compiler.input.173482206">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -719,7 +720,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1079085410">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1921629916;xilinx.gnu.ppc.c.toolchain.compiler.debug.1949415757;xilinx.gnu.ppc.c.compiler.input.1430310650">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -965,7 +966,130 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.816107260">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1079085410">
+					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
+					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="mb-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="powerpc-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMLinuxGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-linux-gnueabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="makefileGenerator">
+							<runAction arguments="-E -P -v -dD" command="" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/${specs_file}&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'g++ -E -P -v -dD &quot;${plugin_state_location}/specs.cpp&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/specs.c&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+				</scannerConfigBuildInfo>
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454;xilinx.gnu.ppc.c.compiler.input.641562527">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -1211,7 +1335,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454;xilinx.gnu.ppc.c.compiler.input.641562527">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.816107260">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -1950,6 +2074,129 @@
 					</profile>
 				</scannerConfigBuildInfo>
 				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1921629916">
+					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
+					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="mb-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="powerpc-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMLinuxGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-linux-gnueabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="makefileGenerator">
+							<runAction arguments="-E -P -v -dD" command="" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/${specs_file}&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'g++ -E -P -v -dD &quot;${plugin_state_location}/specs.cpp&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/specs.c&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+				</scannerConfigBuildInfo>
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942.802476513;xilinx.gnu.ppc.exe.debug.318411942.802476513.;xilinx.gnu.ppc.c.toolchain.compiler.debug.678201648;xilinx.gnu.ppc.c.compiler.input.171573767">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -3056,7 +3303,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606;xilinx.gnu.ppc.c.toolchain.compiler.debug.1865645759;xilinx.gnu.ppc.c.compiler.input.949743074">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -3179,7 +3426,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606;xilinx.gnu.ppc.c.toolchain.compiler.debug.1865645759;xilinx.gnu.ppc.c.compiler.input.949743074">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -3451,10 +3698,12 @@
 							<tool id="xilinx.gnu.ppc.c.toolchain.compiler.release.567916866" name="PowerPC gcc compiler" superClass="xilinx.gnu.ppc.c.toolchain.compiler.release">
 								<option defaultValue="gnu.c.optimization.level.most" id="xilinx.gnu.compiler.option.optimization.level.470010197" name="Optimization Level" superClass="xilinx.gnu.compiler.option.optimization.level" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.option.debugging.level.1876589132" name="Debug Level" superClass="xilinx.gnu.compiler.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
-								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.306567784" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="../../MainCore_bsp/ppc405_0/include"/>
-								</option>
+								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.306567784" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath"/>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.906089390" name="Software Platform Inferred Flags" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
+								<option id="xilinx.gnu.compiler.dircategory.includes.70532513" superClass="xilinx.gnu.compiler.dircategory.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="../../MainCore_bsp/ppc405_0/include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/CrossCore}&quot;"/>
+								</option>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.683330310" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
 							</tool>
 							<tool id="xilinx.gnu.ppc.cxx.toolchain.compiler.release.330138174" name="PowerPC g++ compiler" superClass="xilinx.gnu.ppc.cxx.toolchain.compiler.release">
@@ -3626,7 +3875,7 @@
 						<parser enabled="true"/>
 					</scannerInfoProvider>
 				</profile>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.490088197;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.623500470;xilinx.gnu.ppc.c.compiler.input.1096631616">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942.802476513;xilinx.gnu.ppc.exe.debug.318411942.802476513.">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -3749,7 +3998,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.571623575;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.420783413;xilinx.gnu.ppc.c.compiler.input.173482206">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.490088197;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.623500470;xilinx.gnu.ppc.c.compiler.input.1096631616">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -3995,7 +4244,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1921629916;xilinx.gnu.ppc.c.toolchain.compiler.debug.1949415757;xilinx.gnu.ppc.c.compiler.input.1430310650">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.571623575;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.420783413;xilinx.gnu.ppc.c.compiler.input.173482206">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -4118,7 +4367,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1079085410">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1921629916;xilinx.gnu.ppc.c.toolchain.compiler.debug.1949415757;xilinx.gnu.ppc.c.compiler.input.1430310650">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -4364,7 +4613,130 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.816107260">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1079085410">
+					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
+					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="mb-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="powerpc-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMLinuxGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-linux-gnueabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="makefileGenerator">
+							<runAction arguments="-E -P -v -dD" command="" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/${specs_file}&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'g++ -E -P -v -dD &quot;${plugin_state_location}/specs.cpp&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/specs.c&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+				</scannerConfigBuildInfo>
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454;xilinx.gnu.ppc.c.compiler.input.641562527">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -4610,7 +4982,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454;xilinx.gnu.ppc.c.compiler.input.641562527">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.816107260">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -5349,6 +5721,129 @@
 					</profile>
 				</scannerConfigBuildInfo>
 				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1921629916">
+					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
+					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="mb-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="powerpc-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMLinuxGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-linux-gnueabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="makefileGenerator">
+							<runAction arguments="-E -P -v -dD" command="" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/${specs_file}&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'g++ -E -P -v -dD &quot;${plugin_state_location}/specs.cpp&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/specs.c&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+				</scannerConfigBuildInfo>
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942.802476513;xilinx.gnu.ppc.exe.debug.318411942.802476513.;xilinx.gnu.ppc.c.toolchain.compiler.debug.678201648;xilinx.gnu.ppc.c.compiler.input.171573767">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -6455,7 +6950,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606;xilinx.gnu.ppc.c.toolchain.compiler.debug.1865645759;xilinx.gnu.ppc.c.compiler.input.949743074">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -6578,7 +7073,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606;xilinx.gnu.ppc.c.toolchain.compiler.debug.1865645759;xilinx.gnu.ppc.c.compiler.input.949743074">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -6850,9 +7345,7 @@
 							<tool id="xilinx.gnu.ppc.c.toolchain.compiler.debug.678201648" name="PowerPC gcc compiler" superClass="xilinx.gnu.ppc.c.toolchain.compiler.debug">
 								<option defaultValue="gnu.c.optimization.level.none" id="xilinx.gnu.compiler.option.optimization.level.553960816" name="Optimization Level" superClass="xilinx.gnu.compiler.option.optimization.level" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.option.debugging.level.1276825046" name="Debug Level" superClass="xilinx.gnu.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
-								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.997695155" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="../../MainCore_bsp/ppc405_0/include"/>
-								</option>
+								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.997695155" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath"/>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.667540144" name="Software Platform Inferred Flags" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 								<option id="xilinx.gnu.compiler.dircategory.includes.14653261" name="Include Paths" superClass="xilinx.gnu.compiler.dircategory.includes" valueType="includePath">
 									<listOptionValue builtIn="false" value="../../RobotRacers_bsp_0/ppc405_0/include"/>
@@ -6865,6 +7358,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/drivers/plb_vision_v1_00_a/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/PIDControl}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Vision}&quot;"/>
+									<listOptionValue builtIn="false" value="../../MainCore_bsp/ppc405_0/include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/CrossCore}&quot;"/>
 								</option>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.171573767" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
 							</tool>
@@ -7045,7 +7540,7 @@
 						<parser enabled="true"/>
 					</scannerInfoProvider>
 				</profile>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.490088197;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.623500470;xilinx.gnu.ppc.c.compiler.input.1096631616">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942.802476513;xilinx.gnu.ppc.exe.debug.318411942.802476513.">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -7168,7 +7663,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.571623575;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.420783413;xilinx.gnu.ppc.c.compiler.input.173482206">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.490088197;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.623500470;xilinx.gnu.ppc.c.compiler.input.1096631616">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -7414,7 +7909,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1921629916;xilinx.gnu.ppc.c.toolchain.compiler.debug.1949415757;xilinx.gnu.ppc.c.compiler.input.1430310650">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.571623575;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454.420783413;xilinx.gnu.ppc.c.compiler.input.173482206">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -7537,7 +8032,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1079085410">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1921629916;xilinx.gnu.ppc.c.toolchain.compiler.debug.1949415757;xilinx.gnu.ppc.c.compiler.input.1430310650">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -7783,7 +8278,130 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.816107260">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1079085410">
+					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
+					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="mb-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="powerpc-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMLinuxGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-linux-gnueabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="makefileGenerator">
+							<runAction arguments="-E -P -v -dD" command="" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/${specs_file}&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'g++ -E -P -v -dD &quot;${plugin_state_location}/specs.cpp&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/specs.c&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+				</scannerConfigBuildInfo>
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454;xilinx.gnu.ppc.c.compiler.input.641562527">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -8029,7 +8647,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.;xilinx.gnu.ppc.c.toolchain.compiler.debug.1370155454;xilinx.gnu.ppc.c.compiler.input.641562527">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.816107260">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -8768,6 +9386,129 @@
 					</profile>
 				</scannerConfigBuildInfo>
 				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.1921629916">
+					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
+					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="mb-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="powerpc-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-eabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="com.xilinx.managedbuilder.ui.ARMLinuxGCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="arm-xilinxa9-linux-gnueabi-gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="makefileGenerator">
+							<runAction arguments="-E -P -v -dD" command="" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfile">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/${specs_file}&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileCPP">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'g++ -E -P -v -dD &quot;${plugin_state_location}/specs.cpp&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+					<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC">
+						<buildOutputProvider>
+							<openAction enabled="true" filePath=""/>
+							<parser enabled="true"/>
+						</buildOutputProvider>
+						<scannerInfoProvider id="specsFile">
+							<runAction arguments="-c 'gcc -E -P -v -dD &quot;${plugin_state_location}/specs.c&quot;'" command="sh" useDefault="true"/>
+							<parser enabled="true"/>
+						</scannerInfoProvider>
+					</profile>
+				</scannerConfigBuildInfo>
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942.802476513;xilinx.gnu.ppc.exe.debug.318411942.802476513.;xilinx.gnu.ppc.c.toolchain.compiler.debug.678201648;xilinx.gnu.ppc.c.compiler.input.171573767">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -9874,7 +10615,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606;xilinx.gnu.ppc.c.toolchain.compiler.debug.1865645759;xilinx.gnu.ppc.c.compiler.input.949743074">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>
@@ -9997,7 +10738,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
-				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606;xilinx.gnu.ppc.c.toolchain.compiler.debug.1865645759;xilinx.gnu.ppc.c.compiler.input.949743074">
+				<scannerConfigBuildInfo instanceId="xilinx.gnu.ppc.exe.debug.318411942;xilinx.gnu.ppc.exe.debug.318411942.2018971606">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.xilinx.managedbuilder.ui.PPCGCCManagedMakePerProjectProfileC"/>
 					<profile id="com.xilinx.managedbuilder.ui.MBGCCManagedMakePerProjectProfileC">
 						<buildOutputProvider>

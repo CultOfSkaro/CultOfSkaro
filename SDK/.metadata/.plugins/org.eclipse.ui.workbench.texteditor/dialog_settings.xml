@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="529" key="DIALOG_Y_ORIGIN"/>
+		<item value="522" key="DIALOG_Y_ORIGIN"/>
+		<item value="688" key="DIALOG_X_ORIGIN"/>
 		<item value="380" key="DIALOG_HEIGHT"/>
-		<item value="757" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="pid.lastError_c" key="selection"/>
+		<item value="TARGET" key="selection"/>
 		<list key="findhistory">
+			<item value="target"/>
+			<item value="targetcolor"/>
+			<item value="targ"/>
+			<item value="vision"/>
+			<item value="received"/>
+			<item value="Correction"/>
 			<item value="pid.lastError_c"/>
 			<item value="pid.centroidValue"/>
-			<item value="XPAR_INTC_0_DEVICE_ID"/>
-			<item value="XPAR_XPS_INTC_0_DEVICE_ID"/>
-			<item value="INTC"/>
-			<item value="gyro"/>
-			<item value="XPAR_XPS_INTC_0_GAMEBOARD_UART_INTERRUPT_INTR"/>
-			<item value="GAMEBOARD"/>
 		</list>
 		<list key="replacehistory">
 			<item value="&amp;gameboard_uart"/>

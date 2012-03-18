@@ -148,18 +148,21 @@ namespace CameraViewer
             }
         }
 
-        private Pen pen = new Pen(Color.Blue, 2);            
+        private static Pen penRed = new Pen(Color.Red, 2);
+        private static Pen penBlue = new Pen(Color.Blue, 2);
+        private static Pen[] pens = { penBlue, penRed };
+
         private void pictureBox1_Paint(object sender, PaintEventArgs e) {
             Graphics g = e.Graphics;
 
             if (numBlobs <= 0) return;
 
-            txtDebug.AppendText("Draw Blobs\r\n");
+            //txtDebug.AppendText("Draw Blobs\r\n");
             for (int i = 0; i < numBlobs; i++) {
-                txtDebug.AppendText("x: " + blobs[i].left + ", y: " + blobs[i].top +
-                    ", width: " + blobs[i].width + ", height: " + blobs[i].height + "\r\n");
+                //txtDebug.AppendText("x: " + blobs[i].left + ", y: " + blobs[i].top +
+                //    ", width: " + blobs[i].width + ", height: " + blobs[i].height + "\r\n");
 
-                g.DrawRectangle(pen, blobs[i].left, blobs[i].top, 
+                g.DrawRectangle(pens[blobs[i].type], blobs[i].left, blobs[i].top, 
                     blobs[i].width, blobs[i].height);
             }
         }
