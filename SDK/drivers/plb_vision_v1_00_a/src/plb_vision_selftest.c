@@ -319,7 +319,7 @@ void processFrame(FrameTableEntry* frame) {
 		}
 	}
 
-	transmitFrame(frame);
+	//transmitFrame(frame);
 }
 
 int main()
@@ -343,10 +343,10 @@ int main()
 	initHeader();
 
 	print("Initializing USB...\r\n");
-	USB_init();
+	//USB_init();
 	print("Waiting for USB...");
-	while (!USB_writeReady());
-	USB_setBurstSize(128);
+	//while (!USB_writeReady());
+	//USB_setBurstSize(128);
 	print("ready\r\n");
 
 	print("Setting up interrupts\r\n");

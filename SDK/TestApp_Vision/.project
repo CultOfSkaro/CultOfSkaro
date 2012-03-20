@@ -86,11 +86,6 @@
 			<location>C:/RobotRacers/CultOfSkaro/SDK/DataTypes</location>
 		</link>
 		<link>
-			<name>Vision</name>
-			<type>2</type>
-			<location>C:/RobotRacers/CultOfSkaro/SDK/Vision</location>
-		</link>
-		<link>
 			<name>common</name>
 			<type>2</type>
 			<location>C:/RobotRacers/CultOfSkaro/SDK/common</location>
