@@ -73,20 +73,19 @@
 #define SET_PID_KP   		0x1
 #define SET_PID_KI   		0x2
 #define SET_PID_KD   		0x3
-#define SET_PID_KP_D 		0x4
-#define SET_PID_KI_D 		0x5
-#define SET_PID_KD_D 		0x6
+#define SET_PID_KP_C 		0x4
+#define SET_PID_KI_C 		0x5
+#define SET_PID_KD_C 		0x6
 #define REQUEST_CONTROL_LOG 0x7
 #define SET_DISTANCE		0x8
 #define SET_STEERING		0x9
 #define SET_MAX_VELOCITY	0xa
-#define SET_25_CIRCLE1		0xb
+#define SET_VISION_DISTANCE	0xb
 #define SET_20_CIRCLE1		0xc
 #define SET_OVERLAP			0xd
 #define SET_25_CIRCLE2		0xe
 #define SET_20_CIRCLE2		0xf
 #define SHOOT_GAME_SHOOT_KILL	0x10
-extern PID pid;
 
 #define	STATE_DEFAULT					0x0
 #define STATE_FIGURE_EIGHT_RIGHT_START	0x1
@@ -107,8 +106,11 @@ extern PID pid;
 //int logIndex = 0;
 
 int print_flag = 1;
-int state = STATE_DEFAULT;
-int max_velocity = 4000;
+
+volatile int goToTower = 0;
+volatile int distanceFromVisionTarget = 0;
+volatile int state = STATE_DEFAULT;
+volatile int max_velocity = 4000;
 
 int circle25_ticks1 = CIRCLE_2_5_M_TICKS;
 int circle20_ticks1 = CIRCLE_2_0_M_TICKS;
@@ -177,28 +179,27 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 					PrintFloat(pid.Kd);
 		//			print("\n\r");
 		break;
-//	case SET_PID_KP_D:
-//		read(0,&c,1);
-//		//			xil_printf("received %d", c);
-//		pid.Kp_d = c/25500.0;
-//		//			xil_printf("We are setting Kp_d to ");
-//		//			PrintFloat(pid.Kp_d);
-//		//			print("\n\r");
-//		break;
-//	case SET_PID_KI_D:
-//		read(0,&c,1);
-//		pid.Ki_d = c/25500.0;
-//		//			xil_printf("We are setting Ki_d to ");
-//		//			PrintFloat(pid.Ki_d);
-//		//			print("\n\r");
-//		break;
-//	case SET_PID_KD_D:
-//		read(0,&c,1);
-//		pid.Kd_d = c/25500.0;
-//		//			xil_printf("We are setting Kd_d to ");
-//		//			PrintFloat(pid.Kd_d);
-//		//			print("\n\r");
-//		break;
+	case SET_PID_KP_C:
+		read(0,&temp,sizeof(float));
+		pid.Kp_c = temp;
+					Wireless_Debug("Setting Kp_c to:");
+					PrintFloat(pid.Kp_c);
+		//print("\n\r");
+		break;
+	case SET_PID_KI_C:
+		read(0,&temp,sizeof(float));
+		pid.Ki_c = temp;
+					Wireless_Debug("Setting Ki_c to:");
+					PrintFloat(pid.Ki_c);
+		//print("\n\r");
+		break;
+	case SET_PID_KD_C:
+		read(0,&temp,sizeof(float));
+		pid.Kd_c = temp;
+					Wireless_Debug("Setting Kd_c to:");
+					PrintFloat(pid.Kd_c);
+		//print("\n\r");
+		break;
 	case SET_DISTANCE:
 		read(0,word,10);
 		i = atoi(word);
@@ -222,10 +223,11 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		PrintInt(i);
 		Wireless_Debug("\n\r");
 		break;
-//	case SET_25_CIRCLE1:
-//		read(0,word,10);
+	case SET_VISION_DISTANCE:
+		read(0,word,10);
 //		//			xil_printf("received %s", word);
-//		circle25_ticks1 = atoi(word);
+		distanceFromVisionTarget = atoi(word);
+		break;
 //		//circle25_ticks1 = 10000;
 //		//			xil_printf("set distance to %d", circle25_ticks1);
 //		break;
@@ -261,9 +263,10 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 //		//xil_printf("set distance to %d", overlap);
 //		break;
 	case 'e':
-		scheduler.events.flags.hello = 1;
-		Game_Shoot(GAME_KILL_SHOT);
-		Wireless_Debug("Fired Kill Shot");
+		goToTower = !goToTower;
+//		scheduler.events.flags.hello = 1;
+//		Game_Shoot(GAME_KILL_SHOT);
+//		Wireless_Debug("Fired Kill Shot");
 		break;
 //	case 'a':
 //		loop_count = 2;
@@ -299,6 +302,7 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		loop_count = 0;
 		state = STATE_DEFAULT;
 		max_velocity = 0;
+		goToTower = 0;
 		setDistance(0);
 		break;
 	default:
@@ -343,6 +347,7 @@ void GameboardRecvHandler(void *CallBackRef, unsigned int EventData)
 
 int counter = 0;
 int counter2 = 0;
+int counter3 = 0;
 int update = 0;
 
 // For the pit handler, we increment a counter.  Every time the counter reaches a certain threshold,
@@ -350,20 +355,41 @@ int update = 0;
 
 void my_pitHandler(){
 	counter++;
+	counter3++;
 	if(counter > 100){
 		scheduler.events.flags.timer = 1;
 		counter = 0;
 	}
+
 	if(*live_vision_data != *snap_vision_data){
 		scheduler.events.flags.vision = 1;
+		scheduler.events.flags.centroid_timer = 1;
+		counter2++;
+	}
+
+	if(counter3 > 1000){
+		Wireless_Send(&wireless, 3, 4, &counter2);
+		scheduler.events.flags.hello = 1;
+		counter3 = 0;
+		counter2 = 0;
 	}
 	XTime_PITClearInterrupt();
 }
 
 // This is a dummy task just to test out different events.
 void hello(){
+	struct blanking {
+		int h;
+		int v;
+	};
+	struct blanking * t= ((struct blanking *)shared_debug_buffer);
+	Wireless_Debug("H");
+	PrintInt(t->h);
+	Wireless_Debug("V");
+	PrintInt(t->v);
 }
 
+int numNotFound = 0;
 void vision(){
 	*snap_vision_data = *live_vision_data;
 	if(!*snap_vision_data){
@@ -373,10 +399,14 @@ void vision(){
 	VisionData *visionData = *snap_vision_data;
 
 
-	Wireless_Debug("Blobs Detected: ");
+	//Wireless_Debug("Blobs Detected: ");
 	int i;
-	Blob * biggest = 0;;
+	Blob * biggest = 0;
 	for(i=0; i < visionData->numBlobs; i++) {
+		if(visionData->blobs[i].type == BLOB_TYPE_RED)
+			continue;
+		if(visionData->blobs[i].width < 20 || visionData->blobs[i].width > 300)
+			continue;
 		if(!biggest){
 			biggest = &visionData->blobs[i];
 		} else {
@@ -385,9 +415,25 @@ void vision(){
 			}
 		}
 	}
-	if(visionData->numBlobs == 0) {
-		Wireless_Debug("NO BLOBS FOUND!");
+	if((visionData->numBlobs == 0) || (biggest == 0)) {
+		//Wireless_Debug("NO BLOBS FOUND!");
+		if(goToTower){
+			setDistance(10000);
+			numNotFound++;
+#ifdef DEBUG_USB_VISION
+			int tmp = 50 * numNotFound;
+#else
+			int tmp = 10 * numNotFound;
+#endif
+			if(tmp > 350){
+				pid.currentCentroid = 350;
+			} else {
+				pid.currentCentroid = tmp;
+			}
+		}
 		return;
+	} else {
+		numNotFound = 0;
 	}
 
 	#define IMAGE_WIDTH 640
@@ -397,23 +443,37 @@ void vision(){
 
 	float distance = DISTANCE_CONSTANT / biggest->width;
 	int center = biggest->left + (biggest->width / 2) - (IMAGE_WIDTH / 2);
+
 	float angle = FIELD_OF_VISION * center / IMAGE_WIDTH;
 
-	PrintInt(visionData->numBlobs);
-	Wireless_Debug("Biggest Blob:");
-
-	Wireless_Debug("Left:");
-	PrintInt(biggest->left);
-	Wireless_Debug("Top:");
-	PrintInt(biggest->top);
-	Wireless_Debug("Width:");
-	PrintInt(biggest->width);
-	Wireless_Debug("Height:");
-	PrintInt(biggest->height);
-	Wireless_Debug("Distance:");
-	PrintFloat(distance);
-	Wireless_Debug("Angle:");
-	PrintFloat(angle);
+//	PrintInt(visionData->numBlobs);
+//	Wireless_Debug("Biggest Blob:");
+//
+////	Wireless_Debug("Left:");
+//	PrintInt(biggest->left);
+//	Wireless_Debug("Top:");
+//	PrintInt(biggest->top);
+//	Wireless_Debug("Width:");
+//	PrintInt(biggest->width);
+////	Wireless_Debug("Height:");
+////	PrintInt(biggest->height);
+//	Wireless_Debug("Distance:");
+//	PrintFloat(distance);
+//	Wireless_Debug("Angle:");
+//	PrintFloat(angle);
+	int toGo = distance*2000 - distanceFromVisionTarget;
+	int a = 0;
+//	if ((pid.currentVelocity = 0)&&(pid.currentCentroid <= -.05 || pid.currentCentroid >= .05)){
+//		for(a; a<20; a++){
+//			toGo = distance*2000 + distanceFromVisionTarget;
+//		}
+//	}
+//	Wireless_Debug("To Go:");
+//	PrintInt(toGo);
+	if(goToTower){
+		setDistance(toGo);
+		pid.currentCentroid = center;
+	}
 }
 
 void InitInterrupts() {
@@ -477,86 +537,19 @@ void InitInterrupts() {
 
 // control_loop is registered with the scheduler on the 'timer' event.
 // the timer event is set in the pit handler.
+void centroid_loop(){
+	updateCentroid();
+
+}
 void control_loop(){
-	int distance;
 	updateDistanceSetVelocity(max_velocity);
-	switch(state) {
-		case STATE_DEFAULT:
-			break;
-		case STATE_FIGURE_EIGHT_LEFT_START:
-			Wireless_Debug("STATE_FIGURE_EIGHT_LEFT_START");
-			if(!loop_count){
-				state = STATE_DEFAULT;
-				break;
-			}
-			SetServo(RC_STR_SERVO, LEFT*26);
-			if(loop_count == 2){
-				setDistance(2*(circle25_ticks1 + circle20_ticks1) - 3*overlap);
-			}
-			loop_count--;
-			state = STATE_FIGURE_EIGHT_LEFT_END;
-			break;
-		case STATE_FIGURE_EIGHT_LEFT_END:
-			if (pid.distanceError < (circle20_ticks1 + circle25_ticks1 + circle20_ticks1 )) {
-				state = STATE_FIGURE_EIGHT_LEFT_START;
-				SetServo(RC_STR_SERVO, RIGHT*31);
-			}
-			break;
-		case STATE_FIGURE_EIGHT_RIGHT_START:
-			if(!loop_count){
-				state = STATE_DEFAULT;
-				break;
-			}
-			if(loop_count == 2){
-				setDistance(circle25_ticks1 + circle25_ticks2 + circle20_ticks1 + circle20_ticks2);
-				state = STATE_FIGURE_EIGHT_RIGHT_END;
-				SetServo(RC_STR_SERVO, RIGHT*26);
-				loop_count--;
-			} else if (pid.distanceError < (circle20_ticks2 + circle25_ticks2 )) {
-				state = STATE_FIGURE_EIGHT_RIGHT_HALF;
-				SetServo(RC_STR_SERVO, RIGHT*26);
-				loop_count--;
-			}
-			break;
-		case STATE_FIGURE_EIGHT_RIGHT_HALF:
-			if(loop_count == 1){
-				distance = circle25_ticks2 + circle20_ticks1 +circle20_ticks2 + circle25_ticks1/2;
-			} else {
-				distance = circle25_ticks2/2 + circle20_ticks2;
-			}
-			if (pid.distanceError < distance) {
-				state = STATE_FIGURE_EIGHT_RIGHT_END;
-				SetServo(RC_STR_SERVO, RIGHT*26);
-			}
-			break;
-		case STATE_FIGURE_EIGHT_RIGHT_END:
-			if(loop_count == 1){
-				distance = circle25_ticks2 + circle20_ticks1 +circle20_ticks2;
-			} else {
-				distance = circle20_ticks2;
-			}
-			if (pid.distanceError < distance) {
-				state = STATE_FIGURE_EIGHT_RIGHT_END_HALF;
-				SetServo(RC_STR_SERVO, LEFT*31);
-			}
-			break;
-		case STATE_FIGURE_EIGHT_RIGHT_END_HALF:
-			if(loop_count == 1){
-				distance = circle25_ticks2 + circle20_ticks2 +circle20_ticks1/2;
-			} else {
-				distance = circle20_ticks2/2;
-			}
-			if (pid.distanceError < distance) {
-				state = STATE_FIGURE_EIGHT_RIGHT_START;
-				SetServo(RC_STR_SERVO, LEFT*31);
-			}
-			break;
-	}
 }
 
 
 
 int main (void) {
+
+
 
 	//Calibrate DRAM memory controller
 	print("Calibrating Memory...");
@@ -568,7 +561,8 @@ int main (void) {
 	print("Done\r\n");
 
 	usleep(100000);
-
+	*snap_vision_data = 0;
+	*live_vision_data = 0;
 	int32 str;
 	int32 thr;
 	//	Xuint32 velcount = 0;
@@ -606,6 +600,12 @@ int main (void) {
 	control_events.reg = 0;  		// clear all events
 	control_events.flags.timer = 1;	// set the flags we want as triggers
 	Scheduler_RegisterTask(&scheduler,control_loop,control_events);  // Register task with Scheduler
+
+	Events centroid_events;  // in order to register the control loop,
+	// we need an events struct
+	control_events.reg = 0;  		// clear all events
+	control_events.flags.centroid_timer = 1;	// set the flags we want as triggers
+	Scheduler_RegisterTask(&scheduler,centroid_loop,centroid_events);  // Register task with Scheduler
 
 	// Another example
 	Events hello_events;

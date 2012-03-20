@@ -15,7 +15,7 @@ Finished building target: SkaroVision.elf
 Invoking: PowerPC Print Size
 powerpc-eabi-size SkaroVision.elf  |tee "SkaroVision.elf.size"
    text	   data	    bss	    dec	    hex	filename
-  37206	   1484	   2528	  41218	   a102	SkaroVision.elf
+  37130	   1488	   2536	  41154	   a0c2	SkaroVision.elf
 Finished building: SkaroVision.elf.size
  
 Invoking: Xilinx ELF Check

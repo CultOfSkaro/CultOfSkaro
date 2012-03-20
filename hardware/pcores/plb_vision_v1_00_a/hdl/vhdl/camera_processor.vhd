@@ -259,7 +259,7 @@ begin
       C_A32 => C_CC_A32,
       C_A33 => C_CC_A33,
       C_DATA_WIDTH  => C_CAM_DATA_WIDTH,
-      C_WHOLE_WIDTH => 2,
+      C_WHOLE_WIDTH => 3,
       C_FRAC_WIDTH  => C_CAM_DATA_WIDTH)
     port map (
       clk   => clk,

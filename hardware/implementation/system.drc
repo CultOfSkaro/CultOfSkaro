@@ -1,7 +1,7 @@
 Release 13.3 Drc O.76xd (nt64)
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
-Fri Mar 16 15:25:25 2012
+Mon Mar 19 20:31:04 2012
 
 drc -z system.ncd system.pcf
 
@@ -120,13 +120,13 @@ WARNING:PhysDesignRules:372 - Gated clock. Clock net
    combinatorial pin. This is not good design practice. Use the CE pin to
    control the loading of data into the flip-flop.
 WARNING:PhysDesignRules:367 - The signal
+   <xps_bram_if_cntlr_1_port_BRAM_Addr<31>> is incomplete. The signal does not
+   drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
    <xps_bram_if_cntlr_1_port_BRAM_Addr<30>> is incomplete. The signal does not
    drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal
    <xps_bram_if_cntlr_0_port_BRAM_Addr<30>> is incomplete. The signal does not
-   drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal
-   <xps_bram_if_cntlr_1_port_BRAM_Addr<31>> is incomplete. The signal does not
    drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal
    <xps_bram_if_cntlr_0_port_BRAM_Addr<31>> is incomplete. The signal does not

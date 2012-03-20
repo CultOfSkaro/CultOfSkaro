@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "jtagppc_cntlr_inst_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -54,7 +54,7 @@ Cores Search Directories           : {../implementation}
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/jtagppc_cntlr_v2_01_c/synhdl/vhdl/jtagppc_cntlr.vhd" in Library jtagppc_cntlr_v2_01_c.
 Entity <jtagppc_cntlr> compiled.
 Entity <jtagppc_cntlr> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/jtagppc_cntlr_inst_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/jtagppc_cntlr_inst_wrapper.vhd" in Library work.
 Entity <jtagppc_cntlr_inst_wrapper> compiled.
 Entity <jtagppc_cntlr_inst_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -103,7 +103,7 @@ Unit <jtagppc_cntlr> synthesized.
 
 
 Synthesizing Unit <jtagppc_cntlr_inst_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/jtagppc_cntlr_inst_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/jtagppc_cntlr_inst_wrapper.vhd".
 Unit <jtagppc_cntlr_inst_wrapper> synthesized.
 
 
@@ -240,12 +240,12 @@ Delay:               0.358ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 13.00 secs
-Total CPU time to Xst completion: 13.41 secs
+Total REAL time to Xst completion: 14.00 secs
+Total CPU time to Xst completion: 14.12 secs
  
 --> 
 
-Total memory usage is 298364 kilobytes
+Total memory usage is 298620 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   11 (   0 filtered)

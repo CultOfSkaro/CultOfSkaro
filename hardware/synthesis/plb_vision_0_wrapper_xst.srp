@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "plb_vision_0_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -98,7 +98,7 @@ Entity <pf_adder> (Architecture <implementation>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/or_muxcy.vhd" in Library proc_common_v3_00_a.
 Entity <or_muxcy> compiled.
 Entity <or_muxcy> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/delay_buffer_ramb16.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/delay_buffer_ramb16.vhd" in Library plb_vision_v1_00_a.
 Entity <delay_buffer_ramb16> compiled.
 Entity <delay_buffer_ramb16> (Architecture <imp>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/ipif_pkg.vhd" in Library proc_common_v3_00_a.
@@ -125,31 +125,31 @@ Entity <srl16_fifo> (Architecture <implementation>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/srl_fifo_f.vhd" in Library proc_common_v3_00_a.
 Entity <srl_fifo_f> compiled.
 Entity <srl_fifo_f> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_buffer_3x3.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_buffer_3x3.vhd" in Library plb_vision_v1_00_a.
 Entity <filter_buffer_3x3> compiled.
 Entity <filter_buffer_3x3> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_linear.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_linear.vhd" in Library plb_vision_v1_00_a.
 Entity <demosaic_linear> compiled.
 Entity <demosaic_linear> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_output_adjust.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_output_adjust.vhd" in Library plb_vision_v1_00_a.
 Entity <filter_output_adjust> compiled.
 Entity <filter_output_adjust> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_buffer_5x5.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_buffer_5x5.vhd" in Library plb_vision_v1_00_a.
 Entity <filter_buffer_5x5> compiled.
 Entity <filter_buffer_5x5> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_microsoft.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_microsoft.vhd" in Library plb_vision_v1_00_a.
 Entity <demosaic_microsoft> compiled.
 Entity <demosaic_microsoft> (Architecture <imp>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/plb_mstr_addr_gen.vhd" in Library plbv46_master_burst_v1_01_a.
 Entity <plb_mstr_addr_gen> compiled.
 Entity <plb_mstr_addr_gen> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" in Library plb_vision_v1_00_a.
 Entity <demosaic_frame> compiled.
 Entity <demosaic_frame> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/color_correction.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/color_correction.vhd" in Library plb_vision_v1_00_a.
 Entity <color_correction> compiled.
 Entity <color_correction> (Architecture <Behavioral>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/round.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/round.vhd" in Library plb_vision_v1_00_a.
 Entity <round> compiled.
 Entity <round> (Architecture <imp>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/rd_wr_calc_burst.vhd" in Library plbv46_master_burst_v1_01_a.
@@ -158,19 +158,19 @@ Entity <rd_wr_calc_burst> (Architecture <implementation>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_slave_single_v1_01_a/hdl/vhdl/plb_address_decoder.vhd" in Library plbv46_slave_single_v1_01_a.
 Entity <plb_address_decoder> compiled.
 Entity <plb_address_decoder> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/frame_sync_hs.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/frame_sync_hs.vhd" in Library plb_vision_v1_00_a.
 Entity <frame_sync_hs> compiled.
 Entity <frame_sync_hs> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/cam_ser.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/cam_ser.vhd" in Library plb_vision_v1_00_a.
 Entity <cam_ser> compiled.
 Entity <cam_ser> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/size_buffer.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/size_buffer.vhd" in Library plb_vision_v1_00_a.
 Entity <size_buffer> compiled.
 Entity <size_buffer> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/camera_processor.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/camera_processor.vhd" in Library plb_vision_v1_00_a.
 Entity <camera_processor> compiled.
 Entity <camera_processor> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb2hsv.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb2hsv.vhd" in Library plb_vision_v1_00_a.
 Entity <rgb2hsv> compiled.
 Entity <rgb2hsv> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/cc_brst_exp_adptr.vhd" in Library plbv46_master_burst_v1_01_a.
@@ -209,16 +209,16 @@ Entity <plbv46_slave_single> (Architecture <implementation>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/plbv46_master_burst.vhd" in Library plbv46_master_burst_v1_01_a.
 Entity <plbv46_master_burst> compiled.
 Entity <plbv46_master_burst> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd" in Library plb_vision_v1_00_a.
 Entity <user_logic> compiled.
 Entity <user_logic> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb_sum.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb_sum.vhd" in Library plb_vision_v1_00_a.
 Entity <rgb_sum> compiled.
 Entity <rgb_sum> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" in Library plb_vision_v1_00_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" in Library plb_vision_v1_00_a.
 Entity <plb_vision> compiled.
 Entity <plb_vision> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/plb_vision_0_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/plb_vision_0_wrapper.vhd" in Library work.
 Entity <plb_vision_0_wrapper> compiled.
 Entity <plb_vision_0_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -407,15 +407,15 @@ Analyzing hierarchy for entity <size_buffer> in library <plb_vision_v1_00_a> (ar
 Analyzing hierarchy for entity <camera_processor> in library <plb_vision_v1_00_a> (architecture <imp>) with generics.
 	C_B_DATA_WIDTH = 5
 	C_CAM_DATA_WIDTH = 8
-	C_CC_A11 = 1.097000
-	C_CC_A12 = -0.330000
-	C_CC_A13 = 0.383700
-	C_CC_A21 = -0.094300
-	C_CC_A22 = 0.642900
-	C_CC_A23 = 0.672200
-	C_CC_A31 = -0.036000
-	C_CC_A32 = -0.799900
-	C_CC_A33 = 3.470900
+	C_CC_A11 = 1.305778
+	C_CC_A12 = -0.106734
+	C_CC_A13 = -0.211209
+	C_CC_A21 = -0.648322
+	C_CC_A22 = 1.880731
+	C_CC_A23 = -0.291333
+	C_CC_A31 = -0.467686
+	C_CC_A32 = -0.490655
+	C_CC_A33 = 3.870699
 	C_DEMOSAIC_TYPE = "MICROSOFT"
 	C_G_DATA_WIDTH = 6
 	C_IMAGE_HEIGHT = 480
@@ -465,22 +465,22 @@ Analyzing hierarchy for entity <demosaic_frame> in library <plb_vision_v1_00_a> 
 	C_IMAGE_HEIGHT = 480
 	C_IMAGE_WIDTH = 640
 	C_INSERT_SKIP = 1
-WARNING:Xst:795 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 29: Size of operands are different : result is <false>.
-WARNING:Xst:795 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 29: Size of operands are different : result is <false>.
+WARNING:Xst:795 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 29: Size of operands are different : result is <false>.
+WARNING:Xst:795 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 29: Size of operands are different : result is <false>.
 
 Analyzing hierarchy for entity <color_correction> in library <plb_vision_v1_00_a> (architecture <Behavioral>) with generics.
-	C_A11 = 1.097000
-	C_A12 = -0.330000
-	C_A13 = 0.383700
-	C_A21 = -0.094300
-	C_A22 = 0.642900
-	C_A23 = 0.672200
-	C_A31 = -0.036000
-	C_A32 = -0.799900
-	C_A33 = 3.470900
+	C_A11 = 1.305778
+	C_A12 = -0.106734
+	C_A13 = -0.211209
+	C_A21 = -0.648322
+	C_A22 = 1.880731
+	C_A23 = -0.291333
+	C_A31 = -0.467686
+	C_A32 = -0.490655
+	C_A33 = 3.870699
 	C_DATA_WIDTH = 8
 	C_FRAC_WIDTH = 8
-	C_WHOLE_WIDTH = 2
+	C_WHOLE_WIDTH = 3
 
 Analyzing hierarchy for entity <round> in library <plb_vision_v1_00_a> (architecture <imp>) with generics.
 	C_IN_WIDTH = 8
@@ -726,12 +726,12 @@ WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/p
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'RFIFO2DMA_AlmostEmpty' of component 'rdpfifo_top'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'RFIFO2DMA_Empty' of component 'rdpfifo_top'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'RFIFO2DMA_Occupancy' of component 'rdpfifo_top'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'FIFO2IRPT_DeadLock' of component 'rdpfifo_top'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'FIFO2Bus_Retry' of component 'rdpfifo_top'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'FIFO2Bus_ToutSup' of component 'rdpfifo_top'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'RFIFO2DMA_AlmostEmpty' of component 'rdpfifo_top'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'RFIFO2DMA_Empty' of component 'rdpfifo_top'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'RFIFO2DMA_Occupancy' of component 'rdpfifo_top'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'FIFO2IRPT_DeadLock' of component 'rdpfifo_top'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'FIFO2Bus_Retry' of component 'rdpfifo_top'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd" line 666: Unconnected output port 'FIFO2Bus_ToutSup' of component 'rdpfifo_top'.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
@@ -1182,11 +1182,11 @@ Analyzing generic Entity <user_logic> in library <plb_vision_v1_00_a> (Architect
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
-WARNING:Xst:819 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd" line 707: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd" line 707: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <org_frm_mem_addr>, <seg_frm_mem_addr>
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd" line 1090: Unconnected output port 'frame_active' of component 'frame_sync_hs'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd" line 1127: Unconnected output port 'full' of component 'frame_fifo'.
-WARNING:Xst:2211 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd" line 1127: Instantiating black box module <frame_fifo>.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd" line 1090: Unconnected output port 'frame_active' of component 'frame_sync_hs'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd" line 1127: Unconnected output port 'full' of component 'frame_fifo'.
+WARNING:Xst:2211 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd" line 1127: Instantiating black box module <frame_fifo>.
 INFO:Xst:2679 - Register <mst_cmd_sm_rd_req> in unit <user_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <mst_cmd_sm_bus_lock> in unit <user_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <mst_cmd_sm_reset> in unit <user_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
@@ -1197,8 +1197,8 @@ Analyzing generic Entity <frame_sync_hs> in library <plb_vision_v1_00_a> (Archit
 	C_DATA_WIDTH = 8
 	C_DONE_STICKY = true
 	C_POS_EDGE_PIX_CLK = true
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/frame_sync_hs.vhd" line 186: Unconnected output port 'full' of component 'frame_sync_fifo'.
-WARNING:Xst:2211 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/frame_sync_hs.vhd" line 186: Instantiating black box module <frame_sync_fifo>.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/frame_sync_hs.vhd" line 186: Unconnected output port 'full' of component 'frame_sync_fifo'.
+WARNING:Xst:2211 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/frame_sync_hs.vhd" line 186: Instantiating black box module <frame_sync_fifo>.
 Entity <frame_sync_hs> analyzed. Unit <frame_sync_hs> generated.
 
 Analyzing generic Entity <cam_ser> in library <plb_vision_v1_00_a> (Architecture <imp>).
@@ -1213,23 +1213,23 @@ Entity <size_buffer> analyzed. Unit <size_buffer> generated.
 Analyzing generic Entity <camera_processor> in library <plb_vision_v1_00_a> (Architecture <imp>).
 	C_B_DATA_WIDTH = 5
 	C_CAM_DATA_WIDTH = 8
-	C_CC_A11 = 1.097000
-	C_CC_A12 = -0.330000
-	C_CC_A13 = 0.383700
-	C_CC_A21 = -0.094300
-	C_CC_A22 = 0.642900
-	C_CC_A23 = 0.672200
-	C_CC_A31 = -0.036000
-	C_CC_A32 = -0.799900
-	C_CC_A33 = 3.470900
+	C_CC_A11 = 1.305778
+	C_CC_A12 = -0.106734
+	C_CC_A13 = -0.211209
+	C_CC_A21 = -0.648322
+	C_CC_A22 = 1.880731
+	C_CC_A23 = -0.291333
+	C_CC_A31 = -0.467686
+	C_CC_A32 = -0.490655
+	C_CC_A33 = 3.870699
 	C_DEMOSAIC_TYPE = "MICROSOFT"
 	C_G_DATA_WIDTH = 6
 	C_IMAGE_HEIGHT = 480
 	C_IMAGE_WIDTH = 640
 	C_INSERT_SKIP = 1
 	C_R_DATA_WIDTH = 5
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/camera_processor.vhd" line 337: Unconnected output port 'valid' of component 'round'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/camera_processor.vhd" line 349: Unconnected output port 'valid' of component 'round'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/camera_processor.vhd" line 337: Unconnected output port 'valid' of component 'round'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/camera_processor.vhd" line 349: Unconnected output port 'valid' of component 'round'.
 Entity <camera_processor> analyzed. Unit <camera_processor> generated.
 
 Analyzing generic Entity <demosaic_frame> in library <plb_vision_v1_00_a> (Architecture <imp>).
@@ -1238,29 +1238,29 @@ Analyzing generic Entity <demosaic_frame> in library <plb_vision_v1_00_a> (Archi
 	C_IMAGE_HEIGHT = 480
 	C_IMAGE_WIDTH = 640
 	C_INSERT_SKIP = 1
-WARNING:Xst:795 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 218: Size of operands are different : result is <false>.
-WARNING:Xst:795 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 218: Size of operands are different : result is <false>.
-WARNING:Xst:795 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 225: Size of operands are different : result is <false>.
-WARNING:Xst:795 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 225: Size of operands are different : result is <false>.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e11' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e12' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e14' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e15' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e21' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e25' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e41' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e45' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e51' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e52' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e54' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e55' of component 'filter_buffer_5x5'.
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 370: Unconnected output port 'busy' of component 'filter_output_adjust'.
+WARNING:Xst:795 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 218: Size of operands are different : result is <false>.
+WARNING:Xst:795 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 218: Size of operands are different : result is <false>.
+WARNING:Xst:795 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 225: Size of operands are different : result is <false>.
+WARNING:Xst:795 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 225: Size of operands are different : result is <false>.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e11' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e12' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e14' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e15' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e21' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e25' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e41' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e45' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e51' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e52' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e54' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 304: Unconnected output port 'e55' of component 'filter_buffer_5x5'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd" line 370: Unconnected output port 'busy' of component 'filter_output_adjust'.
 Entity <demosaic_frame> analyzed. Unit <demosaic_frame> generated.
 
 Analyzing generic Entity <filter_buffer_5x5> in library <plb_vision_v1_00_a> (Architecture <imp>).
 	C_DATA_WIDTH = 8
 	C_ROW_WIDTH = 640
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_buffer_5x5.vhd" line 290: Unconnected output port 'valid' of component 'delay_buffer_ramb16'.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_buffer_5x5.vhd" line 290: Unconnected output port 'valid' of component 'delay_buffer_ramb16'.
 Entity <filter_buffer_5x5> analyzed. Unit <filter_buffer_5x5> generated.
 
 Analyzing generic Entity <delay_buffer_ramb16> in library <plb_vision_v1_00_a> (Architecture <imp>).
@@ -1444,18 +1444,18 @@ Analyzing generic Entity <filter_output_adjust> in library <plb_vision_v1_00_a> 
 Entity <filter_output_adjust> analyzed. Unit <filter_output_adjust> generated.
 
 Analyzing generic Entity <color_correction> in library <plb_vision_v1_00_a> (Architecture <Behavioral>).
-	C_A11 = 1.097000
-	C_A12 = -0.330000
-	C_A13 = 0.383700
-	C_A21 = -0.094300
-	C_A22 = 0.642900
-	C_A23 = 0.672200
-	C_A31 = -0.036000
-	C_A32 = -0.799900
-	C_A33 = 3.470900
+	C_A11 = 1.305778
+	C_A12 = -0.106734
+	C_A13 = -0.211209
+	C_A21 = -0.648322
+	C_A22 = 1.880731
+	C_A23 = -0.291333
+	C_A31 = -0.467686
+	C_A32 = -0.490655
+	C_A33 = 3.870699
 	C_DATA_WIDTH = 8
 	C_FRAC_WIDTH = 8
-	C_WHOLE_WIDTH = 2
+	C_WHOLE_WIDTH = 3
 Entity <color_correction> analyzed. Unit <color_correction> generated.
 
 Analyzing generic Entity <round.1> in library <plb_vision_v1_00_a> (Architecture <imp>).
@@ -1471,9 +1471,9 @@ Analyzing generic Entity <round.2> in library <plb_vision_v1_00_a> (Architecture
 Entity <round.2> analyzed. Unit <round.2> generated.
 
 Analyzing Entity <rgb2hsv> in library <plb_vision_v1_00_a> (Architecture <behavioral>).
-WARNING:Xst:2211 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb2hsv.vhd" line 309: Instantiating black box module <rgb2hsvlut>.
-WARNING:Xst:2211 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb2hsv.vhd" line 378: Instantiating black box module <dspmult16_regout_aubu>.
-WARNING:Xst:2211 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb2hsv.vhd" line 386: Instantiating black box module <dspmult16_regout_asbs>.
+WARNING:Xst:2211 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb2hsv.vhd" line 309: Instantiating black box module <rgb2hsvlut>.
+WARNING:Xst:2211 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb2hsv.vhd" line 378: Instantiating black box module <dspmult16_regout_aubu>.
+WARNING:Xst:2211 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb2hsv.vhd" line 386: Instantiating black box module <dspmult16_regout_asbs>.
 Entity <rgb2hsv> analyzed. Unit <rgb2hsv> generated.
 
 
@@ -1838,7 +1838,7 @@ Unit <inferred_lut4_1> synthesized.
 
 
 Synthesizing Unit <cam_ser>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/cam_ser.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/cam_ser.vhd".
     Found finite state machine <FSM_2> for signal <current_state>.
     -----------------------------------------------------------------------
     | States             | 27                                             |
@@ -1871,7 +1871,7 @@ Unit <cam_ser> synthesized.
 
 
 Synthesizing Unit <size_buffer>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/size_buffer.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/size_buffer.vhd".
     Found 1-bit register for signal <out_valid>.
     Found 1-bit register for signal <chunk_count<0>>.
     Found 16-bit register for signal <data_reg>.
@@ -1881,56 +1881,56 @@ Unit <size_buffer> synthesized.
 
 
 Synthesizing Unit <color_correction>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/color_correction.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/color_correction.vhd".
     Found 9-bit register for signal <b_0>.
-    Found 12-bit register for signal <b_2>.
+    Found 13-bit register for signal <b_2>.
     Found 8-bit register for signal <b_3>.
-    Found 14-bit register for signal <b_b>.
-    Found 14-bit register for signal <b_g>.
-    Found 14-bit register for signal <b_r>.
+    Found 15-bit register for signal <b_b>.
+    Found 15-bit register for signal <b_g>.
+    Found 15-bit register for signal <b_r>.
     Found 1-bit register for signal <en_0>.
     Found 1-bit register for signal <en_1>.
     Found 1-bit register for signal <en_2>.
     Found 1-bit register for signal <en_3>.
     Found 9-bit register for signal <g_0>.
-    Found 12-bit register for signal <g_2>.
+    Found 13-bit register for signal <g_2>.
     Found 8-bit register for signal <g_3>.
-    Found 14-bit register for signal <g_b>.
-    Found 14-bit register for signal <g_g>.
-    Found 14-bit register for signal <g_r>.
+    Found 15-bit register for signal <g_b>.
+    Found 15-bit register for signal <g_g>.
+    Found 15-bit register for signal <g_r>.
     Found 9-bit register for signal <r_0>.
-    Found 12-bit register for signal <r_2>.
+    Found 13-bit register for signal <r_2>.
     Found 8-bit register for signal <r_3>.
-    Found 14-bit register for signal <r_b>.
-    Found 14-bit register for signal <r_g>.
-    Found 14-bit register for signal <r_r>.
-    Found 15-bit adder for signal <sum_b$add0000> created at line 308.
-    Found 15-bit adder for signal <sum_b$addsub0000> created at line 308.
-    Found 15-bit adder for signal <sum_b$addsub0001> created at line 308.
-    Found 15-bit adder for signal <sum_g$add0000> created at line 305.
-    Found 15-bit adder for signal <sum_g$addsub0000> created at line 305.
-    Found 15-bit adder for signal <sum_g$addsub0001> created at line 305.
-    Found 15-bit adder for signal <sum_r$add0000> created at line 302.
-    Found 15-bit adder for signal <sum_r$addsub0000> created at line 302.
-    Found 15-bit adder for signal <sum_r$addsub0001> created at line 302.
-    Found 9x10-bit multiplier for signal <temp$mult0000> created at line 250.
-    Found 9x10-bit multiplier for signal <temp$mult0001> created at line 253.
-    Found 9x10-bit multiplier for signal <temp$mult0002> created at line 256.
-    Found 9x10-bit multiplier for signal <temp$mult0003> created at line 259.
-    Found 9x10-bit multiplier for signal <temp$mult0004> created at line 262.
-    Found 9x10-bit multiplier for signal <temp$mult0005> created at line 265.
-    Found 9x10-bit multiplier for signal <temp$mult0006> created at line 268.
-    Found 9x10-bit multiplier for signal <temp$mult0007> created at line 271.
-    Found 9x10-bit multiplier for signal <temp$mult0008> created at line 274.
+    Found 15-bit register for signal <r_b>.
+    Found 15-bit register for signal <r_g>.
+    Found 15-bit register for signal <r_r>.
+    Found 16-bit adder for signal <sum_b$add0000> created at line 308.
+    Found 16-bit adder for signal <sum_b$addsub0000> created at line 308.
+    Found 16-bit adder for signal <sum_b$addsub0001> created at line 308.
+    Found 16-bit adder for signal <sum_g$add0000> created at line 305.
+    Found 16-bit adder for signal <sum_g$addsub0000> created at line 305.
+    Found 16-bit adder for signal <sum_g$addsub0001> created at line 305.
+    Found 16-bit adder for signal <sum_r$add0000> created at line 302.
+    Found 16-bit adder for signal <sum_r$addsub0000> created at line 302.
+    Found 16-bit adder for signal <sum_r$addsub0001> created at line 302.
+    Found 9x11-bit multiplier for signal <temp$mult0000> created at line 250.
+    Found 9x11-bit multiplier for signal <temp$mult0001> created at line 253.
+    Found 9x11-bit multiplier for signal <temp$mult0002> created at line 256.
+    Found 9x11-bit multiplier for signal <temp$mult0003> created at line 259.
+    Found 9x11-bit multiplier for signal <temp$mult0004> created at line 262.
+    Found 9x11-bit multiplier for signal <temp$mult0005> created at line 265.
+    Found 9x11-bit multiplier for signal <temp$mult0006> created at line 268.
+    Found 9x11-bit multiplier for signal <temp$mult0007> created at line 271.
+    Found 9x11-bit multiplier for signal <temp$mult0008> created at line 274.
     Summary:
-	inferred 217 D-type flip-flop(s).
+	inferred 229 D-type flip-flop(s).
 	inferred   9 Adder/Subtractor(s).
 	inferred   9 Multiplier(s).
 Unit <color_correction> synthesized.
 
 
 Synthesizing Unit <round_1>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/round.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/round.vhd".
 WARNING:Xst:647 - Input <din<1:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 1-bit register for signal <valid>.
     Found 5-bit adder for signal <dout$addsub0000> created at line 111.
@@ -1942,7 +1942,7 @@ Unit <round_1> synthesized.
 
 
 Synthesizing Unit <round_2>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/round.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/round.vhd".
 WARNING:Xst:647 - Input <din<0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 1-bit register for signal <valid>.
     Found 6-bit adder for signal <dout$addsub0000> created at line 111.
@@ -1954,7 +1954,7 @@ Unit <round_2> synthesized.
 
 
 Synthesizing Unit <demosaic_microsoft>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_microsoft.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_microsoft.vhd".
     Using one-hot encoding for signal <current_state>.
     Found 4x8-bit ROM for signal <start_pos$rom0000>.
     Found 8-bit register for signal <b>.
@@ -2119,7 +2119,7 @@ Unit <demosaic_microsoft> synthesized.
 
 
 Synthesizing Unit <filter_output_adjust>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_output_adjust.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_output_adjust.vhd".
 INFO:Xst:1799 - State skip_state is never reached in FSM <state>.
     Found finite state machine <FSM_3> for signal <state>.
     -----------------------------------------------------------------------
@@ -2217,7 +2217,7 @@ Unit <pf_adder_bit> synthesized.
 
 
 Synthesizing Unit <frame_sync_hs>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/frame_sync_hs.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/frame_sync_hs.vhd".
     Found finite state machine <FSM_4> for signal <current_state>.
     -----------------------------------------------------------------------
     | States             | 6                                              |
@@ -2246,7 +2246,7 @@ Unit <frame_sync_hs> synthesized.
 
 
 Synthesizing Unit <rgb2hsv>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb2hsv.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/rgb2hsv.vhd".
 WARNING:Xst:646 - Signal <stage4_H<9>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <satmultout<31:24>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <satmultout<15:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -2305,7 +2305,7 @@ Unit <rgb2hsv> synthesized.
 
 
 Synthesizing Unit <delay_buffer_ramb16>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/delay_buffer_ramb16.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/delay_buffer_ramb16.vhd".
 WARNING:Xst:646 - Signal <ram_data_out<35:32>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 10-bit up counter for signal <ram_in_addr_reg>.
     Found 10-bit up counter for signal <ram_out_addr_reg>.
@@ -2451,7 +2451,7 @@ Unit <pf_counter> synthesized.
 
 
 Synthesizing Unit <filter_buffer_5x5>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_buffer_5x5.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/filter_buffer_5x5.vhd".
     Found 1-bit register for signal <valid>.
     Found 8-bit register for signal <e11_i>.
     Found 8-bit register for signal <e12_i>.
@@ -2557,7 +2557,7 @@ Unit <pf_counter_top> synthesized.
 
 
 Synthesizing Unit <demosaic_frame>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/demosaic_frame.vhd".
 WARNING:Xst:1780 - Signal <e21> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <e12> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <e11> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -2629,7 +2629,7 @@ Unit <rdpfifo_dp_cntl> synthesized.
 
 
 Synthesizing Unit <camera_processor>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/camera_processor.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/camera_processor.vhd".
     Found 2-bit register for signal <bayer_pos_reg>.
     Found 1-bit register for signal <new_frame_rst>.
     Summary:
@@ -2645,7 +2645,7 @@ Unit <rdpfifo_top> synthesized.
 
 
 Synthesizing Unit <user_logic>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/user_logic.vhd".
 WARNING:Xst:1305 - Output <IP2Bus_MstRd_dst_dsc_n> is never assigned. Tied to value 0.
 WARNING:Xst:647 - Input <RFIFO2IP_WrAck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1305 - Output <IP2RFIFO_WrRelease> is never assigned. Tied to value 0.
@@ -2780,7 +2780,7 @@ Unit <user_logic> synthesized.
 
 
 Synthesizing Unit <plb_vision>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_vision_v1_00_a/hdl/vhdl/plb_vision.vhd".
 WARNING:Xst:646 - Signal <ipif_Bus2IP_WrCE<10:15>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ipif_Bus2IP_RdCE<10:15>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ipif_Bus2IP_RNW> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -2789,7 +2789,7 @@ Unit <plb_vision> synthesized.
 
 
 Synthesizing Unit <plb_vision_0_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/plb_vision_0_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/plb_vision_0_wrapper.vhd".
 Unit <plb_vision_0_wrapper> synthesized.
 
 
@@ -2802,14 +2802,14 @@ Macro Statistics
  16x4-bit ROM                                          : 1
  4x8-bit ROM                                           : 1
 # Multipliers                                          : 9
- 9x10-bit multiplier                                   : 9
+ 9x11-bit multiplier                                   : 9
 # Adders/Subtractors                                   : 72
  10-bit adder                                          : 6
  11-bit subtractor                                     : 4
  12-bit adder                                          : 7
  13-bit adder                                          : 12
  14-bit adder                                          : 13
- 15-bit adder                                          : 9
+ 16-bit adder                                          : 9
  32-bit adder                                          : 3
  32-bit subtractor                                     : 1
  4-bit adder                                           : 1
@@ -2831,9 +2831,10 @@ Macro Statistics
  1-bit register                                        : 495
  10-bit register                                       : 19
  11-bit register                                       : 9
- 12-bit register                                       : 11
- 13-bit register                                       : 7
- 14-bit register                                       : 14
+ 12-bit register                                       : 8
+ 13-bit register                                       : 10
+ 14-bit register                                       : 5
+ 15-bit register                                       : 9
  16-bit register                                       : 4
  2-bit register                                        : 11
  24-bit register                                       : 1
@@ -3124,7 +3125,7 @@ Macro Statistics
  16x4-bit ROM                                          : 1
  4x8-bit ROM                                           : 1
 # Multipliers                                          : 9
- 9x10-bit multiplier                                   : 9
+ 9x11-bit multiplier                                   : 9
 # Adders/Subtractors                                   : 68
  10-bit adder                                          : 6
  11-bit subtractor                                     : 4
@@ -3132,7 +3133,7 @@ Macro Statistics
  13-bit adder                                          : 12
  14-bit adder                                          : 7
  14-bit adder carry in                                 : 3
- 15-bit adder                                          : 9
+ 16-bit adder                                          : 9
  32-bit adder                                          : 2
  32-bit subtractor                                     : 1
  4-bit adder                                           : 1
@@ -3152,8 +3153,8 @@ Macro Statistics
  8-bit up counter                                      : 1
 # Accumulators                                         : 1
  32-bit up loadable accumulator                        : 1
-# Registers                                            : 2644
- Flip-Flops                                            : 2644
+# Registers                                            : 2656
+ Flip-Flops                                            : 2656
 # Comparators                                          : 34
  10-bit comparator greatequal                          : 1
  12-bit comparator less                                : 1
@@ -3264,10 +3265,6 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <stage1_G_1> (withou
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <stage1_R_0> (without init value) has a constant value of 0 in block <rgb2hsv>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <stage1_R_1> (without init value) has a constant value of 0 in block <rgb2hsv>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <stage1_R_2> (without init value) has a constant value of 0 in block <rgb2hsv>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <temp_mult0002_16> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0002_17> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0002_18> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0000_18> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <red_row_start_3> has a constant value of 0 in block <demosaic_microsoft>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <red_row_start_2> has a constant value of 0 in block <demosaic_microsoft>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <red_row_start_1> has a constant value of 0 in block <demosaic_microsoft>. This FF/Latch will be trimmed during the optimization process.
@@ -3279,12 +3276,10 @@ WARNING:Xst:2677 - Node <sig_byte_addr_int_4> of sequential type is unconnected 
 WARNING:Xst:2677 - Node <sig_byte_addr_int_5> of sequential type is unconnected in block <cc_brst_exp_adptr>.
 WARNING:Xst:2677 - Node <sig_byte_addr_int_6> of sequential type is unconnected in block <cc_brst_exp_adptr>.
 WARNING:Xst:2677 - Node <sig_byte_addr_int_7> of sequential type is unconnected in block <cc_brst_exp_adptr>.
-WARNING:Xst:1710 - FF/Latch <temp_mult0004_17> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0004_18> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0005_17> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0005_18> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0002_15> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0000_17> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <temp_mult0004_18> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0004_19> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0000_18> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_mult0000_19> (without init value) has a constant value of 0 in block <color_correction>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <stage2_max_value_0> (without init value) has a constant value of 0 in block <rgb2hsv>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <stage2_max_value_1> (without init value) has a constant value of 0 in block <rgb2hsv>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <stage2_min_value_0> (without init value) has a constant value of 0 in block <rgb2hsv>. This FF/Latch will be trimmed during the optimization process.
@@ -3332,11 +3327,12 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <gr_gbb_12> (without
 INFO:Xst:1901 - Instance GEN_BRAMS_18.GENERATE_RAM[0].BRAM_BUFFER_INST in unit delay_buffer_ramb16 of type RAMB16_S18_S18 has been replaced by RAMB16
 INFO:Xst:1901 - Instance GEN_BRAMS_18.GENERATE_RAM[1].BRAM_BUFFER_INST in unit delay_buffer_ramb16 of type RAMB16_S18_S18 has been replaced by RAMB16
 INFO:Xst:1901 - Instance RDPFIFO_TOP_I/USE_BLOCK_RAM.I_DP_CORE/Using_RAMB16_S36_S36.BRAM_LOOP[1].I_DPB16_512x32 in unit plb_vision of type RAMB16_S36_S36 has been replaced by RAMB16
-INFO:Xst:2261 - The FF/Latch <temp_mult0003_14> in Unit <color_correction> is equivalent to the following 4 FFs/Latches, which will be removed : <temp_mult0003_15> <temp_mult0003_16> <temp_mult0003_17> <temp_mult0003_18> 
-INFO:Xst:2261 - The FF/Latch <temp_mult0007_17> in Unit <color_correction> is equivalent to the following FF/Latch, which will be removed : <temp_mult0007_18> 
-INFO:Xst:2261 - The FF/Latch <temp_mult0008_17> in Unit <color_correction> is equivalent to the following FF/Latch, which will be removed : <temp_mult0008_18> 
-INFO:Xst:2261 - The FF/Latch <temp_mult0001_16> in Unit <color_correction> is equivalent to the following 2 FFs/Latches, which will be removed : <temp_mult0001_17> <temp_mult0001_18> 
-INFO:Xst:2261 - The FF/Latch <temp_mult0006_13> in Unit <color_correction> is equivalent to the following 5 FFs/Latches, which will be removed : <temp_mult0006_14> <temp_mult0006_15> <temp_mult0006_16> <temp_mult0006_17> <temp_mult0006_18> 
+INFO:Xst:2261 - The FF/Latch <temp_mult0006_16> in Unit <color_correction> is equivalent to the following 3 FFs/Latches, which will be removed : <temp_mult0006_17> <temp_mult0006_18> <temp_mult0006_19> 
+INFO:Xst:2261 - The FF/Latch <temp_mult0002_15> in Unit <color_correction> is equivalent to the following 4 FFs/Latches, which will be removed : <temp_mult0002_16> <temp_mult0002_17> <temp_mult0002_18> <temp_mult0002_19> 
+INFO:Xst:2261 - The FF/Latch <temp_mult0007_16> in Unit <color_correction> is equivalent to the following 3 FFs/Latches, which will be removed : <temp_mult0007_17> <temp_mult0007_18> <temp_mult0007_19> 
+INFO:Xst:2261 - The FF/Latch <temp_mult0003_17> in Unit <color_correction> is equivalent to the following 2 FFs/Latches, which will be removed : <temp_mult0003_18> <temp_mult0003_19> 
+INFO:Xst:2261 - The FF/Latch <temp_mult0001_14> in Unit <color_correction> is equivalent to the following 5 FFs/Latches, which will be removed : <temp_mult0001_15> <temp_mult0001_16> <temp_mult0001_17> <temp_mult0001_18> <temp_mult0001_19> 
+INFO:Xst:2261 - The FF/Latch <temp_mult0005_16> in Unit <color_correction> is equivalent to the following 3 FFs/Latches, which will be removed : <temp_mult0005_17> <temp_mult0005_18> <temp_mult0005_19> 
 INFO:Xst:2261 - The FF/Latch <m241_0> in Unit <demosaic_microsoft> is equivalent to the following FF/Latch, which will be removed : <m242_1> 
 INFO:Xst:2261 - The FF/Latch <first_row_start_2> in Unit <demosaic_microsoft> is equivalent to the following FF/Latch, which will be removed : <blue_row_start_2> 
 INFO:Xst:2261 - The FF/Latch <m421_0> in Unit <demosaic_microsoft> is equivalent to the following FF/Latch, which will be removed : <m422_1> 
@@ -3750,7 +3746,7 @@ INFO:Xst:2261 - The FF/Latch <plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL
 INFO:Xst:2261 - The FF/Latch <plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_m_size_reg_3> in Unit <plb_vision_0_wrapper> is equivalent to the following FF/Latch, which will be removed : <plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_m_size_reg_2> 
 INFO:Xst:2261 - The FF/Latch <plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_cmd_be_out_reg_7> in Unit <plb_vision_0_wrapper> is equivalent to the following 3 FFs/Latches, which will be removed : <plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_cmd_be_out_reg_6> <plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_cmd_be_out_reg_5> <plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_cmd_be_out_reg_4> 
 INFO:Xst:2261 - The FF/Latch <plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_be_reg_4> in Unit <plb_vision_0_wrapper> is equivalent to the following 3 FFs/Latches, which will be removed : <plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_be_reg_5> <plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_be_reg_6> <plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_be_reg_7> 
-FlipFlop plb_vision_0/USER_LOGIC_I/core_soft_reset has been replicated 2 time(s)
+FlipFlop plb_vision_0/USER_LOGIC_I/core_soft_reset has been replicated 3 time(s)
 
 Final Macro Processing ...
 
@@ -3782,8 +3778,8 @@ Unit <plb_vision_0_wrapper> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 2229
- Flip-Flops                                            : 2229
+# Registers                                            : 2241
+ Flip-Flops                                            : 2241
 # Shift Registers                                      : 20
  2-bit shift register                                  : 4
  3-bit shift register                                  : 5
@@ -3816,27 +3812,27 @@ Design Statistics
 # IOs                              : 549
 
 Cell Usage :
-# BELS                             : 4359
+# BELS                             : 4392
 #      GND                         : 1
-#      INV                         : 146
-#      LUT1                        : 182
-#      LUT2                        : 524
-#      LUT2_D                      : 4
-#      LUT2_L                      : 10
-#      LUT3                        : 644
-#      LUT3_D                      : 12
-#      LUT3_L                      : 12
-#      LUT4                        : 896
-#      LUT4_D                      : 42
-#      LUT4_L                      : 69
+#      INV                         : 133
+#      LUT1                        : 174
+#      LUT2                        : 542
+#      LUT2_D                      : 9
+#      LUT2_L                      : 8
+#      LUT3                        : 668
+#      LUT3_D                      : 13
+#      LUT3_L                      : 14
+#      LUT4                        : 888
+#      LUT4_D                      : 44
+#      LUT4_L                      : 66
 #      MULT_AND                    : 38
-#      MUXCY                       : 877
-#      MUXF5                       : 80
+#      MUXCY                       : 888
+#      MUXF5                       : 69
 #      VCC                         : 1
-#      XORCY                       : 821
-# FlipFlops/Latches                : 2265
+#      XORCY                       : 836
+# FlipFlops/Latches                : 2277
 #      FD                          : 22
-#      FDC                         : 739
+#      FDC                         : 750
 #      FDCE                        : 176
 #      FDE                         : 124
 #      FDP                         : 2
@@ -3845,7 +3841,7 @@ Cell Usage :
 #      FDRE                        : 815
 #      FDRS                        : 56
 #      FDRSE                       : 6
-#      FDS                         : 14
+#      FDS                         : 15
 #      FDSE                        : 10
 # RAMS                             : 3
 #      RAMB16                      : 3
@@ -3865,10 +3861,10 @@ Device utilization summary:
 
 Selected Device : 4vfx60ff672-11 
 
- Number of Slices:                     1735  out of  25280     6%  
- Number of Slice Flip Flops:           2265  out of  50560     4%  
- Number of 4 input LUTs:               2561  out of  50560     5%  
-    Number used as logic:              2541
+ Number of Slices:                     1739  out of  25280     6%  
+ Number of Slice Flip Flops:           2277  out of  50560     4%  
+ Number of 4 input LUTs:               2579  out of  50560     5%  
+    Number used as logic:              2559
     Number used as Shift registers:      20
  Number of IOs:                         549
  Number of bonded IOBs:                   0  out of    352     0%  
@@ -3897,7 +3893,7 @@ Clock Information:
 -----------------------------------+------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                        | Load  |
 -----------------------------------+------------------------------------------------------------------------------+-------+
-SPLB_Clk                           | NONE(plb_vision_0/USER_LOGIC_I/sr6_seg_frm_mem_addr_9)                       | 2062  |
+SPLB_Clk                           | NONE(plb_vision_0/USER_LOGIC_I/sr6_seg_frm_mem_addr_9)                       | 2074  |
 cam_pix_clk                        | NONE(plb_vision_0/USER_LOGIC_I/frame_sync_hs_1/frame_active_pcd)             | 2     |
 MPLB_Clk                           | NONE(plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sm_wr_llink_activate)| 224   |
 -----------------------------------+------------------------------------------------------------------------------+-------+
@@ -3905,21 +3901,22 @@ INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered
 
 Asynchronous Control Signals Information:
 ----------------------------------------
-------------------------------------------------------------------------------------------+-----------------------------------------------------------------+-------+
-Control Signal                                                                            | Buffer(FF name)                                                 | Load  |
-------------------------------------------------------------------------------------------+-----------------------------------------------------------------+-------+
-plb_vision_0/USER_LOGIC_I/core_soft_reset_2(plb_vision_0/USER_LOGIC_I/core_soft_reset_2:Q)| NONE(plb_vision_0/USER_LOGIC_I/PIXEL_BYTES_TO_WORD/out_valid)   | 499   |
-plb_vision_0/USER_LOGIC_I/core_soft_reset(plb_vision_0/USER_LOGIC_I/core_soft_reset:Q)    | NONE(plb_vision_0/USER_LOGIC_I/CAM_SER_I/current_state_FSM_FFd1)| 455   |
-------------------------------------------------------------------------------------------+-----------------------------------------------------------------+-------+
+------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                            | Buffer(FF name)                                                                                               | Load  |
+------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------+
+plb_vision_0/USER_LOGIC_I/core_soft_reset_2(plb_vision_0/USER_LOGIC_I/core_soft_reset_2:Q)| NONE(plb_vision_0/USER_LOGIC_I/PIXEL_BYTES_TO_WORD/out_valid)                                                 | 337   |
+plb_vision_0/USER_LOGIC_I/core_soft_reset(plb_vision_0/USER_LOGIC_I/core_soft_reset:Q)    | NONE(plb_vision_0/USER_LOGIC_I/CAM_SER_I/current_state_FSM_FFd1)                                              | 325   |
+plb_vision_0/USER_LOGIC_I/core_soft_reset_3(plb_vision_0/USER_LOGIC_I/core_soft_reset_3:Q)| NONE(plb_vision_0/USER_LOGIC_I/camera_processor_1/demosaic_frame_i/GEN_MICROSOFT.demosaic_microsoft_i/e22_0_5)| 303   |
+------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -11
 
    Minimum period: 5.684ns (Maximum Frequency: 175.920MHz)
-   Minimum input arrival time before clock: 6.279ns
-   Maximum output required time after clock: 3.975ns
-   Maximum combinational path delay: 4.069ns
+   Minimum input arrival time before clock: 6.558ns
+   Maximum output required time after clock: 3.821ns
+   Maximum combinational path delay: 3.915ns
 
 Timing Detail:
 --------------
@@ -3928,7 +3925,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'SPLB_Clk'
   Clock period: 5.674ns (frequency: 176.243MHz)
-  Total number of paths / destination ports: 101967 / 3524
+  Total number of paths / destination ports: 117017 / 3536
 -------------------------------------------------------------------------
 Delay:               5.674ns (Levels of Logic = 16)
   Source:            plb_vision_0/USER_LOGIC_I/camera_processor_1/demosaic_frame_i/GEN_MICROSOFT.filter_output_adjust_2/pixel_count_1 (FF)
@@ -4004,7 +4001,7 @@ Delay:               5.684ns (Levels of Logic = 7)
      LUT4:I2->O           11   0.166   0.574  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_composite_wrack (plb_vision_0/PLBV46_MASTER_BURST_I/sig_native_plb_mwrdack)
      LUT4:I3->O           66   0.166   1.061  plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_ld_wrdata_reg1_1 (plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_ld_wrdata_reg1)
      LUT2:I1->O            7   0.166   0.501  plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_mstwr_dst_rdy1 (plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_mstwr_dst_rdy)
-     LUT4_D:I3->O          1   0.166   0.452  plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_llsm_force_dst_rdy_ns_SW0 (N211)
+     LUT4_D:I3->O          1   0.166   0.452  plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_llsm_force_dst_rdy_ns_SW0 (N224)
      LUT4:I3->O            1   0.166   0.000  plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_llsm_dst_dsc_ns (plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_llsm_dst_dsc_ns)
      FDR:D                     0.018          plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_llsm_dst_dsc
     ----------------------------------------
@@ -4013,9 +4010,9 @@ Delay:               5.684ns (Levels of Logic = 7)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'SPLB_Clk'
-  Total number of paths / destination ports: 1511 / 807
+  Total number of paths / destination ports: 1512 / 808
 -------------------------------------------------------------------------
-Offset:              6.279ns (Levels of Logic = 8)
+Offset:              6.558ns (Levels of Logic = 8)
   Source:            PLB_MSSize<1> (PAD)
   Destination:       plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_3 (FF)
   Destination Clock: SPLB_Clk rising
@@ -4029,13 +4026,13 @@ Offset:              6.279ns (Levels of Logic = 8)
      LUT4:I3->O            4   0.166   0.517  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/be_bit_detected_mux0007 (plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_be_still_set)
      LUT4:I2->O           11   0.166   0.574  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_composite_wrack (plb_vision_0/PLBV46_MASTER_BURST_I/sig_native_plb_mwrdack)
      LUT4_D:I3->O          3   0.166   0.465  plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_ld_wrdata_reg1 (plb_vision_0/PLBV46_MASTER_BURST_I/sig_wr_plb2ll_fifo_ren)
-     LUT3:I2->O           17   0.166   0.696  plb_vision_0/USER_LOGIC_I/mst_llwr_sm_eof_and00001 (plb_vision_0/USER_LOGIC_I/mst_llwr_sm_eof_and0000)
-     LUT4:I2->O            1   0.166   0.000  plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_mux0004<9>71 (plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_mux0004<9>71)
-     MUXF5:I1->O           1   0.319   0.313  plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_mux0004<9>7_f5 (plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_mux0004<9>7)
+     LUT3_D:I2->LO         1   0.166   0.192  plb_vision_0/USER_LOGIC_I/mst_llwr_sm_eof_and00001 (N661)
+     LUT4:I2->O           29   0.166   0.936  plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_mux0004<10>21 (plb_vision_0/USER_LOGIC_I/N39)
+     LUT2:I1->O            1   0.166   0.313  plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_mux0004<9>0 (plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_mux0004<9>0)
      FDRS:S                    0.906          plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_9
     ----------------------------------------
-    Total                      6.279ns (2.579ns logic, 3.700ns route)
-                                       (41.1% logic, 58.9% route)
+    Total                      6.558ns (2.426ns logic, 4.132ns route)
+                                       (37.0% logic, 63.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'MPLB_Clk'
@@ -4056,7 +4053,7 @@ Offset:              5.778ns (Levels of Logic = 8)
      LUT4:I2->O           11   0.166   0.574  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_composite_wrack (plb_vision_0/PLBV46_MASTER_BURST_I/sig_native_plb_mwrdack)
      LUT4:I3->O           66   0.166   1.061  plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_ld_wrdata_reg1_1 (plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_ld_wrdata_reg1)
      LUT2:I1->O            7   0.166   0.501  plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_mstwr_dst_rdy1 (plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_mstwr_dst_rdy)
-     LUT4_D:I3->O          1   0.166   0.452  plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_llsm_force_dst_rdy_ns_SW0 (N211)
+     LUT4_D:I3->O          1   0.166   0.452  plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_llsm_force_dst_rdy_ns_SW0 (N224)
      LUT4:I3->O            1   0.166   0.000  plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_llsm_dst_dsc_ns (plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_llsm_dst_dsc_ns)
      FDR:D                     0.018          plb_vision_0/PLBV46_MASTER_BURST_I/I_WR_LLINK/sig_llsm_dst_dsc
     ----------------------------------------
@@ -4067,34 +4064,33 @@ Offset:              5.778ns (Levels of Logic = 8)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'SPLB_Clk'
   Total number of paths / destination ports: 557 / 142
 -------------------------------------------------------------------------
-Offset:              3.065ns (Levels of Logic = 8)
-  Source:            plb_vision_0/USER_LOGIC_I/rgb2hsv_1/stage1_min_0 (FF)
+Offset:              3.047ns (Levels of Logic = 7)
+  Source:            plb_vision_0/USER_LOGIC_I/rgb2hsv_1/stage1_max_0 (FF)
   Destination:       plb_vision_0/USER_LOGIC_I/rgb2hsv_1/LookUpTable:addrb<7> (PAD)
   Source Clock:      SPLB_Clk rising
 
-  Data Path: plb_vision_0/USER_LOGIC_I/rgb2hsv_1/stage1_min_0 to plb_vision_0/USER_LOGIC_I/rgb2hsv_1/LookUpTable:addrb<7>
+  Data Path: plb_vision_0/USER_LOGIC_I/rgb2hsv_1/stage1_max_0 to plb_vision_0/USER_LOGIC_I/rgb2hsv_1/LookUpTable:addrb<7>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             11   0.307   0.715  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/stage1_min_0 (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/stage1_min_0)
-     LUT3:I0->O            1   0.166   0.000  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Mmux_min_value4_F (N564)
-     MUXF5:I0->O           2   0.325   0.653  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Mmux_min_value4 (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/min_value<3>)
-     LUT4:I0->O            1   0.166   0.000  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_lut<3> (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_lut<3>)
-     MUXCY:S->O            1   0.312   0.000  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_cy<3> (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_cy<3>)
+     FDE:C->Q             20   0.307   0.842  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/stage1_max_0 (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/stage1_max_0)
+     LUT3:I0->O            4   0.166   0.517  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Mmux_max_value4_SW0 (N155)
+     LUT3:I1->O            1   0.166   0.313  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Mmux_max_value4 (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/max_value<3>)
+     MUXCY:DI->O           1   0.315   0.000  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_cy<3> (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_cy<3>)
      MUXCY:CI->O           1   0.038   0.000  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_cy<4> (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_cy<4>)
      MUXCY:CI->O           1   0.038   0.000  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_cy<5> (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_cy<5>)
      MUXCY:CI->O           0   0.038   0.000  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_cy<6> (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_cy<6>)
      XORCY:CI->O           0   0.307   0.000  plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Msub_max_minus_min_xor<7> (plb_vision_0/USER_LOGIC_I/rgb2hsv_1/max_minus_min<7>)
     rgb2hsvlut:addrb<7>        0.000          plb_vision_0/USER_LOGIC_I/rgb2hsv_1/LookUpTable
     ----------------------------------------
-    Total                      3.065ns (1.697ns logic, 1.368ns route)
-                                       (55.4% logic, 44.6% route)
+    Total                      3.047ns (1.375ns logic, 1.672ns route)
+                                       (45.1% logic, 54.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'MPLB_Clk'
   Total number of paths / destination ports: 539 / 114
 -------------------------------------------------------------------------
-Offset:              3.975ns (Levels of Logic = 5)
+Offset:              3.821ns (Levels of Logic = 5)
   Source:            plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_ssize_reg_0 (FF)
   Destination:       plb_vision_0/USER_LOGIC_I/frame_fifo_1:rd_en (PAD)
   Source Clock:      MPLB_Clk rising
@@ -4107,12 +4103,12 @@ Offset:              3.975ns (Levels of Logic = 5)
      LUT4_D:I1->O          6   0.166   0.484  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/be_bit_detected_mux00071 (plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/N0)
      LUT4:I3->O            4   0.166   0.517  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/be_bit_detected_mux0007 (plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_be_still_set)
      LUT4:I2->O           11   0.166   0.574  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_composite_wrack (plb_vision_0/PLBV46_MASTER_BURST_I/sig_native_plb_mwrdack)
-     LUT4_D:I3->LO         1   0.166   0.139  plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_ld_wrdata_reg1 (N641)
-     LUT3:I2->O           18   0.166   0.516  plb_vision_0/USER_LOGIC_I/mst_fifo_valid_read_xfer1 (plb_vision_0/USER_LOGIC_I/mst_fifo_valid_read_xfer)
+     LUT4_D:I3->LO         1   0.166   0.139  plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_ld_wrdata_reg1 (N644)
+     LUT3:I2->O            7   0.166   0.362  plb_vision_0/USER_LOGIC_I/mst_fifo_valid_read_xfer1 (plb_vision_0/USER_LOGIC_I/mst_fifo_valid_read_xfer)
     frame_fifo:rd_en           0.000          plb_vision_0/USER_LOGIC_I/frame_fifo_1
     ----------------------------------------
-    Total                      3.975ns (1.137ns logic, 2.838ns route)
-                                       (28.6% logic, 71.4% route)
+    Total                      3.821ns (1.137ns logic, 2.684ns route)
+                                       (29.8% logic, 70.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'cam_pix_clk'
@@ -4138,7 +4134,7 @@ Offset:              0.925ns (Levels of Logic = 1)
 Timing constraint: Default path analysis
   Total number of paths / destination ports: 56 / 52
 -------------------------------------------------------------------------
-Delay:               4.069ns (Levels of Logic = 6)
+Delay:               3.915ns (Levels of Logic = 6)
   Source:            PLB_MSSize<1> (PAD)
   Destination:       plb_vision_0/USER_LOGIC_I/frame_fifo_1:rd_en (PAD)
 
@@ -4150,24 +4146,24 @@ Delay:               4.069ns (Levels of Logic = 6)
      LUT4_D:I0->O          6   0.166   0.484  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/be_bit_detected_mux00071 (plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/N0)
      LUT4:I3->O            4   0.166   0.517  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/be_bit_detected_mux0007 (plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_be_still_set)
      LUT4:I2->O           11   0.166   0.574  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_composite_wrack (plb_vision_0/PLBV46_MASTER_BURST_I/sig_native_plb_mwrdack)
-     LUT4_D:I3->LO         1   0.166   0.139  plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_ld_wrdata_reg1 (N641)
-     LUT3:I2->O           18   0.166   0.516  plb_vision_0/USER_LOGIC_I/mst_fifo_valid_read_xfer1 (plb_vision_0/USER_LOGIC_I/mst_fifo_valid_read_xfer)
+     LUT4_D:I3->LO         1   0.166   0.139  plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_ld_wrdata_reg1 (N644)
+     LUT3:I2->O            7   0.166   0.362  plb_vision_0/USER_LOGIC_I/mst_fifo_valid_read_xfer1 (plb_vision_0/USER_LOGIC_I/mst_fifo_valid_read_xfer)
     frame_fifo:rd_en           0.000          plb_vision_0/USER_LOGIC_I/frame_fifo_1
     ----------------------------------------
-    Total                      4.069ns (1.188ns logic, 2.881ns route)
-                                       (29.2% logic, 70.8% route)
+    Total                      3.915ns (1.188ns logic, 2.727ns route)
+                                       (30.3% logic, 69.7% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 236.00 secs
-Total CPU time to Xst completion: 235.48 secs
+Total REAL time to Xst completion: 242.00 secs
+Total CPU time to Xst completion: 242.15 secs
  
 --> 
 
-Total memory usage is 984508 kilobytes
+Total memory usage is 984188 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  808 (   0 filtered)
-Number of infos    :   91 (   0 filtered)
+Number of warnings :  802 (   0 filtered)
+Number of infos    :   92 (   0 filtered)
 

@@ -1398,7 +1398,7 @@ INFO:Xst:2260 - The FF/Latch <U0/grf.rf/rstblk/rd_rst_reg_2> in Unit <BU2> is eq
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/rstblk/wr_rst_reg_1> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/rstblk/wr_rst_reg_0> 
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_fb> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_i> 
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwas.wsts/ram_full_fb_i> 
-INFO:Xst:2260 - The FF/Latch <plb_vision_0/USER_LOGIC_I/core_soft_reset> in Unit <plb_vision_0> is equivalent to the following 2 FFs/Latches : <plb_vision_0/USER_LOGIC_I/core_soft_reset_1> <plb_vision_0/USER_LOGIC_I/core_soft_reset_2> 
+INFO:Xst:2260 - The FF/Latch <plb_vision_0/USER_LOGIC_I/core_soft_reset> in Unit <plb_vision_0> is equivalent to the following 3 FFs/Latches : <plb_vision_0/USER_LOGIC_I/core_soft_reset_1> <plb_vision_0/USER_LOGIC_I/core_soft_reset_2> <plb_vision_0/USER_LOGIC_I/core_soft_reset_3> 
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/gras.rsts/ram_empty_i> 
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwas.wsts/ram_full_fb_i> 
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/rstblk/rd_rst_reg_2> in Unit <BU2> is equivalent to the following 2 FFs/Latches : <U0/grf.rf/rstblk/rd_rst_reg_1> <U0/grf.rf/rstblk/rd_rst_reg_0> 
@@ -1468,7 +1468,7 @@ INFO:Xst:2260 - The FF/Latch <U0/grf.rf/rstblk/rd_rst_reg_2> in Unit <BU2> is eq
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/rstblk/wr_rst_reg_1> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/rstblk/wr_rst_reg_0> 
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_fb> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_i> 
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwas.wsts/ram_full_fb_i> 
-INFO:Xst:2260 - The FF/Latch <plb_vision_0/USER_LOGIC_I/core_soft_reset> in Unit <plb_vision_0> is equivalent to the following 2 FFs/Latches : <plb_vision_0/USER_LOGIC_I/core_soft_reset_1> <plb_vision_0/USER_LOGIC_I/core_soft_reset_2> 
+INFO:Xst:2260 - The FF/Latch <plb_vision_0/USER_LOGIC_I/core_soft_reset> in Unit <plb_vision_0> is equivalent to the following 3 FFs/Latches : <plb_vision_0/USER_LOGIC_I/core_soft_reset_1> <plb_vision_0/USER_LOGIC_I/core_soft_reset_2> <plb_vision_0/USER_LOGIC_I/core_soft_reset_3> 
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/gras.rsts/ram_empty_i> 
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwas.wsts/ram_full_fb_i> 
 INFO:Xst:2260 - The FF/Latch <U0/grf.rf/rstblk/rd_rst_reg_2> in Unit <BU2> is equivalent to the following 2 FFs/Latches : <U0/grf.rf/rstblk/rd_rst_reg_1> <U0/grf.rf/rstblk/rd_rst_reg_0> 
@@ -1533,31 +1533,31 @@ Design Statistics
 # IOs                              : 260
 
 Cell Usage :
-# BELS                             : 15164
+# BELS                             : 15197
 #      BUF                         : 137
 #      GND                         : 36
-#      INV                         : 313
-#      LUT1                        : 326
-#      LUT2                        : 1695
-#      LUT2_D                      : 31
-#      LUT2_L                      : 57
-#      LUT3                        : 2346
-#      LUT3_D                      : 95
-#      LUT3_L                      : 78
-#      LUT4                        : 4938
-#      LUT4_D                      : 275
-#      LUT4_L                      : 258
+#      INV                         : 300
+#      LUT1                        : 318
+#      LUT2                        : 1713
+#      LUT2_D                      : 36
+#      LUT2_L                      : 55
+#      LUT3                        : 2370
+#      LUT3_D                      : 96
+#      LUT3_L                      : 80
+#      LUT4                        : 4930
+#      LUT4_D                      : 277
+#      LUT4_L                      : 255
 #      MULT_AND                    : 186
-#      MUXCY                       : 2294
+#      MUXCY                       : 2305
 #      MUXCY_L                     : 100
-#      MUXF5                       : 384
+#      MUXF5                       : 373
 #      OR2                         : 1
 #      VCC                         : 28
-#      XORCY                       : 1586
-# FlipFlops/Latches                : 10113
+#      XORCY                       : 1601
+# FlipFlops/Latches                : 10125
 #      FD                          : 1405
 #      FD_1                        : 32
-#      FDC                         : 1085
+#      FDC                         : 1096
 #      FDC_1                       : 5
 #      FDCE                        : 415
 #      FDE                         : 372
@@ -1569,7 +1569,7 @@ Cell Usage :
 #      FDRE_1                      : 1
 #      FDRS                        : 141
 #      FDRSE                       : 81
-#      FDS                         : 345
+#      FDS                         : 346
 #      FDSE                        : 83
 #      ODDR                        : 1
 # RAMS                             : 249
@@ -1601,10 +1601,10 @@ Device utilization summary:
 
 Selected Device : 4vfx60ff672-11 
 
- Number of Slices:                     7917  out of  25280    31%  
- Number of Slice Flip Flops:           9985  out of  50560    19%  
- Number of 4 input LUTs:              10836  out of  50560    21%  
-    Number used as logic:             10412
+ Number of Slices:                     7924  out of  25280    31%  
+ Number of Slice Flip Flops:           9997  out of  50560    19%  
+ Number of 4 input LUTs:              10854  out of  50560    21%  
+    Number used as logic:             10430
     Number used as Shift registers:     342
     Number used as RAMs:                 82
  Number of IOs:                         260
@@ -1638,7 +1638,7 @@ Clock Information:
 ---------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------+
 Clock Signal                                                               | Clock buffer(FF name)                                                                            | Load  |
 ---------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------+
-fpga_0_clk_1_sys_clk_pin                                                   | clock_generator_0/DCM0_INST/Using_DCM_ADV.DCM_ADV_INST:CLK0+dcm_2/Using_DCM_ADV.DCM_ADV_INST:CLK0| 10431 |
+fpga_0_clk_1_sys_clk_pin                                                   | clock_generator_0/DCM0_INST/Using_DCM_ADV.DCM_ADV_INST:CLK0+dcm_2/Using_DCM_ADV.DCM_ADV_INST:CLK0| 10443 |
 fpga_0_clk_1_sys_clk_pin                                                   | clock_generator_0/DCM0_INST/Using_DCM_ADV.DCM_ADV_INST:CLKFX                                     | 2     |
 xps_mch_emc_flash_Mem_BEN_pin_1_OBUF                                       | NONE(ppc405_0/ppc405_0/PPC405_ADV_i/PPC405_ADV_i)                                                | 2     |
 jtagppc_cntlr_inst/JTGC405TCK1                                             | NONE(ppc405_0/ppc405_0/PPC405_ADV_i/PPC405_ADV_i)                                                | 2     |
@@ -1666,10 +1666,11 @@ Control Signal                                                                  
 ppc405_0/IPLB0_M_UABus<31>(ppc405_0/XST_GND:G)                                                                                                                                                                           | NONE(ppc405_0/ppc405_0/PPC405_ADV_i/PPC405_ADV_i)                                                                                                                                   | 528   |
 ppc405_1/IPLB0_M_UABus<31>(ppc405_1/XST_GND:G)                                                                                                                                                                           | NONE(ppc405_1/ppc405_1/PPC405_ADV_i/PPC405_ADV_i)                                                                                                                                   | 528   |
 cam_standby_OBUF(XST_GND:G)                                                                                                                                                                                              | NONE(clock_generator_0/clock_generator_0/DCM0_INST/rst_delay_0)                                                                                                                     | 524   |
-plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset_2(plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset_2:Q)                                                                                                     | NONE(plb_vision_0/plb_vision_0/USER_LOGIC_I/PIXEL_BYTES_TO_WORD/out_valid)                                                                                                          | 503   |
-plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset(plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset:Q)                                                                                                         | NONE(plb_vision_0/plb_vision_0/USER_LOGIC_I/CAM_SER_I/current_state_FSM_FFd1)                                                                                                       | 455   |
 ppc405_0/IPLB1_M_BE<7>(ppc405_0/XST_VCC:P)                                                                                                                                                                               | NONE(ppc405_0/ppc405_0/PPC405_ADV_i/PPC405_ADV_i)                                                                                                                                   | 376   |
 ppc405_1/IPLB1_M_BE<7>(ppc405_1/XST_VCC:P)                                                                                                                                                                               | NONE(ppc405_1/ppc405_1/PPC405_ADV_i/PPC405_ADV_i)                                                                                                                                   | 376   |
+plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset_2(plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset_2:Q)                                                                                                     | NONE(plb_vision_0/plb_vision_0/USER_LOGIC_I/PIXEL_BYTES_TO_WORD/out_valid)                                                                                                          | 341   |
+plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset(plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset:Q)                                                                                                         | NONE(plb_vision_0/plb_vision_0/USER_LOGIC_I/CAM_SER_I/current_state_FSM_FFd1)                                                                                                       | 325   |
+plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset_3(plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset_3:Q)                                                                                                     | NONE(plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/demosaic_frame_i/GEN_MICROSOFT.demosaic_microsoft_i/e22_0_5)                                                         | 303   |
 plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/net_gnd0(plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/XST_GND:G)                                                                                                  | NONE(plb_bram_if_cntlr_0_bram/plb_bram_if_cntlr_0_bram/ramb16_0)                                                                                                                    | 256   |
 plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/net_gnd0(plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/XST_GND:G)                                                                                                  | NONE(plb_bram_if_cntlr_1_bram/plb_bram_if_cntlr_1_bram/ramb16_0)                                                                                                                    | 256   |
 plb_0/SPLB_Rst<5>(plb_0/plb_0/GEN_SPLB_RST[5].I_SPLB_RST:Q)                                                                                                                                                              | NONE(plb_pwm_ctrl_0/plb_pwm_ctrl_0/USER_LOGIC_I/pwm0)                                                                                                                               | 66    |
@@ -1858,7 +1859,7 @@ Timing Summary:
 ---------------
 Speed Grade: -11
 
-   Minimum period: 9.321ns (Maximum Frequency: 107.285MHz)
+   Minimum period: 9.382ns (Maximum Frequency: 106.592MHz)
    Minimum input arrival time before clock: 4.595ns
    Maximum output required time after clock: 6.357ns
    Maximum combinational path delay: 6.848ns
@@ -1869,26 +1870,39 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'fpga_0_clk_1_sys_clk_pin'
-  Clock period: 9.321ns (frequency: 107.285MHz)
-  Total number of paths / destination ports: 425009 / 27173
+  Clock period: 9.382ns (frequency: 106.592MHz)
+  Total number of paths / destination ports: 440060 / 27186
 -------------------------------------------------------------------------
-Delay:               3.107ns (Levels of Logic = 1)
-  Source:            ppc405_1/ppc405_1/PPC405_ADV_i/PPC405_ADV_i (CPU)
-  Destination:       proc_sys_reset_0/proc_sys_reset_0/Mshreg_Core_Reset_Req_1_d2 (FF)
-  Source Clock:      fpga_0_clk_1_sys_clk_pin rising 3.0X
+Delay:               9.382ns (Levels of Logic = 13)
+  Source:            xps_bram_if_cntlr_1/xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_FLOP_SET_SLBUSY (FF)
+  Destination:       plb_vision_0/plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_3 (FF)
+  Source Clock:      fpga_0_clk_1_sys_clk_pin rising
   Destination Clock: fpga_0_clk_1_sys_clk_pin rising
 
-  Data Path: ppc405_1/ppc405_1/PPC405_ADV_i/PPC405_ADV_i to proc_sys_reset_0/proc_sys_reset_0/Mshreg_Core_Reset_Req_1_d2
+  Data Path: xps_bram_if_cntlr_1/xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_FLOP_SET_SLBUSY to plb_vision_0/plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     PPC405_ADV:CPMC405CLOCK->C405RSTCORERESETREQ    1   1.560   0.313  ppc405_1/PPC405_ADV_i/PPC405_ADV_i (C405RSTCORERESETREQ)
-     end scope: 'ppc405_1'
-     begin scope: 'proc_sys_reset_0'
-     SRL16:D                   1.234          proc_sys_reset_0/Mshreg_Core_Reset_Req_1_d2
+     FDRE:C->Q            12   0.307   0.732  xps_bram_if_cntlr_1/INCLUDE_BURST_SUPPORT.I_SLAVE_BURST_ATTACH/I_FLOP_SET_SLBUSY (Sl_SSize<1>)
+     end scope: 'xps_bram_if_cntlr_1'
+     begin scope: 'plb_1'
+     LUT4:I1->O            1   0.166   0.452  plb_1/GEN_SHARED.I_PLB_SLAVE_ORS/SSIZE_OR/Y_1_or0000_SW0 (N174)
+     LUT4:I3->O            4   0.166   0.464  plb_1/GEN_SHARED.I_PLB_SLAVE_ORS/SSIZE_OR/Y_1_or0000 (PLB_Sssize<1>)
+     LUT2:I1->O            3   0.166   0.518  plb_1/GEN_SHARED.I_PLB_ARBITER_LOGIC/I_MUXEDSIGNALS/PLB_MSSize_7_mux00001 (PLB_MSSize<7>)
+     end scope: 'plb_1'
+     begin scope: 'plb_vision_0'
+     LUT2:I0->O            3   0.166   0.651  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/be_bit_detected_mux00071_SW0 (plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_byte_addr_incr<2>)
+     LUT4_D:I0->O          6   0.166   0.484  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/be_bit_detected_mux00071 (plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/N0)
+     LUT4:I3->O            4   0.166   0.517  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/be_bit_detected_mux0007 (plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_be_still_set)
+     LUT4:I2->O           11   0.166   0.574  plb_vision_0/PLBV46_MASTER_BURST_I/INCLUDE_CC_BLE_ADAPTER.I_CC_BLE_ADAPTER/sig_composite_wrack (plb_vision_0/PLBV46_MASTER_BURST_I/sig_native_plb_mwrdack)
+     LUT4_D:I3->LO         1   0.166   0.139  plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/sig_ld_wrdata_reg1 (N644)
+     LUT3:I2->O           10   0.166   0.563  plb_vision_0/USER_LOGIC_I/mst_fifo_valid_read_xfer1 (plb_vision_0/USER_LOGIC_I/mst_fifo_valid_read_xfer)
+     LUT4:I3->O           29   0.166   0.936  plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_mux0004<10>21 (plb_vision_0/USER_LOGIC_I/N39)
+     LUT2:I1->O            1   0.166   0.313  plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_mux0004<9>0 (plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_mux0004<9>0)
+     FDRS:S                    0.906          plb_vision_0/USER_LOGIC_I/mst_llwr_byte_cnt_9
     ----------------------------------------
-    Total                      3.107ns (2.794ns logic, 0.313ns route)
-                                       (89.9% logic, 10.1% route)
+    Total                      9.382ns (3.039ns logic, 6.343ns route)
+                                       (32.4% logic, 67.6% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'jtagppc_cntlr_inst/JTGC405TCK1'
@@ -2293,12 +2307,12 @@ Delay:               6.848ns (Levels of Logic = 6)
 =========================================================================
 
 
-Total REAL time to Xst completion: 341.00 secs
-Total CPU time to Xst completion: 340.76 secs
+Total REAL time to Xst completion: 317.00 secs
+Total CPU time to Xst completion: 317.35 secs
  
 --> 
 
-Total memory usage is 478588 kilobytes
+Total memory usage is 478972 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings : 1201 (   0 filtered)

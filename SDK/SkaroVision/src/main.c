@@ -55,11 +55,11 @@ typedef struct {
 #define SEARCH_STRIDE_X  8
 #define SEARCH_STRIDE_Y  4
 
-#define FLOOD_STRIDE_X   2
+#define FLOOD_STRIDE_X   1
 #define FLOOD_STRIDE_Y   2
 
-#define TARGET_COLOR_BLUE       23, 0, 15
-#define TARGET_COLOR_RED		5, 0, 28
+#define TARGET_COLOR_BLUE       27, 0, 20
+#define TARGET_COLOR_RED		2, 0, 28
 
 Color targetColors[NUM_BLOB_TYPES];
 
@@ -299,14 +299,15 @@ void processFrame(FrameTableEntry* frame) {
 	visionData = getVisionBuffer();
 	visionData->numBlobs = 0;
 
+	//find blue blobs
 	int x, y;
 	for (x = 0; x < IMAGE_WIDTH; x += SEARCH_STRIDE_X) {
 		for (y = 0; y < IMAGE_HEIGHT; y += SEARCH_STRIDE_Y) {
 			if (pixelsChecked[y * IMAGE_WIDTH + x]) continue;
 
 			short pixel = pixels[y * IMAGE_WIDTH + x];
-			int i;
-			for (i = 0; i < NUM_BLOB_TYPES; i++) {
+			int i = BLOB_TYPE_BLUE;
+			//for (i = 0; i < NUM_BLOB_TYPES; i++) {
 				if (colorMatch(pixel, targetColors[i])) {
 					if (visionData->numBlobs >= MAX_BLOBS) continue;
 					floodFill(pixels, x, y, targetColors[i], i);
@@ -322,12 +323,45 @@ void processFrame(FrameTableEntry* frame) {
 					(*numBlobs)++;
 					*/
 				}
-			}
+			//}
 		}
 	}
 
+	//check below the blue blobs for red blobs
+
+//	memset(pixelsChecked, 0, CHECKED_SIZE);
+//	StackInit(toCheck, (void**)FILL_STACK_LOC, FILL_STACK_SIZE);
+//	int i;
+//	int max = visionData->numBlobs;
+//	for (i = 0; i < max; i++) {
+//		Blob *blob = &(visionData->blobs[i]);
+//
+//
+//
+//		/*
+//		visionData->blobs[visionData->numBlobs].type = BLOB_TYPE_RED;
+//		visionData->blobs[visionData->numBlobs].left = blob->left;
+//		visionData->blobs[visionData->numBlobs].top = blob->top + blob->height;
+//		visionData->blobs[visionData->numBlobs].width = blob->width;
+//		visionData->blobs[visionData->numBlobs].height = blob->height;
+//		(visionData->numBlobs)++;
+//		*/
+//
+//		for (y = blob->top + blob->height; y < blob->top + blob->height * 4; y += 2) {
+//			for (x = blob->left - blob->width / 2; x < blob->left + blob->width * 3 / 2; x += 2) {
+//				short pixel = pixels[y * IMAGE_WIDTH + x];
+//				if (colorMatch(pixel, targetColors[BLOB_TYPE_RED])) {
+//					//if (visionData->numBlobs >= MAX_BLOBS) continue;
+//					floodFill(pixels, x, y, targetColors[BLOB_TYPE_RED], BLOB_TYPE_RED);
+//				}
+//			}
+//		}
+//	}
+
 	updateVisionData(visionData);
+#ifdef DEBUG_USB_VISION
 	transmitFrame(frame);
+#endif
 }
 
 int main()
@@ -342,20 +376,26 @@ int main()
 	BSInit();
 	STInit();
 
+	int h = ReadCameraRegister(0x25);
+	int v = ReadCameraRegister(0x06);
+	*((int *)shared_debug_buffer) = h;
+	*((int *)shared_debug_buffer + 4) = v;
+	//WriteCameraRegister(
 	//initialize cross core memory
 	*live_vision_data = 0;
 
 	//initialize constant memory
 	initHeader();
 	initTargetColors();
-
+#ifdef DEBUG_USB_VISION
 	print("Initializing USB...\r\n");
+	// UNCOMMENT FOR USB VISION DATA
 	USB_init();
 	print("Waiting for USB...");
 	while (!USB_writeReady());
 	USB_setBurstSize(128);
 	print("ready\r\n");
-
+#endif
 	print("Setting up interrupts\r\n");
 	XExc_Init();
 	XExc_RegisterHandler( XEXC_ID_NON_CRITICAL_INT, (XExceptionHandler)XIntc_DeviceInterruptHandler, (void*)XPAR_XPS_INTC_1_DEVICE_ID);

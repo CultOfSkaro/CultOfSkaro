@@ -3722,7 +3722,7 @@
 <msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">BU2</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/grf.rf/gl0.wr/gwas.wsts/ram_full_fb_i&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">plb_vision_0/USER_LOGIC_I/core_soft_reset</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">plb_vision_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;plb_vision_0/USER_LOGIC_I/core_soft_reset_1&gt; &lt;plb_vision_0/USER_LOGIC_I/core_soft_reset_2&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">plb_vision_0/USER_LOGIC_I/core_soft_reset</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">plb_vision_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">3 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;plb_vision_0/USER_LOGIC_I/core_soft_reset_1&gt; &lt;plb_vision_0/USER_LOGIC_I/core_soft_reset_2&gt; &lt;plb_vision_0/USER_LOGIC_I/core_soft_reset_3&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">BU2</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/grf.rf/gl0.rd/gras.rsts/ram_empty_i&gt; </arg>
@@ -3911,7 +3911,7 @@
 <msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">BU2</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/grf.rf/gl0.wr/gwas.wsts/ram_full_fb_i&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">plb_vision_0/USER_LOGIC_I/core_soft_reset</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">plb_vision_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;plb_vision_0/USER_LOGIC_I/core_soft_reset_1&gt; &lt;plb_vision_0/USER_LOGIC_I/core_soft_reset_2&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">plb_vision_0/USER_LOGIC_I/core_soft_reset</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">plb_vision_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">3 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;plb_vision_0/USER_LOGIC_I/core_soft_reset_1&gt; &lt;plb_vision_0/USER_LOGIC_I/core_soft_reset_2&gt; &lt;plb_vision_0/USER_LOGIC_I/core_soft_reset_3&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">BU2</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/grf.rf/gl0.rd/gras.rsts/ram_empty_i&gt; </arg>

@@ -5,6 +5,8 @@ xflow.exe -wd implementation -p xc4vfx60ff672-11 -implement xflow.opt system.ngc
 PMSPEC -- Overriding Xilinx file
 <C:/Xilinx/13.3/ISE_DS/EDK/virtex4/data/virtex4.acd> with local file
 <C:/Xilinx/13.3/ISE_DS/ISE/virtex4/data/virtex4.acd>
+.... Copying flowfile C:/Xilinx/13.3/ISE_DS/ISE/xilinx/data/fpga.flw into
+working directory C:/RobotRacers/CultOfSkaro/hardware/implementation 
 
 Using Flow File: C:/RobotRacers/CultOfSkaro/hardware/implementation/fpga.flw 
 Using Option File(s): 
@@ -5127,8 +5129,8 @@ NGDBUILD Design Results Summary:
   Number of warnings: 993
 
 Writing NGD file "system.ngd" ...
-Total REAL time to NGDBUILD completion: 2 min  44 sec
-Total CPU time to NGDBUILD completion:  2 min  4 sec
+Total REAL time to NGDBUILD completion: 2 min  38 sec
+Total CPU time to NGDBUILD completion:  1 min  58 sec
 
 Writing NGDBUILD log file "system.bld"...
 
@@ -5195,11 +5197,11 @@ WARNING:Pack:1186 - One or more I/O components have conflicting property values.
 Running delay-based LUT packing...
 Updating timing models...
 Running timing-driven placement...
-Total REAL time at the beginning of Placer: 3 mins 9 secs 
-Total CPU  time at the beginning of Placer: 2 mins 25 secs 
+Total REAL time at the beginning of Placer: 2 mins 47 secs 
+Total CPU  time at the beginning of Placer: 2 mins 8 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:df0c5ebe) REAL time: 3 mins 25 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:b7417ffe) REAL time: 3 mins 1 secs 
 
 Phase 2.7  Design Feasibility Check
 WARNING:Place:838 - An IO Bus with more than one IO standard is found.
@@ -5368,10 +5370,10 @@ WARNING:Place:838 - An IO Bus with more than one IO standard is found.
 INFO:Place:834 - Only a subset of IOs are locked. Out of 260 IOs, 238 are locked
    and 22 are not locked. If you would like to print the names of these IOs,
    please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
-Phase 2.7  Design Feasibility Check (Checksum:df0c5ebe) REAL time: 3 mins 26 secs 
+Phase 2.7  Design Feasibility Check (Checksum:b7417ffe) REAL time: 3 mins 2 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:813187c6) REAL time: 3 mins 26 secs 
+Phase 3.31  Local Placement Optimization (Checksum:cb431d8e) REAL time: 3 mins 2 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 ...
@@ -5386,67 +5388,67 @@ WARNING:Place:644 - A clock IOB clock component is not placed at an optimal
    this override is highly discouraged as it may lead to very poor timing
    results. It is recommended that this error condition be corrected in the
    design.
-Phase 4.2  Initial Clock and IO Placement (Checksum:d0af9a1b) REAL time: 4 mins 6 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:8e6c775d) REAL time: 3 mins 39 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:d0af9a1b) REAL time: 4 mins 6 secs 
+Phase 5.36  Local Placement Optimization (Checksum:8e6c775d) REAL time: 3 mins 39 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:d0af9a1b) REAL time: 4 mins 6 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:8e6c775d) REAL time: 3 mins 39 secs 
 
 Phase 7.3  Local Placement Optimization
 ....
-Phase 7.3  Local Placement Optimization (Checksum:4120a7bd) REAL time: 4 mins 8 secs 
+Phase 7.3  Local Placement Optimization (Checksum:5a19d60f) REAL time: 3 mins 41 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:5ef621de) REAL time: 4 mins 10 secs 
+Phase 8.5  Local Placement Optimization (Checksum:c1b81184) REAL time: 3 mins 43 secs 
 
 Phase 9.8  Global Placement
-.............................
-.....................................................................................
+..............................
+...............................................................................................
 .................
-.....................................................................................
-.......................
-.......................
+..............................................................................
 ................
-Phase 9.8  Global Placement (Checksum:154895bf) REAL time: 12 mins 13 secs 
+................
+................
+Phase 9.8  Global Placement (Checksum:a7e1c6c3) REAL time: 10 mins 51 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:154895bf) REAL time: 12 mins 18 secs 
+Phase 10.5  Local Placement Optimization (Checksum:a7e1c6c3) REAL time: 10 mins 57 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:69c48fea) REAL time: 17 mins 40 secs 
+Phase 11.18  Placement Optimization (Checksum:b7ef1d2c) REAL time: 16 mins 30 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:69c48fea) REAL time: 17 mins 45 secs 
+Phase 12.5  Local Placement Optimization (Checksum:b7ef1d2c) REAL time: 16 mins 36 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:69c48fea) REAL time: 17 mins 46 secs 
+Phase 13.34  Placement Validation (Checksum:b7ef1d2c) REAL time: 16 mins 37 secs 
 
-Total REAL time to Placer completion: 17 mins 50 secs 
-Total CPU  time to Placer completion: 13 mins 22 secs 
+Total REAL time to Placer completion: 16 mins 42 secs 
+Total CPU  time to Placer completion: 13 mins 46 secs 
 Running post-placement packing...
 
 Design Summary:
 Number of errors:      0
 Number of warnings:   41
 Logic Utilization:
-  Number of Slice Flip Flops:         9,291 out of  50,560   18%
+  Number of Slice Flip Flops:         9,303 out of  50,560   18%
     Number of Slice FFs used for
-    DCM autocalibration logic:         21 out of   9,291    1%
-  Number of 4 input LUTs:             9,470 out of  50,560   18%
+    DCM autocalibration logic:         21 out of   9,303    1%
+  Number of 4 input LUTs:             9,485 out of  50,560   18%
     Number of LUTs used for
-    DCM autocalibration logic:         12 out of   9,470    1%
+    DCM autocalibration logic:         12 out of   9,485    1%
       *See INFO below for an explanation of the DCM autocalibration logic
        added by Map
 Logic Distribution:
-  Number of occupied Slices:          9,487 out of  25,280   37%
-    Number of Slices containing only related logic:   9,487 out of   9,487 100%
-    Number of Slices containing unrelated logic:          0 out of   9,487   0%
+  Number of occupied Slices:          9,591 out of  25,280   37%
+    Number of Slices containing only related logic:   9,591 out of   9,591 100%
+    Number of Slices containing unrelated logic:          0 out of   9,591   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       9,824 out of  50,560   19%
-    Number used as logic:             9,029
-    Number used as a route-thru:        354
+  Total Number of 4 input LUTs:       9,829 out of  50,560   19%
+    Number used as logic:             9,044
+    Number used as a route-thru:        344
     Number used for Dual Port RAMs:      82
       (Two LUTs used per Dual Port RAM)
     Number used as Shift registers:     359
@@ -5468,9 +5470,9 @@ Logic Distribution:
 
 Average Fanout of Non-Clock Nets:                3.27
 
-Peak Memory Usage:  814 MB
-Total REAL time to MAP completion:  18 mins 25 secs 
-Total CPU time to MAP completion:   13 mins 48 secs 
+Peak Memory Usage:  804 MB
+Total REAL time to MAP completion:  17 mins 16 secs 
+Total CPU time to MAP completion:   14 mins 16 secs 
 
 INFO:
 
@@ -5532,8 +5534,8 @@ Device Utilization Summary:
    Number of OLOGICs                       219 out of 576    38%
    Number of PPC405_ADVs                     2 out of 2     100%
    Number of RAMB16s                       208 out of 232    89%
-   Number of Slices                       9487 out of 25280  37%
-      Number of SLICEMs                    264 out of 12640   2%
+   Number of Slices                       9591 out of 25280  37%
+      Number of SLICEMs                    263 out of 12640   2%
 
 
 
@@ -5542,44 +5544,44 @@ Router effort level (-rl):    High
 
 INFO:Timing:3386 - Intersecting Constraints found and resolved.  For more information, see the TSI report.  Please
    consult the Xilinx Command Line Tools User Guide for information on generating a TSI report.
-Starting initial Timing Analysis.  REAL time: 1 mins 18 secs 
-Finished initial Timing Analysis.  REAL time: 1 mins 20 secs 
+Starting initial Timing Analysis.  REAL time: 1 mins 12 secs 
+Finished initial Timing Analysis.  REAL time: 1 mins 15 secs 
 
+WARNING:Par:288 - The signal sdram_clk_fb_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal xps_bram_if_cntlr_1_port_BRAM_Addr<31> has no load.  PAR will not attempt to route this
+   signal.
 WARNING:Par:288 - The signal xps_bram_if_cntlr_1_port_BRAM_Addr<30> has no load.  PAR will not attempt to route this
    signal.
 WARNING:Par:288 - The signal xps_bram_if_cntlr_0_port_BRAM_Addr<30> has no load.  PAR will not attempt to route this
-   signal.
-WARNING:Par:288 - The signal sdram_clk_fb_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal xps_bram_if_cntlr_1_port_BRAM_Addr<31> has no load.  PAR will not attempt to route this
    signal.
 WARNING:Par:288 - The signal xps_bram_if_cntlr_0_port_BRAM_Addr<31> has no load.  PAR will not attempt to route this
    signal.
 Starting Router
 
 
-Phase  1  : 68528 unrouted;      REAL time: 1 mins 26 secs 
+Phase  1  : 68611 unrouted;      REAL time: 1 mins 23 secs 
 
-Phase  2  : 52836 unrouted;      REAL time: 1 mins 31 secs 
+Phase  2  : 52904 unrouted;      REAL time: 1 mins 27 secs 
 
-Phase  3  : 14625 unrouted;      REAL time: 2 mins 11 secs 
+Phase  3  : 14442 unrouted;      REAL time: 2 mins 10 secs 
 
-Phase  4  : 14644 unrouted; (Setup:0, Hold:105, Component Switching Limit:0)     REAL time: 2 mins 48 secs 
+Phase  4  : 14448 unrouted; (Setup:0, Hold:353, Component Switching Limit:0)     REAL time: 2 mins 38 secs 
 
 Updating file: system.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:116, Component Switching Limit:0)     REAL time: 3 mins 56 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:319, Component Switching Limit:0)     REAL time: 3 mins 37 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:116, Component Switching Limit:0)     REAL time: 3 mins 56 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:319, Component Switching Limit:0)     REAL time: 3 mins 37 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:116, Component Switching Limit:0)     REAL time: 3 mins 56 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:319, Component Switching Limit:0)     REAL time: 3 mins 37 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:116, Component Switching Limit:0)     REAL time: 3 mins 56 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:319, Component Switching Limit:0)     REAL time: 3 mins 37 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 mins 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 3 mins 42 secs 
 
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 mins 20 secs 
-Total REAL time to Router completion: 4 mins 20 secs 
-Total CPU time to Router completion: 3 mins 17 secs 
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 3 mins 58 secs 
+Total REAL time to Router completion: 3 mins 58 secs 
+Total CPU time to Router completion: 3 mins 27 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -5597,49 +5599,39 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|   sram_clk_pin_OBUF |BUFGCTRL_X0Y25| No   | 8080 |  0.887     |  3.135      |
+|   sram_clk_pin_OBUF |BUFGCTRL_X0Y25| No   | 8100 |  0.864     |  3.112      |
 +---------------------+--------------+------+------+------------+-------------+
 |       sdram_clk_phy |BUFGCTRL_X0Y22| No   |   35 |  0.032     |  2.879      |
 +---------------------+--------------+------+------+------------+-------------+
-|    usb_if_clk_shift |BUFGCTRL_X0Y16| No   |  116 |  0.188     |  3.030      |
+|    usb_if_clk_shift |BUFGCTRL_X0Y16| No   |  121 |  0.330     |  3.020      |
 +---------------------+--------------+------+------+------------+-------------+
-|   cam0_pixclk_BUFGP |BUFGCTRL_X0Y30| No   |   40 |  0.182     |  2.850      |
+|   cam0_pixclk_BUFGP |BUFGCTRL_X0Y30| No   |   38 |  0.145     |  2.723      |
 +---------------------+--------------+------+------+------------+-------------+
 |debug_module_0/Dbg_C |              |      |      |            |             |
-|                lk_0 | BUFGCTRL_X0Y5| No   |   55 |  0.459     |  2.771      |
+|                lk_0 | BUFGCTRL_X0Y5| No   |   48 |  0.234     |  2.541      |
 +---------------------+--------------+------+------+------------+-------------+
 | clk_300_0000MHzDCM0 |BUFGCTRL_X0Y31| No   |    2 |  0.128     |  2.876      |
 +---------------------+--------------+------+------+------------+-------------+
 |fpga_0_clk_1_sys_clk |              |      |      |            |             |
-|          _pin_IBUFG |         Local|      |    7 |  0.803     |  2.312      |
+|          _pin_IBUFG |         Local|      |    7 |  0.853     |  2.529      |
 +---------------------+--------------+------+------+------------+-------------+
-|    usb_if_clk_IBUFG |         Local|      |    6 |  0.317     |  1.773      |
+|    usb_if_clk_IBUFG |         Local|      |    7 |  0.199     |  1.882      |
 +---------------------+--------------+------+------+------------+-------------+
 |debug_module_0/Dbg_U |              |      |      |            |             |
-|             pdate_0 |         Local|      |   26 |  1.185     |  1.917      |
+|             pdate_0 |         Local|      |   20 |  0.563     |  1.062      |
 +---------------------+--------------+------+------+------------+-------------+
 |plb_vision_0_Interru |              |      |      |            |             |
-|                  pt |         Local|      |    1 |  0.000     |  1.307      |
+|                  pt |         Local|      |    1 |  0.000     |  1.808      |
 +---------------------+--------------+------+------+------------+-------------+
 |gameboard_uart_Inter |              |      |      |            |             |
-|                rupt |         Local|      |    1 |  0.000     |  1.278      |
+|                rupt |         Local|      |    1 |  0.000     |  0.871      |
 +---------------------+--------------+------+------+------------+-------------+
 |ppc405_0_jtagppc_bus |              |      |      |            |             |
 |         _JTGC405TCK |         Local|      |    2 |  0.766     |  2.466      |
 +---------------------+--------------+------+------+------------+-------------+
-|        wireless_int |         Local|      |    1 |  0.000     |  0.636      |
+|        wireless_int |         Local|      |    1 |  0.000     |  0.997      |
 +---------------------+--------------+------+------+------------+-------------+
-|          serial_int |         Local|      |    1 |  0.000     |  0.600      |
-+---------------------+--------------+------+------+------------+-------------+
-|DCM_AUTOCALIBRATION_ |              |      |      |            |             |
-|clock_generator_0/cl |              |      |      |            |             |
-|ock_generator_0/DCM0 |              |      |      |            |             |
-|_INST/Using_DCM_ADV. |              |      |      |            |             |
-|DCM_ADV_INST/clock_g |              |      |      |            |             |
-|enerator_0/clock_gen |              |      |      |            |             |
-|erator_0/DCM0_INST/U |              |      |      |            |             |
-|sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|        _INST/CLKOUT |         Local|      |    6 |  0.272     |  1.258      |
+|          serial_int |         Local|      |    1 |  0.000     |  1.903      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |clock_generator_0/cl |              |      |      |            |             |
@@ -5649,7 +5641,7 @@ Generating Clock Report
 |enerator_0/clock_gen |              |      |      |            |             |
 |erator_0/DCM0_INST/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|       _INST/FASTCLK |         Local|      |    3 |  0.000     |  0.431      |
+|        _INST/CLKOUT |         Local|      |    6 |  0.042     |  0.455      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |clock_generator_0/cl |              |      |      |            |             |
@@ -5659,7 +5651,7 @@ Generating Clock Report
 |enerator_0/clock_gen |              |      |      |            |             |
 |erator_0/DCM0_INST/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<1> |         Local|      |    2 |  0.000     |  0.718      |
+|       _INST/FASTCLK |         Local|      |    3 |  0.000     |  0.462      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |clock_generator_0/cl |              |      |      |            |             |
@@ -5669,7 +5661,7 @@ Generating Clock Report
 |enerator_0/clock_gen |              |      |      |            |             |
 |erator_0/DCM0_INST/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<2> |         Local|      |    2 |  0.000     |  1.034      |
+|     _INST/cd/CLK<1> |         Local|      |    2 |  0.000     |  0.816      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |clock_generator_0/cl |              |      |      |            |             |
@@ -5679,7 +5671,7 @@ Generating Clock Report
 |enerator_0/clock_gen |              |      |      |            |             |
 |erator_0/DCM0_INST/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<3> |         Local|      |    2 |  0.000     |  0.566      |
+|     _INST/cd/CLK<2> |         Local|      |    2 |  0.000     |  0.788      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |clock_generator_0/cl |              |      |      |            |             |
@@ -5689,7 +5681,7 @@ Generating Clock Report
 |enerator_0/clock_gen |              |      |      |            |             |
 |erator_0/DCM0_INST/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<4> |         Local|      |    2 |  0.000     |  0.403      |
+|     _INST/cd/CLK<3> |         Local|      |    2 |  0.000     |  0.635      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |clock_generator_0/cl |              |      |      |            |             |
@@ -5699,7 +5691,7 @@ Generating Clock Report
 |enerator_0/clock_gen |              |      |      |            |             |
 |erator_0/DCM0_INST/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<5> |         Local|      |    2 |  0.000     |  0.731      |
+|     _INST/cd/CLK<4> |         Local|      |    2 |  0.000     |  0.847      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |clock_generator_0/cl |              |      |      |            |             |
@@ -5709,63 +5701,73 @@ Generating Clock Report
 |enerator_0/clock_gen |              |      |      |            |             |
 |erator_0/DCM0_INST/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<6> |         Local|      |    2 |  0.000     |  1.270      |
+|     _INST/cd/CLK<5> |         Local|      |    2 |  0.000     |  1.234      |
++---------------------+--------------+------+------+------------+-------------+
+|DCM_AUTOCALIBRATION_ |              |      |      |            |             |
+|clock_generator_0/cl |              |      |      |            |             |
+|ock_generator_0/DCM0 |              |      |      |            |             |
+|_INST/Using_DCM_ADV. |              |      |      |            |             |
+|DCM_ADV_INST/clock_g |              |      |      |            |             |
+|enerator_0/clock_gen |              |      |      |            |             |
+|erator_0/DCM0_INST/U |              |      |      |            |             |
+|sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
+|     _INST/cd/CLK<6> |         Local|      |    2 |  0.000     |  0.680      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_2/dcm_2/Using_DC |              |      |      |            |             |
 |M_ADV.DCM_ADV_INST/d |              |      |      |            |             |
 |cm_2/dcm_2/Using_DCM |              |      |      |            |             |
 |_ADV.DCM_ADV_INST/CL |              |      |      |            |             |
-|                KOUT |         Local|      |    6 |  0.006     |  0.413      |
+|                KOUT |         Local|      |    6 |  0.162     |  0.571      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_2/dcm_2/Using_DC |              |      |      |            |             |
 |M_ADV.DCM_ADV_INST/d |              |      |      |            |             |
 |cm_2/dcm_2/Using_DCM |              |      |      |            |             |
 |_ADV.DCM_ADV_INST/FA |              |      |      |            |             |
-|               STCLK |         Local|      |    3 |  0.000     |  0.440      |
+|               STCLK |         Local|      |    3 |  0.000     |  0.448      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_2/dcm_2/Using_DC |              |      |      |            |             |
 |M_ADV.DCM_ADV_INST/d |              |      |      |            |             |
 |cm_2/dcm_2/Using_DCM |              |      |      |            |             |
 |_ADV.DCM_ADV_INST/cd |              |      |      |            |             |
-|             /CLK<1> |         Local|      |    2 |  0.000     |  0.411      |
+|             /CLK<1> |         Local|      |    2 |  0.000     |  0.401      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_2/dcm_2/Using_DC |              |      |      |            |             |
 |M_ADV.DCM_ADV_INST/d |              |      |      |            |             |
 |cm_2/dcm_2/Using_DCM |              |      |      |            |             |
 |_ADV.DCM_ADV_INST/cd |              |      |      |            |             |
-|             /CLK<2> |         Local|      |    2 |  0.000     |  0.626      |
+|             /CLK<2> |         Local|      |    2 |  0.000     |  0.404      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_2/dcm_2/Using_DC |              |      |      |            |             |
 |M_ADV.DCM_ADV_INST/d |              |      |      |            |             |
 |cm_2/dcm_2/Using_DCM |              |      |      |            |             |
 |_ADV.DCM_ADV_INST/cd |              |      |      |            |             |
-|             /CLK<3> |         Local|      |    2 |  0.000     |  0.393      |
+|             /CLK<3> |         Local|      |    2 |  0.000     |  0.388      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_2/dcm_2/Using_DC |              |      |      |            |             |
 |M_ADV.DCM_ADV_INST/d |              |      |      |            |             |
 |cm_2/dcm_2/Using_DCM |              |      |      |            |             |
 |_ADV.DCM_ADV_INST/cd |              |      |      |            |             |
-|             /CLK<4> |         Local|      |    2 |  0.000     |  0.717      |
+|             /CLK<4> |         Local|      |    2 |  0.000     |  0.404      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_2/dcm_2/Using_DC |              |      |      |            |             |
 |M_ADV.DCM_ADV_INST/d |              |      |      |            |             |
 |cm_2/dcm_2/Using_DCM |              |      |      |            |             |
 |_ADV.DCM_ADV_INST/cd |              |      |      |            |             |
-|             /CLK<5> |         Local|      |    2 |  0.000     |  0.393      |
+|             /CLK<5> |         Local|      |    2 |  0.000     |  0.399      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_2/dcm_2/Using_DC |              |      |      |            |             |
 |M_ADV.DCM_ADV_INST/d |              |      |      |            |             |
 |cm_2/dcm_2/Using_DCM |              |      |      |            |             |
 |_ADV.DCM_ADV_INST/cd |              |      |      |            |             |
-|             /CLK<6> |         Local|      |    2 |  0.000     |  0.404      |
+|             /CLK<6> |         Local|      |    2 |  0.000     |  0.599      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_module_0/dcm_mod |              |      |      |            |             |
@@ -5773,7 +5775,7 @@ Generating Clock Report
 |DCM_ADV_INST/dcm_mod |              |      |      |            |             |
 |ule_0/dcm_module_0/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|        _INST/CLKOUT |         Local|      |    6 |  0.287     |  1.085      |
+|        _INST/CLKOUT |         Local|      |    6 |  0.004     |  0.617      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_module_0/dcm_mod |              |      |      |            |             |
@@ -5781,7 +5783,7 @@ Generating Clock Report
 |DCM_ADV_INST/dcm_mod |              |      |      |            |             |
 |ule_0/dcm_module_0/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|       _INST/FASTCLK |         Local|      |    3 |  0.000     |  0.837      |
+|       _INST/FASTCLK |         Local|      |    3 |  0.000     |  0.425      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_module_0/dcm_mod |              |      |      |            |             |
@@ -5789,7 +5791,7 @@ Generating Clock Report
 |DCM_ADV_INST/dcm_mod |              |      |      |            |             |
 |ule_0/dcm_module_0/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<1> |         Local|      |    2 |  0.000     |  0.623      |
+|     _INST/cd/CLK<1> |         Local|      |    2 |  0.000     |  0.404      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_module_0/dcm_mod |              |      |      |            |             |
@@ -5797,7 +5799,7 @@ Generating Clock Report
 |DCM_ADV_INST/dcm_mod |              |      |      |            |             |
 |ule_0/dcm_module_0/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<2> |         Local|      |    2 |  0.000     |  0.776      |
+|     _INST/cd/CLK<2> |         Local|      |    2 |  0.000     |  0.592      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_module_0/dcm_mod |              |      |      |            |             |
@@ -5805,7 +5807,7 @@ Generating Clock Report
 |DCM_ADV_INST/dcm_mod |              |      |      |            |             |
 |ule_0/dcm_module_0/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<3> |         Local|      |    2 |  0.000     |  0.596      |
+|     _INST/cd/CLK<3> |         Local|      |    2 |  0.000     |  0.852      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_module_0/dcm_mod |              |      |      |            |             |
@@ -5813,7 +5815,7 @@ Generating Clock Report
 |DCM_ADV_INST/dcm_mod |              |      |      |            |             |
 |ule_0/dcm_module_0/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<4> |         Local|      |    2 |  0.000     |  0.993      |
+|     _INST/cd/CLK<4> |         Local|      |    2 |  0.000     |  0.627      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_module_0/dcm_mod |              |      |      |            |             |
@@ -5821,7 +5823,7 @@ Generating Clock Report
 |DCM_ADV_INST/dcm_mod |              |      |      |            |             |
 |ule_0/dcm_module_0/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<5> |         Local|      |    2 |  0.000     |  0.862      |
+|     _INST/cd/CLK<5> |         Local|      |    2 |  0.000     |  0.979      |
 +---------------------+--------------+------+------+------------+-------------+
 |DCM_AUTOCALIBRATION_ |              |      |      |            |             |
 |dcm_module_0/dcm_mod |              |      |      |            |             |
@@ -5829,7 +5831,7 @@ Generating Clock Report
 |DCM_ADV_INST/dcm_mod |              |      |      |            |             |
 |ule_0/dcm_module_0/U |              |      |      |            |             |
 |sing_DCM_ADV.DCM_ADV |              |      |      |            |             |
-|     _INST/cd/CLK<6> |         Local|      |    2 |  0.000     |  1.038      |
+|     _INST/cd/CLK<6> |         Local|      |    2 |  0.000     |  0.920      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -5851,179 +5853,179 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.006ns|     0.994ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [15].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.019ns|     0.981ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [10].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.027ns|     0.973ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [8].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
-  MAXDELAY = 1 ns                           |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.039ns|     0.961ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [28].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.046ns|     0.954ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [14].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.047ns|     0.953ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [20].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.061ns|     0.939ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [19].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.065ns|     0.935ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [30].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.089ns|     0.911ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [11].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.090ns|     0.910ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [5].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
-  MAXDELAY = 1 ns                           |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.090ns|     0.910ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [6].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
-  MAXDELAY = 1 ns                           |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.107ns|     0.893ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [21].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.110ns|     0.890ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [16].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.122ns|     0.878ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [24].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.135ns|     0.865ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [26].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_ | SETUP       |     8.782ns|     1.218ns|       0|           0
-  pin" 100 MHz HIGH 50%                     | HOLD        |     0.267ns|            |       0|           0
-                                            | MINLOWPULSE |     5.200ns|     4.800ns|       0|           0
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.191ns|     0.809ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [12].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.204ns|     0.796ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [23].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  TS_clock_generator_0_clock_generator_0_SI | SETUP       |     0.213ns|     9.758ns|       0|           0
-  G_DCM0_CLK0 = PERIOD TIMEGRP         "clo | HOLD        |     0.272ns|            |       0|           0
+  TS_clock_generator_0_clock_generator_0_SI | SETUP       |     0.017ns|     9.949ns|       0|           0
+  G_DCM0_CLK0 = PERIOD TIMEGRP         "clo | HOLD        |     0.276ns|            |       0|           0
   ck_generator_0_clock_generator_0_SIG_DCM0 |             |            |            |        |            
   _CLK0" TS_sys_clk_pin         HIGH 50%    |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.220ns|     0.780ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [25].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.224ns|     0.776ns|       0|           0
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.027ns|     0.973ns|       0|           0
   n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
   [29].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
    MAXDELAY = 1 ns                          |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.248ns|     0.752ns|       0|           0
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.031ns|     0.969ns|       0|           0
   n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [13].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+  [23].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
    MAXDELAY = 1 ns                          |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.251ns|     0.749ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [9].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
-  MAXDELAY = 1 ns                           |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.264ns|     0.736ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [2].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
-  MAXDELAY = 1 ns                           |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.266ns|     0.734ns|       0|           0
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.033ns|     0.967ns|       0|           0
   n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
   [4].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
   MAXDELAY = 1 ns                           |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.273ns|     0.727ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [7].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
-  MAXDELAY = 1 ns                           |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.276ns|     0.724ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [18].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.296ns|     0.704ns|       0|           0
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.035ns|     0.965ns|       0|           0
   n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
   [17].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
    MAXDELAY = 1 ns                          |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  TS_clock_generator_0_clock_generator_0_SI | SETUP       |     0.377ns|     2.956ns|       0|           0
-  G_DCM0_CLKFX = PERIOD TIMEGRP         "cl | HOLD        |     0.925ns|            |       0|           0
-  ock_generator_0_clock_generator_0_SIG_DCM |             |            |            |        |            
-  0_CLKFX" TS_sys_clk_pin *         3 HIGH  |             |            |            |        |            
-  50%                                       |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.409ns|     0.591ns|       0|           0
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.035ns|     0.965ns|       0|           0
   n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [31].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+  [30].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
    MAXDELAY = 1 ns                          |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.436ns|     0.564ns|       0|           0
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.035ns|     0.965ns|       0|           0
   n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [27].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
-   MAXDELAY = 1 ns                          |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.473ns|     0.527ns|       0|           0
-  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
-  [3].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
+  [7].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
   MAXDELAY = 1 ns                           |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.473ns|     0.527ns|       0|           0
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.037ns|     0.963ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [25].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.040ns|     0.960ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [12].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.041ns|     0.959ns|       0|           0
   n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
   [22].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
    MAXDELAY = 1 ns                          |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.473ns|     0.527ns|       0|           0
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.049ns|     0.951ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [15].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.050ns|     0.950ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [10].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.051ns|     0.949ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [9].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
+  MAXDELAY = 1 ns                           |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.097ns|     0.903ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [26].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.102ns|     0.898ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [31].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.103ns|     0.897ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [27].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.114ns|     0.886ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [14].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.116ns|     0.884ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [24].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_ | SETUP       |     7.708ns|     2.292ns|       0|           0
+  pin" 100 MHz HIGH 50%                     | HOLD        |     0.332ns|            |       0|           0
+                                            | MINLOWPULSE |     5.200ns|     4.800ns|       0|           0
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.195ns|     0.805ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [18].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.238ns|     0.762ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [20].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.245ns|     0.755ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [21].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.247ns|     0.753ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [28].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.252ns|     0.748ns|       0|           0
   n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
   [1].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
   MAXDELAY = 1 ns                           |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.473ns|     0.527ns|       0|           0
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.253ns|     0.747ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [11].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.254ns|     0.746ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [19].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.254ns|     0.746ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [13].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.256ns|     0.744ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [6].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
+  MAXDELAY = 1 ns                           |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.258ns|     0.742ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [5].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
+  MAXDELAY = 1 ns                           |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.259ns|     0.741ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [2].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
+  MAXDELAY = 1 ns                           |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.259ns|     0.741ns|       0|           0
   n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
   [0].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
+  MAXDELAY = 1 ns                           |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.259ns|     0.741ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [16].u_iob_dq/rd_data_rise_rdclk"         |             |            |            |        |            
+   MAXDELAY = 1 ns                          |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.273ns|     0.727ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [3].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
+  MAXDELAY = 1 ns                           |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TS_clock_generator_0_clock_generator_0_SI | SETUP       |     0.345ns|     2.988ns|       0|           0
+  G_DCM0_CLKFX = PERIOD TIMEGRP         "cl | HOLD        |     0.838ns|            |       0|           0
+  ock_generator_0_clock_generator_0_SIG_DCM |             |            |            |        |            
+  0_CLKFX" TS_sys_clk_pin *         3 HIGH  |             |            |            |        |            
+  50%                                       |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  NET         "mpmc_0/mpmc_0/mpmc_core_0/ge | MAXDELAY    |     0.374ns|     0.626ns|       0|           0
+  n_sdram_phy.mpmc_phy_if_0/u_phy_io/gen_dq |             |            |            |        |            
+  [8].u_iob_dq/rd_data_rise_rdclk"          |             |            |            |        |            
   MAXDELAY = 1 ns                           |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
   TIMEGRP "SdramOutput" OFFSET = OUT 5 ns A | MAXDELAY    |     0.947ns|     4.053ns|       0|           0
@@ -6033,19 +6035,19 @@ Asterisk (*) preceding a constraint indicates it was not met.
   ID 4 ns BEFORE COMP         "fpga_0_clk_1 | HOLD        |     1.885ns|            |       0|           0
   _sys_clk_pin"                             |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  PERIOD analysis for net "dcm_module_0/dcm | SETUP       |    14.966ns|     5.867ns|       0|           0
-  _module_0/CLK0_BUF" derived from  NET "us | HOLD        |     0.381ns|            |       0|           0
+  PERIOD analysis for net "dcm_module_0/dcm | SETUP       |    15.165ns|     5.668ns|       0|           0
+  _module_0/CLK0_BUF" derived from  NET "us | HOLD        |     0.419ns|            |       0|           0
   b_if_clk_IBUFG" PERIOD = 20.833333 ns HIG | MINPERIOD   |    14.167ns|     6.666ns|       0|           0
   H 50%                                     |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  NET "usb_if_clk_IBUFG" PERIOD = 20.833333 | SETUP       |    19.803ns|     1.030ns|       0|           0
-   ns HIGH 50%                              | HOLD        |     0.137ns|            |       0|           0
+  NET "usb_if_clk_IBUFG" PERIOD = 20.833333 | SETUP       |    20.003ns|     0.830ns|       0|           0
+   ns HIGH 50%                              | HOLD        |     0.258ns|            |       0|           0
                                             | MINLOWPULSE |    10.832ns|    10.000ns|       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TIMEGRP "Cam0_Input" OFFSET = IN 8 ns VAL | SETUP       |    11.138ns|    -3.138ns|       0|           0
-  ID 16 ns BEFORE COMP "cam0_pixclk"        | HOLD        |     1.825ns|            |       0|           0
+  TIMEGRP "Cam0_Input" OFFSET = IN 8 ns VAL | SETUP       |    10.949ns|    -2.949ns|       0|           0
+  ID 16 ns BEFORE COMP "cam0_pixclk"        | HOLD        |     2.017ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  PATH "TS_RST_ppc405_0_path" TIG           | SETUP       |         N/A|     4.333ns|     N/A|           0
+  PATH "TS_RST_ppc405_0_path" TIG           | SETUP       |         N/A|     4.319ns|     N/A|           0
 ----------------------------------------------------------------------------------------------------------
   NET "sdram_clk_fb_IBUF" PERIOD = 10 ns HI | N/A         |         N/A|         N/A|     N/A|         N/A
   GH 50%                                    |             |            |            |        |            
@@ -6078,11 +6080,11 @@ Derived Constraints for TS_sys_clk_pin
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_sys_clk_pin                 |     10.000ns|      4.800ns|      9.758ns|            0|            0|            3|       398180|
-| TS_clock_generator_0_clock_gen|     10.000ns|      9.758ns|          N/A|            0|            0|       398174|            0|
+|TS_sys_clk_pin                 |     10.000ns|      4.800ns|      9.949ns|            0|            0|            3|       413049|
+| TS_clock_generator_0_clock_gen|     10.000ns|      9.949ns|          N/A|            0|            0|       413043|            0|
 | erator_0_SIG_DCM0_CLK0        |             |             |             |             |             |             |             |
 |  TS_dcm_2_dcm_2_CLK0_BUF      |     10.000ns|          N/A|          N/A|            0|            0|            0|            0|
-| TS_clock_generator_0_clock_gen|      3.333ns|      2.956ns|          N/A|            0|            0|            6|            0|
+| TS_clock_generator_0_clock_gen|      3.333ns|      2.988ns|          N/A|            0|            0|            6|            0|
 | erator_0_SIG_DCM0_CLKFX       |             |             |             |             |             |             |             |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
@@ -6100,10 +6102,10 @@ All signals are completely routed.
 
 WARNING:Par:283 - There are 5 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 5 mins 1 secs 
-Total CPU time to PAR completion: 3 mins 34 secs 
+Total REAL time to PAR completion: 4 mins 37 secs 
+Total CPU time to PAR completion: 3 mins 43 secs 
 
-Peak Memory Usage:  744 MB
+Peak Memory Usage:  742 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.
@@ -6174,22 +6176,22 @@ Timing summary:
 
 Timing errors: 0  Score: 0 (Setup/Max: 0, Hold: 0)
 
-Constraints cover 399189 paths, 32 nets, and 59020 connections
+Constraints cover 414058 paths, 32 nets, and 59158 connections
 
 Design statistics:
    Minimum period:  10.000ns (Maximum frequency: 100.000MHz)
-   Maximum net delay:   0.994ns
+   Maximum net delay:   0.973ns
    Minimum input required time before clock:   0.913ns
    Minimum output required time after clock:   4.053ns
 
 
-Analysis completed Fri Mar 16 15:24:28 2012
+Analysis completed Mon Mar 19 20:30:15 2012
 --------------------------------------------------------------------------------
 
 Generating Report ...
 
 Number of warnings: 0
 Number of info messages: 3
-Total time: 2 mins 5 secs 
+Total time: 1 mins 40 secs 
 
 

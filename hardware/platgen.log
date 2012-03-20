@@ -933,39 +933,6 @@ C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 377 - Copying
 (BBD-specified) netlist files.
 
 Managing cache ...
-IPNAME:ppc405_virtex4 INSTANCE:ppc405_0 -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 89 - Copying cache
-implementation netlist
-IPNAME:ppc405_virtex4 INSTANCE:ppc405_1 -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 103 - Copying cache
-implementation netlist
-IPNAME:bram_block INSTANCE:plb_bram_if_cntlr_0_bram -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 155 - Copying cache
-implementation netlist
-IPNAME:bram_block INSTANCE:plb_bram_if_cntlr_1_bram -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 162 - Copying cache
-implementation netlist
-IPNAME:jtagppc_cntlr INSTANCE:jtagppc_cntlr_inst -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 220 - Copying cache
-implementation netlist
-IPNAME:proc_sys_reset INSTANCE:proc_sys_reset_0 -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 227 - Copying cache
-implementation netlist
-IPNAME:xps_mch_emc INSTANCE:xps_mch_emc_sram -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 311 - Copying cache
-implementation netlist
-IPNAME:dcm_module INSTANCE:dcm_module_0 -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 340 - Copying cache
-implementation netlist
-IPNAME:plb_usb INSTANCE:plb_usb_0 -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 354 - Copying cache
-implementation netlist
-IPNAME:plb_vision INSTANCE:plb_vision_0 -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 377 - Copying cache
-implementation netlist
-IPNAME:dcm_module INSTANCE:dcm_2 -
-C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 470 - Copying cache
-implementation netlist
 
 Elaborating instances ...
 IPNAME:bram_block INSTANCE:plb_bram_if_cntlr_0_bram -
@@ -983,7 +950,7 @@ Inserting wrapper level ...
 Completion time: 5.00 seconds
 
 Constructing platform-level connectivity ...
-Completion time: 2.00 seconds
+Completion time: 1.00 seconds
 
 Writing (top-level) BMM ...
 
@@ -996,6 +963,10 @@ Running XST synthesis ...
 INFO:EDK:4211 - The following instances are synthesized with XST. The MPD option
    IMP_NETLIST=TRUE indicates that a NGC file is to be produced using XST
    synthesis. IMP_NETLIST=FALSE (default) instances are not synthesized. 
+INSTANCE:ppc405_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 89 -
+Running XST synthesis
+INSTANCE:ppc405_1 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 103 -
+Running XST synthesis
 INSTANCE:plb_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 117 -
 Running XST synthesis
 INSTANCE:plb_1 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 125 -
@@ -1004,12 +975,20 @@ INSTANCE:xps_bram_if_cntlr_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs
 line 133 - Running XST synthesis
 INSTANCE:xps_bram_if_cntlr_1 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs
 line 144 - Running XST synthesis
+INSTANCE:plb_bram_if_cntlr_0_bram -
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 155 - Running XST synthesis
+INSTANCE:plb_bram_if_cntlr_1_bram -
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 162 - Running XST synthesis
 INSTANCE:serial_uart - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 169 -
 Running XST synthesis
 INSTANCE:wireless_uart - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 185
 - Running XST synthesis
 INSTANCE:clock_generator_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line
 201 - Running XST synthesis
+INSTANCE:jtagppc_cntlr_inst - C:\RobotRacers\CultOfSkaro\hardware\system.mhs
+line 220 - Running XST synthesis
+INSTANCE:proc_sys_reset_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line
+227 - Running XST synthesis
 INSTANCE:xps_intc_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 240 -
 Running XST synthesis
 INSTANCE:plb_quad_encoder_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs
@@ -1018,7 +997,17 @@ INSTANCE:plb_pwm_ctrl_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line
 261 - Running XST synthesis
 INSTANCE:xps_mch_emc_flash - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line
 273 - Running XST synthesis
+INSTANCE:xps_mch_emc_sram - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line
+311 - Running XST synthesis
+INSTANCE:dcm_module_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 340
+- Running XST synthesis
+INSTANCE:plb_usb_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 354 -
+Running XST synthesis
+INSTANCE:plb_vision_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 377
+- Running XST synthesis
 INSTANCE:mpmc_0 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 395 -
+Running XST synthesis
+INSTANCE:dcm_2 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 470 -
 Running XST synthesis
 INSTANCE:xps_gpio_1 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 493 -
 Running XST synthesis
@@ -1030,10 +1019,18 @@ INSTANCE:xps_intc_1 - C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 533 -
 Running XST synthesis
 
 Running NGCBUILD ...
+IPNAME:ppc405_0_wrapper INSTANCE:ppc405_0 -
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 89 - Running NGCBUILD
+IPNAME:ppc405_1_wrapper INSTANCE:ppc405_1 -
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 103 - Running NGCBUILD
 IPNAME:clock_generator_0_wrapper INSTANCE:clock_generator_0 -
 C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 201 - Running NGCBUILD
 IPNAME:xps_intc_0_wrapper INSTANCE:xps_intc_0 -
 C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 240 - Running NGCBUILD
+IPNAME:plb_usb_0_wrapper INSTANCE:plb_usb_0 -
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 354 - Running NGCBUILD
+IPNAME:plb_vision_0_wrapper INSTANCE:plb_vision_0 -
+C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 377 - Running NGCBUILD
 IPNAME:mpmc_0_wrapper INSTANCE:mpmc_0 -
 C:\RobotRacers\CultOfSkaro\hardware\system.mhs line 395 - Running NGCBUILD
 IPNAME:xps_intc_1_wrapper INSTANCE:xps_intc_1 -
@@ -1044,4 +1041,4 @@ INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
 
 Rebuilding cache ...
 
-Total run time: 1695.00 seconds
+Total run time: 3667.00 seconds

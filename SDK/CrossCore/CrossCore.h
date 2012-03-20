@@ -8,6 +8,8 @@
 #define BLOB_TYPE_RED			1
 #define NUM_BLOB_TYPES			2
 
+//#define DEBUG_USB_VISION
+
 typedef struct {
 	int type;
 	int left;
@@ -25,6 +27,8 @@ typedef struct {
 extern VisionData * vision_data;
 extern VisionData ** live_vision_data;
 extern VisionData ** snap_vision_data;
+
+extern char * shared_debug_buffer;
 
 //pointers into vision_data
 

@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "plb_usb_0_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -101,7 +101,7 @@ Entity <rd_wr_calc_burst> (Architecture <implementation>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_slave_single_v1_01_a/hdl/vhdl/plb_address_decoder.vhd" in Library plbv46_slave_single_v1_01_a.
 Entity <plb_address_decoder> compiled.
 Entity <plb_address_decoder> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/usb_core.vhd" in Library plb_usb_v1_01_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/usb_core.vhd" in Library plb_usb_v1_01_a.
 Entity <usb_core> compiled.
 Entity <usb_core> (Architecture <imp>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/cc_brst_exp_adptr.vhd" in Library plbv46_master_burst_v1_01_a.
@@ -131,13 +131,13 @@ Entity <plbv46_slave_single> (Architecture <implementation>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/plbv46_master_burst_v1_01_a/hdl/vhdl/plbv46_master_burst.vhd" in Library plbv46_master_burst_v1_01_a.
 Entity <plbv46_master_burst> compiled.
 Entity <plbv46_master_burst> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" in Library plb_usb_v1_01_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" in Library plb_usb_v1_01_a.
 Entity <user_logic> compiled.
 Entity <user_logic> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/plb_usb.vhd" in Library plb_usb_v1_01_a.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/plb_usb.vhd" in Library plb_usb_v1_01_a.
 Entity <plb_usb> compiled.
 Entity <plb_usb> (Architecture <IMP>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/plb_usb_0_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/plb_usb_0_wrapper.vhd" in Library work.
 Entity <plb_usb_0_wrapper> compiled.
 Entity <plb_usb_0_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -496,14 +496,14 @@ WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/p
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
-WARNING:Xst:819 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" line 303: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" line 303: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <status>, <dma_start_addr>, <dma_trans_size>
-WARNING:Xst:819 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" line 544: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" line 544: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <send_full>
-WARNING:Xst:819 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" line 591: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" line 591: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <dma_trans_byte_to_recv>
-WARNING:Xst:753 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" line 682: Unconnected output port 'full' of component 'plb_burst_fifo'.
-WARNING:Xst:2211 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" line 682: Instantiating black box module <plb_burst_fifo>.
+WARNING:Xst:753 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" line 682: Unconnected output port 'full' of component 'plb_burst_fifo'.
+WARNING:Xst:2211 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd" line 682: Instantiating black box module <plb_burst_fifo>.
 Entity <user_logic> analyzed. Unit <user_logic> generated.
 
 Analyzing generic Entity <usb_core> in library <plb_usb_v1_01_a> (Architecture <imp>).
@@ -513,8 +513,8 @@ Analyzing generic Entity <usb_core> in library <plb_usb_v1_01_a> (Architecture <
 	C_MAX_TRANSFER = 16
 	C_OUT_FIFOADDR = "00"
 	C_RST_HIGH = true
-WARNING:Xst:2211 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/usb_core.vhd" line 531: Instantiating black box module <usb_fifo_16>.
-WARNING:Xst:2211 - "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/usb_core.vhd" line 549: Instantiating black box module <usb_fifo_17>.
+WARNING:Xst:2211 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/usb_core.vhd" line 531: Instantiating black box module <usb_fifo_16>.
+WARNING:Xst:2211 - "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/usb_core.vhd" line 549: Instantiating black box module <usb_fifo_17>.
 Entity <usb_core> analyzed. Unit <usb_core> generated.
 
 
@@ -692,7 +692,7 @@ Unit <rd_wr_calc_burst> synthesized.
 
 
 Synthesizing Unit <usb_core>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/usb_core.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/usb_core.vhd".
     Found finite state machine <FSM_2> for signal <current_state>.
     -----------------------------------------------------------------------
     | States             | 4                                              |
@@ -720,7 +720,7 @@ Unit <usb_core> synthesized.
 
 
 Synthesizing Unit <user_logic>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/user_logic.vhd".
 WARNING:Xst:647 - Input <Bus2IP_Mst_Error> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Bus2IP_Mst_Cmd_Timeout> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Bus2IP_MstWr_dst_rdy_n> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -949,14 +949,14 @@ Unit <plbv46_slave_single> synthesized.
 
 
 Synthesizing Unit <plb_usb>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/pcores/plb_usb_v1_01_a/hdl/vhdl/plb_usb.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/pcores/plb_usb_v1_01_a/hdl/vhdl/plb_usb.vhd".
 WARNING:Xst:646 - Signal <ipif_Bus2IP_RNW> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ipif_Bus2IP_CS<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 Unit <plb_usb> synthesized.
 
 
 Synthesizing Unit <plb_usb_0_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/plb_usb_0_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/plb_usb_0_wrapper.vhd".
 Unit <plb_usb_0_wrapper> synthesized.
 
 INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -1669,12 +1669,12 @@ Delay:               2.192ns (Levels of Logic = 3)
 =========================================================================
 
 
-Total REAL time to Xst completion: 44.00 secs
-Total CPU time to Xst completion: 43.93 secs
+Total REAL time to Xst completion: 45.00 secs
+Total CPU time to Xst completion: 45.04 secs
  
 --> 
 
-Total memory usage is 387388 kilobytes
+Total memory usage is 387132 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  267 (   0 filtered)

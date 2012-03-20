@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "xps_mch_emc_sram_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -313,7 +313,7 @@ Entity <EMC> (Architecture <IMP>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/xps_mch_emc_v3_01_a/hdl/vhdl/xps_mch_emc.vhd" in Library xps_mch_emc_v3_01_a.
 Entity <xps_mch_emc> compiled.
 Entity <xps_mch_emc> (Architecture <implementation>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/xps_mch_emc_sram_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/xps_mch_emc_sram_wrapper.vhd" in Library work.
 Entity <xps_mch_emc_sram_wrapper> compiled.
 Entity <xps_mch_emc_sram_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -2137,7 +2137,7 @@ Unit <xps_mch_emc> synthesized.
 
 
 Synthesizing Unit <xps_mch_emc_sram_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/xps_mch_emc_sram_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/xps_mch_emc_sram_wrapper.vhd".
 Unit <xps_mch_emc_sram_wrapper> synthesized.
 
 
@@ -2578,8 +2578,8 @@ Offset:              0.993ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 57.00 secs
-Total CPU time to Xst completion: 57.61 secs
+Total REAL time to Xst completion: 59.00 secs
+Total CPU time to Xst completion: 59.18 secs
  
 --> 
 

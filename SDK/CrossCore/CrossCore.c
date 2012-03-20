@@ -22,3 +22,5 @@ VisionData * getVisionBuffer(){
 void inline updateVisionData(VisionData * tmp){
 	*live_vision_data = tmp;
 }
+
+char * shared_debug_buffer = (char * ) 0x100;

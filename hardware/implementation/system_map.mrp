@@ -9,29 +9,29 @@ Target Device  : xc4vfx60
 Target Package : ff672
 Target Speed   : -11
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Fri Mar 16 14:58:14 2012
+Mapped Date    : Mon Mar 19 20:06:14 2012
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:   41
 Logic Utilization:
-  Number of Slice Flip Flops:         9,291 out of  50,560   18%
+  Number of Slice Flip Flops:         9,303 out of  50,560   18%
     Number of Slice FFs used for
-    DCM autocalibration logic:         21 out of   9,291    1%
-  Number of 4 input LUTs:             9,470 out of  50,560   18%
+    DCM autocalibration logic:         21 out of   9,303    1%
+  Number of 4 input LUTs:             9,485 out of  50,560   18%
     Number of LUTs used for
-    DCM autocalibration logic:         12 out of   9,470    1%
+    DCM autocalibration logic:         12 out of   9,485    1%
       *See INFO below for an explanation of the DCM autocalibration logic
        added by Map
 Logic Distribution:
-  Number of occupied Slices:          9,487 out of  25,280   37%
-    Number of Slices containing only related logic:   9,487 out of   9,487 100%
-    Number of Slices containing unrelated logic:          0 out of   9,487   0%
+  Number of occupied Slices:          9,591 out of  25,280   37%
+    Number of Slices containing only related logic:   9,591 out of   9,591 100%
+    Number of Slices containing unrelated logic:          0 out of   9,591   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       9,824 out of  50,560   19%
-    Number used as logic:             9,029
-    Number used as a route-thru:        354
+  Total Number of 4 input LUTs:       9,829 out of  50,560   19%
+    Number used as logic:             9,044
+    Number used as a route-thru:        344
     Number used for Dual Port RAMs:      82
       (Two LUTs used per Dual Port RAM)
     Number used as Shift registers:     359
@@ -53,9 +53,9 @@ Logic Distribution:
 
 Average Fanout of Non-Clock Nets:                3.27
 
-Peak Memory Usage:  814 MB
-Total REAL time to MAP completion:  18 mins 25 secs 
-Total CPU time to MAP completion:   13 mins 48 secs 
+Peak Memory Usage:  804 MB
+Total REAL time to MAP completion:  17 mins 16 secs 
+Total CPU time to MAP completion:   14 mins 16 secs 
 
 INFO:
 
@@ -421,13 +421,13 @@ WARNING:PhysDesignRules:372 - Gated clock. Clock net
    design practice. Use the CE pin to control the loading of data into the
    flip-flop.
 WARNING:PhysDesignRules:367 - The signal
+   <xps_bram_if_cntlr_1_port_BRAM_Addr<31>> is incomplete. The signal does not
+   drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
    <xps_bram_if_cntlr_1_port_BRAM_Addr<30>> is incomplete. The signal does not
    drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal
    <xps_bram_if_cntlr_0_port_BRAM_Addr<30>> is incomplete. The signal does not
-   drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal
-   <xps_bram_if_cntlr_1_port_BRAM_Addr<31>> is incomplete. The signal does not
    drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal
    <xps_bram_if_cntlr_0_port_BRAM_Addr<31>> is incomplete. The signal does not
@@ -6135,7 +6135,7 @@ loadless and has been removed.
   Loadless block
 "plb_vision_0/plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/set_rderr"
 (ROM) removed.
-   The signal "plb_vision_0/N42" is loadless and has been removed.
+   The signal "plb_vision_0/N50" is loadless and has been removed.
     Loadless block
 "plb_vision_0/plb_vision_0/PLBV46_MASTER_BURST_I/I_RD_WR_CONTROL/set_rderr_SW0"
 (ROM) removed.

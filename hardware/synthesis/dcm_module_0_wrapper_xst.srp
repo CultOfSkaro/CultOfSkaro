@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "dcm_module_0_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -54,7 +54,7 @@ Cores Search Directories           : {../implementation}
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/dcm_module_v1_00_e/hdl/vhdl/dcm_module.vhd" in Library dcm_module_v1_00_e.
 Entity <dcm_module> compiled.
 Entity <dcm_module> (Architecture <STRUCT>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/dcm_module_0_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/dcm_module_0_wrapper.vhd" in Library work.
 Entity <dcm_module_0_wrapper> compiled.
 Entity <dcm_module_0_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -166,7 +166,7 @@ Unit <dcm_module> synthesized.
 
 
 Synthesizing Unit <dcm_module_0_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/dcm_module_0_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/dcm_module_0_wrapper.vhd".
 Unit <dcm_module_0_wrapper> synthesized.
 
 
@@ -335,11 +335,11 @@ Delay:               0.638ns (Levels of Logic = 0)
 
 
 Total REAL time to Xst completion: 14.00 secs
-Total CPU time to Xst completion: 13.87 secs
+Total CPU time to Xst completion: 13.94 secs
  
 --> 
 
-Total memory usage is 293308 kilobytes
+Total memory usage is 293244 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    2 (   0 filtered)

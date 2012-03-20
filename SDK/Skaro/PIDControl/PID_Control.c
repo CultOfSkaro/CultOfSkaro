@@ -27,8 +27,8 @@
 #include "scheduler.h"
 
 extern Scheduler scheduler;
-
-PID pid;
+extern Skaro_Wireless wireless;
+volatile PID pid;
 
 int control_log_counter;
 int i=0;
@@ -51,6 +51,7 @@ void initPID(){
 	        pid.differentiator = 0.0f;
 	        pid.desiredVelocityPID = 0;
 	        pid.lastError = 0;
+	        pid.currentVelocity = 0;
 	        pid.lastDesiredVelocity = 0.0;
 	        pid.lastCurrentVelocity = 0.0f;
 	        pid.lastClockTicks = 0;
@@ -69,7 +70,7 @@ void initPID(){
 	        //Angle params
 			pid.desiredAnglePID = 0;
 			pid.desiredCentroidPID = 0;
-			pid.Kp_c = 0.0f;
+			pid.Kp_c = 0.11f;
 			pid.Kd_c = 0.0f;
 			pid.Ki_c = 0.0f;
 			pid.integrator_c = 0.0f;
@@ -85,7 +86,7 @@ void initPID(){
 void updateVelocityOutput()
 {
 	float desiredVelocity = pid.desiredVelocityPID;
-	float P, I, D, currentVelocity;
+	float P, I, D;
 	uint32 deltaClocks;
 	CPU_MSR msr;
 
@@ -112,10 +113,10 @@ void updateVelocityOutput()
 	int encoderDifference = pid.encoderValue - pid.lastEncoderValue;
 
 	//------Calculate Velocity
-	currentVelocity = ((encoderDifference) / (refreshRate));
+	pid.currentVelocity = ((encoderDifference) / (refreshRate));
 
 	//------Calculate Error
-	pid.error = desiredVelocity - (currentVelocity);
+	pid.error = desiredVelocity - (pid.currentVelocity);
 
 	//------Send Data to gui graphing function
 	if(++control_log_counter > 0){
@@ -124,9 +125,22 @@ void updateVelocityOutput()
 	}
 
 	//------Update Derivative
-	pid.differentiator = (2*pid.Tau-refreshRate)/(2*pid.Tau+refreshRate)*pid.differentiator + 2/(2*pid.Tau+refreshRate)*(currentVelocity - pid.lastCurrentVelocity);
+	pid.differentiator = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator) + ((2/((2*pid.Tau)+refreshRate))*(pid.currentVelocity - pid.lastCurrentVelocity));
 	//pid.differentiator = (2*pid.Tau-refreshRate)/(2*pid.Tau+refreshRate)*pid.differentiator + 2/(2*pid.Tau+refreshRate)*(pid.error - pid.lastError);
-
+//	struct tmp_struct {
+//		float diff;
+//		float tau;
+//		float refreshRate;
+//		float currentVelocity;
+//		float lastCurrentVelocity;
+//	};
+//	struct tmp_struct TMP;
+//	TMP.diff = pid.differentiator;
+//	TMP.tau = pid.Tau;
+//	TMP.refreshRate = refreshRate;
+//	TMP.currentVelocity = pid.currentVelocity;
+//	TMP.lastCurrentVelocity = pid.lastCurrentVelocity;
+//	Wireless_Send(&wireless, 4, sizeof(struct tmp_struct), &TMP);
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
 	//if ((pid.error < 1000 && pid.error > -1000) && (pid.error > 100 || pid.error < -100)){
 			pid.integrator = pid.integrator + (refreshRate/2)*(pid.error + pid.lastError);
@@ -142,51 +156,54 @@ void updateVelocityOutput()
 	pid.outputPID_unsat = ((int)P) + ((int)I) - ((int)D);
 	pid.outputPID = sat(pid.outputPID_unsat, 60);
 
-	if(++i > 5){
-		/*
-		Wireless_Debug("P:");
-		PrintFloat(P);
-		Wireless_Debug("I:");
-		PrintFloat(I);
-		Wireless_Debug("D:");
-		PrintFloat(D);
-		//Wireless_Debug("I word:");
-		//PrintWord(*((uint32 *)&I));
-		//Wireless_Debug("D word:");
-		//PrintWord(*((uint32 *)&D));
-		Wireless_Debug("outputPID_unsat");
-		PrintFloat(pid.outputPID_unsat);
-		Wireless_Debug("outputPID");
-		PrintFloat(pid.outputPID);
-		Wireless_Debug("CurrentVelocity");
-		PrintFloat(currentVelocity);
-		Wireless_Debug("LastCurrentVelocity");
-		PrintFloat(pid.lastCurrentVelocity);
-		Wireless_Debug("------------------");
-		*/
-		i = 0;
-		}
-	int deltaTime = refreshRate;
-	Wireless_ControlLog_Ext(currentVelocity, pid.lastCurrentVelocity, pid.outputPID, pid.outputPID_unsat, deltaTime);
+//	if(++i > 5){
+//
+//		Wireless_Debug("P:");
+//		PrintFloat(P);
+//		Wireless_Debug("I:");
+//		PrintFloat(I);
+//		Wireless_Debug("D:");
+//		PrintFloat(D);
+//		//Wireless_Debug("I word:");
+//		//PrintWord(*((uint32 *)&I));
+//		//Wireless_Debug("D word:");
+//		//PrintWord(*((uint32 *)&D));
+//		Wireless_Debug("outputPID_unsat");
+//		PrintFloat(pid.outputPID_unsat);
+//		Wireless_Debug("outputPID");
+//		PrintFloat(pid.outputPID);
+//		Wireless_Debug("CurrentVelocity");
+//		PrintFloat(pid.currentVelocity);
+//		Wireless_Debug("LastCurrentVelocity");
+//		PrintFloat(pid.lastCurrentVelocity);
+//		Wireless_Debug("------------------");
+//
+//		i = 0;
+//		}
+//	int deltaTime = refreshRate;
+	//Wireless_ControlLog_Ext(pid.currentVelocity, pid.lastCurrentVelocity, pid.outputPID, pid.outputPID_unsat, deltaTime);
 
 	pid.integrator = pid.integrator + (refreshRate/pid.Ki)*(pid.outputPID - pid.outputPID_unsat);
 
 	//------Save states and send PWM to motors
 	pid.lastEncoderValue = pid.encoderValue;
-	pid.lastCurrentVelocity = currentVelocity;
+	pid.lastCurrentVelocity = pid.currentVelocity;
 	pid.lastDesiredVelocity = desiredVelocity;
 	SetServo(RC_VEL_SERVO, (int)pid.outputPID);
 }
 
 void updateCentroid()
 {
+//	pid.Kp_c = pid.Kp_d;
+//	pid.Kd_c = pid.Kd_d;
+//	pid.Ki_c = pid.Ki_d;
 	int P, I, D;
 	uint32 deltaClocks;
 	CPU_MSR msr;
 
 	//------Read Encoder and clock
 	msr = DISABLE_INTERRUPTS();
-	pid.currentCentroid = 0;//----//get info from camera here
+	//pid.currentCentroid = 0;//----//get info from camera here
 	uint32 nowClocks = ClockTime();
 	RESTORE_INTERRUPTS(msr);
 
@@ -207,7 +224,7 @@ void updateCentroid()
 	pid.error_c = pid.desiredCentroidPID - pid.currentCentroid;
 
 	//------Update Derivative
-	pid.differentiator_c = (2*pid.Tau-refreshRate)/(2*pid.Tau+refreshRate)*pid.differentiator_c + 2/(2*pid.Tau+refreshRate)*(pid.currentCentroid - pid.lastCurrentCentroid);
+	pid.differentiator_c = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator_c) + ((2/((2*pid.Tau)+refreshRate))*(pid.currentCentroid - pid.lastCurrentCentroid));
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
 	pid.integrator_c = pid.integrator_c + (refreshRate/2)*(pid.error_c + pid.lastError_c);
@@ -219,13 +236,19 @@ void updateCentroid()
 	D = pid.Kd_c * pid.differentiator_c;
 
 	pid.outputPID_unsat_c = (P) + (I) - (D);
-	pid.outputPID_c = sat(pid.outputPID_unsat_c, 50);
+	pid.outputPID_c = sat(pid.outputPID_unsat_c, 40);
 
 	pid.integrator_c = pid.integrator_c + (refreshRate/pid.Ki_c)*(pid.outputPID_c - pid.outputPID_unsat_c);
+
+	//------Save Info for graph
+	Wireless_ControlLog_Ext(pid.currentCentroid, pid.desiredCentroidPID, pid.outputPID, pid.outputPID_unsat, refreshRate);
 
 	//------Save states and send PWM to motors
 	pid.lastCurrentCentroid = pid.currentCentroid;
 	pid.lastError_c = pid.error_c;
+	if (pid.currentVelocity < 0)
+		pid.outputPID_c = -pid.outputPID_c;
+
 	SetServo(RC_STR_SERVO, pid.outputPID_c);
 
 }
@@ -317,54 +340,79 @@ void updateDistanceSetVelocity(int velocity){
 //	pid.desiredVelocityPID = velocity;
 //	updateVelocityOutput();
 
-	if (velocity == 1 ||(velocity > 0 && velocity <= 1000))
-		velocity = 1000;
-	else if (velocity == 2 ||(velocity > 1000 && velocity <= 2000))
-		velocity = 2000;
-	else if (velocity == 3 ||(velocity > 2000 && velocity <= 3000))
-		velocity = 3000;
-	else if (velocity == 4 ||(velocity > 3000 && velocity <= 4000))
-		velocity = 4000;
-	else if (velocity == -1 ||(velocity < 0 && velocity >= -1000))
-		velocity = -1000;
-	else if (velocity == -2 ||(velocity < 1000 && velocity >= -2000))
-		velocity = -2000;
-	else if (velocity == -3 ||(velocity < 2000 && velocity >= -3000))
-		velocity = -3000;
-	else if (velocity == -4 ||(velocity < 3000 && velocity >= -4000))
-		velocity = -4000;
-	else if (velocity == 1000000)
-		velocity = 5000;
-	else
-		velocity = 0;
+//	if (velocity == 1 ||(velocity > 0 && velocity <= 1000))
+//		velocity = 1000;
+//	else if (velocity == 2 ||(velocity > 1000 && velocity <= 2000))
+//		velocity = 2000;
+//	else if (velocity == 3 ||(velocity > 2000 && velocity <= 3000))
+//		velocity = 3000;
+//	else if (velocity == 4 ||(velocity > 3000 && velocity <= 4000))
+//		velocity = 4000;
+//	else if (velocity == -1 ||(velocity < 0 && velocity >= -1000))
+//		velocity = -1000;
+//	else if (velocity == -2 ||(velocity < 1000 && velocity >= -2000))
+//		velocity = -2000;
+//	else if (velocity == -3 ||(velocity < 2000 && velocity >= -3000))
+//		velocity = -3000;
+//	else if (velocity == -4 ||(velocity < 3000 && velocity >= -4000))
+//		velocity = -4000;
+//	else if (velocity == 1000000)
+//		velocity = 5000;
+//	else
+//		velocity = 0;
 
-	if (distanceError < 1500 && distanceError >= 1000)
-		velocity = velocity/2;
-	else if (distanceError < 1000 && distanceError >= 700)
-		velocity = velocity/3;
-	else if (distanceError < 700 && distanceError >= 500)
-		velocity = velocity/4;
-	else if (distanceError < 500 && distanceError >= 200)
-		velocity = velocity/5;
-				else if (distanceError < 200)
-					velocity = 0;
-//	else if (distanceError < 200 && distanceError >= 100)
-//		velocity = 0;
-//	else if (distanceError < 100 && distanceError >= 2)
-//		velocity = 700;
-//	else if (distanceError < 2 && distanceError >= -2){
-//		velocity = 0;
-//	}
-//	else if (distanceError > -2 && distanceError <= -500)
-//		velocity = -700;
-//	else if (distanceError > -500 && distanceError <= -2)
-//		velocity = -velocity/4;
-//	else if (distanceError > -700 && distanceError <= -500)
-//		velocity = -velocity/3;
-//	else if (distanceError > -1000 && distanceError <= -700)
-//		velocity = -velocity/2;
-//	else if (distanceError > -1500 && distanceError <= -1000)
-//		velocity = -velocity;
+	if (velocity <= 2000){
+			if (distanceError < 1500 && distanceError >= 1000)
+				velocity = 800;
+			else if (distanceError < 1000 && distanceError >= 700)
+				velocity = 600;
+			else if (distanceError < 700 && distanceError >= 500)
+				velocity = 500;
+			else if (distanceError < 500 && distanceError >= 200)
+				velocity = 400;
+			else if (distanceError < 200 && distanceError >= 40)
+				velocity = 200;
+//			else if (distanceError < 100 && distanceError >= 4)
+//				velocity = 100;
+			else if (distanceError < 40 && distanceError >= -40)
+				velocity = 0;
+//			else if (distanceError < 4 && distanceError >= -4)
+//				velocity = 0;
+//			else if (distanceError < -4 && distanceError >= -100)
+//				velocity = -0;
+			else if (distanceError < -40 && distanceError >= -8000)
+				velocity = -200;
+			else if (distanceError < -8000)
+				velocity = 0;
+	}
+	else{
+		if (distanceError < 1500 && distanceError >= 1000)
+			velocity = velocity/2;
+		else if (distanceError < 1000 && distanceError >= 700)
+			velocity = velocity/3;
+		else if (distanceError < 700 && distanceError >= 500)
+			velocity = velocity/4;
+		else if (distanceError < 500 && distanceError >= 200)
+			velocity = velocity/5;
+		else if (distanceError < 200 && distanceError >= 100)
+			velocity = 0;
+		else if (distanceError < 100 && distanceError >= 40)
+			velocity = 200;
+		else if (distanceError < 40 && distanceError >= -40)
+			velocity = 0;
+		else if (distanceError < -40 && distanceError >= -100)
+			velocity = -200;
+		else if (distanceError < -200 && distanceError >= -500)
+			velocity = -velocity/5;
+		else if (distanceError < -500 && distanceError >= -700)
+			velocity = -velocity/4;
+		else if (distanceError < -700 && distanceError >= -1000)
+			velocity = -velocity/3;
+		else if (distanceError < -1000 && distanceError >= -8000)
+			velocity = -velocity/2;
+		else if (distanceError < -8000)
+			velocity = 0;
+	}
 
 	setVelocity(velocity);
 	updateVelocityOutput();

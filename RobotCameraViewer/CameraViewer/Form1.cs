@@ -157,10 +157,10 @@ namespace CameraViewer
 
             if (numBlobs <= 0) return;
 
-            //txtDebug.AppendText("Draw Blobs\r\n");
+            txtDebug.AppendText("Draw Blobs\r\n");
             for (int i = 0; i < numBlobs; i++) {
-                //txtDebug.AppendText("x: " + blobs[i].left + ", y: " + blobs[i].top +
-                //    ", width: " + blobs[i].width + ", height: " + blobs[i].height + "\r\n");
+                txtDebug.AppendText("x: " + blobs[i].left + ", y: " + blobs[i].top +
+                    ", width: " + blobs[i].width + ", height: " + blobs[i].height + "\r\n");
 
                 g.DrawRectangle(pens[blobs[i].type], blobs[i].left, blobs[i].top, 
                     blobs[i].width, blobs[i].height);

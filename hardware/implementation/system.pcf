@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map O.76xd on Fri Mar 16 15:16:15 2012
+// Written by: Map O.76xd on Mon Mar 19 20:23:08 2012
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -8020,7 +8020,8 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Mshreg_stage4_V_7"
         BEL "plb_vision_0/plb_vision_0/USER_LOGIC_I/rgb2hsv_1/stage4_V_5" BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/rgb2hsv_1/Mshreg_stage4_V_5"
-        BEL "plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset_2" BEL
+        BEL "plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset_3" BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/core_soft_reset_2" BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/demosaic_frame_i/GEN_MICROSOFT.filter_output_adjust_2/col_count_9"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/demosaic_frame_i/GEN_MICROSOFT.filter_output_adjust_2/col_count_8"
@@ -9001,6 +9002,8 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/new_frame_rst"
         BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/r_2_12"
+        BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/r_2_11"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/r_2_10"
@@ -9021,6 +9024,8 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/r_2_2"
         BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/b_2_12"
+        BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/b_2_11"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/b_2_10"
@@ -9040,6 +9045,8 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/b_2_3"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/b_2_2"
+        BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/g_2_12"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/g_2_11"
         BEL
@@ -9062,6 +9069,8 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/g_2_2"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/g_2_1"
+        BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0000_17"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0000_16"
         BEL
@@ -9087,10 +9096,6 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0000_5"
         BEL
-        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0001_16"
-        BEL
-        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0001_15"
-        BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0001_14"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0001_13"
@@ -9111,6 +9116,8 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0001_5"
         BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0002_15"
+        BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0002_14"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0002_13"
@@ -9130,6 +9137,12 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0002_6"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0002_5"
+        BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0003_17"
+        BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0003_16"
+        BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0003_15"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0003_14"
         BEL
@@ -9175,6 +9188,12 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0005_5"
         BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0006_16"
+        BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0006_15"
+        BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0006_14"
+        BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0006_13"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0006_12"
@@ -9192,6 +9211,8 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0006_6"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0006_5"
+        BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0004_17"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0004_16"
         BEL
@@ -9217,8 +9238,6 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0004_5"
         BEL
-        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0007_17"
-        BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0007_16"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0007_15"
@@ -9242,6 +9261,10 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_DCM0_CLK0 = PIN
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0007_6"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0007_5"
+        BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0008_19"
+        BEL
+        "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0008_18"
         BEL
         "plb_vision_0/plb_vision_0/USER_LOGIC_I/camera_processor_1/color_correction_i/temp_mult0008_17"
         BEL

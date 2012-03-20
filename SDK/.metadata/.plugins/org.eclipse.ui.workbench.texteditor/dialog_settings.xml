@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="TARGET" key="selection"/>
+		<item value="" key="selection"/>
 		<list key="findhistory">
-			<item value="target"/>
-			<item value="targetcolor"/>
-			<item value="targ"/>
-			<item value="vision"/>
-			<item value="received"/>
-			<item value="Correction"/>
-			<item value="pid.lastError_c"/>
-			<item value="pid.centroidValue"/>
+			<item value="0x06"/>
+			<item value="white"/>
+			<item value="balance"/>
+			<item value="awb"/>
+			<item value="0X25"/>
+			<item value="Read"/>
+			<item value="differentiator"/>
+			<item value="colorcor"/>
 		</list>
 		<list key="replacehistory">
 			<item value="&amp;gameboard_uart"/>

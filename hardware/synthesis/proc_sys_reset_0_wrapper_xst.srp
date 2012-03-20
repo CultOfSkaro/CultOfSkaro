@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "proc_sys_reset_0_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -63,7 +63,7 @@ Entity <sequence> (Architecture <imp>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_sys_reset_v3_00_a/hdl/vhdl/proc_sys_reset.vhd" in Library proc_sys_reset_v3_00_a.
 Entity <proc_sys_reset> compiled.
 Entity <proc_sys_reset> (Architecture <imp>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/proc_sys_reset_0_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/proc_sys_reset_0_wrapper.vhd" in Library work.
 Entity <proc_sys_reset_0_wrapper> compiled.
 Entity <proc_sys_reset_0_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -238,7 +238,7 @@ Unit <proc_sys_reset> synthesized.
 
 
 Synthesizing Unit <proc_sys_reset_0_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/proc_sys_reset_0_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/proc_sys_reset_0_wrapper.vhd".
 Unit <proc_sys_reset_0_wrapper> synthesized.
 
 
@@ -465,7 +465,7 @@ Offset:              0.307ns (Levels of Logic = 0)
 
 
 Total REAL time to Xst completion: 15.00 secs
-Total CPU time to Xst completion: 14.87 secs
+Total CPU time to Xst completion: 15.52 secs
  
 --> 
 

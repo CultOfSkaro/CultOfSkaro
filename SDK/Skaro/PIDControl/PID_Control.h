@@ -29,6 +29,7 @@ typedef struct
 	float integrator;
 	int lastError;
 	float desiredVelocityPID;
+	float currentVelocity;
 	int lastDesiredVelocity;
 	float lastCurrentVelocity;
 	uint32 lastClockTicks;
@@ -80,6 +81,8 @@ void setVelocity(int32 velocity);
 void updateDistanceSetVelocity(int velocity);
 void setSteeringRadius(int direction, uint32 radius_cm); //Right = direction:1 Left = direction:-1
 int sat(int in, int limit);
+void updateCentroid();
 
+extern volatile PID pid;
 
 #endif /* PID_CONTROL_H_ */

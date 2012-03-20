@@ -7,6 +7,7 @@ typedef struct {
   int timer:1;
   int hello:1;
   int vision:1;
+  int centroid_timer:1;
 } Event_bits;
 
 /*

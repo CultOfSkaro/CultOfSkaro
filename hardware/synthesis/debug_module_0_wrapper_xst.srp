@@ -791,12 +791,12 @@ Slack:                  193.704ns
 =========================================================================
 
 
-Total REAL time to Xst completion: 30.00 secs
-Total CPU time to Xst completion: 30.64 secs
+Total REAL time to Xst completion: 35.00 secs
+Total CPU time to Xst completion: 34.67 secs
  
 --> 
 
-Total memory usage is 398652 kilobytes
+Total memory usage is 400060 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   94 (   0 filtered)

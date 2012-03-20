@@ -2488,8 +2488,8 @@ Offset:              1.830ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 1158.00 secs
-Total CPU time to Xst completion: 1158.00 secs
+Total REAL time to Xst completion: 1003.00 secs
+Total CPU time to Xst completion: 1002.88 secs
  
 --> 
 

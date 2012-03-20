@@ -6,7 +6,7 @@ xc4vfx60ff672-11 -intstyle silent -i -sd .. ppc405_1_wrapper.ngc
 ../ppc405_1_wrapper
 
 Reading NGO file
-"C:/RobotRacers/hardware_dans_branch/implementation/ppc405_1_wrapper/ppc405_1_wr
+"C:/RobotRacers/CultOfSkaro/hardware/implementation/ppc405_1_wrapper/ppc405_1_wr
 apper.ngc" ...
 
 Partition Implementation Status

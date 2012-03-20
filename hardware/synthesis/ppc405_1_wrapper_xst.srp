@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "ppc405_1_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\RobotRacers\hardware_dans_branch\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\RobotRacers\CultOfSkaro\hardware\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.3\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc4vfx60ff672-11
@@ -74,7 +74,7 @@ Entity <PPC405_ADV_WRAP> (Architecture <STRUCTURE>) compiled.
 Compiling vhdl file "C:/Xilinx/13.3/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/ppc405_virtex4_v2_01_b/hdl/vhdl/ppc405_virtex4.vhd" in Library ppc405_virtex4_v2_01_b.
 Entity <ppc405_virtex4> compiled.
 Entity <ppc405_virtex4> (Architecture <structure>) compiled.
-Compiling vhdl file "C:/RobotRacers/hardware_dans_branch/hdl/ppc405_1_wrapper.vhd" in Library work.
+Compiling vhdl file "C:/RobotRacers/CultOfSkaro/hardware/hdl/ppc405_1_wrapper.vhd" in Library work.
 Entity <ppc405_1_wrapper> compiled.
 Entity <ppc405_1_wrapper> (Architecture <STRUCTURE>) compiled.
 
@@ -398,7 +398,7 @@ Unit <ppc405_virtex4> synthesized.
 
 
 Synthesizing Unit <ppc405_1_wrapper>.
-    Related source file is "C:/RobotRacers/hardware_dans_branch/hdl/ppc405_1_wrapper.vhd".
+    Related source file is "C:/RobotRacers/CultOfSkaro/hardware/hdl/ppc405_1_wrapper.vhd".
 Unit <ppc405_1_wrapper> synthesized.
 
 
@@ -1029,8 +1029,8 @@ Offset:              0.307ns (Levels of Logic = 0)
 =========================================================================
 
 
-Total REAL time to Xst completion: 45.00 secs
-Total CPU time to Xst completion: 45.07 secs
+Total REAL time to Xst completion: 54.00 secs
+Total CPU time to Xst completion: 54.26 secs
  
 --> 
 

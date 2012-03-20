@@ -28,8 +28,6 @@
 #include "Navigation.h"
 #include "math.h"
 
-extern PID pid;
-
 // Gyro degrees per sec
 
 GYRO_CORRECTIONS gyro;
