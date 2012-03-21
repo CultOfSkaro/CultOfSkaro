@@ -246,9 +246,14 @@ void updateCentroid()
 	//------Save states and send PWM to motors
 	pid.lastCurrentCentroid = pid.currentCentroid;
 	pid.lastError_c = pid.error_c;
+
+	//------Condition output on current velocity
 	if (pid.currentVelocity < 0)
 		pid.outputPID_c = -pid.outputPID_c;
-
+	if (pid.currentVelocity > -20 && pid.currentVelocity < 20)
+		pid.outputPID_c = 0;
+	if (pid.outputPID_c == 0)
+		pid.outputPID_c = -2;
 	SetServo(RC_STR_SERVO, pid.outputPID_c);
 
 }
@@ -380,8 +385,10 @@ void updateDistanceSetVelocity(int velocity){
 //				velocity = 0;
 //			else if (distanceError < -4 && distanceError >= -100)
 //				velocity = -0;
-			else if (distanceError < -40 && distanceError >= -8000)
+			else if (distanceError < -40 && distanceError >= -1000)
 				velocity = -200;
+			else if (distanceError < -1000 && distanceError >= -8000)
+				velocity = -400;
 			else if (distanceError < -8000)
 				velocity = 0;
 	}

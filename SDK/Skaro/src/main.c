@@ -390,6 +390,8 @@ void hello(){
 }
 
 int numNotFound = 0;
+int backupCount = 0;
+int backup = 0;
 void vision(){
 
 	#define IMAGE_WIDTH 640
@@ -465,15 +467,28 @@ void vision(){
 		PrintFloat(distance);
 		Wireless_Debug("Angle:");
 		PrintFloat(angle);
+		Wireless_Debug("Centroid:");
+		PrintFloat(pid.currentCentroid);
 		int toGo = distance*2000 - distanceFromVisionTarget;
-	//	int a = 0;
-	//	if ((pid.currentVelocity = 0)&&(pid.currentCentroid <= -.05 || pid.currentCentroid >= .05)){
-	//		for(a; a<20; a++){
-	//			toGo = distance*2000 + distanceFromVisionTarget;
-	//		}
-	//	}
+
+		//-----Backup Centering Code
+		if ((pid.currentVelocity == 0)&&(pid.currentCentroid < -30 || pid.currentCentroid > 30)){
+			backup = 1;
+		}
+		if (backupCount < 100 && backup == 1){
+			backupCount++;
+			toGo = (distance*2000) - (distanceFromVisionTarget*2.5);
+		}
+		else if (backupCount == 100){
+			backupCount = 0;
+			backup = 0;
+		}
+		//-----
+
 		Wireless_Debug("To Go:");
 		PrintInt(toGo);
+		Wireless_Debug("Velocity:");
+		PrintFloat(pid.currentVelocity);
 		if(goToTower){
 			setDistance(toGo);
 			pid.currentCentroid = center;
