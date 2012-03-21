@@ -7,6 +7,11 @@ Invoking: PowerPC gcc compiler
 powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\common" -I"C:\RobotRacers\CultOfSkaro\SDK\VisionCore_bsp\ppc405_1\include" -I"C:\RobotRacers\CultOfSkaro\SDK\CrossCore" -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o"src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
+Building file: C:/RobotRacers/CultOfSkaro/SDK/CrossCore/CrossCore.c
+Invoking: PowerPC gcc compiler
+powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\common" -I"C:\RobotRacers\CultOfSkaro\SDK\VisionCore_bsp\ppc405_1\include" -I"C:\RobotRacers\CultOfSkaro\SDK\CrossCore" -c -fmessage-length=0 -MMD -MP -MF"CrossCore/CrossCore.d" -MT"CrossCore/CrossCore.d" -o"CrossCore/CrossCore.o" "C:/RobotRacers/CultOfSkaro/SDK/CrossCore/CrossCore.c"
+Finished building: C:/RobotRacers/CultOfSkaro/SDK/CrossCore/CrossCore.c
+ 
 Building target: SkaroVision.elf
 Invoking: PowerPC gcc linker
 powerpc-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../VisionCore_bsp/ppc405_1/lib -o"SkaroVision.elf"  ./src/main.o  ./plb_vision_v1_00_a/src/plb_vision.o  ./plb_usb_v1_00_a/src/USB_IO.o  ./common/State.o ./common/Timer.o  ./DataTypes/BufferStore.o ./DataTypes/FrameTable.o ./DataTypes/Queue.o ./DataTypes/Stack.o  ./CrossCore/CrossCore.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
@@ -15,7 +20,7 @@ Finished building target: SkaroVision.elf
 Invoking: PowerPC Print Size
 powerpc-eabi-size SkaroVision.elf  |tee "SkaroVision.elf.size"
    text	   data	    bss	    dec	    hex	filename
-  37130	   1488	   2536	  41154	   a0c2	SkaroVision.elf
+  37038	   1488	   2532	  41058	   a062	SkaroVision.elf
 Finished building: SkaroVision.elf.size
  
 Invoking: Xilinx ELF Check

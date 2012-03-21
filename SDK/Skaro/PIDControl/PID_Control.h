@@ -28,10 +28,10 @@ typedef struct
     float differentiator;
 	float integrator;
 	int lastError;
-	float desiredVelocityPID;
-	float currentVelocity;
+	int desiredVelocityPID;
+	int currentVelocity;
 	int lastDesiredVelocity;
-	float lastCurrentVelocity;
+	int lastCurrentVelocity;
 	uint32 lastClockTicks;
 	float error;
 	//Distance Variables

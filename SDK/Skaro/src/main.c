@@ -110,7 +110,7 @@ int print_flag = 1;
 volatile int goToTower = 0;
 volatile int distanceFromVisionTarget = 0;
 volatile int state = STATE_DEFAULT;
-volatile int max_velocity = 4000;
+volatile int max_velocity = 1500;
 
 int circle25_ticks1 = CIRCLE_2_5_M_TICKS;
 int circle20_ticks1 = CIRCLE_2_0_M_TICKS;
@@ -220,7 +220,7 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		i = atoi(word);
 		max_velocity = i;
 		Wireless_Debug("Set velocity to ");
-		PrintInt(i);
+		PrintInt(max_velocity);
 		Wireless_Debug("\n\r");
 		break;
 	case SET_VISION_DISTANCE:
@@ -369,7 +369,7 @@ void my_pitHandler(){
 
 	if(counter3 > 1000){
 		Wireless_Send(&wireless, 3, 4, &counter2);
-		scheduler.events.flags.hello = 1;
+		//scheduler.events.flags.hello = 1;
 		counter3 = 0;
 		counter2 = 0;
 	}
@@ -391,6 +391,16 @@ void hello(){
 
 int numNotFound = 0;
 void vision(){
+
+	#define IMAGE_WIDTH 640
+	#define OBJECT_WIDTH       0.08255
+	#define FIELD_OF_VISION    ((float)(25.5 * 3.1415 / 180))
+	#define DISTANCE_CONSTANT  (IMAGE_WIDTH * OBJECT_WIDTH / FIELD_OF_VISION)
+
+	float distance;
+	int center;
+	float angle;
+
 	*snap_vision_data = *live_vision_data;
 	if(!*snap_vision_data){
 		return;
@@ -415,8 +425,9 @@ void vision(){
 			}
 		}
 	}
-	if((visionData->numBlobs == 0) || (biggest == 0)) {
-		//Wireless_Debug("NO BLOBS FOUND!");
+
+	if(biggest == 0) {
+		Wireless_Debug("NO BLOBS FOUND!");
 		if(goToTower){
 			setDistance(10000);
 			numNotFound++;
@@ -434,45 +445,39 @@ void vision(){
 		return;
 	} else {
 		numNotFound = 0;
-	}
+		distance = DISTANCE_CONSTANT / biggest->width;
+		center = biggest->left + (biggest->width / 2) - (IMAGE_WIDTH / 2);
+		angle = FIELD_OF_VISION * center / IMAGE_WIDTH;
 
-	#define IMAGE_WIDTH 640
-	#define OBJECT_WIDTH       0.08255
-	#define FIELD_OF_VISION    ((float)(25.5 * 3.1415 / 180))
-	#define DISTANCE_CONSTANT  (IMAGE_WIDTH * OBJECT_WIDTH / FIELD_OF_VISION)
+		Wireless_Debug("Blobs founds:");
+		PrintInt(visionData->numBlobs);
 
-	float distance = DISTANCE_CONSTANT / biggest->width;
-	int center = biggest->left + (biggest->width / 2) - (IMAGE_WIDTH / 2);
-
-	float angle = FIELD_OF_VISION * center / IMAGE_WIDTH;
-
-//	PrintInt(visionData->numBlobs);
-//	Wireless_Debug("Biggest Blob:");
-//
-////	Wireless_Debug("Left:");
-//	PrintInt(biggest->left);
-//	Wireless_Debug("Top:");
-//	PrintInt(biggest->top);
-//	Wireless_Debug("Width:");
-//	PrintInt(biggest->width);
-////	Wireless_Debug("Height:");
-////	PrintInt(biggest->height);
-//	Wireless_Debug("Distance:");
-//	PrintFloat(distance);
-//	Wireless_Debug("Angle:");
-//	PrintFloat(angle);
-	int toGo = distance*2000 - distanceFromVisionTarget;
-	int a = 0;
-//	if ((pid.currentVelocity = 0)&&(pid.currentCentroid <= -.05 || pid.currentCentroid >= .05)){
-//		for(a; a<20; a++){
-//			toGo = distance*2000 + distanceFromVisionTarget;
-//		}
-//	}
-//	Wireless_Debug("To Go:");
-//	PrintInt(toGo);
-	if(goToTower){
-		setDistance(toGo);
-		pid.currentCentroid = center;
+		Wireless_Debug("Biggest Blob:");
+	//	Wireless_Debug("Left:");
+	//	PrintInt(biggest->left);
+	//	Wireless_Debug("Top:");
+	//	PrintInt(biggest->top);
+		Wireless_Debug("Width:");
+		PrintInt(biggest->width);
+	//	Wireless_Debug("Height:");
+	//	PrintInt(biggest->height);
+		Wireless_Debug("Distance:");
+		PrintFloat(distance);
+		Wireless_Debug("Angle:");
+		PrintFloat(angle);
+		int toGo = distance*2000 - distanceFromVisionTarget;
+	//	int a = 0;
+	//	if ((pid.currentVelocity = 0)&&(pid.currentCentroid <= -.05 || pid.currentCentroid >= .05)){
+	//		for(a; a<20; a++){
+	//			toGo = distance*2000 + distanceFromVisionTarget;
+	//		}
+	//	}
+		Wireless_Debug("To Go:");
+		PrintInt(toGo);
+		if(goToTower){
+			setDistance(toGo);
+			pid.currentCentroid = center;
+		}
 	}
 }
 

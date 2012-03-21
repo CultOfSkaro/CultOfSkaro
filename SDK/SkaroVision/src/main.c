@@ -376,13 +376,13 @@ int main()
 	BSInit();
 	STInit();
 
-	int h = ReadCameraRegister(0x25);
-	int v = ReadCameraRegister(0x06);
-	*((int *)shared_debug_buffer) = h;
-	*((int *)shared_debug_buffer + 4) = v;
-	//WriteCameraRegister(
-	//initialize cross core memory
-	*live_vision_data = 0;
+//	int h = ReadCameraRegister(0x25);
+//	int v = ReadCameraRegister(0x06);
+//	*((int *)shared_debug_buffer) = h;
+//	*((int *)shared_debug_buffer + 4) = v;
+//	//WriteCameraRegister(
+//	//initialize cross core memory
+//	*live_vision_data = 0;
 
 	//initialize constant memory
 	initHeader();

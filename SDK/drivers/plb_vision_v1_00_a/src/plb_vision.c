@@ -14,7 +14,7 @@
 /***************************** Include Files *******************************/
 
 #include <string.h>
-#include "xcache_l.h"
+#include <xcache_l.h>
 #include <xpseudo_asm.h>
 #include "plb_vision.h"
 
@@ -329,17 +329,18 @@ else if (DAUGHTER_BOARD == DAUGHTER_BOARD_GAME)
 		WriteCameraRegister(0x04, FRAME_WIDTH); //set window width
 		WriteCameraRegister(0x03, FRAME_HEIGHT); //set window height		
 
-		/********** CHANGE TO 30 FPS *************/
-		WriteCameraRegister(0x05, 0x3AC);  //3AC set Horizontal blanking to 940 (30 FPS)
+		// Set FPS
 		/*
-		 800 = 32 fps
-		 700 = 35 fps
-		 600 = 38 fps
-		 580 = 38 fps
+		 	 	 940 (0x3AC) = 30 fps
+				 800 (0x320) = 32 fps
+				 700 (0x2BC) = 35 fps
+				 600 (0x258) = 38 fps
+				 580 (0x244) = 38 fps
+				 94  (0x05E) = 60 fps
 		*/
-		//WriteCameraRegister(XPAR_PLB_VISION_0_BASEADDR, 0x05, 570);  
-		/********** CHANGE TO 60 FPS ************/
-		//WriteCameraRegister(0x05, 0x05E);  //set Horizontal blanking to 94 (0x05E) for default 60FPS
+		//WriteCameraRegister(0x05, 0x3AC);  //3AC set Horizontal blanking to 940(30 FPS)
+		WriteCameraRegister(0x05, 0x05E);  //05E set Horizontal blanking to 94 (60 FPS)
+
 		/********** COLOR MODE *******************/
 		WriteCameraRegister(0x0F, 0x02);	//set sensor to default color mode
 		//WriteCameraRegister(0x0F, 0x15); 	//set sensor to color & no high dynamic range

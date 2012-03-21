@@ -52,8 +52,8 @@ void initPID(){
 	        pid.desiredVelocityPID = 0;
 	        pid.lastError = 0;
 	        pid.currentVelocity = 0;
-	        pid.lastDesiredVelocity = 0.0;
-	        pid.lastCurrentVelocity = 0.0f;
+	        pid.lastDesiredVelocity = 0;
+	        pid.lastCurrentVelocity = 0;
 	        pid.lastClockTicks = 0;
 	        pid.error = 0.0;
 		    //Distance params
@@ -85,7 +85,7 @@ void initPID(){
 
 void updateVelocityOutput()
 {
-	float desiredVelocity = pid.desiredVelocityPID;
+	int desiredVelocity = pid.desiredVelocityPID;
 	float P, I, D;
 	uint32 deltaClocks;
 	CPU_MSR msr;
@@ -113,7 +113,7 @@ void updateVelocityOutput()
 	int encoderDifference = pid.encoderValue - pid.lastEncoderValue;
 
 	//------Calculate Velocity
-	pid.currentVelocity = ((encoderDifference) / (refreshRate));
+	pid.currentVelocity = (int)((encoderDifference) / (refreshRate));
 
 	//------Calculate Error
 	pid.error = desiredVelocity - (pid.currentVelocity);
@@ -316,11 +316,11 @@ void updateDistanceOutput()
 	SetServo(RC_VEL_SERVO, pid.outputPID);
 }
 
-void setDistance(int32 distance){
+void setDistance(int distance){
 	pid.desiredDistancePID = distance + getTicks();
 }
 
-void setVelocity(int32 velocity){
+void setVelocity(int velocity){
 
 	pid.desiredVelocityPID = velocity;
 }
