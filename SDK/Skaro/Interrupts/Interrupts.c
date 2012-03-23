@@ -12,6 +12,7 @@
 
 #include "HeliosIO.h"
 #include "skaro_wireless.h"
+#include "Navigation.h"
 #include "Serial.h"
 
 void InitInterrupts() {
@@ -90,3 +91,19 @@ void GameboardSendHandler(void *CallBackRef, unsigned int EventData)
 	Wireless_Debug("This should never get called\r\n");
 }
 
+// Interrupt handler for gameboard UART
+void GameboardRecvHandler(void *CallBackRef, unsigned int EventData)
+{
+
+	XUartLite_Recv(&gameboard_uart, raw_gyro_data.packet, 5);
+
+	if (EventData == 5) {
+		raw_gyro_data.velocity = (signed char)raw_gyro_data.packet[1];
+		raw_gyro_data.velocity <<= 8;
+		raw_gyro_data.velocity |= (uint32) raw_gyro_data.packet[2];
+
+		raw_gyro_data.angular_velocity = (signed char)raw_gyro_data.packet[3];
+		raw_gyro_data.angular_velocity <<= 8;
+		raw_gyro_data.angular_velocity |= (uint32) raw_gyro_data.packet[4];
+	}
+}

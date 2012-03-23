@@ -4,12 +4,15 @@
 
 #define PI 3.14159265
 #define CONVERT_TO_RAD_SEC 0.0001527163 // (8.75 milidegees/sec)(1/1000)(pi/180)
+#define WHEELBASE 540; // b = ~27cm = ~540ticks
 
 typedef struct
 {
 	float omega; //w
 	float backCurvature; //k_b
 	float frontCurvature; //k_f
+	float backRadius; //k_b
+	float frontRadius; //k_f
 	float frontVelocity; //v
 	float steeringAngle; //delta
 	int wheelBase; // b

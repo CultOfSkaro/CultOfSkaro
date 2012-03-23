@@ -27,7 +27,9 @@
 							<tool id="xilinx.gnu.ppc.c.toolchain.compiler.debug.744302172" name="PowerPC gcc compiler" superClass="xilinx.gnu.ppc.c.toolchain.compiler.debug">
 								<option defaultValue="gnu.c.optimization.level.none" id="xilinx.gnu.compiler.option.optimization.level.1971711064" name="Optimization Level" superClass="xilinx.gnu.compiler.option.optimization.level" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.option.debugging.level.1856241433" name="Debug Level" superClass="xilinx.gnu.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
-								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.1689701854" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes"/>
+								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.1689701854" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/include"/>
+								</option>
 								<option id="xilinx.gnu.compiler.dircategory.includes.1293590279" name="Include Paths" superClass="xilinx.gnu.compiler.dircategory.includes" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SkaroVision/plb_vision_v1_00_a/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SkaroVision/plb_usb_v1_00_a/src}&quot;"/>
@@ -725,7 +727,9 @@
 							<tool id="xilinx.gnu.ppc.c.toolchain.compiler.release.117772025" name="PowerPC gcc compiler" superClass="xilinx.gnu.ppc.c.toolchain.compiler.release">
 								<option defaultValue="gnu.c.optimization.level.most" id="xilinx.gnu.compiler.option.optimization.level.29812378" name="Optimization Level" superClass="xilinx.gnu.compiler.option.optimization.level" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.option.debugging.level.1381529955" name="Debug Level" superClass="xilinx.gnu.compiler.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
-								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.1315401313" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes"/>
+								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.1315401313" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
+									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/include"/>
+								</option>
 								<option id="xilinx.gnu.compiler.dircategory.includes.243300137" name="Include Paths" superClass="xilinx.gnu.compiler.dircategory.includes" valueType="includePath">
 									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SkaroVision/plb_vision_v1_00_a/src}&quot;"/>

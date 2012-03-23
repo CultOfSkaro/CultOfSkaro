@@ -13,6 +13,7 @@
 
 typedef struct {
   int send_in_progress;
+  int receive_in_progress;
   Queue write_queue;
   unsigned char write_data[WRITE_QUEUE_SIZE*sizeof(void*)];
   Queue read_queue;

@@ -32,6 +32,15 @@ GyroData raw_gyro_data;
 GYRO_CORRECTIONS gyro;
 
 
+//%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%
+//--------------------------------------------Navigation Equations/Conversions----------------------------------------------------------------
+//%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%
+
+////
+//--------------------------------------------Gyro Calculation----------------------------------------------------------------
+////
 
 void initGyroCalculation()
 {
@@ -40,7 +49,7 @@ void initGyroCalculation()
 	gyro.frontCurvature = 0.0f; //k_f
 	gyro.frontVelocity = 0.0f; //v
 	gyro.steeringAngle = 0.0f; //delta
-	gyro.wheelBase = 540; // b = ~27cm = ~540ticks
+	gyro.wheelBase = WHEELBASE; // b = ~27cm = ~540ticks
 
 	//S is the distance recorded by the encoder
 	gyro.backEncoder = 0.0f; //S_b
@@ -65,12 +74,24 @@ void gyroCalculation()
 	gyro.omega = CONVERT_TO_RAD_SEC * raw_gyro_data.angular_velocity;
 	// K_b
 	gyro.backCurvature = gyro.omega/gyro.velocityBack;
+	//R_b
+	gyro.backRadius = 1/gyro.backCurvature;
 	// V_f
 	gyro.frontVelocity = gyro.velocityBack * sqrt(1+((gyro.backCurvature)*gyro.backCurvature*(gyro.wheelBase)*gyro.wheelBase));
 	// K_f
 	gyro.frontCurvature = gyro.omega/gyro.frontVelocity;
+	//R_b
+	gyro.frontRadius = 1/gyro.frontCurvature;
 	// Delta
 	gyro.steeringAngle = asin(gyro.wheelBase * gyro.frontCurvature);
+}
+
+////
+//--------------------------------------------Convertsions----------------------------------------------------------------
+////
+
+float steeringAngleToCurvature(int steeringAngle){
+	return (sin(gyro.frontCurvature))/gyro.wheelBase;
 }
 
 float curvatureBackToFront()
@@ -106,6 +127,16 @@ int absDistanceFromArchDistCuvrature(float curvature, int archDistance)
 {
 	return archDistance-(int)((curvature*curvature*archDistance*archDistance*archDistance)/24);
 }
+
+void cameraInterpretation(int centroid, int distance){
+
+	int backDistance = distanceFrontToBack(distance);
+
+}
+
+////
+//--------------------------------------------Absolute Reckoning code----------------------------------------------------------------
+////
 
 //MICHAEL/PETER's math...incomplete
 void dubin_curves_math(int distance, float bearing) { //input is a relative based destination
@@ -169,12 +200,6 @@ void dubin_curves_math(int distance, float bearing) { //input is a relative base
 	}
 }
 
-void cameraInterpretation(int centroid, int distance){
-
-	int backDistance = distanceFrontToBack(distance);
-
-}
-
 
 //%%%%%%%%%%%%%%%%%%%%%%%
 //%%%%%%%%%%%%%%%%%%%%%%%
@@ -198,16 +223,41 @@ void goCentroid(){
 	//flag
 }
 
+void holdServo(int servoSetting){
+	SetServo(RC_STR_SERVO, servoSetting);
+	//flag
+}
+
 void holdAngle(int angle){
-	//setAngle
+	int curvature = steeringAngleToCurvature(angle);
+	setCurvature(curvature);
+	//flag
+}
+
+void holdRadius(int radius){
+	int curvature = 1/radius;
+	setCurvature(curvature);
+	//flag
+}
+
+void holdCurvature(int curvature){
+	setCurvature(curvature);
 	//flag
 }
 
 void steering_loop(){
-	updateCentroid();
+	//flag acknowledge
+		updateCentroid();
+	//flag acknowledge
+		//updateCurvatureOutput();
+	//flag acknowledge
+		//Do Nothing(set servo steering)
 }
 
 void velocity_loop(){
-	updateDistanceSetVelocity(pid.maxVelocity);
+	//flag acknowledge
+		updateDistanceSetVelocity(pid.maxVelocity);
+	//flag acknowledge
+		//updateVelocityOutput();
 }
 

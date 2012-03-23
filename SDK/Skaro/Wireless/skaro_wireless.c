@@ -11,6 +11,7 @@ extern Skaro_Wireless wireless;
 
 int Wireless_Init(Skaro_Wireless * w){
 	w->send_in_progress = 0;
+	w->receive_in_progress = 0;
 	QueueInit(&(w->write_queue), (void *)w->write_data, WRITE_QUEUE_SIZE);
 	QueueInit(&(w->read_queue), (void *)w->read_data, READ_QUEUE_SIZE);
 	return 1;

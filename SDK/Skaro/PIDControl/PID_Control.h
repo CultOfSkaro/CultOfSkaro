@@ -50,8 +50,9 @@ typedef struct
 	int distanceError;
 	uint32 lastCurrentDistance;
 	int maxVelocity;
-	//Angle Centroid Variables
+	//Angle Heading Variables
 	int desiredAnglePID;
+	//Angle Centroid Variables
 	int desiredCentroidPID;
 	float Kp_c;
 	float Kd_c;
@@ -92,13 +93,15 @@ typedef struct
 void initPID();
 void updateVelocityOutput();
 void updateDistanceOutput();
+void updateCentroid();
+void updateCurvatureOutput();
 void setDistance(int32 distance);
 void setVelocity(int32 velocity);
+void setCurvature(int curvature);
 void updateDistanceSetVelocity(int velocity);
-void setSteeringRadius(int direction, uint32 radius_cm); //Right = direction:1 Left = direction:-1
 int sat(int in, int limit);
-void updateCentroid();
 
 extern volatile PID pid;
 
+//void setSteeringRadius(int direction, uint32 radius_cm); //Right = direction:1 Left = direction:-1
 #endif /* PID_CONTROL_H_ */

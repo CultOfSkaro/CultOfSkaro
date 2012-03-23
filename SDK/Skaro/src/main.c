@@ -102,10 +102,12 @@ Scheduler scheduler;
 #define SET_25_CIRCLE2		0xe
 #define SET_20_CIRCLE2		0xf
 #define SHOOT_GAME_SHOOT_KILL	0x10
+
 // TODO:  clean up and make it non-blocking
 void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 {
 	char c = 0;
+
 	if(!XUartLite_Recv(&(wireless.uart), &c, 1)){
 		return;
 	}
@@ -195,24 +197,6 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		XUartLite_RecvByte(wireless.uart.RegBaseAddress);
 	}
 }
-
-// Interrupt handler for gameboard UART
-void GameboardRecvHandler(void *CallBackRef, unsigned int EventData)
-{
-
-	XUartLite_Recv(&gameboard_uart, raw_gyro_data.packet, 5);
-
-	if (EventData == 5) {
-		raw_gyro_data.velocity = (signed char)raw_gyro_data.packet[1];
-		raw_gyro_data.velocity <<= 8;
-		raw_gyro_data.velocity |= (uint32) raw_gyro_data.packet[2];
-
-		raw_gyro_data.angular_velocity = (signed char)raw_gyro_data.packet[3];
-		raw_gyro_data.angular_velocity <<= 8;
-		raw_gyro_data.angular_velocity |= (uint32) raw_gyro_data.packet[4];
-	}
-}
-
 
 // For the pit handler, we increment a counter.  Every time the counter reaches a certain threshold,
 // We set the timer flag in the scheduler's events struct.  We reset the counter.

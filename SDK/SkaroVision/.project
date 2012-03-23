@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>SkaroVision</name>
-	<comment>VisionCore_bsp - ppc405_1</comment>
+	<comment></comment>
 	<projects>
 		<project>VisionCore_bsp</project>
 	</projects>

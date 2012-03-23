@@ -40,6 +40,8 @@ void initPID(){
 			pid.outputPID_unsat = 0;
 			pid.outputPID_c = 0;
 			pid.outputPID_unsat_c = 0;
+			pid.outputPID_k = 0;
+			pid.outputPID_unsat_k = 0;
 			pid.encoderValue = 0;
 			pid.lastEncoderValue = getTicks();
 			pid.Tau = 0.05f;
@@ -69,8 +71,9 @@ void initPID(){
 			pid.error_d = 0.0;
 	        pid.lastError_d = 0;
 	        pid.distanceError = 0;
-	        //Angle params
+	        //Heading Angle params
 			pid.desiredAnglePID = 0;
+			//Centroid params
 			pid.desiredCentroidPID = 0;
 			pid.Kp_c = 0.11f;
 			pid.Kd_c = 0.0f;
@@ -82,6 +85,18 @@ void initPID(){
 			pid.currentCentroid = 0;
 			pid.error_c = 0.0;
 			pid.lastClockTicks_c = 0;
+			//Curvature params
+			pid.desiredCurvaturePID = 0;
+			pid.Kp_k = 5.7f;
+			pid.Kd_k = 0.0f;
+			pid.Ki_k = 0.0f;
+			pid.integrator_k = 0.0f;
+			pid.differentiator_k = 0.0f;
+			pid.lastError_k = 0;
+			pid.lastCurrentCurvature = 0;
+			pid.currentCurvature = 0;
+			pid.error_k = 0.0;
+			pid.lastClockTicks_k = 0;
 
 	}
 
@@ -105,21 +120,19 @@ void updateVelocityOutput()
 		deltaClocks = (maxClocks-pid.lastClockTicks)+nowClocks;
 	else
 		deltaClocks = nowClocks - pid.lastClockTicks;
-
 	float refreshRate = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
 	//uint32 refreshRate = (deltaClocks)/(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ/1000) ;
-
 	pid.lastClockTicks = nowClocks;
-
 
 	//------Distance since last function call in ticks
 	int encoderDifference = pid.encoderValue - pid.lastEncoderValue;
 
 	//------Calculate Velocity
-	pid.currentVelocityBack = (int)((encoderDifference) / (refreshRate));
+	pid.currentVelocity = (int)((encoderDifference) / (refreshRate));
+	//pid.currentVelocityBack = (int)((encoderDifference) / (refreshRate));
 
 	//------Convert Back Velocity to front
-	pid.currentVelocity = velocityBackToFront(pid.currentVelocityBack);
+	//pid.currentVelocity = velocityBackToFront(pid.currentVelocityBack);
 
 	//------Calculate Error
 	pid.error = desiredVelocity - (pid.currentVelocity);
@@ -133,20 +146,7 @@ void updateVelocityOutput()
 	//------Update Derivative
 	pid.differentiator = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator) + ((2/((2*pid.Tau)+refreshRate))*(pid.currentVelocity - pid.lastCurrentVelocity));
 	//pid.differentiator = (2*pid.Tau-refreshRate)/(2*pid.Tau+refreshRate)*pid.differentiator + 2/(2*pid.Tau+refreshRate)*(pid.error - pid.lastError);
-//	struct tmp_struct {
-//		float diff;
-//		float tau;
-//		float refreshRate;
-//		float currentVelocity;
-//		float lastCurrentVelocity;
-//	};
-//	struct tmp_struct TMP;
-//	TMP.diff = pid.differentiator;
-//	TMP.tau = pid.Tau;
-//	TMP.refreshRate = refreshRate;
-//	TMP.currentVelocity = pid.currentVelocity;
-//	TMP.lastCurrentVelocity = pid.lastCurrentVelocity;
-//	Wireless_Send(&wireless, 4, sizeof(struct tmp_struct), &TMP);
+
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
 	//if ((pid.error < 1000 && pid.error > -1000) && (pid.error > 100 || pid.error < -100)){
 			pid.integrator = pid.integrator + (refreshRate/2)*(pid.error + pid.lastError);
@@ -213,17 +213,14 @@ void updateCentroid()
 	uint32 nowClocks = ClockTime();
 	RESTORE_INTERRUPTS(msr);
 
-
 	//------Time since last function call in seconds
 	uint32 maxClocks = 0xffffffff;
 	if ((nowClocks < pid.lastClockTicks_c))
 		deltaClocks = (maxClocks-pid.lastClockTicks_c)+nowClocks;
 	else
 		deltaClocks = nowClocks - pid.lastClockTicks_c;
-
 	float refreshRate = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
 	//uint32 refreshRate = (deltaClocks)/(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ/1000) ;
-
 	pid.lastClockTicks_c = nowClocks;
 
 	//------Calculate Error
@@ -261,7 +258,6 @@ void updateCentroid()
 	if (pid.outputPID_c == 0)
 		pid.outputPID_c = -2;
 	SetServo(RC_STR_SERVO, pid.outputPID_c);
-
 }
 
 void updateCurvatureOutput()
@@ -274,8 +270,8 @@ void updateCurvatureOutput()
 	msr = DISABLE_INTERRUPTS();
 	pid.currentCurvature = pid.desiredCurvaturePID;//----//get info from camera here
 	uint32 nowClocks = ClockTime();
+	gyroCalculation();
 	RESTORE_INTERRUPTS(msr);
-
 
 	//------Time since last function call in seconds
 	uint32 maxClocks = 0xffffffff;
@@ -283,11 +279,11 @@ void updateCurvatureOutput()
 		deltaClocks = (maxClocks-pid.lastClockTicks_c)+nowClocks;
 	else
 		deltaClocks = nowClocks - pid.lastClockTicks_c;
-
 	float refreshRate = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
-	//uint32 refreshRate = (deltaClocks)/(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ/1000) ;
-
 	pid.lastClockTicks_k = nowClocks;
+
+	//------Current Curvature at front of car
+	pid.currentCurvature = gyro.frontCurvature;
 
 	//------Calculate Error
 	pid.error_k = pid.desiredCurvaturePID - pid.currentCurvature;
@@ -305,7 +301,7 @@ void updateCurvatureOutput()
 	D = pid.Kd_k * pid.differentiator_k;
 
 	pid.outputPID_unsat_k = (P) + (I) - (D);
-	pid.outputPID_k = sat(pid.outputPID_unsat_k, 100);
+	pid.outputPID_k = sat(pid.outputPID_unsat_k, 40);
 
 	pid.integrator_k = pid.integrator_k + (refreshRate/pid.Ki_k)*(pid.outputPID_k - pid.outputPID_unsat_k);
 
@@ -317,52 +313,20 @@ void updateCurvatureOutput()
 	pid.lastError_k = pid.error_k;
 
 	SetServo(RC_STR_SERVO, pid.outputPID_k);
-
 }
 
 
 void updateDistanceSetVelocity(int velocity){
-//	int ticks = getTicks();
-//	pid.distanceError = pid.desiredDistancePID - ticks;
-//	int distanceError = pid.distanceError;
-
-	//------Convert distance from back to front of car
-	gyroCalculation();
-	int backDistance = pid.desiredDistancePID;
 	int ticks = getTicks();
-	pid.distanceError = distanceBackToFront(backDistance - ticks);
+	pid.distanceError = pid.desiredDistancePID - ticks;
 	int distanceError = pid.distanceError;
 
-//	int vel =  pid.desiredVelocityPID;
-//
-//	if(distanceError < -100)
-//		vel = -200;
-//	else if(distanceError < vel/3)
-//		vel = vel * 2/3;
-//
-//	pid.desiredVelocityPID = velocity;
-//	updateVelocityOutput();
-
-//	if (velocity == 1 ||(velocity > 0 && velocity <= 1000))
-//		velocity = 1000;
-//	else if (velocity == 2 ||(velocity > 1000 && velocity <= 2000))
-//		velocity = 2000;
-//	else if (velocity == 3 ||(velocity > 2000 && velocity <= 3000))
-//		velocity = 3000;
-//	else if (velocity == 4 ||(velocity > 3000 && velocity <= 4000))
-//		velocity = 4000;
-//	else if (velocity == -1 ||(velocity < 0 && velocity >= -1000))
-//		velocity = -1000;
-//	else if (velocity == -2 ||(velocity < 1000 && velocity >= -2000))
-//		velocity = -2000;
-//	else if (velocity == -3 ||(velocity < 2000 && velocity >= -3000))
-//		velocity = -3000;
-//	else if (velocity == -4 ||(velocity < 3000 && velocity >= -4000))
-//		velocity = -4000;
-//	else if (velocity == 1000000)
-//		velocity = 5000;
-//	else
-//		velocity = 0;
+	//------Convert distance from back to front of car
+//	gyroCalculation();
+//	int backDistance = pid.desiredDistancePID;
+//	int ticks = getTicks();
+//	pid.distanceError = distanceBackToFront(backDistance - ticks);
+//	int distanceError = pid.distanceError;
 
 	if (velocity <= 2000){
 			if (distanceError < 1500 && distanceError >= 1000)
@@ -415,6 +379,16 @@ void updateDistanceSetVelocity(int velocity){
 
 	setVelocity(velocity);
 	updateVelocityOutput();
+
+	//	int vel =  pid.desiredVelocityPID;
+	//
+	//	if(distanceError < -100)
+	//		vel = -200;
+	//	else if(distanceError < vel/3)
+	//		vel = vel * 2/3;
+	//
+	//	pid.desiredVelocityPID = velocity;
+	//	updateVelocityOutput();
 }
 
 
@@ -424,6 +398,10 @@ void setDistance(int distance){
 
 void setVelocity(int velocity){
 	pid.desiredVelocityPID = velocity;
+}
+
+void setCurvature(int curvatureIn_Rad_Per_Sec){
+	pid.desiredCurvaturePID = curvatureIn_Rad_Per_Sec;
 }
 
 int sat(int in, int limit) {
@@ -437,8 +415,47 @@ int sat(int in, int limit) {
 }
 
 
-
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //----------------------------------------------Dead Code----------------------------------------------
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+//	if (velocity == 1 ||(velocity > 0 && velocity <= 1000))
+//		velocity = 1000;
+//	else if (velocity == 2 ||(velocity > 1000 && velocity <= 2000))
+//		velocity = 2000;
+//	else if (velocity == 3 ||(velocity > 2000 && velocity <= 3000))
+//		velocity = 3000;
+//	else if (velocity == 4 ||(velocity > 3000 && velocity <= 4000))
+//		velocity = 4000;
+//	else if (velocity == -1 ||(velocity < 0 && velocity >= -1000))
+//		velocity = -1000;
+//	else if (velocity == -2 ||(velocity < 1000 && velocity >= -2000))
+//		velocity = -2000;
+//	else if (velocity == -3 ||(velocity < 2000 && velocity >= -3000))
+//		velocity = -3000;
+//	else if (velocity == -4 ||(velocity < 3000 && velocity >= -4000))
+//		velocity = -4000;
+//	else if (velocity == 1000000)
+//		velocity = 5000;
+//	else
+//		velocity = 0;
+
+//	struct tmp_struct {
+//		float diff;
+//		float tau;
+//		float refreshRate;
+//		float currentVelocity;
+//		float lastCurrentVelocity;
+//	};
+//	struct tmp_struct TMP;
+//	TMP.diff = pid.differentiator;
+//	TMP.tau = pid.Tau;
+//	TMP.refreshRate = refreshRate;
+//	TMP.currentVelocity = pid.currentVelocity;
+//	TMP.lastCurrentVelocity = pid.lastCurrentVelocity;
+//	Wireless_Send(&wireless, 4, sizeof(struct tmp_struct), &TMP);
+
 //void updateDistanceOutput()
 //{
 //	int32 desiredDistance = pid.desiredDistancePID;
@@ -501,6 +518,7 @@ int sat(int in, int limit) {
 //
 //	SetServo(RC_VEL_SERVO, pid.outputPID);
 //}
+
 //void setSteeringRadius(int direction, uint32 radius_cm) {
 //	int str = 0;
 //	switch (radius_cm){
