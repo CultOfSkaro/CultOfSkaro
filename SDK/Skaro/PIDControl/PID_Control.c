@@ -25,6 +25,7 @@
 #include "HeliosIO.h"
 #include "Serial.h"
 #include "scheduler.h"
+#include "Navigation.h"
 
 extern Scheduler scheduler;
 extern Skaro_Wireless wireless;
@@ -42,7 +43,6 @@ void initPID(){
 			pid.encoderValue = 0;
 			pid.lastEncoderValue = getTicks();
 			pid.Tau = 0.05f;
-
 			//Velocity params
 	        pid.Kp = 0.02f;
 	        pid.Kd = 0.00003f;
@@ -52,8 +52,10 @@ void initPID(){
 	        pid.desiredVelocityPID = 0;
 	        pid.lastError = 0;
 	        pid.currentVelocity = 0;
+	        pid.currentVelocityBack = 0;
 	        pid.lastDesiredVelocity = 0;
 	        pid.lastCurrentVelocity = 0;
+	        pid.maxVelocity = 0;
 	        pid.lastClockTicks = 0;
 	        pid.error = 0.0;
 		    //Distance params
@@ -94,6 +96,7 @@ void updateVelocityOutput()
 	msr = DISABLE_INTERRUPTS();
 	pid.encoderValue = getTicks();
 	uint32 nowClocks = ClockTime();
+	gyroCalculation();
 	RESTORE_INTERRUPTS(msr);
 
 	//------Time since last function call in seconds
@@ -113,7 +116,10 @@ void updateVelocityOutput()
 	int encoderDifference = pid.encoderValue - pid.lastEncoderValue;
 
 	//------Calculate Velocity
-	pid.currentVelocity = (int)((encoderDifference) / (refreshRate));
+	pid.currentVelocityBack = (int)((encoderDifference) / (refreshRate));
+
+	//------Convert Back Velocity to front
+	pid.currentVelocity = velocityBackToFront(pid.currentVelocityBack);
 
 	//------Calculate Error
 	pid.error = desiredVelocity - (pid.currentVelocity);
@@ -258,81 +264,73 @@ void updateCentroid()
 
 }
 
-void updateDistanceOutput()
+void updateCurvatureOutput()
 {
-	int32 desiredDistance = pid.desiredDistancePID;
-	int32 P, I, D;
+	int P, I, D;
 	uint32 deltaClocks;
 	CPU_MSR msr;
 
+	//------Read Encoder and clock
 	msr = DISABLE_INTERRUPTS();
-	pid.encoderValue = getTicks();
+	pid.currentCurvature = pid.desiredCurvaturePID;//----//get info from camera here
 	uint32 nowClocks = ClockTime();
 	RESTORE_INTERRUPTS(msr);
-	//logData(desiredDistance, pid.encoderValue);
+
 
 	//------Time since last function call in seconds
 	uint32 maxClocks = 0xffffffff;
-	if ((nowClocks < pid.lastClockTicks))
-		deltaClocks = (maxClocks-pid.lastClockTicks)+nowClocks;
+	if ((nowClocks < pid.lastClockTicks_c))
+		deltaClocks = (maxClocks-pid.lastClockTicks_c)+nowClocks;
 	else
-		deltaClocks = nowClocks - pid.lastClockTicks;
-	float deltaTime = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
-	pid.error_d = desiredDistance - pid.encoderValue;
+		deltaClocks = nowClocks - pid.lastClockTicks_c;
 
-	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	if ((pid.error_d < 1000 && pid.error_d > -1000) && (pid.error_d > 100 || pid.error_d < -100)){
-		pid.integrator_d = pid.integrator_d + (deltaTime/2)*(pid.error_d + pid.lastError_d);
-	}
-	else
-		pid.integrator_d = 0;
+	float refreshRate = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
+	//uint32 refreshRate = (deltaClocks)/(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ/1000) ;
 
-	//------only use the integrator if we are close, but not too close
-//	if (pid.error_d < 500 && pid.error_d > -500 &&
-//			(pid.error_d > 100 || pid.error_d < -100))
-//		pid.integrator_d += pid.error_d * deltaTime;
-//	else
-//		pid.integrator_d = 0;
+	pid.lastClockTicks_k = nowClocks;
+
+	//------Calculate Error
+	pid.error_k = pid.desiredCurvaturePID - pid.currentCurvature;
 
 	//------Update Derivative
-	pid.differentiator_d = (2*pid.Tau-deltaTime)/(2*pid.Tau+deltaTime)*pid.differentiator_d + 2/(2*pid.Tau+deltaTime)*(pid.error_d-pid.lastError_d);
+	pid.differentiator_k = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator_k) + ((2/((2*pid.Tau)+refreshRate))*(pid.currentCurvature - pid.lastCurrentCurvature));
 
-	P = pid.Kp_d * pid.error_d;
-	I = pid.Ki_d * pid.integrator_d;
-	D = pid.Kd_d * pid.differentiator_d;
+	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
+	pid.integrator_k = pid.integrator_k + (refreshRate/2)*(pid.error_k + pid.lastError_k);
 
 
-	pid.outputPID_unsat = P + I - D;
-	pid.outputPID = sat(pid.outputPID_unsat, 60);
+	//------Output Calculation
+	P = pid.Kp_k * pid.error_k;
+	I = pid.Ki_k * pid.integrator_k;
+	D = pid.Kd_k * pid.differentiator_k;
 
-	//------if we are really close, don't do anything!
-	//if (pid.error_d < 100 && pid.error_d > -100) {
-	//	pid.outputPID = 0;
-	//}
+	pid.outputPID_unsat_k = (P) + (I) - (D);
+	pid.outputPID_k = sat(pid.outputPID_unsat_k, 100);
 
-	//------Integrator Anti-windup
-//	if (pid.Ki_d != 0.0f) {
-//		pid.integrator_d = pid.integrator_d + deltaTime/pid.Ki_d * (pid.outputPID - pid.outputPID_unsat);
-//	}
+	pid.integrator_k = pid.integrator_k + (refreshRate/pid.Ki_k)*(pid.outputPID_k - pid.outputPID_unsat_k);
 
-	pid.lastError_d = pid.error_d;
-	pid.lastDesiredDistance = desiredDistance;
+	//------Save Info for graph
+	//Wireless_ControlLog_Ext(pid.currentCentroid, pid.desiredCentroidPID, pid.outputPID, pid.outputPID_unsat, refreshRate);
 
-	SetServo(RC_VEL_SERVO, pid.outputPID);
+	//------Save states and send PWM to motors
+	pid.lastCurrentCurvature = pid.currentCurvature;
+	pid.lastError_k = pid.error_k;
+
+	SetServo(RC_STR_SERVO, pid.outputPID_k);
+
 }
 
-void setDistance(int distance){
-	pid.desiredDistancePID = distance + getTicks();
-}
-
-void setVelocity(int velocity){
-
-	pid.desiredVelocityPID = velocity;
-}
 
 void updateDistanceSetVelocity(int velocity){
+//	int ticks = getTicks();
+//	pid.distanceError = pid.desiredDistancePID - ticks;
+//	int distanceError = pid.distanceError;
+
+	//------Convert distance from back to front of car
+	gyroCalculation();
+	int backDistance = pid.desiredDistancePID;
 	int ticks = getTicks();
-	pid.distanceError = pid.desiredDistancePID - ticks;
+	pid.distanceError = distanceBackToFront(backDistance - ticks);
 	int distanceError = pid.distanceError;
 
 //	int vel =  pid.desiredVelocityPID;
@@ -377,14 +375,8 @@ void updateDistanceSetVelocity(int velocity){
 				velocity = 400;
 			else if (distanceError < 200 && distanceError >= 40)
 				velocity = 200;
-//			else if (distanceError < 100 && distanceError >= 4)
-//				velocity = 100;
 			else if (distanceError < 40 && distanceError >= -40)
 				velocity = 0;
-//			else if (distanceError < 4 && distanceError >= -4)
-//				velocity = 0;
-//			else if (distanceError < -4 && distanceError >= -100)
-//				velocity = -0;
 			else if (distanceError < -40 && distanceError >= -1000)
 				velocity = -200;
 			else if (distanceError < -1000 && distanceError >= -8000)
@@ -425,41 +417,13 @@ void updateDistanceSetVelocity(int velocity){
 	updateVelocityOutput();
 }
 
-void setSteeringRadius(int direction, uint32 radius_cm) {
-	int str = 0;
-	switch (radius_cm){
-			case 100:
-				str = 64;
-				break;
-			case 125:
-				str = 56;
-				break;
-			case 150:
-				str = 48;
-				break;
-			case 175:
-				str = 44;
-				break;
-			case 200:
-				str = 40;
-				break;
-			case 225:
-				str = 36;
-				break;
-			case 250:
-				str = 32;
-				break;
-			case 275:
-				str = 28;
-				break;
-			case 300:
-				str = 24;
-				break;
-			default:
-				str = 0;
-				break;
-	}
-	SetServo(RC_STR_SERVO, (direction*str));
+
+void setDistance(int distance){
+	pid.desiredDistancePID = distance + getTicks();
+}
+
+void setVelocity(int velocity){
+	pid.desiredVelocityPID = velocity;
 }
 
 int sat(int in, int limit) {
@@ -471,3 +435,106 @@ int sat(int in, int limit) {
 	}
 	return in;
 }
+
+
+
+//----------------------------------------------Dead Code----------------------------------------------
+//void updateDistanceOutput()
+//{
+//	int32 desiredDistance = pid.desiredDistancePID;
+//	int32 P, I, D;
+//	uint32 deltaClocks;
+//	CPU_MSR msr;
+//
+//	msr = DISABLE_INTERRUPTS();
+//	pid.encoderValue = getTicks();
+//	uint32 nowClocks = ClockTime();
+//	RESTORE_INTERRUPTS(msr);
+//	//logData(desiredDistance, pid.encoderValue);
+//
+//	//------Time since last function call in seconds
+//	uint32 maxClocks = 0xffffffff;
+//	if ((nowClocks < pid.lastClockTicks))
+//		deltaClocks = (maxClocks-pid.lastClockTicks)+nowClocks;
+//	else
+//		deltaClocks = nowClocks - pid.lastClockTicks;
+//	float deltaTime = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
+//	pid.error_d = desiredDistance - pid.encoderValue;
+//
+//	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
+//	if ((pid.error_d < 1000 && pid.error_d > -1000) && (pid.error_d > 100 || pid.error_d < -100)){
+//		pid.integrator_d = pid.integrator_d + (deltaTime/2)*(pid.error_d + pid.lastError_d);
+//	}
+//	else
+//		pid.integrator_d = 0;
+//
+//	//------only use the integrator if we are close, but not too close
+////	if (pid.error_d < 500 && pid.error_d > -500 &&
+////			(pid.error_d > 100 || pid.error_d < -100))
+////		pid.integrator_d += pid.error_d * deltaTime;
+////	else
+////		pid.integrator_d = 0;
+//
+//	//------Update Derivative
+//	pid.differentiator_d = (2*pid.Tau-deltaTime)/(2*pid.Tau+deltaTime)*pid.differentiator_d + 2/(2*pid.Tau+deltaTime)*(pid.error_d-pid.lastError_d);
+//
+//	P = pid.Kp_d * pid.error_d;
+//	I = pid.Ki_d * pid.integrator_d;
+//	D = pid.Kd_d * pid.differentiator_d;
+//
+//
+//	pid.outputPID_unsat = P + I - D;
+//	pid.outputPID = sat(pid.outputPID_unsat, 60);
+//
+//	//------if we are really close, don't do anything!
+//	//if (pid.error_d < 100 && pid.error_d > -100) {
+//	//	pid.outputPID = 0;
+//	//}
+//
+//	//------Integrator Anti-windup
+////	if (pid.Ki_d != 0.0f) {
+////		pid.integrator_d = pid.integrator_d + deltaTime/pid.Ki_d * (pid.outputPID - pid.outputPID_unsat);
+////	}
+//
+//	pid.lastError_d = pid.error_d;
+//	pid.lastDesiredDistance = desiredDistance;
+//
+//	SetServo(RC_VEL_SERVO, pid.outputPID);
+//}
+//void setSteeringRadius(int direction, uint32 radius_cm) {
+//	int str = 0;
+//	switch (radius_cm){
+//			case 100:
+//				str = 64;
+//				break;
+//			case 125:
+//				str = 56;
+//				break;
+//			case 150:
+//				str = 48;
+//				break;
+//			case 175:
+//				str = 44;
+//				break;
+//			case 200:
+//				str = 40;
+//				break;
+//			case 225:
+//				str = 36;
+//				break;
+//			case 250:
+//				str = 32;
+//				break;
+//			case 275:
+//				str = 28;
+//				break;
+//			case 300:
+//				str = 24;
+//				break;
+//			default:
+//				str = 0;
+//				break;
+//	}
+//	SetServo(RC_STR_SERVO, (direction*str));
+//}
+

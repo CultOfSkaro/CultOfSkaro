@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Skaro/Interrupts/interrupts.c&apos; to &apos;Interrupts.c&apos;" description="Rename resource &apos;interrupts.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Interrupts/interrupts.c" name="Interrupts.c" stamp="1332444081303" updateReferences="true"/>
+</session>

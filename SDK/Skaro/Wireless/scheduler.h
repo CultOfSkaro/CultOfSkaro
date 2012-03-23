@@ -1,23 +1,29 @@
+#ifndef SKARO_SCHEDULER
+#define SKARO_SCHEDULER
 /*
  * Event_bits is a struct of bit fields.  Each bit field represents an event.
  * Add new events by adding a new bit field.
  */
 
+#define MAX_EVENTS 20
+
 typedef struct {
-  int timer:1;
-  int hello:1;
-  int vision:1;
-  int centroid_timer:1;
-} Event_bits;
+  int velocity_loop;
+  int hello;
+  int steering_loop;
+  int vision;
+} Event_flags;
 
 /*
  * Event_bits are wrapped up in a union so the entire thing can be set at once or
  * the individual flags can be set.
  */
 typedef union {
-  Event_bits flags;
-  int reg;
+  Event_flags flags;
+  int all[MAX_EVENTS];
 } Events;
+
+void Events_Init(Events * e);
 
 /*
  * Task_struct is used internally in the scheduler to manage the linked list.
@@ -31,6 +37,7 @@ struct Task_struct {
 
 typedef struct Task_struct Task;
 
+
 /*
  * The Scheduler struct is used in the scheduler.  One instance should be declared globally,
  * and initialized during setup.
@@ -39,7 +46,6 @@ typedef struct {
   Events events;  
   Task * tasks[32];
 } Scheduler;
-
 
 /*
  * Call Scheduler_Init to initialize the scheduler.  It should be called during setup.
@@ -66,3 +72,5 @@ void Scheduler_RegisterTask(Scheduler * scheduler, void (* func)(), Events event
  * TaskList_Append is used internally to add a task to the linked list for the given event.
  */
 Task * TaskList_Append(Task * current, Task * newTask);
+
+#endif

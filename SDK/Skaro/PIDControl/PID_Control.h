@@ -18,6 +18,8 @@ typedef struct
 	float outputPID_unsat;
 	int outputPID_c;
 	int outputPID_unsat_c;
+	int outputPID_k;
+	int outputPID_unsat_k;
 	int encoderValue;
 	int lastEncoderValue;              // Last position input
 	float Tau;
@@ -30,6 +32,7 @@ typedef struct
 	int lastError;
 	int desiredVelocityPID;
 	int currentVelocity;
+	int currentVelocityBack;
 	int lastDesiredVelocity;
 	int lastCurrentVelocity;
 	uint32 lastClockTicks;
@@ -46,7 +49,8 @@ typedef struct
 	int lastError_d;
 	int distanceError;
 	uint32 lastCurrentDistance;
-	//Angle Variables
+	int maxVelocity;
+	//Angle Centroid Variables
 	int desiredAnglePID;
 	int desiredCentroidPID;
 	float Kp_c;
@@ -59,6 +63,18 @@ typedef struct
 	int currentCentroid;
 	int error_c;
 	int lastClockTicks_c;
+	//Angle Curvature Variables
+	int desiredCurvaturePID;
+	float Kp_k;
+	float Kd_k;
+	float Ki_k;
+	float integrator_k;
+	float differentiator_k;
+	int lastError_k;
+	int lastCurrentCurvature;
+	int currentCurvature;
+	int error_k;
+	int lastClockTicks_k;
 	} PID;
 
 #define ENCODER_BASE_ADDR 0x7a400000

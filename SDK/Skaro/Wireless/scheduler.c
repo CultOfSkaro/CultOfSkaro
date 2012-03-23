@@ -6,12 +6,21 @@
 #define DEBUG_PRINT(...) ;
 #endif
 
+
+void Events_Init(Events * e){
+	int i;
+	for(i=0; i < MAX_EVENTS; i++){
+		e->all[i] = 0;
+	}
+}
+
 void Scheduler_Init(Scheduler * scheduler){
   int i;
   for(i = 0; i < 32; i++){
     scheduler->tasks[i] = 0;
   }
-  scheduler->events.reg = 0;
+
+  Events_Init(&scheduler->events);
 }
 
 void Scheduler_Destroy(Scheduler * scheduler){
@@ -29,15 +38,14 @@ void Scheduler_Destroy(Scheduler * scheduler){
 void Scheduler_Run(Scheduler * scheduler){
   int i;
   DEBUG_PRINT("Running Scheduler\n");
-  int index;
   for(i=0; i < 32; i++){
-    index = 1 << i;
-    if((scheduler->events.reg >> i) & 1){
+    if(scheduler->events.all[i]){
       Task * current_task = scheduler->tasks[i];
       for(;current_task;current_task = current_task->next){
         current_task->func();
       }
-      scheduler->events.reg &= ~(1 << i);
+      scheduler->events.all[i]=0;
+      return;
     }
   }
 }
@@ -47,7 +55,7 @@ void Scheduler_RegisterTask(Scheduler * scheduler, void (* func)(), Events event
   int index;
   for(i=0; i < 32; i++){
     index = 1 << i; 
-    if((events.reg >> i) & 1){
+    if(events.all[i]){
       Task * t = (Task *)malloc(sizeof(Task));
       t->func = func;
       t->next = 0;
@@ -59,7 +67,7 @@ void Scheduler_RegisterTask(Scheduler * scheduler, void (* func)(), Events event
 
 Task * TaskList_Append(Task * current, Task * newTask){
   if(current){
-    current->next = newTask;
+    current->next = TaskList_Append(current->next,newTask);
     return current;
   } else {
     return newTask;

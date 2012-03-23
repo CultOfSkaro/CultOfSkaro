@@ -28,9 +28,10 @@
 #include "Navigation.h"
 #include "math.h"
 
-// Gyro degrees per sec
-
+GyroData raw_gyro_data;
 GYRO_CORRECTIONS gyro;
+
+
 
 void initGyroCalculation()
 {
@@ -46,16 +47,43 @@ void initGyroCalculation()
 	gyro.frontEncoder = 0.0f; //S_f
 }
 
-void gyroCalculation(int gyroInput, int velocityBack)
+void gyroCalculation()
 {
-	gyro.omega = (PI*gyroInput)/180;
-	gyro.backCurvature = gyro.omega/velocityBack;
+	short velocity;
+	short angular_velocity;
+	CPU_MSR msr;
+	//gyro.velocityBack = pid.currentVelocityBack;
+
+	msr = DISABLE_INTERRUPTS();
+	velocity = raw_gyro_data.velocity;
+	angular_velocity = raw_gyro_data.angular_velocity;
+	RESTORE_INTERRUPTS(msr);
+
+	// V_b
+	gyro.velocityBack = 2*(raw_gyro_data.velocity/.1);
+	// W
+	gyro.omega = CONVERT_TO_RAD_SEC * raw_gyro_data.angular_velocity;
+	// K_b
+	gyro.backCurvature = gyro.omega/gyro.velocityBack;
 	// V_f
-	gyro.frontVelocity = velocityBack * sqrt(1+((gyro.backCurvature)*gyro.backCurvature*(gyro.wheelBase)*gyro.wheelBase));
+	gyro.frontVelocity = gyro.velocityBack * sqrt(1+((gyro.backCurvature)*gyro.backCurvature*(gyro.wheelBase)*gyro.wheelBase));
 	// K_f
 	gyro.frontCurvature = gyro.omega/gyro.frontVelocity;
 	// Delta
 	gyro.steeringAngle = asin(gyro.wheelBase * gyro.frontCurvature);
+}
+
+float curvatureBackToFront()
+{
+	return gyro.frontCurvature = gyro.omega/gyro.frontVelocity;
+}
+
+int velocityBackToFront(int velocityBack)
+{
+	// K_b
+	gyro.backCurvature = gyro.omega/velocityBack;
+	// V_f
+	return gyro.frontVelocity = velocityBack * sqrt(1+((gyro.backCurvature)*gyro.backCurvature*(gyro.wheelBase)*gyro.wheelBase));
 }
 
 void encoderBackToFrontCorrections()
@@ -146,3 +174,40 @@ void cameraInterpretation(int centroid, int distance){
 	int backDistance = distanceFrontToBack(distance);
 
 }
+
+
+//%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%
+//--------------------------------------------Controls----------------------------------------------------------------
+//%%%%%%%%%%%%%%%%%%%%%%%
+//%%%%%%%%%%%%%%%%%%%%%%%
+
+
+void goDistance_Velocity(int distance, int velocity){
+	setDistance(distance);
+	pid.maxVelocity = velocity;
+	//flag
+}
+
+void goVelocity(int velocity){
+	setVelocity(velocity);
+	//flag
+}
+
+void goCentroid(){
+	//flag
+}
+
+void holdAngle(int angle){
+	//setAngle
+	//flag
+}
+
+void steering_loop(){
+	updateCentroid();
+}
+
+void velocity_loop(){
+	updateDistanceSetVelocity(pid.maxVelocity);
+}
+
