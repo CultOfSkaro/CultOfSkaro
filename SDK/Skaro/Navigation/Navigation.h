@@ -2,9 +2,16 @@
 #define Navigation_H_
 #include "Header.h"
 
-#define PI 3.14159265
-#define CONVERT_TO_RAD_SEC 0.0001527163 // (8.75 milidegees/sec)(1/1000)(pi/180)
-#define WHEELBASE 540; // b = ~27cm = ~540ticks
+//Constants
+#define PI 						3.14159265
+#define CONVERT_TO_RAD_SEC 		0.0001527163 // (8.75 milidegees/sec)(1/1000)(pi/180)
+#define WHEELBASE 				540 // b = ~27cm = ~540ticks
+//PID loop flags
+#define VELOCITY_MODE 			1
+#define DISTANCE_VELOCITY_MODE 	2
+#define CENTROID_MODE 			3
+#define CURVATURE_MODE 			4
+#define SERVO_MODE 				5
 
 typedef struct
 {
@@ -17,7 +24,6 @@ typedef struct
 	float steeringAngle; //delta
 	int wheelBase; // b
 	int velocityBack;//v_b
-
 	//S is the distance recorded by the encoder
 	float backEncoder; //S_b
 	float frontEncoder; //S_f
@@ -30,8 +36,14 @@ typedef struct {
 	unsigned char packet[5];
 } GyroData;
 
+typedef struct {
+	int velocityLoopMode;
+	int steeringLoopMode;
+} ControlModes;
+
 extern GyroData raw_gyro_data;
 extern GYRO_CORRECTIONS gyro;
+extern ControlModes controls;
 extern volatile int max_velocity;
 
 void steering_loop();

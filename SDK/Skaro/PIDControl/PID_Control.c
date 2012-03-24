@@ -440,7 +440,7 @@ int sat(int in, int limit) {
 //		velocity = 5000;
 //	else
 //		velocity = 0;
-
+//---------------------------------------------------------------------------------------------------
 //	struct tmp_struct {
 //		float diff;
 //		float tau;
@@ -455,7 +455,7 @@ int sat(int in, int limit) {
 //	TMP.currentVelocity = pid.currentVelocity;
 //	TMP.lastCurrentVelocity = pid.lastCurrentVelocity;
 //	Wireless_Send(&wireless, 4, sizeof(struct tmp_struct), &TMP);
-
+//---------------------------------------------------------------------------------------------------
 //void updateDistanceOutput()
 //{
 //	int32 desiredDistance = pid.desiredDistancePID;
@@ -518,7 +518,7 @@ int sat(int in, int limit) {
 //
 //	SetServo(RC_VEL_SERVO, pid.outputPID);
 //}
-
+//---------------------------------------------------------------------------------------------------
 //void setSteeringRadius(int direction, uint32 radius_cm) {
 //	int str = 0;
 //	switch (radius_cm){
@@ -555,4 +555,4 @@ int sat(int in, int limit) {
 //	}
 //	SetServo(RC_STR_SERVO, (direction*str));
 //}
-
+//---------------------------------------------------------------------------------------------------

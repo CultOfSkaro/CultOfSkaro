@@ -30,6 +30,7 @@
 
 GyroData raw_gyro_data;
 GYRO_CORRECTIONS gyro;
+ControlModes controls;
 
 
 //%%%%%%%%%%%%%%%%%%%%%%%
@@ -207,57 +208,82 @@ void dubin_curves_math(int distance, float bearing) { //input is a relative base
 //%%%%%%%%%%%%%%%%%%%%%%%
 //%%%%%%%%%%%%%%%%%%%%%%%
 
-
-void goDistance_Velocity(int distance, int velocity){
-	setDistance(distance);
-	pid.maxVelocity = velocity;
-	//flag
+void initControls(){
+	controls.velocityLoopMode = 0;
+	controls.steeringLoopMode = 0;
 }
 
 void goVelocity(int velocity){
 	setVelocity(velocity);
-	//flag
+	//flag velocity 1
+	controls.velocityLoopMode = VELOCITY_MODE;
+}
+
+void goDistance_Velocity(int distance, int velocity){
+	setDistance(distance);
+	pid.maxVelocity = velocity;
+	//flag velocity 2
+	controls.velocityLoopMode = DISTANCE_VELOCITY_MODE;
 }
 
 void goCentroid(){
-	//flag
-}
-
-void holdServo(int servoSetting){
-	SetServo(RC_STR_SERVO, servoSetting);
-	//flag
+	//flag steering 1
+	controls.steeringLoopMode = CENTROID_MODE;
 }
 
 void holdAngle(int angle){
 	int curvature = steeringAngleToCurvature(angle);
 	setCurvature(curvature);
-	//flag
+	//flag steering 2
+	controls.steeringLoopMode = CURVATURE_MODE;
 }
 
 void holdRadius(int radius){
 	int curvature = 1/radius;
 	setCurvature(curvature);
-	//flag
+	//flag steering 2
+	controls.steeringLoopMode = CURVATURE_MODE;
 }
 
 void holdCurvature(int curvature){
 	setCurvature(curvature);
-	//flag
+	//flag steering 2
+	controls.steeringLoopMode = CURVATURE_MODE;
+}
+
+void holdServo(int servoSetting){
+	SetServo(RC_STR_SERVO, servoSetting);
+	//flag steering 3
+	controls.steeringLoopMode = SERVO_MODE;
+}
+
+void Stop(){
+	setVelocity(0);
+	setDistance(0);
 }
 
 void steering_loop(){
-	//flag acknowledge
+	//flag acknowledge steering 1
+	//if (controls.steeringLoopMode == CENTROID_MODE){
 		updateCentroid();
-	//flag acknowledge
+	//}
+	//flag acknowledge steering 2
+	//else if (controls.steeringLoopMode == CURVATURE_MODE){
 		//updateCurvatureOutput();
-	//flag acknowledge
+	//}
+	//flag acknowledge steering 3
+	//else if (controls.steeringLoopMode == SERVO_MODE){
 		//Do Nothing(set servo steering)
+	//}
 }
 
 void velocity_loop(){
-	//flag acknowledge
-		updateDistanceSetVelocity(pid.maxVelocity);
-	//flag acknowledge
+	//flag acknowledge velocity 1
+	//if ( controls.velocityLoopMode == VELOCITY_MODE){
 		//updateVelocityOutput();
+	//}
+	//flag acknowledge velocity 2
+	//else if (controls.velocityLoopMode == DISTANCE_VELOCITY_MODE){
+		updateDistanceSetVelocity(pid.maxVelocity);
+	//}
 }
-
