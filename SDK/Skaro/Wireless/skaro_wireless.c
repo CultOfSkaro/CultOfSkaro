@@ -12,6 +12,7 @@ extern Skaro_Wireless wireless;
 int Wireless_Init(Skaro_Wireless * w){
 	w->send_in_progress = 0;
 	w->receive_in_progress = 0;
+	w->read_array_position = 0;
 	QueueInit(&(w->write_queue), (void *)w->write_data, WRITE_QUEUE_SIZE);
 	QueueInit(&(w->read_queue), (void *)w->read_data, READ_QUEUE_SIZE);
 	return 1;
@@ -72,6 +73,10 @@ int Wireless_ControlLog_Ext(float actual, float expected, int saturated, int uns
 		values[16+i] = *((char *)(&unsaturated)+i);
 	}
 	return Wireless_Send(&wireless, WIRELESS_CONTROL_LOG_EXT,20, values);
+}
+
+int Wireless_Blob_Report(int length, Blob * blobs){
+	Wireless_Send(&wireless, WIRELESS_BLOB_REPORT, length*sizeof(Blob), blobs);
 }
 
 //int mains(){

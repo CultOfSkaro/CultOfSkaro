@@ -55,6 +55,8 @@ void InitInterrupts() {
 	// Set up send/receive handlers for wireless uart
 	XUartLite_SetSendHandler(&(wireless.uart), WirelessSendHandler, &(wireless.uart));
 	XUartLite_SetRecvHandler(&(wireless.uart), WirelessRecvHandler, &(wireless.uart));
+	//XUartLite_SetRecvHandler(&(wireless.uart), WirelessRecvHandlerNonBlocking, &(wireless.uart));
+	Wireless_Debug("Wireless should be set up now");
 
 	// Set up send/receive handlers for gameboard uart
 	XUartLite_SetSendHandler(&gameboard_uart, GameboardSendHandler, &gameboard_uart);
@@ -72,6 +74,7 @@ void InitInterrupts() {
 	XExc_mEnableExceptions(XEXC_ALL);
 	XTime_PITEnableInterrupt();
 	XTime_PITClearInterrupt();
+
 }
 
 void WirelessSendHandler(void *CallBackRef, unsigned int EventData)

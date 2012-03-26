@@ -37,8 +37,7 @@ void Scheduler_Destroy(Scheduler * scheduler){
 
 void Scheduler_Run(Scheduler * scheduler){
   int i;
-  DEBUG_PRINT("Running Scheduler\n");
-  for(i=0; i < 32; i++){
+  for(i=0; i < MAX_EVENTS; i++){
     if(scheduler->events.all[i]){
       Task * current_task = scheduler->tasks[i];
       for(;current_task;current_task = current_task->next){
@@ -53,19 +52,22 @@ void Scheduler_Run(Scheduler * scheduler){
 void Scheduler_RegisterTask(Scheduler * scheduler, void (* func)(), Events events){
   int i;
   int index;
-  for(i=0; i < 32; i++){
+  for(i=0; i < MAX_EVENTS; i++){
     index = 1 << i; 
     if(events.all[i]){
       Task * t = (Task *)malloc(sizeof(Task));
       t->func = func;
       t->next = 0;
       t->priority = 0;
+      Wireless_Debug("adding task to event:");
+      PrintInt(i);
       scheduler->tasks[i] = TaskList_Append(scheduler->tasks[i], t);
     }
   }
 }
 
 Task * TaskList_Append(Task * current, Task * newTask){
+	Wireless_Debug("Appending");
   if(current){
     current->next = TaskList_Append(current->next,newTask);
     return current;

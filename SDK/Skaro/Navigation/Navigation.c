@@ -30,7 +30,7 @@
 
 GyroData raw_gyro_data;
 GYRO_CORRECTIONS gyro;
-ControlModes controls;
+Navigation navigation;
 
 
 //%%%%%%%%%%%%%%%%%%%%%%%
@@ -73,6 +73,8 @@ void gyroCalculation()
 	gyro.velocityBack = 2*(raw_gyro_data.velocity/.1);
 	// W
 	gyro.omega = CONVERT_TO_RAD_SEC * raw_gyro_data.angular_velocity;
+	//Wireless_Debug("Omgega:");
+	//PrintFloat(gyro.omega);
 	// K_b
 	gyro.backCurvature = gyro.omega/gyro.velocityBack;
 	//R_b
@@ -105,7 +107,7 @@ int velocityBackToFront(int velocityBack)
 	// K_b
 	gyro.backCurvature = gyro.omega/velocityBack;
 	// V_f
-	return gyro.frontVelocity = velocityBack * sqrt(1+((gyro.backCurvature)*gyro.backCurvature*(gyro.wheelBase)*gyro.wheelBase));
+	return gyro.frontVelocity = velocityBack * sqrt(1+((gyro.backCurvature*gyro.backCurvature)*(gyro.wheelBase*gyro.wheelBase)));
 }
 
 void encoderBackToFrontCorrections()
@@ -208,54 +210,75 @@ void dubin_curves_math(int distance, float bearing) { //input is a relative base
 //%%%%%%%%%%%%%%%%%%%%%%%
 //%%%%%%%%%%%%%%%%%%%%%%%
 
-void initControls(){
-	controls.velocityLoopMode = 0;
-	controls.steeringLoopMode = 0;
+void Navigation_Init(Navigation * n){
+	Navigation_SetVelocityMode(n,DISTANCE_VELOCITY_MODE);
+	Navigation_SetSteeringMode(n,CENTROID_MODE);
+}
+
+void Navigation_SetVelocityMode(Navigation * n,int mode){
+	// filter mode via switch case
+	switch(mode){
+	case DO_NOTHING_MODE:
+	case VELOCITY_MODE:
+	case DISTANCE_VELOCITY_MODE:
+		n->velocityLoopMode = mode;
+	};
+	// if mode wasn't valid, don't do anything
+}
+void Navigation_SetSteeringMode(Navigation * n,int mode){
+	// filter mode via switch case
+	switch(mode){
+	case DO_NOTHING_MODE:
+	case CENTROID_MODE:
+	case CURVATURE_MODE:
+		n->steeringLoopMode = mode;
+	};
+	// if mode wasn't valid, don't do anything
 }
 
 void goVelocity(int velocity){
 	setVelocity(velocity);
 	//flag velocity 1
-	controls.velocityLoopMode = VELOCITY_MODE;
+	Navigation_SetVelocityMode(&navigation, VELOCITY_MODE);
 }
 
 void goDistance_Velocity(int distance, int velocity){
 	setDistance(distance);
 	pid.maxVelocity = velocity;
 	//flag velocity 2
-	controls.velocityLoopMode = DISTANCE_VELOCITY_MODE;
+	Navigation_SetVelocityMode(&navigation, DISTANCE_VELOCITY_MODE);
 }
 
 void goCentroid(){
 	//flag steering 1
-	controls.steeringLoopMode = CENTROID_MODE;
+	Navigation_SetSteeringMode(&navigation,CENTROID_MODE);
 }
 
-void holdAngle(int angle){
+void holdAngle(int angle, int direction){
 	int curvature = steeringAngleToCurvature(angle);
-	setCurvature(curvature);
+	setCurvature((direction*curvature));
 	//flag steering 2
-	controls.steeringLoopMode = CURVATURE_MODE;
+	Navigation_SetSteeringMode(&navigation,CURVATURE_MODE);
 }
 
-void holdRadius(int radius){
+void holdRadius(int radius, int direction){
 	int curvature = 1/radius;
-	setCurvature(curvature);
+	setCurvature((direction*curvature));
 	//flag steering 2
-	controls.steeringLoopMode = CURVATURE_MODE;
+	Navigation_SetSteeringMode(&navigation,CURVATURE_MODE);
 }
 
-void holdCurvature(int curvature){
-	setCurvature(curvature);
+void holdCurvature(int curvature, int direction){
+	setCurvature((direction*curvature));
 	//flag steering 2
-	controls.steeringLoopMode = CURVATURE_MODE;
+	Navigation_SetSteeringMode(&navigation,CURVATURE_MODE);
 }
-
-void holdServo(int servoSetting){
-	SetServo(RC_STR_SERVO, servoSetting);
-	//flag steering 3
-	controls.steeringLoopMode = SERVO_MODE;
-}
+//
+//void holdServo(int servoSetting){
+//	SetServo(RC_STR_SERVO, servoSetting);
+//	//flag steering 3
+//	controls.steeringLoopMode = SERVO_MODE;
+//}
 
 void Stop(){
 	setVelocity(0);
@@ -263,27 +286,24 @@ void Stop(){
 }
 
 void steering_loop(){
-	//flag acknowledge steering 1
-	//if (controls.steeringLoopMode == CENTROID_MODE){
-		updateCentroid();
-	//}
-	//flag acknowledge steering 2
+//	switch(navigation.steeringLoopMode){
+//	case CENTROID_MODE:
+//		updateCentroid();
+//	case CURVATURE_MODE:
+//		updateCurvatureOutput();
+//	}
 	//else if (controls.steeringLoopMode == CURVATURE_MODE){
+		//setCurvature(-1);  ANDREW.  WHAT DOES THIS DO????? ---- Just trying to test curvature AN
 		//updateCurvatureOutput();
 	//}
-	//flag acknowledge steering 3
-	//else if (controls.steeringLoopMode == SERVO_MODE){
-		//Do Nothing(set servo steering)
-	//}
+	SetServo(RC_STR_SERVO, 35);
 }
 
 void velocity_loop(){
-	//flag acknowledge velocity 1
-	//if ( controls.velocityLoopMode == VELOCITY_MODE){
-		//updateVelocityOutput();
-	//}
-	//flag acknowledge velocity 2
-	//else if (controls.velocityLoopMode == DISTANCE_VELOCITY_MODE){
+//	switch(navigation.steeringLoopMode){
+//	case DISTANCE_VELOCITY_MODE:
 		updateDistanceSetVelocity(pid.maxVelocity);
-	//}
+//	case VELOCITY_MODE:
+//		updateVelocityOutput();
+//	}
 }

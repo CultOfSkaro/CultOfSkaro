@@ -7,11 +7,15 @@
 #define CONVERT_TO_RAD_SEC 		0.0001527163 // (8.75 milidegees/sec)(1/1000)(pi/180)
 #define WHEELBASE 				540 // b = ~27cm = ~540ticks
 //PID loop flags
+#define DO_NOTHING_MODE			0
 #define VELOCITY_MODE 			1
 #define DISTANCE_VELOCITY_MODE 	2
 #define CENTROID_MODE 			3
 #define CURVATURE_MODE 			4
 #define SERVO_MODE 				5
+//Steering directions
+#define RIGHT					-1
+#define LEFT					1
 
 typedef struct
 {
@@ -39,11 +43,11 @@ typedef struct {
 typedef struct {
 	int velocityLoopMode;
 	int steeringLoopMode;
-} ControlModes;
+} Navigation;
 
 extern GyroData raw_gyro_data;
 extern GYRO_CORRECTIONS gyro;
-extern ControlModes controls;
+extern Navigation navigation;
 extern volatile int max_velocity;
 
 void steering_loop();
@@ -55,4 +59,8 @@ int distanceBackToFront(int distance);
 int absDistanceFromArchDistCuvrature(float curvature, int archDistance);
 void dubin_curves_math(int distance, float bearing);
 
+//API
+void Navigation_Init(Navigation * n);
+void Navigation_SetVelocityMode(Navigation * n,int mode);
+void Navigation_SetSteeringMode(Navigation * n,int mode);
 #endif

@@ -272,14 +272,25 @@ void floodFill(ushort *pixels, int xStart, int yStart, Color targetColor, int bl
 	}
 
 	//create blob
+#define IMAGE_WIDTH 640
+#define OBJECT_WIDTH       0.08255
+#define FIELD_OF_VISION    ((float)(25.5 * 3.1415 / 180))
+#define DISTANCE_CONSTANT  (IMAGE_WIDTH * OBJECT_WIDTH / FIELD_OF_VISION)
 	int width = xMax - xMin;
 	int height = yMax - yMin;
+	float distance = DISTANCE_CONSTANT / width;
+	int center = xMin + (width / 2) - (IMAGE_WIDTH / 2);
+	float angle = FIELD_OF_VISION * center / IMAGE_WIDTH;
 	if (width > 0 && height > 0) {
 		visionData->blobs[visionData->numBlobs].type = blobType;
 		visionData->blobs[visionData->numBlobs].left = xMin;
 		visionData->blobs[visionData->numBlobs].top = yMin;
 		visionData->blobs[visionData->numBlobs].width = width;
 		visionData->blobs[visionData->numBlobs].height = height;
+		visionData->blobs[visionData->numBlobs].distance = distance;
+		visionData->blobs[visionData->numBlobs].center = center;
+		visionData->blobs[visionData->numBlobs].angle = angle;
+
 		(visionData->numBlobs)++;
 	}
 }

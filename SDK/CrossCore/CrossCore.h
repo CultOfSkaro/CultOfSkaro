@@ -16,6 +16,9 @@ typedef struct {
 	int top;
 	int width;
 	int height;
+	float distance;
+	int center;
+	float angle;
 } Blob;
 
 typedef struct {

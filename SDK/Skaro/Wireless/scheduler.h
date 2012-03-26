@@ -5,13 +5,14 @@
  * Add new events by adding a new bit field.
  */
 
-#define MAX_EVENTS 20
+#define MAX_EVENTS 5
 
 typedef struct {
   int velocity_loop;
   int hello;
   int steering_loop;
   int vision;
+  int process_wireless_commands;
 } Event_flags;
 
 /*

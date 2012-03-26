@@ -81,6 +81,7 @@ volatile int distanceFromVisionTarget = 0;
 XIntc InterruptController;     /* The instance of the Interrupt Controller */
 
 Skaro_Wireless wireless;
+
 XUartLite gameboard_uart;
 
 Scheduler scheduler;
@@ -97,8 +98,8 @@ Scheduler scheduler;
 #define SET_STEERING		0x9
 #define SET_MAX_VELOCITY	0xa
 #define SET_VISION_DISTANCE	0xb
-#define SET_20_CIRCLE1		0xc
-#define SET_OVERLAP			0xd
+#define SET_STEERING_MODE	0xc
+#define SET_VELOCITY_MODE	0xd
 #define SET_25_CIRCLE2		0xe
 #define SET_20_CIRCLE2		0xf
 #define SHOOT_GAME_SHOOT_KILL	0x10
@@ -112,55 +113,52 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		return;
 	}
 
-	char word[11];
-	word[10] = 0;
-	float temp;
-	int temp_int;
+	float float_data;
+	int int_data;
 	int i;
 	char d;
 	switch (c){
 	case SET_PID_KP:
-		read(0,&temp,sizeof(float));
-		pid.Kp = temp;
+		read(0,&float_data,sizeof(float));
+		pid.Kp = float_data;
 		Wireless_Debug("Setting Kp to:");
 		PrintFloat(pid.Kp);
 		break;
 	case SET_PID_KI:
-		read(0,&temp,sizeof(float));
-		pid.Ki = temp;
+		read(0,&float_data,sizeof(float));
+		pid.Ki = float_data;
 		Wireless_Debug("Setting Ki to:");
 		PrintFloat(pid.Ki);
 		break;
 	case SET_PID_KD:
-		read(0,&temp,sizeof(float));
-		pid.Kd = temp;
+		read(0,&float_data,sizeof(float));
+		pid.Kd = float_data;
 		Wireless_Debug("Setting Kd to:");
 		PrintFloat(pid.Kd);
 		break;
 	case SET_PID_KP_C:
-		read(0,&temp,sizeof(float));
-		pid.Kp_c = temp;
+		read(0,&float_data,sizeof(float));
+		pid.Kp_c = float_data;
 		Wireless_Debug("Setting Kp_c to:");
 		PrintFloat(pid.Kp_c);
 		break;
 	case SET_PID_KI_C:
-		read(0,&temp,sizeof(float));
-		pid.Ki_c = temp;
+		read(0,&float_data,sizeof(float));
+		pid.Ki_c = float_data;
 		Wireless_Debug("Setting Ki_c to:");
 		PrintFloat(pid.Ki_c);
 		break;
 	case SET_PID_KD_C:
-		read(0,&temp,sizeof(float));
-		pid.Kd_c = temp;
+		read(0,&float_data,sizeof(float));
+		pid.Kd_c = float_data;
 		Wireless_Debug("Setting Kd_c to:");
 		PrintFloat(pid.Kd_c);
 		break;
 	case SET_DISTANCE:
-		read(0,word,10);
-		i = atoi(word);
-		setDistance(i);
+		read(0,&int_data,sizeof(int));
+		setDistance(int_data);
 		Wireless_Debug("Set distance to ");
-		PrintInt(i);
+		PrintInt(int_data);
 		Wireless_Debug("\n\r");
 		break;
 	case SET_STEERING:
@@ -170,22 +168,33 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		PrintInt(c);
 		break;
 	case SET_MAX_VELOCITY:
-		read(0,word,10);
-		i = atoi(word);
-		pid.maxVelocity = i;
+		read(0,&int_data,sizeof(int));
+		pid.maxVelocity = int_data;
 		Wireless_Debug("Set velocity to ");
 		PrintInt(pid.maxVelocity);
 		Wireless_Debug("\n\r");
 		break;
 	case SET_VISION_DISTANCE:
-		read(0,word,10);
-		distanceFromVisionTarget = atoi(word);
+		read(0,&int_data,sizeof(int));
+		distanceFromVisionTarget = int_data;
+		break;
+	case SET_VELOCITY_MODE:
+		read(0, &c, 1);
+		Navigation_SetVelocityMode(&navigation,c);
+		break;
+	case SET_STEERING_MODE:
+		read(0, &c, 1);
+		Navigation_SetSteeringMode(&navigation,c);
 		break;
 //	case SHOOT_GAME_SHOOT_KILL:
 //		Game_Shoot(GAME_KILL_SHOT);
 //		break;
 	case 'e':
 		goToTower = !goToTower;
+		break;
+	case 'c':
+		Wireless_Debug("Received STOP!\r\n");
+		Stop();
 		break;
 	default:
 		Wireless_Debug("Unknown command received: 0x");
@@ -195,6 +204,86 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 	}
 	while(!XUartLite_IsReceiveEmpty(wireless.uart.RegBaseAddress)){
 		XUartLite_RecvByte(wireless.uart.RegBaseAddress);
+	}
+}
+
+void issue_Command() {
+	// We've received the entire length of the packet
+	wireless.receive_in_progress = 0;
+	QueuePush(&(wireless.read_queue), (void *)&(wireless.read_array[wireless.read_array_position]));
+	if (++(wireless.read_array_position) >= READ_QUEUE_SIZE) {
+		wireless.read_array_position = 0;
+	}
+	scheduler.events.flags.process_wireless_commands = 1;
+}
+
+// Note: This code is currently pretty ugly, it needs to be refined a bit
+void WirelessRecvHandlerNonBlocking(void *CallBackRef, unsigned int EventData)
+{
+	Wireless_Command command;
+
+	// TODO: Add length to the packet, so that we don't need to infer it from type
+	if (!wireless.receive_in_progress) {
+		XUartLite_Recv(&(wireless.uart), &(command.type), 1);
+		wireless.receive_in_progress = 1;
+		switch (command.type){
+			case SET_PID_KP:
+				command.length = 4;
+				break;
+			case SET_PID_KI:
+				command.length = 4;
+				break;
+			case SET_PID_KD:
+				command.length = 4;
+				break;
+			case SET_PID_KP_C:
+				command.length = 4;
+				break;
+			case SET_PID_KI_C:
+				command.length = 4;
+				break;
+			case SET_PID_KD_C:
+				command.length = 4;
+				break;
+			case SET_DISTANCE:
+				command.length = 4;
+				break;
+			case SET_STEERING:
+				command.length = 1;
+				break;
+			case SET_MAX_VELOCITY:
+				command.length = 4;
+				break;
+			case SET_VISION_DISTANCE:
+				command.length = 4;
+				break;
+			case SET_VELOCITY_MODE:
+				command.length = 1;
+				break;
+			case SET_STEERING_MODE:
+				command.length = 1;
+				break;
+		//	case SHOOT_GAME_SHOOT_KILL:
+		//		Game_Shoot(GAME_KILL_SHOT);
+		//		break;
+			case 'e':
+				command.length = 0;
+				break;
+			case 'c':
+				command.length = 0;
+				break;
+			default:
+				command.length = 0;
+				break;
+			}
+			wireless.read_array[wireless.read_array_position] = command;
+			if (command.length > 0) {
+				XUartLite_Recv(&(wireless.uart), wireless.read_array[wireless.read_array_position].data, command.length);
+			} else {
+				issue_Command();
+			}
+	} else if (EventData == wireless.read_array[wireless.read_array_position].length){
+		issue_Command();
 	}
 }
 
@@ -236,16 +325,6 @@ int numNotFound = 0;
 int backupCount = 0;
 int backup = 0;
 void vision(){
-
-	#define IMAGE_WIDTH 640
-	#define OBJECT_WIDTH       0.08255
-	#define FIELD_OF_VISION    ((float)(25.5 * 3.1415 / 180))
-	#define DISTANCE_CONSTANT  (IMAGE_WIDTH * OBJECT_WIDTH / FIELD_OF_VISION)
-
-	float distance;
-	int center;
-	float angle;
-
 	*snap_vision_data = *live_vision_data;
 	if(!*snap_vision_data){
 		return;
@@ -253,8 +332,6 @@ void vision(){
 
 	VisionData *visionData = *snap_vision_data;
 
-
-	//Wireless_Debug("Blobs Detected: ");
 	int i;
 	Blob * biggest = 0;
 	for(i=0; i < visionData->numBlobs; i++) {
@@ -270,9 +347,8 @@ void vision(){
 			}
 		}
 	}
-
+	Wireless_Blob_Report(visionData->numBlobs,visionData->blobs);
 	if(biggest == 0) {
-		Wireless_Debug("NO BLOBS FOUND!");
 		if(goToTower){
 			setDistance(10000);
 			numNotFound++;
@@ -290,29 +366,8 @@ void vision(){
 		return;
 	} else {
 		numNotFound = 0;
-		distance = DISTANCE_CONSTANT / biggest->width;
-		center = biggest->left + (biggest->width / 2) - (IMAGE_WIDTH / 2);
-		angle = FIELD_OF_VISION * center / IMAGE_WIDTH;
 
-		Wireless_Debug("Blobs founds:");
-		PrintInt(visionData->numBlobs);
-
-		Wireless_Debug("Biggest Blob:");
-	//	Wireless_Debug("Left:");
-	//	PrintInt(biggest->left);
-	//	Wireless_Debug("Top:");
-	//	PrintInt(biggest->top);
-		Wireless_Debug("Width:");
-		PrintInt(biggest->width);
-	//	Wireless_Debug("Height:");
-	//	PrintInt(biggest->height);
-		Wireless_Debug("Distance:");
-		PrintFloat(distance);
-		Wireless_Debug("Angle:");
-		PrintFloat(angle);
-		Wireless_Debug("Centroid:");
-		PrintFloat(pid.currentCentroid);
-		int toGo = distance*2000 - distanceFromVisionTarget;
+		int toGo = biggest->distance*2000 - distanceFromVisionTarget;
 
 		//-----Backup Centering Code
 		if ((pid.currentVelocity == 0)&&(pid.currentCentroid < -30 || pid.currentCentroid > 30)){
@@ -320,7 +375,7 @@ void vision(){
 		}
 		if (backupCount < 100 && backup == 1){
 			backupCount++;
-			toGo = (distance*2000) - (distanceFromVisionTarget*2);
+			toGo = (biggest->distance*2000) - (distanceFromVisionTarget*2);
 		}
 		else if (backupCount == 100){
 			backupCount = 0;
@@ -328,26 +383,116 @@ void vision(){
 		}
 		//-----
 
-		Wireless_Debug("To Go:");
-		PrintInt(toGo);
-		Wireless_Debug("Velocity:");
-		PrintFloat(pid.currentVelocity);
+//		Wireless_Debug("To Go:");
+//		PrintInt(toGo);
+//		Wireless_Debug("Velocity:");
+//		PrintFloat(pid.currentVelocity);
+
 		if(goToTower){
 			setDistance(toGo);
-			pid.currentCentroid = center;
+			pid.currentCentroid = biggest->center;
 		}
+	}
+}
+
+void process_wireless_commands() {
+	Wireless_Command command;
+	int int_data;
+	float float_data;
+	char char_data;
+
+	CPU_MSR msr = DISABLE_INTERRUPTS();
+	command = *((Wireless_Command *)QueuePop(&(wireless.read_queue)));
+	RESTORE_INTERRUPTS(msr);
+
+	switch (command.type){
+	case SET_PID_KP:
+		pid.Kp = *((float *)(command.data));
+		Wireless_Debug("Setting Kp to:");
+		PrintFloat(pid.Kp);
+		break;
+	case SET_PID_KI:
+		pid.Ki = *((float *)(command.data));
+		Wireless_Debug("Setting Ki to:");
+		PrintFloat(pid.Ki);
+		break;
+	case SET_PID_KD:
+		pid.Kd = *((float *)(command.data));
+		Wireless_Debug("Setting Kd to:");
+		PrintFloat(pid.Kd);
+		break;
+	case SET_PID_KP_C:
+		pid.Kp_c = *((float *)(command.data));
+		Wireless_Debug("Setting Kp_c to:");
+		PrintFloat(pid.Kp_c);
+		break;
+	case SET_PID_KI_C:
+		pid.Ki_c = *((float *)(command.data));
+		Wireless_Debug("Setting Ki_c to:");
+		PrintFloat(pid.Ki_c);
+		break;
+	case SET_PID_KD_C:
+		pid.Kd_c = *((float *)(command.data));
+		Wireless_Debug("Setting Kd_c to:");
+		PrintFloat(pid.Kd_c);
+		break;
+	case SET_DISTANCE:
+		int_data = *((int *)(command.data));
+		setDistance(int_data);
+		Wireless_Debug("Set distance to ");
+		PrintInt(int_data);
+		Wireless_Debug("\n\r");
+		break;
+	case SET_STEERING:
+		char_data = command.data[0];
+		SetServo(RC_STR_SERVO, (signed char)char_data);
+		Wireless_Debug("Set Steering servo to ");
+		PrintInt(char_data);
+		break;
+	case SET_MAX_VELOCITY:
+		int_data = *((int *)(command.data));
+		pid.maxVelocity = int_data;
+		Wireless_Debug("Set velocity to ");
+		PrintInt(pid.maxVelocity);
+		Wireless_Debug("\n\r");
+		break;
+	case SET_VISION_DISTANCE:
+		int_data = *((int *)(command.data));
+		distanceFromVisionTarget = int_data;
+		break;
+	case SET_VELOCITY_MODE:
+		char_data = command.data[0];
+		Navigation_SetVelocityMode(&navigation,char_data);
+		break;
+	case SET_STEERING_MODE:
+		char_data = command.data[0];
+		Navigation_SetSteeringMode(&navigation,char_data);
+		break;
+		//	case SHOOT_GAME_SHOOT_KILL:
+		//		Game_Shoot(GAME_KILL_SHOT);
+		//		break;
+	case 'e':
+		goToTower = !goToTower;
+		break;
+	case 'c':
+		Wireless_Debug("Received STOP!\r\n");
+		Stop();
+		break;
+	default:
+		Wireless_Debug("Unknown command received: 0x");
+		PrintByte(command.type);
+		Wireless_Debug("\r\n");
+		break;
 	}
 }
 
 
 void calibrate_memory(){
-	print("Calibrating Memory...");
 	XCache_DisableDCache();
 	XCache_DisableICache();
 	MpmcCalibrationExample(XPAR_MPMC_0_DEVICE_ID);
 	XCache_EnableICache(0x00000001);
 	XCache_EnableDCache(0x00000001);
-	print("Done\r\n");
 }
 
 void registerEvents(){
@@ -375,6 +520,12 @@ void registerEvents(){
 		Events_Init(&vision_events);
 		vision_events.flags.vision = 1;
 		Scheduler_RegisterTask(&scheduler,vision,vision_events);
+
+		// Register task to process commands sent to the truck over wireless
+		Events process_wireless_commands_events;
+		Events_Init(&process_wireless_commands_events);
+		process_wireless_commands_events.flags.process_wireless_commands = 1;
+		Scheduler_RegisterTask(&scheduler,process_wireless_commands,process_wireless_commands_events);
 }
 
 int main (void) {
@@ -389,6 +540,7 @@ int main (void) {
 	InitInterrupts();
 
 	Scheduler_Init(&scheduler);
+	Navigation_Init(&navigation);
 
 	registerEvents();
 

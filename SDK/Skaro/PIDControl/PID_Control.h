@@ -71,9 +71,9 @@ typedef struct
 	float Ki_k;
 	float integrator_k;
 	float differentiator_k;
-	int lastError_k;
-	int lastCurrentCurvature;
-	int currentCurvature;
+	float lastError_k;
+	float lastCurrentCurvature;
+	float currentCurvature;
 	int error_k;
 	int lastClockTicks_k;
 	} PID;
@@ -87,8 +87,6 @@ typedef struct
 #define PID_UPDATES_PER_SECOND          100
 #define PID_UPDATE_MOD                  (100 / PID_UPDATES_PER_SECOND)
 #define TAU								0.5f
-#define RIGHT							-1
-#define LEFT							1
 
 void initPID();
 void updateVelocityOutput();

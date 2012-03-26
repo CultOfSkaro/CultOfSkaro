@@ -74,7 +74,7 @@ int MpmcCalibrationExample(u16 DeviceId)
 	XCache_InvalidateDCacheLine(MPMC_CALIBRATON_STARTADDR);
 #endif
 
-	xil_printf("\r\n Starting the Calibration Example \n\n");
+	//xil_printf("\r\n Starting the Calibration Example \n\n");
 
 	/*
 	 * Initialize the MPMC device.
@@ -109,11 +109,13 @@ int MpmcCalibrationExample(u16 DeviceId)
 	 * Set the calibrated value in the Static Phy Register.
 	 */
 	if (CalibStatus.FoundValid == TRUE) {
+		/*
 		xil_printf("\r Setting the phase shift to %0d. ",
 					CalibStatus.CalibTapValue);
 		xil_printf("Min Value = %d. Max Value = %d.\r\n",
 					CalibStatus.MinValue,
 					CalibStatus.MaxValue);
+		*/
 
 		MpmcSetCalibrate(&Mpmc, CalibStatus.CalibTapValue,
 					CalibStatus.RegValue);
@@ -123,7 +125,7 @@ int MpmcCalibrationExample(u16 DeviceId)
 
   	}
 
-	xil_printf("\r\n Calibration is Successful \r\n");
+	//xil_printf("\r\n Calibration is Successful \r\n");
 
 	return XST_SUCCESS;
 }
