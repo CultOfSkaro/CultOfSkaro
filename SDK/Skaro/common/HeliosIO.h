@@ -33,6 +33,9 @@ CHANGE LOG
 #include "xparameters.h"
 #define HELIOS_IO_BASEADDR    XPAR_XPS_GPIO_1_BASEADDR
 
+extern volatile int CurrentShotType;
+extern XGpio Gpio;
+
 // Define the components for which you would like to include code for
 // compilation.
 #define HELIOS_USE_BTN             // Code to read user button
@@ -49,6 +52,7 @@ CHANGE LOG
 	#define INTC_DEVICE_ID				XPAR_XPS_INTC_0_DEVICE_ID
 	#define INTC_GPIO_INTERRUPT_ID	XPAR_XPS_INTC_0_XPS_GPIO_0_IP2INTC_IRPT_INTR
 	#define GAME_SYSTEM_GPIO_CHANNEL	2
+	#define	GAME_SYSTEM_DIRECTION		0xFFFFD8FF
 	#define GAME_SYSTEM_GPIO_INT		XPAR_XPS_GPIO_1_IP2INTC_IRPT_MASK
 	
 	// Game System Interface (16 bits)

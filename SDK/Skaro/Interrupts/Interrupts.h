@@ -30,6 +30,7 @@ void my_pitHandler();
 void WirelessRecvHandler(void *CallBackRef, unsigned int EventData);
 void WirelessRecvHandlerNonBlocking(void *CallBackRef, unsigned int EventData);
 void GameboardRecvHandler(void *CallBackRef, unsigned int EventData);
+void GpioHandler();
 
 extern Skaro_Wireless wireless;
 

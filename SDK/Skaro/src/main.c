@@ -102,7 +102,7 @@ Scheduler scheduler;
 #define SET_VELOCITY_MODE	0xd
 #define SET_25_CIRCLE2		0xe
 #define SET_20_CIRCLE2		0xf
-#define SHOOT_GAME_SHOOT_KILL	0x10
+#define FIRE_KILL_SHOT		0x10
 
 // TODO:  clean up and make it non-blocking
 void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
@@ -186,9 +186,10 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		read(0, &c, 1);
 		Navigation_SetSteeringMode(&navigation,c);
 		break;
-//	case SHOOT_GAME_SHOOT_KILL:
-//		Game_Shoot(GAME_KILL_SHOT);
-//		break;
+	case FIRE_KILL_SHOT:
+		Wireless_Debug("Firing Kill Shot!\r\n");
+		Game_Shoot(GAME_KILL_SHOT);
+		break;
 	case 'e':
 		goToTower = !goToTower;
 		break;
@@ -263,9 +264,9 @@ void WirelessRecvHandlerNonBlocking(void *CallBackRef, unsigned int EventData)
 			case SET_STEERING_MODE:
 				command.length = 1;
 				break;
-		//	case SHOOT_GAME_SHOOT_KILL:
-		//		Game_Shoot(GAME_KILL_SHOT);
-		//		break;
+			case FIRE_KILL_SHOT:
+				command.length = 0;
+				break;
 			case 'e':
 				command.length = 0;
 				break;
@@ -292,15 +293,54 @@ void WirelessRecvHandlerNonBlocking(void *CallBackRef, unsigned int EventData)
 int counter = 0;
 int counter2 = 0;
 int counter3 = 0;
+int counter4 = 0;
+int counterDebug = 0;
 int update = 0;
+
+unsigned int gpioRead = 0;
+
+void Gpio_Changed(int gpio) {
+	if (CurrentShotType) {
+		CurrentShotType = 0;
+		Wireless_Debug("Clearing!\r\n");
+		XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, CurrentShotType);
+	}
+}
+
 
 void my_pitHandler(){
 	counter++;
 	counter3++;
+	counterDebug++;
+
+	if(counterDebug > 100) {
+		int read = XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL);
+		if (gpioRead != read) {
+			Wireless_Debug("Gpio:");
+			PrintWord(read);
+			gpioRead = read;
+			//Gpio_Changed(read);
+			Wireless_Debug("\r\n");
+		}
+	}
+
 	if(counter > 100){
 		scheduler.events.flags.velocity_loop = 1;
 		counter = 0;
 	}
+
+
+	if(CurrentShotType) {
+		counter4++;
+	}
+
+	if(counter4 > 1500) {
+		Wireless_Debug("Clearing!\r\n");
+		XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, CurrentShotType);
+		CurrentShotType = 0;
+		counter4 = 0;
+	}
+
 
 	if(*live_vision_data != *snap_vision_data){
 		scheduler.events.flags.vision = 1;
@@ -309,6 +349,7 @@ void my_pitHandler(){
 	}
 
 	if(counter3 > 1000){
+		//scheduler.events.flags.hello = 1;
 		Wireless_Send(&wireless, 3, 4, &counter2);
 		counter3 = 0;
 		counter2 = 0;
@@ -318,7 +359,31 @@ void my_pitHandler(){
 
 // This is a dummy task just to test out different events.
 void hello(){
+	// Test GPIO
+	Wireless_Debug("Has Flag: ");
+	PrintInt(Game_HaveFlag());
+	Wireless_Debug("\r\n");
 
+	Wireless_Debug("Game Enabled: ");
+	PrintInt(Game_Enabled());
+	Wireless_Debug("\r\n");
+
+	Wireless_Debug("Game Truck Alive: ");
+	PrintInt(Game_Truck_Alive());
+	Wireless_Debug("\r\n");
+
+	Wireless_Debug("Waiting To Shoot: ");
+	PrintInt(Game_WaitingToShoot());
+	Wireless_Debug("\r\n");
+
+	Wireless_Debug("Game State: ");
+	PrintInt(Game_GameState());
+	Wireless_Debug("\r\n");
+
+	Wireless_Debug("Team Number: ");
+	PrintInt(Game_TeamNumber());
+	Wireless_Debug("\r\n");
+	Wireless_Debug("-----------------------\r\n");
 }
 
 int numNotFound = 0;
@@ -357,8 +422,8 @@ void vision(){
 #else
 			int tmp = 10 * numNotFound;
 #endif
-			if(tmp > 350){
-				pid.currentCentroid = 350;
+			if(tmp > 200){
+				pid.currentCentroid = 200;
 			} else {
 				pid.currentCentroid = tmp;
 			}
@@ -389,6 +454,10 @@ void vision(){
 //		PrintFloat(pid.currentVelocity);
 
 		if(goToTower){
+			if (toGo < 6000) {
+				Game_Shoot(GAME_KILL_SHOT);
+			}
+
 			setDistance(toGo);
 			pid.currentCentroid = biggest->center;
 		}
@@ -459,6 +528,8 @@ void process_wireless_commands() {
 	case SET_VISION_DISTANCE:
 		int_data = *((int *)(command.data));
 		distanceFromVisionTarget = int_data;
+		Wireless_Debug("Set Tower Distance to ");
+		PrintInt(distanceFromVisionTarget);
 		break;
 	case SET_VELOCITY_MODE:
 		char_data = command.data[0];
@@ -468,11 +539,13 @@ void process_wireless_commands() {
 		char_data = command.data[0];
 		Navigation_SetSteeringMode(&navigation,char_data);
 		break;
-		//	case SHOOT_GAME_SHOOT_KILL:
-		//		Game_Shoot(GAME_KILL_SHOT);
-		//		break;
+	case FIRE_KILL_SHOT:
+		Wireless_Debug("Firing Kill Shot!\r\n");
+		Game_Shoot(GAME_KILL_SHOT);
+		break;
 	case 'e':
 		goToTower = !goToTower;
+		Wireless_Debug("GO!!");
 		break;
 	case 'c':
 		Wireless_Debug("Received STOP!\r\n");
@@ -537,15 +610,16 @@ int main (void) {
 	*snap_vision_data = 0;
 	*live_vision_data = 0;
 
+
 	InitInterrupts();
 
+	// Enable Gyro Data
+	// HeliosEnableGyro();
+	InitGameSystem();
 	Scheduler_Init(&scheduler);
 	Navigation_Init(&navigation);
 
 	registerEvents();
-
-	InitGameSystem();
-	HeliosEnableGyro();
 
 	ServoInit(RC_STR_SERVO);
 	ServoInit(RC_VEL_SERVO);
@@ -559,7 +633,6 @@ int main (void) {
 	while(1){
 		/*  Run Scheduler repeatedly */
 		Scheduler_Run(&scheduler);
-
 	}
 
 	Wireless_Debug("-- Exiting main() --\r\n");

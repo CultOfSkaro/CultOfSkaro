@@ -1,2 +1,35 @@
 make -k all 
+libgen -hw ../vhdl_hw_platform/system.xml\
+	       \
+	       -pe ppc405_0 \
+	       -log libgen.log \
+	       system.mss
+libgen
+Xilinx EDK 13.3 Build EDK_O.76xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Command Line: libgen -hw ../vhdl_hw_platform/system.xml -pe ppc405_0 -log
+libgen.log system.mss 
+
+
+Staging source files.
+Running DRCs.
+Running generate.
+Running post_generate.
+Running include - 'make -s include "COMPILER=powerpc-eabi-gcc"
+"ARCHIVER=powerpc-eabi-ar" "COMPILER_FLAGS= -O2 -c" "EXTRA_COMPILER_FLAGS=-g"'.
+
+Running libs - 'make -s libs "COMPILER=powerpc-eabi-gcc"
+"ARCHIVER=powerpc-eabi-ar" "COMPILER_FLAGS= -O2 -c" "EXTRA_COMPILER_FLAGS=-g"'.
+Compiling common
+C:\Xilinx\13.3\ISE_DS\EDK\gnu\powerpc-eabi\nt64\bin\powerpc-eabi-ar.exe: creating ../../../lib/libxil.a
+Compiling lldma
+Compiling standalone
+Compiling uartlite
+Compiling mpmc
+Compiling bram
+Compiling gpio
+Compiling intc
+Compiling cpu_ppc405
+Running execs_generate.
 Finished building libraries

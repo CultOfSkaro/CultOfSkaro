@@ -233,7 +233,8 @@ void updateCentroid()
 	pid.error_c = pid.desiredCentroidPID - pid.currentCentroid;
 
 	//------Update Derivative
-	pid.differentiator_c = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator_c) + ((2/((2*pid.Tau)+refreshRate))*(pid.currentCentroid - pid.lastCurrentCentroid));
+	//pid.differentiator_c = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator_c) + ((2/((2*pid.Tau)+refreshRate))*(pid.currentCentroid - pid.lastCurrentCentroid));
+	pid.differentiator_c = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator_c) + ((2/((2*pid.Tau)+refreshRate))*(pid.error_c - pid.lastError_c));
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
 	pid.integrator_c = pid.integrator_c + (refreshRate/2)*(pid.error_c + pid.lastError_c);

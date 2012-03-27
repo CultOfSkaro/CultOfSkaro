@@ -254,22 +254,22 @@ void goCentroid(){
 	Navigation_SetSteeringMode(&navigation,CENTROID_MODE);
 }
 
-void holdAngle(int angle, int direction){
+void holdAngle(int angle, int direction_RIGHT_LEFT){
 	int curvature = steeringAngleToCurvature(angle);
-	setCurvature((direction*curvature));
+	setCurvature((direction_RIGHT_LEFT*curvature));
 	//flag steering 2
 	Navigation_SetSteeringMode(&navigation,CURVATURE_MODE);
 }
 
-void holdRadius(int radius, int direction){
+void holdRadius(int radius, int direction_RIGHT_LEFT){
 	int curvature = 1/radius;
-	setCurvature((direction*curvature));
+	setCurvature((direction_RIGHT_LEFT*curvature));
 	//flag steering 2
 	Navigation_SetSteeringMode(&navigation,CURVATURE_MODE);
 }
 
-void holdCurvature(int curvature, int direction){
-	setCurvature((direction*curvature));
+void holdCurvature(int curvature, int direction_RIGHT_LEFT){
+	setCurvature((direction_RIGHT_LEFT*curvature));
 	//flag steering 2
 	Navigation_SetSteeringMode(&navigation,CURVATURE_MODE);
 }
@@ -288,7 +288,7 @@ void Stop(){
 void steering_loop(){
 //	switch(navigation.steeringLoopMode){
 //	case CENTROID_MODE:
-//		updateCentroid();
+		updateCentroid();
 //	case CURVATURE_MODE:
 //		updateCurvatureOutput();
 //	}
@@ -296,7 +296,6 @@ void steering_loop(){
 		//setCurvature(-1);  ANDREW.  WHAT DOES THIS DO????? ---- Just trying to test curvature AN
 		//updateCurvatureOutput();
 	//}
-	SetServo(RC_STR_SERVO, 35);
 }
 
 void velocity_loop(){

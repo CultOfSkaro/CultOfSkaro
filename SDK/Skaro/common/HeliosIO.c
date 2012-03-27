@@ -47,7 +47,7 @@ CHANGE LOG
 //#include "InterruptControl.h"
 //#include "ServoControl.h"
 
-Xuint32 oldBits;
+volatile int CurrentShotType;
 
 // FUNCTIONS //////////////////////////////////////////////////////////////////
 
@@ -247,18 +247,18 @@ XStatus InitGameSystem(void)
 	XStatus Status;
 	//Interrupts were already initialized in ISR.c (INIT_ISR())
 	//Wireless_Debug("Initializing GPIO...");
+
 	Status = XGpio_Initialize(&Gpio, GPIO_DEVICE_ID);
 	if (Status != XST_SUCCESS)
 	{
 		return XST_FAILURE;
 	}
+
 	// Reverse the endian-ness
-	//XGpio_SetDataDirection(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, 0xFFFFFF1B); //0xfffef8ff
-	XGpio_SetDataDirection(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, 0xFFFFD8FF); //0xfffef8ff
+	//XGpio_SetDataDirection(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, 0xFFFFFF1B);
+	XGpio_SetDataDirection(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, GAME_SYSTEM_DIRECTION);
 	XGpio_SetDataDirection(&Gpio, 1, 0xFFFFFFE7); //0xFFFFFFE7
-	//Wireless_Debug("Enabling interrupts...");
-	XGpio_InterruptEnable(&Gpio, XGPIO_IR_CH2_MASK);
-	XGpio_InterruptGlobalEnable(&Gpio);
+
 	return XST_SUCCESS;
 }
 
@@ -278,9 +278,10 @@ void Game_State()
  */
 void  Game_Shoot(uint16 shotType)
 {
-	XGpio_DiscreteSet(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, shotType);
-	ClockDelay(200000);
-	XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, shotType);
+	if(!CurrentShotType) {
+		CurrentShotType = shotType;
+		XGpio_DiscreteSet(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, shotType);
+	}
 }
 /* Returns the current state of the game.  The enabled bit is set automatically for you by the GPIO ISR.
  * This function simply returns the value set by the ISR.
