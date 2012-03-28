@@ -5,7 +5,7 @@
  * Add new events by adding a new bit field.
  */
 
-#define MAX_EVENTS 5
+#define MAX_EVENTS 8
 
 typedef struct {
   int velocity_loop;
@@ -13,6 +13,9 @@ typedef struct {
   int steering_loop;
   int vision;
   int process_wireless_commands;
+  int timer1;
+  int timer2;
+  int timer3;
 } Event_flags;
 
 /*
@@ -46,8 +49,10 @@ typedef struct Task_struct Task;
 typedef struct {
   Events events;  
   Task * tasks[32];
+  void (* beforeHook)();
 } Scheduler;
 
+extern Scheduler scheduler;
 /*
  * Call Scheduler_Init to initialize the scheduler.  It should be called during setup.
  */
@@ -69,6 +74,12 @@ void Scheduler_Run(Scheduler * scheduler);
 
 void Scheduler_RegisterTask(Scheduler * scheduler, void (* func)(), Events events);
 
+/*
+ * Scheduler_SetBeforeHook sets a function to be called every time Scheduler_Run is called.  It runs
+ * before the scheduling loop, and can be used to set events based on specific conditions.
+ */
+
+void Scheduler_SetBeforeHook(Scheduler * scheduler, void (* func)());
 /*
  * TaskList_Append is used internally to add a task to the linked list for the given event.
  */

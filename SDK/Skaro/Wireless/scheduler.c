@@ -6,6 +6,7 @@
 #define DEBUG_PRINT(...) ;
 #endif
 
+Scheduler scheduler;
 
 void Events_Init(Events * e){
 	int i;
@@ -37,6 +38,7 @@ void Scheduler_Destroy(Scheduler * scheduler){
 
 void Scheduler_Run(Scheduler * scheduler){
   int i;
+  scheduler->beforeHook();
   for(i=0; i < MAX_EVENTS; i++){
     if(scheduler->events.all[i]){
       Task * current_task = scheduler->tasks[i];
@@ -44,7 +46,7 @@ void Scheduler_Run(Scheduler * scheduler){
         current_task->func();
       }
       scheduler->events.all[i]=0;
-      return;
+      //return;
     }
   }
 }
@@ -59,15 +61,17 @@ void Scheduler_RegisterTask(Scheduler * scheduler, void (* func)(), Events event
       t->func = func;
       t->next = 0;
       t->priority = 0;
-      Wireless_Debug("adding task to event:");
-      PrintInt(i);
       scheduler->tasks[i] = TaskList_Append(scheduler->tasks[i], t);
     }
   }
 }
 
+
+void inline Scheduler_SetBeforeHook(Scheduler * scheduler, void (* func)()){
+	scheduler->beforeHook = func;
+}
+
 Task * TaskList_Append(Task * current, Task * newTask){
-	Wireless_Debug("Appending");
   if(current){
     current->next = TaskList_Append(current->next,newTask);
     return current;
@@ -75,3 +79,4 @@ Task * TaskList_Append(Task * current, Task * newTask){
     return newTask;
   } 
 }
+

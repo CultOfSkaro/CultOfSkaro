@@ -44,4 +44,6 @@ void Wireless_Debug(char * message);
 int Wireless_ControlLog(float actual, float expected);
 int Wireless_ControlLog_Ext(float actual, float expected, int saturated, int unsaturated, int refresh_rate);
 int Wireless_Blob_Report(int length, Blob * blobs);
+
+extern Skaro_Wireless wireless;
 #endif

@@ -69,10 +69,9 @@
 #include "CrossCore.h"
 #include "Navigation.h"
 #include "Interrupts.h"
+#include "PIT.h"
 
 //#include "ISR.h"
-
-
 
 volatile int goToTower = 0;
 volatile int distanceFromVisionTarget = 0;
@@ -80,11 +79,9 @@ volatile int distanceFromVisionTarget = 0;
 
 XIntc InterruptController;     /* The instance of the Interrupt Controller */
 
-Skaro_Wireless wireless;
-
 XUartLite gameboard_uart;
 
-Scheduler scheduler;
+
 
 
 #define SET_PID_KP   		0x1
@@ -288,15 +285,6 @@ void WirelessRecvHandlerNonBlocking(void *CallBackRef, unsigned int EventData)
 	}
 }
 
-// For the pit handler, we increment a counter.  Every time the counter reaches a certain threshold,
-// We set the timer flag in the scheduler's events struct.  We reset the counter.
-int counter = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counterDebug = 0;
-int update = 0;
-
 unsigned int gpioRead = 0;
 
 void Gpio_Changed(int gpio) {
@@ -308,57 +296,9 @@ void Gpio_Changed(int gpio) {
 }
 
 
-void my_pitHandler(){
-	counter++;
-	counter3++;
-	counterDebug++;
-
-	if(counterDebug > 100) {
-		int read = XGpio_DiscreteRead(&Gpio, GAME_SYSTEM_GPIO_CHANNEL);
-		if (gpioRead != read) {
-			Wireless_Debug("Gpio:");
-			PrintWord(read);
-			gpioRead = read;
-			//Gpio_Changed(read);
-			Wireless_Debug("\r\n");
-		}
-	}
-
-	if(counter > 100){
-		scheduler.events.flags.velocity_loop = 1;
-		counter = 0;
-	}
-
-
-	if(CurrentShotType) {
-		counter4++;
-	}
-
-	if(counter4 > 1500) {
-		Wireless_Debug("Clearing!\r\n");
-		XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, CurrentShotType);
-		CurrentShotType = 0;
-		counter4 = 0;
-	}
-
-
-	if(*live_vision_data != *snap_vision_data){
-		scheduler.events.flags.vision = 1;
-		scheduler.events.flags.steering_loop = 1;
-		counter2++;
-	}
-
-	if(counter3 > 1000){
-		//scheduler.events.flags.hello = 1;
-		Wireless_Send(&wireless, 3, 4, &counter2);
-		counter3 = 0;
-		counter2 = 0;
-	}
-	XTime_PITClearInterrupt();
-}
-
 // This is a dummy task just to test out different events.
 void hello(){
+	return;
 	// Test GPIO
 	Wireless_Debug("Has Flag: ");
 	PrintInt(Game_HaveFlag());
@@ -389,13 +329,11 @@ void hello(){
 int numNotFound = 0;
 int backupCount = 0;
 int backup = 0;
-void vision(){
-	*snap_vision_data = *live_vision_data;
-	if(!*snap_vision_data){
-		return;
-	}
 
-	VisionData *visionData = *snap_vision_data;
+// This needs to take params and avoid using globals
+void Vision_ProcessFrame(){
+
+	VisionData *visionData = *vision.snap_vision_data;
 
 	int i;
 	Blob * biggest = 0;
@@ -412,7 +350,8 @@ void vision(){
 			}
 		}
 	}
-	Wireless_Blob_Report(visionData->numBlobs,visionData->blobs);
+	if(vision.frameRate % 4 == 0)
+		Wireless_Blob_Report(visionData->numBlobs,visionData->blobs);
 	if(biggest == 0) {
 		if(goToTower){
 			setDistance(10000);
@@ -428,7 +367,6 @@ void vision(){
 				pid.currentCentroid = tmp;
 			}
 		}
-		return;
 	} else {
 		numNotFound = 0;
 
@@ -446,22 +384,15 @@ void vision(){
 			backupCount = 0;
 			backup = 0;
 		}
-		//-----
-
-//		Wireless_Debug("To Go:");
-//		PrintInt(toGo);
-//		Wireless_Debug("Velocity:");
-//		PrintFloat(pid.currentVelocity);
-
 		if(goToTower){
 			if (toGo < 6000) {
 				Game_Shoot(GAME_KILL_SHOT);
 			}
-
 			setDistance(toGo);
 			pid.currentCentroid = biggest->center;
 		}
 	}
+	vision.frameRate++;
 }
 
 void process_wireless_commands() {
@@ -560,6 +491,8 @@ void process_wireless_commands() {
 }
 
 
+///////  THIS IS THE START OF WHAT MAIN WILL ACTUALLY LOOK LIKE... EVERYTHING ABOVE MUST GO!!!!!
+
 void calibrate_memory(){
 	XCache_DisableDCache();
 	XCache_DisableICache();
@@ -568,37 +501,72 @@ void calibrate_memory(){
 	XCache_EnableDCache(0x00000001);
 }
 
+void reportFrameRate(){
+	Wireless_Send(&wireless, WIRELESS_VISION_FRAMERATE, 4, &vision.frameRate);
+	vision.frameRate = 0;
+}
+
+void vision_loop(){
+	*vision.snap_vision_data = *vision.live_vision_data;
+	if(*vision.snap_vision_data){
+		Vision_ProcessFrame();
+	}
+}
+
+
 void registerEvents(){
 	/* Initialize Tasks */
-		Events velocity_events;  // in order to register the control loop,
-		// we need an events struct
-		Events_Init(&velocity_events); 		// clear all events
-		velocity_events.flags.velocity_loop = 1;	// set the flags we want as triggers
-		Scheduler_RegisterTask(&scheduler,velocity_loop,velocity_events);  // Register task with Scheduler
+		Events events;
+		Events_Init(&events); 		// clear all events
+		//events.flags.velocity_loop = 1;
+		events.flags.timer1 = 1;// set the flags we want as triggers
+		Scheduler_RegisterTask(&scheduler,velocity_loop,events);  // Register task with Scheduler
 
-		Events steering_events;  // in order to register the control loop,
-		// we need an events struct
-		Events_Init(&steering_events); 		// clear all events
-		steering_events.flags.steering_loop = 1;	// set the flags we want as triggers
-		Scheduler_RegisterTask(&scheduler,steering_loop,steering_events);  // Register task with Scheduler
 
-		// Another example
-		Events hello_events;
-		Events_Init(&hello_events);
-		hello_events.flags.hello = 1;
-		Scheduler_RegisterTask(&scheduler,hello,hello_events);
+		Events_Init(&events); 		// clear all events
+		events.flags.steering_loop = 1;	// set the flags we want as triggers
+		Scheduler_RegisterTask(&scheduler,steering_loop,events);  // Register task with Scheduler
 
-		// Another example
-		Events vision_events;
-		Events_Init(&vision_events);
-		vision_events.flags.vision = 1;
-		Scheduler_RegisterTask(&scheduler,vision,vision_events);
+		Events_Init(&events); 		// clear all events
+		events.flags.hello = 1;
+		events.flags.timer1 = 1;
+		Scheduler_RegisterTask(&scheduler,hello,events);
 
-		// Register task to process commands sent to the truck over wireless
-		Events process_wireless_commands_events;
-		Events_Init(&process_wireless_commands_events);
-		process_wireless_commands_events.flags.process_wireless_commands = 1;
-		Scheduler_RegisterTask(&scheduler,process_wireless_commands,process_wireless_commands_events);
+		Events_Init(&events); 		// clear all events
+		events.flags.vision = 1;
+		Scheduler_RegisterTask(&scheduler,vision_loop,events);
+
+
+		Events_Init(&events); 		// clear all events
+		events.flags.process_wireless_commands = 1;
+		Scheduler_RegisterTask(&scheduler,process_wireless_commands,events);
+
+		// Report framerate on timer2
+		Events_Init(&events);
+		events.flags.timer2 = 1;
+		Scheduler_RegisterTask(&scheduler, reportFrameRate, events);
+}
+
+void registerTimers(){
+	Counter c;
+	c.max = 100;
+	c.event = &scheduler.events.flags.timer1;
+	PIT_AddCounter(&pit,c);
+	c.max = 1000;
+	c.event = &scheduler.events.flags.timer2;
+	PIT_AddCounter(&pit,c);
+}
+
+void my_pitHandler(){
+	PIT_IncrementCounters(&pit);
+	XTime_PITClearInterrupt();
+}
+
+void myBeforeHook(){
+	if(*vision.live_vision_data != *vision.snap_vision_data){
+		scheduler.events.flags.vision = 1;
+		scheduler.events.flags.steering_loop = 1;
+	}
 }
 
 int main (void) {
@@ -607,9 +575,7 @@ int main (void) {
 
 	// wait for memory to calibrate and set vision pointers to 0
 	usleep(100000);
-	*snap_vision_data = 0;
-	*live_vision_data = 0;
-
+	Vision_Init(&vision);
 
 	InitInterrupts();
 
@@ -617,9 +583,11 @@ int main (void) {
 	// HeliosEnableGyro();
 	InitGameSystem();
 	Scheduler_Init(&scheduler);
+	Scheduler_SetBeforeHook(&scheduler,myBeforeHook);
 	Navigation_Init(&navigation);
 
 	registerEvents();
+	registerTimers();
 
 	ServoInit(RC_STR_SERVO);
 	ServoInit(RC_VEL_SERVO);

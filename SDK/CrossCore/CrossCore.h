@@ -26,17 +26,23 @@ typedef struct {
 	Blob blobs[MAX_BLOBS];
 } VisionData;
 
-//needs space for 3 structs
-extern VisionData * vision_data;
-extern VisionData ** live_vision_data;
-extern VisionData ** snap_vision_data;
+typedef struct {
+	int frameRate;
+	VisionData * data;
+	//pointers into vision_data
+	VisionData ** live_vision_data;
+	VisionData ** snap_vision_data;
+} Vision;
+
+extern Vision vision;
 
 extern char * shared_debug_buffer;
 
-//pointers into vision_data
 
-VisionData * getVisionBuffer();
+void Vision_Init(Vision * vision);
 
-void inline updateVisionData(VisionData * tmp);
+VisionData * Vision_GetBuffer(Vision * vision);
+
+void inline Vision_UpdateData(Vision * vision, VisionData * tmp);
 
 #endif

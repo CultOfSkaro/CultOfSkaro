@@ -307,7 +307,7 @@ void processFrame(FrameTableEntry* frame) {
 	StackInit(toCheck, (void**)FILL_STACK_LOC, FILL_STACK_SIZE);
 	//StackInit(toCheck, stackMem, STACK_MEM_SIZE);
 
-	visionData = getVisionBuffer();
+	visionData = Vision_GetBuffer(&vision);
 	visionData->numBlobs = 0;
 
 	//find blue blobs
@@ -369,7 +369,7 @@ void processFrame(FrameTableEntry* frame) {
 //		}
 //	}
 
-	updateVisionData(visionData);
+	Vision_UpdateData(&vision,visionData);
 #ifdef DEBUG_USB_VISION
 	transmitFrame(frame);
 #endif
@@ -381,7 +381,7 @@ int main()
 
 	//wait for other processor to run memory calibration
 	usleep(100000);
-
+	Vision_Init(&vision);
 	print("Initializing Memory Buffers...\r\n");
 	MemAllocInit((uint32*)0x300000);
 	BSInit();

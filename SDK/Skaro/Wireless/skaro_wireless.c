@@ -7,7 +7,7 @@
 #include <stdarg.h>
 #include <ctype.h>
 
-extern Skaro_Wireless wireless;
+Skaro_Wireless wireless;
 
 int Wireless_Init(Skaro_Wireless * w){
 	w->send_in_progress = 0;

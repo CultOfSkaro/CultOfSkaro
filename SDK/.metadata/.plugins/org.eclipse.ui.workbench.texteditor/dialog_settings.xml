@@ -3,26 +3,26 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="616" key="DIALOG_WIDTH"/>
 		<item value="481" key="DIALOG_Y_ORIGIN"/>
-		<item value="435" key="DIALOG_X_ORIGIN"/>
 		<item value="408" key="DIALOG_HEIGHT"/>
+		<item value="435" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="hello" key="selection"/>
+		<item value="update" key="selection"/>
 		<list key="findhistory">
+			<item value="update"/>
+			<item value="YAY"/>
 			<item value="hello"/>
 			<item value="game_shoot"/>
 			<item value="game_alive"/>
 			<item value="gamealive"/>
 			<item value="FIRE_KILL_SHOT"/>
 			<item value="flags.hello"/>
-			<item value="SHOOT_GAME_SHOOT_KILL"/>
-			<item value="oldBits"/>
 		</list>
 		<list key="replacehistory">
 			<item value="FIRE_KILL_SHOT"/>

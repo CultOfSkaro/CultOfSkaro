@@ -40,6 +40,13 @@
 <part id="4"/>
 <part id="5"/>
 <part id="6"/>
+<part id="7"/>
+<part id="8"/>
+<part id="9"/>
+<part id="10"/>
+<part id="11"/>
+<part id="12"/>
+<part id="13"/>
 </presentation>
 </folder>
 </info>
@@ -50,27 +57,55 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="Navigation.h" partName="Navigation.h" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Navigation/Navigation.h" title="Navigation.h" tooltip="Skaro/Navigation/Navigation.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Navigation/Navigation.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1165" selectionTopPixel="408"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/src/main.c" title="main.c" tooltip="Skaro/src/main.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/src/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="13289" selectionTopPixel="9027"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Interrupts.c" partName="Interrupts.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Interrupts/Interrupts.c" title="Interrupts.c" tooltip="Skaro/Interrupts/Interrupts.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Interrupts/Interrupts.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3998" selectionTopPixel="1734"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="482" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="HeliosIO.c" partName="HeliosIO.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/common/HeliosIO.c" title="HeliosIO.c" tooltip="Skaro/common/HeliosIO.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/common/HeliosIO.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="8285" selectionTopPixel="4594"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="HeliosIO.h" partName="HeliosIO.h" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/common/HeliosIO.h" title="HeliosIO.h" tooltip="Skaro/common/HeliosIO.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/common/HeliosIO.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2507" selectionTopPixel="765"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Navigation.c" partName="Navigation.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Navigation/Navigation.c" title="Navigation.c" tooltip="Skaro/Navigation/Navigation.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Navigation.c" partName="Navigation.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Navigation/Navigation.c" title="Navigation.c" tooltip="Skaro/Navigation/Navigation.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Navigation/Navigation.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8234" selectionTopPixel="4301"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8402" selectionTopPixel="4645"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="CrossCore.h" partName="CrossCore.h" path="C:/RobotRacers/CultOfSkaro/SDK/CrossCore/CrossCore.h" title="CrossCore.h" tooltip="Skaro/CrossCore/CrossCore.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/CrossCore/CrossCore.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="646" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/RobotRacers/CultOfSkaro/SDK/SkaroVision/src/main.c" title="main.c" tooltip="SkaroVision/src/main.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SkaroVision/src/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="33" selectionOffset="1415" selectionTopPixel="735"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/src/main.c" title="main.c" tooltip="Skaro/src/main.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/src/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="760" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="PIT.h" partName="PIT.h" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Interrupts/PIT.h" title="PIT.h" tooltip="Skaro/Interrupts/PIT.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Interrupts/PIT.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="243" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="PIT.c" partName="PIT.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Interrupts/PIT.c" title="PIT.c" tooltip="Skaro/Interrupts/PIT.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Interrupts/PIT.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="335" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="scheduler.c" partName="scheduler.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Wireless/scheduler.c" title="scheduler.c" tooltip="Skaro/Wireless/scheduler.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Wireless/scheduler.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="653" selectionTopPixel="242"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="scheduler.h" partName="scheduler.h" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Wireless/scheduler.h" title="scheduler.h" tooltip="Skaro/Wireless/scheduler.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Wireless/scheduler.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1177" selectionTopPixel="565"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="skaro_wireless.c" partName="skaro_wireless.c" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Wireless/skaro_wireless.c" title="skaro_wireless.c" tooltip="Skaro/Wireless/skaro_wireless.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Wireless/skaro_wireless.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="188" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="skaro_wireless.h" partName="skaro_wireless.h" path="C:/RobotRacers/CultOfSkaro/SDK/Skaro/Wireless/skaro_wireless.h" title="skaro_wireless.h" tooltip="Skaro/Wireless/skaro_wireless.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Skaro/Wireless/skaro_wireless.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1326" selectionTopPixel="208"/>
 </editor>
 </editors>
 <views>
@@ -86,8 +121,8 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings"/>
 <category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -222,163 +257,166 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Interrupts/Interrupts.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/common/HeliosIO.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/src/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SkaroVision/src/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Interrupts/PIT.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Interrupts/PIT.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Wireless/scheduler.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Wireless/scheduler.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Interrupts/Interrupts.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/common/HeliosIO.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Navigation/Navigation.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Wireless/skaro_wireless.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Wireless/skaro_wireless.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Skaro/Navigation/Navigation.c"/>
 </editors>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="7834" y="0"/>
+<item historyLabel="main.c" index="0">
+<position/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="8439" y="0"/>
+<item historyLabel="PIT.h" index="2">
+<position info="not_deleted" x="366" y="0"/>
 </item>
-<item historyLabel="Interrupts.c" index="0">
-<position info="not_deleted" x="3998" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2066" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8376" y="0"/>
+<item historyLabel="PIT.h" index="2">
+<position info="not_deleted" x="366" y="0"/>
 </item>
-<item historyLabel="Interrupts.c" index="0">
-<position info="not_deleted" x="3998" y="0"/>
+<item historyLabel="PIT.c" index="3">
+<position info="not_deleted" x="226" y="0"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="8370" y="0"/>
+<item historyLabel="PIT.h" index="2">
+<position info="not_deleted" x="216" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8360" y="0"/>
+<item historyLabel="PIT.c" index="3">
+<position info="not_deleted" x="226" y="0"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="8370" y="0"/>
+<item historyLabel="PIT.c" index="3">
+<position info="not_deleted" x="532" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8379" y="0"/>
+<item historyLabel="PIT.h" index="2">
+<position info="not_deleted" x="316" y="50"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="8435" y="0"/>
+<item historyLabel="PIT.c" index="3">
+<position info="not_deleted" x="532" y="0"/>
 </item>
-<item historyLabel="Interrupts.c" index="0">
-<position info="not_deleted" x="3998" y="0"/>
+<item historyLabel="PIT.c" index="3">
+<position info="not_deleted" x="424" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8208" y="171"/>
+<item historyLabel="PIT.h" index="2">
+<position info="not_deleted" x="243" y="0"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="1751" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2290" y="0"/>
 </item>
-<item historyLabel="HeliosIO.h" index="4">
-<position info="not_deleted" x="908" y="0"/>
+<item historyLabel="scheduler.c" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="1747" y="0"/>
+<item historyLabel="scheduler.h" index="5">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="HeliosIO.h" index="4">
-<position info="not_deleted" x="908" y="0"/>
+<item historyLabel="scheduler.c" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="1747" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="13148" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8208" y="171"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2319" y="0"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="1747" y="0"/>
+<item historyLabel="scheduler.c" index="4">
+<position info="not_deleted" x="189" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8833" y="0"/>
+<item historyLabel="scheduler.h" index="5">
+<position info="not_deleted" x="1177" y="0"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="9661" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2319" y="0"/>
 </item>
-<item historyLabel="HeliosIO.h" index="4">
-<position info="not_deleted" x="1975" y="6"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="13781" y="0"/>
 </item>
-<item historyLabel="Interrupts.h" index="3">
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="13960" y="0"/>
+</item>
+<item historyLabel="scheduler.c" index="4">
+<position info="not_deleted" x="189" y="0"/>
+</item>
+<item historyLabel="PIT.c" index="3">
+<position info="not_deleted" x="84" y="0"/>
+</item>
+<item historyLabel="PIT.h" index="2">
+<position info="not_deleted" x="243" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="13960" y="0"/>
+</item>
+<item historyLabel="PIT.h" index="2">
+<position info="not_deleted" x="243" y="0"/>
+</item>
+<item historyLabel="PIT.c" index="3">
+<position info="not_deleted" x="306" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="13960" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="14717" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="13783" y="0"/>
+</item>
+<item historyLabel="PIT.h" index="2">
+<position info="not_deleted" x="243" y="0"/>
+</item>
+<item historyLabel="PIT.c" index="3">
+<position info="not_deleted" x="509" y="0"/>
+</item>
+<item historyLabel="Interrupts.h" index="6">
 <position info="not_deleted" x="350" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8833" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="13148" y="0"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="9661" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="7519" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8833" y="0"/>
+<item historyLabel="PIT.c" index="3">
+<position info="not_deleted" x="335" y="0"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="9661" y="0"/>
+<item historyLabel="Interrupts.h" index="6">
+<position info="not_deleted" x="350" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8833" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="3518" y="0"/>
 </item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="9661" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="13892" y="30"/>
 </item>
-<item historyLabel="Navigation.h" index="5">
-<position info="not_deleted" x="1165" y="0"/>
+<item historyLabel="scheduler.c" index="4">
+<position info="not_deleted" x="653" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="13139" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="1415" y="33"/>
 </item>
-<item historyLabel="HeliosIO.h" index="4">
-<position info="not_deleted" x="2507" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2290" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="13139" y="0"/>
+<item historyLabel="skaro_wireless.c" index="7">
+<position info="not_deleted" x="188" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8264" y="0"/>
+<item historyLabel="skaro_wireless.h" index="8">
+<position info="not_deleted" x="1326" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8264" y="0"/>
+<item historyLabel="skaro_wireless.c" index="7">
+<position info="not_deleted" x="188" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8080" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2290" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8070" y="0"/>
+<item historyLabel="Navigation.c" index="9">
+<position info="not_deleted" x="8402" y="0"/>
 </item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8071" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8027" y="0"/>
-</item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="9661" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="8027" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="7769" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="10955" y="0"/>
-</item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="8285" y="10"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="10955" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="10953" y="0"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="11112" y="0"/>
-</item>
-<item historyLabel="HeliosIO.c" index="1">
-<position info="not_deleted" x="8285" y="10"/>
-</item>
-<item historyLabel="main.c" index="2">
-<position info="not_deleted" x="13289" y="0"/>
-</item>
-<item active="true" historyLabel="Navigation.c" index="6">
-<position info="not_deleted" x="8356" y="4"/>
+<item active="true" historyLabel="main.c" index="0">
+<position info="not_deleted" x="2290" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -386,9 +424,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="topLeft"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -396,11 +431,40 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="skaro_wireless.h" tooltip="Skaro/Wireless/skaro_wireless.h">
+<persistable path="/Skaro/Wireless/skaro_wireless.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="skaro_wireless.c" tooltip="Skaro/Wireless/skaro_wireless.c">
+<persistable path="/Skaro/Wireless/skaro_wireless.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="scheduler.h" tooltip="Skaro/Wireless/scheduler.h">
+<persistable path="/Skaro/Wireless/scheduler.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="scheduler.c" tooltip="Skaro/Wireless/scheduler.c">
+<persistable path="/Skaro/Wireless/scheduler.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="PIT.c" tooltip="Skaro/Interrupts/PIT.c">
+<persistable path="/Skaro/Interrupts/PIT.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="PIT.h" tooltip="Skaro/Interrupts/PIT.h">
+<persistable path="/Skaro/Interrupts/PIT.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="Skaro/src/main.c">
+<persistable path="/Skaro/src/main.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="SkaroVision/src/main.c">
+<persistable path="/SkaroVision/src/main.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CrossCore.h" tooltip="Skaro/CrossCore/CrossCore.h">
+<persistable path="/Skaro/CrossCore/CrossCore.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="CrossCore.c" tooltip="Skaro/CrossCore/CrossCore.c">
+<persistable path="/Skaro/CrossCore/CrossCore.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Navigation.c" tooltip="Skaro/Navigation/Navigation.c">
 <persistable path="/Skaro/Navigation/Navigation.c"/>
 </file>
@@ -415,36 +479,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Interrupts.c" tooltip="Skaro/Interrupts/Interrupts.c">
 <persistable path="/Skaro/Interrupts/Interrupts.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="Skaro/src/main.c">
-<persistable path="/Skaro/src/main.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xgpio_intr.c" tooltip="MainCore_bsp/ppc405_0/libsrc/gpio_v3_00_a/src/xgpio_intr.c">
-<persistable path="/MainCore_bsp/ppc405_0/libsrc/gpio_v3_00_a/src/xgpio_intr.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xgpio.h" tooltip="MainCore_bsp/ppc405_0/libsrc/gpio_v3_00_a/src/xgpio.h">
-<persistable path="/MainCore_bsp/ppc405_0/libsrc/gpio_v3_00_a/src/xgpio.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xgpio.c" tooltip="MainCore_bsp/ppc405_0/libsrc/gpio_v3_00_a/src/xgpio.c">
-<persistable path="/MainCore_bsp/ppc405_0/libsrc/gpio_v3_00_a/src/xgpio.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xgpio_l.h" tooltip="MainCore_bsp/ppc405_0/include/xgpio_l.h">
-<persistable path="/MainCore_bsp/ppc405_0/include/xgpio_l.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Navigation.h" tooltip="Skaro/Navigation/Navigation.h">
-<persistable path="/Skaro/Navigation/Navigation.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xparameters.h" tooltip="MainCore_bsp/ppc405_0/include/xparameters.h">
-<persistable path="/MainCore_bsp/ppc405_0/include/xparameters.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Interrupts.h" tooltip="Skaro/Interrupts/Interrupts.h">
-<persistable path="/Skaro/Interrupts/Interrupts.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mpmc_calibration.c" tooltip="Skaro/common/mpmc_calibration.c">
-<persistable path="/Skaro/common/mpmc_calibration.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="skaro_wireless.h" tooltip="Skaro/Wireless/skaro_wireless.h">
-<persistable path="/Skaro/Wireless/skaro_wireless.h"/>
 </file>
 </mruList>
 </workbench>
