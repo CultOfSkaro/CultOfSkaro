@@ -62,7 +62,7 @@ int Wireless_ControlLog(float actual, float expected){
 	return Wireless_Send(&wireless, WIRELESS_CONTROL_LOG,8, values);
 }
 
-int Wireless_ControlLog_Ext(float actual, float expected, int saturated, int unsaturated, int refresh_rate){
+int Wireless_ControlLog_Ext(float actual, float expected, float saturated, float unsaturated, float refresh_rate){
 	char values[20];
 	int i;
 	for(i = 0; i < 4; i ++){

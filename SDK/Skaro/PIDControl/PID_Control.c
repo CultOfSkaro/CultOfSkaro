@@ -27,335 +27,246 @@
 #include "scheduler.h"
 #include "Navigation.h"
 
-extern Scheduler scheduler;
-extern Skaro_Wireless wireless;
-volatile PID pid;
-
 int control_log_counter;
 int i=0;
 
-void initPID(){
+void PID_Init(PID * pid){
 			//General params
-			pid.outputPID = 0;
-			pid.outputPID_unsat = 0;
-			pid.outputPID_c = 0;
-			pid.outputPID_unsat_c = 0;
-			pid.outputPID_k = 0;
-			pid.outputPID_unsat_k = 0;
-			pid.encoderValue = 0;
-			pid.lastEncoderValue = getTicks();
-			pid.Tau = 0.05f;
+			pid->outputPID = 0;
+			pid->outputPID_unsat = 0;
+			pid->outputPID_c = 0;
+			pid->outputPID_unsat_c = 0;
+			pid->outputPID_r = 0;
+			pid->outputPID_unsat_r = 0;
+			pid->encoderValue = 0;
+			pid->lastEncoderValue = getTicks();
+			pid->Tau = 0.05f;
 			//Velocity params
-	        pid.Kp = 0.02f;
-	        pid.Kd = 0.00003f;
-	        pid.Ki = 0.025f;
-	        pid.integrator = 0.0f;
-	        pid.differentiator = 0.0f;
-	        pid.desiredVelocityPID = 0;
-	        pid.lastError = 0;
-	        pid.currentVelocity = 0;
-	        pid.currentVelocityBack = 0;
-	        pid.lastDesiredVelocity = 0;
-	        pid.lastCurrentVelocity = 0;
-	        pid.maxVelocity = 0;
-	        pid.lastClockTicks = 0;
-	        pid.error = 0.0;
+	        pid->Kp = 0.02f;
+	        pid->Kd = 0.00003f;
+	        pid->Ki = 0.025f;
+	        pid->integrator = 0.0f;
+	        pid->differentiator = 0.0f;
+	        pid->desiredVelocityPID = 0;
+	        pid->lastError = 0;
+	        pid->currentVelocity = 0;
+	        pid->currentVelocityBack = 0;
+	        pid->lastDesiredVelocity = 0;
+	        pid->lastCurrentVelocity = 0;
+	        pid->maxVelocity = 0;
+	        pid->lastClockTicks = 0;
+	        pid->error = 0.0;
 		    //Distance params
-	        pid.Kp_d = 0.0045f;
-	        pid.Kd_d = 0.001f;
-	        pid.Ki_d = 0.0000f;
-	        pid.integrator_d = 0.0f;
-	        pid.differentiator_d = 0.0f;
-	        pid.desiredDistancePID = 0;
-			pid.lastDesiredDistance = 0;
-			pid.error_d = 0.0;
-	        pid.lastError_d = 0;
-	        pid.distanceError = 0;
+	        pid->Kp_d = 0.0045f;
+	        pid->Kd_d = 0.001f;
+	        pid->Ki_d = 0.0000f;
+	        pid->integrator_d = 0.0f;
+	        pid->differentiator_d = 0.0f;
+	        pid->desiredDistancePID = 0;
+			pid->lastDesiredDistance = 0;
+			pid->error_d = 0.0;
+	        pid->lastError_d = 0;
+	        pid->distanceError = 0;
 	        //Heading Angle params
-			pid.desiredAnglePID = 0;
+			pid->desiredAnglePID = 0;
 			//Centroid params
-			pid.desiredCentroidPID = 0;
-			pid.Kp_c = 0.11f;
-			pid.Kd_c = 0.0f;
-			pid.Ki_c = 0.0f;
-			pid.integrator_c = 0.0f;
-			pid.differentiator_c = 0.0f;
-			pid.lastError_c = 0;
-			pid.lastCurrentCentroid = 0;
-			pid.currentCentroid = 0;
-			pid.error_c = 0.0;
-			pid.lastClockTicks_c = 0;
+			pid->desiredCentroidPID = 0;
+			pid->Kp_c = 0.11f;
+			pid->Kd_c = 0.0f;
+			pid->Ki_c = 0.0f;
+			pid->integrator_c = 0.0f;
+			pid->differentiator_c = 0.0f;
+			pid->lastError_c = 0;
+			pid->lastCurrentCentroid = 0;
+			pid->currentCentroid = 0;
+			pid->error_c = 0.0;
+			pid->lastClockTicks_c = 0;
 			//Curvature params
-			pid.desiredCurvaturePID = 0;
-			pid.Kp_k = 5.7f;
-			pid.Kd_k = 0.0f;
-			pid.Ki_k = 0.0f;
-			pid.integrator_k = 0.0f;
-			pid.differentiator_k = 0.0f;
-			pid.lastError_k = 0.0f;
-			pid.lastCurrentCurvature = 0.0f;
-			pid.currentCurvature = 0.0f;
-			pid.error_k = 0.0f;
-			pid.lastClockTicks_k = 0;
+			pid->desiredRadiusPID = 0;
+			pid->Kp_r = 0.04f;
+			pid->Kd_r = 0.0f;
+			pid->Ki_r = 0.0f;
+			pid->integrator_r = 0.0f;
+			pid->differentiator_r = 0.0f;
+			pid->lastError_r = 0.0f;
+			pid->lastCurrentRadius = 0;
+			pid->currentRadius = 0;
+			pid->error_r = 0.0f;
+			pid->lastClockTicks_r = 0;
 
 	}
 
-void updateVelocityOutput()
+void PID_UpdateVelocity(PID * pid)
 {
-	int desiredVelocity = pid.desiredVelocityPID;
+	int desiredVelocity = pid->desiredVelocityPID;
 	float P, I, D;
+	float refreshRate;
 	uint32 deltaClocks;
 	CPU_MSR msr;
 
 	//------Read Encoder and clock
 	msr = DISABLE_INTERRUPTS();
-	pid.encoderValue = getTicks();
+	pid->encoderValue = getTicks();
 	uint32 nowClocks = ClockTime();
-	gyroCalculation();
+	Gyro_Calculation(pid->gyro);
 	RESTORE_INTERRUPTS(msr);
 
 	//------Time since last function call in seconds
-	uint32 maxClocks = 0xffffffff;
-	if ((nowClocks < pid.lastClockTicks))
-		deltaClocks = (maxClocks-pid.lastClockTicks)+nowClocks;
-	else
-		deltaClocks = nowClocks - pid.lastClockTicks;
-	float refreshRate = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
-	//uint32 refreshRate = (deltaClocks)/(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ/1000) ;
-	pid.lastClockTicks = nowClocks;
+	refreshRate = refresh_rate(nowClocks, pid->lastClockTicks);
+	pid->lastClockTicks = nowClocks;
 
 	//------Distance since last function call in ticks
-	int encoderDifference = pid.encoderValue - pid.lastEncoderValue;
+	int encoderDifference = pid->encoderValue - pid->lastEncoderValue;
 
 	//------Calculate Velocity
-	//pid.currentVelocity = (int)((encoderDifference) / (refreshRate));
-	pid.currentVelocityBack = (int)((encoderDifference) / (refreshRate));
+	pid->currentVelocity = (int)((encoderDifference) / (refreshRate));
+	//pid->currentVelocityBack = (int)((encoderDifference) / (refreshRate));
 
 	//------Convert Back Velocity to front
-	pid.currentVelocity = velocityBackToFront(pid.currentVelocityBack);
+	//pid->currentVelocity = Gyro_VelocityBackToFront(pid->gyro,pid->currentVelocityBack);
 
 	//------Calculate Error
-	pid.error = desiredVelocity - (pid.currentVelocity);
-
-	//------Send Data to gui graphing function
-	if(++control_log_counter > 0){
-		//Wireless_ControlLog(desiredVelocity, pid.currentVelocity);
-		control_log_counter = 0;
-	}
+	pid->error = desiredVelocity - (pid->currentVelocity);
 
 	//------Update Derivative
-	//pid.differentiator = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator) + ((2/((2*pid.Tau)+refreshRate))*(pid.currentVelocity - pid.lastCurrentVelocity));
-	pid.differentiator = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator) + ((2/((2*pid.Tau)+refreshRate))*(pid.error - pid.lastError));
-	//pid.differentiator = (pid.currentVelocity - pid.lastCurrentVelocity)/refreshRate;
-	//pid.differentiator = (pid.error - pid.lastError)/refreshRate;
+	//pid->differentiator = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator) + ((2/((2*pid->Tau)+refreshRate))*(pid->currentVelocity - pid->lastCurrentVelocity));
+	pid->differentiator = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator) + ((2/((2*pid->Tau)+refreshRate))*(pid->error - pid->lastError));
+	//pid->differentiator = (pid->currentVelocity - pid->lastCurrentVelocity)/refreshRate;
+	//pid->differentiator = (pid->error - pid->lastError)/refreshRate;
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	//if ((pid.error < 1000 && pid.error > -1000) && (pid.error > 100 || pid.error < -100)){
-			pid.integrator = pid.integrator + ((refreshRate/2)*(pid.error + pid.lastError));
-	//} else {
-	//	pid.integrator = 0;
-	//}
+	pid->integrator = pid->integrator + ((refreshRate/2)*(pid->error + pid->lastError));
+
 
 	//------Output Calculation
-	P = pid.Kp * pid.error;
-	I = pid.Ki * pid.integrator;
-	D = pid.Kd * pid.differentiator;
+	P = pid->Kp * pid->error;
+	I = pid->Ki * pid->integrator;
+	D = pid->Kd * pid->differentiator;
 
-	pid.outputPID_unsat = ((int)P) + ((int)I) - ((int)D);
-	pid.outputPID = sat(pid.outputPID_unsat, 60);
+	pid->outputPID_unsat = ((int)P) + ((int)I) - ((int)D);
+	pid->outputPID = sat(pid->outputPID_unsat, 60);
 
-////	if(++i > 5){
-//
-//		Wireless_Debug("P:");
-//		PrintFloat(P);
-//		Wireless_Debug("Int:");
-//		PrintFloat(pid.integrator);
-//		Wireless_Debug("I:");
-//		PrintFloat(I);
-//		Wireless_Debug("D:");
-//		PrintFloat(D);
-////		//Wireless_Debug("I word:");
-////		//PrintWord(*((uint32 *)&I));
-////		//Wireless_Debug("D word:");
-//		//PrintWord(*((uint32 *)&D));
-//		Wireless_Debug("outputPID_unsat");
-//		PrintFloat(pid.outputPID_unsat);
-//		Wireless_Debug("outputPID");
-//		PrintFloat(pid.outputPID);
-//		Wireless_Debug("CurrentVelocityBack");
-//		PrintFloat(pid.currentVelocityBack);
-//		Wireless_Debug("CurrentVelocity");
-//		PrintFloat(pid.currentVelocity);
-//		Wireless_Debug("LastCurrentVelocity");
-//		PrintFloat(pid.lastCurrentVelocity);
-//		Wireless_Debug("------------------");
-//
-//		i = 0;
-////		}
-//	int deltaTime = refreshRate;
-	//Wireless_ControlLog_Ext(pid.currentVelocity, pid.lastCurrentVelocity, pid.outputPID, D, deltaTime);
-
-	pid.integrator = pid.integrator + (refreshRate/pid.Ki)*(pid.outputPID - pid.outputPID_unsat);
+	pid->integrator = pid->integrator + (refreshRate/pid->Ki)*(pid->outputPID - pid->outputPID_unsat);
 
 	//------Save states and send PWM to motors
-	pid.lastEncoderValue = pid.encoderValue;
-	pid.lastCurrentVelocity = pid.currentVelocity;
-	pid.lastDesiredVelocity = desiredVelocity;
-	SetServo(RC_VEL_SERVO, (int)pid.outputPID);
+	pid->lastEncoderValue = pid->encoderValue;
+	pid->lastCurrentVelocity = pid->currentVelocity;
+	pid->lastDesiredVelocity = desiredVelocity;
+	SetServo(RC_VEL_SERVO, (int)pid->outputPID);
 }
 
-void updateCentroid()
+void PID_UpdateCentroid(PID * pid)
 {
-//	pid.Kp_c = pid.Kp_d;
-//	pid.Kd_c = pid.Kd_d;
-//	pid.Ki_c = pid.Ki_d;
 	int P, I, D;
 	uint32 deltaClocks;
+	float refreshRate;
 	CPU_MSR msr;
 
 	//------Read Encoder and clock
-	msr = DISABLE_INTERRUPTS();
-	//pid.currentCentroid = 0;//----//get info from camera here
 	uint32 nowClocks = ClockTime();
-	RESTORE_INTERRUPTS(msr);
 
 	//------Time since last function call in seconds
-	uint32 maxClocks = 0xffffffff;
-	if ((nowClocks < pid.lastClockTicks_c))
-		deltaClocks = (maxClocks-pid.lastClockTicks_c)+nowClocks;
-	else
-		deltaClocks = nowClocks - pid.lastClockTicks_c;
-	float refreshRate = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
-	//uint32 refreshRate = (deltaClocks)/(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ/1000) ;
-	pid.lastClockTicks_c = nowClocks;
+	refreshRate = refresh_rate(nowClocks, pid->lastClockTicks_c);
+	pid->lastClockTicks_c = nowClocks;
 
 	//------Calculate Error
-	pid.error_c = pid.desiredCentroidPID - pid.currentCentroid;
+	pid->error_c = pid->desiredCentroidPID - pid->currentCentroid;
 
 	//------Update Derivative
-	//pid.differentiator_c = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator_c) + ((2/((2*pid.Tau)+refreshRate))*(pid.currentCentroid - pid.lastCurrentCentroid));
-	pid.differentiator_c = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator_c) + ((2/((2*pid.Tau)+refreshRate))*(pid.error_c - pid.lastError_c));
+	//pid->differentiator_c = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator_c) + ((2/((2*pid->Tau)+refreshRate))*(pid->currentCentroid - pid->lastCurrentCentroid));
+	pid->differentiator_c = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator_c) + ((2/((2*pid->Tau)+refreshRate))*(pid->error_c - pid->lastError_c));
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	pid.integrator_c = pid.integrator_c + (refreshRate/2)*(pid.error_c + pid.lastError_c);
+	pid->integrator_c = pid->integrator_c + (refreshRate/2)*(pid->error_c + pid->lastError_c);
 
 
 	//------Output Calculation
-	P = pid.Kp_c * pid.error_c;
-	I = pid.Ki_c * pid.integrator_c;
-	D = pid.Kd_c * pid.differentiator_c;
+	P = pid->Kp_c * pid->error_c;
+	I = pid->Ki_c * pid->integrator_c;
+	D = pid->Kd_c * pid->differentiator_c;
 
-	pid.outputPID_unsat_c = (P) + (I) - (D);
-	pid.outputPID_c = sat(pid.outputPID_unsat_c, 40);
+	pid->outputPID_unsat_c = (P) + (I) - (D);
+	pid->outputPID_c = sat(pid->outputPID_unsat_c, 40);
 
-	pid.integrator_c = pid.integrator_c + (refreshRate/pid.Ki_c)*(pid.outputPID_c - pid.outputPID_unsat_c);
-
-	//------Save Info for graph
-	//Wireless_ControlLog(pid.currentCentroid, pid.desiredCentroidPID);
-	//Wireless_ControlLog_Ext(pid.currentCentroid, pid.desiredCentroidPID, pid.outputPID, pid.outputPID_unsat, refreshRate);
+	pid->integrator_c = pid->integrator_c + (refreshRate/pid->Ki_c)*(pid->outputPID_c - pid->outputPID_unsat_c);
 
 	//------Save states and send PWM to motors
-	pid.lastCurrentCentroid = pid.currentCentroid;
-	pid.lastError_c = pid.error_c;
+	pid->lastCurrentCentroid = pid->currentCentroid;
+	pid->lastError_c = pid->error_c;
 
 	//------Condition output on current velocity
-	if (pid.currentVelocity < 0)
-		pid.outputPID_c = -pid.outputPID_c;
-	if (pid.currentVelocity > -20 && pid.currentVelocity < 20)
-		pid.outputPID_c = 0;
-	if (pid.outputPID_c == 0)
-		pid.outputPID_c = -2;
-	SetServo(RC_STR_SERVO, pid.outputPID_c);
+	if (pid->currentVelocity < 0)
+		pid->outputPID_c = -pid->outputPID_c;
+	if (pid->currentVelocity > -20 && pid->currentVelocity < 20)
+		pid->outputPID_c = 0;
+	if (pid->outputPID_c == 0)
+		pid->outputPID_c = -2;
+	SetServo(RC_STR_SERVO, pid->outputPID_c);
 }
 
-void updateCurvatureOutput()
+void PID_UpdateRadius(PID * pid)
 {
 	int P, I, D;
 	uint32 deltaClocks;
+	float refreshRate;
 	CPU_MSR msr;
 
 	//------Read Encoder and clock
 	msr = DISABLE_INTERRUPTS();
-	float desiredCurvature = pid.desiredCurvaturePID;//----//get info from camera here
+	float desiredRadius = pid->desiredRadiusPID;//----//get info from camera here
 	uint32 nowClocks = ClockTime();
-	gyroCalculation();
+	Gyro_Calculation(pid->gyro);
 	RESTORE_INTERRUPTS(msr);
 
 	//------Time since last function call in seconds
-	uint32 maxClocks = 0xffffffff;
-	if ((nowClocks < pid.lastClockTicks_c))
-		deltaClocks = (maxClocks-pid.lastClockTicks_c)+nowClocks;
-	else
-		deltaClocks = nowClocks - pid.lastClockTicks_c;
-	float refreshRate = ((float)deltaClocks)/XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ ;//time passed since last function call: sec
-	pid.lastClockTicks_k = nowClocks;
+	refreshRate = refresh_rate(nowClocks, pid->lastClockTicks_r);
+	pid->lastClockTicks_r = nowClocks;
 
-	//------Current Curvature at front of car
-	pid.currentCurvature = gyro.frontCurvature;
+	//------Current Radius at front of car
+	pid->currentRadius = pid->gyro->frontRadius;
 
 	//------Calculate Error
-	pid.error_k = pid.desiredCurvaturePID - pid.currentCurvature;
+	pid->error_r = (desiredRadius) - (pid->currentRadius);
 
 	//------Update Derivative
-	pid.differentiator_k = ((((2*pid.Tau)-refreshRate)/((2*pid.Tau)+refreshRate))*pid.differentiator_k) + ((2/((2*pid.Tau)+refreshRate))*(pid.currentCurvature - pid.lastCurrentCurvature));
+	pid->differentiator_r = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator_r) + ((2/((2*pid->Tau)+refreshRate))*(pid->currentRadius - pid->lastCurrentRadius));
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	pid.integrator_k = pid.integrator_k + (refreshRate/2)*(pid.error_k + pid.lastError_k);
+	pid->integrator_r = pid->integrator_r + (refreshRate/2)*(pid->error_r + pid->lastError_r);
 
 
 	//------Output Calculation
-	P = pid.Kp_k * pid.error_k;
-	I = pid.Ki_k * pid.integrator_k;
-	D = pid.Kd_k * pid.differentiator_k;
+	P = pid->Kp_r * (pid->error_r);
+	I = pid->Ki_r * pid->integrator_r;
+	D = pid->Kd_r * pid->differentiator_r;
 
-	pid.outputPID_unsat_k = (P) + (I) - (D);
-	pid.outputPID_k = sat(pid.outputPID_unsat_k, 40);
+	pid->outputPID_unsat_r = P + I - D;
+	pid->outputPID_r = sat(pid->outputPID_unsat_r, 40);
 
-	pid.integrator_k = pid.integrator_k + (refreshRate/pid.Ki_k)*(pid.outputPID_k - pid.outputPID_unsat_k);
+	pid->integrator_r = pid->integrator_r + (refreshRate/pid->Ki_r)*(pid->outputPID_r - pid->outputPID_unsat_r);
 
 	//------Save Info for graph
-	//Wireless_ControlLog_Ext(pid.currentCentroid, pid.desiredCentroidPID, pid.outputPID, pid.outputPID_unsat, refreshRate);
-//	if(++i > 5){
-//
-//		Wireless_Debug("P:");
-//		PrintFloat(P);
-//		Wireless_Debug("I:");
-//		PrintFloat(I);
-//		Wireless_Debug("D:");
-//		PrintFloat(D);
-//		Wireless_Debug("error");
-//		PrintFloat(pid.error_k);
-//		Wireless_Debug("outputPID_unsat_k");
-//		PrintFloat(pid.outputPID_unsat_k);
-//		Wireless_Debug("outputPID_k");
-//		PrintFloat(pid.outputPID_k);
-//		Wireless_Debug("currentCurvature");
-//		PrintFloat(pid.currentCurvature);
-//		Wireless_Debug("desiredCurvaturePID");
-//		PrintFloat(pid.desiredCurvaturePID);
-//		Wireless_Debug("------------------");
-//
-//		i = 0;
-//		}
-	//------Save states and send PWM to motors
-	pid.lastCurrentCurvature = pid.currentCurvature;
-	pid.lastError_k = pid.error_k;
+	Wireless_ControlLog_Ext(pid->currentRadius, pid->desiredRadiusPID, pid->error_r, pid->outputPID_unsat_r, P);
 
-	SetServo(RC_STR_SERVO, pid.outputPID_k);
+	//------Save states and send PWM to motors
+	pid->lastCurrentRadius = pid->currentRadius;
+	pid->lastError_r = pid->error_r;
+
+	SetServo(RC_STR_SERVO, pid->outputPID_r);
 }
 
 
-void updateDistanceSetVelocity(int velocity){
+void PID_UpdateDistance(PID * pid){
 	int ticks = getTicks();
-	pid.distanceError = pid.desiredDistancePID - ticks;
-	int distanceError = pid.distanceError;
-
+	pid->distanceError = pid->desiredDistancePID - ticks;
+	int distanceError = pid->distanceError;
+	int velocity = pid->maxVelocity;
 	//------Convert distance from back to front of car
 //	gyroCalculation();
-//	int backDistance = pid.desiredDistancePID;
+//	int backDistance = pid->desiredDistancePID;
 //	int ticks = getTicks();
-//	pid.distanceError = distanceBackToFront(backDistance - ticks);
-//	int distanceError = pid.distanceError;
+//	pid->distanceError = distanceBackToFront(backDistance - ticks);
+//	int distanceError = pid->distanceError;
 
 	if (velocity <= 2000){
 			if (distanceError < 1500 && distanceError >= 1000)
@@ -406,33 +317,35 @@ void updateDistanceSetVelocity(int velocity){
 			velocity = 0;
 	}
 
-	setVelocity(velocity);
-	updateVelocityOutput();
+	PID_SetVelocity(pid,velocity);
+	PID_UpdateVelocity(pid);
 
-	//	int vel =  pid.desiredVelocityPID;
+	//	int vel =  pid->desiredVelocityPID;
 	//
 	//	if(distanceError < -100)
 	//		vel = -200;
 	//	else if(distanceError < vel/3)
 	//		vel = vel * 2/3;
 	//
-	//	pid.desiredVelocityPID = velocity;
+	//	pid->desiredVelocityPID = velocity;
 	//	updateVelocityOutput();
 }
 
 
-void setDistance(int distance){
-	pid.desiredDistancePID = distance + getTicks();
+void inline PID_SetDistance(PID * pid, int distance){
+	pid->desiredDistancePID = distance + getTicks();
 }
 
-void setVelocity(int velocity){
-	pid.desiredVelocityPID = velocity;
+void inline PID_SetVelocity(PID * pid, int velocity){
+	pid->desiredVelocityPID = velocity;
 }
 
-void setCurvature(int curvatureIn_Rad_Per_Sec){
-	pid.desiredCurvaturePID = curvatureIn_Rad_Per_Sec;
+void inline PID_SetRadius(PID * pid, int radius_in_ticks){
+	pid->desiredRadiusPID = radius_in_ticks;
 }
 
+
+/// PRIVATE FUNCTION
 int sat(int in, int limit) {
 	if (in >= limit){
 		return limit;
@@ -442,7 +355,6 @@ int sat(int in, int limit) {
 	}
 	return in;
 }
-
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //----------------------------------------------Dead Code----------------------------------------------
@@ -585,3 +497,4 @@ int sat(int in, int limit) {
 //	SetServo(RC_STR_SERVO, (direction*str));
 //}
 //---------------------------------------------------------------------------------------------------
+

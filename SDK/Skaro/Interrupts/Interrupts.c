@@ -17,6 +17,7 @@
 #include "skaro_wireless.h"
 #include "Navigation.h"
 #include "Serial.h"
+#include "Timer.h"
 
 extern XGpio Gpio;
 
@@ -107,23 +108,56 @@ void WirelessSendHandler(void *CallBackRef, unsigned int EventData)
 // If this gets called, something is wrong.  Ask Dan.
 void GameboardSendHandler(void *CallBackRef, unsigned int EventData)
 {
-	Wireless_Debug("This should never get called\r\n");
+	Wireless_Debug("GameboardSendHandler is a stub function and should never get called\r\n");
 }
 
 // Interrupt handler for gameboard UART
 void GameboardRecvHandler(void *CallBackRef, unsigned int EventData)
 {
+	static short ticks_prev = 0;
+	static short ticks = 0;
+	static int clocks = 0;
+	static int clocks_prev = 0;
+	float rate;
+	CPU_MSR msr;
 
+
+	// Non-blocking receive of 5 bytes
 	XUartLite_Recv(&gameboard_uart, raw_gyro_data.packet, 5);
 
-	if (EventData == 5) {
-		raw_gyro_data.velocity = (signed char)raw_gyro_data.packet[1];
-		raw_gyro_data.velocity <<= 8;
-		raw_gyro_data.velocity |= (uint32) raw_gyro_data.packet[2];
+	if (EventData == 0) {
+		msr = DISABLE_INTERRUPTS();
+		ticks_prev = getTicks();
+		clocks_prev = ClockTime();
+		RESTORE_INTERRUPTS(msr);
+		// Return if we haven't previously requested a 5 byte receive
+		return;
+	} else if (EventData == 5){
+		// 5 bytes receive
+		if (raw_gyro_data.packet[0] == 'M') {
 
-		raw_gyro_data.angular_velocity = (signed char)raw_gyro_data.packet[3];
-		raw_gyro_data.angular_velocity <<= 8;
-		raw_gyro_data.angular_velocity |= (uint32) raw_gyro_data.packet[4];
+			msr = DISABLE_INTERRUPTS();
+			ticks = getTicks();
+			clocks = ClockTime();
+			RESTORE_INTERRUPTS(msr);
+
+			rate = refresh_rate(clocks, clocks_prev);
+			raw_gyro_data.velocity = ((float)(ticks - ticks_prev))/rate;
+			ticks_prev = ticks;
+			clocks_prev = clocks;
+
+			raw_gyro_data.angular_velocity = (signed char)raw_gyro_data.packet[3];
+			raw_gyro_data.angular_velocity <<= 8;
+			raw_gyro_data.angular_velocity |= (uint32) raw_gyro_data.packet[4];
+//			Wireless_Debug("Gameboard velocity: ");
+//			PrintInt(raw_gyro_data.velocity);
+//			Wireless_Debug("\r\n");
+//			Wireless_Debug("Omega: ");
+//			PrintInt(raw_gyro_data.angular_velocity);
+//			Wireless_Debug("\r\n");
+		} else {
+			Wireless_Debug("Packets out of sync!\r\n");
+		}
 	}
 }
 

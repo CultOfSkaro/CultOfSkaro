@@ -8,7 +8,6 @@ void PIT_Init(PIT * pit){
 
 void PIT_IncrementCounters(PIT * pit){
 	int i;
-
 	for(i = 0; i < pit->active_counters; i++){
 		Counter_Increment(&pit->counters[i]);
 	}

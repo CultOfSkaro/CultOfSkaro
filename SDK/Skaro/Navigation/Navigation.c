@@ -29,7 +29,6 @@
 #include "math.h"
 
 GyroData raw_gyro_data;
-GYRO_CORRECTIONS gyro;
 Navigation navigation;
 
 
@@ -43,99 +42,13 @@ Navigation navigation;
 //--------------------------------------------Gyro Calculation----------------------------------------------------------------
 ////
 
-void initGyroCalculation()
-{
-	gyro.omega = 0.0f; //w
-	gyro.backCurvature = 0.0f; //k_b
-	gyro.frontCurvature = 0.0f; //k_f
-	gyro.frontVelocity = 0.0f; //v
-	gyro.steeringAngle = 0.0f; //delta
-	gyro.wheelBase = WHEELBASE; // b = ~27cm = ~540ticks
 
-	//S is the distance recorded by the encoder
-	gyro.backEncoder = 0.0f; //S_b
-	gyro.frontEncoder = 0.0f; //S_f
-}
-
-void gyroCalculation()
-{
-	short velocity;
-	short angular_velocity;
-	CPU_MSR msr;
-	//gyro.velocityBack = pid.currentVelocityBack;
-
-	msr = DISABLE_INTERRUPTS();
-	velocity = raw_gyro_data.velocity;
-	angular_velocity = raw_gyro_data.angular_velocity;
-	RESTORE_INTERRUPTS(msr);
-
-	// V_b
-	gyro.velocityBack = 2*(raw_gyro_data.velocity/.1);
-	// W
-	gyro.omega = CONVERT_TO_RAD_SEC * raw_gyro_data.angular_velocity;
-	//Wireless_Debug("Omgega:");
-	//PrintFloat(gyro.omega);
-	// K_b
-	gyro.backCurvature = gyro.omega/gyro.velocityBack;
-	//R_b
-	gyro.backRadius = 1/gyro.backCurvature;
-	// V_f
-	gyro.frontVelocity = gyro.velocityBack * sqrt(1+((gyro.backCurvature)*gyro.backCurvature*(gyro.wheelBase)*gyro.wheelBase));
-	// K_f
-	gyro.frontCurvature = gyro.omega/gyro.frontVelocity;
-	//R_b
-	gyro.frontRadius = 1/gyro.frontCurvature;
-	// Delta
-	gyro.steeringAngle = asin(gyro.wheelBase * gyro.frontCurvature);
-}
 
 ////
 //--------------------------------------------Convertsions----------------------------------------------------------------
 ////
 
-float steeringAngleToCurvature(int steeringAngle){
-	return (sin(gyro.frontCurvature))/gyro.wheelBase;
-}
 
-float curvatureBackToFront()
-{
-	return gyro.frontCurvature = gyro.omega/gyro.frontVelocity;
-}
-
-int velocityBackToFront(int velocityBack)
-{
-	// K_b
-	gyro.backCurvature = gyro.omega/velocityBack;
-	// V_f
-	return gyro.frontVelocity = velocityBack * sqrt(1+((gyro.backCurvature*gyro.backCurvature)*(gyro.wheelBase*gyro.wheelBase)));
-}
-
-void encoderBackToFrontCorrections()
-{
-	gyro.backEncoder = pid.encoderValue - pid.lastEncoderValue;
-	gyro.frontEncoder = (gyro.backEncoder/(1 - ((gyro.steeringAngle*gyro.steeringAngle))/2));
-}
-
-int distanceBackToFront(int distance)
-{
-	return distance/(1-((gyro.steeringAngle*gyro.steeringAngle)/2)); //distance devided by cos(delta)
-}
-
-int distanceFrontToBack(int distance)
-{
-	return distance*(1-((gyro.steeringAngle*gyro.steeringAngle)/2)); //distance devided by cos(delta)
-}
-
-int absDistanceFromArchDistCuvrature(float curvature, int archDistance)
-{
-	return archDistance-(int)((curvature*curvature*archDistance*archDistance*archDistance)/24);
-}
-
-void cameraInterpretation(int centroid, int distance){
-
-	int backDistance = distanceFrontToBack(distance);
-
-}
 
 ////
 //--------------------------------------------Absolute Reckoning code----------------------------------------------------------------
@@ -213,6 +126,9 @@ void dubin_curves_math(int distance, float bearing) { //input is a relative base
 void Navigation_Init(Navigation * n){
 	Navigation_SetVelocityMode(n,DISTANCE_VELOCITY_MODE);
 	Navigation_SetSteeringMode(n,CENTROID_MODE);
+	PID_Init(&n->pid);
+	Gyro_Init(&n->gyro);
+	n->pid.gyro = &n->gyro;
 }
 
 void Navigation_SetVelocityMode(Navigation * n,int mode){
@@ -237,14 +153,14 @@ void Navigation_SetSteeringMode(Navigation * n,int mode){
 }
 
 void goVelocity(int velocity){
-	setVelocity(velocity);
+	PID_SetVelocity(&navigation.pid,velocity);
 	//flag velocity 1
 	Navigation_SetVelocityMode(&navigation, VELOCITY_MODE);
 }
 
 void goDistance_Velocity(int distance, int velocity){
-	setDistance(distance);
-	pid.maxVelocity = velocity;
+	PID_SetDistance(&navigation.pid,distance);
+	navigation.pid.maxVelocity = velocity;
 	//flag velocity 2
 	Navigation_SetVelocityMode(&navigation, DISTANCE_VELOCITY_MODE);
 }
@@ -254,22 +170,22 @@ void goCentroid(){
 	Navigation_SetSteeringMode(&navigation,CENTROID_MODE);
 }
 
-void holdAngle(int angle, int direction_RIGHT_LEFT){
-	int curvature = steeringAngleToCurvature(angle);
-	setCurvature((direction_RIGHT_LEFT*curvature));
-	//flag steering 2
-	Navigation_SetSteeringMode(&navigation,CURVATURE_MODE);
-}
+//void holdAngle(int angle, int direction_RIGHT_LEFT){
+//	int curvature = steeringAngleToCurvature(angle);
+//	PID_SetCurvature(&navigation.pid,(direction_RIGHT_LEFT*curvature));
+//	//flag steering 2
+//	Navigation_SetSteeringMode(&navigation,CURVATURE_MODE);
+//}
 
 void holdRadius(int radius, int direction_RIGHT_LEFT){
-	int curvature = 1/radius;
-	setCurvature((direction_RIGHT_LEFT*curvature));
+	PID_SetRadius(&navigation.pid,(direction_RIGHT_LEFT*radius));
 	//flag steering 2
 	Navigation_SetSteeringMode(&navigation,CURVATURE_MODE);
 }
 
-void holdCurvature(int curvature, int direction_RIGHT_LEFT){
-	setCurvature((direction_RIGHT_LEFT*curvature));
+void holdCurvature(float curvature, int direction_RIGHT_LEFT){
+	int radius = 1/curvature;
+	PID_SetRadius(&navigation.pid,(direction_RIGHT_LEFT*radius));
 	//flag steering 2
 	Navigation_SetSteeringMode(&navigation,CURVATURE_MODE);
 }
@@ -281,27 +197,24 @@ void holdCurvature(int curvature, int direction_RIGHT_LEFT){
 //}
 
 void Stop(){
-	setVelocity(0);
-	setDistance(0);
+	PID_SetVelocity(&navigation.pid,0);
+	PID_SetDistance(&navigation.pid,0);
 }
 
-void steering_loop(){
+void Navigation_SteeringLoop(Navigation * n){
 //	switch(navigation.steeringLoopMode){
 //	case CENTROID_MODE:
-		updateCentroid();
+//		PID_UpdateCentroid(&n->pid);
 //	case CURVATURE_MODE:
-//		updateCurvatureOutput();
+		//PID_SetRadius(&n->pid, -2000);
+		PID_UpdateRadius(&n->pid);
 //	}
-	//else if (controls.steeringLoopMode == CURVATURE_MODE){
-		//setCurvature(-1);  ANDREW.  WHAT DOES THIS DO????? ---- Just trying to test curvature AN
-		//updateCurvatureOutput();
-	//}
 }
 
-void velocity_loop(){
+void Navigation_VelocityLoop(Navigation * n){
 //	switch(navigation.steeringLoopMode){
 //	case DISTANCE_VELOCITY_MODE:
-		updateDistanceSetVelocity(pid.maxVelocity);
+		PID_UpdateDistance(&n->pid);
 //	case VELOCITY_MODE:
 //		updateVelocityOutput();
 //	}

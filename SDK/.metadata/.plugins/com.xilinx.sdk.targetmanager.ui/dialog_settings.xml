@@ -2,6 +2,6 @@
 <section name="Workbench">
 	<item value="C:\RobotRacers\CultOfSkaro\SDK\vhdl_hw_platform\system_bd.bmm" key="vhdl_hw_platform-bmmFile"/>
 	<item value="C:\RobotRacers\CultOfSkaro\SDK\vhdl_hw_platform\system.bit" key="vhdl_hw_platform-bitFile"/>
-	<item value="C:\RobotRacers\CultOfSkaro\SDK\Skaro\Debug\Skaro.elf" key="vhdl_hw_platform-ppc405_0-initElf"/>
 	<item value="C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\Debug\SkaroVision.elf" key="vhdl_hw_platform-ppc405_1-initElf"/>
+	<item value="C:\RobotRacers\CultOfSkaro\SDK\Skaro\Debug\Skaro.elf" key="vhdl_hw_platform-ppc405_0-initElf"/>
 </section>

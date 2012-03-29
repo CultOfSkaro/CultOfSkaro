@@ -8,8 +8,20 @@
 #ifndef PID_CONTROL_H_
 #define PID_CONTROL_H_
 #include "Header.h"
+#include "Gyro.h"
 
 //#include "SystemTypes.h"
+
+#define ENCODER_BASE_ADDR 0x7a400000
+
+
+//#define WHEEL_CIRCUMFERENCE           0.366f
+//#define TICKS_PER_TURN                3185
+//#define WHEEL_CIRCUMFERENCE_TICKS     (WHEEL_CIRCUMFERENCE / TICKS_PER_TURN)
+#define TICKS_PER_METER                 2000//       (TICKS_PER_TURN / WHEEL_CIRCUMFERENCE)
+#define PID_UPDATES_PER_SECOND          100
+#define PID_UPDATE_MOD                  (100 / PID_UPDATES_PER_SECOND)
+#define TAU								0.5f
 
 typedef struct
 	{
@@ -18,8 +30,8 @@ typedef struct
 	float outputPID_unsat;
 	int outputPID_c;
 	int outputPID_unsat_c;
-	int outputPID_k;
-	int outputPID_unsat_k;
+	int outputPID_r;
+	int outputPID_unsat_r;
 	int encoderValue;
 	int lastEncoderValue;              // Last position input
 	float Tau;
@@ -65,41 +77,31 @@ typedef struct
 	int error_c;
 	int lastClockTicks_c;
 	//Angle Curvature Variables
-	int desiredCurvaturePID;
-	float Kp_k;
-	float Kd_k;
-	float Ki_k;
-	float integrator_k;
-	float differentiator_k;
-	float lastError_k;
-	float lastCurrentCurvature;
-	float currentCurvature;
-	int error_k;
-	int lastClockTicks_k;
+	int desiredRadiusPID;
+	float Kp_r;
+	float Kd_r;
+	float Ki_r;
+	float integrator_r;
+	float differentiator_r;
+	float lastError_r;
+	int lastCurrentRadius;
+	int currentRadius;
+	float error_r;
+	int lastClockTicks_r;
+	Gyro * gyro;
 	} PID;
 
-#define ENCODER_BASE_ADDR 0x7a400000
 
-//#define WHEEL_CIRCUMFERENCE           0.366f
-//#define TICKS_PER_TURN                3185
-//#define WHEEL_CIRCUMFERENCE_TICKS     (WHEEL_CIRCUMFERENCE / TICKS_PER_TURN)
-#define TICKS_PER_METER                 2000//       (TICKS_PER_TURN / WHEEL_CIRCUMFERENCE)
-#define PID_UPDATES_PER_SECOND          100
-#define PID_UPDATE_MOD                  (100 / PID_UPDATES_PER_SECOND)
-#define TAU								0.5f
-
-void initPID();
-void updateVelocityOutput();
-void updateDistanceOutput();
-void updateCentroid();
-void updateCurvatureOutput();
-void setDistance(int32 distance);
-void setVelocity(int32 velocity);
-void setCurvature(int curvature);
-void updateDistanceSetVelocity(int velocity);
+void PID_Init(PID * pid);
+void PID_UpdateVelocity(PID * pid);
+void PID_UpdateDistance(PID * pid);
+void PID_UpdateCentroid(PID * pid);
+void PID_UpdateRadius(PID * pid);
+void inline PID_SetDistance(PID * pid,int32 distance);
+void inline PID_SetVelocity(PID * pid, int32 velocity);
+void inline PID_SetRadius(PID * pid, int radius);
+void PID_UpdateDistance(PID * pid);
 int sat(int in, int limit);
-
-extern volatile PID pid;
 
 //void setSteeringRadius(int direction, uint32 radius_cm); //Right = direction:1 Left = direction:-1
 #endif /* PID_CONTROL_H_ */

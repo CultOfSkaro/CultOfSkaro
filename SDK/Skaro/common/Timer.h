@@ -39,6 +39,7 @@ CHANGE LOG
 
 // Set this #define to the real-time clock frequency (ticks per second)
 #define CLOCK_TIMER_FREQ ((unsigned)(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ))
+#define MAX_CLOCKS	0xFFFFFFFF
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -69,6 +70,7 @@ typedef union {
 
 // PROTOTYPES /////////////////////////////////////////////////////////////////
 
+float refresh_rate(int current_clocks, int previous_clocks);
 uint32 ClockDelta(ClockTimer *clock);
 void   ClockDelay(uint32 cycles);
 uint64 ClockDelta64(ClockTimer *clock);

@@ -33,7 +33,16 @@ CHANGE LOG
 
 
 // REAL-TIME CLOCK API ////////////////////////////////////////////////////////
+inline float refresh_rate(int current_clocks, int previous_clocks) {
+	int delta;
 
+	if (current_clocks < previous_clocks)
+		delta = (MAX_CLOCKS - previous_clocks) + current_clocks;
+	else
+		delta = current_clocks - previous_clocks;
+
+	return ((float)delta)/CLOCK_TIMER_FREQ;
+}
 
 #ifdef USE_CLOCK_DELTA
 

@@ -117,58 +117,58 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 	switch (c){
 	case SET_PID_KP:
 		read(0,&float_data,sizeof(float));
-		pid.Kp = float_data;
+		navigation.pid.Kp = float_data;
 		Wireless_Debug("Setting Kp to:");
-		PrintFloat(pid.Kp);
+		PrintFloat(navigation.pid.Kp);
 		break;
 	case SET_PID_KI:
 		read(0,&float_data,sizeof(float));
-		pid.Ki = float_data;
+		navigation.pid.Ki = float_data;
 		Wireless_Debug("Setting Ki to:");
-		PrintFloat(pid.Ki);
+		PrintFloat(navigation.pid.Ki);
 		break;
 	case SET_PID_KD:
 		read(0,&float_data,sizeof(float));
-		pid.Kd = float_data;
+		navigation.pid.Kd = float_data;
 		Wireless_Debug("Setting Kd to:");
-		PrintFloat(pid.Kd);
+		PrintFloat(navigation.pid.Kd);
 		break;
 	case SET_PID_KP_C:
 		read(0,&float_data,sizeof(float));
-		pid.Kp_c = float_data;
-		Wireless_Debug("Setting Kp_c to:");
-		PrintFloat(pid.Kp_c);
+		navigation.pid.Kp_r = float_data;
+		Wireless_Debug("Setting Kp_r to:");
+		PrintFloat(navigation.pid.Kp_r);
 		break;
 	case SET_PID_KI_C:
 		read(0,&float_data,sizeof(float));
-		pid.Ki_c = float_data;
+		navigation.pid.Ki_c = float_data;
 		Wireless_Debug("Setting Ki_c to:");
-		PrintFloat(pid.Ki_c);
+		PrintFloat(navigation.pid.Ki_c);
 		break;
 	case SET_PID_KD_C:
 		read(0,&float_data,sizeof(float));
-		pid.Kd_c = float_data;
+		navigation.pid.Kd_c = float_data;
 		Wireless_Debug("Setting Kd_c to:");
-		PrintFloat(pid.Kd_c);
+		PrintFloat(navigation.pid.Kd_c);
 		break;
 	case SET_DISTANCE:
 		read(0,&int_data,sizeof(int));
-		setDistance(int_data);
+		PID_SetDistance(&navigation.pid,int_data);
 		Wireless_Debug("Set distance to ");
 		PrintInt(int_data);
 		Wireless_Debug("\n\r");
 		break;
-	case SET_STEERING:
-		read(0,&c,1);
-		SetServo(RC_STR_SERVO, (signed char)c);
-		Wireless_Debug("Set Steering servo to ");
-		PrintInt(c);
-		break;
+//	case SET_STEERING:
+//		read(0,&c,1);
+//		SetServo(RC_STR_SERVO, (signed char)c);
+//		Wireless_Debug("Set Steering servo to ");
+//		PrintInt(c);
+//		break;
 	case SET_MAX_VELOCITY:
 		read(0,&int_data,sizeof(int));
-		pid.maxVelocity = int_data;
+		navigation.pid.maxVelocity = int_data;
 		Wireless_Debug("Set velocity to ");
-		PrintInt(pid.maxVelocity);
+		PrintInt(navigation.pid.maxVelocity);
 		Wireless_Debug("\n\r");
 		break;
 	case SET_VISION_DISTANCE:
@@ -300,30 +300,30 @@ void Gpio_Changed(int gpio) {
 void hello(){
 	return;
 	// Test GPIO
-	Wireless_Debug("Has Flag: ");
-	PrintInt(Game_HaveFlag());
-	Wireless_Debug("\r\n");
-
-	Wireless_Debug("Game Enabled: ");
-	PrintInt(Game_Enabled());
-	Wireless_Debug("\r\n");
-
-	Wireless_Debug("Game Truck Alive: ");
-	PrintInt(Game_Truck_Alive());
-	Wireless_Debug("\r\n");
-
-	Wireless_Debug("Waiting To Shoot: ");
-	PrintInt(Game_WaitingToShoot());
-	Wireless_Debug("\r\n");
-
-	Wireless_Debug("Game State: ");
-	PrintInt(Game_GameState());
-	Wireless_Debug("\r\n");
-
-	Wireless_Debug("Team Number: ");
-	PrintInt(Game_TeamNumber());
-	Wireless_Debug("\r\n");
-	Wireless_Debug("-----------------------\r\n");
+//	Wireless_Debug("Has Flag: ");
+//	PrintInt(Game_HaveFlag());
+//	Wireless_Debug("\r\n");
+//
+//	Wireless_Debug("Game Enabled: ");
+//	PrintInt(Game_Enabled());
+//	Wireless_Debug("\r\n");
+//
+//	Wireless_Debug("Game Truck Alive: ");
+//	PrintInt(Game_Truck_Alive());
+//	Wireless_Debug("\r\n");
+//
+//	Wireless_Debug("Waiting To Shoot: ");
+//	PrintInt(Game_WaitingToShoot());
+//	Wireless_Debug("\r\n");
+//
+//	Wireless_Debug("Game State: ");
+//	PrintInt(Game_GameState());
+//	Wireless_Debug("\r\n");
+//
+//	Wireless_Debug("Team Number: ");
+//	PrintInt(Game_TeamNumber());
+//	Wireless_Debug("\r\n");
+//	Wireless_Debug("-----------------------\r\n");
 }
 
 int numNotFound = 0;
@@ -350,11 +350,10 @@ void Vision_ProcessFrame(){
 			}
 		}
 	}
-	if(vision.frameRate % 4 == 0)
-		Wireless_Blob_Report(visionData->numBlobs,visionData->blobs);
+
 	if(biggest == 0) {
 		if(goToTower){
-			setDistance(10000);
+			PID_SetDistance(&navigation.pid,10000);
 			numNotFound++;
 #ifdef DEBUG_USB_VISION
 			int tmp = 50 * numNotFound;
@@ -362,9 +361,9 @@ void Vision_ProcessFrame(){
 			int tmp = 10 * numNotFound;
 #endif
 			if(tmp > 200){
-				pid.currentCentroid = 200;
+				navigation.pid.currentCentroid = 200;
 			} else {
-				pid.currentCentroid = tmp;
+				navigation.pid.currentCentroid = tmp;
 			}
 		}
 	} else {
@@ -373,7 +372,7 @@ void Vision_ProcessFrame(){
 		int toGo = biggest->distance*2000 - distanceFromVisionTarget;
 
 		//-----Backup Centering Code
-		if ((pid.currentVelocity == 0)&&(pid.currentCentroid < -30 || pid.currentCentroid > 30)){
+		if ((navigation.pid.currentVelocity == 0)&&(navigation.pid.currentCentroid < -30 || navigation.pid.currentCentroid > 30)){
 			backup = 1;
 		}
 		if (backupCount < 100 && backup == 1){
@@ -388,8 +387,8 @@ void Vision_ProcessFrame(){
 			if (toGo < 6000) {
 				Game_Shoot(GAME_KILL_SHOT);
 			}
-			setDistance(toGo);
-			pid.currentCentroid = biggest->center;
+			PID_SetDistance(&navigation.pid,toGo);
+			navigation.pid.currentCentroid = biggest->center;
 		}
 	}
 	vision.frameRate++;
@@ -407,38 +406,38 @@ void process_wireless_commands() {
 
 	switch (command.type){
 	case SET_PID_KP:
-		pid.Kp = *((float *)(command.data));
+		navigation.pid.Kp = *((float *)(command.data));
 		Wireless_Debug("Setting Kp to:");
-		PrintFloat(pid.Kp);
+		PrintFloat(navigation.pid.Kp);
 		break;
 	case SET_PID_KI:
-		pid.Ki = *((float *)(command.data));
+		navigation.pid.Ki = *((float *)(command.data));
 		Wireless_Debug("Setting Ki to:");
-		PrintFloat(pid.Ki);
+		PrintFloat(navigation.pid.Ki);
 		break;
 	case SET_PID_KD:
-		pid.Kd = *((float *)(command.data));
+		navigation.pid.Kd = *((float *)(command.data));
 		Wireless_Debug("Setting Kd to:");
-		PrintFloat(pid.Kd);
+		PrintFloat(navigation.pid.Kd);
 		break;
 	case SET_PID_KP_C:
-		pid.Kp_c = *((float *)(command.data));
+		navigation.pid.Kp_c = *((float *)(command.data));
 		Wireless_Debug("Setting Kp_c to:");
-		PrintFloat(pid.Kp_c);
+		PrintFloat(navigation.pid.Kp_c);
 		break;
 	case SET_PID_KI_C:
-		pid.Ki_c = *((float *)(command.data));
+		navigation.pid.Ki_c = *((float *)(command.data));
 		Wireless_Debug("Setting Ki_c to:");
-		PrintFloat(pid.Ki_c);
+		PrintFloat(navigation.pid.Ki_c);
 		break;
 	case SET_PID_KD_C:
-		pid.Kd_c = *((float *)(command.data));
+		navigation.pid.Kd_c = *((float *)(command.data));
 		Wireless_Debug("Setting Kd_c to:");
-		PrintFloat(pid.Kd_c);
+		PrintFloat(navigation.pid.Kd_c);
 		break;
 	case SET_DISTANCE:
 		int_data = *((int *)(command.data));
-		setDistance(int_data);
+		PID_SetDistance(&navigation.pid,int_data);
 		Wireless_Debug("Set distance to ");
 		PrintInt(int_data);
 		Wireless_Debug("\n\r");
@@ -451,9 +450,9 @@ void process_wireless_commands() {
 		break;
 	case SET_MAX_VELOCITY:
 		int_data = *((int *)(command.data));
-		pid.maxVelocity = int_data;
+		navigation.pid.maxVelocity = int_data;
 		Wireless_Debug("Set velocity to ");
-		PrintInt(pid.maxVelocity);
+		PrintInt(navigation.pid.maxVelocity);
 		Wireless_Debug("\n\r");
 		break;
 	case SET_VISION_DISTANCE:
@@ -504,6 +503,7 @@ void calibrate_memory(){
 void reportFrameRate(){
 	Wireless_Send(&wireless, WIRELESS_VISION_FRAMERATE, 4, &vision.frameRate);
 	vision.frameRate = 0;
+	Wireless_Blob_Report((*vision.snap_vision_data)->numBlobs,(*vision.snap_vision_data)->blobs);
 }
 
 void vision_loop(){
@@ -513,7 +513,13 @@ void vision_loop(){
 	}
 }
 
+void steering_loop(){
+	Navigation_SteeringLoop(&navigation);
+}
 
+void velocity_loop(){
+	Navigation_VelocityLoop(&navigation);
+}
 void registerEvents(){
 	/* Initialize Tasks */
 		Events events;
@@ -524,7 +530,7 @@ void registerEvents(){
 
 
 		Events_Init(&events); 		// clear all events
-		events.flags.steering_loop = 1;	// set the flags we want as triggers
+		events.flags.timer1 = 1;	// set the flags we want as triggers
 		Scheduler_RegisterTask(&scheduler,steering_loop,events);  // Register task with Scheduler
 
 		Events_Init(&events); 		// clear all events
@@ -580,8 +586,10 @@ int main (void) {
 	InitInterrupts();
 
 	// Enable Gyro Data
-	// HeliosEnableGyro();
 	InitGameSystem();
+	HeliosDisableGyro();
+	usleep(10000);
+	HeliosEnableGyro();
 	Scheduler_Init(&scheduler);
 	Scheduler_SetBeforeHook(&scheduler,myBeforeHook);
 	Navigation_Init(&navigation);
@@ -592,9 +600,7 @@ int main (void) {
 	ServoInit(RC_STR_SERVO);
 	ServoInit(RC_VEL_SERVO);
 
-	initPID();
-
-	setDistance(0);
+	PID_SetDistance(&navigation.pid,0);
 
 	SetServo(RC_STR_SERVO, 1);
 
