@@ -248,7 +248,7 @@ namespace CameraViewer
             //convert to rgb
             for (int d = start, p = 0; d < start + length; d += 2, p += 3) {
                 int pixel = raw[d] << 8 | raw[d + 1];
-                double h = (((pixel >> 10) & 0x3F) << (2)) / 255.0 * 360;
+                double h = (((pixel >> 10) & 0x3F) << (3));
                 double s = (((pixel >> 5) & 0x1F) << (3)) / 255.0;
                 double v = ((pixel & 0x1F) << (3)) / 255.0;
                 int r, g, b;

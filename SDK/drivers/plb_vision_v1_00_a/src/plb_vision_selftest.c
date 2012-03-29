@@ -319,7 +319,7 @@ void processFrame(FrameTableEntry* frame) {
 		}
 	}
 
-	//transmitFrame(frame);
+	transmitFrame(frame);
 }
 
 int main()

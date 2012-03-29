@@ -34,18 +34,13 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="plb_vision_selftest.c" partName="plb_vision_selftest.c" path="C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c" title="plb_vision_selftest.c" tooltip="TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="plb_vision_selftest.c" partName="plb_vision_selftest.c" path="C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision_selftest.c" title="plb_vision_selftest.c" tooltip="TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8106" selectionTopPixel="5743"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="plb_vision.c" partName="plb_vision.c" path="C:/RobotRacers/CultOfSkaro/SDK/drivers/plb_vision_v1_00_a/src/plb_vision.c" title="plb_vision.c" tooltip="TestApp_Vision/plb_vision_v1_00_a/src/plb_vision.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="15103" selectionTopPixel="5280"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8569" selectionTopPixel="5287"/>
 </editor>
 </editors>
 <views>
@@ -220,19 +215,8 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/TestApp_Vision/plb_vision_v1_00_a/src/plb_vision_selftest.c"/>
 </editors>
-<item historyLabel="plb_vision_selftest.c" index="1">
-<position info="not_deleted" x="6835" y="0"/>
-</item>
-<item historyLabel="plb_vision_selftest.c" index="1">
-<position info="not_deleted" x="6862" y="0"/>
-</item>
-<item historyLabel="plb_vision_selftest.c" index="1">
-<position info="not_deleted" x="6889" y="0"/>
-</item>
-<item historyLabel="plb_vision_selftest.c" index="1">
-<position info="not_deleted" x="6960" y="0"/>
-</item>
 <item historyLabel="plb_vision_selftest.c" index="1">
 <position info="not_deleted" x="6961" y="0"/>
 </item>
@@ -352,8 +336,20 @@
 <item historyLabel="plb_vision_selftest.c" index="13">
 <position info="not_deleted" x="8330" y="0"/>
 </item>
-<item active="true" historyLabel="plb_vision.c" index="15">
-<position info="not_deleted" x="15103" y="0"/>
+<item historyLabel="plb_vision.c" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="plb_vision.c" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="plb_vision_selftest.c" index="16">
+<position info="not_deleted" x="8106" y="0"/>
+</item>
+<item historyLabel="plb_vision.c" index="15">
+<position info="not_deleted" x="632" y="0"/>
+</item>
+<item active="true" historyLabel="plb_vision_selftest.c" index="16">
+<position info="not_deleted" x="8106" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
