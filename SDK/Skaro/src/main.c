@@ -585,13 +585,18 @@ int main (void) {
 	usleep(100000);
 	Vision_Init(&vision);
 
-	InitInterrupts();
-
-	// Enable Gyro Data
+	// This needs to come before interrupts to ensure
+	// that uart packets from the gameboard are in sync
 	InitGameSystem();
 	HeliosDisableGyro();
 	usleep(1000000);
+
+	InitInterrupts();
+
+	// Now that interrupts are enabled, re-enable gyro
 	HeliosEnableGyro();
+
+
 	Scheduler_Init(&scheduler);
 	Scheduler_SetBeforeHook(&scheduler,myBeforeHook);
 	Navigation_Init(&navigation);
