@@ -26,6 +26,7 @@
 #include "Serial.h"
 #include "scheduler.h"
 #include "Navigation.h"
+#include "Math.h"
 
 int control_log_counter;
 int i=0;
@@ -72,7 +73,7 @@ void PID_Init(PID * pid){
 			//Centroid params
 			pid->desiredCentroidPID = 0;
 			pid->Kp_c = 0.11f;
-			pid->Kd_c = 0.0f;
+			pid->Kd_c = 0.0001f;
 			pid->Ki_c = 0.0f;
 			pid->integrator_c = 0.0f;
 			pid->differentiator_c = 0.0f;
@@ -83,9 +84,10 @@ void PID_Init(PID * pid){
 			pid->lastClockTicks_c = 0;
 			//Curvature params
 			pid->desiredRadiusPID = 0;
-			pid->Kp_r = 0.04f;
-			pid->Kd_r = 0.0f;
+			pid->Kp_r = 80000.0f;
+			pid->Kd_r = 0.0005f;
 			pid->Ki_r = 0.0f;
+			pid->radiusEqualibrium = 0;
 			pid->integrator_r = 0.0f;
 			pid->differentiator_r = 0.0f;
 			pid->lastError_r = 0.0f;
@@ -226,24 +228,38 @@ void PID_UpdateRadius(PID * pid)
 	pid->currentRadius = pid->gyro->frontRadius;
 
 	//------Calculate Error
-	pid->error_r = (desiredRadius) - (pid->currentRadius);
+	pid->error_r = ((float)(pid->currentRadius - desiredRadius))/(pid->currentRadius * desiredRadius);
 
 	//------Update Derivative
 	pid->differentiator_r = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator_r) + ((2/((2*pid->Tau)+refreshRate))*(pid->currentRadius - pid->lastCurrentRadius));
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	pid->integrator_r = pid->integrator_r + (refreshRate/2)*(pid->error_r + pid->lastError_r);
-
+	if (abs(pid->error_r) < .0002)
+		pid->integrator_r = pid->integrator_r + (refreshRate/2)*(pid->error_r + pid->lastError_r);
+	else
+		pid->integrator_r = 0;
 
 	//------Output Calculation
 	P = pid->Kp_r * (pid->error_r);
 	I = pid->Ki_r * pid->integrator_r;
 	D = pid->Kd_r * pid->differentiator_r;
+	pid->radiusEqualibrium = (40000.0/desiredRadius);
 
-	pid->outputPID_unsat_r = P + I - D;
+	Wireless_Debug("P: ");
+	PrintInt(P);
+	Wireless_Debug("\n\r");
+	Wireless_Debug("I: ");
+	PrintInt(I);
+	Wireless_Debug("\n\r");
+	Wireless_Debug("D: ");
+	PrintInt(D);
+	Wireless_Debug("\n\r");
+
+	pid->outputPID_unsat_r = (P + I - D) + pid->radiusEqualibrium;
+
 	pid->outputPID_r = sat(pid->outputPID_unsat_r, 40);
 
-	pid->integrator_r = pid->integrator_r + (refreshRate/pid->Ki_r)*(pid->outputPID_r - pid->outputPID_unsat_r);
+	//pid->integrator_r = pid->integrator_r + (refreshRate/pid->Ki_r)*(pid->outputPID_r - pid->outputPID_unsat_r);
 
 	//------Save Info for graph
 	Wireless_ControlLog_Ext(pid->currentRadius, pid->desiredRadiusPID, pid->error_r, pid->outputPID_unsat_r, P);
@@ -337,11 +353,19 @@ void inline PID_SetDistance(PID * pid, int distance){
 }
 
 void inline PID_SetVelocity(PID * pid, int velocity){
+	if (velocity > 4000)
+		velocity = 4000;
+	else if (velocity < -2000)
+		velocity = -2000;
 	pid->desiredVelocityPID = velocity;
 }
 
-void inline PID_SetRadius(PID * pid, int radius_in_ticks){
-	pid->desiredRadiusPID = radius_in_ticks;
+void inline PID_SetRadius(PID * pid, int direction_RIGHT_LEFT, int radius_in_ticks){
+	if (radius_in_ticks > 5000)
+		radius_in_ticks = 5000;
+	else if (radius_in_ticks < 1000)
+		radius_in_ticks = 1000;
+	pid->desiredRadiusPID = radius_in_ticks*direction_RIGHT_LEFT;
 }
 
 

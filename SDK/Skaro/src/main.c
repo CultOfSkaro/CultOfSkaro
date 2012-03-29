@@ -141,22 +141,23 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		break;
 	case SET_PID_KI_C:
 		read(0,&float_data,sizeof(float));
-		navigation.pid.Ki_c = float_data;
-		Wireless_Debug("Setting Ki_c to:");
-		PrintFloat(navigation.pid.Ki_c);
+		navigation.pid.Ki_r = float_data;
+		Wireless_Debug("Setting Ki_r to:");
+		PrintFloat(navigation.pid.Ki_r);
 		break;
 	case SET_PID_KD_C:
 		read(0,&float_data,sizeof(float));
-		navigation.pid.Kd_c = float_data;
-		Wireless_Debug("Setting Kd_c to:");
-		PrintFloat(navigation.pid.Kd_c);
+		navigation.pid.Kd_r = float_data;
+		Wireless_Debug("Setting Kd_r to:");
+		PrintFloat(navigation.pid.Kd_r);
 		break;
 	case SET_DISTANCE:
 		read(0,&int_data,sizeof(int));
 		PID_SetDistance(&navigation.pid,int_data);
+		holdRadius(RIGHT, int_data);
 		Wireless_Debug("Set distance to ");
 		PrintInt(int_data);
-		Wireless_Debug("\n\r");
+		Wireless_Debug("\n\r" );
 		break;
 //	case SET_STEERING:
 //		read(0,&c,1);
@@ -167,6 +168,7 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 	case SET_MAX_VELOCITY:
 		read(0,&int_data,sizeof(int));
 		navigation.pid.maxVelocity = int_data;
+		goVelocity(int_data);
 		Wireless_Debug("Set velocity to ");
 		PrintInt(navigation.pid.maxVelocity);
 		Wireless_Debug("\n\r");
@@ -508,9 +510,9 @@ void reportFrameRate(){
 
 void vision_loop(){
 	*vision.snap_vision_data = *vision.live_vision_data;
-	if(*vision.snap_vision_data){
-		Vision_ProcessFrame();
-	}
+//	if(*vision.snap_vision_data){
+//		Vision_ProcessFrame();
+//	}
 }
 
 void steering_loop(){
@@ -530,7 +532,7 @@ void registerEvents(){
 
 
 		Events_Init(&events); 		// clear all events
-		events.flags.timer1 = 1;	// set the flags we want as triggers
+		events.flags.steering_loop = 1;	// set the flags we want as triggers
 		Scheduler_RegisterTask(&scheduler,steering_loop,events);  // Register task with Scheduler
 
 		Events_Init(&events); 		// clear all events
@@ -588,7 +590,7 @@ int main (void) {
 	// Enable Gyro Data
 	InitGameSystem();
 	HeliosDisableGyro();
-	usleep(10000);
+	usleep(1000000);
 	HeliosEnableGyro();
 	Scheduler_Init(&scheduler);
 	Scheduler_SetBeforeHook(&scheduler,myBeforeHook);

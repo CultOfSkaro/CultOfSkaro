@@ -54,6 +54,10 @@ inline float Gyro_SteeringAngleToCurvature(Gyro * gyro, int steeringAngle){
 	return (sin(gyro->frontCurvature))/gyro->wheelBase;
 }
 
+inline float Gyro_SteeringAngleToRadius(Gyro * gyro, int steeringAngle){
+	return ((sin((1/gyro->frontCurvature)))/gyro->wheelBase);
+}
+
 inline float Gyro_CurvatureBackToFront(Gyro * gyro)
 {
 	return gyro->frontCurvature = gyro->omega/gyro->frontVelocity;

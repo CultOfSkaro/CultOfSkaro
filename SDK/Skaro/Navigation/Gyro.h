@@ -34,5 +34,6 @@ extern GyroData raw_gyro_data;
 
 void Gyro_Init(Gyro * g);
 void Gyro_Calculation(Gyro * gyro);
+float Gyro_SteeringAngleToRadius(Gyro * gyro, int steeringAngle);
 
 #endif

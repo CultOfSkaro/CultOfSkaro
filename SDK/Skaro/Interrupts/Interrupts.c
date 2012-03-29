@@ -69,7 +69,7 @@ void InitInterrupts() {
 	XUartLite_SetRecvHandler(&(wireless.uart), WirelessRecvHandler, &(wireless.uart));
 
 	//XUartLite_SetRecvHandler(&(wireless.uart), WirelessRecvHandlerNonBlocking, &(wireless.uart));
-	Wireless_Debug("Wireless should be set up now");
+	Wireless_Debug("Wireless should be set up now\r\n");
 
 	// Set up send/receive handlers for gameboard uart
 	XUartLite_SetSendHandler(&gameboard_uart, GameboardSendHandler, &gameboard_uart);
@@ -118,6 +118,7 @@ void GameboardRecvHandler(void *CallBackRef, unsigned int EventData)
 	static short ticks = 0;
 	static int clocks = 0;
 	static int clocks_prev = 0;
+	static short old_angular_velocity[2];
 	float rate;
 	CPU_MSR msr;
 
@@ -146,17 +147,21 @@ void GameboardRecvHandler(void *CallBackRef, unsigned int EventData)
 			ticks_prev = ticks;
 			clocks_prev = clocks;
 
+			old_angular_velocity[0] = old_angular_velocity[1];
+			old_angular_velocity[1] = raw_gyro_data.angular_velocity;
 			raw_gyro_data.angular_velocity = (signed char)raw_gyro_data.packet[3];
 			raw_gyro_data.angular_velocity <<= 8;
 			raw_gyro_data.angular_velocity |= (uint32) raw_gyro_data.packet[4];
-//			Wireless_Debug("Gameboard velocity: ");
-//			PrintInt(raw_gyro_data.velocity);
-//			Wireless_Debug("\r\n");
-//			Wireless_Debug("Omega: ");
-//			PrintInt(raw_gyro_data.angular_velocity);
-//			Wireless_Debug("\r\n");
+			if ((old_angular_velocity[0] == old_angular_velocity[1]) && (old_angular_velocity[0] == raw_gyro_data.angular_velocity)) {
+				Wireless_Debug("------------------------------\r\n");
+				Wireless_Debug("Getting stale gyro data!\r\n");
+				Wireless_Debug("------------------------------\r\n");
+			}
+
 		} else {
+			Wireless_Debug("------------------------------\r\n");
 			Wireless_Debug("Packets out of sync!\r\n");
+			Wireless_Debug("------------------------------\r\n");
 		}
 	}
 }

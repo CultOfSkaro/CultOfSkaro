@@ -10,7 +10,7 @@
 #define VELOCITY_MODE 			1
 #define DISTANCE_VELOCITY_MODE 	2
 #define CENTROID_MODE 			3
-#define CURVATURE_MODE 			4
+#define RADIUS_MODE 			4
 #define SERVO_MODE 				5
 //Steering directions
 #define RIGHT					-1

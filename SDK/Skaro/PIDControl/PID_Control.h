@@ -81,6 +81,7 @@ typedef struct
 	float Kp_r;
 	float Kd_r;
 	float Ki_r;
+	int radiusEqualibrium;
 	float integrator_r;
 	float differentiator_r;
 	float lastError_r;
@@ -99,7 +100,7 @@ void PID_UpdateCentroid(PID * pid);
 void PID_UpdateRadius(PID * pid);
 void inline PID_SetDistance(PID * pid,int32 distance);
 void inline PID_SetVelocity(PID * pid, int32 velocity);
-void inline PID_SetRadius(PID * pid, int radius);
+void inline PID_SetRadius(PID * pid, int direction_RIGHT_LEFT, int radius);
 void PID_UpdateDistance(PID * pid);
 int sat(int in, int limit);
 
