@@ -103,6 +103,7 @@ void inline PID_SetVelocity(PID * pid, int32 velocity);
 void inline PID_SetRadius(PID * pid, int direction_RIGHT_LEFT, int radius);
 void PID_UpdateDistance(PID * pid);
 int sat(int in, int limit);
+int downShift(int in, int limit, int out);
 
 //void setSteeringRadius(int direction, uint32 radius_cm); //Right = direction:1 Left = direction:-1
 #endif /* PID_CONTROL_H_ */

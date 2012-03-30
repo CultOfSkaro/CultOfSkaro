@@ -43,9 +43,9 @@ void PID_Init(PID * pid){
 			pid->lastEncoderValue = getTicks();
 			pid->Tau = 0.05f;
 			//Velocity params
-	        pid->Kp = 0.02f;
-	        pid->Kd = 0.00003f;
-	        pid->Ki = 0.025f;
+	        pid->Kp = 0.016f;//0.02f;
+	        pid->Kd = 0.000565f;//0.00003f;
+	        pid->Ki = 0.015f;//0.025f;
 	        pid->integrator = 0.0f;
 	        pid->differentiator = 0.0f;
 	        pid->desiredVelocityPID = 0;
@@ -133,8 +133,7 @@ void PID_UpdateVelocity(PID * pid)
 	//------Update Derivative
 	//pid->differentiator = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator) + ((2/((2*pid->Tau)+refreshRate))*(pid->currentVelocity - pid->lastCurrentVelocity));
 	pid->differentiator = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator) + ((2/((2*pid->Tau)+refreshRate))*(pid->error - pid->lastError));
-	//pid->differentiator = (pid->currentVelocity - pid->lastCurrentVelocity)/refreshRate;
-	//pid->differentiator = (pid->error - pid->lastError)/refreshRate;
+
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
 	pid->integrator = pid->integrator + ((refreshRate/2)*(pid->error + pid->lastError));
@@ -147,9 +146,11 @@ void PID_UpdateVelocity(PID * pid)
 
 	pid->outputPID_unsat = ((int)P) + ((int)I) - ((int)D);
 	pid->outputPID = sat(pid->outputPID_unsat, 60);
+	//pid->outputPID = downShift(pid->error, -600, 7);
 
 	pid->integrator = pid->integrator + (refreshRate/pid->Ki)*(pid->outputPID - pid->outputPID_unsat);
 
+	//Wireless_ControlLog_Ext(pid->currentVelocity, desiredVelocity, pid->error, pid->outputPID_unsat, P);
 	//------Save states and send PWM to motors
 	pid->lastEncoderValue = pid->encoderValue;
 	pid->lastCurrentVelocity = pid->currentVelocity;
@@ -234,10 +235,7 @@ void PID_UpdateRadius(PID * pid)
 	pid->differentiator_r = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator_r) + ((2/((2*pid->Tau)+refreshRate))*(pid->currentRadius - pid->lastCurrentRadius));
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	if (abs(pid->error_r) < .0002)
-		pid->integrator_r = pid->integrator_r + (refreshRate/2)*(pid->error_r + pid->lastError_r);
-	else
-		pid->integrator_r = 0;
+	pid->integrator_r = (pid->integrator_r) + ((refreshRate/2)*((pid->error_r) + (pid->lastError_r)));
 
 	//------Output Calculation
 	P = pid->Kp_r * (pid->error_r);
@@ -247,6 +245,12 @@ void PID_UpdateRadius(PID * pid)
 
 	Wireless_Debug("P: ");
 	PrintInt(P);
+	Wireless_Debug("\n\r");
+	Wireless_Debug("Integral: ");
+	PrintFloat(pid->integrator_r);
+	Wireless_Debug("\n\r");
+	Wireless_Debug("Refresh: ");
+	PrintFloat(refreshRate);
 	Wireless_Debug("\n\r");
 	Wireless_Debug("I: ");
 	PrintInt(I);
@@ -268,9 +272,26 @@ void PID_UpdateRadius(PID * pid)
 	pid->lastCurrentRadius = pid->currentRadius;
 	pid->lastError_r = pid->error_r;
 
+	Wireless_Debug("Last Error: ");
+	PrintFloat(pid->lastError_r);
+	Wireless_Debug("\n\r");
+	Wireless_Debug("Integral: ");
+	PrintFloat(pid->integrator_r);
+	Wireless_Debug("\n\r");
+	Wireless_Debug("-----------------------------");
+	Wireless_Debug("\n\r");
+
 	SetServo(RC_STR_SERVO, pid->outputPID_r);
 }
+void PID_DistanceFlag(PID * pid, int desiredError){
+	int ticks = getTicks();
+	pid->distanceError = pid->desiredDistancePID - ticks;
+	int distanceError = pid->distanceError;
 
+	if (distanceError <= desiredError){
+		//flag
+	}
+}
 
 void PID_UpdateDistance(PID * pid){
 	int ticks = getTicks();
@@ -379,6 +400,15 @@ int sat(int in, int limit) {
 	}
 	return in;
 }
+
+int downShift(int in, int limit, int out) {
+	if (in <= limit){
+		return out;
+	}
+	return in;
+}
+
+
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //----------------------------------------------Dead Code----------------------------------------------

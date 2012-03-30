@@ -32,6 +32,7 @@ typedef struct {
 	//pointers into vision_data
 	VisionData ** live_vision_data;
 	VisionData ** snap_vision_data;
+	Blob * target;
 } Vision;
 
 extern Vision vision;

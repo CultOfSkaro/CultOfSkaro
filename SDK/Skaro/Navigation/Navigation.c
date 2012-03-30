@@ -159,48 +159,48 @@ void Navigation_SetSteeringMode(Navigation * n,int mode){
 	};
 }
 
-void goVelocity(int velocity){
-	PID_SetVelocity(&(navigation.pid),velocity);
+void Navigation_GoVelocity(Navigation *n, int velocity){
+	PID_SetVelocity(&n->pid,velocity);
 	//flag velocity 1
-	Navigation_SetVelocityMode(&navigation, VELOCITY_MODE);
+	Navigation_SetVelocityMode(n, VELOCITY_MODE);
 }
 
-void goDistance_Velocity(int distance, int velocity){
-	PID_SetDistance(&navigation.pid,distance);
-	navigation.pid.maxVelocity = velocity;
+void Navigation_GoDistanceVelocity(Navigation * n, int distance, int velocity){
+	PID_SetDistance(&n->pid,distance);
+	n->pid.maxVelocity = velocity;
 	//flag velocity 2
-	Navigation_SetVelocityMode(&navigation, DISTANCE_VELOCITY_MODE);
+	Navigation_SetVelocityMode(n, DISTANCE_VELOCITY_MODE);
 }
 
-void goCentroid(){
+void Navigation_GoCentroid(Navigation * n){
 	//flag steering 1
-	Navigation_SetSteeringMode(&navigation,CENTROID_MODE);
+	Navigation_SetSteeringMode(n,CENTROID_MODE);
 }
 
-void holdAngle(int direction_RIGHT_LEFT, int angle){
-	int radius = Gyro_SteeringAngleToRadius(&navigation.gyro, angle);
-	PID_SetRadius(&navigation.pid,direction_RIGHT_LEFT,radius);
+void Navigation_HoldAngle(Navigation * n,int direction_RIGHT_LEFT, int angle){
+	int radius = Gyro_SteeringAngleToRadius(&n->gyro, angle);
+	PID_SetRadius(&n->pid,direction_RIGHT_LEFT,radius);
 	//flag steering 2
-	Navigation_SetSteeringMode(&navigation,RADIUS_MODE);
+	Navigation_SetSteeringMode(n,RADIUS_MODE);
 }
 
-void holdRadius(int direction_RIGHT_LEFT, int radius){
-	PID_SetRadius(&navigation.pid,direction_RIGHT_LEFT,radius);
+void Navigation_HoldRadius(Navigation * n, int direction_RIGHT_LEFT, int radius){
+	PID_SetRadius(&n->pid,direction_RIGHT_LEFT,radius);
 	//flag steering 2
-	Navigation_SetSteeringMode(&navigation,RADIUS_MODE);
+	Navigation_SetSteeringMode(n,RADIUS_MODE);
 }
 
-void holdCurvature(float curvature, int direction_RIGHT_LEFT){
+void Navigation_HoldCurvature(Navigation * n, float curvature, int direction_RIGHT_LEFT){
 	int radius = 1/curvature;
-	PID_SetRadius(&navigation.pid,direction_RIGHT_LEFT,radius);
+	PID_SetRadius(&n->pid,direction_RIGHT_LEFT,radius);
 	//flag steering 2
-	Navigation_SetSteeringMode(&navigation,RADIUS_MODE);
+	Navigation_SetSteeringMode(n,RADIUS_MODE);
 }
 
-void holdServo(int servoSetting){
+void Navigation_HoldServo(Navigation * n, int servoSetting){
 	SetServo(RC_STR_SERVO, servoSetting);
 	//flag steering 3
-	Navigation_SetSteeringMode(&navigation,DO_NOTHING_MODE);
+	Navigation_SetSteeringMode(n,DO_NOTHING_MODE);
 }
 
 void Stop(){

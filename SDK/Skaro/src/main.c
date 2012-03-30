@@ -70,6 +70,7 @@
 #include "Navigation.h"
 #include "Interrupts.h"
 #include "PIT.h"
+#include "AI.h"
 
 //#include "ISR.h"
 
@@ -154,7 +155,7 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 	case SET_DISTANCE:
 		read(0,&int_data,sizeof(int));
 		PID_SetDistance(&navigation.pid,int_data);
-		holdRadius(RIGHT, int_data);
+		Navigation_HoldRadius(&navigation, RIGHT, int_data);
 		Wireless_Debug("Set distance to ");
 		PrintInt(int_data);
 		Wireless_Debug("\n\r" );
@@ -168,7 +169,7 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 	case SET_MAX_VELOCITY:
 		read(0,&int_data,sizeof(int));
 		navigation.pid.maxVelocity = int_data;
-		goVelocity(int_data);
+		Navigation_GoVelocity(&navigation, int_data);
 		Wireless_Debug("Set velocity to ");
 		PrintInt(navigation.pid.maxVelocity);
 		Wireless_Debug("\n\r");
@@ -188,6 +189,9 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 	case FIRE_KILL_SHOT:
 		Wireless_Debug("Firing Kill Shot!\r\n");
 		Game_Shoot(GAME_KILL_SHOT);
+		break;
+	case 'd':
+		ai.state = START;
 		break;
 	case 'e':
 		goToTower = !goToTower;
@@ -354,44 +358,46 @@ void Vision_ProcessFrame(){
 	}
 
 	if(biggest == 0) {
-		if(goToTower){
-			PID_SetDistance(&navigation.pid,10000);
-			numNotFound++;
-#ifdef DEBUG_USB_VISION
-			int tmp = 50 * numNotFound;
-#else
-			int tmp = 10 * numNotFound;
-#endif
-			if(tmp > 200){
-				navigation.pid.currentCentroid = 200;
-			} else {
-				navigation.pid.currentCentroid = tmp;
-			}
-		}
+		//if(goToTower){
+//			PID_SetDistance(&navigation.pid,10000);
+//			numNotFound++;
+//#ifdef DEBUG_USB_VISION
+//			int tmp = 50 * numNotFound;
+//#else
+//			int tmp = 10 * numNotFound;
+//#endif
+//			if(tmp > 200){
+//				navigation.pid.currentCentroid = 200;
+//			} else {
+//				navigation.pid.currentCentroid = tmp;
+//			}
+		//}
+		vision.target = 0;
 	} else {
-		numNotFound = 0;
+		//numNotFound = 0;
 
-		int toGo = biggest->distance*2000 - distanceFromVisionTarget;
+		//int toGo = biggest->distance*2000 - distanceFromVisionTarget;
 
 		//-----Backup Centering Code
-		if ((navigation.pid.currentVelocity == 0)&&(navigation.pid.currentCentroid < -30 || navigation.pid.currentCentroid > 30)){
-			backup = 1;
-		}
-		if (backupCount < 100 && backup == 1){
-			backupCount++;
-			toGo = (biggest->distance*2000) - (distanceFromVisionTarget*2);
-		}
-		else if (backupCount == 100){
-			backupCount = 0;
-			backup = 0;
-		}
-		if(goToTower){
-			if (toGo < 6000) {
-				Game_Shoot(GAME_KILL_SHOT);
-			}
-			PID_SetDistance(&navigation.pid,toGo);
+//		if ((navigation.pid.currentVelocity == 0)&&(navigation.pid.currentCentroid < -30 || navigation.pid.currentCentroid > 30)){
+//			backup = 1;
+//		}
+//		if (backupCount < 100 && backup == 1){
+//			backupCount++;
+//			toGo = (biggest->distance*2000) - (distanceFromVisionTarget*2);
+//		}
+//		else if (backupCount == 100){
+//			backupCount = 0;
+//			backup = 0;
+//		}
+		//if(goToTower){
+//			if (toGo < 6000) {
+//				Game_Shoot(GAME_KILL_SHOT);
+//			}
+			//PID_SetDistance(&navigation.pid,toGo);
 			navigation.pid.currentCentroid = biggest->center;
-		}
+		//}
+		vision.target = biggest;
 	}
 	vision.frameRate++;
 }
@@ -475,6 +481,9 @@ void process_wireless_commands() {
 		Wireless_Debug("Firing Kill Shot!\r\n");
 		Game_Shoot(GAME_KILL_SHOT);
 		break;
+	case 'd':
+		ai.state = START;
+		break;
 	case 'e':
 		goToTower = !goToTower;
 		Wireless_Debug("GO!!");
@@ -510,9 +519,9 @@ void reportFrameRate(){
 
 void vision_loop(){
 	*vision.snap_vision_data = *vision.live_vision_data;
-//	if(*vision.snap_vision_data){
-//		Vision_ProcessFrame();
-//	}
+	if(*vision.snap_vision_data){
+		Vision_ProcessFrame();
+	}
 }
 
 void steering_loop(){
@@ -522,6 +531,11 @@ void steering_loop(){
 void velocity_loop(){
 	Navigation_VelocityLoop(&navigation);
 }
+
+void ai_loop(){
+	AI_LostTower(&ai);
+}
+
 void registerEvents(){
 	/* Initialize Tasks */
 		Events events;
@@ -532,7 +546,7 @@ void registerEvents(){
 
 
 		Events_Init(&events); 		// clear all events
-		events.flags.steering_loop = 1;	// set the flags we want as triggers
+		events.flags.timer1 = 1;	// set the flags we want as triggers
 		Scheduler_RegisterTask(&scheduler,steering_loop,events);  // Register task with Scheduler
 
 		Events_Init(&events); 		// clear all events
@@ -553,6 +567,10 @@ void registerEvents(){
 		Events_Init(&events);
 		events.flags.timer2 = 1;
 		Scheduler_RegisterTask(&scheduler, reportFrameRate, events);
+
+		Events_Init(&events);
+		events.flags.timer3 = 1;
+		Scheduler_RegisterTask(&scheduler, ai_loop, events);
 }
 
 void registerTimers(){
@@ -562,6 +580,9 @@ void registerTimers(){
 	PIT_AddCounter(&pit,c);
 	c.max = 1000;
 	c.event = &scheduler.events.flags.timer2;
+	PIT_AddCounter(&pit,c);
+	c.max = 10;
+	c.event = &scheduler.events.flags.timer3;
 	PIT_AddCounter(&pit,c);
 }
 
@@ -600,6 +621,7 @@ int main (void) {
 	Scheduler_Init(&scheduler);
 	Scheduler_SetBeforeHook(&scheduler,myBeforeHook);
 	Navigation_Init(&navigation);
+	AI_Init(&ai);
 
 	registerEvents();
 	registerTimers();

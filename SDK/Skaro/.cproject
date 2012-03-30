@@ -45,6 +45,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/CrossCore}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Navigation}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Interrupts}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/AI}&quot;"/>
 								</option>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.641562527" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
 							</tool>
