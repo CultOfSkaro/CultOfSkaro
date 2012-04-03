@@ -86,6 +86,7 @@ typedef struct
 	float differentiator_r;
 	float lastError_r;
 	int lastCurrentRadius;
+	float lastIntegrator_r;
 	int currentRadius;
 	float error_r;
 	int lastClockTicks_r;

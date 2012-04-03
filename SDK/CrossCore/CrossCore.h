@@ -5,7 +5,7 @@
 #define MAX_BLOBS           100
 
 #define BLOB_TYPE_BLUE			0
-#define BLOB_TYPE_RED			1
+#define BLOB_TYPE_PINK			1
 #define NUM_BLOB_TYPES			2
 
 //#define DEBUG_USB_VISION
@@ -16,7 +16,7 @@ typedef struct {
 	int top;
 	int width;
 	int height;
-	float distance;
+	int distance;
 	int center;
 	float angle;
 } Blob;
@@ -32,7 +32,9 @@ typedef struct {
 	//pointers into vision_data
 	VisionData ** live_vision_data;
 	VisionData ** snap_vision_data;
-	Blob * target;
+	Blob * blue_tower;
+	Blob * pink_tower;
+	Blob ** current_target;
 } Vision;
 
 extern Vision vision;

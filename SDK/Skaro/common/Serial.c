@@ -78,7 +78,7 @@ void PrintChar(char c)
 // Prints a nibble (a single hex digit represented by a 4-bit number)
 void PrintNibble(uint8 nibble)
 {
-    uint8 c;
+    char c;
 
     nibble &= 0xF;
     if((uint8)nibble <= 9) {

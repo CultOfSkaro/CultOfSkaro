@@ -52,14 +52,16 @@ typedef struct {
 #define CHECKED_LOC         0x81D00000 //root of the SRAM //BLOB_DATA_LOC + BLOB_DATA_SIZE
 #define CHECKED_SIZE        IMAGE_WIDTH * IMAGE_HEIGHT
 
-#define SEARCH_STRIDE_X  8
-#define SEARCH_STRIDE_Y  4
+#define SEARCH_STRIDE_X  20
+#define SEARCH_STRIDE_Y  6
 
 #define FLOOD_STRIDE_X   1
-#define FLOOD_STRIDE_Y   2
+#define FLOOD_STRIDE_Y   3
 
 #define TARGET_COLOR_BLUE       27, 0, 20
 #define TARGET_COLOR_RED		2, 0, 28
+#define TARGET_COLOR_PINK		39, 0, 15
+#define TARGET_COLOR_YELLOW		7, 0, 30
 
 Color targetColors[NUM_BLOB_TYPES];
 
@@ -128,7 +130,7 @@ void initHeader() {
 
 void initTargetColors() {
 	targetColors[BLOB_TYPE_BLUE] = (Color){TARGET_COLOR_BLUE};
-	targetColors[BLOB_TYPE_RED] = (Color){TARGET_COLOR_RED};
+	targetColors[BLOB_TYPE_PINK] = (Color){TARGET_COLOR_PINK};
 }
 
 void transmitFrame(FrameTableEntry* frame) {
@@ -273,12 +275,12 @@ void floodFill(ushort *pixels, int xStart, int yStart, Color targetColor, int bl
 
 	//create blob
 #define IMAGE_WIDTH 640
-#define OBJECT_WIDTH       0.08255
+#define OBJECT_WIDTH       (0.08255 * 2000)
 #define FIELD_OF_VISION    ((float)(25.5 * 3.1415 / 180))
 #define DISTANCE_CONSTANT  (IMAGE_WIDTH * OBJECT_WIDTH / FIELD_OF_VISION)
 	int width = xMax - xMin;
 	int height = yMax - yMin;
-	float distance = DISTANCE_CONSTANT / width;
+	int distance = DISTANCE_CONSTANT / width;
 	int center = xMin + (width / 2) - (IMAGE_WIDTH / 2);
 	float angle = FIELD_OF_VISION * center / IMAGE_WIDTH;
 	if (width > 0 && height > 0) {
@@ -318,7 +320,7 @@ void processFrame(FrameTableEntry* frame) {
 
 			short pixel = pixels[y * IMAGE_WIDTH + x];
 			int i = BLOB_TYPE_BLUE;
-			//for (i = 0; i < NUM_BLOB_TYPES; i++) {
+			for (i = 0; i < NUM_BLOB_TYPES; i++) {
 				if (colorMatch(pixel, targetColors[i])) {
 					if (visionData->numBlobs >= MAX_BLOBS) continue;
 					floodFill(pixels, x, y, targetColors[i], i);
@@ -334,7 +336,7 @@ void processFrame(FrameTableEntry* frame) {
 					(*numBlobs)++;
 					*/
 				}
-			//}
+			}
 		}
 	}
 

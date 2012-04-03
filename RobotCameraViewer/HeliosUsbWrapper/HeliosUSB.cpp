@@ -75,13 +75,13 @@ bool USBOpenHelios(HWND hwnd)
 			if(USBInEndPt != NULL) USBInEndPt->TimeOut = USB_IN_TIMEOUT;
 			if(USBInEndPt != NULL) USBInEndPt->Reset();
 
-			if(USBOutEndPt != NULL && USBInEndPt != NULL) return true;
+			if(USBOutEndPt != NULL && USBInEndPt != NULL) 
+				return true;
 		}
-	}
+	} 
 
 	// Couldn't load device so clean up
 	USBCloseHelios();
-
 	return false;
 }
 

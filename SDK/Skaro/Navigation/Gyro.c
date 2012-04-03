@@ -92,8 +92,8 @@ inline int Gyro_AbsDistanceFromArchDistCuvrature(Gyro * gyro, float curvature, i
 	return archDistance-(int)((curvature*curvature*archDistance*archDistance*archDistance)/24);
 }
 
-inline void Gryo_CameraInterpretation(Gyro * gyro, int centroid, int distance){
-
+/*
+inline void Gyro_CameraInterpretation(Gyro * gyro, int centroid, int distance){
 	int backDistance = Gyro_DistanceFrontToBack(gyro, distance);
-
 }
+*/

@@ -27,6 +27,7 @@
 #include "scheduler.h"
 #include "Navigation.h"
 #include "math.h"
+#include "AI.h"
 
 GyroData raw_gyro_data;
 Navigation navigation;
@@ -204,6 +205,7 @@ void Navigation_HoldServo(Navigation * n, int servoSetting){
 }
 
 void Stop(){
+	ai.state = IDLE;
 	PID_SetVelocity(&navigation.pid,0);
 	PID_SetDistance(&navigation.pid,0);
 }

@@ -27,6 +27,7 @@
 		<item value="227191" key="searchFlags"/>
 		<item value="false" key="caseSensitive"/>
 		<list key="previousPatterns">
+			<item value="correct"/>
 			<item value="malloc"/>
 			<item value="BS_MAT_XSMALL"/>
 		</list>

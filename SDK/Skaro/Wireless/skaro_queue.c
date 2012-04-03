@@ -15,7 +15,7 @@ int Queue_ReadByte(Skaro_Queue * q, char * c){
     *c = *(q->read_pointer);
     q->read_pointer++;
     if(q->read_pointer == q->end_pointer){
-    	print("wrapping around");
+    	//print("wrapping around");
       q->read_pointer = q->buffer;
     } 
     return 1;
@@ -35,14 +35,13 @@ int Queue_WriteByte(Skaro_Queue * q, char c){
   }
 } 
 
-int Queue_Write(Skaro_Queue * q, char length, char * data){
+void Queue_Write(Skaro_Queue * q, char length, char * data){
   int i;
   for(i = 0; i < length; i++){
     Queue_WriteByte(q,data[i]);
   }  
 }
 
-int Queue_Destroy(Skaro_Queue * q){
+void Queue_Destroy(Skaro_Queue * q){
   free(q->buffer);
-  return 0;
 }

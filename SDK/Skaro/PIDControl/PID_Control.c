@@ -86,12 +86,13 @@ void PID_Init(PID * pid){
 			pid->desiredRadiusPID = 0;
 			pid->Kp_r = 80000.0f;
 			pid->Kd_r = 0.0005f;
-			pid->Ki_r = 0.0f;
+			pid->Ki_r = 0.0f;//100000.0f;
 			pid->radiusEqualibrium = 0;
 			pid->integrator_r = 0.0f;
 			pid->differentiator_r = 0.0f;
 			pid->lastError_r = 0.0f;
 			pid->lastCurrentRadius = 0;
+			pid->lastIntegrator_r = 0.0f;
 			pid->currentRadius = 0;
 			pid->error_r = 0.0f;
 			pid->lastClockTicks_r = 0;
@@ -103,7 +104,6 @@ void PID_UpdateVelocity(PID * pid)
 	int desiredVelocity = pid->desiredVelocityPID;
 	float P, I, D;
 	float refreshRate;
-	uint32 deltaClocks;
 	CPU_MSR msr;
 
 	//------Read Encoder and clock
@@ -145,7 +145,7 @@ void PID_UpdateVelocity(PID * pid)
 	D = pid->Kd * pid->differentiator;
 
 	pid->outputPID_unsat = ((int)P) + ((int)I) - ((int)D);
-	pid->outputPID = sat(pid->outputPID_unsat, 60);
+	pid->outputPID = sat(pid->outputPID_unsat, 40);
 	//pid->outputPID = downShift(pid->error, -600, 7);
 
 	pid->integrator = pid->integrator + (refreshRate/pid->Ki)*(pid->outputPID - pid->outputPID_unsat);
@@ -161,9 +161,7 @@ void PID_UpdateVelocity(PID * pid)
 void PID_UpdateCentroid(PID * pid)
 {
 	int P, I, D;
-	uint32 deltaClocks;
 	float refreshRate;
-	CPU_MSR msr;
 
 	//------Read Encoder and clock
 	uint32 nowClocks = ClockTime();
@@ -210,7 +208,6 @@ void PID_UpdateCentroid(PID * pid)
 void PID_UpdateRadius(PID * pid)
 {
 	int P, I, D;
-	uint32 deltaClocks;
 	float refreshRate;
 	CPU_MSR msr;
 
@@ -234,8 +231,17 @@ void PID_UpdateRadius(PID * pid)
 	//------Update Derivative
 	pid->differentiator_r = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator_r) + ((2/((2*pid->Tau)+refreshRate))*(pid->currentRadius - pid->lastCurrentRadius));
 
+	Wireless_Debug("Integral1: ");
+	PrintFloat(pid->integrator_r);
+	Wireless_Debug("\n\r");
+
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	pid->integrator_r = (pid->integrator_r) + ((refreshRate/2)*((pid->error_r) + (pid->lastError_r)));
+	float totalError, totalError_Refresh;
+	totalError = pid->error_r + pid->lastError_r;
+	totalError_Refresh = (refreshRate/2)*totalError;
+	//pid->integrator_r = (100000*pid->integrator_r) + (100000*totalError_Refresh);
+	//pid->integrator_r = pid->integrator_r/100000;
+	pid->integrator_r = ((refreshRate/2)*(pid->error_r + pid->lastError_r));
 
 	//------Output Calculation
 	P = pid->Kp_r * (pid->error_r);
@@ -243,21 +249,43 @@ void PID_UpdateRadius(PID * pid)
 	D = pid->Kd_r * pid->differentiator_r;
 	pid->radiusEqualibrium = (40000.0/desiredRadius);
 
-	Wireless_Debug("P: ");
-	PrintInt(P);
-	Wireless_Debug("\n\r");
-	Wireless_Debug("Integral: ");
+
+//	Wireless_Debug("P: ");
+//	PrintInt(P);
+//	Wireless_Debug("\n\r");
+	Wireless_Debug("Integral2: ");
 	PrintFloat(pid->integrator_r);
+	Wireless_Debug("\n\r");
+	Wireless_Debug("Integral2*10000: ");
+		PrintFloat((pid->integrator_r*10000));
+		Wireless_Debug("\n\r");
+		Wireless_Debug("Integral2/10000: ");
+			PrintFloat((pid->integrator_r/10000));
+			Wireless_Debug("\n\r");
+	Wireless_Debug("error: ");
+	PrintFloat(pid->error_r);
+	Wireless_Debug("\n\r");
+	Wireless_Debug("lastError: ");
+	PrintFloat(pid->lastError_r);
 	Wireless_Debug("\n\r");
 	Wireless_Debug("Refresh: ");
 	PrintFloat(refreshRate);
 	Wireless_Debug("\n\r");
+	Wireless_Debug("Refresh/2: ");
+		PrintFloat((refreshRate/2));
+		Wireless_Debug("\n\r");
+		Wireless_Debug("Refresh/2*errorDifference: ");
+				PrintFloat((refreshRate/2*(pid->error_r+pid->lastError_r)));
+				Wireless_Debug("\n\r");
 	Wireless_Debug("I: ");
 	PrintInt(I);
 	Wireless_Debug("\n\r");
-	Wireless_Debug("D: ");
-	PrintInt(D);
+	Wireless_Debug("-----------------------------");
 	Wireless_Debug("\n\r");
+//	Wireless_Debug("D: ");
+//	PrintInt(D);
+//	Wireless_Debug("\n\r");
+
 
 	pid->outputPID_unsat_r = (P + I - D) + pid->radiusEqualibrium;
 
@@ -271,15 +299,16 @@ void PID_UpdateRadius(PID * pid)
 	//------Save states and send PWM to motors
 	pid->lastCurrentRadius = pid->currentRadius;
 	pid->lastError_r = pid->error_r;
+	pid->lastIntegrator_r = pid->integrator_r;
 
-	Wireless_Debug("Last Error: ");
-	PrintFloat(pid->lastError_r);
-	Wireless_Debug("\n\r");
-	Wireless_Debug("Integral: ");
-	PrintFloat(pid->integrator_r);
-	Wireless_Debug("\n\r");
-	Wireless_Debug("-----------------------------");
-	Wireless_Debug("\n\r");
+//	Wireless_Debug("Last Error: ");
+//	PrintFloat(pid->lastError_r);
+//	Wireless_Debug("\n\r");
+//	Wireless_Debug("Integral: ");
+//	PrintFloat(pid->integrator_r);
+//	Wireless_Debug("\n\r");
+//	Wireless_Debug("-----------------------------");
+//	Wireless_Debug("\n\r");
 
 	SetServo(RC_STR_SERVO, pid->outputPID_r);
 }

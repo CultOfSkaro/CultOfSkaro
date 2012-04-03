@@ -154,8 +154,9 @@ void* QueuePop(Queue* Q)
 		if(Q->front >= Q->capacity)
 			Q->front = 0;
 	}
-	else
+	else {
 		//xil_printf("Queue is empty!\r\n");
+	}
 
 	return X;
 }

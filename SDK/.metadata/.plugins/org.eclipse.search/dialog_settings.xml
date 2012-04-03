@@ -32,11 +32,22 @@
 		<item value="false" key="CASE_SENSITIVE"/>
 		<item value="false" key="REG_EX_SEARCH"/>
 		<item value="false" key="SEARCH_DERIVED"/>
-		<item value="1" key="HISTORY_SIZE"/>
+		<item value="2" key="HISTORY_SIZE"/>
 		<section name="EXTENSIONS">
 			<item value="*.h" key="0"/>
 		</section>
 		<section name="HISTORY0">
+			<item value="false" key="isRegExSearch"/>
+			<item value="Kp_r" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<list key="fileNamePatterns">
+				<item value="*.h"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY1">
 			<item value="false" key="isRegExSearch"/>
 			<item value="FT_PrintFrameTable" key="textPattern"/>
 			<item value="0" key="scope"/>

@@ -61,7 +61,7 @@
 
 #include "plb_quad_encoder.h"
 #include "Timer.h"
-#include "HeliosIO.h"
+#include "GameBoard.h"
 #include "skaro_wireless.h"
 #include "skaro_queue.h"
 #include "scheduler.h"
@@ -105,7 +105,7 @@ XUartLite gameboard_uart;
 // TODO:  clean up and make it non-blocking
 void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 {
-	char c = 0;
+	unsigned char c = 0;
 
 	if(!XUartLite_Recv(&(wireless.uart), &c, 1)){
 		return;
@@ -113,8 +113,6 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 
 	float float_data;
 	int int_data;
-	int i;
-	char d;
 	switch (c){
 	case SET_PID_KP:
 		read(0,&float_data,sizeof(float));
@@ -168,10 +166,12 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 //		break;
 	case SET_MAX_VELOCITY:
 		read(0,&int_data,sizeof(int));
-		navigation.pid.maxVelocity = int_data;
-		Navigation_GoVelocity(&navigation, int_data);
+//		navigation.pid.maxVelocity = int_data;
+//		Navigation_GoVelocity(&navigation, int_data);
+		ai.max_velocity = int_data;
+		PID_SetVelocity(&ai.navigation->pid, ai.max_velocity);
 		Wireless_Debug("Set velocity to ");
-		PrintInt(navigation.pid.maxVelocity);
+		PrintInt(ai.max_velocity);
 		Wireless_Debug("\n\r");
 		break;
 	case SET_VISION_DISTANCE:
@@ -187,10 +187,11 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		Navigation_SetSteeringMode(&navigation,c);
 		break;
 	case FIRE_KILL_SHOT:
-		Wireless_Debug("Firing Kill Shot!\r\n");
-		Game_Shoot(GAME_KILL_SHOT);
+		Wireless_Debug("Received PASS\r\n");
+		GB_Shoot(GAME_PASS_SHOT);
 		break;
 	case 'd':
+		Wireless_Debug("Starting AI.\r\n");
 		ai.state = START;
 		break;
 	case 'e':
@@ -199,6 +200,13 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 	case 'c':
 		Wireless_Debug("Received STOP!\r\n");
 		Stop();
+		break;
+	case 'a':
+		Wireless_Debug("Received Emergency STOP!\r\n");
+		SetServo(RC_STR_SERVO, 0);
+		SetServo(RC_VEL_SERVO, 0);
+		DISABLE_INTERRUPTS();
+		while(1);
 		break;
 	default:
 		Wireless_Debug("Unknown command received: 0x");
@@ -291,17 +299,6 @@ void WirelessRecvHandlerNonBlocking(void *CallBackRef, unsigned int EventData)
 	}
 }
 
-unsigned int gpioRead = 0;
-
-void Gpio_Changed(int gpio) {
-	if (CurrentShotType) {
-		CurrentShotType = 0;
-		Wireless_Debug("Clearing!\r\n");
-		XGpio_DiscreteClear(&Gpio, GAME_SYSTEM_GPIO_CHANNEL, CurrentShotType);
-	}
-}
-
-
 // This is a dummy task just to test out different events.
 void hello(){
 	return;
@@ -342,70 +339,54 @@ void Vision_ProcessFrame(){
 	VisionData *visionData = *vision.snap_vision_data;
 
 	int i;
-	Blob * biggest = 0;
+	Blob * biggest_blue = 0;
+	Blob * biggest_pink = 0;
 	for(i=0; i < visionData->numBlobs; i++) {
-		if(visionData->blobs[i].type == BLOB_TYPE_RED)
+		if(visionData->blobs[i].width < 10 || visionData->blobs[i].width > 300)
 			continue;
-		if(visionData->blobs[i].width < 20 || visionData->blobs[i].width > 300)
-			continue;
-		if(!biggest){
-			biggest = &visionData->blobs[i];
-		} else {
-			if(visionData->blobs[i].width > biggest->width) {
-				biggest = &visionData->blobs[i];
+		switch(visionData->blobs[i].type){
+		case BLOB_TYPE_BLUE:
+			if(!biggest_blue){
+				biggest_blue = &visionData->blobs[i];
+			} else {
+				if(visionData->blobs[i].width > biggest_blue->width) {
+					biggest_blue = &visionData->blobs[i];
+				}
 			}
+			break;
+		case BLOB_TYPE_PINK:
+			if(!biggest_pink){
+				biggest_pink = &visionData->blobs[i];
+			} else {
+				if(visionData->blobs[i].width > biggest_pink->width) {
+					biggest_pink = &visionData->blobs[i];
+				}
+			}
+			break;
 		}
+
+
 	}
 
-	if(biggest == 0) {
-		//if(goToTower){
-//			PID_SetDistance(&navigation.pid,10000);
-//			numNotFound++;
-//#ifdef DEBUG_USB_VISION
-//			int tmp = 50 * numNotFound;
-//#else
-//			int tmp = 10 * numNotFound;
-//#endif
-//			if(tmp > 200){
-//				navigation.pid.currentCentroid = 200;
-//			} else {
-//				navigation.pid.currentCentroid = tmp;
-//			}
-		//}
-		vision.target = 0;
-	} else {
-		//numNotFound = 0;
 
-		//int toGo = biggest->distance*2000 - distanceFromVisionTarget;
 
-		//-----Backup Centering Code
-//		if ((navigation.pid.currentVelocity == 0)&&(navigation.pid.currentCentroid < -30 || navigation.pid.currentCentroid > 30)){
-//			backup = 1;
-//		}
-//		if (backupCount < 100 && backup == 1){
-//			backupCount++;
-//			toGo = (biggest->distance*2000) - (distanceFromVisionTarget*2);
-//		}
-//		else if (backupCount == 100){
-//			backupCount = 0;
-//			backup = 0;
-//		}
-		//if(goToTower){
-//			if (toGo < 6000) {
-//				Game_Shoot(GAME_KILL_SHOT);
-//			}
-			//PID_SetDistance(&navigation.pid,toGo);
-			navigation.pid.currentCentroid = biggest->center;
-		//}
-		vision.target = biggest;
+	Blob * target = *(vision.current_target);
+	if(target){
+		navigation.pid.currentCentroid = (*vision.current_target)->center;
 	}
+
+	if(navigation.steeringLoopMode == CENTROID_MODE){
+		scheduler.events.flags.steering_loop = 1;
+	}
+	vision.blue_tower = biggest_blue;
+	vision.pink_tower = biggest_pink;
+
 	vision.frameRate++;
 }
 
 void process_wireless_commands() {
 	Wireless_Command command;
 	int int_data;
-	float float_data;
 	char char_data;
 
 	CPU_MSR msr = DISABLE_INTERRUPTS();
@@ -458,9 +439,10 @@ void process_wireless_commands() {
 		break;
 	case SET_MAX_VELOCITY:
 		int_data = *((int *)(command.data));
-		navigation.pid.maxVelocity = int_data;
+		//navigation.pid.maxVelocity = int_data;
+		ai.max_velocity = int_data;
 		Wireless_Debug("Set velocity to ");
-		PrintInt(navigation.pid.maxVelocity);
+		PrintInt(ai.max_velocity);
 		Wireless_Debug("\n\r");
 		break;
 	case SET_VISION_DISTANCE:
@@ -478,8 +460,8 @@ void process_wireless_commands() {
 		Navigation_SetSteeringMode(&navigation,char_data);
 		break;
 	case FIRE_KILL_SHOT:
-		Wireless_Debug("Firing Kill Shot!\r\n");
-		Game_Shoot(GAME_KILL_SHOT);
+		Wireless_Debug("Firing Pass Shot!\r\n");
+		GB_Shoot(GAME_PASS_SHOT);
 		break;
 	case 'd':
 		ai.state = START;
@@ -512,7 +494,7 @@ void calibrate_memory(){
 }
 
 void reportFrameRate(){
-	Wireless_Send(&wireless, WIRELESS_VISION_FRAMERATE, 4, &vision.frameRate);
+	Wireless_Send(&wireless, WIRELESS_VISION_FRAMERATE, 4, (char*)&vision.frameRate);
 	vision.frameRate = 0;
 	Wireless_Blob_Report((*vision.snap_vision_data)->numBlobs,(*vision.snap_vision_data)->blobs);
 }
@@ -542,26 +524,26 @@ void registerEvents(){
 		Events_Init(&events); 		// clear all events
 		//events.flags.velocity_loop = 1;
 		events.flags.timer1 = 1;// set the flags we want as triggers
-		Scheduler_RegisterTask(&scheduler,velocity_loop,events);  // Register task with Scheduler
+		Scheduler_RegisterTask(&scheduler, velocity_loop, events);  // Register task with Scheduler
 
 
 		Events_Init(&events); 		// clear all events
 		events.flags.timer1 = 1;	// set the flags we want as triggers
-		Scheduler_RegisterTask(&scheduler,steering_loop,events);  // Register task with Scheduler
+		Scheduler_RegisterTask(&scheduler, steering_loop, events);  // Register task with Scheduler
 
 		Events_Init(&events); 		// clear all events
 		events.flags.hello = 1;
 		events.flags.timer1 = 1;
-		Scheduler_RegisterTask(&scheduler,hello,events);
+		Scheduler_RegisterTask(&scheduler, hello, events);
 
 		Events_Init(&events); 		// clear all events
 		events.flags.vision = 1;
-		Scheduler_RegisterTask(&scheduler,vision_loop,events);
+		Scheduler_RegisterTask(&scheduler, vision_loop, events);
 
 
 		Events_Init(&events); 		// clear all events
 		events.flags.process_wireless_commands = 1;
-		Scheduler_RegisterTask(&scheduler,process_wireless_commands,events);
+		Scheduler_RegisterTask(&scheduler, process_wireless_commands, events);
 
 		// Report framerate on timer2
 		Events_Init(&events);
@@ -608,14 +590,14 @@ int main (void) {
 
 	// This needs to come before interrupts to ensure
 	// that uart packets from the gameboard are in sync
-	InitGameSystem();
-	HeliosDisableGyro();
+	GB_Init();
+	GB_DisableGyro();
 	usleep(1000000);
 
 	InitInterrupts();
 
 	// Now that interrupts are enabled, re-enable gyro
-	HeliosEnableGyro();
+	GB_EnableGyro();
 
 
 	Scheduler_Init(&scheduler);

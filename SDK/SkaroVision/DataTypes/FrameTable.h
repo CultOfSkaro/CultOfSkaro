@@ -68,7 +68,7 @@ CHANGE LOG
 	At 60 fps, 600 FrameTableEntrys will store 10 seconds of information about
 	the past.
 */
-#define NUM_FRAME_TABLE_ENTRIES		20
+#define NUM_FRAME_TABLE_ENTRIES		3
 
 
 

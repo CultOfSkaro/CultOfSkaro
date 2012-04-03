@@ -129,7 +129,12 @@ namespace CameraViewer
             hsv = e.data;
             hsvOffset = 8;
 
-            converter.convert(e.data, 8, imageSize);
+            try {
+                converter.convert(e.data, 8, imageSize);
+            } catch (Exception) {
+                //already converting
+                txtDebug.AppendText("Already converting... Dropping Frame!\r\n");
+            }
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
@@ -182,7 +187,8 @@ namespace CameraViewer
             int s = (pixel >> 5) & 0x1F;
             int v = pixel & 0x1F;
                   
-            lblHsv.Text = "h: " + h + ", s: " + s + ", v: " + v;
+            lblHsv.Text = "h: " + h + ", s: " + s + ", v: " + v + "\r\nx: " + e.X 
+                + ", y: " + e.Y;
         }
 
     }
@@ -251,7 +257,7 @@ namespace CameraViewer
             //convert to rgb
             for (int d = start, p = 0; d < start + length; d += 2, p += 3) {
                 int pixel = raw[d] << 8 | raw[d + 1];
-                double h = (((pixel >> 10) & 0x3F) << (2)) / 255.0 * 360;
+                double h = ((pixel >> 10) & 0x3F) << (3); //is already in 360
                 double s = (((pixel >> 5) & 0x1F) << (3)) / 255.0;
                 double v = ((pixel & 0x1F) << (3)) / 255.0;
                 int r, g, b;

@@ -12,6 +12,8 @@
 #define START 6
 #define SEARCHING 7
 #define CENTERING 8
+#define BACKUP 9
+#define CROSS_FIELD 10
 
 typedef struct {
 	int state;
@@ -19,11 +21,15 @@ typedef struct {
 	Navigation * navigation;
 	Vision * vision;
 	int search_direction;
+	int max_velocity;
 } AI;
 
 extern AI ai;
 
-void AI_TwoTowers(AI * ai);
 
+//FUNCTNIONS
+void AI_TwoTowers(AI * ai);
 void AI_LostTower(AI * ai);
+void AI_Init(AI * ai);
+
 #endif

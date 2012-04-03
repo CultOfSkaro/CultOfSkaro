@@ -16,7 +16,7 @@ void Queue_Init(Skaro_Queue * q, int size);
 int Queue_ReadByte(Skaro_Queue * q, char * c);
 /* Queue_WrietByte writes char c to the Queue. If the queue is full it will return 0, otherwise it will return 1*/
 int Queue_WriteByte(Skaro_Queue * q, char c);
-int Queue_Write(Skaro_Queue * q, char length, char * data);
+void Queue_Write(Skaro_Queue * q, char length, char * data);
 /*  Queue_Destroy frees up the buffer used by the queue */
-int Queue_Destroy(Skaro_Queue * q);
+void Queue_Destroy(Skaro_Queue * q);
 #endif

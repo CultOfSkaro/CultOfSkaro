@@ -76,7 +76,9 @@ int Wireless_ControlLog_Ext(float actual, float expected, float saturated, float
 }
 
 int Wireless_Blob_Report(int length, Blob * blobs){
-	Wireless_Send(&wireless, WIRELESS_BLOB_REPORT, length*sizeof(Blob), blobs);
+	Wireless_Send(&wireless, WIRELESS_BLOB_REPORT, length*sizeof(Blob), (char*)blobs);
+
+	return 0;
 }
 
 //int mains(){

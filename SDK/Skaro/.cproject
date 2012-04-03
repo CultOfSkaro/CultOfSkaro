@@ -30,22 +30,18 @@
 								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.1193893835" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes"/>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.flags.1774005652" name="Software Platform Inferred Flags" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value="" valueType="string"/>
 								<option id="xilinx.gnu.compiler.dircategory.includes.1152721694" name="Include Paths" superClass="xilinx.gnu.compiler.dircategory.includes" valueType="includePath">
-									<listOptionValue builtIn="false" value="../../RobotRacers_bsp_0/ppc405_0/include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/common}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Communications}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/DataTypes}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/drivers/plb_pwm_ctrl_v1_00_a/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/drivers/plb_quad_encoder_v1_00_a/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/drivers/plb_usb_v1_00_a/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/drivers/plb_vision_v1_00_a/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/PIDControl}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Vision}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Wireless}&quot;"/>
 									<listOptionValue builtIn="false" value="../../MainCore_bsp/ppc405_0/include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/CrossCore}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Navigation}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Interrupts}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/AI}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/GameBoard}&quot;"/>
 								</option>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.641562527" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
 							</tool>
@@ -96,14 +92,16 @@
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.574900053" name="State.h" rcbsApplicability="disable" resourcePath="common/State.h" toolsToInvoke=""/>
 					<fileInfo id="xilinx.gnu.ppc.exe.debug.318411942.1199352225" name="mpmc_calibration.h" rcbsApplicability="disable" resourcePath="common/mpmc_calibration.h" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="Navigation|CrossCore|Vision|Wireless|DataTypes|drivers|common|PIDControl|Communications" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="Interrupts|GameBoard|Navigation|CrossCore|Vision|Wireless|DataTypes|drivers|common|PIDControl|Communications" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="plb_vision_v1_00_a/src/plb_vision_selftest.c|plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="PIDControl"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Wireless"/>
-						<entry excluding="State.h|State.c|Wireless.c|Wireless.h|Flash.c|Flash.h|LoopScheduler.c|LoopScheduler.h|MemoryTest.c|MemoryTest.h|mpmc_mem_test_example.c|mpmc_mem_test_example.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="common"/>
 						<entry excluding="FrameTable.h|BufferStore.h|FrameTable.c|BufferStore.c|Stack.c|Stack.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="DataTypes"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="CrossCore"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Navigation"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="GameBoard"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Interrupts"/>
+						<entry excluding="HeliosIO.c|State.h|State.c|Wireless.c|Wireless.h|Flash.c|Flash.h|LoopScheduler.c|LoopScheduler.h|MemoryTest.c|MemoryTest.h|mpmc_mem_test_example.c|mpmc_mem_test_example.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="common"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -3708,6 +3706,7 @@
 									<listOptionValue builtIn="false" value="../../MainCore_bsp/ppc405_0/include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/CrossCore}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Navigation}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/GameBoard}&quot;"/>
 								</option>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.683330310" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
 							</tool>
@@ -3751,7 +3750,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="common/State.c|DataTypes/FrameTable.c|DataTypes/BufferStore.c|Vision|drivers/plb_vision_v1_00_a" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="common/HeliosIO.c|common/State.c|DataTypes/FrameTable.c|DataTypes/BufferStore.c|Vision|drivers/plb_vision_v1_00_a" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -7366,6 +7365,7 @@
 									<listOptionValue builtIn="false" value="../../MainCore_bsp/ppc405_0/include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/CrossCore}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/Navigation}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Skaro/GameBoard}&quot;"/>
 								</option>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.171573767" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
 							</tool>
@@ -7417,7 +7417,7 @@
 						<entry excluding="plb_vision_v1_00_a|plb_vision_v1_00_a/src/plb_vision_selftest.c|plb_quad_encoder_v1_00_a/src/plb_quad_encoder_selftest.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="PIDControl"/>
 						<entry excluding="FrameTable.c|BufferStore.c|Stack.c|Stack.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="DataTypes"/>
-						<entry excluding="State.c|Wireless.c|Wireless.h|Flash.c|Flash.h|LoopScheduler.c|LoopScheduler.h|MemoryTest.c|MemoryTest.h|mpmc_calibration.h|mpmc_mem_test_example.c|mpmc_mem_test_example.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="common"/>
+						<entry excluding="HeliosIO.c|State.c|Wireless.c|Wireless.h|Flash.c|Flash.h|LoopScheduler.c|LoopScheduler.h|MemoryTest.c|MemoryTest.h|mpmc_calibration.h|mpmc_mem_test_example.c|mpmc_mem_test_example.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="common"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

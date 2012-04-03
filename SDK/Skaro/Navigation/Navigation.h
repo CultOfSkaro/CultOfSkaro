@@ -34,6 +34,7 @@ int absDistanceFromArchDistCuvrature(float curvature, int archDistance);
 void dubin_curves_math(int distance, float bearing);
 
 //API
+void Stop();
 void Navigation_Init(Navigation * n);
 void Navigation_SetVelocityMode(Navigation * n,int mode);
 void Navigation_SetSteeringMode(Navigation * n,int mode);
