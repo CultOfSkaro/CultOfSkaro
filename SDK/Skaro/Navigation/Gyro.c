@@ -47,7 +47,7 @@ void Gyro_Calculation(Gyro * gyro)
 	//R_b
 	gyro->frontRadius = gyro->frontVelocity/gyro->omega;
 	// Delta
-	gyro->steeringAngle = asin(gyro->wheelBase * gyro->frontCurvature);
+	gyro->steeringAngle = asin(gyro->wheelBase * (1/gyro->frontRadius));
 }
 
 inline float Gyro_SteeringAngleToCurvature(Gyro * gyro, int steeringAngle){
@@ -67,8 +67,10 @@ inline int Gyro_VelocityBackToFront(Gyro * gyro, int velocityBack)
 {
 	// K_b
 	gyro->backCurvature = gyro->omega/velocityBack;
+	gyro->backRadius = gyro->backVelocity/gyro->omega;
 	// V_f
-	return gyro->frontVelocity = velocityBack * sqrt(1+((gyro->backCurvature*gyro->backCurvature)*(gyro->wheelBase*gyro->wheelBase)));
+	gyro->frontVelocity = velocityBack * sqrt(1+(((1/gyro->backRadius)*(1/gyro->backRadius))*(gyro->wheelBase*gyro->wheelBase)));
+	return gyro->frontVelocity;
 }
 
 //void Gyro_EncoderBackToFrontCorrections(Gyro * gyro)
@@ -77,12 +79,12 @@ inline int Gyro_VelocityBackToFront(Gyro * gyro, int velocityBack)
 //	gyro->frontEncoder = (gyro->backEncoder/(1 - ((gyro->steeringAngle*gyro->steeringAngle))/2));
 //}
 
-inline int Gyro_DistanceBackToFront(Gyro * gyro, int distance)
+inline int Gyro_DistanceTraveledBackToFront(Gyro * gyro, int distance)
 {
 	return distance/(1-((gyro->steeringAngle*gyro->steeringAngle)/2)); //distance devided by cos(delta)
 }
 
-inline int Gyro_DistanceFrontToBack(Gyro * gyro, int distance)
+inline int Gyro_DistanceTaveledFrontToBack(Gyro * gyro, int distance)
 {
 	return distance*(1-((gyro->steeringAngle*gyro->steeringAngle)/2)); //distance devided by cos(delta)
 }

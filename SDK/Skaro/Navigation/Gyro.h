@@ -34,6 +34,12 @@ extern GyroData raw_gyro_data;
 
 void Gyro_Init(Gyro * g);
 void Gyro_Calculation(Gyro * gyro);
-float Gyro_SteeringAngleToRadius(Gyro * gyro, int steeringAngle);
+inline float Gyro_SteeringAngleToRadius(Gyro * gyro, int steeringAngle);
+inline float Gyro_SteeringAngleToCurvature(Gyro * gyro, int steeringAngle);
+inline float Gyro_CurvatureBackToFront(Gyro * gyro);
+inline int Gyro_VelocityBackToFront(Gyro * gyro, int velocityBack);
+inline int Gyro_DistanceTraveledBackToFront(Gyro * gyro, int distance);
+inline int Gyro_DistanceTraveledFrontToBack(Gyro * gyro, int distance);
+inline int Gyro_AbsDistanceFromArchDistCuvrature(Gyro * gyro, float curvature, int archDistance);
 
 #endif

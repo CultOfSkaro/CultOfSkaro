@@ -64,6 +64,7 @@ void PID_Init(PID * pid){
 	        pid->integrator_d = 0.0f;
 	        pid->differentiator_d = 0.0f;
 	        pid->desiredDistancePID = 0;
+	    	pid->backStartPoint = 0;
 			pid->lastDesiredDistance = 0;
 			pid->error_d = 0.0;
 	        pid->lastError_d = 0;
@@ -86,7 +87,7 @@ void PID_Init(PID * pid){
 			pid->desiredRadiusPID = 0;
 			pid->Kp_r = 80000.0f;
 			pid->Kd_r = 0.0005f;
-			pid->Ki_r = 0.0f;//100000.0f;
+			pid->Ki_r = 0.000f;//100000.0f;
 			pid->radiusEqualibrium = 0;
 			pid->integrator_r = 0.0f;
 			pid->differentiator_r = 0.0f;
@@ -208,7 +209,7 @@ void PID_UpdateCentroid(PID * pid)
 void PID_UpdateRadius(PID * pid)
 {
 	int P, I, D;
-	float refreshRate;
+	double refreshRate;
 	CPU_MSR msr;
 
 	//------Read Encoder and clock
@@ -224,6 +225,10 @@ void PID_UpdateRadius(PID * pid)
 
 	//------Current Radius at front of car
 	pid->currentRadius = pid->gyro->frontRadius;
+	if (pid->currentRadius > 6000)
+		pid->currentRadius = 6000;
+	else if (pid->currentRadius < -6000)
+		pid->currentRadius = -6000;
 
 	//------Calculate Error
 	pid->error_r = ((float)(pid->currentRadius - desiredRadius))/(pid->currentRadius * desiredRadius);
@@ -231,70 +236,58 @@ void PID_UpdateRadius(PID * pid)
 	//------Update Derivative
 	pid->differentiator_r = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator_r) + ((2/((2*pid->Tau)+refreshRate))*(pid->currentRadius - pid->lastCurrentRadius));
 
-	Wireless_Debug("Integral1: ");
-	PrintFloat(pid->integrator_r);
-	Wireless_Debug("\n\r");
-
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	float totalError, totalError_Refresh;
-	totalError = pid->error_r + pid->lastError_r;
-	totalError_Refresh = (refreshRate/2)*totalError;
-	//pid->integrator_r = (100000*pid->integrator_r) + (100000*totalError_Refresh);
-	//pid->integrator_r = pid->integrator_r/100000;
-	pid->integrator_r = ((refreshRate/2)*(pid->error_r + pid->lastError_r));
+	if (abs(((int)(1000000*pid->error_r))) > 200)
+		pid->integrator_r = ((int)((pid->integrator_r))) + ((int)(1000000*((refreshRate/2)*(pid->error_r + pid->lastError_r))));
 
 	//------Output Calculation
-	P = pid->Kp_r * (pid->error_r);
-	I = pid->Ki_r * pid->integrator_r;
-	D = pid->Kd_r * pid->differentiator_r;
+	//pid->Ki_r = pid->Ki_r/1000000;
+	P = (pid->Kp_r * pid->error_r);
+	I = (pid->Ki_r * pid->integrator_r);
+	D = (pid->Kd_r * pid->differentiator_r);
 	pid->radiusEqualibrium = (40000.0/desiredRadius);
 
 
 //	Wireless_Debug("P: ");
 //	PrintInt(P);
 //	Wireless_Debug("\n\r");
-	Wireless_Debug("Integral2: ");
-	PrintFloat(pid->integrator_r);
-	Wireless_Debug("\n\r");
-	Wireless_Debug("Integral2*10000: ");
-		PrintFloat((pid->integrator_r*10000));
-		Wireless_Debug("\n\r");
-		Wireless_Debug("Integral2/10000: ");
-			PrintFloat((pid->integrator_r/10000));
-			Wireless_Debug("\n\r");
-	Wireless_Debug("error: ");
-	PrintFloat(pid->error_r);
-	Wireless_Debug("\n\r");
-	Wireless_Debug("lastError: ");
-	PrintFloat(pid->lastError_r);
-	Wireless_Debug("\n\r");
-	Wireless_Debug("Refresh: ");
-	PrintFloat(refreshRate);
-	Wireless_Debug("\n\r");
-	Wireless_Debug("Refresh/2: ");
-		PrintFloat((refreshRate/2));
-		Wireless_Debug("\n\r");
-		Wireless_Debug("Refresh/2*errorDifference: ");
-				PrintFloat((refreshRate/2*(pid->error_r+pid->lastError_r)));
-				Wireless_Debug("\n\r");
-	Wireless_Debug("I: ");
-	PrintInt(I);
-	Wireless_Debug("\n\r");
-	Wireless_Debug("-----------------------------");
-	Wireless_Debug("\n\r");
+//	Wireless_Debug("Integral: ");
+//	PrintFloat(pid->integrator_r);
+//	Wireless_Debug("\n\r");
+//	Wireless_Debug("error: ");
+//	PrintFloat(pid->error_r);
+//	Wireless_Debug("\n\r");
+//	Wireless_Debug("lastError: ");
+//	PrintFloat(pid->lastError_r);
+//	Wireless_Debug("\n\r");
+//	Wireless_Debug("Refresh: ");
+//	PrintFloat(refreshRate);
+//	Wireless_Debug("\n\r");
+//	Wireless_Debug("I: ");
+//	PrintInt(I);
+//	Wireless_Debug("\n\r");
+//	Wireless_Debug("velocityBack: ");
+//		PrintFloat(pid->currentVelocityBack);
+//		Wireless_Debug("\n\r");
+//		Wireless_Debug("velocityFront: ");
+//			PrintFloat(pid->currentVelocity);
+//			Wireless_Debug("\n\r");
+//	Wireless_Debug("-----------------------------");
+//	Wireless_Debug("\n\r");
 //	Wireless_Debug("D: ");
 //	PrintInt(D);
 //	Wireless_Debug("\n\r");
 
+	Wireless_ControlLog_Ext(pid->currentRadius, pid->desiredRadiusPID, pid->error, pid->outputPID_unsat, P);
 
 	pid->outputPID_unsat_r = (P + I - D) + pid->radiusEqualibrium;
 
 	pid->outputPID_r = sat(pid->outputPID_unsat_r, 40);
 
-	//pid->integrator_r = pid->integrator_r + (refreshRate/pid->Ki_r)*(pid->outputPID_r - pid->outputPID_unsat_r);
+	//pid->integrator_r = ((int)pid->integrator_r) + ((int)(1000000*(refreshRate/pid->Ki_r)*(pid->outputPID_r - pid->outputPID_unsat_r)));
 
 	//------Save Info for graph
-	Wireless_ControlLog_Ext(pid->currentRadius, pid->desiredRadiusPID, pid->error_r, pid->outputPID_unsat_r, P);
+	Wireless_ControlLog_Ext(pid->currentRadius, desiredRadius, pid->error_r, pid->outputPID_unsat_r, I);
 
 	//------Save states and send PWM to motors
 	pid->lastCurrentRadius = pid->currentRadius;
@@ -326,14 +319,27 @@ void PID_UpdateDistance(PID * pid){
 	int ticks = getTicks();
 	pid->distanceError = pid->desiredDistancePID - ticks;
 	int distanceError = pid->distanceError;
-	int velocity = pid->maxVelocity;
-	//------Convert distance from back to front of car
-//	gyroCalculation();
-//	int backDistance = pid->desiredDistancePID;
-//	int ticks = getTicks();
-//	pid->distanceError = distanceBackToFront(backDistance - ticks);
-//	int distanceError = pid->distanceError;
 
+	int velocity = pid->maxVelocity;
+	CPU_MSR msr;
+
+	//------Convert distance from back to front of car
+//	msr = DISABLE_INTERRUPTS();
+//	Gyro_Calculation(pid->gyro);
+//	int ticks = getTicks();
+//	RESTORE_INTERRUPTS(msr);
+//	int backStartPoint = pid->backStartPoint;
+//	int distanceTraveledBack = ticks - backStartPoint;
+//	int distanceTraveledFront = Gyro_DistanceTraveledBackToFront(pid->gyro, distanceTraveledBack);
+//	pid->distanceError = pid->desiredDistancePID - distanceTraveledFront;
+//	int distanceError = pid->distanceError;
+//
+//	Wireless_Debug("distanceBack: ");
+//				PrintFloat(distanceTraveledBack);
+//				Wireless_Debug("\n\r");
+//				Wireless_Debug("distanceFront: ");
+//							PrintFloat(distanceTraveledFront);
+//							Wireless_Debug("\n\r");
 	if (velocity <= 2000){
 			if (distanceError < 1500 && distanceError >= 1000)
 				velocity = 800;
@@ -399,6 +405,7 @@ void PID_UpdateDistance(PID * pid){
 
 
 void inline PID_SetDistance(PID * pid, int distance){
+	pid->backStartPoint = getTicks();
 	pid->desiredDistancePID = distance + getTicks();
 }
 

@@ -56,6 +56,7 @@ typedef struct
 	float differentiator_d;
 	float integrator_d;
 	uint32 desiredDistancePID;
+	int	backStartPoint;
 	uint32 lastDesiredDistance;
 	int error_d;
 	int lastError_d;
