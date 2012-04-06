@@ -4,7 +4,7 @@
 make all 
 Building file: ../src/main.c
 Invoking: PowerPC gcc compiler
-powerpc-eabi-gcc -Wall -O0 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\common" -I"C:\RobotRacers\CultOfSkaro\SDK\VisionCore_bsp\ppc405_1\include" -I"C:\RobotRacers\CultOfSkaro\SDK\CrossCore" -c -fmessage-length=0 -I../../VisionCore_bsp/ppc405_1/include -MMD -MP -MF"src/main.d" -MT"src/main.d" -o"src/main.o" "../src/main.c"
+powerpc-eabi-gcc -Wall -O3 -g3 -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\plb_vision_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\plb_usb_v1_00_a\src" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\DataTypes" -I"C:\RobotRacers\CultOfSkaro\SDK\SkaroVision\common" -I"C:\RobotRacers\CultOfSkaro\SDK\VisionCore_bsp\ppc405_1\include" -I"C:\RobotRacers\CultOfSkaro\SDK\CrossCore" -c -fmessage-length=0 -save-temps -I../../VisionCore_bsp/ppc405_1/include -MMD -MP -MF"src/main.d" -MT"src/main.d" -o"src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
 Building target: SkaroVision.elf
@@ -15,7 +15,7 @@ Finished building target: SkaroVision.elf
 Invoking: PowerPC Print Size
 powerpc-eabi-size SkaroVision.elf  |tee "SkaroVision.elf.size"
    text	   data	    bss	    dec	    hex	filename
-  41238	   1476	   2552	  45266	   b0d2	SkaroVision.elf
+  36406	   1524	   2600	  40530	   9e52	SkaroVision.elf
 Finished building: SkaroVision.elf.size
  
 Invoking: Xilinx ELF Check

@@ -102,6 +102,8 @@ XUartLite gameboard_uart;
 #define SET_20_CIRCLE2		0xf
 #define FIRE_KILL_SHOT		0x10
 
+//void myBeforeHook();
+
 // TODO:  clean up and make it non-blocking
 void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 {
@@ -342,7 +344,7 @@ void Vision_ProcessFrame(){
 	Blob * biggest_blue = 0;
 	Blob * biggest_pink = 0;
 	for(i=0; i < visionData->numBlobs; i++) {
-		if(visionData->blobs[i].width < 10 || visionData->blobs[i].width > 300)
+		if(visionData->blobs[i].width > 300)
 			continue;
 		switch(visionData->blobs[i].type){
 		case BLOB_TYPE_BLUE:
@@ -382,6 +384,13 @@ void Vision_ProcessFrame(){
 	vision.pink_tower = biggest_pink;
 
 	vision.frameRate++;
+}
+
+void myBeforeHook(){
+	if(*vision.live_vision_data != *vision.snap_vision_data){
+		scheduler.events.flags.vision = 1;
+		scheduler.events.flags.steering_loop = 1;
+	}
 }
 
 void process_wireless_commands() {
@@ -553,8 +562,15 @@ void registerEvents(){
 		Events_Init(&events);
 		events.flags.timer3 = 1;
 		Scheduler_RegisterTask(&scheduler, ai_loop, events);
+
+
+		Events_Init(&events);
+		events.flags.timer3 = 1;
+		Scheduler_RegisterTask(&scheduler, myBeforeHook, events);
 }
 
+void idle(){
+}
 void registerTimers(){
 	Counter c;
 	c.max = 100;
@@ -573,12 +589,7 @@ void my_pitHandler(){
 	XTime_PITClearInterrupt();
 }
 
-void myBeforeHook(){
-	if(*vision.live_vision_data != *vision.snap_vision_data){
-		scheduler.events.flags.vision = 1;
-		scheduler.events.flags.steering_loop = 1;
-	}
-}
+
 
 int main (void) {
 
@@ -601,7 +612,8 @@ int main (void) {
 
 
 	Scheduler_Init(&scheduler);
-	Scheduler_SetBeforeHook(&scheduler,myBeforeHook);
+	Scheduler_SetBeforeHook(&scheduler,idle);
+	//Scheduler_SetBeforeHook(&scheduler,myBeforeHook);
 	Navigation_Init(&navigation);
 	AI_Init(&ai);
 

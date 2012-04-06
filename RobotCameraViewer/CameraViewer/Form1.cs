@@ -50,6 +50,7 @@ namespace CameraViewer
             }
 
             usb.packetHeader = header;
+
         }
 
         private void startCapture() {
@@ -155,20 +156,29 @@ namespace CameraViewer
 
         private static Pen penRed = new Pen(Color.Red, 2);
         private static Pen penBlue = new Pen(Color.Blue, 2);
-        private static Pen[] pens = { penBlue, penRed };
+        private static Pen[] pens = { penBlue, penRed, penRed, penRed, penRed, penRed, penRed, penRed };
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e) {
+            return;
+            
             Graphics g = e.Graphics;
 
             if (numBlobs <= 0) return;
-
             txtDebug.AppendText("Draw Blobs\r\n");
             for (int i = 0; i < numBlobs; i++) {
-                txtDebug.AppendText("x: " + blobs[i].left + ", y: " + blobs[i].top +
-                    ", width: " + blobs[i].width + ", height: " + blobs[i].height + "\r\n");
+                //only draw blobs that are in range
+                if (blobs[i].left >= 0 && blobs[i].top >= 0 &&
+                    blobs[i].left + blobs[i].width <= 640 &&
+                    blobs[i].top + blobs[i].height <= 480) {
 
-                g.DrawRectangle(pens[blobs[i].type], blobs[i].left, blobs[i].top, 
-                    blobs[i].width, blobs[i].height);
+                    txtDebug.AppendText("x: " + blobs[i].left + ", y: " + blobs[i].top +
+                        ", width: " + blobs[i].width + ", height: " + blobs[i].height + "\r\n");
+
+                    g.DrawRectangle(pens[blobs[i].type], blobs[i].left, blobs[i].top,
+                        blobs[i].width, blobs[i].height);
+                } else {
+                    txtDebug.AppendText("Invalid blob dropped!");
+                }
             }
         }
 
@@ -266,8 +276,15 @@ namespace CameraViewer
                 pixels[p] = (byte)b;
                 pixels[p + 1] = (byte)g;
                 pixels[p + 2] = (byte)r;
+
+                /*
+                pixels[p] = 0;
+                pixels[p + 1] = 0;
+                pixels[p + 2] = 0;
+                */
             }
 
+            
             //create an image from the pixel data
             unsafe {
                 fixed (byte* ptr = pixels) {
@@ -275,6 +292,15 @@ namespace CameraViewer
                         PixelFormat.Format24bppRgb, new IntPtr(ptr));
                 }
             }
+            
+
+            /*
+            image = new Bitmap(640, 480);
+            using (Graphics grp = Graphics.FromImage(image)) 
+            {
+                grp.FillRectangle(Brushes.White,0,0,640,480);
+            }
+             */
         }
 
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {

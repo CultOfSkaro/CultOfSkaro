@@ -6,7 +6,11 @@
 
 #define BLOB_TYPE_BLUE			0
 #define BLOB_TYPE_PINK			1
-#define NUM_BLOB_TYPES			2
+#define BLOB_TYPE_YELLOW		2
+#define BLOB_TYPE_CYAN			3
+#define BLOB_TYPE_RED			4
+#define BLOB_TYPE_GREEN			5
+#define NUM_BLOB_TYPES			6
 
 //#define DEBUG_USB_VISION
 

@@ -16,11 +16,7 @@ namespace CameraViewer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            try {
-                Application.Run(new Form1());
-            } catch (Exception e) {
-                MessageBox.Show("hi");
-            }
+            Application.Run(new Form1());
         }
     }
 }

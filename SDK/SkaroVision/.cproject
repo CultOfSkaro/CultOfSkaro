@@ -25,7 +25,7 @@
 								<inputType id="xilinx.gnu.assembler.input.1607006075" superClass="xilinx.gnu.assembler.input"/>
 							</tool>
 							<tool id="xilinx.gnu.ppc.c.toolchain.compiler.debug.744302172" name="PowerPC gcc compiler" superClass="xilinx.gnu.ppc.c.toolchain.compiler.debug">
-								<option defaultValue="gnu.c.optimization.level.none" id="xilinx.gnu.compiler.option.optimization.level.1971711064" name="Optimization Level" superClass="xilinx.gnu.compiler.option.optimization.level" valueType="enumerated"/>
+								<option defaultValue="gnu.c.optimization.level.none" id="xilinx.gnu.compiler.option.optimization.level.1971711064" name="Optimization Level" superClass="xilinx.gnu.compiler.option.optimization.level" value="gnu.c.optimization.level.most" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.option.debugging.level.1856241433" name="Debug Level" superClass="xilinx.gnu.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="xilinx.gnu.compiler.inferred.swplatform.includes.1689701854" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" valueType="includePath">
 									<listOptionValue builtIn="false" value="../../VisionCore_bsp/ppc405_1/include"/>
@@ -38,6 +38,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/VisionCore_bsp/ppc405_1/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SkaroVision/CrossCore}&quot;"/>
 								</option>
+								<option id="xilinx.gnu.compiler.misc.other.459026288" name="Other flags" superClass="xilinx.gnu.compiler.misc.other" value="-c -fmessage-length=0 -save-temps" valueType="string"/>
 								<inputType id="xilinx.gnu.ppc.c.compiler.input.1464262127" name="C source files" superClass="xilinx.gnu.ppc.c.compiler.input"/>
 							</tool>
 							<tool id="xilinx.gnu.ppc.cxx.toolchain.compiler.debug.1943826000" name="PowerPC g++ compiler" superClass="xilinx.gnu.ppc.cxx.toolchain.compiler.debug">

@@ -38,30 +38,34 @@ typedef struct {
 #define PIT_INTERVAL 		(XPAR_CPU_PPC405_CORE_CLOCK_FREQ_HZ / PIT_PER_SECOND)
 
 #define HEADER_LOC     0x1000
-#define HEADER_SIZE    64 + 64 + 4 + 4 + 4
+#define HEADER_SIZE    (64 + 64 + 4 + 4 + 4)
 
-#define NUM_BLOBS_LOC  HEADER_LOC + HEADER_SIZE
-#define BLOB_LOC       NUM_BLOBS_LOC + 4
+#define NUM_BLOBS_LOC  (HEADER_LOC + HEADER_SIZE)
+#define BLOB_LOC       (NUM_BLOBS_LOC + 4)
 #define BLOB_DATA_LOC  NUM_BLOBS_LOC
-#define BLOB_DATA_SIZE 4 + sizeof(Blob) * MAX_BLOBS
+#define BLOB_DATA_SIZE (4 + sizeof(Blob) * MAX_BLOBS)
 
-#define FILL_STACK_LOC      BLOB_DATA_LOC + BLOB_DATA_SIZE
-#define FILL_STACK_SIZE     40000 * 4
+#define FILL_STACK_LOC      (BLOB_DATA_LOC + BLOB_DATA_SIZE)
+#define FILL_STACK_SIZE     (40000 * 4)
 #define IMAGE_WIDTH         640
 #define IMAGE_HEIGHT        480
 #define CHECKED_LOC         0x81D00000 //root of the SRAM //BLOB_DATA_LOC + BLOB_DATA_SIZE
-#define CHECKED_SIZE        IMAGE_WIDTH * IMAGE_HEIGHT
+#define CHECKED_SIZE        (IMAGE_WIDTH * IMAGE_HEIGHT)
 
-#define SEARCH_STRIDE_X  20
-#define SEARCH_STRIDE_Y  6
+#define FRAME_LOC			(CHECKED_LOC + CHECKED_SIZE)
+
+#define SEARCH_STRIDE_X  1
+#define SEARCH_STRIDE_Y  1
 
 #define FLOOD_STRIDE_X   1
-#define FLOOD_STRIDE_Y   3
+#define FLOOD_STRIDE_Y   4
 
 #define TARGET_COLOR_BLUE       27, 0, 20
-#define TARGET_COLOR_RED		2, 0, 28
-#define TARGET_COLOR_PINK		39, 0, 15
-#define TARGET_COLOR_YELLOW		7, 0, 30
+#define TARGET_COLOR_RED		2, 0, 20
+#define TARGET_COLOR_PINK		38, 0, 15
+#define TARGET_COLOR_YELLOW		7, 0, 18
+#define TARGET_COLOR_GREEN		15, 0, 10
+#define TARGET_COLOR_CYAN		22, 0, 18
 
 Color targetColors[NUM_BLOB_TYPES];
 
@@ -84,8 +88,18 @@ char *headerBuf = (char*)HEADER_LOC;
 int *transmitSize = (int*)(HEADER_LOC + 64 + 64);
 int *frameSize = (int*)(HEADER_LOC + 64 + 64 + 4);
 int *detectionSize = (int*)(HEADER_LOC + 64 + 64 + 4 + 4);
+//                                0    1    2    3    4    5    6    7    8    9
+//                                10   11   12   13   14   15   16   17   18   19   20   21
+char variableSearchStrideX[22] = {145, 140, 130, 125, 120, 110, 100, 95 , 90 , 80 ,
+		                          75 , 70 , 60 , 50 , 45 , 35 , 30 , 10 , 5  , 5  , 5  , 5};
+char variableSearchStrideY[22] = {10 , 10 , 10 , 10 , 10 , 10 , 10 , 10 , 10 , 10 ,
+		                          5  , 5  , 5  , 5  , 1  , 1  , 1  , 1  , 1  , 1  , 1  , 1};
 
 VisionData *visionData;
+
+
+/************************** Function Declarations ***************************/
+//void processFrame(ushort *pixels);
 
 /************************** Function Definitions ***************************/
 typedef Xuint32 CPU_MSR;
@@ -97,10 +111,21 @@ typedef Xuint32 CPU_MSR;
 
 void CameraISR()
 {
+
 	CPU_MSR msr = DISABLE_INTERRUPTS();
 	//acknowledge interrupts so the camera can start the next capture
 	XIntc_AckIntr(XPAR_INTC_SINGLE_BASEADDR, XPAR_PLB_VISION_0_INTERRUPT_MASK);
+
 	FT_InterruptHandlerFrameTable();
+
+	/*
+	processFrame((ushort*)FRAME_LOC);
+
+	//set up the camera options
+	SetFrameAddress(VISION_FRAME_RGB565, FRAME_LOC);
+	StartFrameCapture();
+	 */
+
 	RESTORE_INTERRUPTS(msr);
 }
 
@@ -131,6 +156,10 @@ void initHeader() {
 void initTargetColors() {
 	targetColors[BLOB_TYPE_BLUE] = (Color){TARGET_COLOR_BLUE};
 	targetColors[BLOB_TYPE_PINK] = (Color){TARGET_COLOR_PINK};
+	targetColors[BLOB_TYPE_YELLOW] = (Color){TARGET_COLOR_YELLOW};
+	targetColors[BLOB_TYPE_RED] = (Color){TARGET_COLOR_RED};
+	targetColors[BLOB_TYPE_CYAN] = (Color){TARGET_COLOR_CYAN};
+	targetColors[BLOB_TYPE_GREEN] = (Color){TARGET_COLOR_GREEN};
 }
 
 void transmitFrame(FrameTableEntry* frame) {
@@ -195,12 +224,13 @@ void transmitFrame(FrameTableEntry* frame) {
 
 inline int colorMatch(short pixel, Color targetColor) {
 	int h = (pixel >> 10) & 0x3F;
+	//int h = pixel & 0xFC00;
 	//int s = (pixel >> 5) & 0x1F;
 	int v = pixel & 0x1F;
 
 	//int hdiff = h - dh;
 	//if (hdiff < 0) hdiff *= -1;
-	return (abs(h - targetColor.h) < 6 && v > targetColor.v); //|| v > 27;
+	return ((abs(h - targetColor.h) < 6) && (v > (targetColor.v))); //|| v > 27;
 }
 
 char* pixelsChecked = (char*)CHECKED_LOC;
@@ -252,24 +282,25 @@ void floodFill(ushort *pixels, int xStart, int yStart, Color targetColor, int bl
 		int y = pTy(point);
 		//xil_printf("x: %d, y:%d\r\n", x, y);
 
-		if (pixelsChecked[y * IMAGE_WIDTH + x]) continue;
-		pixelsChecked[y * IMAGE_WIDTH + x] = 1;
-
+		if (pixels[y * IMAGE_WIDTH + x] == 0) continue;
 		short pixel = pixels[y * IMAGE_WIDTH + x];
+
+
 		if (colorMatch(pixel, targetColor)) {
+			pixels[y * IMAGE_WIDTH + x] = 0;
 			if (x < xMin) xMin = x;
 			if (x > xMax) xMax = x;
 			if (y < yMin) yMin = y;
 			if (y > yMax) yMax = y;
 
-			if (x <= IMAGE_WIDTH - FLOOD_STRIDE_X)
+			if (x < IMAGE_WIDTH - FLOOD_STRIDE_X)
 				StackPush(toCheck, cTp(x+FLOOD_STRIDE_X,y));
 			if (x >= FLOOD_STRIDE_X)
 				StackPush(toCheck, cTp(x-FLOOD_STRIDE_X,y));
-			if (y <= IMAGE_HEIGHT - FLOOD_STRIDE_Y)
-				StackPush(toCheck, cTp(x,y+FLOOD_STRIDE_Y));
+			if (y < IMAGE_HEIGHT - FLOOD_STRIDE_Y)
+				StackPush(toCheck, cTp(x,y+variableSearchStrideY[y/10]));
 			if (y >= FLOOD_STRIDE_Y)
-				StackPush(toCheck, cTp(x,y-FLOOD_STRIDE_Y));
+				StackPush(toCheck, cTp(x,y-variableSearchStrideY[y/10]));
 		}
 	}
 
@@ -298,8 +329,10 @@ void floodFill(ushort *pixels, int xStart, int yStart, Color targetColor, int bl
 }
 
 void processFrame(FrameTableEntry* frame) {
+
+//void processFrame(ushort *pixels) {
 	ushort *pixels = frame->frame_address[VISION_FRAME_RGB565]->data.data16;
-	memset(pixelsChecked, 0, CHECKED_SIZE);
+	//memset(pixelsChecked, 0, CHECKED_SIZE);
 
 	//xil_printf("pixelsChecked: %0x", pixelsChecked);
 	//xil_printf("pixelsCheckedSize: %d", CHECKED_SIZE);
@@ -314,12 +347,11 @@ void processFrame(FrameTableEntry* frame) {
 
 	//find blue blobs
 	int x, y;
-	for (x = 0; x < IMAGE_WIDTH; x += SEARCH_STRIDE_X) {
-		for (y = 0; y < IMAGE_HEIGHT; y += SEARCH_STRIDE_Y) {
-			if (pixelsChecked[y * IMAGE_WIDTH + x]) continue;
-
+	for (y = 0; y < 210; y += variableSearchStrideY[y/10]) {
+		for (x = 0; x < IMAGE_WIDTH; x += variableSearchStrideX[y/10]) {
+			if (pixels[y * IMAGE_WIDTH + x] == 0) continue;
 			short pixel = pixels[y * IMAGE_WIDTH + x];
-			int i = BLOB_TYPE_BLUE;
+			int i;
 			for (i = 0; i < NUM_BLOB_TYPES; i++) {
 				if (colorMatch(pixel, targetColors[i])) {
 					if (visionData->numBlobs >= MAX_BLOBS) continue;
@@ -440,6 +472,7 @@ int main()
 	print("Done!\r\n");
 
 	SetFrameSaveOptions(1);
+
 	//SetFrameSaveOptions(VISION_SAVE_OPTIONS_CAM_BYTES_ALL);
 	xil_printf("Frame save options: 0x%x\r\n", GetFrameSaveOptions);
 
@@ -450,6 +483,11 @@ int main()
 	usleep(100000);
 
 	print("Starting capture\r\n");
+
+	//SetFrameAddress(VISION_FRAME_RGB565, FRAME_LOC);
+	//StartFrameCapture();
+
+
 	FT_Init();
 	FT_StartCapture(g_frametable[0]);
 
@@ -472,5 +510,10 @@ int main()
 	}
 
 	xil_printf("Finished!\r\n");
+
+
+	//INFINITE LOOP
+	while(1);
+
 	return 0;
 }

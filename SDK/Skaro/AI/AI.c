@@ -21,6 +21,25 @@ int stoppedTime = 0;
 int savedAIState = 0;
 int backupTarget = 0;
 
+void AI_Search(AI * ai, int direction_LEFT_RIGHT, int radius){
+	ai->search_direction = direction_LEFT_RIGHT;
+	PID_SetVelocity(&ai->navigation->pid, ai->max_velocity);
+	PID_SetRadius(&ai->navigation->pid, ai->search_direction, radius);
+	Navigation_SetSteeringMode(ai->navigation,RADIUS_MODE);
+	Navigation_SetVelocityMode(ai->navigation,VELOCITY_MODE);
+	ai->state = SEARCHING;
+}
+
+void AI_SetTarget(AI * ai, Blob * target){
+	ai->vision->current_target = &target;
+}
+
+void AI_CenterTarget(AI * ai){
+	ai->state = CENTERING;
+	Navigation_SetSteeringMode(ai->navigation,CENTROID_MODE);
+	Navigation_SetVelocityMode(ai->navigation,VELOCITY_MODE);
+}
+
 void AI_LostTower(AI * ai){
 	//check to see if we hit something
 	if (ai->navigation->pid.desiredVelocityPID != 0 &&
@@ -56,58 +75,37 @@ void AI_LostTower(AI * ai){
 		break;
 
 	case START:
-		ai->search_direction = RIGHT;
-		PID_SetVelocity(&ai->navigation->pid, RUNNING_VELOCITY);
-		PID_SetRadius(&ai->navigation->pid, RIGHT, 3000);
-		Navigation_SetSteeringMode(ai->navigation,RADIUS_MODE);
-		Navigation_SetVelocityMode(ai->navigation,VELOCITY_MODE);
-		ai->vision->current_target = &ai->vision->blue_tower;
-		target = ai->vision->blue_tower;
-		ai->state = SEARCHING;
+		AI_Search(ai, RIGHT, 1000);
+		AI_SetTarget(ai,ai->vision->blue_tower);
 		Wireless_Debug("SEARCHING!!!!!\r\n");
 		//SUPPOSED TO FALL THROUGH TO SEARCHING!!!!
-
 	case SEARCHING:
+		target = *ai->vision->current_target;
 		if(target) {
-			ai->state = CENTERING;
-			//PID_SetVelocity(&ai->navigation->pid, 2000);
-			Navigation_SetSteeringMode(ai->navigation,CENTROID_MODE);
-			Navigation_SetVelocityMode(ai->navigation,VELOCITY_MODE);
+			AI_CenterTarget(ai);
 			Wireless_Debug("FOUND IT!!!!!\r\n");
 		}
 		break;
 	case CENTERING:
+		target = *ai->vision->current_target;
 		if(!target) {
-			ai->search_direction *= -1;
-			//PID_SetVelocity(&ai->navigation->pid, 2000);
-			PID_SetRadius(&ai->navigation->pid, ai->search_direction, 2000);
-			Navigation_SetSteeringMode(ai->navigation,RADIUS_MODE);
-			Navigation_SetVelocityMode(ai->navigation,VELOCITY_MODE);
-			ai->state = SEARCHING;
+			AI_Search(ai, ai->search_direction*-1, 2000);
 			Wireless_Debug("LOST IT!!!!!\r\n");
 			break;
 		}
 		if(target->distance <= 3500) {
-			ai->state = SEARCHING;
 			if(ai->vision->current_target == &ai->vision->pink_tower){
 				Wireless_Debug("ARRIVED PINK!!!!! LOOKING FOR BLUE!!\r\n");
 				GB_Shoot(GAME_PASS_SHOT);
-				//PID_SetVelocity(&ai->navigation->pid, 2000);
-				PID_SetRadius(&ai->navigation->pid, RIGHT, 1500);
-				Navigation_SetSteeringMode(ai->navigation,RADIUS_MODE);
-				Navigation_SetVelocityMode(ai->navigation,VELOCITY_MODE);
-				ai->vision->current_target = &ai->vision->blue_tower;
-				target = ai->vision->blue_tower;
+				AI_Search(ai, RIGHT, 1500);
+				AI_SetTarget(ai,ai->vision->blue_tower);
 				break;
 			} else {
 				Wireless_Debug("ARRIVED BLUE!!!!! LOOKING FOR PINK\r\n");
 				GB_Shoot(GAME_KILL_SHOT);
-				//PID_SetVelocity(&ai->navigation->pid, 2000);
-				PID_SetRadius(&ai->navigation->pid, RIGHT, 1500);
-				Navigation_SetSteeringMode(ai->navigation,RADIUS_MODE);
-				Navigation_SetVelocityMode(ai->navigation,VELOCITY_MODE);
-				ai->vision->current_target = &ai->vision->pink_tower;
-				target = ai->vision->pink_tower;
+				GB_Shoot(GAME_PASS_SHOT);
+				AI_Search(ai, RIGHT, 1500);
+				AI_SetTarget(ai,ai->vision->pink_tower);
 			}
 		}
 		break;

@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="616" key="DIALOG_WIDTH"/>
-		<item value="591" key="DIALOG_Y_ORIGIN"/>
+		<item value="474" key="DIALOG_Y_ORIGIN"/>
 		<item value="531" key="DIALOG_X_ORIGIN"/>
 		<item value="408" key="DIALOG_HEIGHT"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="integrator_r" key="selection"/>
+		<item value="processFrame" key="selection"/>
 		<list key="findhistory">
-			<item value="integrator_r"/>
-			<item value="AI"/>
-			<item value="ai-&gt;state"/>
-			<item value="Stop"/>
-			<item value="recieved"/>
-			<item value="correct"/>
-			<item value="corrent"/>
-			<item value="correction"/>
+			<item value="processFrame"/>
+			<item value="pixelsChecked"/>
+			<item value="TARGET_COLOR_BLUE"/>
+			<item value="colorMatch"/>
+			<item value="ai_loop"/>
+			<item value="correc"/>
+			<item value="0x0f"/>
+			<item value="corr"/>
 		</list>
 		<list key="replacehistory">
 			<item value="RADIUS_MODE"/>
