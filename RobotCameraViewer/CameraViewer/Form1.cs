@@ -54,7 +54,7 @@ namespace CameraViewer
         }
 
         private void startCapture() {
-            txtDebug.AppendText("Reading from usb...");
+            //txtDebug.AppendText("Reading from usb...");
             //usb.read(640 * 480 * 2); //*2 for 16 bits per pixel
             //usb.findHeader(header);
             usb.readPacket();
@@ -93,25 +93,25 @@ namespace CameraViewer
                 this.Close();
             }
 
-            txtDebug.AppendText("Done\r\n");
+            //txtDebug.AppendText("Done\r\n");
             int imageSize = ByteConvert.toUint32(e.data, 0);
             int dataSize = ByteConvert.toUint32(e.data, 4);
             numBlobs = ByteConvert.toUint32(e.data, 8 + imageSize);
           
-            txtDebug.AppendText("Image size: " + imageSize + "\r\n");
-            txtDebug.AppendText("Data size: " + dataSize + "\r\n");
+            //txtDebug.AppendText("Image size: " + imageSize + "\r\n");
+            //txtDebug.AppendText("Data size: " + dataSize + "\r\n");
             txtDebug.AppendText("num Blobs: " + numBlobs + "\r\n");
             
             
             int blobsStart = 8 + imageSize + 4;
             for (int i = 0; i < numBlobs; i++) {
-                int blobStart = blobsStart + i * 20; //5 ints per blob
+                int blobStart = blobsStart + i * 32; //7 ints and 1 float per blob
                 int type = ByteConvert.toUint32(e.data, blobStart);
                 int left = ByteConvert.toUint32(e.data, blobStart + 4);
                 int top = ByteConvert.toUint32(e.data, blobStart + 8);
                 int width = ByteConvert.toUint32(e.data, blobStart + 12);
                 int height = ByteConvert.toUint32(e.data, blobStart + 16);
-
+                
                 blobs[i] = new Blob(type, left, top, width, height);
             }
 
@@ -153,31 +153,50 @@ namespace CameraViewer
                 txtDebug.AppendText("Waiting for last capture to finish\r\n");
             }
         }
+        
+        /*
+        #define BLOB_TYPE_BLUE			0
+        #define BLOB_TYPE_PINK			1
+        #define BLOB_TYPE_YELLOW		2
+        #define BLOB_TYPE_CYAN			3
+        #define BLOB_TYPE_RED			4
+        #define BLOB_TYPE_GREEN			5
+        */
 
-        private static Pen penRed = new Pen(Color.Red, 2);
         private static Pen penBlue = new Pen(Color.Blue, 2);
-        private static Pen[] pens = { penBlue, penRed, penRed, penRed, penRed, penRed, penRed, penRed };
+        private static Pen penPink = new Pen(Color.Pink, 2);
+        private static Pen penYellow = new Pen(Color.Yellow, 2);
+        private static Pen penCyan = new Pen(Color.Cyan, 2);
+        private static Pen penRed = new Pen(Color.Red, 2);
+        private static Pen penGreen = new Pen(Color.Green, 2);
+
+        private static Pen[] pens = { penBlue, penPink, penYellow, penCyan,
+                                        penRed, penGreen };
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e) {
-            return;
-            
             Graphics g = e.Graphics;
 
             if (numBlobs <= 0) return;
             txtDebug.AppendText("Draw Blobs\r\n");
             for (int i = 0; i < numBlobs; i++) {
+                txtDebug.AppendText("type: " + blobs[i].type + " x: " + blobs[i].left + ", y: " + blobs[i].top +
+                    ", width: " + blobs[i].width + ", height: " + blobs[i].height + "\r\n");
+
                 //only draw blobs that are in range
-                if (blobs[i].left >= 0 && blobs[i].top >= 0 &&
-                    blobs[i].left + blobs[i].width <= 640 &&
-                    blobs[i].top + blobs[i].height <= 480) {
+                if (blobs[i].left > 0 && blobs[i].top > 0 &&
+                    blobs[i].left + blobs[i].width < 640 &&
+                    blobs[i].top + blobs[i].height < 480 && 
+                    blobs[i].type < pens.Length) {
 
-                    txtDebug.AppendText("x: " + blobs[i].left + ", y: " + blobs[i].top +
-                        ", width: " + blobs[i].width + ", height: " + blobs[i].height + "\r\n");
+                    try {
 
-                    g.DrawRectangle(pens[blobs[i].type], blobs[i].left, blobs[i].top,
-                        blobs[i].width, blobs[i].height);
+                        g.DrawRectangle(pens[blobs[i].type], blobs[i].left, blobs[i].top,
+                            blobs[i].width, blobs[i].height);
+                    } catch (Exception exc) {
+                        txtDebug.AppendText(exc.Message);
+                    }
                 } else {
-                    txtDebug.AppendText("Invalid blob dropped!");
+                    txtDebug.AppendText("Invalid blob dropped!\r\n");
                 }
             }
         }

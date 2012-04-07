@@ -103,7 +103,6 @@ void PID_UpdateRadius(PID * pid);
 void inline PID_SetDistance(PID * pid,int32 distance);
 void inline PID_SetVelocity(PID * pid, int32 velocity);
 void inline PID_SetRadius(PID * pid, int direction_RIGHT_LEFT, int radius);
-void PID_UpdateDistance(PID * pid);
 int sat(int in, int limit);
 int downShift(int in, int limit, int out);
 

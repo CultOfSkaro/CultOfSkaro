@@ -91,12 +91,12 @@ XUartLite gameboard_uart;
 #define SET_PID_KP_C 		0x4
 #define SET_PID_KI_C 		0x5
 #define SET_PID_KD_C 		0x6
-#define REQUEST_CONTROL_LOG 0x7
+#define SET_RADIUS			0x7
 #define SET_DISTANCE		0x8
-#define SET_STEERING		0x9
+#define SET_VELOCITY		0x9
 #define SET_MAX_VELOCITY	0xa
-#define SET_VISION_DISTANCE	0xb
-#define SET_STEERING_MODE	0xc
+#define SET_CENTROID_TARGET	0xb
+#define SET_MANUAL_MODE		0xc
 #define SET_VELOCITY_MODE	0xd
 #define SET_25_CIRCLE2		0xe
 #define SET_20_CIRCLE2		0xf
@@ -152,41 +152,39 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		Wireless_Debug("Setting Kd_r to:");
 		PrintFloat(navigation.pid.Kd_r);
 		break;
+	case SET_RADIUS:
+		read(0,&int_data,sizeof(int));
+		PID_SetRadius(&navigation.pid,int_data/abs(int_data) , abs(int_data));
+		Wireless_Debug("Set radius to ");
+		PrintInt(int_data);
+		Wireless_Debug("\n\r" );
+		break;
 	case SET_DISTANCE:
 		read(0,&int_data,sizeof(int));
 		PID_SetDistance(&navigation.pid,int_data);
-		Navigation_HoldRadius(&navigation, RIGHT, int_data);
 		Wireless_Debug("Set distance to ");
 		PrintInt(int_data);
 		Wireless_Debug("\n\r" );
 		break;
-//	case SET_STEERING:
-//		read(0,&c,1);
-//		SetServo(RC_STR_SERVO, (signed char)c);
-//		Wireless_Debug("Set Steering servo to ");
-//		PrintInt(c);
-//		break;
+	case SET_VELOCITY:
+		read(0,&int_data,sizeof(int));
+		PID_SetVelocity(&navigation.pid, int_data);
+		Wireless_Debug("Set velocity to ");
+		PrintInt(int_data);
+		break;
 	case SET_MAX_VELOCITY:
 		read(0,&int_data,sizeof(int));
-//		navigation.pid.maxVelocity = int_data;
-//		Navigation_GoVelocity(&navigation, int_data);
 		ai.max_velocity = int_data;
+		ai.navigation->pid.maxVelocity = int_data;
 		PID_SetVelocity(&ai.navigation->pid, ai.max_velocity);
 		Wireless_Debug("Set velocity to ");
 		PrintInt(ai.max_velocity);
 		Wireless_Debug("\n\r");
 		break;
-	case SET_VISION_DISTANCE:
+	case SET_CENTROID_TARGET:
 		read(0,&int_data,sizeof(int));
-		distanceFromVisionTarget = int_data;
-		break;
-	case SET_VELOCITY_MODE:
-		read(0, &c, 1);
-		Navigation_SetVelocityMode(&navigation,c);
-		break;
-	case SET_STEERING_MODE:
-		read(0, &c, 1);
-		Navigation_SetSteeringMode(&navigation,c);
+		Wireless_Debug("Set target to:");
+		PrintInt(int_data);
 		break;
 	case FIRE_KILL_SHOT:
 		Wireless_Debug("Received PASS\r\n");
@@ -194,8 +192,28 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		break;
 	case 'd':
 		Wireless_Debug("Starting AI.\r\n");
-		ai.state = START;
+		AI_ChangeMode(&ai, GET_THE_FLAG);
 		break;
+	case SET_MANUAL_MODE:
+		Wireless_Debug("Manual Mode.\r\n");
+		AI_ChangeMode(&ai, NOOP_AI);
+		read(0,&int_data,sizeof(int));
+		switch(int_data){
+		case 0:
+			Wireless_Debug("Distance Mode");
+			Navigation_SetVelocityMode(ai.navigation, DISTANCE_VELOCITY_MODE);
+			break;
+		case 1:
+			Wireless_Debug("Velocity_Mode");
+			Navigation_SetVelocityMode(ai.navigation, VELOCITY_MODE);
+			break;
+		case 2:
+			Navigation_SetSteeringMode(ai.navigation, CENTROID_MODE);
+			break;
+		case 3:
+			Navigation_SetSteeringMode(ai.navigation, RADIUS_MODE);
+			break;
+		}
 	case 'e':
 		goToTower = !goToTower;
 		break;
@@ -271,12 +289,6 @@ void WirelessRecvHandlerNonBlocking(void *CallBackRef, unsigned int EventData)
 			case SET_VISION_DISTANCE:
 				command.length = 4;
 				break;
-			case SET_VELOCITY_MODE:
-				command.length = 1;
-				break;
-			case SET_STEERING_MODE:
-				command.length = 1;
-				break;
 			case FIRE_KILL_SHOT:
 				command.length = 0;
 				break;
@@ -335,53 +347,87 @@ int numNotFound = 0;
 int backupCount = 0;
 int backup = 0;
 
+int Vision_GetStatus(Vision * vision, VisionData * visionData, Object * obj){
+	int j;
+	Blob other;
+	for(j = 0; j < visionData->numBlobs; j++){
+		other = visionData->blobs[j];
+		// if it's a team color, ignore it
+		if(other.type == BLOB_TYPE_RED || other.type == BLOB_TYPE_PINK || other.type == BLOB_TYPE_CYAN || other.type == BLOB_TYPE_BLUE)
+			continue;
+		// check if it's inline with the current blob (right above and somewhat centered )
+		if(
+				(abs(other.center - obj->blob.center) < 3) &&
+				((obj->blob.top - other.top) < 30) &&
+				(obj->blob.top - other.top > 0)
+				){
+			if(other.type == BLOB_TYPE_YELLOW){
+				return FLAG_OBJECT_STATUS;
+			} else if (other.type == BLOB_TYPE_GREEN){
+				return ENABLED_OBJECT_STATUS;
+			}
+		}
+	}
+	return DISABLED_OBJECT_STATUS;
+}
 // This needs to take params and avoid using globals
 void Vision_ProcessFrame(){
 
 	VisionData *visionData = *vision.snap_vision_data;
 
+	// WORK IN PROGRESS....
 	int i;
-	Blob * biggest_blue = 0;
-	Blob * biggest_pink = 0;
+	Object object;
+	// create new inactive objects
+	Object c;
+	c.active = 0;
+	Object b;
+	b.active = 0;
+	Object p;
+	p.active = 0;
+	Object r;
+	r.active = 0;
+
 	for(i=0; i < visionData->numBlobs; i++) {
-		if(visionData->blobs[i].width > 300)
-			continue;
-		switch(visionData->blobs[i].type){
+		object.blob = visionData->blobs[i];
+		object.status = Vision_GetStatus(&vision, visionData, &object);
+		object.active = TRUE;
+		switch(object.blob.type){
+		case BLOB_TYPE_CYAN:
+			object.type = TOWER_OBJECT;
+			c = object;
+			break;
 		case BLOB_TYPE_BLUE:
-			if(!biggest_blue){
-				biggest_blue = &visionData->blobs[i];
-			} else {
-				if(visionData->blobs[i].width > biggest_blue->width) {
-					biggest_blue = &visionData->blobs[i];
-				}
-			}
+			object.type = TRUCK_OBJECT;
+			b = object;
 			break;
 		case BLOB_TYPE_PINK:
-			if(!biggest_pink){
-				biggest_pink = &visionData->blobs[i];
-			} else {
-				if(visionData->blobs[i].width > biggest_pink->width) {
-					biggest_pink = &visionData->blobs[i];
-				}
-			}
+			object.type = TOWER_OBJECT;
+			p = object;
+			break;
+		case BLOB_TYPE_RED:
+			object.type = TOWER_OBJECT;
+			r = object;
 			break;
 		}
-
-
 	}
-
-
-
-	Blob * target = *(vision.current_target);
-	if(target){
-		navigation.pid.currentCentroid = (*vision.current_target)->center;
+	if (CURRENT_TEAM == RED_TEAM){
+		vision.us.tower = p;
+		vision.us.truck = r;
+		vision.them.tower = c;
+		vision.them.truck = b;
+	} else {
+		vision.them.tower = p;
+		vision.them.truck = r;
+		vision.us.tower = c;
+		vision.us.truck = b;
 	}
 
 	if(navigation.steeringLoopMode == CENTROID_MODE){
+		if(vision.current_target->active)
+			navigation.pid.currentCentroid = vision.current_target->blob.center;
 		scheduler.events.flags.steering_loop = 1;
 	}
-	vision.blue_tower = biggest_blue;
-	vision.pink_tower = biggest_pink;
 
 	vision.frameRate++;
 }
@@ -460,14 +506,6 @@ void process_wireless_commands() {
 		Wireless_Debug("Set Tower Distance to ");
 		PrintInt(distanceFromVisionTarget);
 		break;
-	case SET_VELOCITY_MODE:
-		char_data = command.data[0];
-		Navigation_SetVelocityMode(&navigation,char_data);
-		break;
-	case SET_STEERING_MODE:
-		char_data = command.data[0];
-		Navigation_SetSteeringMode(&navigation,char_data);
-		break;
 	case FIRE_KILL_SHOT:
 		Wireless_Debug("Firing Pass Shot!\r\n");
 		GB_Shoot(GAME_PASS_SHOT);
@@ -506,6 +544,12 @@ void reportFrameRate(){
 	Wireless_Send(&wireless, WIRELESS_VISION_FRAMERATE, 4, (char*)&vision.frameRate);
 	vision.frameRate = 0;
 	Wireless_Blob_Report((*vision.snap_vision_data)->numBlobs,(*vision.snap_vision_data)->blobs);
+	Wireless_Debug("TtUu:");
+	PrintInt(vision.them.truck.active);
+	PrintInt(vision.them.tower.active);
+	PrintInt(vision.us.tower.active);
+	PrintInt(vision.us.truck.active);
+	Wireless_Debug("\r\n");
 }
 
 void vision_loop(){
@@ -524,7 +568,7 @@ void velocity_loop(){
 }
 
 void ai_loop(){
-	AI_LostTower(&ai);
+	AI_RunAI(&ai);
 }
 
 void registerEvents(){

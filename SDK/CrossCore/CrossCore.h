@@ -12,7 +12,20 @@
 #define BLOB_TYPE_GREEN			5
 #define NUM_BLOB_TYPES			6
 
-//#define DEBUG_USB_VISION
+#define UNKNOWN_OBJECT	0
+#define TOWER_OBJECT	1
+#define	TRUCK_OBJECT		2
+
+#define DISABLED_OBJECT_STATUS 	0
+#define FLAG_OBJECT_STATUS		1
+#define ENABLED_OBJECT_STATUS	2
+
+#define DEBUG_USB_VISION
+
+#define RED_TEAM	0
+#define	BLUE_TEAM	1
+
+#define CURRENT_TEAM BLUE_TEAM
 
 typedef struct {
 	int type;
@@ -26,6 +39,18 @@ typedef struct {
 } Blob;
 
 typedef struct {
+	Blob blob;
+	int type;
+	int status;
+	int active;
+} Object;
+
+typedef struct {
+	Object tower;
+	Object truck;
+} Team;
+
+typedef struct {
 	int numBlobs;
 	Blob blobs[MAX_BLOBS];
 } VisionData;
@@ -36,9 +61,9 @@ typedef struct {
 	//pointers into vision_data
 	VisionData ** live_vision_data;
 	VisionData ** snap_vision_data;
-	Blob * blue_tower;
-	Blob * pink_tower;
-	Blob ** current_target;
+	Team us;
+	Team them;
+	Object * current_target;
 } Vision;
 
 extern Vision vision;
