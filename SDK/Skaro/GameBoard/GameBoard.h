@@ -41,7 +41,9 @@
 typedef struct {
 	BOOL alive;
 	BOOL hasFlag;
+	BOOL prev_hit_state;
 	BOOL hit;
+	BOOL gameNotInPlay;
 } GameBoard;
 
 

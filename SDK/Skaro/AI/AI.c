@@ -2,6 +2,8 @@
 #include "plb_quad_encoder.h"
 #include "skaro_wireless.h"
 #include "GameBoard.h"
+#include "Timer.h"
+#include "Serial.h"
 
 AI ai;
 
@@ -14,15 +16,6 @@ void AI_Init(AI * ai){
 	ai->gb = &gameBoard;
 }
 
-#define AI_INTERVAL 10
-#define STOPPED_THRESHOLD 500
-#define BACKUP_RADIUS 1000
-#define RUNNING_VELOCITY (ai->max_velocity)
-
-int stoppedTime = 0;
-int savedAIState = 0;
-int backupTarget = 0;
-
 void AI_WhatToDo(AI * ai){
 	if (ai->mode == NOOP_AI) {
 		return;
@@ -31,12 +24,17 @@ void AI_WhatToDo(AI * ai){
 	int next_mode = ai->mode;
 	/// we just hit something.
 	if(ai->gb->hit){
+		Wireless_Debug("We hit something!\n\r");
 		switch(ai->mode){
 		case GET_THE_FLAG:
 			next_mode = RETURN_THE_FLAG;
 			break;
 		case SHOOT_OPPONENT:
-			next_mode = GET_THE_FLAG;
+			if (ai->gb->hasFlag) {
+				next_mode = RETURN_THE_FLAG;
+			} else {
+				next_mode = GET_THE_FLAG;
+			}
 			break;
 		case RETURN_THE_FLAG:
 			next_mode = GET_THE_FLAG;
@@ -50,10 +48,14 @@ void AI_WhatToDo(AI * ai){
 	}
 	ai->gb->hit = 0;
 
-	// check for anomalies in current state.
+	//check for anomalies in current state.
 	switch(ai->mode){
 		case GET_THE_FLAG:
-			if(ai->vision->them.truck.active && (!ai->vision->them.tower.active)){
+			if (ai->gb->hasFlag) {
+				next_mode = RETURN_THE_FLAG;
+			}
+			if(ai->vision->them.truck.active && (!ai->vision->them.tower.active) &&
+					ai->vision->them.truck.status != DISABLED_OBJECT_STATUS){
 				next_mode = SHOOT_OPPONENT;
 			}
 			break;
@@ -88,16 +90,19 @@ void AI_WhatToDo(AI * ai){
 			}
 			break;
 		case REVIVE_SELF:
-			/// NOTHING TO DO HERE... move along
+			if (ai->gb->alive) {
+				next_mode = GET_THE_FLAG;
+			}
 			break;
 		default:
 			break;
 	}
 	// NO EXCEPTIONS.. if we are disabled we have to revive ourselves.
-	if(!ai->gb->alive){
+	if(!ai->gb->alive && !ai->gb->gameNotInPlay){
 		next_mode = REVIVE_SELF;
 	}
-	AI_ChangeMode(ai, next_mode);
+	if(next_mode != ai->mode)
+		AI_ChangeMode(ai, next_mode);
 }
 
 void AI_RunAI(AI * ai){
@@ -113,7 +118,7 @@ void AI_RunAI(AI * ai){
 		AI_ShootTarget(ai,&ai->vision->them.truck, GAME_KILL_SHOT);
 		break;
 	case REVIVE_SELF:
-		AI_ShootTarget(ai,&ai->vision->them.tower, GAME_REVIVE_SHOT);
+		AI_ShootTarget(ai,&ai->vision->us.tower, GAME_REVIVE_SHOT);
 		break;
 	case NOOP_AI:
 		break;
@@ -156,65 +161,141 @@ void inline AI_SetTarget(AI * ai,Object * target){
 	ai->vision->current_target = target;
 }
 
-void AI_CenterTarget(AI * ai, Object * target){
-	if(target->blob.distance > 6000){
-		Wireless_Debug("FULL SPEED AHEAD!\n\r");
-		ai->state = CENTERING_FULL_SPEED;
-		PID_SetVelocity(&ai->navigation->pid, ai->max_velocity * 1.5);
-	} else if (target->blob.distance < 4000){
-		Wireless_Debug("HALF SPEED AHEAD!\n\r");
-		ai->state = CENTERING_HALF_SPEED;
-		PID_SetVelocity(&ai->navigation->pid, ai->max_velocity * 0.5);
-	} else {
-		PID_SetVelocity(&ai->navigation->pid, ai->max_velocity);
-		ai->state = CENTERING;
-	}
+void AI_CenterTarget(AI * ai, Object * target, int velocity){
 	navigation.pid.currentCentroid = target->blob.center;
+	PID_SetVelocity(&ai->navigation->pid, velocity);
 	Navigation_SetSteeringMode(ai->navigation,CENTROID_MODE);
 	Navigation_SetVelocityMode(ai->navigation,VELOCITY_MODE);
 }
 
+void AI_Shooting(AI * ai, Object * target, int shot_type){
+	if(!target->active) {
+		ai->lost_tower++;
+	} else {
+		ai->lost_tower = 0;
+	}
+
+	if(ai->lost_tower > 5){
+		PID_SetVelocity(&ai->navigation->pid, ai->max_velocity);
+		AI_Search(ai, ai->search_direction*-1, 0.75 * ai->max_velocity);
+		Wireless_Debug("Lost The Tower!\r\n");
+	} else {
+		GB_Shoot(shot_type);
+	}
+}
+
+#define STOPPED_THRESHOLD 250
+#define BACKUP_RADIUS 1000
+#define RUNNING_VELOCITY (ai->max_velocity)
+#define PI 	3.14159265
+
+int stoppedTime = 0;
+int savedAIState = 0;
+int backupTarget = 0;
+int doneBackingUp = 0;
+
 void AI_ShootTarget(AI * ai, Object * target, int shot_type){
+	static uint32 lastClockTicks = 0;
+
+	//calculate the time delta in milliseconds
+	uint32 nowClocks = ClockTime();
+	int timeDelta = (refresh_rate(nowClocks, lastClockTicks) * 1000);
+	lastClockTicks = nowClocks;
+
+	//check to see if we hit something
+	if (ai->navigation->pid.desiredVelocityPID != 0 &&
+		ai->navigation->pid.currentVelocity < 50 &&
+		ai->navigation->pid.currentVelocity > -50) {
+		stoppedTime += timeDelta;
+		if (stoppedTime >= STOPPED_THRESHOLD) {
+			if (ai->state == BACKUP) {
+				doneBackingUp = 1;
+			} else {
+				stoppedTime = 0;
+				Wireless_Debug("Backing up!!\r\n");
+				ai->state = BACKUP;
+				PID_SetVelocity(&ai->navigation->pid, -2000);
+				PID_SetRadius(&ai->navigation->pid, -(ai->search_direction), BACKUP_RADIUS);
+				Navigation_SetSteeringMode(ai->navigation,RADIUS_MODE);
+				Navigation_SetVelocityMode(ai->navigation,VELOCITY_MODE);
+
+				backupTarget = getTicks() - PI*2*BACKUP_RADIUS/4;
+				Wireless_Debug("Backup target: ");
+				PrintInt(backupTarget);
+				Wireless_Debug("\r\n");
+			}
+		}
+	} else {
+		stoppedTime = 0;
+	}
+
 	vision.current_target = target;
+	int ticks;
 	switch(ai->state) {
+	case BACKUP:
+		ticks = getTicks();
+		if(ticks <= backupTarget || doneBackingUp){
+			doneBackingUp = 0;
+			stoppedTime = 0;
+			Wireless_Debug("Finished Backing up.\r\n");
+			Wireless_Debug("Ticks: ");
+			PrintInt(ticks);
+			Wireless_Debug("\r\n");
+
+			ai->state = SEARCHING;
+			PID_SetVelocity(&ai->navigation->pid, ai->max_velocity);
+			Navigation_SetVelocityMode(ai->navigation,VELOCITY_MODE);
+			ai->lost_tower = 0;
+			AI_Search(ai, ai->search_direction, 1000);
+		}
+		break;
+
 	case START:
 		ai->lost_tower = 0;
-		AI_Search(ai, RIGHT, ai->max_velocity);
+		PID_SetVelocity(&ai->navigation->pid, ai->max_velocity);
+		AI_Search(ai, RIGHT, 1000);
 		/// SUPPOSED TO FALL THROUGH
 	case SEARCHING:
 		if(target->active) {
-			AI_CenterTarget(ai, target);
+			ai->state = CENTERING_FULL_SPEED;
+			AI_CenterTarget(ai, target, ai->max_velocity * 1.5);
 			Wireless_Debug("Found Tower!\r\n");
+			Wireless_Debug("Full Speed Ahead!\r\n");
 		}
 		break;
 	case CENTERING_FULL_SPEED:
-		if(target->active) {
-			if(target->blob.distance < 6000){
-				AI_CenterTarget(ai, target);
-				Wireless_Debug("Slowing Down!\r\n");
-			}
+		if(target->active && target->blob.distance < 6000) {
+			ai->state = CENTERING;
+			AI_CenterTarget(ai, target, ai->max_velocity);
+			Wireless_Debug("Slowing Down!\r\n");
 		}
-		// FALL THROUGH TO CENTERING
-	case CENTERING:
-		if(!target->active) {
-			ai->lost_tower++;
-			if(ai->lost_tower > 5){
-				PID_SetVelocity(&ai->navigation->pid, ai->max_velocity);
-				AI_Search(ai, ai->search_direction*-1, ai->max_velocity);
-				Wireless_Debug("Lost The Tower!!!!!\r\n");
-				break;
-			}
-		} else {
-			ai->lost_tower = 0;
-		}
-		if(target->blob.distance < 4000){
-			AI_CenterTarget(ai, target);
-			Wireless_Debug("Slowing Down Event More!\r\n");
-		}
-		// FALL THROUGH TO CENTERING HALF SPEED
-	case CENTERING_HALF_SPEED:
-		GB_Shoot(shot_type);
+		AI_Shooting(ai, target, shot_type);
 		break;
+	case CENTERING:
+		if(target->active && target->blob.distance < 5000){
+			ai->state = CENTERING_HALF_SPEED;
+			AI_CenterTarget(ai, target, ai->max_velocity / 2);
+			Wireless_Debug("Slowing Down Even More!\r\n");
+		}
+		AI_Shooting(ai, target, shot_type);
+		break;
+	case CENTERING_HALF_SPEED:
+		if(target->active && (target->blob.distance < 4000) && ai->gb->gameNotInPlay) {
+			ai->state = WAITING_DISABLED;
+			AI_CenterTarget(ai, target, 0);
+			Wireless_Debug("Stopping because disabled!\r\n");
+		}
+		AI_Shooting(ai, target, shot_type);
+		break;
+
+	case WAITING_DISABLED:
+		if(!ai->gb->gameNotInPlay) {
+			ai->state = CENTERING_HALF_SPEED;
+			AI_CenterTarget(ai, target, ai->max_velocity / 2);
+			Wireless_Debug("Resuming.\r\n");
+		}
+		break;
+
 	case IDLE:
 		PID_SetVelocity(&ai->navigation->pid, 0);
 		Navigation_SetSteeringMode(ai->navigation,CENTROID_MODE);

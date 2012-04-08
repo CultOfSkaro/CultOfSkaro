@@ -54,11 +54,6 @@ typedef struct {
 
 #define FRAME_LOC			(CHECKED_LOC + CHECKED_SIZE)
 
-#define IMAGE_WIDTH 640
-#define OBJECT_WIDTH       (0.08255 * 2000)
-#define FIELD_OF_VISION    ((float)(25.5 * 3.1415 / 180))
-#define DISTANCE_CONSTANT  (IMAGE_WIDTH * OBJECT_WIDTH / FIELD_OF_VISION)
-
 #define SEARCH_STRIDE_X  1
 #define SEARCH_STRIDE_Y  1
 
@@ -318,18 +313,16 @@ void floodFill(ushort *pixels, int xStart, int yStart, int blobType) {
 	//create blob
 	int width = xMax - xMin;
 	int height = yMax - yMin;
-	int distance = DISTANCE_CONSTANT / width;
-	int center = xMin + (width / 2) - (IMAGE_WIDTH / 2);
-	float angle = FIELD_OF_VISION * center / IMAGE_WIDTH;
 	if (width > 0 && height > 0) {
 		visionData->blobs[visionData->numBlobs].type = blobType;
 		visionData->blobs[visionData->numBlobs].left = xMin;
 		visionData->blobs[visionData->numBlobs].top = yMin;
 		visionData->blobs[visionData->numBlobs].width = width;
 		visionData->blobs[visionData->numBlobs].height = height;
-		visionData->blobs[visionData->numBlobs].distance = distance;
-		visionData->blobs[visionData->numBlobs].center = center;
-		visionData->blobs[visionData->numBlobs].angle = angle;
+		visionData->blobs[visionData->numBlobs].distance = 0;
+		visionData->blobs[visionData->numBlobs].center = 0;
+		visionData->blobs[visionData->numBlobs].angle = 0;
+		visionData->blobs[visionData->numBlobs].valid = TRUE;
 
 		(visionData->numBlobs)++;
 	}

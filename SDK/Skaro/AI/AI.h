@@ -15,7 +15,10 @@
 #define CENTERING 8
 #define CENTERING_FULL_SPEED 9
 #define CENTERING_HALF_SPEED 10
-#define CROSS_FIELD 11
+#define WAITING_DISABLED 11
+#define BACKUP 12
+#define BACKUP_START 13
+
 
 // MODES
 #define GET_THE_FLAG		0
@@ -38,6 +41,14 @@ typedef struct {
 
 extern AI ai;
 
+typedef struct {
+	int state;
+	int mode;
+	int framerate;
+	int alive;
+	int has_flag;
+	int game_not_in_play;
+} StateInformation;
 
 //FUNCTIONS
 void AI_Init(AI * ai);
@@ -46,7 +57,7 @@ void AI_ShootTarget(AI * ai, Object * target, int shot_type);
 void AI_ChangeMode(AI * ai, int new_mode);
 void AI_Search(AI * ai, int direction_LEFT_RIGHT, int radius);
 void inline AI_SetTarget(AI * ai, Object * target);
-void AI_CenterTarget(AI * ai, Object * target);
+void AI_CenterTarget(AI * ai, Object * target, int velocity);
 
 //MODES
 void AI_TwoTowers(AI * ai);

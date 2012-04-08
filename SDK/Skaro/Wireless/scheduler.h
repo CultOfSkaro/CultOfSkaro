@@ -16,6 +16,8 @@ typedef struct {
   int timer1;
   int timer2;
   int timer3;
+  int hit_ack;
+  int gb_state_change;
 } Event_flags;
 
 /*

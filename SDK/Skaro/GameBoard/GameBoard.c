@@ -1,6 +1,7 @@
 #include "GameBoard.h"
 #include "Serial.h"
 #include "skaro_wireless.h"
+#include "scheduler.h"
 
 XGpio Gpio;
 GameBoard gameBoard;
@@ -44,9 +45,15 @@ void GB_DisableGyro() {
  */
 void GB_Shoot(uint16 shotType)
 {
+	//only shoot if the game is in play
+	if (gameBoard.gameNotInPlay) return;
+
 	if(!CurrentShotType) {
+		Wireless_Debug("Shooting:");
+		PrintInt(shotType);
+		Wireless_Debug("\n\r");
 		//ensure valid states for shooting
-		if (shotType == GAME_KILL_SHOT && (!gameBoard.alive || gameBoard.hasFlag)) return;
+		if (shotType == GAME_KILL_SHOT && !gameBoard.alive) return;
 		else if (shotType == GAME_PASS_SHOT && !gameBoard.hasFlag) return;
 		else if (shotType == GAME_REVIVE_SHOT && gameBoard.alive) return;
 
@@ -89,11 +96,21 @@ void GpioHandler(void *InstancePtr) {
 	//check global flags
 	gameBoard.alive = (gameState & GAME_TRUCK_ALIVE_M) != 0;
 	gameBoard.hasFlag = (gameState & GAME_HAVE_FLAG_M) != 0;
+	gameBoard.gameNotInPlay = (gameState & GAME_NOT_IN_PLAY) != 0;
 
+
+	BOOL hit = (gameState & GAME_HIT_ACK) != 0;
+	if(!gameBoard.prev_hit_state && hit)
+		gameBoard.hit = 1;
+	gameBoard.prev_hit_state = hit;
+
+	scheduler.events.flags.gb_state_change = 1;
+
+	/*
 	Wireless_Debug("Gpio Changed: ");
 	PrintWord(gameState);
 	Wireless_Debug("\r\n");
-
+	*/
 
 	if (CurrentShotType != 0 && shootState == SHOOT_STATE_NONE &&
 		(gameState & GAME_WAIT_TO_SHOOT) != 0) {

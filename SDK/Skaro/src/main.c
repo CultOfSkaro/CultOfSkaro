@@ -349,68 +349,220 @@ int backup = 0;
 
 int Vision_GetStatus(Vision * vision, VisionData * visionData, Object * obj){
 	int j;
-	Blob other;
-	for(j = 0; j < visionData->numBlobs; j++){
-		other = visionData->blobs[j];
-		// if it's a team color, ignore it
-		if(other.type == BLOB_TYPE_RED || other.type == BLOB_TYPE_PINK || other.type == BLOB_TYPE_CYAN || other.type == BLOB_TYPE_BLUE)
-			continue;
+	for(j = 0; j < visionData->statusBlobCount; j++){
+		Blob *other = visionData->statusBlobs[j];
+		if (!other->valid) continue;
+
 		// check if it's inline with the current blob (right above and somewhat centered )
 		if(
-				(abs(other.center - obj->blob.center) < 3) &&
-				((obj->blob.top - other.top) < 30) &&
-				(obj->blob.top - other.top > 0)
-				){
-			if(other.type == BLOB_TYPE_YELLOW){
+			(abs(other->center - obj->blob.center) < obj->blob.width / 2) &&
+			((obj->blob.top - other->top) < 30) &&
+			(obj->blob.top - other->top > 0)
+			){
+			if(other->type == BLOB_TYPE_YELLOW){
 				return FLAG_OBJECT_STATUS;
-			} else if (other.type == BLOB_TYPE_GREEN){
+			} else if (other->type == BLOB_TYPE_GREEN){
 				return ENABLED_OBJECT_STATUS;
+			} else if (obj->type == TOWER_OBJECT) {
+				//towers can't be disabled assume it has the flag
+				//Wireless_Debug("Assuming a disabled tower has the flag!\r\n");
+				return FLAG_OBJECT_STATUS;
 			}
 		}
 	}
 	return DISABLED_OBJECT_STATUS;
 }
+
+//Index in 10's of pixels in the y direction
+int TOP_TO_HEIGHT[20] = {32, 29, 27, 25, 21, 21, 20, 18, 15, 14, 13, 11, 10, 9, 8, 6, 4, 3, 2, 1};
+
+#define IMAGE_WIDTH 640
+#define OBJECT_WIDTH       (0.08255 * 2000)
+#define FIELD_OF_VISION    ((float)(25.5 * 3.1415 / 180))
+#define DISTANCE_CONSTANT  (IMAGE_WIDTH * OBJECT_WIDTH / FIELD_OF_VISION)
+
+BOOL Vision_CheckTeamBlob(int blobType, Blob *checking, Blob **assignTo) {
+	if (checking->type == blobType) {
+		if (*assignTo != NULL) { //something is already there
+			//take the bigger one
+			//Wireless_Debug("Saw more than one team blob of same color, ignoring one.\r\n");
+			if (checking->width > (*assignTo)->width) {
+				*assignTo = checking;
+			}
+		} else {
+			*assignTo = checking;
+		}
+
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+void Vision_FilterBlobs(VisionData *visionData) {
+
+	visionData->teamBlobRed = NULL;
+	visionData->teamBlobPink = NULL;
+	visionData->teamBlobBlue = NULL;
+	visionData->teamBlobCyan = NULL;
+
+	visionData->statusBlobCount = 0;
+
+	//prune list of blobs to ones we think are valid
+	int i,j;
+
+	/*
+	for (i = 0; i < visionData->numBlobs; i++) {
+		//check the aspect ratio of the blob
+		if ((float)visionData->blobs[i].width / (float)visionData->blobs[i].height < 2.0) {
+			visionData->blobs[i].valid = FALSE;
+			Wireless_Debug("Blob thrown out because of aspect ratio!\r\n");
+		}
+	}
+	*/
+
+	//check for merging blobs
+	for (i = 0; i < visionData->numBlobs; i++) {
+		if (!visionData->blobs[i].valid) continue;
+
+		for (j = 0; j < visionData->numBlobs; j++) {
+			if (i == j) continue;
+			if (!visionData->blobs[j].valid) continue;
+
+			//check for a blob to the right to merge with
+			if (//same color (type)
+				visionData->blobs[i].type == visionData->blobs[j].type &&
+				//tops are within one height of each other
+				abs(visionData->blobs[i].top - visionData->blobs[j].top) < TOP_TO_HEIGHT[visionData->blobs[i].top / 10] &&
+				//the distance between the right side of blob 1 and the left side of blob 2 is
+				//less than 20% of the total width of both blobs
+				abs(visionData->blobs[i].left + visionData->blobs[i].width - visionData->blobs[j].left) <
+				(visionData->blobs[j].left + visionData->blobs[j].width - visionData->blobs[i].left) / 5
+			) {
+				//same blob
+				Wireless_Debug("\t\t\tMerging blobs: ");
+				//change i blob to merged
+				PrintInt(visionData->blobs[i].width);
+				Wireless_Debug(" : ");
+				visionData->blobs[i].width = visionData->blobs[j].left + visionData->blobs[j].width -
+						visionData->blobs[i].left;
+
+				PrintInt(visionData->blobs[i].width);
+				Wireless_Debug("\r\n");
+				//mark j blob invalid
+				visionData->blobs[j].valid = FALSE;
+
+				//start inner loop over to check for other blobs to the right
+				j = -1;
+			}
+		}
+	}
+
+	//check for team colors right one top of another team color
+	//This gets rid of the red line in between pink and yellow
+	for (i = 0; i < visionData->numBlobs; i++) {
+		if (!visionData->blobs[i].valid || visionData->blobs[i].type > BLOB_TYPE_MAX_TEAM) continue;
+
+		for (j = 0; j < visionData->numBlobs; j++) {
+			if (!visionData->blobs[j].valid || visionData->blobs[j].type > BLOB_TYPE_MAX_TEAM) continue;
+			if (i == j) continue;
+
+			//check if it's right on top of it
+			if (visionData->blobs[j].top > visionData->blobs[i].top &&
+				visionData->blobs[j].top < visionData->blobs[i].top -
+				TOP_TO_HEIGHT[visionData->blobs[i].top / 10] * 3 / 2) {
+
+				//j blob was where i blob's status ring should have been, invalid
+				visionData->blobs[j].valid = FALSE;
+				//Wireless_Debug("Dropped team blob because it was right above another team blob!\r\n");
+			}
+		}
+	}
+
+	for (i = 0; i < visionData->numBlobs; i++) {
+		if (!visionData->blobs[i].valid) continue;
+
+		//calculate extra values for all blobs
+		visionData->blobs[i].distance = DISTANCE_CONSTANT / visionData->blobs[i].width;
+		visionData->blobs[i].center = visionData->blobs[i].left + (visionData->blobs[i].width / 2) -
+				(IMAGE_WIDTH / 2);
+		visionData->blobs[i].angle = FIELD_OF_VISION * visionData->blobs[i].center / IMAGE_WIDTH;
+
+		//sort into buckets
+		Blob *checking = &visionData->blobs[i];
+		if (Vision_CheckTeamBlob(BLOB_TYPE_RED, checking, &visionData->teamBlobRed) ||
+		    Vision_CheckTeamBlob(BLOB_TYPE_PINK, checking, &visionData->teamBlobPink) ||
+		    Vision_CheckTeamBlob(BLOB_TYPE_BLUE, checking, &visionData->teamBlobBlue) ||
+		    Vision_CheckTeamBlob(BLOB_TYPE_CYAN, checking, &visionData->teamBlobCyan)) {
+			//nothing
+
+		} else if (visionData->blobs[i].type == BLOB_TYPE_GREEN ||
+			visionData->blobs[i].type == BLOB_TYPE_YELLOW) {
+			//status colors
+			visionData->statusBlobs[visionData->statusBlobCount++] = &visionData->blobs[i];
+		} else {
+			//Wireless_Debug("ERROR: unrecognized blob type!\r\n");
+		}
+	}
+}
+
 // This needs to take params and avoid using globals
 void Vision_ProcessFrame(){
 
-	VisionData *visionData = *vision.snap_vision_data;
+	VisionData * visionData = *vision.snap_vision_data;
 
-	// WORK IN PROGRESS....
-	int i;
-	Object object;
+	//filer, merge, and categorize blobs
+	Vision_FilterBlobs(visionData);
+
 	// create new inactive objects
+
 	Object c;
-	c.active = 0;
 	Object b;
-	b.active = 0;
 	Object p;
-	p.active = 0;
 	Object r;
+
+	if (CURRENT_TEAM == RED_TEAM){
+		p = vision.us.tower;
+		r = vision.us.truck;
+		c = vision.them.tower;
+		b = vision.them.truck;
+	} else {
+		p = vision.them.tower;
+		r = vision.them.truck;
+		c = vision.us.tower;
+		b = vision.us.truck;
+	}
+
+	c.active = 0;
+	b.active = 0;
+	p.active = 0;
 	r.active = 0;
 
-	for(i=0; i < visionData->numBlobs; i++) {
-		object.blob = visionData->blobs[i];
-		object.status = Vision_GetStatus(&vision, visionData, &object);
-		object.active = TRUE;
-		switch(object.blob.type){
-		case BLOB_TYPE_CYAN:
-			object.type = TOWER_OBJECT;
-			c = object;
-			break;
-		case BLOB_TYPE_BLUE:
-			object.type = TRUCK_OBJECT;
-			b = object;
-			break;
-		case BLOB_TYPE_PINK:
-			object.type = TOWER_OBJECT;
-			p = object;
-			break;
-		case BLOB_TYPE_RED:
-			object.type = TOWER_OBJECT;
-			r = object;
-			break;
-		}
+	if (visionData->teamBlobBlue != NULL) {
+		b.blob = *visionData->teamBlobBlue;
+		b.type = TOWER_OBJECT;
+		b.status = Vision_GetStatus(&vision, visionData, &b);
+		b.active = TRUE;
 	}
+	if (visionData->teamBlobCyan != NULL) {
+		c.blob = *visionData->teamBlobCyan;
+		c.type = TOWER_OBJECT;
+		c.status = Vision_GetStatus(&vision, visionData, &c);
+		c.active = TRUE;
+	}
+	if (visionData->teamBlobRed != NULL) {
+		r.blob = *visionData->teamBlobRed;
+		r.type = TOWER_OBJECT;
+		r.status = Vision_GetStatus(&vision, visionData, &r);
+		r.active = TRUE;
+	}
+	if (visionData->teamBlobPink != NULL) {
+		p.blob = *visionData->teamBlobPink;
+		p.type = TOWER_OBJECT;
+		p.status = Vision_GetStatus(&vision, visionData, &p);
+		p.active = TRUE;
+	}
+
 	if (CURRENT_TEAM == RED_TEAM){
 		vision.us.tower = p;
 		vision.us.truck = r;
@@ -540,16 +692,16 @@ void calibrate_memory(){
 	XCache_EnableDCache(0x00000001);
 }
 
-void reportFrameRate(){
-	Wireless_Send(&wireless, WIRELESS_VISION_FRAMERATE, 4, (char*)&vision.frameRate);
+void reportStateInformation(){
+	StateInformation state;
+	state.framerate = vision.frameRate;
 	vision.frameRate = 0;
-	Wireless_Blob_Report((*vision.snap_vision_data)->numBlobs,(*vision.snap_vision_data)->blobs);
-	Wireless_Debug("TtUu:");
-	PrintInt(vision.them.truck.active);
-	PrintInt(vision.them.tower.active);
-	PrintInt(vision.us.tower.active);
-	PrintInt(vision.us.truck.active);
-	Wireless_Debug("\r\n");
+	state.game_not_in_play = gameBoard.gameNotInPlay;
+	state.has_flag = gameBoard.hasFlag;
+	state.mode = ai.mode;
+	state.state = ai.state;
+	state.alive = gameBoard.alive;
+	Wireless_Send(&wireless, WIRELESS_STATE_REPORT, sizeof(StateInformation), (char *)&state);
 }
 
 void vision_loop(){
@@ -601,16 +753,18 @@ void registerEvents(){
 		// Report framerate on timer2
 		Events_Init(&events);
 		events.flags.timer2 = 1;
-		Scheduler_RegisterTask(&scheduler, reportFrameRate, events);
+		Scheduler_RegisterTask(&scheduler, reportStateInformation, events);
 
 		Events_Init(&events);
-		events.flags.timer3 = 1;
+		events.flags.vision = 1;
+		events.flags.hit_ack = 1;
+		events.flags.gb_state_change = 1;
 		Scheduler_RegisterTask(&scheduler, ai_loop, events);
 
 
-		Events_Init(&events);
-		events.flags.timer3 = 1;
-		Scheduler_RegisterTask(&scheduler, myBeforeHook, events);
+//		Events_Init(&events);
+//		events.flags.timer3 = 1;
+//		Scheduler_RegisterTask(&scheduler, myBeforeHook, events);
 }
 
 void idle(){
@@ -656,8 +810,8 @@ int main (void) {
 
 
 	Scheduler_Init(&scheduler);
-	Scheduler_SetBeforeHook(&scheduler,idle);
-	//Scheduler_SetBeforeHook(&scheduler,myBeforeHook);
+	//Scheduler_SetBeforeHook(&scheduler,idle);
+	Scheduler_SetBeforeHook(&scheduler,myBeforeHook);
 	Navigation_Init(&navigation);
 	AI_Init(&ai);
 

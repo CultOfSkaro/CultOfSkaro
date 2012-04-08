@@ -137,7 +137,14 @@ void PID_UpdateVelocity(PID * pid)
 
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	pid->integrator = pid->integrator + ((refreshRate/2)*(pid->error + pid->lastError));
+
+	//If we have switched directions, zero the integrator
+	if (abs(pid->lastDesiredVelocity) / pid->lastDesiredVelocity !=
+		abs(pid->desiredVelocityPID) / pid->desiredVelocityPID) {
+		pid->integrator = 0;
+	} else {
+		pid->integrator = pid->integrator + ((refreshRate/2)*(pid->error + pid->lastError));
+	}
 
 
 	//------Output Calculation
@@ -181,9 +188,11 @@ void PID_UpdateCentroid(PID * pid)
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
 	pid->integrator_c = pid->integrator_c + (refreshRate/2)*(pid->error_c + pid->lastError_c);
 
+	//------Scale Kp based on current velocity
+	float Kp = pid->Kp_c * 1000 / pid->currentVelocity;
 
 	//------Output Calculation
-	P = pid->Kp_c * pid->error_c;
+	P = Kp * pid->error_c;
 	I = pid->Ki_c * pid->integrator_c;
 	D = pid->Kd_c * pid->differentiator_c;
 
@@ -410,8 +419,8 @@ void inline PID_SetDistance(PID * pid, int distance){
 }
 
 void inline PID_SetVelocity(PID * pid, int velocity){
-	if (velocity > 4000)
-		velocity = 4000;
+	if (velocity > 6000)
+		velocity = 6000;
 	else if (velocity < -2000)
 		velocity = -2000;
 	pid->desiredVelocityPID = velocity;
