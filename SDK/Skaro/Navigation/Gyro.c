@@ -94,6 +94,13 @@ inline int Gyro_AbsDistanceFromArchDistCuvrature(Gyro * gyro, float curvature, i
 	return archDistance-(int)((curvature*curvature*archDistance*archDistance*archDistance)/24);
 }
 
+inline int Gyro_GetTotalAngle(){
+	CPU_MSR msr = DISABLE_INTERRUPTS();
+	int millidegrees = raw_gyro_data.total_angle;
+	//raw_gyro_data.total_angle = 0;
+	RESTORE_INTERRUPTS(msr);
+	return millidegrees * 8.75;
+}
 /*
 inline void Gyro_CameraInterpretation(Gyro * gyro, int centroid, int distance){
 	int backDistance = Gyro_DistanceFrontToBack(gyro, distance);

@@ -1,6 +1,10 @@
 #ifndef SKARO_CROSS_CORE
 #define SKARO_CROSS_CORE
 
+//UNCOMMENT FOR VISION DEBUGING
+//#define DEBUG_USB_VISION
+
+
 #define VISION_DATA_ADDRESS 0x100000
 #define MAX_BLOBS           100
 
@@ -16,20 +20,18 @@
 
 #define NUM_BLOB_TYPES			6
 
-#define UNKNOWN_OBJECT	0
-#define TOWER_OBJECT	1
+#define UNKNOWN_OBJECT		0
+#define TOWER_OBJECT		1
 #define	TRUCK_OBJECT		2
 
 #define DISABLED_OBJECT_STATUS 	0
 #define FLAG_OBJECT_STATUS		1
 #define ENABLED_OBJECT_STATUS	2
 
-//#define DEBUG_USB_VISION
-
 #define RED_TEAM	0
 #define	BLUE_TEAM	1
 
-#define CURRENT_TEAM BLUE_TEAM
+#define CURRENT_TEAM RED_TEAM
 
 typedef struct {
 	int type;
@@ -48,6 +50,8 @@ typedef struct {
 	int type;
 	int status;
 	int active;
+	int elapsed_angle; //in millidegrees
+	int angle_valid;
 } Object;
 
 typedef struct {

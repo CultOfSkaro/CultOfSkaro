@@ -5,6 +5,10 @@
 #define CONVERT_TO_RAD_SEC 		0.0001527163 // (8.75 milidegees/sec)(1/1000)(pi/180)
 #define WHEELBASE 				540 // b = ~27cm = ~540ticks
 
+#define GYRO_MOVING_WINDOW_SIZE 5
+// 1/10 seconds per sample and divide by 2 to get average of samples
+#define GYRO_INTEGRATION_DIVISOR 20
+
 
 
 typedef struct
@@ -27,6 +31,7 @@ typedef struct
 typedef struct {
 	short angular_velocity;
 	short velocity;
+	int total_angle;
 	unsigned char packet[5];
 } GyroData;
 
@@ -34,6 +39,7 @@ extern GyroData raw_gyro_data;
 
 void Gyro_Init(Gyro * g);
 void Gyro_Calculation(Gyro * gyro);
+inline int Gyro_GetTotalAngle();
 inline float Gyro_SteeringAngleToRadius(Gyro * gyro, int steeringAngle);
 inline float Gyro_SteeringAngleToCurvature(Gyro * gyro, int steeringAngle);
 inline float Gyro_CurvatureBackToFront(Gyro * gyro);

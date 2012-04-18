@@ -136,21 +136,21 @@ void WirelessRecvHandler(void *CallBackRef, unsigned int EventData)
 		break;
 	case SET_PID_KP_C:
 		read(0,&float_data,sizeof(float));
-		navigation.pid.Kp_r = float_data;
-		Wireless_Debug("Setting Kp_r to:");
-		PrintFloat(navigation.pid.Kp_r);
+		navigation.pid.Kp_c = float_data;
+		Wireless_Debug("Setting Kp_c to:");
+		PrintFloat(navigation.pid.Kp_c);
 		break;
 	case SET_PID_KI_C:
 		read(0,&float_data,sizeof(float));
-		navigation.pid.Ki_r = float_data;
-		Wireless_Debug("Setting Ki_r to:");
-		PrintFloat(navigation.pid.Ki_r);
+		navigation.pid.Ki_c = float_data;
+		Wireless_Debug("Setting Ki_c to:");
+		PrintFloat(navigation.pid.Ki_c);
 		break;
 	case SET_PID_KD_C:
 		read(0,&float_data,sizeof(float));
-		navigation.pid.Kd_r = float_data;
-		Wireless_Debug("Setting Kd_r to:");
-		PrintFloat(navigation.pid.Kd_r);
+		navigation.pid.Kd_c = float_data;
+		Wireless_Debug("Setting Kd_c to:");
+		PrintFloat(navigation.pid.Kd_c);
 		break;
 	case SET_RADIUS:
 		read(0,&int_data,sizeof(int));
@@ -506,8 +506,22 @@ void Vision_FilterBlobs(VisionData *visionData) {
 	}
 }
 
-// This needs to take params and avoid using globals
+void Vision_UpdateElapsedAngle(Object * obj, int millidegrees){
+	if(obj->active){
+		obj->elapsed_angle = 0;
+		obj->angle_valid = TRUE;
+	} else {
+		int last_angle = obj->elapsed_angle;
+		obj->elapsed_angle += millidegrees;
+		// if they don't have the same sign, expire the angle
+		if(abs(last_angle)/last_angle != abs(obj->elapsed_angle)/(obj->elapsed_angle)){
+			obj->angle_valid = FALSE;
+		}
+	}
+}
+
 void Vision_ProcessFrame(){
+	static int lastAngle = 0;
 
 	VisionData * visionData = *vision.snap_vision_data;
 
@@ -516,64 +530,55 @@ void Vision_ProcessFrame(){
 
 	// create new inactive objects
 
-	Object c;
-	Object b;
-	Object p;
-	Object r;
-
+	Team * blue;
+	Team * red;
 	if (CURRENT_TEAM == RED_TEAM){
-		p = vision.us.tower;
-		r = vision.us.truck;
-		c = vision.them.tower;
-		b = vision.them.truck;
+		red = &vision.us;
+		blue = &vision.them;
 	} else {
-		p = vision.them.tower;
-		r = vision.them.truck;
-		c = vision.us.tower;
-		b = vision.us.truck;
+		red = &vision.them;
+		blue = &vision.us;
 	}
 
-	c.active = 0;
-	b.active = 0;
-	p.active = 0;
-	r.active = 0;
+	red->tower.active = 0;
+	red->truck.active = 0;
+	blue->tower.active = 0;
+	blue->truck.active = 0;
+
+	//calculate the angle difference
+	int newAngle = Gyro_GetTotalAngle();
+	int elapsed_millidegrees = newAngle - lastAngle;
+	lastAngle = newAngle;
 
 	if (visionData->teamBlobBlue != NULL) {
-		b.blob = *visionData->teamBlobBlue;
-		b.type = TOWER_OBJECT;
-		b.status = Vision_GetStatus(&vision, visionData, &b);
-		b.active = TRUE;
+		blue->truck.blob = *visionData->teamBlobBlue;
+		blue->truck.type = TOWER_OBJECT;
+		blue->truck.status = Vision_GetStatus(&vision, visionData, &blue->truck);
+		blue->truck.active = TRUE;
 	}
 	if (visionData->teamBlobCyan != NULL) {
-		c.blob = *visionData->teamBlobCyan;
-		c.type = TOWER_OBJECT;
-		c.status = Vision_GetStatus(&vision, visionData, &c);
-		c.active = TRUE;
+		blue->tower.blob = *visionData->teamBlobCyan;
+		blue->tower.type = TOWER_OBJECT;
+		blue->tower.status = Vision_GetStatus(&vision, visionData, &blue->tower);
+		blue->tower.active = TRUE;
 	}
 	if (visionData->teamBlobRed != NULL) {
-		r.blob = *visionData->teamBlobRed;
-		r.type = TOWER_OBJECT;
-		r.status = Vision_GetStatus(&vision, visionData, &r);
-		r.active = TRUE;
+		red->truck.blob = *visionData->teamBlobRed;
+		red->truck.type = TOWER_OBJECT;
+		red->truck.status = Vision_GetStatus(&vision, visionData, &red->truck);
+		red->truck.active = TRUE;
 	}
 	if (visionData->teamBlobPink != NULL) {
-		p.blob = *visionData->teamBlobPink;
-		p.type = TOWER_OBJECT;
-		p.status = Vision_GetStatus(&vision, visionData, &p);
-		p.active = TRUE;
+		red->tower.blob = *visionData->teamBlobPink;
+		red->tower.type = TOWER_OBJECT;
+		red->tower.status = Vision_GetStatus(&vision, visionData, &red->tower);
+		red->tower.active = TRUE;
 	}
 
-	if (CURRENT_TEAM == RED_TEAM){
-		vision.us.tower = p;
-		vision.us.truck = r;
-		vision.them.tower = c;
-		vision.them.truck = b;
-	} else {
-		vision.them.tower = p;
-		vision.them.truck = r;
-		vision.us.tower = c;
-		vision.us.truck = b;
-	}
+	Vision_UpdateElapsedAngle(&blue->truck, elapsed_millidegrees);
+	Vision_UpdateElapsedAngle(&blue->tower, elapsed_millidegrees);
+	Vision_UpdateElapsedAngle(&red->truck, elapsed_millidegrees);
+	Vision_UpdateElapsedAngle(&red->tower, elapsed_millidegrees);
 
 	if(navigation.steeringLoopMode == CENTROID_MODE){
 		if(vision.current_target->active)
@@ -583,6 +588,83 @@ void Vision_ProcessFrame(){
 
 	vision.frameRate++;
 }
+// This needs to take params and avoid using globals
+//void Vision_ProcessFrame(){
+//
+//	VisionData * visionData = *vision.snap_vision_data;
+//
+//	//filer, merge, and categorize blobs
+//	Vision_FilterBlobs(visionData);
+//
+//	// create new inactive objects
+//
+//	Object c;
+//	Object b;
+//	Object p;
+//	Object r;
+//
+//	if (CURRENT_TEAM == RED_TEAM){
+//		p = vision.us.tower;
+//		r = vision.us.truck;
+//		c = vision.them.tower;
+//		b = vision.them.truck;
+//	} else {
+//		p = vision.them.tower;
+//		r = vision.them.truck;
+//		c = vision.us.tower;
+//		b = vision.us.truck;
+//	}
+//
+//	c.active = 0;
+//	b.active = 0;
+//	p.active = 0;
+//	r.active = 0;
+//
+//	if (visionData->teamBlobBlue != NULL) {
+//		b.blob = *visionData->teamBlobBlue;
+//		b.type = TOWER_OBJECT;
+//		b.status = Vision_GetStatus(&vision, visionData, &b);
+//		b.active = TRUE;
+//	}
+//	if (visionData->teamBlobCyan != NULL) {
+//		c.blob = *visionData->teamBlobCyan;
+//		c.type = TOWER_OBJECT;
+//		c.status = Vision_GetStatus(&vision, visionData, &c);
+//		c.active = TRUE;
+//	}
+//	if (visionData->teamBlobRed != NULL) {
+//		r.blob = *visionData->teamBlobRed;
+//		r.type = TOWER_OBJECT;
+//		r.status = Vision_GetStatus(&vision, visionData, &r);
+//		r.active = TRUE;
+//	}
+//	if (visionData->teamBlobPink != NULL) {
+//		p.blob = *visionData->teamBlobPink;
+//		p.type = TOWER_OBJECT;
+//		p.status = Vision_GetStatus(&vision, visionData, &p);
+//		p.active = TRUE;
+//	}
+//
+//	if (CURRENT_TEAM == RED_TEAM){
+//		vision.us.tower = p;
+//		vision.us.truck = r;
+//		vision.them.tower = c;
+//		vision.them.truck = b;
+//	} else {
+//		vision.them.tower = p;
+//		vision.them.truck = r;
+//		vision.us.tower = c;
+//		vision.us.truck = b;
+//	}
+//
+//	if(navigation.steeringLoopMode == CENTROID_MODE){
+//		if(vision.current_target->active)
+//			navigation.pid.currentCentroid = vision.current_target->blob.center;
+//		scheduler.events.flags.steering_loop = 1;
+//	}
+//
+//	vision.frameRate++;
+//}
 
 void myBeforeHook(){
 	if(*vision.live_vision_data != *vision.snap_vision_data){
@@ -801,13 +883,8 @@ int main (void) {
 	// that uart packets from the gameboard are in sync
 	GB_Init();
 	GB_DisableGyro();
-	usleep(1000000);
 
 	InitInterrupts();
-
-	// Now that interrupts are enabled, re-enable gyro
-	GB_EnableGyro();
-
 
 	Scheduler_Init(&scheduler);
 	//Scheduler_SetBeforeHook(&scheduler,idle);

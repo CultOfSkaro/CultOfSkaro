@@ -9,6 +9,9 @@ void Vision_Init(Vision * vision){
 	vision->snap_vision_data = ((VisionData **) VISION_DATA_ADDRESS + 3*sizeof(VisionData)) + 1;
 	*vision->snap_vision_data = 0;
 	*vision->live_vision_data = 0;
+
+	//set our tower to directly behind us
+	vision->us.tower.elapsed_angle = 180000;
 }
 
 VisionData * Vision_GetBuffer(Vision * vision){

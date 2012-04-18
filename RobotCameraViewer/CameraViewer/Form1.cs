@@ -105,7 +105,7 @@ namespace CameraViewer
             
             int blobsStart = 8 + imageSize + 4;
             for (int i = 0; i < numBlobs; i++) {
-                int blobStart = blobsStart + i * 32; //7 ints and 1 float per blob
+                int blobStart = blobsStart + i * 36; //8 ints and 1 float per blob
                 int type = ByteConvert.toUint32(e.data, blobStart);
                 int left = ByteConvert.toUint32(e.data, blobStart + 4);
                 int top = ByteConvert.toUint32(e.data, blobStart + 8);
@@ -170,8 +170,8 @@ namespace CameraViewer
         private static Pen penRed = new Pen(Color.Red, 2);
         private static Pen penGreen = new Pen(Color.Green, 2);
 
-        private static Pen[] pens = { penBlue, penPink, penYellow, penCyan,
-                                        penRed, penGreen };
+        private static Pen[] pens = { penBlue, penPink, penCyan, penRed,
+                                      penYellow, penGreen };
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e) {
             Graphics g = e.Graphics;

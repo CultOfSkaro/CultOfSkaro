@@ -53,6 +53,7 @@ void GB_Shoot(uint16 shotType)
 		PrintInt(shotType);
 		Wireless_Debug("\n\r");
 		//ensure valid states for shooting
+		if (gameBoard.gameNotInPlay) return;
 		if (shotType == GAME_KILL_SHOT && !gameBoard.alive) return;
 		else if (shotType == GAME_PASS_SHOT && !gameBoard.hasFlag) return;
 		else if (shotType == GAME_REVIVE_SHOT && gameBoard.alive) return;
@@ -86,11 +87,10 @@ void GpioHandler(void *InstancePtr) {
 	#define GAME_NOT_IN_PLAY			0x4000
 	#define GAME_WAIT_TO_SHOOT			0x8000
 	*/
-
-
 	static int shootState = SHOOT_STATE_NONE;
 
 	XGpio *GpioPtr = (XGpio *)InstancePtr;
+	(void)XGpio_InterruptClear(GpioPtr, XGPIO_IR_CH2_MASK);
 	u32 gameState = XGpio_DiscreteRead(GpioPtr, GAME_SYSTEM_GPIO_CHANNEL);
 
 	//check global flags
@@ -126,7 +126,4 @@ void GpioHandler(void *InstancePtr) {
 		shootState = SHOOT_STATE_NONE;
 		Wireless_Debug("Shot Complete\r\n");
 	}
-
-	/* Clear the interrupt such that it is no longer pending in the GPIO */
-	(void)XGpio_InterruptClear(GpioPtr, XGPIO_IR_CH2_MASK);
 }

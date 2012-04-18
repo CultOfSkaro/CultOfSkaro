@@ -61,7 +61,7 @@ typedef struct {
 #define FLOOD_STRIDE_Y   4
 
 #define TARGET_COLOR_RED		0, 0, 10
-#define TARGET_COLOR_PINK		40, 0, 10
+#define TARGET_COLOR_PINK		38, 0, 10
 #define TARGET_COLOR_BLUE       28, 0, 10
 #define TARGET_COLOR_CYAN		23, 0, 10
 #define TARGET_COLOR_GREEN		14, 0, 10
@@ -69,7 +69,7 @@ typedef struct {
 Color targetColors[NUM_BLOB_TYPES];
 
 #define HUE_TOLERANCE_RED    2
-#define HUE_TOLERANCE_PINK   3
+#define HUE_TOLERANCE_PINK   7
 #define HUE_TOLERANCE_BLUE   2
 #define HUE_TOLERANCE_CYAN   3
 #define HUE_TOLERANCE_GREEN  2
@@ -340,7 +340,7 @@ void processFrame(FrameTableEntry* frame) {
 
 	//find blue blobs
 	int x, y;
-	for (y = 0; y < 200; y += variableSearchStrideY[y/10]) {
+	for (y = 0; y < 210; y += variableSearchStrideY[y/10]) {
 		for (x = 0; x < IMAGE_WIDTH; x += variableSearchStrideX[y/10]) {
 			if (pixels[y * IMAGE_WIDTH + x] == 0) continue;
 			short pixel = pixels[y * IMAGE_WIDTH + x];

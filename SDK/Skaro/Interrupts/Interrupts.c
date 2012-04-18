@@ -110,54 +110,92 @@ void GameboardSendHandler(void *CallBackRef, unsigned int EventData)
 // Interrupt handler for gameboard UART
 void GameboardRecvHandler(void *CallBackRef, unsigned int EventData)
 {
-	static short ticks_prev = 0;
-	static short ticks = 0;
-	static int clocks = 0;
-	static int clocks_prev = 0;
-	static short old_angular_velocity[2];
-	float rate;
-	CPU_MSR msr;
-
-
-	// Non-blocking receive of 5 bytes
-	XUartLite_Recv(&gameboard_uart, raw_gyro_data.packet, 5);
-
-	if (EventData == 0) {
-		msr = DISABLE_INTERRUPTS();
-		ticks_prev = getTicks();
-		clocks_prev = ClockTime();
-		RESTORE_INTERRUPTS(msr);
-		// Return if we haven't previously requested a 5 byte receive
-		return;
-	} else if (EventData == 5){
-		// 5 bytes receive
-		if (raw_gyro_data.packet[0] == 'M') {
-
-			msr = DISABLE_INTERRUPTS();
-			ticks = getTicks();
-			clocks = ClockTime();
-			RESTORE_INTERRUPTS(msr);
-
-			rate = refresh_rate(clocks, clocks_prev);
-			raw_gyro_data.velocity = ((float)(ticks - ticks_prev))/rate;
-			ticks_prev = ticks;
-			clocks_prev = clocks;
-
-			old_angular_velocity[0] = old_angular_velocity[1];
-			old_angular_velocity[1] = raw_gyro_data.angular_velocity;
-			raw_gyro_data.angular_velocity = (signed char)raw_gyro_data.packet[3];
-			raw_gyro_data.angular_velocity <<= 8;
-			raw_gyro_data.angular_velocity |= (uint32) raw_gyro_data.packet[4];
-			if ((old_angular_velocity[0] == old_angular_velocity[1]) && (old_angular_velocity[0] == raw_gyro_data.angular_velocity)) {
-				Wireless_Debug("------------------------------\r\n");
-				Wireless_Debug("Getting stale gyro data!\r\n");
-				Wireless_Debug("------------------------------\r\n");
-			}
-
-		} else {
-			Wireless_Debug("------------------------------\r\n");
-			Wireless_Debug("Packets out of sync!\r\n");
-			Wireless_Debug("------------------------------\r\n");
-		}
-	}
+//	static short ticks_prev = 0;
+//		static short ticks = 0;
+//		static int clocks = 0;
+//		static int clocks_prev = 0;
+//		static short gyro_moving_window[GYRO_MOVING_WINDOW_SIZE];
+//	    static int total_angle;
+//		float rate;
+//	    int i;
+//	    int stale_count;
+//		CPU_MSR msr;
+//
+//
+//		// Non-blocking receive of 5 bytes
+//		XUartLite_Recv(&gameboard_uart, raw_gyro_data.packet, 5);
+//
+//		if (EventData == 0) {
+//	        /* This condition happens upon the first receive interrupt that we get
+//	           At this point we haven't requested a receive (XUartLite_Recv())
+//	        */
+//
+//	        // Get an initial time and tick value for the first velocity calculation
+//			msr = DISABLE_INTERRUPTS();
+//			ticks_prev = getTicks();
+//			clocks_prev = ClockTime();
+//			RESTORE_INTERRUPTS(msr);
+//
+//			return;
+//		} else if (EventData == 5) {
+//			/* 5 bytes receive
+//			   First interrupt from a requested receive (XUartLite_Recv())
+//			*/
+//
+//			if (raw_gyro_data.packet[0] == 'M') {
+//	            // Get ticks and clock time simultaneously to calculate velocity
+//				msr = DISABLE_INTERRUPTS();
+//				ticks = getTicks();
+//				clocks = ClockTime();
+//				RESTORE_INTERRUPTS(msr);
+//
+//	            // Get the refresh rate
+//				rate = refresh_rate(clocks, clocks_prev);
+//
+//	            // Calculate velocity
+//				raw_gyro_data.velocity = ((float)(ticks - ticks_prev))/rate;
+//
+//	            // Extract angular velocity from gyro data
+//				raw_gyro_data.angular_velocity = (signed char)raw_gyro_data.packet[3];
+//				raw_gyro_data.angular_velocity <<= 8;
+//				raw_gyro_data.angular_velocity |= (uint32) raw_gyro_data.packet[4];
+//
+//	            // Move current ticks and clocks to previous
+//				ticks_prev = ticks;
+//				clocks_prev = clocks;
+//
+//	            // Shift the moving window
+//	            for (i = 0; i < GYRO_MOVING_WINDOW_SIZE - 1; i++) {
+//	                gyro_moving_window[i] = gyro_moving_window[i + 1];
+//	            }
+//	            gyro_moving_window[GYRO_MOVING_WINDOW_SIZE - 1] = raw_gyro_data.angular_velocity;
+//
+//	            // Trapezoidal integration of gyro samples
+//	            // This measurement is in increments of 8.75 milidegrees
+//	            raw_gyro_data.total_angle += (raw_gyro_data.angular_velocity + gyro_moving_window[GYRO_MOVING_WINDOW_SIZE - 2]) / GYRO_INTEGRATION_DIVISOR;
+//
+////	            Wireless_Debug("Raw total angle");
+////	            PrintInt((raw_gyro_data.total_angle * 8.75) / 1000);
+////	            Wireless_Debug("\r\n");
+//
+//	            // Check for stale data, this usually happens when the battery gets low
+//	            for (i = 0; i < GYRO_MOVING_WINDOW_SIZE - 1; i++) {
+//	                if (gyro_moving_window[i] != gyro_moving_window[i + 1]) {
+//	                    break;
+//	                }
+//				}
+//	            // The entire moving window is the same value, gyro data is stale
+//	            if (i == GYRO_MOVING_WINDOW_SIZE - 1) {
+//					Wireless_Debug("--------------------------\r\n");
+//					Wireless_Debug("Gyro: getting stale data!\r\n");
+//					Wireless_Debug("--------------------------\r\n");
+//	            }
+//
+//			} else {
+//	            // The beginning of the packet was not 'M'
+//				Wireless_Debug("----------------------------------------------------------\r\n");
+//				Wireless_Debug("Gyro: packets out of sync, try resetting the Helios board\r\n");
+//				Wireless_Debug("----------------------------------------------------------\r\n");
+//			}
+//		}
 }

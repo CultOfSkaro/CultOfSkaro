@@ -73,9 +73,9 @@ void PID_Init(PID * pid){
 			pid->desiredAnglePID = 0;
 			//Centroid params
 			pid->desiredCentroidPID = 0;
-			pid->Kp_c = 0.11f;
+			pid->Kp_c = 0.17f;
 			pid->Kd_c = 0.0001f;
-			pid->Ki_c = 0.0f;
+			pid->Ki_c = 0.1f;
 			pid->integrator_c = 0.0f;
 			pid->differentiator_c = 0.0f;
 			pid->lastError_c = 0;
@@ -180,16 +180,19 @@ void PID_UpdateCentroid(PID * pid)
 
 	//------Calculate Error
 	pid->error_c = pid->desiredCentroidPID - pid->currentCentroid;
-
+	///Wireless_ControlLog(pid->currentCentroid, pid->desiredCentroidPID);
 	//------Update Derivative
 	//pid->differentiator_c = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator_c) + ((2/((2*pid->Tau)+refreshRate))*(pid->currentCentroid - pid->lastCurrentCentroid));
 	pid->differentiator_c = ((((2*pid->Tau)-refreshRate)/((2*pid->Tau)+refreshRate))*pid->differentiator_c) + ((2/((2*pid->Tau)+refreshRate))*(pid->error_c - pid->lastError_c));
 
 	//------Update integrator - AntiWindup(only use the integrator if we are close, but not too close)
-	pid->integrator_c = pid->integrator_c + (refreshRate/2)*(pid->error_c + pid->lastError_c);
+	if( abs(pid->error_c) < 75)
+		pid->integrator_c = pid->integrator_c + ((refreshRate/2)*(pid->error_c + pid->lastError_c))*abs(pid->currentVelocity)/1500;
+	else
+		pid->integrator_c = 0;
 
 	//------Scale Kp based on current velocity
-	float Kp = pid->Kp_c * 1000 / pid->currentVelocity;
+	float Kp = pid->Kp_c * 1000 / abs(pid->currentVelocity);
 
 	//------Output Calculation
 	P = Kp * pid->error_c;
@@ -199,7 +202,7 @@ void PID_UpdateCentroid(PID * pid)
 	pid->outputPID_unsat_c = (P) + (I) - (D);
 	pid->outputPID_c = sat(pid->outputPID_unsat_c, 40);
 
-	pid->integrator_c = pid->integrator_c + (refreshRate/pid->Ki_c)*(pid->outputPID_c - pid->outputPID_unsat_c);
+	//pid->integrator_c = pid->integrator_c + (refreshRate/pid->Ki_c)*(pid->outputPID_c - pid->outputPID_unsat_c);
 
 	//------Save states and send PWM to motors
 	pid->lastCurrentCentroid = pid->currentCentroid;
@@ -211,7 +214,7 @@ void PID_UpdateCentroid(PID * pid)
 	if (pid->currentVelocity > -20 && pid->currentVelocity < 20)
 		pid->outputPID_c = 0;
 	if (pid->outputPID_c == 0)
-		pid->outputPID_c = -2;
+		pid->outputPID_c = 0;
 	SetServo(RC_STR_SERVO, pid->outputPID_c);
 }
 
@@ -225,7 +228,7 @@ void PID_UpdateRadius(PID * pid)
 	msr = DISABLE_INTERRUPTS();
 	float desiredRadius = pid->desiredRadiusPID;//----//get info from camera here
 	uint32 nowClocks = ClockTime();
-	Gyro_Calculation(pid->gyro);
+//	Gyro_Calculation(pid->gyro);
 	RESTORE_INTERRUPTS(msr);
 
 	//------Time since last function call in seconds
@@ -287,16 +290,17 @@ void PID_UpdateRadius(PID * pid)
 //	PrintInt(D);
 //	Wireless_Debug("\n\r");
 
-	Wireless_ControlLog_Ext(pid->currentRadius, pid->desiredRadiusPID, pid->error, pid->outputPID_unsat, P);
+//	Wireless_ControlLog_Ext(pid->currentRadius, pid->desiredRadiusPID, pid->error, pid->outputPID_unsat, P);
 
-	pid->outputPID_unsat_r = (P + I - D) + pid->radiusEqualibrium;
+	//pid->outputPID_unsat_r = (P + I - D) + pid->radiusEqualibrium;
+	pid->outputPID_unsat_r = pid->radiusEqualibrium;
 
 	pid->outputPID_r = sat(pid->outputPID_unsat_r, 40);
 
 	//pid->integrator_r = ((int)pid->integrator_r) + ((int)(1000000*(refreshRate/pid->Ki_r)*(pid->outputPID_r - pid->outputPID_unsat_r)));
 
 	//------Save Info for graph
-	Wireless_ControlLog_Ext(pid->currentRadius, desiredRadius, pid->error_r, pid->outputPID_unsat_r, I);
+//	Wireless_ControlLog_Ext(pid->currentRadius, desiredRadius, pid->error_r, pid->outputPID_unsat_r, I);
 
 	//------Save states and send PWM to motors
 	pid->lastCurrentRadius = pid->currentRadius;
